@@ -50,6 +50,12 @@ func (this *IndexAction) RunGet(params struct {
 		return
 	}
 
+	// 前端已迁移到 React SPA
+	if !actionutils.IsJSONRequest(this.Request) {
+		this.RedirectURL("/spa/")
+		return
+	}
+
 	// 是否自动从HTTP跳转到HTTPS
 	if this.Request.TLS == nil {
 		httpsPort, _ := adminserverutils.ReadServerHTTPS()

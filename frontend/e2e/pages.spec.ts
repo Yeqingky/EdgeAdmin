@@ -43,3 +43,9 @@ test('user detail and access keys render', async ({ page }) => {
     await expect(page.getByText('[创建AccessKey]')).toBeVisible()
   }
 })
+
+test('setup wizard is reachable without login', async ({ page }) => {
+  await page.goto('/spa/#/setup')
+  await expect(page.getByRole('button', { name: '开始' })).toBeVisible()
+  await expect(page.getByText('设置MySQL数据库')).toBeVisible()
+})
