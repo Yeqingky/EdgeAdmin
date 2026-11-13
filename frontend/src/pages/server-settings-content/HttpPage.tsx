@@ -73,8 +73,6 @@ export function ServerHttpSettingsPage() {
       host: '',
       port: 0,
       status: 0,
-      onlyDomains: [],
-      exceptDomains: [],
       ...(data.redirectToHTTPSConfig || {}),
       onlyDomains: data.redirectToHTTPSConfig?.onlyDomains || [],
       exceptDomains: data.redirectToHTTPSConfig?.exceptDomains || [],
