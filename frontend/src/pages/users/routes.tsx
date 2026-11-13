@@ -9,8 +9,11 @@ import { UserAccessKeysPage } from './UserAccessKeysPage'
 export const routes: AppRoute[] = [
   { path: '/users', element: <UsersPage /> },
   { path: '/users/create', element: <UserCreatePage /> },
+  { path: '/users/createPopup', element: <UserCreatePage /> },
   { path: '/users/update', element: <UserUpdatePage /> },
   { path: '/users/user', element: <UserDetailPage /> },
   { path: '/users/features', element: <UserFeaturesPage /> },
   { path: '/users/accesskeys', element: <UserAccessKeysPage /> },
+  { path: '/users/accesskeys/createPopup', element: <UserAccessKeysPage /> },
+  { path: '/users/verifyPopup', element: <UserDetailPage /> },
 ]

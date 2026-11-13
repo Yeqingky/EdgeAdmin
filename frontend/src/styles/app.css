@@ -140,3 +140,13 @@
 .first-menu {
   margin-bottom: 1em !important;
 }
+
+.install-box {
+  width: 50em;
+  max-width: 92%;
+  margin: 3em auto;
+}
+
+.install-box .ui.steps {
+  margin-bottom: 2em;
+}

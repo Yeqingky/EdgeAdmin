@@ -34,7 +34,11 @@ export function LoginPage() {
     return <div className="login-error">无法连接管理服务</div>
   }
   if (!info.data.isConfigured) {
-    window.location.href = '/setup'
+    window.location.href = '/spa/#/setup'
+    return <LoadingBlock />
+  }
+  if (info.data.isNewInstalled) {
+    window.location.href = '/spa/#/setup/confirm'
     return <LoadingBlock />
   }
   if (info.data.isUser) {

@@ -83,9 +83,25 @@ export async function apiPost<T>(url: string, params?: Record<string, unknown>):
   return (await parse<T>(resp)).data
 }
 
+let cachedCsrfToken: { token: string; timestamp: number } | null = null
+
 export async function getCsrfToken(): Promise<string> {
-  const data = await apiGet<{ token: string }>('/csrf/token')
-  return data.token
+  if (cachedCsrfToken && Date.now() - cachedCsrfToken.timestamp < 10 * 60 * 1000) {
+    return cachedCsrfToken.token
+  }
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const data = await apiGet<{ token: string }>('/csrf/token')
+      cachedCsrfToken = { token: data.token, timestamp: Date.now() }
+      return data.token
+    } catch (error) {
+      if (attempt === 0 && error instanceof ApiError && error.message.includes('请求速度过快')) {
+        await new Promise((resolve) => window.setTimeout(resolve, 1200))
+        continue
+      }
+      throw error
+    }
+  }
 }
 
 export async function apiPostForm<T>(url: string, form: FormData): Promise<T> {

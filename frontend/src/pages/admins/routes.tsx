@@ -12,4 +12,5 @@ export const routes: AppRoute[] = [
   { path: '/admins/update', element: <AdminUpdatePage /> },
   { path: '/admins/admin', element: <AdminDetailPage /> },
   { path: '/admins/accesskeys', element: <AdminAccessKeysPage /> },
+  { path: '/admins/accesskeys/createPopup', element: <AdminAccessKeysPage /> },
 ]
