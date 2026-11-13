@@ -352,7 +352,7 @@ export function CreateNodePage() {
           </div>
 
           {installMethod === 'remote' ? (
-            <div>
+            <div className="ui form">
               <FormTable>
                 <FormRow title="SSH主机地址 *">
                   <input

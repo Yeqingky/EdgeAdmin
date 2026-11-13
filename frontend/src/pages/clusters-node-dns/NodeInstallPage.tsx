@@ -359,6 +359,7 @@ function NodeSSHModal({ nodeId, onClose, onSaved }: { nodeId: number; onClose: (
     <Modal title="修改节点的SSH登录信息" onClose={onClose}>
       {query.isLoading ? <div>加载中...</div> : null}
       {query.data ? (
+        <div className="ui form">
         <table className="ui table definition">
           <tbody>
             <tr>
@@ -383,6 +384,7 @@ function NodeSSHModal({ nodeId, onClose, onSaved }: { nodeId: number; onClose: (
             </tr>
           </tbody>
         </table>
+        </div>
       ) : null}
       <div>
         <button className={`ui button primary${saving ? ' loading disabled' : ''}`} type="button" onClick={() => void save()} disabled={saving}>

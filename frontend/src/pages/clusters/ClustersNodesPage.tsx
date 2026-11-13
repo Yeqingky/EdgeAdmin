@@ -336,7 +336,7 @@ export function ClustersNodesPage() {
                       <span className="ui label tiny basic grey">分组：{node.group.name}</span>
                     </div>
                   ) : null}
-                  {node.secondaryClusters.length > 0 ? (
+                  {node.secondaryClusters && node.secondaryClusters.length > 0 ? (
                     <div>
                       {node.secondaryClusters.map((cluster) => (
                         <span key={cluster.id} className="ui label tiny basic">
