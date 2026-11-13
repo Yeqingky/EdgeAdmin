@@ -138,15 +138,15 @@ export function ClusterTasksPage() {
                       />
                     </td>
                     <td>{cluster.name}</td>
-                    <td noWrap>
+                    <td style={{ whiteSpace: 'nowrap' }}>
                       {task.node.name} &nbsp;{' '}
                       <a href={`#/clusters/cluster/node?clusterId=${cluster.id}&nodeId=${task.node.id}`} target="_blank" rel="noreferrer">
                         查看
                       </a>
                     </td>
-                    <td noWrap>{taskTypeLabels(task.type)}</td>
+                    <td style={{ whiteSpace: 'nowrap' }}>{taskTypeLabels(task.type)}</td>
                     <td>{task.isDone ? <span className="red">{task.error}</span> : <span>正在同步...</span>}</td>
-                    <td noWrap>{task.updatedTime}</td>
+                    <td style={{ whiteSpace: 'nowrap' }}>{task.updatedTime}</td>
                     <td>
                       <a
                         href=""

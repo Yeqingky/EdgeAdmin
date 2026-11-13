@@ -10,9 +10,7 @@ import { FormRow, FormTable, Select, SubmitButton, TextInput } from '../../compo
 import { ClusterTabMenu, parseId, useClusterName } from './shared'
 
 function delay(ms: number): Promise<void> {
-  const { promise, resolve } = Promise.withResolvers<void>()
-  window.setTimeout(resolve, ms)
-  return promise
+  return new Promise((resolve) => window.setTimeout(resolve, ms))
 }
 
 interface LeftMenuItem {

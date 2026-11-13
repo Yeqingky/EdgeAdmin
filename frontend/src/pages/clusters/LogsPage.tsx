@@ -341,10 +341,10 @@ export function LogsPage() {
           <tbody>
             {data.logs.map((log) => (
               <tr key={log.id}>
-                <td noWrap>
+                <td style={{ whiteSpace: 'nowrap' }}>
                   <a href={`#/clusters/cluster?clusterId=${log.node.cluster.id}`}>{log.node.cluster.name}</a>
                 </td>
-                <td noWrap>
+                <td style={{ whiteSpace: 'nowrap' }}>
                   <a href={`#/clusters/cluster/node?clusterId=${log.node.cluster.id}&nodeId=${log.node.id}`}>{log.node.name}</a>
                 </td>
                 <td>
