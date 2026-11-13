@@ -23,7 +23,7 @@
 - 新增 `_format=json` 页面数据输出和 `/api/login`, `/api/session` 接口, 未登录 JSON 请求返回 401
 - 迁移网站、集群、节点、DNS、证书、分组、缓存、WAF、系统设置、用户、管理员、数据库、日志、消息、安装和恢复等全部页面, 旧版弹窗 URL 提供兼容路由
 - 新增页面错误边界和登录失效自动跳转
-- 根路径 `/` 重定向到 React SPA
+- 根路径 `/` 和所有旧版页面 GET 地址重定向到 React SPA, 旧 action 仅作为 JSON 数据接口
 - 新增 `/spa/` 入口和 Docker 前端构建阶段
 - 新增 docker/entrypoint-api.sh 与 docker/entrypoint-admin.sh, 负责生成数据库配置, API 节点配置和管理面板配置
 - docker/build.sh 与 docker/run.sh 改为 docker compose 封装

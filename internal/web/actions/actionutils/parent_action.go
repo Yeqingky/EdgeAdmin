@@ -41,7 +41,13 @@ func (this *ParentAction) Show() {
 		this.ShowJSON()
 		return
 	}
-	this.ActionObject.Show()
+
+	// 页面已迁移到 React SPA，旧地址统一跳转
+	var target = "/spa/#" + this.Request.URL.Path
+	if len(this.Request.URL.RawQuery) > 0 {
+		target += "?" + this.Request.URL.RawQuery
+	}
+	this.RedirectURL(target)
 }
 
 // ShowJSON 以 JSON 输出页面数据
