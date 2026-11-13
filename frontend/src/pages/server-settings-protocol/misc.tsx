@@ -236,9 +236,6 @@ export function UserAgentPage() {
   const current: UserAgentConfig = config ?? {
     isPrior: false,
     isOn: false,
-    filters: [],
-    onlyURLPatterns: [],
-    exceptURLPatterns: [],
     ...(data.userAgentConfig || {}),
     filters: data.userAgentConfig?.filters || [],
     onlyURLPatterns: data.userAgentConfig?.onlyURLPatterns || [],

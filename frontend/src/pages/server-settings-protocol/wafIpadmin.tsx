@@ -546,14 +546,17 @@ function RegionPicker({
       : kind === 'province'
         ? '/servers/server/settings/waf/ipadmin/selectProvincesPopup'
         : '/servers/server/settings/waf/ipadmin/selectProvidersPopup'
-  const query = useQuery({
+  const query = useQuery<SelectCountriesData | SelectProvincesData | SelectProvidersData>({
     queryKey: ['server-settings-region-picker', kind, type, selectedIds],
-    queryFn: () =>
-      kind === 'country'
-        ? apiGet<SelectCountriesData>(path, { type, selectedCountryIds: selectedIds })
-        : kind === 'province'
-          ? apiGet<SelectProvincesData>(path, { type, selectedProvinceIds: selectedIds })
-          : apiGet<SelectProvidersData>(path, { type, selectedProviderIds: selectedIds }),
+    queryFn: async () => {
+      if (kind === 'country') {
+        return await apiGet<SelectCountriesData>(path, { type, selectedCountryIds: selectedIds })
+      }
+      if (kind === 'province') {
+        return await apiGet<SelectProvincesData>(path, { type, selectedProvinceIds: selectedIds })
+      }
+      return await apiGet<SelectProvidersData>(path, { type, selectedProviderIds: selectedIds })
+    },
   })
   const [checked, setChecked] = useState<Record<number, boolean> | null>(null)
   const [keyword, setKeyword] = useState('')
@@ -1289,7 +1292,6 @@ interface TestData {
 export function WafTestPage() {
   const serverId = useSearchInt('serverId')
   const firewallPolicyId = useSearchInt('firewallPolicyId')
-  const toast = useToast()
   const [ip, setIp] = useState('')
   const [result, setResult] = useState<TestResult | null>(null)
   const [updatingItemId, setUpdatingItemId] = useState<number | null>(null)
