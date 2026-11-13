@@ -32,6 +32,7 @@
 - 修复修改管理员用户名后重启 API 容器会重新创建默认 admin 账号的问题
 - 修复登录失败后再次登录提示请先登录的问题, CSRF token 改为单次使用
 - 设置页面顶部 tab 和 PageHeader 使用客户端路由, 切换时不再整页刷新
+- 全局拦截站内链接, 顶部导航、页签和普通链接统一使用 SPA 路由
 - 新增 `/spa/` 入口和 Docker 前端构建阶段
 - 新增 docker/entrypoint-api.sh 与 docker/entrypoint-admin.sh, 负责生成数据库配置, API 节点配置和管理面板配置
 - docker/build.sh 与 docker/run.sh 改为 docker compose 封装
