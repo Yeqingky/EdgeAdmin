@@ -9,3 +9,10 @@
 - internal/waf/injectionutils: 将包根的 libinjection 包装 .c 文件并入 cgo 预部并删除, 修复默认构建 (无 gcc tag) 下 "C source files not allowed" 报错; gcc tag 构建行为不变
 - 依赖 quic-go 无代码引用, 已随 go mod tidy 移除
 - 将模块路径, 源码导入和文档链接中的仓库地址统一迁移到 git.ovh.im/yeqing
+- docker/Dockerfile 改为多阶段源码构建, 编译 edge-admin, edge-api, 节点安装助手和边缘节点部署包, 不再下载二进制发布包
+- 新增 docker-compose.yml, 包含 mysql, edge-api, edge-admin 服务, 首次启动自动初始化数据库, API 节点和初始管理员
+- docker-compose.yml 全部使用宿主机目录挂载, 不使用 Docker 卷, 挂载路径下注释进程 uid/gid 和需要执行的权限命令
+- 新增 docker/entrypoint-api.sh 与 docker/entrypoint-admin.sh, 负责生成数据库配置, API 节点配置和管理面板配置
+- docker/build.sh 与 docker/run.sh 改为 docker compose 封装
+- 新增 AGENTS.md, 说明 EdgeAdmin 作为六个仓库主仓库的定位, 开发环境 192.168.5.30 与 192.168.5.31 的分工和容器化部署方式
+- README 增加开发环境与 Docker Compose 部署说明

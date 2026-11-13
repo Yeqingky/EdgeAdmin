@@ -1,41 +1,97 @@
-FROM --platform=linux/amd64 alpine:latest
-LABEL maintainer="goedge.cdn@gmail.com"
-ENV TZ "Asia/Shanghai"
-ENV VERSION 1.3.8
-ENV ROOT_DIR /usr/local/goedge
-ENV TAR_FILE edge-admin-linux-amd64-plus-v${VERSION}.zip
+# syntax=docker/dockerfile:1
 
-# remote official repository
-ENV TAR_URL "https://dl.goedge.cloud/edge/v${VERSION}/edge-admin-linux-amd64-plus-v${VERSION}.zip"
+# 构建上下文是上层 GoEdge 目录:
+#   GoEdge/EdgeAdmin, GoEdge/EdgeAPI, GoEdge/EdgeCommon, GoEdge/EdgeNode
+FROM golang:1.27.4-alpine AS build
 
-# your local repository
-#ENV TAR_URL "http://192.168.2.61:8080/edge-admin-linux-amd64-plus-v${VERSION}.zip"
+RUN apk add --no-cache gcc g++ musl-dev zip
 
-RUN apk add --no-cache tzdata
+ARG TARGETARCH=amd64
 
-RUN apk add wget
-RUN mkdir ${ROOT_DIR}; \
-	cd ${ROOT_DIR}; \
-	wget ${TAR_URL} -O ${TAR_FILE}; \
-	apk add unzip; \
-	unzip ${TAR_FILE}; \
-	rm -f ${TAR_FILE}
+WORKDIR /src
 
-RUN apk add mysql mysql-client; \
-	sed -e "s/\[mysqld\]/\[mysqld\]\n\ndatadir=\/var\/lib\/mysql\nport=3306\ninnodb_flush_log_at_trx_commit=2\nmax_connections=256\nmax_prepared_stmt_count=65535\nbinlog_cache_size=1M\nbinlog_stmt_cache_size=1M\nthread_cache_size=32\nbinlog_expire_logs_seconds=1209600\n\n/" /etc/my.cnf > /tmp/my.cnf; \
-    cp /tmp/my.cnf /etc/my.cnf; \
-    sed -e "s/skip-networking/#skip-networking/" /etc/my.cnf.d/mariadb-server.cnf > /tmp/mariadb-server.cnf; \
-    cp /tmp/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf; \
-    mysql_install_db --user=mysql
-RUN mysqld_safe --user=mysql & \
-    sleep 5; \
-    mysql -uroot -hlocalhost --execute="ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';"
+COPY EdgeCommon ./EdgeCommon
+COPY EdgeAPI ./EdgeAPI
+COPY EdgeNode ./EdgeNode
+COPY EdgeAdmin ./EdgeAdmin
 
-RUN echo -e "#!/usr/bin/env sh\n\nmysqld_safe --user=mysql &\n/usr/local/goedge/edge-admin/bin/edge-admin\n" > ${ROOT_DIR}/run.sh; \
-    chmod u+x ${ROOT_DIR}/run.sh
+ENV CGO_ENABLED=0 \
+    GOOS=linux \
+    GOFLAGS=-trimpath
+
+# edge-admin 与 edge-api
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    go build -C EdgeAdmin -tags community -ldflags "-s -w" -o /out/edge-admin ./cmd/edge-admin \
+ && go build -C EdgeAPI -tags community -ldflags "-s -w" -o /out/edge-api ./cmd/edge-api
+
+# 节点安装助手, 由 API 节点上传到被安装节点
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    for arch in amd64 arm64; do \
+        GOARCH="${arch}" go build -C EdgeAPI -tags community -ldflags "-s -w" -o "/out/installers/edge-installer-helper-linux-${arch}" ./cmd/installer-helper; \
+    done
+
+# 边缘节点部署包, 由 API 节点通过 SSH 分发到裸机
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    set -eux; \
+    version=$(sed -n 's/.*Version[[:space:]]*=[[:space:]]*"\([0-9.]*\)".*/\1/p' EdgeNode/internal/const/const.go | head -n 1); \
+    test -n "${version}"; \
+    mkdir -p EdgeNode/dist/edge-node/bin EdgeNode/dist/edge-node/configs EdgeNode/dist/edge-node/logs EdgeNode/dist/edge-node/data; \
+    cp EdgeNode/build/configs/*.yaml EdgeNode/dist/edge-node/configs/; \
+    cp -R EdgeNode/build/www EdgeNode/build/pages EdgeNode/dist/edge-node/; \
+    CGO_ENABLED=1 GOARCH="${TARGETARCH}" go build -C EdgeNode -tags community -ldflags "-s -w" -o dist/edge-node/bin/edge-node ./cmd/edge-node; \
+    cd EdgeNode/dist; \
+    zip -qr "/out/edge-node-linux-${TARGETARCH}-v${version}.zip" edge-node
+
+# 组装运行目录
+RUN mkdir -p /out/admin/bin /out/admin/configs /out/admin/logs /out/admin/web/tmp \
+             /out/admin/edge-api/deploy /out/admin/edge-api/installers \
+ && cp /out/edge-admin /out/admin/bin/ \
+ && cp -R EdgeAdmin/web/public EdgeAdmin/web/views /out/admin/web/ \
+ && rm -rf /out/admin/web/public/js/components /out/admin/web/public/js/components.src.js \
+ && cp EdgeAdmin/build/configs/server.template.yaml /out/admin/configs/ \
+ && cp /out/edge-node-linux-*.zip /out/admin/edge-api/deploy/ \
+ && cp /out/installers/* /out/admin/edge-api/installers/ \
+ && mkdir -p /out/api/bin /out/api/configs /out/api/deploy /out/api/installers /out/api/data /out/api/logs \
+ && cp /out/edge-api /out/api/bin/ \
+ && cp EdgeAPI/build/configs/db.template.yaml /out/api/configs/ \
+ && cp /out/edge-node-linux-*.zip /out/api/deploy/ \
+ && cp /out/installers/* /out/api/installers/
+
+# 管理面板
+FROM alpine:3.22 AS admin
+
+RUN apk add --no-cache ca-certificates tzdata
+
+ENV TZ=Asia/Shanghai
+
+WORKDIR /usr/local/goedge
+
+COPY --from=build /out/admin/ ./
+COPY EdgeAdmin/docker/entrypoint-admin.sh /usr/local/bin/entrypoint-admin.sh
+
+RUN chmod +x /usr/local/bin/entrypoint-admin.sh
 
 EXPOSE 7788
-EXPOSE 8001
-EXPOSE 3306
 
-ENTRYPOINT [ "/usr/local/goedge/run.sh" ]
+ENTRYPOINT ["/usr/local/bin/entrypoint-admin.sh"]
+
+# API 节点
+FROM alpine:3.22 AS api
+
+RUN apk add --no-cache ca-certificates mariadb-client tzdata
+
+ENV TZ=Asia/Shanghai
+
+WORKDIR /usr/local/goedge
+
+COPY --from=build /out/api/ ./
+COPY EdgeAdmin/docker/entrypoint-api.sh /usr/local/bin/entrypoint-api.sh
+
+RUN chmod +x /usr/local/bin/entrypoint-api.sh
+
+EXPOSE 8001
+
+ENTRYPOINT ["/usr/local/bin/entrypoint-api.sh"]

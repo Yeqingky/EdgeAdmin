@@ -1,0 +1,74 @@
+name: goedge
+
+services:
+  mysql:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      MARIADB_DATABASE: ${DB_NAME:-db_edge}
+      MARIADB_USER: ${DB_USER:-edge}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-edge}
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      # mysql 运行进程 uid=999 gid=999
+      # 首次启动会自动修正属主, 也可以提前执行:
+      # sudo mkdir -p data/mysql
+      # sudo chown -R 999:999 data/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  edge-api:
+    build:
+      context: ..
+      dockerfile: EdgeAdmin/docker/Dockerfile
+      target: api
+    image: goedge/edge-api:local
+    restart: unless-stopped
+    environment:
+      DB_HOST: mysql
+      DB_PORT: "3306"
+      DB_USER: ${DB_USER:-edge}
+      DB_PASSWORD: ${DB_PASSWORD:-edge}
+      DB_NAME: ${DB_NAME:-db_edge}
+      API_NODE_HOST: ${API_NODE_HOST:-edge-api}
+      API_NODE_PORT: "8001"
+      ADMIN_RPC_ENDPOINT: http://edge-api:8001
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-123456}
+    volumes:
+      - ./data/edge-api/configs:/usr/local/goedge/configs
+      - ./data/edge-api/data:/usr/local/goedge/data
+      - ./data/edge-api/logs:/usr/local/goedge/logs
+      - ./data/shared:/shared
+      # edge-api 运行进程 uid=0 gid=0, root 可写宿主机目录, 无需修改属主
+      # sudo mkdir -p data/edge-api/configs data/edge-api/data data/edge-api/logs data/shared
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8001}:8001"
+
+  edge-admin:
+    build:
+      context: ..
+      dockerfile: EdgeAdmin/docker/Dockerfile
+      target: admin
+    image: goedge/edge-admin:local
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./data/edge-admin/configs:/usr/local/goedge/configs
+      - ./data/edge-admin/logs:/usr/local/goedge/logs
+      - ./data/shared:/shared:ro
+      # edge-admin 运行进程 uid=0 gid=0, root 可写宿主机目录, 无需修改属主
+      # sudo mkdir -p data/edge-admin/configs data/edge-admin/logs
+    depends_on:
+      edge-api:
+        condition: service_started
+    ports:
+      - "${ADMIN_PORT:-7788}:7788"
