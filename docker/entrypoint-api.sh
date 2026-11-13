@@ -4,11 +4,11 @@ set -eu
 ROOT_DIR=/usr/local/goedge
 SHARED_DIR=/shared
 
-DB_HOST=${DB_HOST:-mysql}
-DB_PORT=${DB_PORT:-3306}
-DB_USER=goedge
-DB_PASSWORD=goedge
-DB_NAME=goedge
+DB_HOST=${EDGE_DB_HOST:-mysql}
+DB_PORT=${EDGE_DB_PORT:-3306}
+DB_USER=${EDGE_DB_USER:-goedge}
+DB_PASSWORD=${EDGE_DB_PASSWORD:-goedge}
+DB_NAME=${EDGE_DB_NAME:-goedge}
 
 API_NODE_HOST=${API_NODE_HOST:-goedge-api}
 API_NODE_PORT=${API_NODE_PORT:-8001}
@@ -31,25 +31,6 @@ check_token "ADMIN_USERNAME" "$ADMIN_USERNAME"
 cd "$ROOT_DIR"
 
 mkdir -p configs data logs "$SHARED_DIR"
-
-# API 节点的数据库配置
-cat > configs/db.yaml <<EOF
-user: ${DB_USER}
-password: ${DB_PASSWORD}
-host: ${DB_HOST}:${DB_PORT}
-database: ${DB_NAME}
-EOF
-
-cat > configs/.db.yaml <<EOF
-default:
-    db: prod
-    prefix: ""
-dbs:
-    prod:
-        driver: mysql
-        dsn: ${DB_USER}:${DB_PASSWORD}@tcp(${DB_HOST}:${DB_PORT})/${DB_NAME}?charset=utf8mb4&timeout=30s&multiStatements=true
-        prefix: edge
-EOF
 
 # 等待数据库
 attempts=60

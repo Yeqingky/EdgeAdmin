@@ -20,13 +20,6 @@ while [ ! -s "${SHARED_DIR}/api_admin.yaml" ]; do
     sleep 2
 done
 
-cat > configs/api_db.yaml <<EOF
-user: goedge
-password: goedge
-host: mysql:3306
-database: goedge
-EOF
-
 cp "${SHARED_DIR}/api_admin.yaml" configs/api_admin.yaml
 mkdir -p "${HOME}/.edge-admin"
 cp "${SHARED_DIR}/api_admin.yaml" "${HOME}/.edge-admin/api_admin.yaml"

@@ -9,6 +9,11 @@ services:
     restart: unless-stopped
     environment:
       TZ: Asia/Shanghai
+      EDGE_DB_HOST: mysql
+      EDGE_DB_PORT: "3306"
+      EDGE_DB_USER: goedge
+      EDGE_DB_PASSWORD: goedge
+      EDGE_DB_NAME: goedge
     volumes:
       - ./data/edge-admin/configs:/usr/local/goedge/configs
       - ./data/edge-admin/logs:/usr/local/goedge/logs
@@ -30,8 +35,11 @@ services:
     image: ghcr.io/yeqingky/goedge-api
     restart: unless-stopped
     environment:
-      DB_HOST: mysql
-      DB_PORT: "3306"
+      EDGE_DB_HOST: mysql
+      EDGE_DB_PORT: "3306"
+      EDGE_DB_USER: goedge
+      EDGE_DB_PASSWORD: goedge
+      EDGE_DB_NAME: goedge
       API_NODE_HOST: ${API_NODE_HOST:-goedge-api}
       API_NODE_PORT: "8001"
       ADMIN_RPC_ENDPOINT: http://goedge-api:8001

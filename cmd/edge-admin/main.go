@@ -27,6 +27,11 @@ import (
 )
 
 func main() {
+	err := configs.GenerateDBConfigFromEnv()
+	if err != nil {
+		log.Fatal("[CONFIG] generate database config from env failed: " + err.Error())
+	}
+
 	var app = apps.NewAppCmd().
 		Version(teaconst.Version).
 		Product(teaconst.ProductName).
