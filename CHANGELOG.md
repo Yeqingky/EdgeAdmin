@@ -27,6 +27,7 @@
 - 修复 SPA 主内容区沿用旧版二级菜单偏移量, 导致内容整体右移的问题
 - SPA 路由改用 BrowserRouter, 移除 `/spa` 前缀和 hash 路由
 - 系统设置页面统一显示顶部设置 tab
+- 修复 Semantic UI 输入框、菜单、消息和按钮中 Lucide 图标与文字错位的问题
 - 新增 `/spa/` 入口和 Docker 前端构建阶段
 - 新增 docker/entrypoint-api.sh 与 docker/entrypoint-admin.sh, 负责生成数据库配置, API 节点配置和管理面板配置
 - docker/build.sh 与 docker/run.sh 改为 docker compose 封装
