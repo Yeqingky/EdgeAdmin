@@ -157,7 +157,6 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
 
   return (
     <form className="ui form" onSubmit={submit}>
-      <h3>修改集群DNS设置</h3>
       <FormTable>
         <FormRow title="DNS服务商">
           <Select
