@@ -5,8 +5,8 @@ package setup
 import (
 	"net"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/utils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/utils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
 )
 
 // CheckLocalIPAction 检查IP是否为局域网IP

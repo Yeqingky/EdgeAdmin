@@ -7,11 +7,11 @@ import (
 	"errors"
 	"strings"
 
-	teaconst "github.com/TeaOSLab/EdgeAdmin/internal/const"
-	"github.com/TeaOSLab/EdgeAdmin/internal/utils/apinodeutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeCommon/pkg/nodeconfigs"
-	"github.com/TeaOSLab/EdgeCommon/pkg/rpc/pb"
+	teaconst "git.ovh.im/yeqing/EdgeAdmin/internal/const"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/utils/apinodeutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/nodeconfigs"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/pb"
 	"github.com/iwind/TeaGo/actions"
 )
 

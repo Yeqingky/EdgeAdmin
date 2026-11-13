@@ -4,9 +4,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/csrf"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/helpers"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/csrf"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/helpers"
 )
 
 var lastTimestamp = int64(0)

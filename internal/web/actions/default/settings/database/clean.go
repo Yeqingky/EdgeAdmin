@@ -3,9 +3,9 @@ package database
 import (
 	"sort"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/utils/numberutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeCommon/pkg/rpc/pb"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/utils/numberutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/pb"
 	"github.com/iwind/TeaGo/actions"
 	"github.com/iwind/TeaGo/maps"
 )

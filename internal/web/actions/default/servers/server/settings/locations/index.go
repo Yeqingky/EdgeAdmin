@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeCommon/pkg/rpc/dao"
-	"github.com/TeaOSLab/EdgeCommon/pkg/serverconfigs"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/dao"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/serverconfigs"
 	"github.com/iwind/TeaGo/maps"
 )
 

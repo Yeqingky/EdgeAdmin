@@ -19,8 +19,8 @@ import (
 	"strings"
 	"time"
 
-	executils "github.com/TeaOSLab/EdgeAdmin/internal/utils/exec"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/setup/mysql/mysqlinstallers/utils"
+	executils "git.ovh.im/yeqing/EdgeAdmin/internal/utils/exec"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/setup/mysql/mysqlinstallers/utils"
 	stringutil "github.com/iwind/TeaGo/utils/string"
 	timeutil "github.com/iwind/TeaGo/utils/time"
 )

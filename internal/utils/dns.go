@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	dig "github.com/TeaOSLab/EdgeCommon/pkg/utils"
+	dig "git.ovh.im/yeqing/EdgeCommon/pkg/utils"
 	"golang.org/x/net/idna"
 )
 

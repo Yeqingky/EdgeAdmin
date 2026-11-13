@@ -8,9 +8,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/configloaders"
-	teaconst "github.com/TeaOSLab/EdgeAdmin/internal/const"
-	"github.com/TeaOSLab/EdgeCommon/pkg/iplibrary"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/configloaders"
+	teaconst "git.ovh.im/yeqing/EdgeAdmin/internal/const"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/iplibrary"
 	"github.com/iwind/TeaGo/actions"
 	stringutil "github.com/iwind/TeaGo/utils/string"
 )

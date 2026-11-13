@@ -1,6 +1,6 @@
 package waf
 
-import "github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
+import "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
 
 type TestAction struct {
 	actionutils.ParentAction

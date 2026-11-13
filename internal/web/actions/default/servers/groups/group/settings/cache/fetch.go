@@ -5,11 +5,11 @@ package cache
 import (
 	"strings"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/servers/components/cache/cacheutils"
-	"github.com/TeaOSLab/EdgeCommon/pkg/langs/codes"
-	"github.com/TeaOSLab/EdgeCommon/pkg/rpc/dao"
-	"github.com/TeaOSLab/EdgeCommon/pkg/rpc/pb"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/servers/components/cache/cacheutils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/langs/codes"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/dao"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/pb"
 	"github.com/iwind/TeaGo/actions"
 	"github.com/iwind/TeaGo/lists"
 	"github.com/iwind/TeaGo/maps"

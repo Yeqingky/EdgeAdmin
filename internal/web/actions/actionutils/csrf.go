@@ -3,7 +3,7 @@ package actionutils
 import (
 	"net/http"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/csrf"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/csrf"
 	"github.com/iwind/TeaGo/actions"
 )
 

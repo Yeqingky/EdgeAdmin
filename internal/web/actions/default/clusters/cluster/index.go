@@ -5,8 +5,8 @@ package cluster
 import (
 	"strconv"
 
-	teaconst "github.com/TeaOSLab/EdgeAdmin/internal/const"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
+	teaconst "git.ovh.im/yeqing/EdgeAdmin/internal/const"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
 )
 
 type IndexAction struct {

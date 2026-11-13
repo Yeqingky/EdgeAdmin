@@ -6,8 +6,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeCommon/pkg/configutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/configutils"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/iwind/TeaGo/actions"
 	"github.com/iwind/TeaGo/dbs"

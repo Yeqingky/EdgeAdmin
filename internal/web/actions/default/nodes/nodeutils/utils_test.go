@@ -3,7 +3,7 @@ package nodeutils
 import (
 	"testing"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/rpc"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/rpc"
 	_ "github.com/iwind/TeaGo/bootstrap"
 	"github.com/iwind/TeaGo/logs"
 )

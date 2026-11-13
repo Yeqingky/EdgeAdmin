@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"net"
 
-	teaconst "github.com/TeaOSLab/EdgeAdmin/internal/const"
-	"github.com/TeaOSLab/EdgeAdmin/internal/utils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/nodes/ipAddresses/ipaddressutils"
-	"github.com/TeaOSLab/EdgeCommon/pkg/nodeconfigs"
+	teaconst "git.ovh.im/yeqing/EdgeAdmin/internal/const"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/utils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/nodes/ipAddresses/ipaddressutils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/nodeconfigs"
 	"github.com/iwind/TeaGo/actions"
 	"github.com/iwind/TeaGo/maps"
 )

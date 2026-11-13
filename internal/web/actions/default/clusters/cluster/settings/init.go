@@ -1,19 +1,19 @@
 package settings
 
 import (
-	"github.com/TeaOSLab/EdgeAdmin/internal/configloaders"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/cache"
-	ddosProtection "github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/ddos-protection"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/dns"
-	firewallActions "github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/firewall-actions"
-	globalServerConfig "github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/global-server-config"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/health"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/metrics"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/services"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/waf"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/webp"
-	clusters "github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/clusterutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/helpers"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/configloaders"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/cache"
+	ddosProtection "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/ddos-protection"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/dns"
+	firewallActions "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/firewall-actions"
+	globalServerConfig "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/global-server-config"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/health"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/metrics"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/services"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/waf"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/webp"
+	clusters "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/clusterutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/helpers"
 	"github.com/iwind/TeaGo"
 )
 

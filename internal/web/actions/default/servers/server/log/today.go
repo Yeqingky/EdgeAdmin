@@ -1,9 +1,9 @@
 package log
 
 import (
-	"github.com/TeaOSLab/EdgeCommon/pkg/iplibrary"
-	"github.com/TeaOSLab/EdgeCommon/pkg/rpc/dao"
-	"github.com/TeaOSLab/EdgeCommon/pkg/rpc/pb"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/iplibrary"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/dao"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/pb"
 	"github.com/iwind/TeaGo/lists"
 	"github.com/iwind/TeaGo/maps"
 	timeutil "github.com/iwind/TeaGo/utils/time"

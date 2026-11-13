@@ -1,11 +1,11 @@
-module github.com/TeaOSLab/EdgeAdmin
+module git.ovh.im/yeqing/EdgeAdmin
 
 go 1.27.4
 
-replace github.com/TeaOSLab/EdgeCommon => ../EdgeCommon
+replace git.ovh.im/yeqing/EdgeCommon => ../EdgeCommon
 
 require (
-	github.com/TeaOSLab/EdgeCommon v1.3.9
+	git.ovh.im/yeqing/EdgeCommon v1.3.9
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/go-sql-driver/mysql v1.10.1
 	github.com/iwind/TeaGo v0.0.0-20240508072741-7647e70b7070

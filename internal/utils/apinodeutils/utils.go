@@ -11,7 +11,7 @@ import (
 	"runtime"
 	"strings"
 
-	teaconst "github.com/TeaOSLab/EdgeAdmin/internal/const"
+	teaconst "git.ovh.im/yeqing/EdgeAdmin/internal/const"
 	"github.com/iwind/TeaGo/Tea"
 	stringutil "github.com/iwind/TeaGo/utils/string"
 )

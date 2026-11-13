@@ -8,10 +8,10 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/utils"
-	executils "github.com/TeaOSLab/EdgeAdmin/internal/utils/exec"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/settings/updates/updateutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/utils"
+	executils "git.ovh.im/yeqing/EdgeAdmin/internal/utils/exec"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/settings/updates/updateutils"
 )
 
 var upgradeProgress float32

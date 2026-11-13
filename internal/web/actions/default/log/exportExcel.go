@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"strconv"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeCommon/pkg/iplibrary"
-	"github.com/TeaOSLab/EdgeCommon/pkg/rpc/pb"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/iplibrary"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/pb"
 	timeutil "github.com/iwind/TeaGo/utils/time"
 	"github.com/tealeg/xlsx/v3"
 )

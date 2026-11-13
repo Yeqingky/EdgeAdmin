@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/configs"
-	"github.com/TeaOSLab/EdgeAdmin/internal/rpc"
-	"github.com/TeaOSLab/EdgeCommon/pkg/rpc/pb"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/configs"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/rpc"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/pb"
 )
 
 // MessageResult 和节点消息通讯结果定义

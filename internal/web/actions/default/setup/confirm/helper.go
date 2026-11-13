@@ -1,7 +1,7 @@
 package confirm
 
 import (
-	"github.com/TeaOSLab/EdgeAdmin/internal/setup"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/setup"
 	"github.com/iwind/TeaGo/actions"
 )
 

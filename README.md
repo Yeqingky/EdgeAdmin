@@ -49,6 +49,6 @@
 ![架构图](doc/architect-zh.png)
 
 其中的组件源码地址如下：
-* [边缘节点](https://github.com/TeaOSLab/EdgeNode)
-* [API节点](https://github.com/TeaOSLab/EdgeAPI)
-* [管理平台](https://github.com/TeaOSLab/EdgeAdmin)
+* [边缘节点](https://git.ovh.im/yeqing/EdgeNode)
+* [API节点](https://git.ovh.im/yeqing/EdgeAPI)
+* [管理平台](https://git.ovh.im/yeqing/EdgeAdmin)

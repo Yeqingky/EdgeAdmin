@@ -8,7 +8,7 @@ import (
 	"os"
 	"regexp"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
 	"github.com/iwind/TeaGo/Tea"
 	"github.com/iwind/TeaGo/types"
 )

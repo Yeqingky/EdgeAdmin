@@ -3,9 +3,9 @@ package db
 import (
 	"net/http"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/helpers"
-	"github.com/TeaOSLab/EdgeCommon/pkg/langs/codes"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/helpers"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/langs/codes"
 	"github.com/iwind/TeaGo/actions"
 )
 

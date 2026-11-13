@@ -3,9 +3,9 @@ package conds
 import (
 	"encoding/json"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/servers/server/settings/conds/condutils"
-	"github.com/TeaOSLab/EdgeCommon/pkg/serverconfigs/shared"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/servers/server/settings/conds/condutils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/serverconfigs/shared"
 	"github.com/iwind/TeaGo/actions"
 )
 

@@ -1,12 +1,12 @@
 package dns
 
 import (
-	"github.com/TeaOSLab/EdgeAdmin/internal/configloaders"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/dns/clusters"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/dns/domains"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/dns/issues"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/dns/providers"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/helpers"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/configloaders"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/dns/clusters"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/dns/domains"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/dns/issues"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/dns/providers"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/helpers"
 	"github.com/iwind/TeaGo"
 )
 

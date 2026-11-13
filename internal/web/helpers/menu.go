@@ -4,9 +4,9 @@
 package helpers
 
 import (
-	"github.com/TeaOSLab/EdgeAdmin/internal/configloaders"
-	"github.com/TeaOSLab/EdgeCommon/pkg/langs"
-	"github.com/TeaOSLab/EdgeCommon/pkg/langs/codes"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/configloaders"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/langs"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/langs/codes"
 	"github.com/iwind/TeaGo/maps"
 )
 

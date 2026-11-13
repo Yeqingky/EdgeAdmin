@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/configs"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/configs"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
 	"github.com/go-sql-driver/mysql"
 	"github.com/iwind/TeaGo/Tea"
 	"github.com/iwind/TeaGo/dbs"

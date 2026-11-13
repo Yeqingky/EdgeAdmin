@@ -1,16 +1,16 @@
 package cluster
 
 import (
-	"github.com/TeaOSLab/EdgeAdmin/internal/configloaders"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/groups"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/node"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/cache"
-	ddosProtection "github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/ddos-protection"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/dns"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/ssh"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/system"
-	clusters "github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/clusters/clusterutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/helpers"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/configloaders"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/groups"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/node"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/cache"
+	ddosProtection "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/ddos-protection"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/dns"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/ssh"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/node/settings/system"
+	clusters "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/clusterutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/helpers"
 	"github.com/iwind/TeaGo"
 )
 

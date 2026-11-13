@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/utils/apinodeutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/utils/apinodeutils"
 	_ "github.com/iwind/TeaGo/bootstrap"
 )
 

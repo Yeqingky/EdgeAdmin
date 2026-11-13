@@ -8,3 +8,4 @@
 - 移除 go.mod 中对不存在模块 EdgePlus 的 replace 和 require (无代码引用)
 - internal/waf/injectionutils: 将包根的 libinjection 包装 .c 文件并入 cgo 预部并删除, 修复默认构建 (无 gcc tag) 下 "C source files not allowed" 报错; gcc tag 构建行为不变
 - 依赖 quic-go 无代码引用, 已随 go mod tidy 移除
+- 将模块路径, 源码导入和文档链接中的仓库地址统一迁移到 git.ovh.im/yeqing

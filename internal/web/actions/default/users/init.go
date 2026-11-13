@@ -1,9 +1,9 @@
 package users
 
 import (
-	"github.com/TeaOSLab/EdgeAdmin/internal/configloaders"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/users/accesskeys"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/helpers"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/configloaders"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/users/accesskeys"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/helpers"
 	"github.com/iwind/TeaGo"
 )
 

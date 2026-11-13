@@ -5,8 +5,8 @@ package db
 import (
 	"strings"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/db/dbnodeutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/db/dbnodeutils"
 	"github.com/iwind/TeaGo/maps"
 )
 

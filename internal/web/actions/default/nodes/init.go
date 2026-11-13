@@ -1,9 +1,9 @@
 package nodes
 
 import (
-	"github.com/TeaOSLab/EdgeAdmin/internal/configloaders"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/nodes/ipAddresses"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/helpers"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/configloaders"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/nodes/ipAddresses"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/helpers"
 	"github.com/iwind/TeaGo"
 )
 

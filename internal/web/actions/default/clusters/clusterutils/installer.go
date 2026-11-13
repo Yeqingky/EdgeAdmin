@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strings"
 
-	teaconst "github.com/TeaOSLab/EdgeAdmin/internal/const"
+	teaconst "git.ovh.im/yeqing/EdgeAdmin/internal/const"
 	"github.com/iwind/TeaGo/Tea"
 )
 

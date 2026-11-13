@@ -3,7 +3,7 @@ package ttlcache
 import (
 	"time"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/utils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/utils"
 )
 
 var DefaultCache = NewCache()

@@ -2,7 +2,7 @@
 
 package setup
 
-import "github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
+import "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
 
 var currentStatusText = ""
 

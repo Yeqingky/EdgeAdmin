@@ -3,10 +3,10 @@
 package charts
 
 import (
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/servers/metrics/charts/chartutils"
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/default/servers/metrics/metricutils"
-	"github.com/TeaOSLab/EdgeCommon/pkg/serverconfigs"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/servers/metrics/charts/chartutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/servers/metrics/metricutils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/serverconfigs"
 	"github.com/iwind/TeaGo/maps"
 )
 

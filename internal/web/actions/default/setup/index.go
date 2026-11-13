@@ -4,7 +4,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/web/actions/actionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
 )
 
 type IndexAction struct {

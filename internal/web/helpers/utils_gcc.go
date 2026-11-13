@@ -6,7 +6,7 @@ package helpers
 import (
 	"net/http"
 
-	"github.com/TeaOSLab/EdgeAdmin/internal/waf/injectionutils"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/waf/injectionutils"
 )
 
 // filter request

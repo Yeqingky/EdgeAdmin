@@ -6,7 +6,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/TeaOSLab/EdgeCommon/pkg/iputils"
+	"git.ovh.im/yeqing/EdgeCommon/pkg/iputils"
 	"github.com/iwind/TeaGo/types"
 )
 
