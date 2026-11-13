@@ -41,29 +41,40 @@ export function LeftMenu({ session }: { session: SessionData }) {
             event.stopPropagation()
             setOpenCodes((codes) => ({ ...codes, [module.code]: !codes[module.code] }))
           }
+          const content = (
+            <>
+              <Icon size={16} />
+              <span className="module-name">{module.name}</span>
+              {module.subtitle ? <div className="subtitle">{module.subtitle}</div> : null}
+              {hasSubItems ? (
+                <span className={`expand-arrow${isOpen ? ' open' : ''}`} aria-hidden="true">
+                  <ChevronRight size={14} />
+                </span>
+              ) : null}
+            </>
+          )
           return (
             <div key={module.code}>
-              <Link className={`item module-item${isActive ? ' active expend' : ''}`} to={firstUrl}>
-                <Icon size={16} />
-                <span className="module-name">{module.name}</span>
-                {module.subtitle ? <div className="subtitle">{module.subtitle}</div> : null}
-                {hasSubItems ? (
-                  <span
-                    className={`expand-arrow${isOpen ? ' open' : ''}`}
-                    role="button"
-                    tabIndex={0}
-                    aria-label={isOpen ? '收起' : '展开'}
-                    onClick={toggleOpen}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter' || event.key === ' ') {
-                        toggleOpen(event)
-                      }
-                    }}
-                  >
-                    <ChevronRight size={14} />
-                  </span>
-                ) : null}
-              </Link>
+              {hasSubItems ? (
+                <div
+                  className={`item module-item${isActive ? ' active expend' : ''}`}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isOpen}
+                  onClick={toggleOpen}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      toggleOpen(event)
+                    }
+                  }}
+                >
+                  {content}
+                </div>
+              ) : (
+                <Link className={`item module-item${isActive ? ' active expend' : ''}`} to={firstUrl}>
+                  {content}
+                </Link>
+              )}
               {isOpen && hasSubItems ? (
                 <div className="sub-items">
                   {module.subItems!.map((item, index) =>

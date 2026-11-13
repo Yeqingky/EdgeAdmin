@@ -302,3 +302,7 @@
     transform: translateY(0);
   }
 }
+
+.main-menu .ui.menu .module-item[role='button'] {
+  cursor: pointer;
+}
