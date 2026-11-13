@@ -28,6 +28,7 @@
 - SPA 路由改用 BrowserRouter, 移除 `/spa` 前缀和 hash 路由
 - 系统设置页面统一显示顶部设置 tab
 - 修复 Semantic UI 输入框、菜单、消息和按钮中 Lucide 图标与文字错位的问题
+- 页面内容区顶部增加 1em 间距, 避免通知紧贴顶部导航
 - 修复登录失败后再次登录提示请先登录的问题, CSRF token 改为单次使用
 - 设置页面顶部 tab 和 PageHeader 使用客户端路由, 切换时不再整页刷新
 - 新增 `/spa/` 入口和 Docker 前端构建阶段
