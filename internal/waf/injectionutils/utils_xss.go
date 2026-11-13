@@ -6,6 +6,8 @@ package injectionutils
 /*
 #cgo CFLAGS: -O2 -I./libinjection/src
 
+#include "libinjection/src/libinjection_xss.c"
+#include "libinjection/src/libinjection_html5.c"
 #include <libinjection.h>
 #include <stdlib.h>
 */

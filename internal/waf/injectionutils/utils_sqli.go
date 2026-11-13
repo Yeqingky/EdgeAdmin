@@ -6,6 +6,8 @@ package injectionutils
 /*
 #cgo CFLAGS: -O2 -I./libinjection/src
 
+#define LIBINJECTION_VERSION "3.9.1"
+#include "libinjection/src/libinjection_sqli.c"
 #include <libinjection.h>
 #include <stdlib.h>
 */
