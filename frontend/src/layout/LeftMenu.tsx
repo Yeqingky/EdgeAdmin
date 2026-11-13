@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
+import { ChevronRight } from 'lucide-react'
 import type { SessionData } from '../api/types'
 import { menuIcon } from './icons'
 
@@ -42,7 +43,7 @@ export function LeftMenu({ session }: { session: SessionData }) {
                         className={`item${current === item.url ? ' active' : ''}`}
                         to={item.url}
                       >
-                        {current === item.url ? <i className="icon angle right" /> : null}
+                        {current === item.url ? <ChevronRight size={12} /> : null}
                         <span>{item.name}</span>
                         {item.badge && item.badge > 0 ? (
                           <span className="ui label tiny red">{item.badge < 100 ? item.badge : '99+'}</span>

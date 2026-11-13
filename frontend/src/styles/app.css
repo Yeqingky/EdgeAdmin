@@ -150,3 +150,56 @@
 .install-box .ui.steps {
   margin-bottom: 2em;
 }
+
+/* Lucide icons inside Semantic UI components */
+.main-menu .ui.menu .item > svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.35em;
+  position: relative;
+  top: -1px;
+}
+
+.main-menu .ui.menu .item > .module-name {
+  vertical-align: middle;
+}
+
+.ui.message > svg {
+  flex-shrink: 0;
+}
+
+.ui.message:has(> svg) {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+/* Lucide icons inside Semantic inputs */
+.ui.icon.input > svg {
+  position: absolute;
+  top: 50%;
+  right: 1px;
+  width: 2.67142857em;
+  height: 1em;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ui.left.icon.input > svg {
+  right: auto;
+  left: 1px;
+}
+
+.main-menu .ui.menu .sub-items .item > svg {
+  position: absolute;
+  left: 1.1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ui.button > svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -0.12em;
+}
