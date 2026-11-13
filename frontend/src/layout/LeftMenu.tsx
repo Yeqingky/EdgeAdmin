@@ -8,6 +8,27 @@ export function LeftMenu({ session }: { session: SessionData }) {
   const location = useLocation()
   const theme = session.teaTheme || 'theme2'
   const current = location.pathname
+  function pathOf(url: string) {
+    try {
+      return new URL(url, window.location.origin).pathname
+    } catch {
+      return ''
+    }
+  }
+  function activeScore(url: string) {
+    const path = pathOf(url)
+    if (!path) {
+      return -1
+    }
+    if (current === path) {
+      return 100000 + path.length
+    }
+    const base = path.endsWith('/') ? path.slice(0, -1) : path
+    if (base && current.startsWith(base + '/')) {
+      return base.length
+    }
+    return -1
+  }
   const activeModule = session.teaModules.find(
     (module) => module.code.length > 0 && (current === `/${module.code}` || current.startsWith(`/${module.code}/`)),
   )
@@ -36,6 +57,20 @@ export function LeftMenu({ session }: { session: SessionData }) {
           const firstUrl = module.subItems?.[0]?.url || `/${module.code}`
           const hasSubItems = !!module.subItems && module.subItems.length > 0
           const isOpen = !!openCodes[module.code]
+          let activeSubItem: NonNullable<typeof module.subItems>[number] | null = null
+          let activeSubItemScore = -1
+          if (module.subItems) {
+            for (const item of module.subItems) {
+              if (item.name === '-' || item.isOn === false) {
+                continue
+              }
+              const score = activeScore(item.url)
+              if (score > activeSubItemScore) {
+                activeSubItem = item
+                activeSubItemScore = score
+              }
+            }
+          }
           function toggleOpen(event: React.MouseEvent | React.KeyboardEvent) {
             event.preventDefault()
             event.stopPropagation()
@@ -83,7 +118,7 @@ export function LeftMenu({ session }: { session: SessionData }) {
                     ) : item.isOn === false ? null : (
                       <Link
                         key={`${module.code}-${item.code}-${item.url}`}
-                        className={`item${current === item.url ? ' active' : ''}`}
+                        className={`item${activeSubItem === item ? ' active' : ''}`}
                         to={item.url}
                       >
                         <span>{item.name}</span>
