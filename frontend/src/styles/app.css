@@ -1,6 +1,5 @@
 #root {
   min-height: 100vh;
-  zoom: 0.9;
 }
 
 .spin {
@@ -325,4 +324,38 @@
   margin: auto !important;
   max-height: calc(100vh - 2em);
   overflow-y: auto;
+}
+
+
+.main .ui.table td > input:not([type='checkbox']):not([type='radio']):not([type='file']):not([type='submit']),
+.main .ui.table td > textarea,
+.main .ui.table td > select {
+  width: 100%;
+  font-family: inherit;
+  margin: 0;
+  outline: 0;
+  line-height: 1.21428571em;
+  padding: 0.67857143em 1em;
+  font-size: 1em;
+  background: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 0.28571429rem;
+  box-shadow: 0 0 0 0 transparent inset;
+  transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+.main .ui.table td > select {
+  padding: 0.62em 1em;
+}
+
+.main .ui.table td > textarea {
+  line-height: 1.2857;
+  resize: vertical;
+}
+
+.main .ui.table td > input:focus,
+.main .ui.table td > textarea:focus,
+.main .ui.table td > select:focus {
+  border-color: #85b7d9;
 }
