@@ -80,7 +80,7 @@ export function ServerAccessLogSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -105,7 +105,7 @@ export function ServerAccessLogSettingsPage() {
     setSubmitting(true)
     try {
       await apiPost('/servers/server/settings/accessLog', { webId: data.webId, accessLogJSON: JSON.stringify(config) })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -133,7 +133,7 @@ export function ServerAccessLogSettingsPage() {
                 <FormTable>
                   <FormRow title="基础信息">
                     <p className="comment" style={{ paddingTop: 0 }}>
-                      默认记录客户端IP、请求URL等基础信息。
+                      默认记录客户端IP,请求URL等基础信息.
                     </p>
                   </FormRow>
                   <FormRow title="高级信息">
@@ -151,9 +151,9 @@ export function ServerAccessLogSettingsPage() {
                       ))}
                     </div>
                     <p className="comment">
-                      在基础信息之外要存储的信息。
+                      在基础信息之外要存储的信息.
                       {hasRequestBodyField ? (
-                        <span className="red">记录"请求Body"将会显著消耗更多的系统资源，建议仅在调试时启用，最大记录尺寸为2MiB。</span>
+                        <span className="red">记录"请求Body"将会显著消耗更多的系统资源,建议仅在调试时启用,最大记录尺寸为2MiB.</span>
                       ) : null}
                     </p>
                   </FormRow>
@@ -168,7 +168,7 @@ export function ServerAccessLogSettingsPage() {
                   <FormRow title="记录客户端中断日志">
                     <Checkbox checked={config.enableClientClosed} onChange={(checked) => update('enableClientClosed', checked)} />
                     <p className="comment">
-                      以<code>499</code>的状态码记录客户端主动中断日志。
+                      以<code>499</code>的状态码记录客户端主动中断日志.
                     </p>
                   </FormRow>
                 </FormTable>
@@ -178,7 +178,7 @@ export function ServerAccessLogSettingsPage() {
               <FormTable>
                 <FormRow title="只记录WAF相关日志">
                   <Checkbox checked={config.firewallOnly} onChange={(checked) => update('firewallOnly', checked)} />
-                  <p className="comment">选中后只记录WAF相关的日志。通过此选项可有效减少访问日志数量，降低网络带宽和存储压力。</p>
+                  <p className="comment">选中后只记录WAF相关的日志.通过此选项可有效减少访问日志数量,降低网络带宽和存储压力.</p>
                 </FormRow>
               </FormTable>
             </>

@@ -171,8 +171,8 @@ export function TransferSettingsPage() {
       {step === 'prepare' ? (
         <div className="step-box">
           <div className="content">
-            <p>通过此引导程序可以帮助你将当前平台配置迁移到新的平台中。</p>
-            <p>每个步骤请小心操作，一旦配置错误可能需要手工还原。</p>
+            <p>通过此引导程序可以帮助你将当前平台配置迁移到新的平台中.</p>
+            <p>每个步骤请小心操作,一旦配置错误可能需要手工还原.</p>
           </div>
           <div className="ui button-group">
             <button className="ui button primary next" onClick={() => setStep('database')}>
@@ -188,7 +188,7 @@ export function TransferSettingsPage() {
             <table className="ui table selectable definition">
               <tbody>
                 <tr>
-                  <td className="title">数据库地址是否改变？</td>
+                  <td className="title">数据库地址是否改变?</td>
                   <td>
                     <div className="ui fields inline">
                       <div className="ui field">
@@ -208,7 +208,7 @@ export function TransferSettingsPage() {
                 </tr>
                 {databaseChanged === '1' ? (
                   <tr>
-                    <td>数据是否已经导入到新的数据库？</td>
+                    <td>数据是否已经导入到新的数据库?</td>
                     <td>
                       <div className="ui fields inline">
                         <div className="ui field">
@@ -226,7 +226,7 @@ export function TransferSettingsPage() {
                       </div>
                       {databaseTransferred === '0' ? (
                         <p className="comment">
-                          <span className="red">请自行将当前数据库中数据导入到新的数据库中。</span>
+                          <span className="red">请自行将当前数据库中数据导入到新的数据库中.</span>
                         </p>
                       ) : null}
                     </td>
@@ -243,7 +243,7 @@ export function TransferSettingsPage() {
               className="ui button primary next"
               onClick={() => {
                 if (databaseChanged === '1' && databaseTransferred === '0') {
-                  toast('请先将当前的数据导入到新的数据库中。', 'error')
+                  toast('请先将当前的数据导入到新的数据库中.', 'error')
                   return
                 }
                 setStep('api')
@@ -261,7 +261,7 @@ export function TransferSettingsPage() {
             <table className="ui table selectable definition">
               <tbody>
                 <tr>
-                  <td className="title">API节点地址是否变更？</td>
+                  <td className="title">API节点地址是否变更?</td>
                   <td>
                     <div className="ui fields inline">
                       <div className="ui field">
@@ -301,11 +301,11 @@ export function TransferSettingsPage() {
                         {apiNodeInstalled === '0' ? (
                           <p className="comment">
                             <span className="red">
-                              请先安装新的API节点，请拷贝当前的API节点配置
+                              请先安装新的API节点,请拷贝当前的API节点配置
                               <span className="ui label basic small">configs/api.yaml</span>和
                               <span className="ui label basic small">configs/db.yaml</span>
-                              到新API节点对应的位置，并记得修改其中的
-                              <span className="ui label basic small">configs/db.yaml</span>中的数据库地址、用户名、密码。
+                              到新API节点对应的位置,并记得修改其中的
+                              <span className="ui label basic small">configs/db.yaml</span>中的数据库地址,用户名,密码.
                             </span>
                           </p>
                         ) : null}
@@ -322,7 +322,7 @@ export function TransferSettingsPage() {
                           maxLength={100}
                           onChange={(event) => setAPINodeHost(event.target.value)}
                         />
-                        <p className="comment">如果有多个IP或者域名，填写任意其中一个即可。</p>
+                        <p className="comment">如果有多个IP或者域名,填写任意其中一个即可.</p>
                       </td>
                     </tr>
                     <tr>
@@ -370,7 +370,7 @@ export function TransferSettingsPage() {
               <thead>
                 <tr>
                   <th style={{ width: '50%' }}>API节点原地址</th>
-                  <th>API节点新地址（留空表示不修改）</th>
+                  <th>API节点新地址(留空表示不修改)</th>
                 </tr>
               </thead>
               <tbody>
@@ -409,7 +409,7 @@ export function TransferSettingsPage() {
             <table className="ui table selectable definition">
               <tbody>
                 <tr>
-                  <td className="title">管理平台地址是否变更？</td>
+                  <td className="title">管理平台地址是否变更?</td>
                   <td>
                     <div className="ui fields inline">
                       <div className="ui field">
@@ -448,9 +448,9 @@ export function TransferSettingsPage() {
                       {adminNodeInstalled === '0' ? (
                         <p className="comment">
                           <span className="red">
-                            请先安装新的管理平台，请拷贝当前的管理平台下的
+                            请先安装新的管理平台,请拷贝当前的管理平台下的
                             <span className="ui label basic small">configs/</span>
-                            目录下的配置到新管理平台对应的位置。
+                            目录下的配置到新管理平台对应的位置.
                           </span>
                         </p>
                       ) : null}
@@ -538,9 +538,9 @@ export function TransferSettingsPage() {
         <div className="step-box">
           <div className="content">
             {adminNodeChanged === '1' ? (
-              <p>所有迁移任务已完成，请登录新的管理平台进行管理。</p>
+              <p>所有迁移任务已完成,请登录新的管理平台进行管理.</p>
             ) : (
-              <p>所有迁移任务已完成。</p>
+              <p>所有迁移任务已完成.</p>
             )}
           </div>
           <div className="ui button-group">

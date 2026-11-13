@@ -67,12 +67,12 @@ func (this *IndexAction) RunPost(params struct {
 	var compressionConfig = &serverconfigs.HTTPCompressionConfig{}
 	err := json.Unmarshal(params.CompressionJSON, compressionConfig)
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 	}
 
 	err = compressionConfig.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 	}
 
 	_, err = this.RPC().HTTPWebRPC().UpdateHTTPWebCompression(this.AdminContext(), &pb.UpdateHTTPWebCompressionRequest{

@@ -57,7 +57,7 @@ func (this *StatusAction) RunPost(params struct {
 
 				m["type"] = "serverErr"
 				m["message"] = "服务器错误"
-				m["todo"] = "错误信息：FindEnabledServerDNS(): " + err.Error() + "，请联系管理员修复此问题"
+				m["todo"] = "错误信息:FindEnabledServerDNS(): " + err.Error() + ",请联系管理员修复此问题"
 				return
 			}
 
@@ -71,7 +71,7 @@ func (this *StatusAction) RunPost(params struct {
 			if serverDNSResp.Domain == nil {
 				m["type"] = "clusterDNSEmpty"
 				m["message"] = "集群配置错误"
-				m["todo"] = "所属集群没有配置DNS，请联系管理员修复此问题。服务ID：" + numberutils.FormatInt64(serverId)
+				m["todo"] = "所属集群没有配置DNS,请联系管理员修复此问题.服务ID:" + numberutils.FormatInt64(serverId)
 				return
 			}
 
@@ -82,7 +82,7 @@ func (this *StatusAction) RunPost(params struct {
 
 				m["type"] = "serverErr"
 				m["message"] = "服务器错误"
-				m["todo"] = "错误信息：FindServerNames(): " + err.Error() + "，请联系管理员修复此问题"
+				m["todo"] = "错误信息:FindServerNames(): " + err.Error() + ",请联系管理员修复此问题"
 				return
 			}
 			if serverNamesResp.IsAuditing {
@@ -94,7 +94,7 @@ func (this *StatusAction) RunPost(params struct {
 					this.ErrorPage(err)
 					m["type"] = "serverErr"
 					m["message"] = "服务器错误"
-					m["todo"] = "错误信息：FindServerNames(): " + err.Error() + "，请联系管理员修复此问题"
+					m["todo"] = "错误信息:FindServerNames(): " + err.Error() + ",请联系管理员修复此问题"
 					return
 				}
 
@@ -102,14 +102,14 @@ func (this *StatusAction) RunPost(params struct {
 				if len(auditingPrompt) > 0 {
 					m["todo"] = auditingPrompt
 				} else {
-					m["todo"] = "域名正在审核中，请耐心等待"
+					m["todo"] = "域名正在审核中,请耐心等待"
 				}
 				return
 			}
 			if serverNamesResp.AuditingResult != nil && !serverNamesResp.AuditingResult.IsOk {
 				m["type"] = "auditingFailed"
 				m["message"] = "审核不通过"
-				m["todo"] = "审核不通过，原因：" + serverNamesResp.AuditingResult.Reason
+				m["todo"] = "审核不通过,原因:" + serverNamesResp.AuditingResult.Reason
 				return
 			}
 
@@ -121,7 +121,7 @@ func (this *StatusAction) RunPost(params struct {
 
 					m["type"] = "serverErr"
 					m["message"] = "服务器错误"
-					m["todo"] = "错误信息：解析域名时出错：" + err.Error() + "，请联系管理员修复此问题"
+					m["todo"] = "错误信息:解析域名时出错:" + err.Error() + ",请联系管理员修复此问题"
 					return
 				}
 
@@ -133,25 +133,25 @@ func (this *StatusAction) RunPost(params struct {
 						if err != nil {
 							m["type"] = "dnsResolveErr"
 							m["message"] = "域名解析错误"
-							m["todo"] = "错误信息：解析域名'" + serverName.Name + "' CNAME记录时出错：" + err.Error() + "，请修复此问题。如果已经修改，请等待一个小时后再试。如果长时间无法生效，请咨询你的域名DNS服务商。"
+							m["todo"] = "错误信息:解析域名'" + serverName.Name + "' CNAME记录时出错:" + err.Error() + ",请修复此问题.如果已经修改,请等待一个小时后再试.如果长时间无法生效,请咨询你的域名DNS服务商."
 							return
 						}
 						if len(result) == 0 {
 							m["type"] = "dnsResolveErr"
 							m["message"] = "域名解析错误"
-							m["todo"] = "错误信息：找不到域名'" + serverName.Name + "'的CNAME记录，请修复此问题。如果已经修改，请等待一个小时后再试。如果长时间无法生效，请咨询你的域名DNS服务商。"
+							m["todo"] = "错误信息:找不到域名'" + serverName.Name + "'的CNAME记录,请修复此问题.如果已经修改,请等待一个小时后再试.如果长时间无法生效,请咨询你的域名DNS服务商."
 							return
 						}
 						if result == serverName.Name+"." {
 							m["type"] = "dnsResolveErr"
 							m["message"] = "域名解析错误"
-							m["todo"] = "错误信息：找不到域名'" + serverName.Name + "'的CNAME记录，请设置为'" + cname + "'。如果已经设置，请等待一个小时后再试。如果长时间无法生效，请咨询你的域名DNS服务商。"
+							m["todo"] = "错误信息:找不到域名'" + serverName.Name + "'的CNAME记录,请设置为'" + cname + "'.如果已经设置,请等待一个小时后再试.如果长时间无法生效,请咨询你的域名DNS服务商."
 							return
 						}
 						if result != cname {
 							m["type"] = "dnsResolveErr"
 							m["message"] = "域名解析错误"
-							m["todo"] = "错误信息：解析域名'" + serverName.Name + "' CNAME记录时出错：当前的CNAME值为" + result + "，请修改为" + cname + "。如果已经修改，请等待一个小时后再试。如果长时间无法生效，请咨询你的域名DNS服务商。"
+							m["todo"] = "错误信息:解析域名'" + serverName.Name + "' CNAME记录时出错:当前的CNAME值为" + result + ",请修改为" + cname + ".如果已经修改,请等待一个小时后再试.如果长时间无法生效,请咨询你的域名DNS服务商."
 							return
 						}
 					} else {
@@ -161,25 +161,25 @@ func (this *StatusAction) RunPost(params struct {
 							if err != nil {
 								m["type"] = "dnsResolveErr"
 								m["message"] = "域名解析错误"
-								m["todo"] = "错误信息：解析域名'" + subName + "' CNAME记录时出错：" + err.Error() + "，请修复此问题。如果已经修改，请等待一个小时后再试。如果长时间无法生效，请咨询你的域名DNS服务商。"
+								m["todo"] = "错误信息:解析域名'" + subName + "' CNAME记录时出错:" + err.Error() + ",请修复此问题.如果已经修改,请等待一个小时后再试.如果长时间无法生效,请咨询你的域名DNS服务商."
 								return
 							}
 							if len(result) == 0 {
 								m["type"] = "dnsResolveErr"
 								m["message"] = "域名解析错误"
-								m["todo"] = "错误信息：找不到域名'" + subName + "'的CNAME记录，请修复此问题。如果已经修改，请等待一个小时后再试。如果长时间无法生效，请咨询你的域名DNS服务商。"
+								m["todo"] = "错误信息:找不到域名'" + subName + "'的CNAME记录,请修复此问题.如果已经修改,请等待一个小时后再试.如果长时间无法生效,请咨询你的域名DNS服务商."
 								return
 							}
 							if result == cname+"." {
 								m["type"] = "dnsResolveErr"
 								m["message"] = "域名解析错误"
-								m["todo"] = "错误信息：找不到域名'" + serverName.Name + "'的CNAME记录，请设置为'" + cname + "'。如果已经设置，请等待一个小时后再试。如果长时间无法生效，请咨询你的域名DNS服务商。"
+								m["todo"] = "错误信息:找不到域名'" + serverName.Name + "'的CNAME记录,请设置为'" + cname + "'.如果已经设置,请等待一个小时后再试.如果长时间无法生效,请咨询你的域名DNS服务商."
 								return
 							}
 							if result != cname {
 								m["type"] = "dnsResolveErr"
 								m["message"] = "域名解析错误"
-								m["todo"] = "错误信息：解析域名'" + subName + "' CNAME记录时出错：当前的CNAME值为" + result + "，请修改为" + cname + "。如果已经修改，请等待一个小时后再试。如果长时间无法生效，请咨询你的域名DNS服务商。"
+								m["todo"] = "错误信息:解析域名'" + subName + "' CNAME记录时出错:当前的CNAME值为" + result + ",请修改为" + cname + ".如果已经修改,请等待一个小时后再试.如果长时间无法生效,请咨询你的域名DNS服务商."
 								return
 							}
 						}

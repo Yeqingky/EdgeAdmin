@@ -38,7 +38,7 @@ Tea.context(function () {
 				})
 			})
 			.error(function () {
-				this.errorString = "执行健康检查超时，请重试"
+				this.errorString = "执行健康检查超时,请重试"
 			})
 			.done(function () {
 				this.isRequesting = false

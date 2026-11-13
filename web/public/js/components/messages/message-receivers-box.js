@@ -49,7 +49,7 @@ Vue.component("message-receivers-box", {
         <input type="hidden" name="receiversJSON" :value="JSON.stringify(receivers)"/>           
         <div v-if="receivers.length > 0">
             <div v-for="(receiver, index) in receivers" class="ui label basic small">
-               <span v-if="receiver.type == 'group'">分组：</span>{{receiver.name}} <span class="grey small" v-if="receiver.subName != null && receiver.subName.length > 0">({{receiver.subName}})</span> &nbsp; <a href="" title="删除" @click.prevent="removeReceiver(index)"><i class="icon remove"></i></a>
+               <span v-if="receiver.type == 'group'">分组:</span>{{receiver.name}} <span class="grey small" v-if="receiver.subName != null && receiver.subName.length > 0">({{receiver.subName}})</span> &nbsp; <a href="" title="删除" @click.prevent="removeReceiver(index)"><i class="icon remove"></i></a>
             </div>
              <div class="ui divider"></div>
         </div>

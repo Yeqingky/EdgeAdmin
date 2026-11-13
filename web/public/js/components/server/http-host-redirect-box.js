@@ -70,7 +70,7 @@ Vue.component("http-host-redirect-box", {
 		},
 		remove: function (index) {
 			let that = this
-			teaweb.confirm("确定要删除这条跳转规则吗？", function () {
+			teaweb.confirm("确定要删除这条跳转规则吗?", function () {
 				that.redirects.$remove(index)
 				that.change()
 			})
@@ -94,7 +94,7 @@ Vue.component("http-host-redirect-box", {
 	</first-menu>
 	<div class="margin"></div>
 
-	<p class="comment" v-if="redirects.length == 0">暂时还没有URL跳转规则。</p>
+	<p class="comment" v-if="redirects.length == 0">暂时还没有URL跳转规则.</p>
 	<div v-show="redirects.length > 0">
 		<table class="ui table celled selectable" id="sortable-table">
 			<thead>
@@ -169,7 +169,7 @@ Vue.component("http-host-redirect-box", {
 				</tr>
 			</tbody>
 		</table>
-		<p class="comment" v-if="redirects.length > 1">所有规则匹配顺序为从上到下，可以拖动左侧的<i class="icon bars"></i>排序。</p>
+		<p class="comment" v-if="redirects.length > 1">所有规则匹配顺序为从上到下,可以拖动左侧的<i class="icon bars"></i>排序.</p>
 	</div>
 	<div class="margin"></div>
 </div>`

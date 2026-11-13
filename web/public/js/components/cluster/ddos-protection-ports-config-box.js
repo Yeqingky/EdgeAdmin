@@ -84,7 +84,7 @@ Vue.component("ddos-protection-ports-config-box", {
 	template: `<div>
 	<div v-if="ports.length > 0">
 		<div class="ui label basic tiny" v-for="(portConfig, index) in ports">
-			{{portConfig.port}} <span class="grey small" v-if="portConfig.description.length > 0">（{{portConfig.description}}）</span> <a href="" @click.prevent="remove(index)" title="删除"><i class="icon remove"></i></a>
+			{{portConfig.port}} <span class="grey small" v-if="portConfig.description.length > 0">({{portConfig.description}})</span> <a href="" @click.prevent="remove(index)" title="删除"><i class="icon remove"></i></a>
 		</div>
 		<div class="ui divider"></div>
 	</div>
@@ -99,7 +99,7 @@ Vue.component("ddos-protection-ports-config-box", {
 			<div class="ui field">
 				<div class="ui input left labeled">
 					<span class="ui label">备注</span>
-					<input type="text" v-model="addingPort.description" maxlength="12" size="12" placeholder="备注（可选）" @keyup.enter="confirm" @keypress.enter.prevent="1"/>
+					<input type="text" v-model="addingPort.description" maxlength="12" size="12" placeholder="备注(可选)" @keyup.enter="confirm" @keypress.enter.prevent="1"/>
 				</div>
 			</div>
 			<div class="ui field">

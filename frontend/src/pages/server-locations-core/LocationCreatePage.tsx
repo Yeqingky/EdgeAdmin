@@ -101,7 +101,7 @@ export function LocationCreatePage({ serverId }: { serverId: string }) {
                 value={pattern}
                 onChange={(event) => setPattern(event.target.value)}
               />
-              <p className="comment">路径通常以斜杠(/)开头，比如/hello。如果匹配类型是正则表达式匹配，则可以是一个正则表达式</p>
+              <p className="comment">路径通常以斜杠(/)开头,比如/hello.如果匹配类型是正则表达式匹配,则可以是一个正则表达式</p>
             </FormRow>
             <FormRow title="匹配类型">
               <Select value={String(patternType)} onChange={(event) => setPatternType(Number(event.target.value))}>
@@ -115,11 +115,11 @@ export function LocationCreatePage({ serverId }: { serverId: string }) {
             </FormRow>
             <FormRow title="终止往下匹配">
               <Checkbox checked={isBreak} onChange={setIsBreak} />
-              <p className="comment">如果选中了此选项，一旦匹配成功，不会继续匹配其他的路由规则。</p>
+              <p className="comment">如果选中了此选项,一旦匹配成功,不会继续匹配其他的路由规则.</p>
             </FormRow>
             <FormRow title="名称">
               <TextInput type="text" maxLength={100} value={name} onChange={(event) => setName(event.target.value)} />
-              <p className="comment">可以用来说明此规则用途。</p>
+              <p className="comment">可以用来说明此规则用途.</p>
             </FormRow>
             <FormRow title="匹配条件">
               <RequestCondsEditor conds={conds} onChange={setConds} />
@@ -135,15 +135,15 @@ export function LocationCreatePage({ serverId }: { serverId: string }) {
             <FormTable>
               <FormRow title="专属域名">
                 <DomainsField domains={domains} onChange={setDomains} />
-                <p className="comment">默认不需要填写，表示支持所有域名。如果填写了专属域名，表示当前路由规则只会在所列的专属域名被访问时才生效。</p>
+                <p className="comment">默认不需要填写,表示支持所有域名.如果填写了专属域名,表示当前路由规则只会在所列的专属域名被访问时才生效.</p>
               </FormRow>
               <FormRow title="不区分大小写">
                 <Checkbox checked={isCaseInsensitive} onChange={setIsCaseInsensitive} />
-                <p className="comment">选中表示匹配规则中的路径中的英文字母不区分大小写。</p>
+                <p className="comment">选中表示匹配规则中的路径中的英文字母不区分大小写.</p>
               </FormRow>
               <FormRow title="反向匹配">
                 <Checkbox checked={isReverse} onChange={setIsReverse} />
-                <p className="comment">选中表示匹配所有<strong>不符合规则</strong>的路径。</p>
+                <p className="comment">选中表示匹配所有<strong>不符合规则</strong>的路径.</p>
               </FormRow>
               <FormRow title="描述">
                 <textarea rows={3} maxLength={200} value={description} onChange={(event) => setDescription(event.target.value)} />

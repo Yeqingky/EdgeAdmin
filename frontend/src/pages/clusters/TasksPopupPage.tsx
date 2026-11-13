@@ -75,13 +75,13 @@ export function ClusterTasksPage() {
         正在同步的节点任务
         {data.countTasks > 0 ? `(共${data.countTasks}个)` : ''}
       </h3>
-      {data.clusters.length === 0 ? <p className="comment">暂时没有同步的任务。</p> : null}
+      {data.clusters.length === 0 ? <p className="comment">暂时没有同步的任务.</p> : null}
       {data.clusters.length > 0 ? (
         <div>
           <button
             className="ui button basic tiny"
             onClick={async () => {
-              if (!(await confirm({ message: '确定要清空所有任务吗？', danger: true, confirmText: '清空' }))) {
+              if (!(await confirm({ message: '确定要清空所有任务吗?', danger: true, confirmText: '清空' }))) {
                 return
               }
               try {

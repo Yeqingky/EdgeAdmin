@@ -501,7 +501,7 @@ func (this *RPCClient) init() error {
 
 		var apiHost = u.Host
 
-		// 如果本机，则将地址修改为回路地址
+		// 如果本机,则将地址修改为回路地址
 		if lists.ContainsString(localIPAddrs, u.Hostname()) {
 			if strings.Contains(apiHost, "[") { // IPv6 [host]:port
 				apiHost = "[::1]"
@@ -541,7 +541,7 @@ func (this *RPCClient) init() error {
 		return errors.New("[RPC]no available endpoints")
 	}
 
-	// 这里不需要加锁，因为会和pickConn冲突
+	// 这里不需要加锁,因为会和pickConn冲突
 	this.conns = conns
 	return nil
 }

@@ -7,10 +7,10 @@
 
     <div class="margin"></div>
     <div v-show="webConfig.cache == null || !webConfig.cache.isOn">
-        <p class="comment">没有开启缓存，不需要刷新。</p>
+        <p class="comment">没有开启缓存,不需要刷新.</p>
     </div>
     <div v-show="webConfig.cache != null && webConfig.cache.isOn">
-        <p class="comment">可以在这里批量刷新一组URL缓存。</p>
+        <p class="comment">可以在这里批量刷新一组URL缓存.</p>
 
         <form method="post" class="ui form" data-tea-action="$" data-tea-before="before" data-tea-success="success" data-tea-fail="fail" data-tea-done="done" data-tea-timeout="300">
             <input type="hidden" name="serverId" :value="serverId"/>
@@ -30,15 +30,15 @@
                     </td>
                     <td>
                         <textarea name="keys" rows="10" ref="keysBox"></textarea>
-                        <p class="comment" v-if="keyType == 'key'">每行一个URL，比如<code-label>https://example.com/hello/world.html</code-label>。</p>
-                        <p class="comment" v-if="keyType == 'prefix'">每行一个URL目录，比如<code-label>https://example.com/hello/</code-label>；如果只填写域名部分，表示清理全站，比如<code-label>https://example.com/</code-label>。</p>
+                        <p class="comment" v-if="keyType == 'key'">每行一个URL,比如<code-label>https://example.com/hello/world.html</code-label>.</p>
+                        <p class="comment" v-if="keyType == 'prefix'">每行一个URL目录,比如<code-label>https://example.com/hello/</code-label>;如果只填写域名部分,表示清理全站,比如<code-label>https://example.com/</code-label>.</p>
                     </td>
                 </tr>
                 <tr>
                     <td>操作结果</td>
                     <td>
                         <div v-if="isRequesting">数据发送中...</div>
-                        <span class="red" v-if="!isRequesting && !isOk && message.length > 0">失败：{{message}}</span>
+                        <span class="red" v-if="!isRequesting && !isOk && message.length > 0">失败:{{message}}</span>
                         <div v-if="!isRequesting && !isOk && failKeys.length > 0" class="fail-keys-box">
                             <div v-for="failKey in failKeys">
                                 <span class="red">{{failKey.key}}: {{failKey.reason}}</span>

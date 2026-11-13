@@ -38,7 +38,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 	var cacheRef = &serverconfigs.HTTPCacheRef{}
 	err := json.Unmarshal(params.CacheRefJSON, cacheRef)
 	if err != nil {
-		this.Fail("解析条件出错：" + err.Error() + ", JSON: " + string(params.CacheRefJSON))
+		this.Fail("解析条件出错:" + err.Error() + ", JSON: " + string(params.CacheRefJSON))
 		return
 	}
 
@@ -46,7 +46,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 		var cond = &shared.HTTPRequestCond{}
 		err = json.Unmarshal(params.CondJSON, cond)
 		if err != nil {
-			this.Fail("解析条件出错：" + err.Error() + ", JSON: " + string(params.CondJSON))
+			this.Fail("解析条件出错:" + err.Error() + ", JSON: " + string(params.CondJSON))
 			return
 		}
 		cond.Type = params.CondType
@@ -59,7 +59,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 
 	err = cacheRef.Init()
 	if err != nil {
-		this.Fail("解析条件出错：" + err.Error())
+		this.Fail("解析条件出错:" + err.Error())
 		return
 	}
 

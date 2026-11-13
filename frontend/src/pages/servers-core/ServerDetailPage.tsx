@@ -53,7 +53,7 @@ export function ServerDetailPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -99,7 +99,7 @@ export function ServerDetailPage() {
         </table>
 
         <h4>网站设置</h4>
-        <p className="comment">请选择要修改的设置项。</p>
+        <p className="comment">请选择要修改的设置项.</p>
         <div className="ui segment">
           {settingsTabs.map((tab) => (
             <a

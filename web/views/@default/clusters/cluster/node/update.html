@@ -27,21 +27,21 @@
                 <td>IP地址 *</td>
                 <td>
                     <node-ip-addresses-box :v-ip-addresses="ipAddresses" :v-node-id="node.id"></node-ip-addresses-box>
-                    <p class="comment">用于访问节点和域名解析等。</p>
+                    <p class="comment">用于访问节点和域名解析等.</p>
                 </td>
             </tr>
             <tr>
                 <td>所属分组</td>
                 <td>
                     <node-group-selector :v-cluster-id="clusterId" :v-group="node.group"></node-group-selector>
-                    <p class="comment">用来筛选节点。</p>
+                    <p class="comment">用来筛选节点.</p>
                 </td>
             </tr>
             <tr>
                 <td>所属区域</td>
                 <td>
                     <node-region-selector :v-region="node.region"></node-region-selector>
-                    <p class="comment">设置区域后可以根据区域进行流量统计和计费。</p>
+                    <p class="comment">设置区域后可以根据区域进行流量统计和计费.</p>
                 </td>
             </tr>
             <tr>
@@ -58,14 +58,14 @@
                     <td>L2级别访问地址</td>
                     <td>
                         <values-box name="lnAddrs" :v-values="node.lnAddrs" placeholder="IP地址"></values-box>
-                        <p class="comment">如果不为空，边缘节点访问当前L2节点时将会使用这些IP地址；如果没有设置，将会使用当前节点已经填写的IP地址。</p>
+                        <p class="comment">如果不为空,边缘节点访问当前L2节点时将会使用这些IP地址;如果没有设置,将会使用当前节点已经填写的IP地址.</p>
                     </td>
                 </tr>
                 <tr>
                     <td>同步IP名单</td>
                     <td>
                         <checkbox name="enableIPLists" v-model="node.enableIPLists"></checkbox>
-                        <p class="comment">选中后，表示启用IP名单同步，包括来自管理员、用户添加的IP名单，以及其他节点系统自动拦截的IP名单。</p>
+                        <p class="comment">选中后,表示启用IP名单同步,包括来自管理员,用户添加的IP名单,以及其他节点系统自动拦截的IP名单.</p>
                     </td>
                 </tr>
                 <tr>
@@ -75,7 +75,7 @@
                             <input type="checkbox" name="isOn" value="1" v-model="node.isOn"/>
                             <label></label>
                         </div>
-                        <p class="comment">如果不启用此节点，此节点上的所有网站将不能访问。</p>
+                        <p class="comment">如果不启用此节点,此节点上的所有网站将不能访问.</p>
                     </td>
                 </tr>
             </tbody>

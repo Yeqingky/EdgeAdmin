@@ -53,7 +53,7 @@ export function ApiNodesPage() {
   })
 
   async function deleteNode(nodeId: number) {
-    if (!(await confirm({ message: '确定要删除此节点吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此节点吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -92,7 +92,7 @@ export function ApiNodesPage() {
         ) : null}
       </PageHeader>
 
-      {nodes.length === 0 ? <p className="comment">暂时还没有节点。</p> : null}
+      {nodes.length === 0 ? <p className="comment">暂时还没有节点.</p> : null}
 
       <div className="table-box">
         {nodes.length > 0 ? (
@@ -321,7 +321,7 @@ export function ApiMethodStatsPage() {
 
       {query.isLoading ? <LoadingBlock /> : null}
       {query.isError ? <div className="ui negative message">加载失败</div> : null}
-      {!query.isLoading && stats.length === 0 ? <p className="comment">暂时还没有统计数据。</p> : null}
+      {!query.isLoading && stats.length === 0 ? <p className="comment">暂时还没有统计数据.</p> : null}
       {stats.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>

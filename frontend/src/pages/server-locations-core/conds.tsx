@@ -11,26 +11,26 @@ export interface CondTypeDefinition {
   value: string
 }
 
-// 条件类型（对应 legacy window.REQUEST_COND_COMPONENTS）
+// 条件类型(对应 legacy window.REQUEST_COND_COMPONENTS)
 export const condTypes: CondTypeDefinition[] = [
   { type: 'url-extension', name: '文件扩展名', param: '${requestPathLowerExtension}', operator: 'in', value: '[]' },
-  { type: 'url-not-extension', name: '排除：URL扩展名', param: '${requestPathLowerExtension}', operator: 'not in', value: '[]' },
+  { type: 'url-not-extension', name: '排除:URL扩展名', param: '${requestPathLowerExtension}', operator: 'not in', value: '[]' },
   { type: 'url-prefix', name: 'URL目录前缀', param: '${requestPath}', operator: 'prefix', value: '' },
-  { type: 'url-not-prefix', name: '排除：URL前缀', param: '${requestPath}', operator: 'not', value: '' },
+  { type: 'url-not-prefix', name: '排除:URL前缀', param: '${requestPath}', operator: 'not', value: '' },
   { type: 'url-eq-index', name: '首页', param: '${requestPath}', operator: 'eq', value: '/' },
   { type: 'url-all', name: '全站', param: '${requestPath}', operator: 'prefix', value: '/' },
   { type: 'url-eq', name: 'URL完整路径', param: '${requestPath}', operator: 'eq', value: '' },
-  { type: 'url-not-eq', name: '排除：URL完整路径', param: '${requestPath}', operator: 'not', value: '' },
+  { type: 'url-not-eq', name: '排除:URL完整路径', param: '${requestPath}', operator: 'not', value: '' },
   { type: 'url-regexp', name: 'URL正则匹配', param: '${requestPath}', operator: 'regexp', value: '' },
-  { type: 'url-not-regexp', name: '排除：URL正则匹配', param: '${requestPath}', operator: 'not regexp', value: '' },
+  { type: 'url-not-regexp', name: '排除:URL正则匹配', param: '${requestPath}', operator: 'not regexp', value: '' },
   { type: 'url-wildcard-match', name: 'URL通配符', param: '${requestPath}', operator: 'wildcard match', value: '' },
   { type: 'user-agent-regexp', name: 'User-Agent正则匹配', param: '${userAgent}', operator: 'regexp', value: '' },
-  { type: 'user-agent-not-regexp', name: '排除：User-Agent正则匹配', param: '${userAgent}', operator: 'not regexp', value: '' },
+  { type: 'user-agent-not-regexp', name: '排除:User-Agent正则匹配', param: '${userAgent}', operator: 'not regexp', value: '' },
   { type: 'params', name: '参数匹配', param: '${arg.name}', operator: 'eq', value: '' },
   { type: 'mime-type', name: '内容MimeType', param: '${responseContentType}', operator: 'mime type', value: '[]' },
 ]
 
-// 运算符（对应 legacy shared.AllRequestOperators）
+// 运算符(对应 legacy shared.AllRequestOperators)
 export const condOperators: { op: string; name: string }[] = [
   { op: 'regexp', name: '正则表达式匹配' },
   { op: 'not regexp', name: '正则表达式不匹配' },
@@ -91,7 +91,7 @@ function newCond(type: string): RequestCond {
   }
 }
 
-// 条件分组编辑器（对应 legacy /servers/server/settings/conds/addGroupPopup）
+// 条件分组编辑器(对应 legacy /servers/server/settings/conds/addGroupPopup)
 function GroupEditor({ group, onSave, onCancel }: {
   group: RequestCondGroup
   onSave: (group: RequestCondGroup) => void
@@ -142,7 +142,7 @@ function GroupEditor({ group, onSave, onCancel }: {
                 <option value="or">或</option>
               </select>
               <p className="comment">
-                {connector === 'or' ? '只要满足其中一个条件即可。' : '需要满足所有条件。'}
+                {connector === 'or' ? '只要满足其中一个条件即可.' : '需要满足所有条件.'}
               </p>
             </td>
           </tr>
@@ -156,7 +156,7 @@ function GroupEditor({ group, onSave, onCancel }: {
       </table>
 
       <h4>条件</h4>
-      {conds.length === 0 ? <p className="comment">暂时还没有条件。</p> : null}
+      {conds.length === 0 ? <p className="comment">暂时还没有条件.</p> : null}
       {conds.map((cond, index) => (
         <div key={index} className="ui segment" style={{ padding: '0.8em' }}>
           <div className="ui fields inline">
@@ -201,7 +201,7 @@ function GroupEditor({ group, onSave, onCancel }: {
               <input
                 type="text"
                 value={cond.param}
-                placeholder="参数，比如 ${requestPath}"
+                placeholder="参数,比如 ${requestPath}"
                 onChange={(event) => updateCond(index, { param: event.target.value })}
               />
             </div>
@@ -248,7 +248,7 @@ function GroupEditor({ group, onSave, onCancel }: {
   )
 }
 
-// 请求条件编辑器（对应 legacy http-request-conds-box）
+// 请求条件编辑器(对应 legacy http-request-conds-box)
 export function RequestCondsEditor({ conds, onChange }: {
   conds?: RequestCondsConfig | null
   onChange: (conds: RequestCondsConfig) => void
@@ -339,7 +339,7 @@ export function RequestCondsEditor({ conds, onChange }: {
                   <option value="or">或</option>
                 </select>
                 <p className="comment">
-                  {config.connector === 'and' ? '需要满足所有条件分组。' : '只要满足其中一个条件分组即可。'}
+                  {config.connector === 'and' ? '需要满足所有条件分组.' : '只要满足其中一个条件分组即可.'}
                 </p>
               </td>
             </tr>
@@ -365,7 +365,7 @@ export function RequestCondsEditor({ conds, onChange }: {
   )
 }
 
-// 条件只读展示（对应 legacy http-request-conds-view）
+// 条件只读展示(对应 legacy http-request-conds-view)
 export function RequestCondsView({ conds }: { conds?: RequestCondsConfig | null }) {
   if (!conds || !conds.groups || conds.groups.length === 0) {
     return null

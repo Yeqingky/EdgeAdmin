@@ -137,14 +137,14 @@ func (this *IndexAction) RunPost(params struct {
 			return
 		}
 		if !existServerNameResp.Exists {
-			this.Fail("域名 '" + cacheConfig.Key.Host + "' 在当前网站中并未绑定，不能作为缓存主域名")
+			this.Fail("域名 '" + cacheConfig.Key.Host + "' 在当前网站中并未绑定,不能作为缓存主域名")
 			return
 		}
 	}
 
 	err = cacheConfig.Init()
 	if err != nil {
-		this.Fail("检查配置失败：" + err.Error())
+		this.Fail("检查配置失败:" + err.Error())
 	}
 
 	// 去除不必要的部分

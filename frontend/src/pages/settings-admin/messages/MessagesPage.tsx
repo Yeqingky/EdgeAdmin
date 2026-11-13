@@ -76,7 +76,7 @@ export function MessagesPage() {
   }
 
   async function readAll() {
-    if (!(await confirm({ message: '确定要设置所有的未读消息为已读吗？' }))) {
+    if (!(await confirm({ message: '确定要设置所有的未读消息为已读吗?' }))) {
       return
     }
     await postRead('/messages/readAll', [])
@@ -86,7 +86,7 @@ export function MessagesPage() {
     if (!query.data) {
       return
     }
-    if (!(await confirm({ message: '确定要设置当前页的未读消息为已读吗？' }))) {
+    if (!(await confirm({ message: '确定要设置当前页的未读消息为已读吗?' }))) {
       return
     }
     await postRead('/messages/readPage', query.data.messages.map((message) => message.id))
@@ -132,7 +132,7 @@ export function MessagesPage() {
       ) : null}
       <div className="margin" />
 
-      {messages.length === 0 ? <p className="comment">暂时还没有消息。</p> : null}
+      {messages.length === 0 ? <p className="comment">暂时还没有消息.</p> : null}
 
       {messages.map((message) => {
         const params = message.params.length > 0 ? (JSON.parse(message.params) as Record<string, unknown> | null) : null
@@ -151,10 +151,10 @@ export function MessagesPage() {
                       <span>
                         <span> | </span>
                         {message.role === 'node' ? (
-                          <a href={`/clusters/cluster?clusterId=${message.cluster.id}`}>集群：{message.cluster.name}</a>
+                          <a href={`/clusters/cluster?clusterId=${message.cluster.id}`}>集群:{message.cluster.name}</a>
                         ) : null}
                         {message.role === 'dns' ? (
-                          <a href={`/dns/clusters/cluster?clusterId=${message.cluster.id}`}>DNS集群：{message.cluster.name}</a>
+                          <a href={`/dns/clusters/cluster?clusterId=${message.cluster.id}`}>DNS集群:{message.cluster.name}</a>
                         ) : null}
                       </span>
                     ) : null}
@@ -162,10 +162,10 @@ export function MessagesPage() {
                       <span>
                         <span> | </span>
                         {message.role === 'node' ? (
-                          <a href={`/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>节点：{message.node.name}</a>
+                          <a href={`/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>节点:{message.node.name}</a>
                         ) : null}
                         {message.role === 'dns' ? (
-                          <a href={`/dns/clusters/cluster?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>DNS节点：{message.node.name}</a>
+                          <a href={`/dns/clusters/cluster?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>DNS节点:{message.node.name}</a>
                         ) : null}
                       </span>
                     ) : null}

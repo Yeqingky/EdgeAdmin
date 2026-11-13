@@ -36,7 +36,7 @@ export function RegionsPage() {
   const query = useQuery({ queryKey: ['regions'], queryFn: () => apiGet<RegionsData>('/clusters/regions') })
 
   async function remove(regionId: number) {
-    if (!(await confirm({ message: '确定要删除这个区域吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个区域吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -91,7 +91,7 @@ export function RegionsPage() {
         </a>
       </div>
 
-      {regions.length === 0 ? <p className="comment">暂时还没有区域。</p> : null}
+      {regions.length === 0 ? <p className="comment">暂时还没有区域.</p> : null}
       {regions.length > 0 ? (
         <table className="ui table selectable">
           <thead>
@@ -163,7 +163,7 @@ export function RegionsPage() {
           </tbody>
         </table>
       ) : null}
-      {regions.length > 0 ? <p className="comment">可以使用上下箭头排序。</p> : null}
+      {regions.length > 0 ? <p className="comment">可以使用上下箭头排序.</p> : null}
 
       {creating || editing ? (
         <Modal
@@ -308,7 +308,7 @@ export function RegionNodesPage() {
 
       {data.nodes.length === 0 ? (
         <p className="comment">
-          <span>{regionId > 0 ? '当前区域下' : ''}暂时还没有节点。</span>
+          <span>{regionId > 0 ? '当前区域下' : ''}暂时还没有节点.</span>
         </p>
       ) : null}
 
@@ -349,7 +349,7 @@ export function RegionNodesPage() {
                 ))}
             </tbody>
           </table>
-          {data.hasNodesWithoutRegion ? <p className="comment">已经将未设置区域的节点排在了表格最前面。</p> : null}
+          {data.hasNodesWithoutRegion ? <p className="comment">已经将未设置区域的节点排在了表格最前面.</p> : null}
         </div>
       ) : null}
 
@@ -366,7 +366,7 @@ export function RegionNodesPage() {
                 setEditingNode(null)
                 await queryClient.invalidateQueries({ queryKey: ['region-nodes'] })
               } catch (error) {
-                // 保留弹窗，提示由提交按钮状态体现
+                // 保留弹窗,提示由提交按钮状态体现
                 window.alert(error instanceof Error ? error.message : '保存失败')
               }
             }}
@@ -529,7 +529,7 @@ export function RegionSelectPopupPage() {
     <div>
       <h3>选择所属区域</h3>
       {query.data.regions.length === 0 ? (
-        <p className="comment">暂时还没有可以使用的区域。</p>
+        <p className="comment">暂时还没有可以使用的区域.</p>
       ) : (
         <div>
           {query.data.regions.map((region) => (
@@ -542,7 +542,7 @@ export function RegionSelectPopupPage() {
               {region.name}
             </a>
           ))}
-          <p className="comment">点击可以查看该区域下的节点。</p>
+          <p className="comment">点击可以查看该区域下的节点.</p>
         </div>
       )}
     </div>

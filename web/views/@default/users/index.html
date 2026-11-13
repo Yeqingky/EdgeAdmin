@@ -13,7 +13,7 @@
     <input type="hidden" name="verifying" :value="isVerifying ? 1 : 0"/>
     <div class="ui fields inline">
         <div class="ui field">
-            <input type="text" placeholder="用户名、全名、手机号..." name="keyword" v-model="keyword"/>
+            <input type="text" placeholder="用户名,全名,手机号..." name="keyword" v-model="keyword"/>
         </div>
         <div class="ui field" v-show="teaIsPlus">
             <select class="ui dropdown" name="mobileIsVerified" v-model="mobileIsVerified">
@@ -30,7 +30,7 @@
     </div>
 </form>
 
-<p class="comment" v-if="users.length == 0">暂时还没有用户。</p>
+<p class="comment" v-if="users.length == 0">暂时还没有用户.</p>
 <table class="ui table selectable celled" v-if="users.length > 0">
 	<thead>
 		<tr>

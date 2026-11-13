@@ -49,9 +49,9 @@ export function OriginModal({ serverType, onClose, onCreated }: OriginModalProps
 
   let portWarning = ''
   if (protocol === 'http' && (addr.endsWith(':443') || addr.endsWith(':8443'))) {
-    portWarning = `${addr.endsWith(':443') ? '443' : '8443'}通常是HTTPS协议端口，请确认源站协议选择是否正确。`
+    portWarning = `${addr.endsWith(':443') ? '443' : '8443'}通常是HTTPS协议端口,请确认源站协议选择是否正确.`
   } else if (protocol === 'https' && (addr.endsWith(':80') || addr.endsWith(':8080'))) {
-    portWarning = `${addr.endsWith(':80') ? '80' : '8080'}通常是HTTP协议端口，请确认源站协议选择是否正确。`
+    portWarning = `${addr.endsWith(':80') ? '80' : '8080'}通常是HTTP协议端口,请确认源站协议选择是否正确.`
   }
 
   useEffect(() => {
@@ -140,8 +140,8 @@ export function OriginModal({ serverType, onClose, onCreated }: OriginModalProps
                 </p>
               ) : null}
               <p className="comment">
-                源站服务器地址，通常是一个IP（或域名）加端口，80和443端口可以省略
-                {serverType === 'httpProxy' ? '，不需要加 http:// 或 https://' : ''}。
+                源站服务器地址,通常是一个IP(或域名)加端口,80和443端口可以省略
+                {serverType === 'httpProxy' ? ',不需要加 http:// 或 https://' : ''}.
               </p>
             </td>
           </tr>
@@ -151,8 +151,8 @@ export function OriginModal({ serverType, onClose, onCreated }: OriginModalProps
               <td>
                 <input type="text" value={host} placeholder="比如example.com" maxLength={100} onChange={(event) => setHost(event.target.value)} />
                 <p className="comment">
-                  可选项。请求源站时的Host字段值，用于设置访问源站的站点域名
-                  {isHTTP ? '，支持请求变量' : ''}；如果用户访问的域名和源站域名不一致，请务必设置为源站域名。
+                  可选项.请求源站时的Host字段值,用于设置访问源站的站点域名
+                  {isHTTP ? ',支持请求变量' : ''};如果用户访问的域名和源站域名不一致,请务必设置为源站域名.
                 </p>
               </td>
             </tr>
@@ -169,7 +169,7 @@ export function OriginModal({ serverType, onClose, onCreated }: OriginModalProps
                 />
                 <label htmlFor="origin-follow-port" />
               </div>
-              <p className="comment">选中后，表示源站的端口保持和用户访问的服务端口保持一致；此时的源站地址中的端口号可以任意填写。</p>
+              <p className="comment">选中后,表示源站的端口保持和用户访问的服务端口保持一致;此时的源站地址中的端口号可以任意填写.</p>
             </td>
           </tr>
           {protocol === 'https' ? (
@@ -185,7 +185,7 @@ export function OriginModal({ serverType, onClose, onCreated }: OriginModalProps
                   />
                   <label htmlFor="origin-http2" />
                 </div>
-                <p className="comment">选中后，表示源站支持HTTP/2协议。</p>
+                <p className="comment">选中后,表示源站支持HTTP/2协议.</p>
               </td>
             </tr>
           ) : null}
@@ -304,8 +304,8 @@ export function PortModal({ serverType, onClose, onCreated }: PortModalProps) {
                 </p>
               ) : null}
               <p className="comment">
-                可以是一个数字端口（通常不超过65535），也可以是&quot;地址:端口&quot;的方式。支持端口范围，形式为
-                <span className="ui label tiny basic">port1-port2</span>。
+                可以是一个数字端口(通常不超过65535),也可以是&quot;地址:端口&quot;的方式.支持端口范围,形式为
+                <span className="ui label tiny basic">port1-port2</span>.
               </p>
             </td>
           </tr>
@@ -375,11 +375,11 @@ export function ServerNameModal({ onClose, onCreated }: ServerNameModalProps) {
               <td>
                 <input type="text" maxLength={1024} value={serverName} onChange={(event) => setServerName(event.target.value)} />
                 <p className="comment">
-                  请输入单个域名，比如<span className="ui label tiny basic">example.com</span>、
-                  <span className="ui label tiny basic">www.example.com</span>，<strong>不要</strong>包含
+                  请输入单个域名,比如<span className="ui label tiny basic">example.com</span>,
+                  <span className="ui label tiny basic">www.example.com</span>,<strong>不要</strong>包含
                   <span className="ui label tiny basic">http://</span>或
-                  <span className="ui label tiny basic">https://</span>或端口号；也可以使用泛域名，比如
-                  <span className="ui label tiny basic">*.example.com</span>。
+                  <span className="ui label tiny basic">https://</span>或端口号;也可以使用泛域名,比如
+                  <span className="ui label tiny basic">*.example.com</span>.
                 </p>
               </td>
             </tr>
@@ -388,7 +388,7 @@ export function ServerNameModal({ onClose, onCreated }: ServerNameModalProps) {
               <td className="title">多个域名 *</td>
               <td>
                 <textarea rows={5} value={serverNames} onChange={(event) => setServerNames(event.target.value)} />
-                <p className="comment">每行一个域名，比如 example.com、www.example.com；也可以使用泛域名，比如 *.example.com。</p>
+                <p className="comment">每行一个域名,比如 example.com,www.example.com;也可以使用泛域名,比如 *.example.com.</p>
               </td>
             </tr>
           )}
@@ -478,7 +478,7 @@ export function CertModal({ userId, domains, initialCerts, onClose, onApply }: C
         <div className="ui field">
           <input
             type="text"
-            placeholder="证书名称、域名..."
+            placeholder="证书名称,域名..."
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
           />
@@ -497,7 +497,7 @@ export function CertModal({ userId, domains, initialCerts, onClose, onApply }: C
         </div>
       </div>
       {query.isLoading ? <div className="ui active inline loader" /> : null}
-      {certs.length === 0 && !query.isLoading ? <p className="comment">暂时还没有证书。</p> : null}
+      {certs.length === 0 && !query.isLoading ? <p className="comment">暂时还没有证书.</p> : null}
       {certs.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>

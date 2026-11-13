@@ -11,7 +11,7 @@ Tea.context(function () {
 			width: "45em",
 			height: "26em",
 			callback: function () {
-				teaweb.success("保存成功，如果证书域名发生了改变，请重新执行生成新证书", function () {
+				teaweb.success("保存成功,如果证书域名发生了改变,请重新执行生成新证书", function () {
 					teaweb.reload()
 				})
 			}
@@ -20,7 +20,7 @@ Tea.context(function () {
 
 	this.deleteTask = function (taskId) {
 		let that = this
-		teaweb.confirm("确定要删除此任务吗？", function () {
+		teaweb.confirm("确定要删除此任务吗?", function () {
 			that.$post("/servers/certs/acme/deleteTask")
 				.params({
 					taskId: taskId
@@ -36,7 +36,7 @@ Tea.context(function () {
 	this.runTask = function (index, task) {
 		let that = this
 
-		teaweb.confirm("html:确定要立即执行此任务吗？<br/>将会重新发起证书申请。", function () {
+		teaweb.confirm("html:确定要立即执行此任务吗?<br/>将会重新发起证书申请.", function () {
 			that.isRunning = true
 			that.runningIndex = index
 
@@ -58,6 +58,6 @@ Tea.context(function () {
 	}
 
 	this.showError = function (err) {
-		teaweb.popupTip("任务执行失败：" + err)
+		teaweb.popupTip("任务执行失败:" + err)
 	}
 })

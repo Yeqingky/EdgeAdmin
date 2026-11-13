@@ -73,28 +73,28 @@ Vue.component("http-request-limit-config-box", {
 				<td>最大并发连接数</td>
 				<td>
 					<input type="text" maxlength="6" v-model="maxConns"/>
-					<p class="comment">当前网站最大并发连接数，超出此限制则响应用户<code-label>429</code-label>代码。为0表示不限制。</p>
+					<p class="comment">当前网站最大并发连接数,超出此限制则响应用户<code-label>429</code-label>代码.为0表示不限制.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>单IP最大并发连接数</td>
 				<td>
 					<input type="text" maxlength="6" v-model="maxConnsPerIP"/>
-					<p class="comment">单IP最大连接数，统计单个IP总连接数时不区分网站，超出此限制则响应用户<code-label>429</code-label>代码。为0表示不限制。<span v-if="maxConnsPerIP > 0 && maxConnsPerIP <= 3" class="red">当前设置的并发连接数过低，可能会影响正常用户访问，建议不小于3。</span></p>
+					<p class="comment">单IP最大连接数,统计单个IP总连接数时不区分网站,超出此限制则响应用户<code-label>429</code-label>代码.为0表示不限制.<span v-if="maxConnsPerIP > 0 && maxConnsPerIP <= 3" class="red">当前设置的并发连接数过低,可能会影响正常用户访问,建议不小于3.</span></p>
 				</td>
 			</tr>
 			<tr>
 				<td>单连接带宽限制</td>
 				<td>
 					<size-capacity-box :v-value="config.outBandwidthPerConn" :v-supported-units="['byte', 'kb', 'mb']"></size-capacity-box>
-					<p class="comment">客户端单个请求每秒可以读取的下行流量。</p>
+					<p class="comment">客户端单个请求每秒可以读取的下行流量.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>单请求最大尺寸</td>
 				<td>
 					<size-capacity-box :v-value="config.maxBodySize" :v-supported-units="['byte', 'kb', 'mb', 'gb']"></size-capacity-box>
-					<p class="comment">单个请求能发送的最大内容尺寸。</p>
+					<p class="comment">单个请求能发送的最大内容尺寸.</p>
 				</td>
 			</tr>
 		</tbody>

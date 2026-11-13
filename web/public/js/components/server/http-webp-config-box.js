@@ -60,7 +60,7 @@ Vue.component("http-webp-config-box", {
 						<input type="checkbox" value="1" v-model="config.isOn"/>
 						<label></label>
 					</div>
-					<p class="comment">选中后表示开启自动WebP压缩；图片的宽和高均不能超过16383像素<span v-if="vRequireCache">；只有满足缓存条件的图片内容才会被转换</span>。</p>
+					<p class="comment">选中后表示开启自动WebP压缩;图片的宽和高均不能超过16383像素<span v-if="vRequireCache">;只有满足缓存条件的图片内容才会被转换</span>.</p>
 				</td>
 			</tr>
 		</tbody>
@@ -70,28 +70,28 @@ Vue.component("http-webp-config-box", {
 				<td>支持的扩展名</td>
 				<td>
 					<values-box :values="config.extensions" @change="changeExtensions" placeholder="比如 .html"></values-box>
-					<p class="comment">含有这些扩展名的URL将会被转成WebP，不区分大小写。</p>
+					<p class="comment">含有这些扩展名的URL将会被转成WebP,不区分大小写.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>支持的MimeType</td>
 				<td>
 					<values-box :values="config.mimeTypes" @change="changeMimeTypes" placeholder="比如 text/*"></values-box>
-					<p class="comment">响应的Content-Type里包含这些MimeType的内容将会被转成WebP。</p>
+					<p class="comment">响应的Content-Type里包含这些MimeType的内容将会被转成WebP.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>内容最小长度</td>
 				<td>
 					<size-capacity-box :v-name="'minLength'" :v-value="config.minLength" :v-unit="'kb'"></size-capacity-box>
-					<p class="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+					<p class="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>内容最大长度</td>
 				<td>
 					<size-capacity-box :v-name="'maxLength'" :v-value="config.maxLength" :v-unit="'mb'"></size-capacity-box>
-					<p class="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+					<p class="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
 				</td>
 			</tr>
 			<tr>

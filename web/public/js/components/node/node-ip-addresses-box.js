@@ -1,4 +1,4 @@
-// 节点IP地址管理（标签形式）
+// 节点IP地址管理(标签形式)
 Vue.component("node-ip-addresses-box", {
 	props: ["v-ip-addresses", "role", "v-node-id"],
 	data: function () {
@@ -58,14 +58,14 @@ Vue.component("node-ip-addresses-box", {
 		<div>
 			<div v-for="(address, index) in ipAddresses" class="ui label tiny basic">
 				<span v-if="isIPv6(address.ip)" class="grey">[IPv6]</span> {{address.ip}}
-				<span class="small grey" v-if="address.name.length > 0">（备注：{{address.name}}<span v-if="!address.canAccess">，不公开访问</span>）</span>
-				<span class="small grey" v-if="address.name.length == 0 && !address.canAccess">（不公开访问）</span>
+				<span class="small grey" v-if="address.name.length > 0">(备注:{{address.name}}<span v-if="!address.canAccess">,不公开访问</span>)</span>
+				<span class="small grey" v-if="address.name.length == 0 && !address.canAccess">(不公开访问)</span>
 				<span class="small red" v-if="!address.isOn" title="未启用">[off]</span>
 				<span class="small red" v-if="!address.isUp" title="已下线">[down]</span>
 				<span class="small" v-if="address.thresholds != null && address.thresholds.length > 0">[{{address.thresholds.length}}个阈值]</span>
 				&nbsp;
 				 <span v-if="address.clusters != null && address.clusters.length > 0">
-					&nbsp; <span class="small grey">专属集群：[</span><span v-for="(cluster, index) in address.clusters" class="small grey">{{cluster.name}}<span v-if="index < address.clusters.length - 1">，</span></span><span class="small grey">]</span>
+					&nbsp; <span class="small grey">专属集群:[</span><span v-for="(cluster, index) in address.clusters" class="small grey">{{cluster.name}}<span v-if="index < address.clusters.length - 1">,</span></span><span class="small grey">]</span>
 					&nbsp;
 				</span>
 				

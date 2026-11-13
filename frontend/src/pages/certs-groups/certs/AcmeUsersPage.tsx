@@ -53,7 +53,7 @@ export function AcmeUsersPage() {
   const data = query.data
 
   async function deleteUser(user: AcmeUserRow) {
-    if (!(await confirm({ message: '确定要删除此用户吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此用户吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(user.id)
@@ -76,7 +76,7 @@ export function AcmeUsersPage() {
         <span className="item">这里管理用于申请免费证书的用户信息</span>
       </div>
 
-      {data.users.length === 0 ? <p className="comment">暂时还没有用户。</p> : null}
+      {data.users.length === 0 ? <p className="comment">暂时还没有用户.</p> : null}
 
       {data.users.length > 0 ? (
         <table className="ui table selectable">
@@ -249,7 +249,7 @@ export function AcmeUserCreateForm({
             <tr>
               <td>所属平台用户</td>
               <td>
-                {query.data.platformUser.fullname}（{query.data.platformUser.username}）
+                {query.data.platformUser.fullname}({query.data.platformUser.username})
               </td>
             </tr>
           ) : null}
@@ -257,7 +257,7 @@ export function AcmeUserCreateForm({
             <td className="title">用户邮箱 *</td>
             <td>
               <input type="text" maxLength={100} value={email} onChange={(event) => setEmail(event.target.value)} />
-              <p className="comment">用于自动注册用户的邮箱。</p>
+              <p className="comment">用于自动注册用户的邮箱.</p>
             </td>
           </tr>
           <tr>
@@ -283,7 +283,7 @@ export function AcmeUserCreateForm({
           {selectedProvider ? (
             <tr>
               <td>
-                所属服务商账号 {selectedProvider.requireEAB ? '*' : <em>（可选）</em>}
+                所属服务商账号 {selectedProvider.requireEAB ? '*' : <em>(可选)</em>}
               </td>
               <td>
                 <div className="ui fields inline">
@@ -399,7 +399,7 @@ export function AcmeUserUpdateForm({ userId, onDone }: { userId: number; onDone:
             <td className="title">用户邮箱 *</td>
             <td>
               {user.email}
-              <p className="comment">用于自动注册用户的邮箱，不允许修改。</p>
+              <p className="comment">用于自动注册用户的邮箱,不允许修改.</p>
             </td>
           </tr>
           {user.provider ? (

@@ -31,7 +31,7 @@ export function MessagesPage() {
   }
 
   async function readAll() {
-    if (!(await confirm({ message: '确定要设置所有的未读消息为已读吗？' }))) {
+    if (!(await confirm({ message: '确定要设置所有的未读消息为已读吗?' }))) {
       return
     }
     await apiPost('/messages/readAll')
@@ -39,7 +39,7 @@ export function MessagesPage() {
   }
 
   async function readPage() {
-    if (!(await confirm({ message: '确定要设置当前页的未读消息为已读吗？' }))) {
+    if (!(await confirm({ message: '确定要设置当前页的未读消息为已读吗?' }))) {
       return
     }
     await apiPost('/messages/readPage', { messageIds: query.data?.messages.map((message) => message.id) || [] })
@@ -60,7 +60,7 @@ export function MessagesPage() {
         </div>
       ) : null}
       <div className="margin" />
-      {query.data.messages.length === 0 ? <p className="comment">暂时还没有消息。</p> : null}
+      {query.data.messages.length === 0 ? <p className="comment">暂时还没有消息.</p> : null}
       {query.data.messages.map((message) => (
         <table className="ui table selectable" key={message.id}>
           <tbody>
@@ -70,13 +70,13 @@ export function MessagesPage() {
                 {message.cluster?.id ? (
                   <span>
                     {' | '}
-                    <a href={`/clusters/cluster?clusterId=${message.cluster.id}`}>集群：{message.cluster.name}</a>
+                    <a href={`/clusters/cluster?clusterId=${message.cluster.id}`}>集群:{message.cluster.name}</a>
                   </span>
                 ) : null}
                 {message.node?.id ? (
                   <span>
                     {' | '}
-                    <a href={`/clusters/cluster/node?clusterId=${message.cluster?.id}&nodeId=${message.node.id}`}>节点：{message.node.name}</a>
+                    <a href={`/clusters/cluster/node?clusterId=${message.cluster?.id}&nodeId=${message.node.id}`}>节点:{message.node.name}</a>
                   </span>
                 ) : null}
                 <a

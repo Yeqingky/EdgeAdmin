@@ -81,7 +81,7 @@ Vue.component("ddos-protection-ip-list-config-box", {
 	template: `<div>
 	<div v-if="list.length > 0">
 		<div class="ui label basic tiny" v-for="(ipConfig, index) in list">
-			{{ipConfig.ip}} <span class="grey small" v-if="ipConfig.description.length > 0">（{{ipConfig.description}}）</span> <a href="" @click.prevent="remove(index)" title="删除"><i class="icon remove"></i></a>
+			{{ipConfig.ip}} <span class="grey small" v-if="ipConfig.description.length > 0">({{ipConfig.description}})</span> <a href="" @click.prevent="remove(index)" title="删除"><i class="icon remove"></i></a>
 		</div>
 		<div class="ui divider"></div>
 	</div>
@@ -96,7 +96,7 @@ Vue.component("ddos-protection-ip-list-config-box", {
 			<div class="ui field">
 				<div class="ui input left labeled">
 					<span class="ui label">备注</span>
-					<input type="text" v-model="addingIP.description" maxlength="10" size="10" placeholder="备注（可选）" @keyup.enter="confirm" @keypress.enter.prevent="1"/>
+					<input type="text" v-model="addingIP.description" maxlength="10" size="10" placeholder="备注(可选)" @keyup.enter="confirm" @keypress.enter.prevent="1"/>
 				</div>
 			</div>
 			<div class="ui field">

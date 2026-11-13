@@ -75,7 +75,7 @@ export function WafListPage() {
   }
 
   async function deletePolicy(policy: WafPolicyListItem) {
-    if (!(await confirm({ message: '确定要删除此WAF策略吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此WAF策略吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(policy.id)
@@ -135,7 +135,7 @@ export function WafListPage() {
         </div>
       </form>
 
-      {policies.length === 0 ? <p className="comment">暂时还没有WAF策略。</p> : null}
+      {policies.length === 0 ? <p className="comment">暂时还没有WAF策略.</p> : null}
 
       {policies.length > 0 ? (
         <table className="ui table selectable celled">

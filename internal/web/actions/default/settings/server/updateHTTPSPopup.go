@@ -76,7 +76,7 @@ func (this *UpdateHTTPSPopupAction) RunPost(params struct {
 
 	serverConfig, err := adminserverutils.LoadServerConfig()
 	if err != nil {
-		this.Fail("保存失败：" + err.Error())
+		this.Fail("保存失败:" + err.Error())
 	}
 
 	serverConfig.Https.On = params.IsOn
@@ -102,7 +102,7 @@ func (this *UpdateHTTPSPopupAction) RunPost(params struct {
 		return
 	}
 	if params.IsOn && len(certIds) == 0 {
-		this.Fail("要启用HTTPS，需要先选择或上传一个可用的证书")
+		this.Fail("要启用HTTPS,需要先选择或上传一个可用的证书")
 	}
 
 	// 保存证书到本地
@@ -115,7 +115,7 @@ func (this *UpdateHTTPSPopupAction) RunPost(params struct {
 			return
 		}
 		if len(certResp.SslCertJSON) == 0 {
-			this.Fail("选择的证书已失效，请换一个")
+			this.Fail("选择的证书已失效,请换一个")
 		}
 
 		certConfig := &sslconfigs.SSLCertConfig{}
@@ -126,11 +126,11 @@ func (this *UpdateHTTPSPopupAction) RunPost(params struct {
 		}
 		err = os.WriteFile(Tea.ConfigFile("https.key.pem"), certConfig.KeyData, 0666)
 		if err != nil {
-			this.Fail("保存密钥失败：" + err.Error())
+			this.Fail("保存密钥失败:" + err.Error())
 		}
 		err = os.WriteFile(Tea.ConfigFile("https.cert.pem"), certConfig.CertData, 0666)
 		if err != nil {
-			this.Fail("保存证书失败：" + err.Error())
+			this.Fail("保存证书失败:" + err.Error())
 		}
 
 		serverConfig.Https.Key = "configs/https.key.pem"
@@ -139,7 +139,7 @@ func (this *UpdateHTTPSPopupAction) RunPost(params struct {
 
 	err = adminserverutils.WriteServerConfig(serverConfig)
 	if err != nil {
-		this.Fail("保存配置失败：" + err.Error())
+		this.Fail("保存配置失败:" + err.Error())
 	}
 
 	this.Success()

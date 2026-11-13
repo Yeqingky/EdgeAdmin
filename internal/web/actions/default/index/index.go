@@ -29,13 +29,13 @@ import (
 	stringutil "github.com/iwind/TeaGo/utils/string"
 )
 
-const regionDenyMessage = "当前软件系统暂时不为你所在的区域提供服务。"
+const regionDenyMessage = "当前软件系统暂时不为你所在的区域提供服务."
 
 type IndexAction struct {
 	actionutils.ParentAction
 }
 
-// 首页（登录页）
+// 首页(登录页)
 
 // TokenKey 加密用的密钥
 var TokenKey = stringutil.Rand(32)
@@ -70,7 +70,7 @@ func (this *IndexAction) RunGet(params struct {
 				newHost += ":" + types.String(httpsPort)
 			}
 
-			// 如果没有前端反向代理，则跳转
+			// 如果没有前端反向代理,则跳转
 			if len(this.Request.Header.Get("X-Forwarded-For")) == 0 && len(this.Request.Header.Get("X-Real-Ip")) == 0 {
 				this.RedirectURL("https://" + newHost + this.Request.RequestURI)
 				return
@@ -179,16 +179,16 @@ func (this *IndexAction) RunPost(params struct {
 	}
 	var timestampString = params.Token[32:]
 	if stringutil.Md5(TokenKey+timestampString) != params.Token[:32] {
-		this.FailField("refresh", "登录页面已过期，请刷新后重试")
+		this.FailField("refresh", "登录页面已过期,请刷新后重试")
 	}
 	var timestamp = types.Int64(timestampString)
 	if timestamp < time.Now().Unix()-1800 {
-		this.FailField("refresh", "登录页面已过期，请刷新后重试")
+		this.FailField("refresh", "登录页面已过期,请刷新后重试")
 	}
 
 	rpcClient, err := rpc.SharedRPC()
 	if err != nil {
-		this.Fail("服务器出了点小问题：" + err.Error())
+		this.Fail("服务器出了点小问题:" + err.Error())
 		return
 	}
 	resp, err := rpcClient.AdminRPC().LoginAdmin(rpcClient.Context(0), &pb.LoginAdminRequest{

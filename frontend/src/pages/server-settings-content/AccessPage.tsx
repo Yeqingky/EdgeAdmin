@@ -123,7 +123,7 @@ export function ServerAccessSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -140,14 +140,14 @@ export function ServerAccessSettingsPage() {
     setAuthConfig(next)
     try {
       await apiPost('/servers/server/settings/access', { webId, authJSON: JSON.stringify(next) })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     }
   }
 
   async function removePolicy(index: number) {
-    if (!(await confirm({ message: '确定要删除此鉴权方式吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此鉴权方式吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     await save({ ...authConfig, policyRefs: authConfig.policyRefs.filter((_, i) => i !== index) })
@@ -218,12 +218,12 @@ export function ServerAccessSettingsPage() {
                           <div>
                             {(params.exts || []).map((ext) => (
                               <span key={`ext-${ext}`} className="ui label tiny basic">
-                                扩展名：{ext}
+                                扩展名:{ext}
                               </span>
                             ))}
                             {(params.domains || []).map((domain) => (
                               <span key={`domain-${domain}`} className="ui label tiny basic">
-                                域名：{domain}
+                                域名:{domain}
                               </span>
                             ))}
                           </div>
@@ -259,7 +259,7 @@ export function ServerAccessSettingsPage() {
               </tbody>
             </table>
           ) : (
-            <p className="comment">暂时还没有鉴权方式。</p>
+            <p className="comment">暂时还没有鉴权方式.</p>
           )}
           <button className="ui button small" type="button" onClick={() => setEditor({ policy: null, type: 'basicAuth' })}>
             +添加鉴权方式
@@ -471,13 +471,13 @@ function PolicyEditor({
               </FormRow>
               {moreBasicAuthOptions ? (
                 <>
-                  <FormRow title="认证领域名（Realm）">
+                  <FormRow title="认证领域名(Realm)">
                     <TextInput type="text" maxLength={100} value={realm} onChange={(event) => setRealm(event.target.value)} />
                   </FormRow>
                   <FormRow title="字符集">
                     <TextInput type="text" style={{ width: '6em' }} maxLength={50} value={charset} onChange={(event) => setCharset(event.target.value)} />
                     <p className="comment">
-                      类似于<code>UTF-8</code>。
+                      类似于<code>UTF-8</code>.
                     </p>
                   </FormRow>
                 </>
@@ -489,7 +489,7 @@ function PolicyEditor({
             <>
               <FormRow title="子请求URL *">
                 <TextInput type="text" maxLength={1024} value={url} onChange={(event) => setUrl(event.target.value)} />
-                <p className="comment">可以是一个完整的URL，也可以是一个路径。</p>
+                <p className="comment">可以是一个完整的URL,也可以是一个路径.</p>
               </FormRow>
               <FormRow title="请求方法">
                 <label>
@@ -519,7 +519,7 @@ function PolicyEditor({
               <FormRow title="鉴权密钥 *">
                 <TextInput type="text" maxLength={40} autoComplete="off" value={secret} onChange={(event) => setSecret(event.target.value)} />
                 <p className="comment">
-                  只能包含字母、数字，长度不超过40。
+                  只能包含字母,数字,长度不超过40.
                   <a href="" onClick={(event) => { event.preventDefault(); void generateSecret() }}>
                     [随机生成]
                   </a>
@@ -540,7 +540,7 @@ function PolicyEditor({
                   <input type="text" maxLength={8} value={life} onChange={(event) => setLife(event.target.value)} />
                   <span className="ui label">秒</span>
                 </div>
-                <p className="comment">链接有效时间。</p>
+                <p className="comment">链接有效时间.</p>
               </FormRow>
             </>
           ) : null}
@@ -553,12 +553,12 @@ function PolicyEditor({
               <FormRow title="限定文件扩展名">
                 <StringListEditor values={exts} onChange={setExts} placeholder="比如 .png" />
                 <p className="comment">
-                  如果不为空，则表示只有这些扩展名的文件才需要鉴权；扩展名需要包含点符号（.），比如<code>.png</code>
+                  如果不为空,则表示只有这些扩展名的文件才需要鉴权;扩展名需要包含点符号(.),比如<code>.png</code>
                 </p>
               </FormRow>
               <FormRow title="限定域名">
                 <StringListEditor values={domains} onChange={setDomains} placeholder="比如 example.com" />
-                <p className="comment">如果不为空，则表示只有这些域名的文件才需要鉴权。</p>
+                <p className="comment">如果不为空,则表示只有这些域名的文件才需要鉴权.</p>
               </FormRow>
               {policy ? (
                 <FormRow title="启用当前鉴权">

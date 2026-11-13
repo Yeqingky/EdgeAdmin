@@ -92,7 +92,7 @@ export function RecoverPage() {
 
       {step === 'intro' ? (
         <div>
-          可以通过恢复模式重新设置系统的API节点。
+          可以通过恢复模式重新设置系统的API节点.
           <button className="ui button primary" style={{ marginTop: '10em' }} type="button" onClick={() => setStep('newAPI')}>
             开始
           </button>
@@ -101,7 +101,7 @@ export function RecoverPage() {
 
       {step === 'newAPI' ? (
         <div>
-          <p className="comment">输入一个可用的API节点信息：</p>
+          <p className="comment">输入一个可用的API节点信息:</p>
           <form className="ui form" onSubmit={validateAPI}>
             <table className="ui table definition selectable">
               <tbody>
@@ -112,21 +112,21 @@ export function RecoverPage() {
                       <option value="http">HTTP</option>
                       <option value="https">HTTPS</option>
                     </select>
-                    <p className="comment">API节点使用的协议。</p>
+                    <p className="comment">API节点使用的协议.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>主机地址 *</td>
                   <td>
                     <input type="text" maxLength={100} style={{ width: '20em' }} value={host} onChange={(event) => setHost(event.target.value)} />
-                    <p className="comment">API节点所在主机地址。</p>
+                    <p className="comment">API节点所在主机地址.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>服务端口 *</td>
                   <td>
                     <input type="text" style={{ width: '6em' }} maxLength={5} value={port} onChange={(event) => setPort(event.target.value)} />
-                    <p className="comment">API节点启动的端口。</p>
+                    <p className="comment">API节点启动的端口.</p>
                   </td>
                 </tr>
                 <tr>
@@ -134,7 +134,7 @@ export function RecoverPage() {
                   <td>
                     <input type="text" maxLength={100} value={nodeId} onChange={(event) => setNodeId(event.target.value)} />
                     <p className="comment">
-                      在节点的配置文件中<span className="ui label basic small">configs/api.yaml</span>中获取，不需要带双引号。
+                      在节点的配置文件中<span className="ui label basic small">configs/api.yaml</span>中获取,不需要带双引号.
                     </p>
                   </td>
                 </tr>
@@ -143,7 +143,7 @@ export function RecoverPage() {
                   <td>
                     <input type="password" maxLength={100} value={nodeSecret} onChange={(event) => setNodeSecret(event.target.value)} />
                     <p className="comment">
-                      在节点的配置文件中<span className="ui label basic small">configs/api.yaml</span>中获取，不需要带双引号。
+                      在节点的配置文件中<span className="ui label basic small">configs/api.yaml</span>中获取,不需要带双引号.
                     </p>
                   </td>
                 </tr>
@@ -173,7 +173,7 @@ export function RecoverPage() {
               <thead>
                 <tr>
                   <th style={{ width: '50%' }}>原地址</th>
-                  <th>新地址（留空表示不修改）</th>
+                  <th>新地址(留空表示不修改)</th>
                 </tr>
               </thead>
               <tbody>
@@ -207,7 +207,7 @@ export function RecoverPage() {
 
       {step === 'finish' ? (
         <div>
-          修改成功，请<a href="/dashboard">刷新</a>此页面后，进入系统。
+          修改成功,请<a href="/dashboard">刷新</a>此页面后,进入系统.
         </div>
       ) : null}
     </div>

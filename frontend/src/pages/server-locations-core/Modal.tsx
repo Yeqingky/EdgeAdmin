@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { X } from 'lucide-react'
 
-// 页面内弹窗（替代 legacy teaweb.popup）
+// 页面内弹窗(替代 legacy teaweb.popup)
 export function Modal({ title, children, footer, onClose, width }: {
   title: ReactNode
   children: ReactNode

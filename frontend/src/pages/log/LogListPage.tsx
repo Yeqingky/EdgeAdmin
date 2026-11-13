@@ -58,7 +58,7 @@ export function LogListPage() {
   }
 
   async function remove(log: LogItem) {
-    if (!(await confirm({ message: '确定要删除此日志吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此日志吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     await apiPost('/log/delete', { logId: log.id })
@@ -104,7 +104,7 @@ export function LogListPage() {
         </div>
       </form>
 
-      {query.data.logs.length === 0 ? <p className="comment">暂时还没有日志。</p> : null}
+      {query.data.logs.length === 0 ? <p className="comment">暂时还没有日志.</p> : null}
       {query.data.logs.map((log) => (
         <table className={`ui table selectable${log.level === 'error' ? ' red' : ''}`} key={log.id}>
           <tbody>

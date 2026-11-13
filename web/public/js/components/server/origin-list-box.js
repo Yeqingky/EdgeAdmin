@@ -42,7 +42,7 @@ Vue.component("origin-list-box", {
 		},
 		deleteOrigin: function (originId, originAddr, originType) {
 			let that = this
-			teaweb.confirm("确定要删除此源站（" + originAddr + "）吗？", function () {
+			teaweb.confirm("确定要删除此源站(" + originAddr + ")吗?", function () {
 				Tea.action("/servers/server/settings/origins/delete?" + that.vParams + "&originId=" + originId + "&originType=" + originType)
 					.post()
 					.success(function () {
@@ -56,10 +56,10 @@ Vue.component("origin-list-box", {
 			let message
 			let resultMessage
 			if (isOn) {
-				message = "确定要启用此源站（" + originAddr + "）吗？"
+				message = "确定要启用此源站(" + originAddr + ")吗?"
 				resultMessage = "启用成功"
 			} else {
-				message = "确定要停用此源站（" + originAddr + "）吗？"
+				message = "确定要停用此源站(" + originAddr + ")吗?"
 				resultMessage = "停用成功"
 			}
 			let that = this
@@ -76,11 +76,11 @@ Vue.component("origin-list-box", {
 	},
 	template: `<div>
 	<h3>主要源站 <a href="" @click.prevent="createPrimaryOrigin()">[添加主要源站]</a> </h3>
-	<p class="comment" v-if="primaryOrigins.length == 0">暂时还没有主要源站。</p>
+	<p class="comment" v-if="primaryOrigins.length == 0">暂时还没有主要源站.</p>
 	<origin-list-table v-if="primaryOrigins.length > 0" :v-origins="vPrimaryOrigins" :v-origin-type="'primary'" @delete-origin="deleteOrigin" @update-origin="updateOrigin" @update-origin-is-on="updateOriginIsOn"></origin-list-table>
 
 	<h3>备用源站 <a href="" @click.prevent="createBackupOrigin()">[添加备用源站]</a></h3>
-	<p class="comment" v-if="backupOrigins.length == 0">暂时还没有备用源站。</p>
+	<p class="comment" v-if="backupOrigins.length == 0">暂时还没有备用源站.</p>
 	<origin-list-table v-if="backupOrigins.length > 0" :v-origins="backupOrigins" :v-origin-type="'backup'" @delete-origin="deleteOrigin" @update-origin="updateOrigin" @update-origin-is-on="updateOriginIsOn"></origin-list-table>
 </div>`
 })

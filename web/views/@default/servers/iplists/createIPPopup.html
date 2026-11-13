@@ -15,8 +15,8 @@
                     <option value="ip">单IP或IP段</option>
                     <option value="all">所有IP</option>
                 </select>
-                <p class="comment" v-if="type == 'ip'">单个IP或一个IP范围。</p>
-                <p class="comment" v-if="type == 'all'">允许或禁用所有的IP。</p>
+                <p class="comment" v-if="type == 'ip'">单个IP或一个IP范围.</p>
+                <p class="comment" v-if="type == 'all'">允许或禁用所有的IP.</p>
             </td>
         </tr>
 
@@ -34,7 +34,7 @@
                 <td>IP或IP段 *</td>
                 <td>
                     <input type="text" name="value" maxlength="64" placeholder="x.x.x.x" ref="focus" style="width: 20em"/>
-                    <p class="comment">支持IPv4和IPv6；支持三种格式：单个IP（比如192.168.1.100）、IP范围（比如192.168.1.1-192.168.1.255）、CIDR（比如192.168.1.1/24）。</p>
+                    <p class="comment">支持IPv4和IPv6;支持三种格式:单个IP(比如192.168.1.100),IP范围(比如192.168.1.1-192.168.1.255),CIDR(比如192.168.1.1/24).</p>
                 </td>
             </tr>
         </tbody>
@@ -45,7 +45,7 @@
                 <td>IP列表</td>
                 <td>
                     <textarea name="ipData" style="width: 20em" :placeholder="'x.x.x.x' + '\n' + 'x.x.x.x/24' + '\n' + 'x.x.x.x-y.y.y.y'" rows="3"></textarea>
-                    <p class="comment">每行一个IP，支持三种格式：<code-label :class="'grey'">192.168.1.100</code-label>、<code-label :class="'grey'">192.168.1.1-192.168.1.255</code-label>、<code-label :class="'grey'">192.168.1.1/24</code-label>。</p>
+                    <p class="comment">每行一个IP,支持三种格式:<code-label :class="'grey'">192.168.1.100</code-label>,<code-label :class="'grey'">192.168.1.1-192.168.1.255</code-label>,<code-label :class="'grey'">192.168.1.1/24</code-label>.</p>
                 </td>
             </tr>
         </tbody>
@@ -54,7 +54,7 @@
             <td>过期时间</td>
             <td>
                 <datetime-input :v-name="'expiredAt'"></datetime-input>
-                <p class="comment">在加入名单某一段时间后会失效，留空表示永久有效。</p>
+                <p class="comment">在加入名单某一段时间后会失效,留空表示永久有效.</p>
             </td>
         </tr>
 

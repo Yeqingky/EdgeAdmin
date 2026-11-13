@@ -54,7 +54,7 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
             <td className="color-border">缓存类型</td>
             <td>
               {data.typeName}
-              <span className="small">（{policy.type}）</span>
+              <span className="small">({policy.type})</span>
             </td>
           </tr>
 
@@ -64,14 +64,14 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
                 <td className="color-border">缓存目录</td>
                 <td>
                   {options.dir || ''}
-                  <p className="comment">存放文件缓存的目录，通常填写绝对路径。</p>
+                  <p className="comment">存放文件缓存的目录,通常填写绝对路径.</p>
                 </td>
               </tr>
               <tr>
                 <td className="color-border">缓存硬盘最大用量</td>
                 <td>
                   {capacityText(policy.capacity) ? capacityText(policy.capacity) : <span className="disabled">不限</span>}
-                  <p className="comment">单个节点上缓存所在硬盘的最大用量，如果为0表示没有限制。</p>
+                  <p className="comment">单个节点上缓存所在硬盘的最大用量,如果为0表示没有限制.</p>
                 </td>
               </tr>
               {memoryCapacity && memoryCapacity.count > 0 ? (
@@ -80,7 +80,7 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
                   <td>
                     {capacityText(memoryCapacity)}
                     <p className="comment">
-                      作为一级缓存的内存最大容量，可以作为硬盘缓冲区和存储热点缓存内容，如果为0表示不使用内存作为一级缓存。
+                      作为一级缓存的内存最大容量,可以作为硬盘缓冲区和存储热点缓存内容,如果为0表示不使用内存作为一级缓存.
                     </p>
                   </td>
                 </tr>
@@ -89,7 +89,7 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
                   <td className="color-border">内存最大容量</td>
                   <td>
                     <a href={`/servers/components/cache/update?cachePolicyId=${cachePolicyId}`}>
-                      <span className="red">请设置一个内存容量作为缓冲区，以提升缓存写入性能。</span>
+                      <span className="red">请设置一个内存容量作为缓冲区,以提升缓存写入性能.</span>
                     </a>
                   </td>
                 </tr>
@@ -128,7 +128,7 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
               <td>缓存最大容量</td>
               <td>
                 {capacityText(policy.capacity) ? capacityText(policy.capacity) : <span className="disabled">不限</span>}
-                <p className="comment">允许缓存的最大容量，如果为0表示没有限制。</p>
+                <p className="comment">允许缓存的最大容量,如果为0表示没有限制.</p>
               </td>
             </tr>
           )}
@@ -155,7 +155,7 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
             <td>最大内容长度</td>
             <td>
               {capacityText(policy.maxSize) ? capacityText(policy.maxSize) : <span className="disabled">不限</span>}
-              <p className="comment">允许缓存的单个内容最大尺寸，如果为0表示没有限制。</p>
+              <p className="comment">允许缓存的单个内容最大尺寸,如果为0表示没有限制.</p>
             </td>
           </tr>
           <tr>
@@ -174,14 +174,14 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
           <tr>
             <td>描述</td>
             <td>
-              {policy.description ? policy.description : <span className="disabled">暂时还没有描述。</span>}
+              {policy.description ? policy.description : <span className="disabled">暂时还没有描述.</span>}
             </td>
           </tr>
         </tbody>
       </table>
 
       <h4>默认缓存条件</h4>
-      {refs.length === 0 ? <p className="comment">暂时还没有缓存条件。</p> : null}
+      {refs.length === 0 ? <p className="comment">暂时还没有缓存条件.</p> : null}
       {refs.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>
@@ -217,7 +217,7 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
       ) : null}
 
       <h4>使用此策略的集群</h4>
-      {data.clusters.length === 0 ? <p className="comment">暂时还没有集群使用此策略。</p> : null}
+      {data.clusters.length === 0 ? <p className="comment">暂时还没有集群使用此策略.</p> : null}
       {data.clusters.length > 0 ? (
         <table className="ui table selectable">
           <tbody>

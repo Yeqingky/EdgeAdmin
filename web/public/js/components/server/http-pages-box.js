@@ -33,7 +33,7 @@ Vue.component("http-pages-box", {
 		},
 		removePage: function (pageIndex) {
 			let that = this
-			teaweb.confirm("确定要移除此页面吗？", function () {
+			teaweb.confirm("确定要移除此页面吗?", function () {
 				that.pages.$remove(pageIndex)
 				that.notifyChange()
 			})

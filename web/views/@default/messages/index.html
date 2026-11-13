@@ -6,7 +6,7 @@
 </first-menu>
 <div class="margin"></div>
 
-<p class="comment" v-if="messages.length == 0">暂时还没有消息。</p>
+<p class="comment" v-if="messages.length == 0">暂时还没有消息.</p>
 
 <message-row v-for="message in messages" :v-message="message" :key="message.id" :v-can-close="messages.length == 1"></message-row>
 

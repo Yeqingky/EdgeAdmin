@@ -38,9 +38,9 @@
         <div class="ui divider" style="margin-top:0"></div>
     </div>
 
-	<p class="comment" v-if="tasks.length == 0"><span v-if="searchingUserId > 0">当前用户下</span>暂时还没有证书申请任务。</p>
+	<p class="comment" v-if="tasks.length == 0"><span v-if="searchingUserId > 0">当前用户下</span>暂时还没有证书申请任务.</p>
 
-	<div class="ui message blue" v-if="isRunning">有任务在执行中，可能需要的时间较长，请耐心等待。</div>
+	<div class="ui message blue" v-if="isRunning">有任务在执行中,可能需要的时间较长,请耐心等待.</div>
 
 	<table class="ui table selectable celled" v-if="tasks.length > 0">
 		<thead>
@@ -78,7 +78,7 @@
 			<td nowrap="">
 				<div v-if="task.log != null">
 					<span class="green" v-if="task.log.isOk">{{task.log.createdTime}}</span>
-					<link-red v-if="!task.log.isOk" title="任务执行失败，点击查看详情" @click.prevent="showError(task.log.error)">{{task.log.createdTime}}</link-red>
+					<link-red v-if="!task.log.isOk" title="任务执行失败,点击查看详情" @click.prevent="showError(task.log.error)">{{task.log.createdTime}}</link-red>
 				</div>
 				<span v-else class="disabled">尚未执行</span>
 			</td>

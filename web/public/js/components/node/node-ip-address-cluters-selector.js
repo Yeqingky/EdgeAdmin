@@ -41,7 +41,7 @@ Vue.component("node-ip-address-clusters-selector", {
   <span v-if="!hasCheckedCluster">默认用于所有集群 &nbsp; <a href="" @click.prevent="showClusters">修改 <i class="icon angle" :class="{down: !clustersVisible, up:clustersVisible}"></i></a></span>
 	<div v-if="hasCheckedCluster">
 		<span v-for="cluster in clusters" class="ui label basic small" v-if="cluster.isChecked">{{cluster.name}}</span> &nbsp; <a href="" @click.prevent="showClusters">修改 <i class="icon angle" :class="{down: !clustersVisible, up:clustersVisible}"></i></a>
-		<p class="comment">当前IP仅在所选集群中有效。</p>
+		<p class="comment">当前IP仅在所选集群中有效.</p>
 	</div>
 	<div v-show="clustersVisible">
 		<div class="ui divider"></div>

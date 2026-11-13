@@ -26,16 +26,16 @@ const REMOTE_ADDR_OPTIONS: Array<{ type: string; name: string; description: stri
   {
     type: 'default',
     name: '直接获取',
-    description: '用户直接访问边缘节点，即 "用户 --> 边缘节点" 模式，这时候系统会试图从直接的连接中读取到客户端IP地址。',
+    description: '用户直接访问边缘节点,即 "用户 --> 边缘节点" 模式,这时候系统会试图从直接的连接中读取到客户端IP地址.',
   },
   {
     type: 'proxy',
     name: '从上级代理中获取',
     description:
-      '用户和边缘节点之间有别的代理服务转发，即 "用户 --> [第三方代理服务] --> 边缘节点"，这时候只能从上级代理中获取传递的IP地址；上级代理传递的请求报头中必须包含 X-Forwarded-For 或 X-Real-IP 信息。',
+      '用户和边缘节点之间有别的代理服务转发,即 "用户 --> [第三方代理服务] --> 边缘节点",这时候只能从上级代理中获取传递的IP地址;上级代理传递的请求报头中必须包含 X-Forwarded-For 或 X-Real-IP 信息.',
   },
-  { type: 'requestHeader', name: '从请求报头中读取', description: '从自定义请求报头读取客户端IP。' },
-  { type: 'variable', name: '自定义变量', description: '通过自定义变量来获取客户端真实的IP地址。' },
+  { type: 'requestHeader', name: '从请求报头中读取', description: '从自定义请求报头读取客户端IP.' },
+  { type: 'variable', name: '自定义变量', description: '通过自定义变量来获取客户端真实的IP地址.' },
 ]
 
 const DEFAULT_VALUE = '${rawRemoteAddr}'
@@ -136,7 +136,7 @@ export function RemoteAddrPage() {
             <tbody>
               <FormRow title="启用访客IP设置">
                 <Checkbox checked={config.isOn} onChange={(isOn) => setConfig({ ...config, isOn })} />
-                <p className="comment">选中后，表示使用自定义的请求变量获取客户端IP。</p>
+                <p className="comment">选中后,表示使用自定义的请求变量获取客户端IP.</p>
               </FormRow>
             </tbody>
           ) : null}
@@ -167,8 +167,8 @@ export function RemoteAddrPage() {
                     }
                   />
                   <p className="comment">
-                    请输入包含有客户端IP的请求报头，需要注意大小写，常见的有<code>X-Forwarded-For</code>、<code>X-Real-IP</code>、
-                    <code>X-Client-IP</code>等。
+                    请输入包含有客户端IP的请求报头,需要注意大小写,常见的有<code>X-Forwarded-For</code>,<code>X-Real-IP</code>,
+                    <code>X-Client-IP</code>等.
                   </p>
                 </FormRow>
               ) : null}
@@ -176,7 +176,7 @@ export function RemoteAddrPage() {
                 <FormRow title="读取IP变量值 *">
                   <input type="text" maxLength={100} value={config.value} onChange={(event) => setConfig({ ...config, value: event.target.value })} />
                   <p className="comment">
-                    通过此变量获取用户的IP地址。比如通过报头传递IP的情形，可以使用<code>{'${header.你的自定义报头}'}</code>。
+                    通过此变量获取用户的IP地址.比如通过报头传递IP的情形,可以使用<code>{'${header.你的自定义报头}'}</code>.
                   </p>
                 </FormRow>
               ) : null}

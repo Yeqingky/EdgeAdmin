@@ -53,42 +53,42 @@ Vue.component("email-sender", {
 				<td>SMTP地址 *</td>
 				<td>
 					<input type="text" :name="name + 'SmtpHost'" v-model="config.smtpHost"/>
-					<p class="comment">SMTP主机地址，比如<code-label>smtp.qq.com</code-label>，目前仅支持TLS协议，如不清楚，请查询对应邮件服务商文档。</p>
+					<p class="comment">SMTP主机地址,比如<code-label>smtp.qq.com</code-label>,目前仅支持TLS协议,如不清楚,请查询对应邮件服务商文档.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>SMTP端口 *</td>
 				<td>
 					<input type="text" :name="name + 'SmtpPort'" v-model="smtpPortString" style="width: 5em" maxlength="5"/>
-					<p class="comment">SMTP主机端口，比如<code-label>587</code-label>、<code-label>465</code-label>，如不清楚，请查询对应邮件服务商文档。</p>
+					<p class="comment">SMTP主机端口,比如<code-label>587</code-label>,<code-label>465</code-label>,如不清楚,请查询对应邮件服务商文档.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>用户名 *</td>
 				<td>
 					<input type="text" :name="name + 'Username'" v-model="config.username"/>
-					<p class="comment">通常为发件人邮箱地址。</p>
+					<p class="comment">通常为发件人邮箱地址.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>密码 *</td>
 				<td>
 					<input type="password" :name="name + 'Password'" v-model="config.password"/>
-					<p class="comment">邮箱登录密码或授权码，如不清楚，请查询对应邮件服务商文档。。</p>
+					<p class="comment">邮箱登录密码或授权码,如不清楚,请查询对应邮件服务商文档..</p>
 				</td>
 			</tr>
 			<tr>
 				<td>发件人Email *</td>
 				<td>
 					<input type="text" :name="name + 'FromEmail'" v-model="config.fromEmail" maxlength="128"/>
-					<p class="comment">使用的发件人邮箱地址，通常和发件用户名一致。</p>
+					<p class="comment">使用的发件人邮箱地址,通常和发件用户名一致.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>发件人名称</td>
 				<td>
 					<input type="text" :name="name + 'FromName'" v-model="config.fromName" maxlength="30"/>
-					<p class="comment">使用的发件人名称，默认使用系统设置的<a href="/settings/ui" target="_blank">产品名称</a>。</p>
+					<p class="comment">使用的发件人名称,默认使用系统设置的<a href="/settings/ui" target="_blank">产品名称</a>.</p>
 				</td>
 			</tr>
 			<tr>

@@ -131,7 +131,7 @@ export function WebRootPage() {
                   value={current.dir}
                   onChange={(event) => update('dir', event.target.value)}
                 />
-                <Comment>可以访问此根目录下的静态资源。</Comment>
+                <Comment>可以访问此根目录下的静态资源.</Comment>
               </FormRow>
             ) : null}
             {current.isOn ? (
@@ -154,15 +154,15 @@ export function WebRootPage() {
             <tbody>
               <FormRow title="首页文件">
                 <ValuesEditor values={current.indexes} onChange={(values) => update('indexes', values)} placeholder="比如 index.html" />
-                <Comment>在URL中只有目录没有文件名时默认查找的首页文件。</Comment>
+                <Comment>在URL中只有目录没有文件名时默认查找的首页文件.</Comment>
               </FormRow>
               <FormRow title="例外URL">
                 <URLPatternsEditor patterns={current.exceptURLPatterns} onChange={(values) => update('exceptURLPatterns', values)} />
-                <Comment>如果填写了例外URL，表示不支持通过这些URL访问。</Comment>
+                <Comment>如果填写了例外URL,表示不支持通过这些URL访问.</Comment>
               </FormRow>
               <FormRow title="限制URL">
                 <URLPatternsEditor patterns={current.onlyURLPatterns} onChange={(values) => update('onlyURLPatterns', values)} />
-                <Comment>如果填写了限制URL，表示仅支持通过这些URL访问。</Comment>
+                <Comment>如果填写了限制URL,表示仅支持通过这些URL访问.</Comment>
               </FormRow>
               <FormRow title="排除隐藏文件">
                 <div className="ui checkbox">
@@ -173,7 +173,7 @@ export function WebRootPage() {
                   />
                   <label></label>
                 </div>
-                <Comment>排除以点（.）符号开头的隐藏目录或文件，比如 /.git/logs/HEAD。</Comment>
+                <Comment>排除以点(.)符号开头的隐藏目录或文件,比如 /.git/logs/HEAD.</Comment>
               </FormRow>
               <FormRow title="去除URL前缀">
                 <TextInput
@@ -182,21 +182,21 @@ export function WebRootPage() {
                   value={current.stripPrefix}
                   onChange={(event) => update('stripPrefix', event.target.value)}
                 />
-                <Comment>可以把请求的路径部分前缀去除后再查找文件。</Comment>
+                <Comment>可以把请求的路径部分前缀去除后再查找文件.</Comment>
               </FormRow>
               <FormRow title="路径解码">
                 <div className="ui checkbox">
                   <input type="checkbox" checked={current.decodePath} onChange={(event) => update('decodePath', event.target.checked)} />
                   <label></label>
                 </div>
-                <Comment>是否对请求路径进行URL解码后再查找文件。</Comment>
+                <Comment>是否对请求路径进行URL解码后再查找文件.</Comment>
               </FormRow>
               <FormRow title="终止请求">
                 <div className="ui checkbox">
                   <input type="checkbox" checked={current.isBreak} onChange={(event) => update('isBreak', event.target.checked)} />
                   <label></label>
                 </div>
-                <Comment>在找不到要访问的文件的情况下是否终止请求并返回404。</Comment>
+                <Comment>在找不到要访问的文件的情况下是否终止请求并返回404.</Comment>
               </FormRow>
             </tbody>
           ) : null}
@@ -344,8 +344,8 @@ export function WebpPage() {
                 <label></label>
               </div>
               <Comment>
-                选中后表示开启自动WebP压缩；图片的宽和高均不能超过16383像素
-                {data.requireCache ? '；只有满足缓存条件的图片内容才会被转换' : ''}。
+                选中后表示开启自动WebP压缩;图片的宽和高均不能超过16383像素
+                {data.requireCache ? ';只有满足缓存条件的图片内容才会被转换' : ''}.
               </Comment>
             </FormRow>
             {current.isOn ? (
@@ -377,7 +377,7 @@ export function WebpPage() {
                   }
                   placeholder="比如 .html"
                 />
-                <Comment>含有这些扩展名的URL将会被转成WebP，不区分大小写。</Comment>
+                <Comment>含有这些扩展名的URL将会被转成WebP,不区分大小写.</Comment>
               </FormRow>
               <FormRow title="支持的MimeType">
                 <ValuesEditor
@@ -385,15 +385,15 @@ export function WebpPage() {
                   onChange={(values) => update('mimeTypes', values)}
                   placeholder="比如 text/*"
                 />
-                <Comment>响应的Content-Type里包含这些MimeType的内容将会被转成WebP。</Comment>
+                <Comment>响应的Content-Type里包含这些MimeType的内容将会被转成WebP.</Comment>
               </FormRow>
               <FormRow title="内容最小长度">
                 <SizeCapacityEditor value={current.minLength} onChange={(value) => update('minLength', value)} />
-                <Comment>0表示不限制，内容长度从文件尺寸或Content-Length中获取。</Comment>
+                <Comment>0表示不限制,内容长度从文件尺寸或Content-Length中获取.</Comment>
               </FormRow>
               <FormRow title="内容最大长度">
                 <SizeCapacityEditor value={current.maxLength} onChange={(value) => update('maxLength', value)} />
-                <Comment>0表示不限制，内容长度从文件尺寸或Content-Length中获取。</Comment>
+                <Comment>0表示不限制,内容长度从文件尺寸或Content-Length中获取.</Comment>
               </FormRow>
               <FormRow title="匹配条件">
                 <CondsEditor value={current.conds || { isOn: true, connector: 'or', groups: [] }} onChange={(conds) => update('conds', conds)} />
@@ -514,7 +514,7 @@ export function WebsocketPage() {
             </FormRow>
             {isOn ? (
               <>
-                <FormRow title="允许所有来源域（Origin）">
+                <FormRow title="允许所有来源域(Origin)">
                   <div className="ui checkbox">
                     <input
                       type="checkbox"
@@ -523,16 +523,16 @@ export function WebsocketPage() {
                     />
                     <label></label>
                   </div>
-                  <Comment>选中表示允许所有的来源域。</Comment>
+                  <Comment>选中表示允许所有的来源域.</Comment>
                 </FormRow>
                 {!current.allowAllOrigins ? (
-                  <FormRow title="允许的来源域列表（Origin）">
+                  <FormRow title="允许的来源域列表(Origin)">
                     <ValuesEditor
                       values={current.allowedOrigins}
                       onChange={(values) => updateConfig('allowedOrigins', values)}
                       placeholder="比如 *.example.com"
                     />
-                    <Comment>只允许在列表中的来源域名访问Websocket服务。</Comment>
+                    <Comment>只允许在列表中的来源域名访问Websocket服务.</Comment>
                   </FormRow>
                 ) : null}
                 <tr>
@@ -562,7 +562,7 @@ export function WebsocketPage() {
                   />
                   <label></label>
                 </div>
-                <Comment>选中后，表示把接收到的请求中的 Origin 字段传递到源站。</Comment>
+                <Comment>选中后,表示把接收到的请求中的 Origin 字段传递到源站.</Comment>
               </FormRow>
               {!current.requestSameOrigin ? (
                 <FormRow title="指定传递的来源域">
@@ -572,7 +572,7 @@ export function WebsocketPage() {
                     value={current.requestOrigin}
                     onChange={(event) => updateConfig('requestOrigin', event.target.value)}
                   />
-                  <Comment>指定向源站传递的 Origin 字段值。</Comment>
+                  <Comment>指定向源站传递的 Origin 字段值.</Comment>
                 </FormRow>
               ) : null}
               <FormRow title="握手超时时间">
@@ -593,7 +593,7 @@ export function WebsocketPage() {
                   </div>
                   <div className="ui field">秒</div>
                 </div>
-                <Comment>0表示使用默认的时间设置。</Comment>
+                <Comment>0表示使用默认的时间设置.</Comment>
               </FormRow>
             </tbody>
           ) : null}
@@ -649,7 +649,7 @@ export function WebsocketCreateOriginRoute() {
                 value={origin}
                 onChange={(event) => setOrigin(event.target.value)}
               />
-              <Comment>允许客户端通过Websocket可以访问的域名，可以使用星号通配符（*）来表示匹配一组域名。</Comment>
+              <Comment>允许客户端通过Websocket可以访问的域名,可以使用星号通配符(*)来表示匹配一组域名.</Comment>
             </FormRow>
           </tbody>
         </FormTable>

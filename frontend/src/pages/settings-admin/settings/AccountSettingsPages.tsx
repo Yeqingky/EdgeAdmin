@@ -58,15 +58,15 @@ export function LoginSettingsPage() {
         <FormTable>
           <FormRow title="登录用户名 *">
             <TextInput type="text" value={username} maxLength={50} onChange={(event) => setUsername(event.target.value)} />
-            <p className="comment">只能含有英文、数字或下划线。</p>
+            <p className="comment">只能含有英文,数字或下划线.</p>
           </FormRow>
           <FormRow title="登录密码">
             <TextInput type="password" value={password} maxLength={50} onChange={(event) => setPassword(event.target.value)} />
-            <p className="comment">不填表示保留原有密码。</p>
+            <p className="comment">不填表示保留原有密码.</p>
           </FormRow>
           <FormRow title="确认密码">
             <TextInput type="password" value={password2} maxLength={50} onChange={(event) => setPassword2(event.target.value)} />
-            <p className="comment">不填表示保留原有密码。</p>
+            <p className="comment">不填表示保留原有密码.</p>
           </FormRow>
         </FormTable>
         <SubmitButton submitting={submitting} />

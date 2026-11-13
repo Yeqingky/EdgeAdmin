@@ -36,7 +36,7 @@ func (this *UpdateAddrPopupAction) RunPost(params struct {
 	if regexp.MustCompile(`^(?i)(http|https)://`).MatchString(params.Addr) {
 		u, err := url.Parse(params.Addr)
 		if err != nil {
-			this.FailField("addr", "错误的访问地址，不需要添加http://或https://")
+			this.FailField("addr", "错误的访问地址,不需要添加http://或https://")
 		}
 		params.Addr = u.Host
 	}

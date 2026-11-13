@@ -184,7 +184,7 @@ export function UnixPage() {
   const serverId = useSearchInt('serverId')
   return (
     <ServerSettingsShell serverId={serverId} family="unix" activePath="/unix">
-      <p className="ui message">此功能暂未开放，敬请期待。</p>
+      <p className="ui message">此功能暂未开放,敬请期待.</p>
     </ServerSettingsShell>
   )
 }
@@ -305,7 +305,7 @@ export function UserAgentPage() {
                 <input type="checkbox" checked={current.isOn} onChange={(event) => update('isOn', event.target.checked)} />
                 <label></label>
               </div>
-              <Comment>选中后表示开启UserAgent名单。</Comment>
+              <Comment>选中后表示开启UserAgent名单.</Comment>
             </FormRow>
             {current.isOn ? (
               <FormRow title="UA名单">
@@ -336,7 +336,7 @@ export function UserAgentPage() {
                               href=""
                               onClick={(event) => {
                                 event.preventDefault()
-                                void confirm({ message: '确定要删除此名单吗？' }).then((ok) => {
+                                void confirm({ message: '确定要删除此名单吗?' }).then((ok) => {
                                   if (ok) {
                                     update(
                                       'filters',
@@ -365,7 +365,7 @@ export function UserAgentPage() {
                           placeholder="*浏览器标识*"
                         />
                         <Comment>
-                          每行一个关键词；不区分大小写，比如 Chrome；支持 * 通配符；也支持空行关键词，表示空UserAgent。
+                          每行一个关键词;不区分大小写,比如 Chrome;支持 * 通配符;也支持空行关键词,表示空UserAgent.
                         </Comment>
                       </FormRow>
                       <FormRow title="动作">
@@ -430,11 +430,11 @@ export function UserAgentPage() {
             <tbody>
               <FormRow title="例外URL">
                 <URLPatternsEditor patterns={current.exceptURLPatterns || []} onChange={(values) => update('exceptURLPatterns', values)} />
-                <Comment>如果填写了例外URL，表示这些URL跳过不做处理。</Comment>
+                <Comment>如果填写了例外URL,表示这些URL跳过不做处理.</Comment>
               </FormRow>
               <FormRow title="限制URL">
                 <URLPatternsEditor patterns={current.onlyURLPatterns || []} onChange={(values) => update('onlyURLPatterns', values)} />
-                <Comment>如果填写了限制URL，表示只对这些URL进行处理；如果不填则表示支持所有的URL。</Comment>
+                <Comment>如果填写了限制URL,表示只对这些URL进行处理;如果不填则表示支持所有的URL.</Comment>
               </FormRow>
             </tbody>
           ) : null}

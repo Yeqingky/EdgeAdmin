@@ -48,7 +48,7 @@ export function GrantsPage() {
   const data = query.data
 
   async function deleteGrant(grantId: number) {
-    if (!(await confirm({ message: '确定要删除此认证吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此认证吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -77,7 +77,7 @@ export function GrantsPage() {
         <div className="margin" />
         <div className="ui fields inline">
           <div className="ui field">
-            <input type="text" placeholder="名称、用户名等..." value={keywordInput} onChange={(event) => setKeywordInput(event.target.value)} />
+            <input type="text" placeholder="名称,用户名等..." value={keywordInput} onChange={(event) => setKeywordInput(event.target.value)} />
           </div>
           <div className="ui field">
             <button className="ui button" type="submit">
@@ -89,7 +89,7 @@ export function GrantsPage() {
         </div>
       </form>
 
-      {data.grants.length === 0 ? <div className="ui message">暂时还没有认证信息。</div> : null}
+      {data.grants.length === 0 ? <div className="ui message">暂时还没有认证信息.</div> : null}
       {data.grants.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>
@@ -201,7 +201,7 @@ function GrantForm({
       <FormTable>
         <FormRow title="名称 *">
           <TextInput type="text" maxLength={100} value={name} onChange={(event) => setName(event.target.value)} autoFocus />
-          <p className="comment">为当前认证信息起一个容易识别的名称。</p>
+          <p className="comment">为当前认证信息起一个容易识别的名称.</p>
         </FormRow>
         <FormRow title="认证方式">
           <Select style={{ width: '10em' }} value={method} onChange={(event) => setMethod(event.target.value)}>
@@ -216,11 +216,11 @@ function GrantForm({
           <>
             <FormRow title="SSH用户名 *">
               <TextInput type="text" maxLength={100} value={username} onChange={(event) => setUsername(event.target.value)} />
-              <p className="comment">SSH登录用户名。</p>
+              <p className="comment">SSH登录用户名.</p>
             </FormRow>
             <FormRow title="SSH密码">
               <TextInput type="password" maxLength={100} value={password} onChange={(event) => setPassword(event.target.value)} />
-              <p className="comment">SSH登录用户密码。</p>
+              <p className="comment">SSH登录用户密码.</p>
             </FormRow>
           </>
         ) : null}
@@ -228,7 +228,7 @@ function GrantForm({
           <>
             <FormRow title="SSH用户名 *">
               <TextInput type="text" maxLength={100} value={username} onChange={(event) => setUsername(event.target.value)} />
-              <p className="comment">SSH登录用户名。</p>
+              <p className="comment">SSH登录用户名.</p>
             </FormRow>
             <FormRow title="RSA私钥 *">
               <textarea
@@ -239,18 +239,18 @@ function GrantForm({
                 value={privateKey}
                 onChange={(event) => setPrivateKey(event.target.value)}
               />
-              <p className="comment">用来生成登录SSH公钥的私钥。</p>
+              <p className="comment">用来生成登录SSH公钥的私钥.</p>
             </FormRow>
-            <FormRow title="私钥密码（Passphrase）">
+            <FormRow title="私钥密码(Passphrase)">
               <TextInput type="password" maxLength={200} value={passphrase} onChange={(event) => setPassphrase(event.target.value)} />
-              <p className="comment">为私钥设置了密码（Passphrase）后需要填写。</p>
+              <p className="comment">为私钥设置了密码(Passphrase)后需要填写.</p>
             </FormRow>
           </>
         ) : null}
         {username !== 'root' ? (
           <FormRow title="执行sudo">
             <Checkbox label="" checked={su} onChange={setSu} />
-            <p className="comment">非root的用户可以使用 sudo 获得更高权限来执行命令。</p>
+            <p className="comment">非root的用户可以使用 sudo 获得更高权限来执行命令.</p>
           </FormRow>
         ) : null}
         <FormRow title="备注">
@@ -402,7 +402,7 @@ export function GrantDetailPage() {
                 </td>
               </tr>
               <tr>
-                <td>私钥密码（Passphrase）</td>
+                <td>私钥密码(Passphrase)</td>
                 <td>{grant.passphrase ? grant.passphrase : <span className="disabled">-</span>}</td>
               </tr>
             </>
@@ -421,7 +421,7 @@ export function GrantDetailPage() {
       <div className="ui divider" />
       <h3>使用此认证的集群</h3>
       <div>
-        {clusters.length === 0 ? <p className="comment">暂时还没有集群使用此认证。</p> : null}
+        {clusters.length === 0 ? <p className="comment">暂时还没有集群使用此认证.</p> : null}
         {clusters.map((cluster) => (
           <a key={cluster.id} href={`/clusters/cluster?clusterId=${cluster.id}`} className="ui label small basic">
             {cluster.name}
@@ -432,7 +432,7 @@ export function GrantDetailPage() {
       <div className="ui divider" />
       <h3>使用此认证的节点</h3>
       <div>
-        {nodes.length === 0 ? <p className="comment">暂时还没有节点使用此认证。</p> : null}
+        {nodes.length === 0 ? <p className="comment">暂时还没有节点使用此认证.</p> : null}
         {nodes.map((node) => (
           <a
             key={node.id}
@@ -440,7 +440,7 @@ export function GrantDetailPage() {
             className={`ui label small basic${node.isOn ? '' : ' red'}`}
           >
             {node.name}
-            <span className="small">（{node.cluster.name}）</span>
+            <span className="small">({node.cluster.name})</span>
           </a>
         ))}
       </div>
@@ -476,7 +476,7 @@ export function GrantTestPage() {
   return (
     <div>
       <GrantMenu grantId={grant.id} grantName={grant.name} active="test" />
-      <div className="ui message">可以在这里测试SSH主机连接是否正常。</div>
+      <div className="ui message">可以在这里测试SSH主机连接是否正常.</div>
       <form
         className="ui form"
         onSubmit={async (event) => {
@@ -519,7 +519,7 @@ export function GrantTestPage() {
           ) : null}
         </FormTable>
         {result ? (
-          <div className={`ui message ${result.isOk ? 'green' : 'red'}`}>{result.isOk ? '连接成功！' : `连接失败：${result.error}`}</div>
+          <div className={`ui message ${result.isOk ? 'green' : 'red'}`}>{result.isOk ? '连接成功!' : `连接失败:${result.error}`}</div>
         ) : null}
         <SubmitButton submitting={submitting}>{submitting ? '连接中...' : '提交测试'}</SubmitButton>
       </form>
@@ -625,12 +625,12 @@ export function GrantSelectPopupPage() {
       <form className="ui form">
         <div className="ui fields inline">
           <div className="ui field">
-            <input type="text" placeholder="搜索名称、用户名等" value={keyword} onChange={(event) => setKeyword(event.target.value)} />
+            <input type="text" placeholder="搜索名称,用户名等" value={keyword} onChange={(event) => setKeyword(event.target.value)} />
           </div>
         </div>
       </form>
       <div className="ui divider" />
-      {grants.length === 0 ? <span>暂时还没有可用的认证。</span> : null}
+      {grants.length === 0 ? <span>暂时还没有可用的认证.</span> : null}
       {suggestGrants.length > 0 ? (
         <>
           <h4>可能的认证</h4>
@@ -638,7 +638,7 @@ export function GrantSelectPopupPage() {
             {suggestGrants.map((grant) => (
               <a key={grant.id} href={`/clusters/grants/grant?grantId=${grant.id}`} className="ui label basic" style={{ marginBottom: '0.4em' }}>
                 {grant.name}
-                {grant.username ? <span className="small grey">（{grant.username}）</span> : null}
+                {grant.username ? <span className="small grey">({grant.username})</span> : null}
               </a>
             ))}
           </div>
@@ -649,11 +649,11 @@ export function GrantSelectPopupPage() {
         {grants.map((grant) => (
           <a key={grant.id} href={`/clusters/grants/grant?grantId=${grant.id}`} className="ui label basic" style={{ marginBottom: '0.4em' }}>
             {grant.name}
-            {grant.username ? <span className="small grey">（{grant.username}）</span> : null}
+            {grant.username ? <span className="small grey">({grant.username})</span> : null}
           </a>
         ))}
       </div>
-      <p className="comment">请点击使用某个认证。</p>
+      <p className="comment">请点击使用某个认证.</p>
     </div>
   )
 }

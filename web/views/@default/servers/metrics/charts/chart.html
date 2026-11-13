@@ -42,13 +42,13 @@
            <div v-if="chart.ignoredKeys.length > 0">
                 <span v-for="key in chart.ignoredKeys" class="ui label basic small">{{key}}</span>
            </div>
-            <span v-else class="disabled">没有要忽略的对象。</span>
+            <span v-else class="disabled">没有要忽略的对象.</span>
         </td>
     </tr>
 </table>
 
 <h4>图表示例</h4>
-<p class="comment"><span class="red">图中数据均为测试数据。</span></p>
+<p class="comment"><span class="red">图中数据均为测试数据.</span></p>
 <metric-board>
     <metric-chart :v-chart="chart" :v-stats="testingStats" :v-item="item"></metric-chart>
 </metric-board>

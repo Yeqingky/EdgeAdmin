@@ -93,7 +93,7 @@ func (this *IndexAction) RunPost(params struct {
 	addresses := []*serverconfigs.NetworkAddressConfig{}
 	err := json.Unmarshal([]byte(params.Addresses), &addresses)
 	if err != nil {
-		this.Fail("端口地址解析失败：" + err.Error())
+		this.Fail("端口地址解析失败:" + err.Error())
 	}
 
 	// 校验SSL
@@ -102,7 +102,7 @@ func (this *IndexAction) RunPost(params struct {
 		sslPolicy := &sslconfigs.SSLPolicy{}
 		err = json.Unmarshal(params.SslPolicyJSON, sslPolicy)
 		if err != nil {
-			this.ErrorPage(errors.New("解析SSL配置时发生了错误：" + err.Error()))
+			this.ErrorPage(errors.New("解析SSL配置时发生了错误:" + err.Error()))
 			return
 		}
 

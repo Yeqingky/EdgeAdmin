@@ -70,7 +70,7 @@ function IpAccessLogsContent({ itemId }: { itemId: number }) {
 
   return (
     <div>
-      {data.accessLogs.length === 0 ? <p className="comment">暂时还没有访问日志。</p> : null}
+      {data.accessLogs.length === 0 ? <p className="comment">暂时还没有访问日志.</p> : null}
       {data.accessLogs.length > 0 ? (
         <table className="ui table selectable">
           <tbody>
@@ -101,7 +101,7 @@ function IpAccessLogsContent({ itemId }: { itemId: number }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* IP 列表（全部IP）                                                   */
+/* IP 列表(全部IP)                                                   */
 /* ------------------------------------------------------------------ */
 
 interface ItemsData {
@@ -192,7 +192,7 @@ export function IpListsPage() {
   }
 
   async function deleteItem(itemId: number) {
-    if (!(await confirm({ message: '确定要删除这个IP吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个IP吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     removeItem.mutate(itemId)
@@ -304,7 +304,7 @@ export function IpListsPage() {
       </form>
 
       <div className="margin" />
-      {data.items.length === 0 ? <p className="comment">暂时还没有IP。</p> : null}
+      {data.items.length === 0 ? <p className="comment">暂时还没有IP.</p> : null}
 
       <IpListTable
         items={data.items}
@@ -393,7 +393,7 @@ export function IpListListsPage() {
   const data = query.data
 
   async function deleteList(list: IpListRow) {
-    if (!(await confirm({ message: '确定要删除此IP名单吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此IP名单吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(list.id)
@@ -416,13 +416,13 @@ export function IpListListsPage() {
         <span className="item disabled">|</span>
         <span
           className="item"
-          title="创建名单时可以选择“全局有效”就会成为全局有效名单，全局有效名单对所有网站自动生效；非全局有效名单可以在WAF策略里引用。黑名单：其中的IP将会被禁止访问。白名单：其中的IP将会自动放行，优先级高于黑名单。灰名单：其中的IP仅作为记录和观察使用。"
+          title="创建名单时可以选择&quot;全局有效&quot;就会成为全局有效名单,全局有效名单对所有网站自动生效;非全局有效名单可以在WAF策略里引用.黑名单:其中的IP将会被禁止访问.白名单:其中的IP将会自动放行,优先级高于黑名单.灰名单:其中的IP仅作为记录和观察使用."
         >
           ?
         </span>
       </FirstMenu>
 
-      <div className="ui info message">这里是公用的IP名单，可以在WAF策略里直接引用。</div>
+      <div className="ui info message">这里是公用的IP名单,可以在WAF策略里直接引用.</div>
 
       <div className="margin" />
       <form
@@ -441,7 +441,7 @@ export function IpListListsPage() {
           <div className="ui field">
             <input
               type="text"
-              placeholder="IP名单名称、代号..."
+              placeholder="IP名单名称,代号..."
               value={keyword}
               onChange={(event) => setKeyword(event.target.value)}
             />
@@ -467,7 +467,7 @@ export function IpListListsPage() {
         </div>
       </form>
 
-      {data.lists.length === 0 ? <p className="comment">暂时还没有公用IP名单。</p> : null}
+      {data.lists.length === 0 ? <p className="comment">暂时还没有公用IP名单.</p> : null}
 
       {data.lists.length > 0 ? (
         <table className="ui table selectable celled">
@@ -552,7 +552,7 @@ export function IpListDetailPage() {
   })
 
   if (listId <= 0) {
-    return <div className="ui negative message">请选择要查看的IP名单。</div>
+    return <div className="ui negative message">请选择要查看的IP名单.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -645,7 +645,7 @@ export function IpListItemsPage() {
   })
 
   if (listId <= 0) {
-    return <div className="ui negative message">请选择IP名单。</div>
+    return <div className="ui negative message">请选择IP名单.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -669,7 +669,7 @@ export function IpListItemsPage() {
   }
 
   async function deleteItem(itemId: number) {
-    if (!(await confirm({ message: '确定要删除这个IP吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个IP吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     removeItem.mutate(itemId)
@@ -728,7 +728,7 @@ export function IpListItemsPage() {
         <div className="margin" />
       </form>
 
-      {data.items.length === 0 ? <p className="comment">暂时还没有IP。</p> : null}
+      {data.items.length === 0 ? <p className="comment">暂时还没有IP.</p> : null}
 
       <IpListTable
         items={data.items}
@@ -789,7 +789,7 @@ export function IpListUpdatePage() {
   }
 
   if (listId <= 0) {
-    return <div className="ui negative message">请选择IP名单。</div>
+    return <div className="ui negative message">请选择IP名单.</div>
   }
   if (query.isLoading || !query.data || !form) {
     return <LoadingBlock />
@@ -850,7 +850,7 @@ export function IpListUpdatePage() {
                   value={form.code}
                   onChange={(event) => setForm({ ...form, code: event.target.value })}
                 />
-                <p className="comment">可选参数，只能是英文字母、数字、中划线、下划线的组合。</p>
+                <p className="comment">可选参数,只能是英文字母,数字,中划线,下划线的组合.</p>
               </td>
             </tr>
             <tr>
@@ -921,7 +921,7 @@ export function IpListTestPage() {
   })
 
   if (listId <= 0) {
-    return <div className="ui negative message">请选择IP名单。</div>
+    return <div className="ui negative message">请选择IP名单.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -996,13 +996,13 @@ export function IpListTestPage() {
                           </span>
                         )}
                         <div className="small grey">
-                          级别：{result.item.eventLevelName || '-'}，过期时间：
+                          级别:{result.item.eventLevelName || '-'},过期时间:
                           {result.item.expiredTime || '不过期'}
-                          {result.item.reason ? `，备注：${result.item.reason}` : ''}
+                          {result.item.reason ? `,备注:${result.item.reason}` : ''}
                         </div>
                       </div>
                     ) : null}
-                    {!result.isFound ? <div>没有找到和{ip}匹配的配置。</div> : null}
+                    {!result.isFound ? <div>没有找到和{ip}匹配的配置.</div> : null}
                   </div>
                 ) : (
                   <span className="disabled">-</span>
@@ -1039,7 +1039,7 @@ export function IpListImportPage() {
   })
 
   if (listId <= 0) {
-    return <div className="ui negative message">请选择IP名单。</div>
+    return <div className="ui negative message">请选择IP名单.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -1063,7 +1063,7 @@ export function IpListImportPage() {
       const data = await apiPostForm<{ count: number; countIgnore: number }>('/servers/iplists/import', form)
       let message = `成功导入${data.count}个IP`
       if (data.countIgnore > 0) {
-        message += `，并忽略${data.countIgnore}个格式错误的IP`
+        message += `,并忽略${data.countIgnore}个格式错误的IP`
       }
       toast(message)
       setFile(null)
@@ -1090,7 +1090,7 @@ export function IpListImportPage() {
                   onChange={(event) => setFile(event.target.files?.[0] || null)}
                 />
                 <p className="comment">
-                  文件名类似于<span className="ui label tiny basic">ip-list-123.xxx</span>，支持Excel、CSV、JSON和纯文本TXT。
+                  文件名类似于<span className="ui label tiny basic">ip-list-123.xxx</span>,支持Excel,CSV,JSON和纯文本TXT.
                 </p>
               </td>
             </tr>
@@ -1118,7 +1118,7 @@ export function IpListExportPage() {
   })
 
   if (listId <= 0) {
-    return <div className="ui negative message">请选择IP名单。</div>
+    return <div className="ui negative message">请选择IP名单.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -1142,7 +1142,7 @@ export function IpListExportPage() {
           <tbody>
             <tr>
               <td className="title">说明</td>
-              <td>导出所有的IP，并以文件格式下载。注意v1.3.5版本及以后导出的数据不能在之前的版本中导入。</td>
+              <td>导出所有的IP,并以文件格式下载.注意v1.3.5版本及以后导出的数据不能在之前的版本中导入.</td>
             </tr>
             <tr>
               <td>格式</td>
@@ -1210,7 +1210,7 @@ export function IpListSelectPopupPage() {
       <PublicIpListTable
         lists={query.data.lists}
         actionText="选择"
-        onAction={(list) => toast(`已选择：${list.name}（ID: ${list.id}）`)}
+        onAction={(list) => toast(`已选择:${list.name}(ID: ${list.id})`)}
       />
       <LegacyPagination html={query.data.page} />
     </div>
@@ -1246,7 +1246,7 @@ export function IpListBindFirewallPopupPage() {
   })
 
   if (httpFirewallPolicyId <= 0) {
-    return <div className="ui negative message">请指定要绑定的WAF策略。</div>
+    return <div className="ui negative message">请指定要绑定的WAF策略.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -1306,7 +1306,7 @@ export function IpListAccessLogsPopupPage() {
   })
 
   if (itemId <= 0) {
-    return <div className="ui negative message">请选择要查看的IP。</div>
+    return <div className="ui negative message">请选择要查看的IP.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -1320,8 +1320,8 @@ export function IpListAccessLogsPopupPage() {
       <h3>
         访问日志
         <span className="grey">
-          （{query.data.ipFrom}
-          {query.data.ipTo.length > 0 ? ` - ${query.data.ipTo}` : ''}）
+          ({query.data.ipFrom}
+          {query.data.ipTo.length > 0 ? ` - ${query.data.ipTo}` : ''})
         </span>
       </h3>
       <IpAccessLogsContent itemId={itemId} />

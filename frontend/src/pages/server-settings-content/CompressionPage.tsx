@@ -111,7 +111,7 @@ export function ServerCompressionSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -161,7 +161,7 @@ export function ServerCompressionSettingsPage() {
         webId: data.webId,
         compressionJSON: JSON.stringify(config),
       })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -185,7 +185,7 @@ export function ServerCompressionSettingsPage() {
                     onChange={(values) => update('extensions', values.map((value) => (value.length > 0 && !value.startsWith('.') ? `.${value}` : value)))}
                     placeholder="比如 .html"
                   />
-                  <p className="comment">含有这些扩展名的URL将会被压缩，不区分大小写。</p>
+                  <p className="comment">含有这些扩展名的URL将会被压缩,不区分大小写.</p>
                 </FormRow>
                 <FormRow title="例外扩展名">
                   <StringListEditor
@@ -194,12 +194,12 @@ export function ServerCompressionSettingsPage() {
                     placeholder="比如 .html"
                   />
                   <p className="comment">
-                    含有这些扩展名的URL将<strong>不会</strong>被压缩，不区分大小写。
+                    含有这些扩展名的URL将<strong>不会</strong>被压缩,不区分大小写.
                   </p>
                 </FormRow>
                 <FormRow title="支持的MimeType">
                   <StringListEditor values={config.mimeTypes} onChange={(values) => update('mimeTypes', values)} placeholder="比如 text/*" />
-                  <p className="comment">响应的Content-Type里包含这些MimeType的内容将会被压缩。</p>
+                  <p className="comment">响应的Content-Type里包含这些MimeType的内容将会被压缩.</p>
                 </FormRow>
               </>
             ) : null}
@@ -212,7 +212,7 @@ export function ServerCompressionSettingsPage() {
                 <>
                   <FormTable>
                     <FormRow title="压缩算法">
-                      <Checkbox label="使用默认顺序（brotli、gzip、zstd、deflate）" checked={config.useDefaultTypes} onChange={(checked) => update('useDefaultTypes', checked)} />
+                      <Checkbox label="使用默认顺序(brotli,gzip,zstd,deflate)" checked={config.useDefaultTypes} onChange={(checked) => update('useDefaultTypes', checked)} />
                       {!config.useDefaultTypes ? (
                         <div style={{ marginTop: '0.8em' }}>
                           <div className="ui divider" />
@@ -240,33 +240,33 @@ export function ServerCompressionSettingsPage() {
                               </div>
                             )
                           })}
-                          <p className="comment">选择支持的压缩算法和优先顺序。</p>
+                          <p className="comment">选择支持的压缩算法和优先顺序.</p>
                         </div>
                       ) : null}
                     </FormRow>
                     <FormRow title="支持已压缩内容">
                       <Checkbox checked={config.decompressData} onChange={(checked) => update('decompressData', checked)} />
-                      <p className="comment">支持对已压缩内容尝试重新使用新的算法压缩；不选中表示保留当前的压缩格式。</p>
+                      <p className="comment">支持对已压缩内容尝试重新使用新的算法压缩;不选中表示保留当前的压缩格式.</p>
                     </FormRow>
                     <FormRow title="内容最小长度">
                       <SizeCapacityEditor value={config.minLength} unit="kb" onChange={(value) => update('minLength', value)} />
-                      <p className="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+                      <p className="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
                     </FormRow>
                     <FormRow title="内容最大长度">
                       <SizeCapacityEditor value={config.maxLength} unit="mb" onChange={(value) => update('maxLength', value)} />
-                      <p className="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+                      <p className="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
                     </FormRow>
                     <FormRow title="支持Partial Content">
                       <Checkbox checked={config.enablePartialContent} onChange={(checked) => update('enablePartialContent', checked)} />
-                      <p className="comment">支持对分片内容（PartialContent）的压缩；除非客户端有特殊要求，一般不需要启用。</p>
+                      <p className="comment">支持对分片内容(PartialContent)的压缩;除非客户端有特殊要求,一般不需要启用.</p>
                     </FormRow>
                     <FormRow title="例外URL">
                       <URLPatternsEditor patterns={config.exceptURLPatterns || []} onChange={(patterns) => update('exceptURLPatterns', patterns)} />
-                      <p className="comment">如果填写了例外URL，表示这些URL跳过不做处理。</p>
+                      <p className="comment">如果填写了例外URL,表示这些URL跳过不做处理.</p>
                     </FormRow>
                     <FormRow title="限制URL">
                       <URLPatternsEditor patterns={config.onlyURLPatterns || []} onChange={(patterns) => update('onlyURLPatterns', patterns)} />
-                      <p className="comment">如果填写了限制URL，表示只对这些URL进行压缩处理；如果不填则表示支持所有的URL。</p>
+                      <p className="comment">如果填写了限制URL,表示只对这些URL进行压缩处理;如果不填则表示支持所有的URL.</p>
                     </FormRow>
                     <FormRow title="匹配条件">
                       <CondsEditor conds={config.conds} onChange={(conds) => update('conds', conds)} />
@@ -289,15 +289,15 @@ export function ServerCompressionSettingsPage() {
                               </option>
                             ))}
                           </Select>
-                          <p className="comment">级别越高，压缩比例越大。</p>
+                          <p className="comment">级别越高,压缩比例越大.</p>
                         </FormRow>
                         <FormRow title="Gzip内容最小长度">
                           <SizeCapacityEditor value={gzip.minLength} unit="kb" onChange={(value) => updateGzip({ ...gzip, minLength: value })} />
-                          <p className="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+                          <p className="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
                         </FormRow>
                         <FormRow title="Gzip内容最大长度">
                           <SizeCapacityEditor value={gzip.maxLength} unit="mb" onChange={(value) => updateGzip({ ...gzip, maxLength: value })} />
-                          <p className="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+                          <p className="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
                         </FormRow>
                       </>
                     ) : null}

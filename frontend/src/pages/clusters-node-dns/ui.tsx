@@ -208,7 +208,7 @@ export function DnsRoutesSelector({
             const routeKey = `${route.code}@${route.domainId}`
             return (
               <span key={routeKey} className="ui label tiny basic" style={{ marginBottom: '0.4em' }}>
-                {route.name} <span className="grey small">（{route.domainName}）</span>
+                {route.name} <span className="grey small">({route.domainName})</span>
                 <a
                   href=""
                   onClick={(event) => {
@@ -230,7 +230,7 @@ export function DnsRoutesSelector({
               <td className="title">所有线路</td>
               <td>
                 {searching.length === 0 ? (
-                  <span className="disabled">没有可选的线路。</span>
+                  <span className="disabled">没有可选的线路.</span>
                 ) : (
                   <Select
                     defaultValue=""
@@ -248,7 +248,7 @@ export function DnsRoutesSelector({
                       const routeKey = `${route.code}@${route.domainId}`
                       return (
                         <option key={routeKey} value={routeKey}>
-                          {route.name}（{route.code}/{route.domainName}）
+                          {route.name}({route.code}/{route.domainName})
                         </option>
                       )
                     })}
@@ -303,8 +303,8 @@ export function GrantSelector({ clusterId, value, onChange }: { clusterId: numbe
       {value && value.id > 0 ? (
         <div className="ui label small basic">
           {value.name}
-          <span className="small grey">（{value.methodName}）</span>
-          {value.username ? <span className="small grey">（{value.username}）</span> : null}
+          <span className="small grey">({value.methodName})</span>
+          {value.username ? <span className="small grey">({value.username})</span> : null}
           &nbsp;
           <a
             href=""
@@ -336,7 +336,7 @@ export function GrantSelector({ clusterId, value, onChange }: { clusterId: numbe
       {opened ? (
         <Modal title="选择SSH登录认证" onClose={() => setOpened(false)}>
           {query.isLoading ? <div className="loading-block">加载中...</div> : null}
-          {query.data && query.data.grants.length === 0 ? <p className="comment">暂时还没有认证信息。</p> : null}
+          {query.data && query.data.grants.length === 0 ? <p className="comment">暂时还没有认证信息.</p> : null}
           {query.data && query.data.grants.length > 0 ? (
             <table className="ui table selectable">
               <tbody>
@@ -548,18 +548,18 @@ export function IPAddressesEditor({ value, onChange }: { value: IPAddressItem[];
               {isIPv6(address.ip) ? <span className="grey">[IPv6]</span> : null} {address.ip}
               {address.name ? (
                 <span className="small grey">
-                  （备注：{address.name}
-                  {!address.canAccess ? '，不公开访问' : ''}）
+                  (备注:{address.name}
+                  {!address.canAccess ? ',不公开访问' : ''})
                 </span>
               ) : null}
-              {!address.name && !address.canAccess ? <span className="small grey">（不公开访问）</span> : null}
+              {!address.name && !address.canAccess ? <span className="small grey">(不公开访问)</span> : null}
               {address.isOn === false ? <span className="small red">[off]</span> : null}
               {address.isUp === false ? <span className="small red">[down]</span> : null}
               {address.thresholds && address.thresholds.length > 0 ? <span className="small">[{address.thresholds.length}个阈值]</span> : null}
               {address.clusters && address.clusters.length > 0 ? (
                 <span>
-                  &nbsp; <span className="small grey">专属集群：[</span>
-                  <span className="small grey">{address.clusters.map((cluster) => cluster.name).join('，')}</span>
+                  &nbsp; <span className="small grey">专属集群:[</span>
+                  <span className="small grey">{address.clusters.map((cluster) => cluster.name).join(',')}</span>
                   <span className="small grey">]</span>
                 </span>
               ) : null}
@@ -653,7 +653,7 @@ export function CacheDiskDirsEditor({ value, onChange }: { value: CacheDir[]; on
             <TextInput
               autoFocus
               type="text"
-              placeholder="新的缓存目录，比如 /mnt/cache"
+              placeholder="新的缓存目录,比如 /mnt/cache"
               style={{ width: '30em' }}
               value={draft}
               onChange={(event) => setDraft(event.target.value)}

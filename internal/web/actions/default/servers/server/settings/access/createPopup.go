@@ -74,7 +74,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 			return
 		}
 
-		// TODO 如果用户填写了一个网址，应该分析域名并填入
+		// TODO 如果用户填写了一个网址,应该分析域名并填入
 
 		domains = utils.NewStringsStream(rawDomains).
 			Map(strings.TrimSpace, strings.ToLower).

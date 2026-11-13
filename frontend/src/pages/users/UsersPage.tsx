@@ -89,7 +89,7 @@ export function UsersPage() {
   }
 
   async function deleteUser(user: UserItem) {
-    if (!(await confirm({ message: `确定要删除用户 ${user.username} 吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除用户 ${user.username} 吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(user.id)
@@ -113,7 +113,7 @@ export function UsersPage() {
           <div className="ui field">
             <input
               type="text"
-              placeholder="用户名、全名、手机号..."
+              placeholder="用户名,全名,手机号..."
               value={keyword}
               onChange={(event) => setKeyword(event.target.value)}
             />
@@ -139,7 +139,7 @@ export function UsersPage() {
         </div>
       </form>
 
-      {data.users.length === 0 ? <p className="comment">暂时还没有用户。</p> : null}
+      {data.users.length === 0 ? <p className="comment">暂时还没有用户.</p> : null}
 
       {data.users.length > 0 ? (
         <table className="ui table selectable celled">

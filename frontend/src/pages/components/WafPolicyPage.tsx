@@ -61,7 +61,7 @@ export function WafPolicyPage({ firewallPolicyId }: { firewallPolicyId: number }
   const log = policy.log as WafPolicyLogConfig | null
 
   async function upgradeTemplate() {
-    if (!(await confirm({ message: '确定要加入官方提供的新规则吗？' }))) {
+    if (!(await confirm({ message: '确定要加入官方提供的新规则吗?' }))) {
       return
     }
     try {
@@ -120,11 +120,11 @@ export function WafPolicyPage({ firewallPolicyId }: { firewallPolicyId: number }
                 <div>
                   <div className="ui divider" />
                   <span className="red">
-                    升级提醒：官方提供了新的规则，是否要加入以下规则：
+                    升级提醒:官方提供了新的规则,是否要加入以下规则:
                     {data.upgradeItems.map((item, index) => (
                       <span key={`${item.name}-${index}`} className="ui label tiny basic" style={{ marginBottom: '0.2em' }}>
                         {item.name}
-                        {!item.isOn ? <span className="small">（默认不启用）</span> : null}
+                        {!item.isOn ? <span className="small">(默认不启用)</span> : null}
                       </span>
                     ))}
                   </span>
@@ -176,7 +176,7 @@ export function WafPolicyPage({ firewallPolicyId }: { firewallPolicyId: number }
             <td>使用系统防火墙</td>
             <td>
               {policy.useLocalFirewall ? <span className="green">启用</span> : <span className="disabled">不启用</span>}
-              {policy.useLocalFirewall ? <p className="comment">可以在合适的时候自动使用系统自带防火墙进行防御。</p> : null}
+              {policy.useLocalFirewall ? <p className="comment">可以在合适的时候自动使用系统自带防火墙进行防御.</p> : null}
             </td>
           </tr>
         </tbody>
@@ -234,8 +234,8 @@ export function WafPolicyPage({ firewallPolicyId }: { firewallPolicyId: number }
                 <span className="disabled">未启用</span>
               ) : (
                 <span>
-                  启用（最小尝试次数：{synFlood.minAttempts || 0}/分钟，超时：{synFlood.timeoutSeconds || 0}秒，
-                  {synFlood.ignoreLocal ? '忽略局域网IP' : '不忽略局域网IP'}）
+                  启用(最小尝试次数:{synFlood.minAttempts || 0}/分钟,超时:{synFlood.timeoutSeconds || 0}秒,
+                  {synFlood.ignoreLocal ? '忽略局域网IP' : '不忽略局域网IP'})
                 </span>
               )}
             </td>
@@ -252,13 +252,13 @@ export function WafPolicyPage({ firewallPolicyId }: { firewallPolicyId: number }
           </tr>
           <tr>
             <td>描述</td>
-            <td>{policy.description ? policy.description : <span className="disabled">暂时还没有描述。</span>}</td>
+            <td>{policy.description ? policy.description : <span className="disabled">暂时还没有描述.</span>}</td>
           </tr>
         </tbody>
       </table>
 
       <h4>使用此策略的集群</h4>
-      {data.clusters.length === 0 ? <p className="comment">暂时还没有集群使用此策略。</p> : null}
+      {data.clusters.length === 0 ? <p className="comment">暂时还没有集群使用此策略.</p> : null}
       {data.clusters.length > 0 ? (
         <table className="ui table selectable">
           <tbody>

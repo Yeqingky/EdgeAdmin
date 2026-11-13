@@ -15,7 +15,7 @@ func (this *CSRF) BeforeAction(actionPtr actions.ActionWrapper, paramName string
 	token := action.ParamString("csrfToken")
 	if !csrf.Validate(token) {
 		action.ResponseWriter.WriteHeader(http.StatusForbidden)
-		action.WriteString("表单已失效，请刷新页面后重试(001)")
+		action.WriteString("表单已失效,请刷新页面后重试(001)")
 		return
 	}
 

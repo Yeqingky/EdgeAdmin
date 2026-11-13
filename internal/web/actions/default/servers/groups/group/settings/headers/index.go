@@ -127,7 +127,7 @@ func (this *IndexAction) RunPost(params struct {
 		var requestHeaderRef = &shared.HTTPHeaderPolicyRef{}
 		err := json.Unmarshal(params.RequestHeaderJSON, requestHeaderRef)
 		if err != nil {
-			this.Fail("请求Header配置校验失败：" + err.Error() + ", JSON: " + string(params.RequestHeaderJSON))
+			this.Fail("请求Header配置校验失败:" + err.Error() + ", JSON: " + string(params.RequestHeaderJSON))
 		}
 
 		_, err = this.RPC().HTTPWebRPC().UpdateHTTPWebRequestHeader(this.AdminContext(), &pb.UpdateHTTPWebRequestHeaderRequest{
@@ -143,7 +143,7 @@ func (this *IndexAction) RunPost(params struct {
 		var responseHeaderRef = &shared.HTTPHeaderPolicyRef{}
 		err := json.Unmarshal(params.ResponseHeaderJSON, responseHeaderRef)
 		if err != nil {
-			this.Fail("响应Header配置校验失败：" + err.Error() + ", JSON: " + string(params.ResponseHeaderJSON))
+			this.Fail("响应Header配置校验失败:" + err.Error() + ", JSON: " + string(params.ResponseHeaderJSON))
 		}
 
 		_, err = this.RPC().HTTPWebRPC().UpdateHTTPWebResponseHeader(this.AdminContext(), &pb.UpdateHTTPWebResponseHeaderRequest{

@@ -32,7 +32,7 @@ Vue.component("http-firewall-rules-box", {
 		},
 		removeRule: function (index) {
 			let that = this
-			teaweb.confirm("确定要删除此规则吗？", function () {
+			teaweb.confirm("确定要删除此规则吗?", function () {
 				that.rules.$remove(index)
 			})
 		},
@@ -126,7 +126,7 @@ Vue.component("http-firewall-rules-box", {
 				</span>
 				
 				<!-- description -->
-				<span v-if="rule.description != null && rule.description.length > 0" class="grey small">（{{rule.description}}）</span>
+				<span v-if="rule.description != null && rule.description.length > 0" class="grey small">({{rule.description}})</span>
 				
 				<a href="" title="修改" @click.prevent="updateRule(index, rule)"><i class="icon pencil small"></i></a>
 				<a href="" title="删除" @click.prevent="removeRule(index)"><i class="icon remove"></i></a>

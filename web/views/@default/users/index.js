@@ -15,7 +15,7 @@ Tea.context(function () {
 
 	this.deleteUser = function (userId) {
 		let that = this
-		teaweb.confirm("确定要删除这个用户吗？", function () {
+		teaweb.confirm("确定要删除这个用户吗?", function () {
 			that.$post(".delete")
 				.params({
 					userId: userId

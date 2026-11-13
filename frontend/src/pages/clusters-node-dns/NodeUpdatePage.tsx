@@ -61,7 +61,7 @@ export function NodeUpdatePage() {
   }, [query.data, initialized, clusterId])
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isError) {
     return <div className="ui negative message">加载失败</div>
@@ -130,15 +130,15 @@ export function NodeUpdatePage() {
           </FormRow>
           <FormRow title="IP地址 *">
             <IPAddressesEditor value={ipAddresses} onChange={setIpAddresses} />
-            <p className="comment">用于访问节点和域名解析等。</p>
+            <p className="comment">用于访问节点和域名解析等.</p>
           </FormRow>
           <FormRow title="所属分组">
             <GroupSelector clusterId={nodeClusterId} value={group} onChange={setGroup} />
-            <p className="comment">用来筛选节点。</p>
+            <p className="comment">用来筛选节点.</p>
           </FormRow>
           <FormRow title="所属区域">
             <RegionSelector value={region} onChange={setRegion} />
-            <p className="comment">设置区域后可以根据区域进行流量统计和计费。</p>
+            <p className="comment">设置区域后可以根据区域进行流量统计和计费.</p>
           </FormRow>
           <tr>
             <td colSpan={2}>
@@ -167,17 +167,17 @@ export function NodeUpdatePage() {
                 <FormRow title="L2级别访问地址">
                   <ValueList values={lnAddrs} onChange={setLnAddrs} placeholder="IP地址" />
                   <p className="comment">
-                    如果不为空，边缘节点访问当前L2节点时将会使用这些IP地址；如果没有设置，将会使用当前节点已经填写的IP地址。
+                    如果不为空,边缘节点访问当前L2节点时将会使用这些IP地址;如果没有设置,将会使用当前节点已经填写的IP地址.
                   </p>
                 </FormRow>
               ) : null}
               <FormRow title="同步IP名单">
                 <Checkbox checked={enableIPLists} onChange={setEnableIPLists} />
-                <p className="comment">选中后，表示启用IP名单同步，包括来自管理员、用户添加的IP名单，以及其他节点系统自动拦截的IP名单。</p>
+                <p className="comment">选中后,表示启用IP名单同步,包括来自管理员,用户添加的IP名单,以及其他节点系统自动拦截的IP名单.</p>
               </FormRow>
               <FormRow title="启用节点">
                 <Checkbox checked={isOn} onChange={setIsOn} />
-                <p className="comment">如果不启用此节点，此节点上的所有网站将不能访问。</p>
+                <p className="comment">如果不启用此节点,此节点上的所有网站将不能访问.</p>
               </FormRow>
             </>
           ) : null}

@@ -43,7 +43,7 @@ func (this *IndexAction) RunPost(params struct {
 	var webpConfig = &serverconfigs.WebPImageConfig{}
 	err := json.Unmarshal(params.WebpJSON, webpConfig)
 	if err != nil {
-		this.Fail("参数校验失败：" + err.Error())
+		this.Fail("参数校验失败:" + err.Error())
 	}
 
 	_, err = this.RPC().HTTPWebRPC().UpdateHTTPWebWebP(this.AdminContext(), &pb.UpdateHTTPWebWebPRequest{

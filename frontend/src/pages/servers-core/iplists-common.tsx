@@ -180,7 +180,7 @@ export function IpListTable({
   }
 
   async function deleteAll() {
-    if (!(await confirm({ message: `确定要批量删除当前列表中的${maxDeletes}个IP吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要批量删除当前列表中的${maxDeletes}个IP吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -211,7 +211,7 @@ export function IpListTable({
           {total !== undefined && total >= maxDeletes ? (
             <>
               <button className="ui button basic" type="button" onClick={() => void deleteAll()}>
-                批量删除所有搜索结果（{maxDeletes}个）
+                批量删除所有搜索结果({maxDeletes}个)
               </button>
               &nbsp; &nbsp;
             </>
@@ -318,26 +318,26 @@ export function IpListTable({
                             <a href={`/servers/iplists/list?listId=${item.list.id}`}>
                               [
                               {item.list.type === 'black' ? '黑' : item.list.type === 'white' ? '白' : '灰'}
-                              名单：{item.list.name}]
+                              名单:{item.list.name}]
                             </a>
                           ) : (
                             <span>
                               [
                               {item.list.type === 'black' ? '黑' : item.list.type === 'white' ? '白' : '灰'}
-                              名单：{item.list.name}]
+                              名单:{item.list.name}]
                               {item.policy && item.policy.id > 0 ? (
                                 <span>
                                   {item.policy.server ? (
                                     <a
                                       href={`/servers/server/settings/waf/ipadmin/${item.list.type === 'white' ? 'allowList' : item.list.type === 'grey' ? 'greyList' : 'denyList'}?serverId=${item.policy.server.id}&firewallPolicyId=${item.policy.id}`}
                                     >
-                                      [网站：{item.policy.server.name}]
+                                      [网站:{item.policy.server.name}]
                                     </a>
                                   ) : (
                                     <a
                                       href={`/servers/components/waf/ipadmin/lists?firewallPolicyId=${item.policy.id}&type=${item.list.type}`}
                                     >
-                                      [策略：{item.policy.name}]
+                                      [策略:{item.policy.name}]
                                     </a>
                                   )}
                                 </span>
@@ -529,7 +529,7 @@ export function CreateIPModal({ listId, listType, onClose, onCreated }: CreateIP
                 <option value="all">所有IP</option>
               </select>
               <p className="comment">
-                {type === 'ip' ? '单个IP或一个IP范围。' : '允许或禁用所有的IP。'}
+                {type === 'ip' ? '单个IP或一个IP范围.' : '允许或禁用所有的IP.'}
               </p>
             </td>
           </tr>
@@ -571,7 +571,7 @@ export function CreateIPModal({ listId, listType, onClose, onCreated }: CreateIP
                   onChange={(event) => setValue(event.target.value)}
                 />
                 <p className="comment">
-                  支持IPv4和IPv6；支持三种格式：单个IP（比如192.168.1.100）、IP范围（比如192.168.1.1-192.168.1.255）、CIDR（比如192.168.1.1/24）。
+                  支持IPv4和IPv6;支持三种格式:单个IP(比如192.168.1.100),IP范围(比如192.168.1.1-192.168.1.255),CIDR(比如192.168.1.1/24).
                 </p>
               </td>
             </tr>
@@ -588,7 +588,7 @@ export function CreateIPModal({ listId, listType, onClose, onCreated }: CreateIP
                   onChange={(event) => setIpData(event.target.value)}
                 />
                 <p className="comment">
-                  每行一个IP，支持三种格式：192.168.1.100、192.168.1.1-192.168.1.255、192.168.1.1/24。
+                  每行一个IP,支持三种格式:192.168.1.100,192.168.1.1-192.168.1.255,192.168.1.1/24.
                 </p>
               </td>
             </tr>
@@ -601,7 +601,7 @@ export function CreateIPModal({ listId, listType, onClose, onCreated }: CreateIP
                 value={expiredAt}
                 onChange={(event) => setExpiredAt(event.target.value)}
               />
-              <p className="comment">在加入名单某一段时间后会失效，留空表示永久有效。</p>
+              <p className="comment">在加入名单某一段时间后会失效,留空表示永久有效.</p>
             </td>
           </tr>
           <tr>
@@ -747,7 +747,7 @@ export function UpdateIPModal({ itemId, onClose, onUpdated }: UpdateIPModalProps
                     value={expiredAt}
                     onChange={(event) => setExpiredAt(event.target.value)}
                   />
-                  <p className="comment">在加入名单某一段时间后会失效，留空表示永久有效。</p>
+                  <p className="comment">在加入名单某一段时间后会失效,留空表示永久有效.</p>
                 </td>
               </tr>
               <tr>
@@ -864,7 +864,7 @@ export function CreateListModal({ type, onClose, onCreated }: CreateListModalPro
             <td>代号</td>
             <td>
               <input type="text" maxLength={100} value={code} onChange={(event) => setCode(event.target.value)} />
-              <p className="comment">可选参数，只能是英文字母、数字、中划线、下划线的组合。</p>
+              <p className="comment">可选参数,只能是英文字母,数字,中划线,下划线的组合.</p>
             </td>
           </tr>
           <tr>
@@ -881,10 +881,10 @@ export function CreateListModal({ type, onClose, onCreated }: CreateListModalPro
               </select>
               <p className="comment">
                 {listType === 'black'
-                  ? '黑名单中的IP将会被禁止访问。'
+                  ? '黑名单中的IP将会被禁止访问.'
                   : listType === 'white'
-                    ? '白名单中的IP将会自动放行，优先级高于黑名单。'
-                    : '灰名单中的IP仅作为记录和观察使用，不影响黑名单和白名单的作用。'}
+                    ? '白名单中的IP将会自动放行,优先级高于黑名单.'
+                    : '灰名单中的IP仅作为记录和观察使用,不影响黑名单和白名单的作用.'}
               </p>
             </td>
           </tr>
@@ -901,7 +901,7 @@ export function CreateListModal({ type, onClose, onCreated }: CreateListModalPro
                 <label htmlFor="ip-list-is-global" />
               </div>
               <p className="comment">
-                选中后，所有网站都自动使用此名单，不需要再次绑定；否则只有在WAF策略中绑定此名单后才会生效。
+                选中后,所有网站都自动使用此名单,不需要再次绑定;否则只有在WAF策略中绑定此名单后才会生效.
               </p>
             </td>
           </tr>
@@ -923,7 +923,7 @@ export function CreateListModal({ type, onClose, onCreated }: CreateListModalPro
 }
 
 /* ------------------------------------------------------------------ */
-/* 公用名单表格（selectPopup / bindHTTPFirewallPopup）                 */
+/* 公用名单表格(selectPopup / bindHTTPFirewallPopup)                 */
 /* ------------------------------------------------------------------ */
 
 export function PublicIpListTable({
@@ -938,7 +938,7 @@ export function PublicIpListTable({
   onAction: (list: IpListRow & { isSelected?: boolean }) => void
 }) {
   if (lists.length === 0) {
-    return <p className="comment">暂时还没有可用的公用IP名单。</p>
+    return <p className="comment">暂时还没有可用的公用IP名单.</p>
   }
   return (
     <table className="ui table selectable celled">

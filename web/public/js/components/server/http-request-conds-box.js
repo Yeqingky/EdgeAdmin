@@ -46,7 +46,7 @@ Vue.component("http-request-conds-box", {
 		},
 		removeGroup: function (groupIndex) {
 			let that = this
-			teaweb.confirm("确定要删除这一组条件吗？", function () {
+			teaweb.confirm("确定要删除这一组条件吗?", function () {
 				that.conds.groups.$remove(groupIndex)
 				that.change()
 			})
@@ -97,8 +97,8 @@ Vue.component("http-request-conds-box", {
 						<option value="or">或</option>
 					</select>
 					<p class="comment">
-						<span v-if="conds.connector == 'or'">只要满足其中一个条件分组即可。</span>
-						<span v-if="conds.connector == 'and'">需要满足所有条件分组。</span>
+						<span v-if="conds.connector == 'or'">只要满足其中一个条件分组即可.</span>
+						<span v-if="conds.connector == 'and'">需要满足所有条件分组.</span>
 					</p>	
 				</td>
 			</tr>

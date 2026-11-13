@@ -109,7 +109,7 @@ func (this *PurgeAction) RunPost(params struct {
 	}
 	this.Data["failKeys"] = failKeyMaps
 	if len(failKeyMaps) > 0 {
-		this.Fail("有" + types.String(len(failKeyMaps)) + "个Key无法完成操作，请删除后重试")
+		this.Fail("有" + types.String(len(failKeyMaps)) + "个Key无法完成操作,请删除后重试")
 	}
 
 	// 提交任务

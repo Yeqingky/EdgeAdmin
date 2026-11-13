@@ -35,7 +35,7 @@ Tea.context(function () {
 
 	this.doDatabase = function () {
 		if (this.databaseChanged == 1 && this.databaseTransferred == 0) {
-			teaweb.warn("请先将当前的数据导入到新的数据库中。")
+			teaweb.warn("请先将当前的数据导入到新的数据库中.")
 			return
 		}
 		this.step = this.STEP_API
@@ -173,7 +173,7 @@ Tea.context(function () {
 				teaweb.warn(resp.message)
 			})
 			.error(function (err) {
-				teaweb.warn("请求错误：" + err.message)
+				teaweb.warn("请求错误:" + err.message)
 				this.isUpgrading = false
 			})
 	}

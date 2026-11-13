@@ -75,7 +75,7 @@ Vue.component("http-access-log-config-box", {
 		<tbody v-show="((!vIsLocation && !vIsGroup) || accessLog.isPrior) && accessLog.isOn && showAdvancedOptions">
 			<tr>
 				<td>基础信息</td>
-				<td><p class="comment" style="padding-top: 0">默认记录客户端IP、请求URL等基础信息。</p></td>
+				<td><p class="comment" style="padding-top: 0">默认记录客户端IP,请求URL等基础信息.</p></td>
 			</tr>
 			<tr>
 				<td>高级信息</td>
@@ -84,8 +84,8 @@ Vue.component("http-access-log-config-box", {
 						<input type="checkbox" v-model="field.isChecked" @change="changeFields" :id="'access-log-field-' + index"/>
 						<label :for="'access-log-field-' + index">{{field.name}}</label>
 					</div>
-					<p class="comment">在基础信息之外要存储的信息。
-						<span class="red" v-if="hasRequestBodyField">记录"请求Body"将会显著消耗更多的系统资源，建议仅在调试时启用，最大记录尺寸为2MiB。</span>
+					<p class="comment">在基础信息之外要存储的信息.
+						<span class="red" v-if="hasRequestBodyField">记录"请求Body"将会显著消耗更多的系统资源,建议仅在调试时启用,最大记录尺寸为2MiB.</span>
 					</p>
 				</td>
 			</tr>
@@ -121,7 +121,7 @@ Vue.component("http-access-log-config-box", {
 						<input type="checkbox" v-model="accessLog.enableClientClosed"/>
 						<label></label>
 					</div>
-					<p class="comment">以<code-label>499</code-label>的状态码记录客户端主动中断日志。</p>
+					<p class="comment">以<code-label>499</code-label>的状态码记录客户端主动中断日志.</p>
 				</td>
 			</tr>
 		</tbody>
@@ -134,7 +134,7 @@ Vue.component("http-access-log-config-box", {
                 <td class="title">只记录WAF相关日志</td>
                 <td>
                     <checkbox v-model="accessLog.firewallOnly"></checkbox>
-                    <p class="comment">选中后只记录WAF相关的日志。通过此选项可有效减少访问日志数量，降低网络带宽和存储压力。</p>
+                    <p class="comment">选中后只记录WAF相关的日志.通过此选项可有效减少访问日志数量,降低网络带宽和存储压力.</p>
                 </td>
             </tr>
         </table>

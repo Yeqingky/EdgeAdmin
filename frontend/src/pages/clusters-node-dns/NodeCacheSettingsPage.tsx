@@ -39,7 +39,7 @@ export function NodeCacheSettingsPage() {
   }, [query.data, initialized])
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isError) {
     return <div className="ui negative message">加载失败</div>
@@ -93,19 +93,19 @@ export function NodeCacheSettingsPage() {
         <FormTable>
           <FormRow title="缓存硬盘容量">
             <SizeCapacityInput value={diskCapacity} onChange={setDiskCapacity} />
-            <p className="comment">缓存所在硬盘的最大用量，超出此用量或硬盘接近用尽时，将会自动尝试清理旧数据，0表示不限制。</p>
+            <p className="comment">缓存所在硬盘的最大用量,超出此用量或硬盘接近用尽时,将会自动尝试清理旧数据,0表示不限制.</p>
           </FormRow>
           <FormRow title="硬盘缓存主目录">
             <input type="text" maxLength={500} value={cacheDiskDir} onChange={(event) => setCacheDiskDir(event.target.value)} />
-            <p className="comment">存放文件缓存的主目录，通常填写绝对路径。不填则表示使用集群缓存策略中定义的目录。</p>
+            <p className="comment">存放文件缓存的主目录,通常填写绝对路径.不填则表示使用集群缓存策略中定义的目录.</p>
           </FormRow>
           <FormRow title="其他硬盘缓存目录">
             <CacheDiskDirsEditor value={cacheDiskSubDirs} onChange={setCacheDiskSubDirs} />
-            <p className="comment">除了主目录外，可以在这里添加别的可用于缓存的目录；缓存目录有变更时（添加、删除或修改）需要手动将这些缓存目录清空。</p>
+            <p className="comment">除了主目录外,可以在这里添加别的可用于缓存的目录;缓存目录有变更时(添加,删除或修改)需要手动将这些缓存目录清空.</p>
           </FormRow>
           <FormRow title="缓存内存容量">
             <SizeCapacityInput value={memoryCapacity} onChange={setMemoryCapacity} />
-            <p className="comment">缓存能使用的内存的最大容量，0表示不限制。</p>
+            <p className="comment">缓存能使用的内存的最大容量,0表示不限制.</p>
           </FormRow>
         </FormTable>
         <SubmitButton submitting={submitting} />

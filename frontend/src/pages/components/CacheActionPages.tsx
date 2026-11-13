@@ -96,7 +96,7 @@ export function CacheCleanPage({ cachePolicyId }: { cachePolicyId: number }) {
       <h3>清理</h3>
       <p>
         <span className="red">
-          严重警告：该操作将清理集群所有节点上的所有当前策略产生的缓存；如果只是想清理单个缓存，请使用“刷新预热”功能。
+          严重警告:该操作将清理集群所有节点上的所有当前策略产生的缓存;如果只是想清理单个缓存,请使用"刷新预热"功能.
         </span>
       </p>
       <form
@@ -111,12 +111,12 @@ export function CacheCleanPage({ cachePolicyId }: { cachePolicyId: number }) {
             <tr>
               <td className="title">操作原因 *</td>
               <td>
-                <p className="comment">为了防止新手滥用此功能、导致节点崩溃，你需要选择操作原因，才能继续操作：</p>
+                <p className="comment">为了防止新手滥用此功能,导致节点崩溃,你需要选择操作原因,才能继续操作:</p>
                 {[
-                  { value: 0, label: '我是一名新手，我不知道怎么清除缓存' },
-                  { value: 2, label: '要清理的域名太多，我比较懒，我不想用“刷新预热”功能' },
-                  { value: 3, label: '因节点硬盘空间不足或以往缓存设置错误或其他原因，想清除所有缓存，重新开始' },
-                  { value: 1, label: '我怀疑“刷新预热”功能不起作用' },
+                  { value: 0, label: '我是一名新手,我不知道怎么清除缓存' },
+                  { value: 2, label: '要清理的域名太多,我比较懒,我不想用"刷新预热"功能' },
+                  { value: 3, label: '因节点硬盘空间不足或以往缓存设置错误或其他原因,想清除所有缓存,重新开始' },
+                  { value: 1, label: '我怀疑"刷新预热"功能不起作用' },
                 ].map((option) => (
                   <div key={option.value} style={{ marginTop: '0.6em' }}>
                     <label>
@@ -134,7 +134,7 @@ export function CacheCleanPage({ cachePolicyId }: { cachePolicyId: number }) {
                   <a href="/servers/components/cache/batch?keyType=prefix" target="_blank" rel="noreferrer">
                     [刷新预热]
                   </a>{' '}
-                  功能来清理你的缓存。
+                  功能来清理你的缓存.
                 </td>
               </tr>
             ) : null}
@@ -146,7 +146,7 @@ export function CacheCleanPage({ cachePolicyId }: { cachePolicyId: number }) {
                   <a href="/servers/components/cache/batch?keyType=prefix" target="_blank" rel="noreferrer">
                     [刷新预热]
                   </a>{' '}
-                  功能运行非常可靠，如果你确认发现功能异常，且能100%几率重现问题，请及时报告给软件开发者。
+                  功能运行非常可靠,如果你确认发现功能异常,且能100%几率重现问题,请及时报告给软件开发者.
                 </td>
               </tr>
             ) : null}
@@ -158,14 +158,14 @@ export function CacheCleanPage({ cachePolicyId }: { cachePolicyId: number }) {
                   <a href="/servers/components/cache/batch?keyType=prefix" target="_blank" rel="noreferrer">
                     [刷新预热]
                   </a>{' '}
-                  功能，避免影响当前系统上的别的网站。
+                  功能,避免影响当前系统上的别的网站.
                 </td>
               </tr>
             ) : null}
             {reason === 3 ? (
               <tr>
                 <td>操作建议</td>
-                <td>缓存文件较多时，系统需要消耗更多系统资源和更多时间删除缓存文件，硬盘使用空间会逐渐恢复，操作后，请耐心等待。</td>
+                <td>缓存文件较多时,系统需要消耗更多系统资源和更多时间删除缓存文件,硬盘使用空间会逐渐恢复,操作后,请耐心等待.</td>
               </tr>
             ) : null}
             {reasonable ? (
@@ -173,7 +173,7 @@ export function CacheCleanPage({ cachePolicyId }: { cachePolicyId: number }) {
                 <td className="title">操作结果</td>
                 <td>
                   {requesting ? <div>数据发送中...</div> : null}
-                  {!requesting && !ok && message.length > 0 ? <span className="red">失败：{message}</span> : null}
+                  {!requesting && !ok && message.length > 0 ? <span className="red">失败:{message}</span> : null}
                   {!requesting && ok ? <NodeResultLabels results={results} /> : null}
                 </td>
               </tr>
@@ -263,7 +263,7 @@ export function CacheStatPage({ cachePolicyId }: { cachePolicyId: number }) {
               <td className="title">操作结果</td>
               <td>
                 {requesting ? <div>数据发送中...</div> : null}
-                {!requesting && !ok && message.length > 0 ? <span className="red">失败：{message}</span> : null}
+                {!requesting && !ok && message.length > 0 ? <span className="red">失败:{message}</span> : null}
                 {!requesting && ok ? <NodeResultLabels results={results} /> : null}
               </td>
             </tr>
@@ -379,7 +379,7 @@ export function CacheTestPage({ cachePolicyId }: { cachePolicyId: number }) {
               <td>
                 {writeState.requesting ? <div>数据发送中...</div> : null}
                 {!writeState.requesting && !writeState.ok && writeState.message.length > 0 ? (
-                  <span className="red">失败：{writeState.message}</span>
+                  <span className="red">失败:{writeState.message}</span>
                 ) : null}
                 {!writeState.requesting && writeState.ok ? <NodeResultLabels results={writeState.results} /> : null}
               </td>
@@ -418,7 +418,7 @@ export function CacheTestPage({ cachePolicyId }: { cachePolicyId: number }) {
               <td>
                 {readState.requesting ? <div>数据发送中...</div> : null}
                 {!readState.requesting && !readState.ok && readState.message.length > 0 ? (
-                  <span className="red">失败：{readState.message}</span>
+                  <span className="red">失败:{readState.message}</span>
                 ) : null}
                 {!readState.requesting && readState.ok ? <NodeResultLabels results={readState.results} /> : null}
               </td>
@@ -486,7 +486,7 @@ export function CachePurgePage({ cachePolicyId }: { cachePolicyId: number }) {
   return (
     <div>
       <CachePolicyMenu cachePolicyId={cachePolicyId} cachePolicyName={data.cachePolicyName} active="purge" />
-      <p className="comment">可以在这里批量刷新一组URL。</p>
+      <p className="comment">可以在这里批量刷新一组URL.</p>
       <form
         className="ui form"
         onSubmit={(event) => {
@@ -514,12 +514,12 @@ export function CachePurgePage({ cachePolicyId }: { cachePolicyId: number }) {
                 <textarea rows={10} value={keys} onChange={(event) => setKeys(event.target.value)} autoFocus />
                 {keyType === 'key' ? (
                   <p className="comment">
-                    每行一个URL，比如<code>https://example.com/hello/world.html</code>。
+                    每行一个URL,比如<code>https://example.com/hello/world.html</code>.
                   </p>
                 ) : (
                   <p className="comment">
-                    每行一个URL目录，比如<code>https://example.com/hello/</code>；如果只填写域名部分，表示清理全站，比如
-                    <code>https://example.com/</code>。
+                    每行一个URL目录,比如<code>https://example.com/hello/</code>;如果只填写域名部分,表示清理全站,比如
+                    <code>https://example.com/</code>.
                   </p>
                 )}
               </td>
@@ -528,7 +528,7 @@ export function CachePurgePage({ cachePolicyId }: { cachePolicyId: number }) {
               <td>操作结果</td>
               <td>
                 {requesting ? <div>数据发送中...</div> : null}
-                {!requesting && !ok && message.length > 0 ? <span className="red">失败：{message}</span> : null}
+                {!requesting && !ok && message.length > 0 ? <span className="red">失败:{message}</span> : null}
                 {!requesting && !ok ? <FailedKeyList failKeys={failKeys} /> : null}
                 {!requesting && ok ? <span className="green">任务提交成功</span> : null}
               </td>
@@ -607,14 +607,14 @@ export function CacheFetchPage({ cachePolicyId }: { cachePolicyId: number }) {
               <td>URL列表</td>
               <td>
                 <textarea rows={10} value={keys} onChange={(event) => setKeys(event.target.value)} autoFocus />
-                <p className="comment">每行一个URL。</p>
+                <p className="comment">每行一个URL.</p>
               </td>
             </tr>
             <tr>
               <td className="title">操作结果</td>
               <td>
                 {requesting ? <div>数据发送中...</div> : null}
-                {!requesting && !ok && message.length > 0 ? <span className="red">失败：{message}</span> : null}
+                {!requesting && !ok && message.length > 0 ? <span className="red">失败:{message}</span> : null}
                 {!requesting && !ok ? <FailedKeyList failKeys={failKeys} /> : null}
                 {!requesting && ok ? <span className="green">任务提交成功</span> : null}
               </td>

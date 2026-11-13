@@ -23,7 +23,7 @@ Vue.component("prior-checkbox", {
 				<input type="checkbox" v-model="isPrior"/>
 				<label class="red"></label>
 			</div>
-			<p class="comment"><strong v-if="isPrior">[已打开]</strong> {{realDescription}}。</p>
+			<p class="comment"><strong v-if="isPrior">[已打开]</strong> {{realDescription}}.</p>
 		</td>
 	</tr>
 </tbody>`

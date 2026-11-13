@@ -118,7 +118,7 @@ export function ServerBasicSettingsPage() {
   }, [userId, serverId])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -151,7 +151,7 @@ export function ServerBasicSettingsPage() {
         form.set('userPlanId', String(userPlanId))
       }
       await apiPostForm('/servers/server/settings', form)
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
       await queryClient.invalidateQueries({ queryKey: ['server-settings-basic', serverId] })
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
@@ -166,8 +166,8 @@ export function ServerBasicSettingsPage() {
       header={
         trafficLimitStatus ? (
           <div className="ui message warning">
-            当前网站有流量限制（套餐{trafficLimitStatus.planId}，有效期至{trafficLimitStatus.untilDay}，限制类型：
-            {trafficLimitStatus.targetType}）。
+            当前网站有流量限制(套餐{trafficLimitStatus.planId},有效期至{trafficLimitStatus.untilDay},限制类型:
+            {trafficLimitStatus.targetType}).
           </div>
         ) : null
       }
@@ -177,12 +177,12 @@ export function ServerBasicSettingsPage() {
           <FormRow title="所属用户">
             {data.user ? (
               <span>
-                {data.user.fullname} <span className="small">（{data.user.username}）</span>{' '}
+                {data.user.fullname} <span className="small">({data.user.username})</span>{' '}
                 <a href={`/users/user?userId=${data.user.id}`}>查看</a>
               </span>
             ) : userId > 0 ? (
               <span>
-                已指定用户ID：{userId}{' '}
+                已指定用户ID:{userId}{' '}
                 <a
                   href=""
                   onClick={(event) => {
@@ -218,7 +218,7 @@ export function ServerBasicSettingsPage() {
                   [指定用户]
                 </a>
                 <p className="comment">
-                  <span className="red">此操作同时会将与当前网站相关联的证书等数据自动修改为此用户所属。</span>
+                  <span className="red">此操作同时会将与当前网站相关联的证书等数据自动修改为此用户所属.</span>
                 </p>
               </span>
             )}
@@ -232,14 +232,14 @@ export function ServerBasicSettingsPage() {
                 <option value={0}>[选择套餐]</option>
                 {plans.map((plan) => (
                   <option key={plan.id} value={plan.id}>
-                    {plan.name}（{plan.dayTo}）
+                    {plan.name}({plan.dayTo})
                   </option>
                 ))}
               </Select>
             </FormRow>
           ) : null}
           {plans.length === 0 && session.data?.teaIsPlus ? (
-            <FormRow title="选择套餐">当前网站所属用户没有可用套餐。</FormRow>
+            <FormRow title="选择套餐">当前网站所属用户没有可用套餐.</FormRow>
           ) : null}
           <FormRow title={<span className={clusterId !== oldClusterId ? 'color-border' : ''}>部署的集群 *</span>}>
             <Select name="clusterId" value={clusterId} onChange={(event) => setClusterId(Number(event.target.value))}>
@@ -254,7 +254,7 @@ export function ServerBasicSettingsPage() {
             <FormRow title={<span className="color-border">是否保留原集群配置</span>}>
               <Checkbox checked={keepOldConfigs} onChange={setKeepOldConfigs} />
               <p className="comment">
-                选中表示在先前的集群节点上仍然保留当前网站的配置，直至节点配置全部刷新时才会删除；不选中，则表示立即删除原集群上关于当前网站的配置。
+                选中表示在先前的集群节点上仍然保留当前网站的配置,直至节点配置全部刷新时才会删除;不选中,则表示立即删除原集群上关于当前网站的配置.
               </p>
             </FormRow>
           ) : null}
@@ -311,7 +311,7 @@ export function ServerBasicSettingsPage() {
               </FormRow>
               <FormRow title="启用当前网站">
                 <Checkbox checked={isOn} onChange={setIsOn} />
-                <p className="comment">可以使用此选项整体关闭当前网站。</p>
+                <p className="comment">可以使用此选项整体关闭当前网站.</p>
               </FormRow>
             </>
           ) : null}

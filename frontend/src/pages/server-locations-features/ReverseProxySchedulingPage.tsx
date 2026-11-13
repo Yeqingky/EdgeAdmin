@@ -116,7 +116,7 @@ function SchedulingForm({
             <tbody>
               <FormRow title="Key">
                 <input type="text" maxLength={500} value={hashKey} onChange={(event) => setHashKey(event.target.value)} />
-                <p className="comment">用来计算Hash的字符串，其中可以使用变量。</p>
+                <p className="comment">用来计算Hash的字符串,其中可以使用变量.</p>
               </FormRow>
               <FormRow title="常用变量">
                 <select
@@ -149,7 +149,7 @@ function SchedulingForm({
               <FormRow title="参数名">
                 <input type="text" maxLength={50} value={stickyParam} onChange={(event) => setStickyParam(event.target.value)} />
                 <p className="comment">
-                  记录或指定源站的参数名，只能是英文字母和数字的组合，不允许有下划线（因为在HTTP Header中下划线是不标准的）
+                  记录或指定源站的参数名,只能是英文字母和数字的组合,不允许有下划线(因为在HTTP Header中下划线是不标准的)
                 </p>
               </FormRow>
             </tbody>

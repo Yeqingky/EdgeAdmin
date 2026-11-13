@@ -44,7 +44,7 @@ while ! MYSQL_PWD="$DB_PASSWORD" mariadb --protocol=tcp -h "$DB_HOST" -P "$DB_PO
     sleep 2
 done
 
-# 创建数据库表结构、API 节点配置和管理节点令牌, 重复执行安全
+# 创建数据库表结构,API 节点配置和管理节点令牌, 重复执行安全
 attempts=3
 while :; do
     if setup_output=$(bin/edge-api setup -api-node-protocol=http -api-node-host="$API_NODE_HOST" -api-node-port="$API_NODE_PORT" 2>&1); then

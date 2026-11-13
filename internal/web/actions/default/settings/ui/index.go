@@ -129,14 +129,14 @@ func (this *IndexAction) RunPost(params struct {
 					Data:   buf[:n],
 				})
 				if err != nil {
-					this.Fail("上传失败：" + err.Error())
+					this.Fail("上传失败:" + err.Error())
 				}
 			}
 			if err != nil {
 				if err == io.EOF {
 					break
 				}
-				this.Fail("上传失败：" + err.Error())
+				this.Fail("上传失败:" + err.Error())
 			}
 		}
 
@@ -176,14 +176,14 @@ func (this *IndexAction) RunPost(params struct {
 					Data:   buf[:n],
 				})
 				if err != nil {
-					this.Fail("上传失败：" + err.Error())
+					this.Fail("上传失败:" + err.Error())
 				}
 			}
 			if err != nil {
 				if err == io.EOF {
 					break
 				}
-				this.Fail("上传失败：" + err.Error())
+				this.Fail("上传失败:" + err.Error())
 			}
 		}
 

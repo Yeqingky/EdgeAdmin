@@ -57,7 +57,7 @@ func (this *CreateBatchAction) RunPost(params struct {
 	}
 
 	// 校验
-	// TODO 支持IP范围，比如：192.168.1.[100-105]
+	// TODO 支持IP范围,比如:192.168.1.[100-105]
 	realIPList := []string{}
 	for _, ip := range strings.Split(params.IpList, "\n") {
 		ip = strings.TrimSpace(ip)
@@ -67,7 +67,7 @@ func (this *CreateBatchAction) RunPost(params struct {
 		ip = strings.ReplaceAll(ip, " ", "")
 
 		if net.ParseIP(ip) == nil {
-			this.Fail("发现错误的IP地址：" + ip)
+			this.Fail("发现错误的IP地址:" + ip)
 		}
 
 		if lists.ContainsString(realIPList, ip) {

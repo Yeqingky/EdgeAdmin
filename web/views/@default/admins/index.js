@@ -12,7 +12,7 @@ Tea.context(function () {
 
 	this.deleteAdmin = function (adminId) {
 		let that = this
-		teaweb.confirm("确定要删除此系统用户吗？", function () {
+		teaweb.confirm("确定要删除此系统用户吗?", function () {
 			that.$post(".delete")
 				.params({
 					adminId: adminId

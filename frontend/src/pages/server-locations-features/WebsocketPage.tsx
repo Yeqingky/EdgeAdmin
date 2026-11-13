@@ -114,21 +114,21 @@ export function WebsocketPage() {
           ) : null}
           {isOn ? (
             <tbody>
-              <FormRow title="允许所有来源域（Origin）">
+              <FormRow title="允许所有来源域(Origin)">
                 <Checkbox checked={config.allowAllOrigins} onChange={(allowAllOrigins) => setConfig({ ...config, allowAllOrigins })} />
-                <p className="comment">选中表示允许所有的来源域。</p>
+                <p className="comment">选中表示允许所有的来源域.</p>
               </FormRow>
             </tbody>
           ) : null}
           {isOn && !config.allowAllOrigins ? (
             <tbody>
-              <FormRow title="允许的来源域列表（Origin）">
+              <FormRow title="允许的来源域列表(Origin)">
                 <ValuesBox
                   values={config.allowedOrigins}
                   onChange={(allowedOrigins) => setConfig({ ...config, allowedOrigins })}
                   placeholder="比如 https://example.com"
                 />
-                <p className="comment">只允许在列表中的来源域名访问Websocket服务。</p>
+                <p className="comment">只允许在列表中的来源域名访问Websocket服务.</p>
               </FormRow>
             </tbody>
           ) : null}
@@ -146,7 +146,7 @@ export function WebsocketPage() {
               <FormRow title="传递请求来源域">
                 <Checkbox checked={config.requestSameOrigin} onChange={(requestSameOrigin) => setConfig({ ...config, requestSameOrigin })} />
                 <p className="comment">
-                  选中后，表示把接收到的请求中的<code>Origin</code>字段传递到源站。
+                  选中后,表示把接收到的请求中的<code>Origin</code>字段传递到源站.
                 </p>
               </FormRow>
               {!config.requestSameOrigin ? (
@@ -158,7 +158,7 @@ export function WebsocketPage() {
                     onChange={(event) => setConfig({ ...config, requestOrigin: event.target.value })}
                   />
                   <p className="comment">
-                    指定向源站传递的<span className="ui label tiny">Origin</span>字段值。
+                    指定向源站传递的<span className="ui label tiny">Origin</span>字段值.
                   </p>
                 </FormRow>
               ) : null}

@@ -99,7 +99,7 @@ function MultiSelector({ options, selected, onChange }: { options: NamedItem[]; 
         style={{ marginBottom: '0.5em' }}
       />
       <div style={{ maxHeight: '18em', overflow: 'auto', border: '1px solid #eee', padding: '0.5em' }}>
-        {filtered.length === 0 ? <span className="disabled">没有可选的项目。</span> : null}
+        {filtered.length === 0 ? <span className="disabled">没有可选的项目.</span> : null}
         {filtered.map((option) => (
           <label key={option.id} style={{ display: 'block', marginBottom: '0.3em' }}>
             <input
@@ -243,7 +243,7 @@ export function WafIpAdminRegionPage({ firewallPolicyId }: { firewallPolicyId: n
               <td className="title">仅封禁的区域</td>
               <td>
                 {allowed.length > 0 ? (
-                  <p className="comment">由于你已设置&quot;仅允许的区域&quot;，所以不需要再设置封禁区域。</p>
+                  <p className="comment">由于你已设置&quot;仅允许的区域&quot;,所以不需要再设置封禁区域.</p>
                 ) : (
                   <MultiSelector options={countriesQuery.data || []} selected={denied} onChange={setDenied} />
                 )}
@@ -253,21 +253,21 @@ export function WafIpAdminRegionPage({ firewallPolicyId }: { firewallPolicyId: n
               <td>例外URL</td>
               <td>
                 <URLPatternsEditor title="添加例外URL" patterns={exceptPatterns} onChange={setExceptPatterns} />
-                <p className="comment">对这些URL将不做任何限制。</p>
+                <p className="comment">对这些URL将不做任何限制.</p>
               </td>
             </tr>
             <tr>
               <td>限制URL</td>
               <td>
                 <URLPatternsEditor title="添加限制URL" patterns={onlyPatterns} onChange={setOnlyPatterns} />
-                <p className="comment">只对这些URL做限制。</p>
+                <p className="comment">只对这些URL做限制.</p>
               </td>
             </tr>
             <tr>
               <td>提示内容</td>
               <td>
                 <textarea rows={3} value={countryHTML} onChange={(event) => setCountryHTML(event.target.value)} />
-                <p className="comment">当客户端所在区域被封禁时提示页面的HTML内容；不填则表示使用默认的提示内容；支持请求变量。</p>
+                <p className="comment">当客户端所在区域被封禁时提示页面的HTML内容;不填则表示使用默认的提示内容;支持请求变量.</p>
               </td>
             </tr>
             <tr>
@@ -277,7 +277,7 @@ export function WafIpAdminRegionPage({ firewallPolicyId }: { firewallPolicyId: n
                   <input type="checkbox" checked={allowSearchEngine} onChange={(event) => setAllowSearchEngine(event.target.checked)} />
                   <label />
                 </div>
-                <p className="comment">选中后，表示如果请求来自常见搜索引擎的IP，则不受区域限制。</p>
+                <p className="comment">选中后,表示如果请求来自常见搜索引擎的IP,则不受区域限制.</p>
               </td>
             </tr>
           </tbody>
@@ -377,7 +377,7 @@ export function WafIpAdminProvincesPage({ firewallPolicyId }: { firewallPolicyId
               <td className="title">仅封禁的省份</td>
               <td>
                 {allowed.length > 0 ? (
-                  <p className="comment">由于你已设置&quot;仅允许的省份&quot;，所以不需要再设置封禁省份。</p>
+                  <p className="comment">由于你已设置&quot;仅允许的省份&quot;,所以不需要再设置封禁省份.</p>
                 ) : (
                   <MultiSelector options={provincesQuery.data || []} selected={denied} onChange={setDenied} />
                 )}
@@ -387,21 +387,21 @@ export function WafIpAdminProvincesPage({ firewallPolicyId }: { firewallPolicyId
               <td>例外URL</td>
               <td>
                 <URLPatternsEditor title="添加例外URL" patterns={exceptPatterns} onChange={setExceptPatterns} />
-                <p className="comment">对这些URL将不做任何限制。</p>
+                <p className="comment">对这些URL将不做任何限制.</p>
               </td>
             </tr>
             <tr>
               <td>限制URL</td>
               <td>
                 <URLPatternsEditor title="添加限制URL" patterns={onlyPatterns} onChange={setOnlyPatterns} />
-                <p className="comment">只对这些URL做限制。</p>
+                <p className="comment">只对这些URL做限制.</p>
               </td>
             </tr>
             <tr>
               <td>提示内容</td>
               <td>
                 <textarea rows={3} value={provinceHTML} onChange={(event) => setProvinceHTML(event.target.value)} />
-                <p className="comment">当客户端所在省份被封禁时提示页面的HTML内容；不填则表示使用默认的提示内容；支持请求变量。</p>
+                <p className="comment">当客户端所在省份被封禁时提示页面的HTML内容;不填则表示使用默认的提示内容;支持请求变量.</p>
               </td>
             </tr>
           </tbody>
@@ -501,7 +501,7 @@ export function WafIpAdminProvidersPage({ firewallPolicyId }: { firewallPolicyId
               <td className="title">仅封禁的运营商</td>
               <td>
                 {allowed.length > 0 ? (
-                  <p className="comment">由于你已设置&quot;仅允许的运营商&quot;，所以不需要再设置封禁运营商。</p>
+                  <p className="comment">由于你已设置&quot;仅允许的运营商&quot;,所以不需要再设置封禁运营商.</p>
                 ) : (
                   <MultiSelector options={providersQuery.data || []} selected={denied} onChange={setDenied} />
                 )}
@@ -511,21 +511,21 @@ export function WafIpAdminProvidersPage({ firewallPolicyId }: { firewallPolicyId
               <td>例外URL</td>
               <td>
                 <URLPatternsEditor title="添加例外URL" patterns={exceptPatterns} onChange={setExceptPatterns} />
-                <p className="comment">对这些URL将不做任何限制。</p>
+                <p className="comment">对这些URL将不做任何限制.</p>
               </td>
             </tr>
             <tr>
               <td>限制URL</td>
               <td>
                 <URLPatternsEditor title="添加限制URL" patterns={onlyPatterns} onChange={setOnlyPatterns} />
-                <p className="comment">只对这些URL做限制。</p>
+                <p className="comment">只对这些URL做限制.</p>
               </td>
             </tr>
             <tr>
               <td>提示内容</td>
               <td>
                 <textarea rows={3} value={providerHTML} onChange={(event) => setProviderHTML(event.target.value)} />
-                <p className="comment">当客户端所在区域被封禁时提示页面的HTML内容；不填则表示使用默认的提示内容；支持请求变量。</p>
+                <p className="comment">当客户端所在区域被封禁时提示页面的HTML内容;不填则表示使用默认的提示内容;支持请求变量.</p>
               </td>
             </tr>
           </tbody>

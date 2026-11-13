@@ -67,7 +67,7 @@ func (this *CreateAction) RunPost(params struct {
 	if params.PatternType == serverconfigs.HTTPLocationPatternTypeRegexp {
 		_, err := regexp.Compile(params.Pattern)
 		if err != nil {
-			this.Fail("正则表达式校验失败：" + err.Error())
+			this.Fail("正则表达式校验失败:" + err.Error())
 		}
 	}
 
@@ -76,12 +76,12 @@ func (this *CreateAction) RunPost(params struct {
 		conds := &shared.HTTPRequestCondsConfig{}
 		err := json.Unmarshal(params.CondsJSON, conds)
 		if err != nil {
-			this.Fail("匹配条件校验失败：" + err.Error())
+			this.Fail("匹配条件校验失败:" + err.Error())
 		}
 
 		err = conds.Init()
 		if err != nil {
-			this.Fail("匹配条件校验失败：" + err.Error())
+			this.Fail("匹配条件校验失败:" + err.Error())
 		}
 	}
 

@@ -12,22 +12,22 @@
 			<tr>
 				<td class="title">节点IP列表</td>
 				<td>
-					<textarea name="ipList" rows="20" placeholder="IP列表，每行一个IP" ref="ipList"></textarea>
-					<p class="comment">每行一个节点IP。</p>
+					<textarea name="ipList" rows="20" placeholder="IP列表,每行一个IP" ref="ipList"></textarea>
+					<p class="comment">每行一个节点IP.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>所属分组</td>
 				<td>
 					<node-group-selector :v-cluster-id="clusterId"></node-group-selector>
-                    <p class="comment">用来筛选节点。</p>
+                    <p class="comment">用来筛选节点.</p>
 				</td>
 			</tr>
             <tr>
                 <td>所属区域</td>
                 <td>
                     <node-region-selector></node-region-selector>
-                    <p class="comment">设置区域后可以根据区域进行流量统计和计费。</p>
+                    <p class="comment">设置区域后可以根据区域进行流量统计和计费.</p>
                 </td>
             </tr>
 		</table>

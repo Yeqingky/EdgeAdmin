@@ -273,7 +273,7 @@ export function ClustersNodesPage() {
         </div>
       </form>
 
-      {data.nodes.length === 0 ? <p className="comment">暂时还没有节点。</p> : null}
+      {data.nodes.length === 0 ? <p className="comment">暂时还没有节点.</p> : null}
 
       {data.nodes.length > 0 ? (
         <table className="ui table selectable celled">
@@ -328,12 +328,12 @@ export function ClustersNodesPage() {
                   </a>
                   {node.region ? (
                     <div>
-                      <span className="ui label tiny basic grey">区域：{node.region.name}</span>
+                      <span className="ui label tiny basic grey">区域:{node.region.name}</span>
                     </div>
                   ) : null}
                   {node.group ? (
                     <div>
-                      <span className="ui label tiny basic grey">分组：{node.group.name}</span>
+                      <span className="ui label tiny basic grey">分组:{node.group.name}</span>
                     </div>
                   ) : null}
                   {node.secondaryClusters && node.secondaryClusters.length > 0 ? (
@@ -357,11 +357,11 @@ export function ClustersNodesPage() {
                             {addr.ip}
                             {addr.name ? (
                               <span className="small">
-                                （{addr.name}
-                                {!addr.canAccess ? '，不公开访问' : ''}）
+                                ({addr.name}
+                                {!addr.canAccess ? ',不公开访问' : ''})
                               </span>
                             ) : null}
-                            {!addr.name && !addr.canAccess ? <span className="small">（不公开访问）</span> : null}
+                            {!addr.name && !addr.canAccess ? <span className="small">(不公开访问)</span> : null}
                           </div>
                         </div>
                       ))}

@@ -11,12 +11,12 @@ Vue.component("node-level-selector", {
 				{
 					name: "边缘节点",
 					code: 1,
-					description: "普通的边缘节点。"
+					description: "普通的边缘节点."
 				},
 				{
 					name: "L2节点",
 					code: 2,
-					description: "特殊的边缘节点，同时负责同组上一级节点的回源。"
+					description: "特殊的边缘节点,同时负责同组上一级节点的回源."
 				}
 			],
 			levelCode: levelCode

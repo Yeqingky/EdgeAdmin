@@ -50,7 +50,7 @@ export function AdminAccessKeysPage() {
   }
 
   async function remove(accessKey: AccessKey) {
-    if (!(await confirm({ message: `确定要删除 AccessKey ${accessKey.uniqueId} 吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除 AccessKey ${accessKey.uniqueId} 吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     await apiPost('/admins/accesskeys/delete', { accessKeyId: accessKey.id })
@@ -64,7 +64,7 @@ export function AdminAccessKeysPage() {
       <div className="ui menu text blue first-menu">
         <a href="" className="item" onClick={(event) => { event.preventDefault(); setCreating(true) }}>[创建AccessKey]</a>
       </div>
-      {query.data.accessKeys.length === 0 ? <p className="comment">暂时还没有AccessKey。</p> : (
+      {query.data.accessKeys.length === 0 ? <p className="comment">暂时还没有AccessKey.</p> : (
         <table className="ui table selectable">
           <thead>
             <tr>

@@ -30,7 +30,7 @@ func (this *UpdateHostsAction) RunPost(params struct {
 	NewHosts []string
 }) {
 	if len(params.OldHosts) != len(params.NewHosts) {
-		this.Fail("参数配置错误，请刷新页面后重试")
+		this.Fail("参数配置错误,请刷新页面后重试")
 	}
 
 	client, err := rpc.NewRPCClient(&configs.APIConfig{
@@ -39,11 +39,11 @@ func (this *UpdateHostsAction) RunPost(params struct {
 		Secret:       params.NodeSecret,
 	}, false)
 	if err != nil {
-		this.FailField("host", "测试API节点时出错，请检查配置，错误信息："+err.Error())
+		this.FailField("host", "测试API节点时出错,请检查配置,错误信息:"+err.Error())
 	}
 	_, err = client.APINodeRPC().FindCurrentAPINodeVersion(client.APIContext(0), &pb.FindCurrentAPINodeVersionRequest{})
 	if err != nil {
-		this.FailField("host", "无法连接此API节点，错误信息："+err.Error())
+		this.FailField("host", "无法连接此API节点,错误信息:"+err.Error())
 	}
 
 	defer func() {
@@ -53,19 +53,19 @@ func (this *UpdateHostsAction) RunPost(params struct {
 	// 获取管理员节点信息
 	apiTokensResp, err := client.APITokenRPC().FindAllEnabledAPITokens(client.APIContext(0), &pb.FindAllEnabledAPITokensRequest{Role: "admin"})
 	if err != nil {
-		this.Fail("读取管理员令牌失败：" + err.Error())
+		this.Fail("读取管理员令牌失败:" + err.Error())
 	}
 
 	var apiTokens = apiTokensResp.ApiTokens
 	if len(apiTokens) == 0 {
-		this.Fail("数据库中没有管理员令牌信息，请确认数据是否完整")
+		this.Fail("数据库中没有管理员令牌信息,请确认数据是否完整")
 	}
 	var adminAPIToken = apiTokens[0]
 
 	// API节点列表
 	nodesResp, err := client.APINodeRPC().FindAllEnabledAPINodes(client.Context(0), &pb.FindAllEnabledAPINodesRequest{})
 	if err != nil {
-		this.Fail("获取API节点列表失败，错误信息：" + err.Error())
+		this.Fail("获取API节点列表失败,错误信息:" + err.Error())
 	}
 	var endpoints = []string{}
 	for _, node := range nodesResp.ApiNodes {
@@ -125,7 +125,7 @@ func (this *UpdateHostsAction) RunPost(params struct {
 			var addrs []*serverconfigs.NetworkAddressConfig
 			err = json.Unmarshal(node.AccessAddrsJSON, &addrs)
 			if err != nil {
-				this.Fail("读取节点访问地址失败：" + err.Error())
+				this.Fail("读取节点访问地址失败:" + err.Error())
 			}
 			for _, addr := range addrs {
 				err = addr.Init()
@@ -155,7 +155,7 @@ func (this *UpdateHostsAction) RunPost(params struct {
 			RestHTTPSJSON:   node.RestHTTPSJSON,
 		})
 		if err != nil {
-			this.Fail("保存API节点信息失败：" + err.Error())
+			this.Fail("保存API节点信息失败:" + err.Error())
 		}
 	}
 
@@ -167,17 +167,17 @@ func (this *UpdateHostsAction) RunPost(params struct {
 	}
 	err = apiConfig.WriteFile(Tea.Root + "/configs/" + configs.ConfigFileName)
 	if err != nil {
-		this.Fail("保存configs/" + configs.ConfigFileName + "失败：" + err.Error())
+		this.Fail("保存configs/" + configs.ConfigFileName + "失败:" + err.Error())
 	}
 
 	// 加载api_admin.yaml
 	rpcClient, err := rpc.SharedRPC()
 	if err != nil {
-		this.Fail("初始化RPC失败：" + err.Error())
+		this.Fail("初始化RPC失败:" + err.Error())
 	}
 	err = rpcClient.UpdateConfig(apiConfig)
 	if err != nil {
-		this.Fail("修改API配置失败：" + err.Error())
+		this.Fail("修改API配置失败:" + err.Error())
 	}
 
 	// 退出恢复模式

@@ -33,10 +33,10 @@ interface WafData extends LocationBaseData {
 }
 
 const CAPTCHA_TYPES: Array<{ code: string; name: string; description: string }> = [
-  { code: 'default', name: '验证码', description: '通过输入验证码来验证人机。' },
-  { code: 'oneClick', name: '点击验证', description: '通过点击界面元素来验证人机。' },
-  { code: 'slide', name: '滑动解锁', description: '通过滑动方块解锁来验证人机。' },
-  { code: 'geetest', name: '极验-行为验', description: '使用极验-行为验提供的人机验证方式。' },
+  { code: 'default', name: '验证码', description: '通过输入验证码来验证人机.' },
+  { code: 'oneClick', name: '点击验证', description: '通过点击界面元素来验证人机.' },
+  { code: 'slide', name: '滑动解锁', description: '通过滑动方块解锁来验证人机.' },
+  { code: 'geetest', name: '极验-行为验', description: '使用极验-行为验提供的人机验证方式.' },
 ]
 
 function normalizeConfig(config: FirewallConfig | null): FirewallConfig {
@@ -133,10 +133,10 @@ export function WafPage() {
                     <a href={`/servers/components/waf/policy?firewallPolicyId=${policy.id}`} title="查看策略">
                       [查看]
                     </a>
-                    <p className="comment">当前网站所在集群的设置。</p>
+                    <p className="comment">当前网站所在集群的设置.</p>
                   </div>
                 ) : (
-                  <span className="red">当前集群没有设置WAF策略，当前配置无法生效。</span>
+                  <span className="red">当前集群没有设置WAF策略,当前配置无法生效.</span>
                 )}
               </td>
             </tr>
@@ -149,7 +149,7 @@ export function WafPage() {
             <tbody>
               <FormRow title="启用Web防火墙">
                 <Checkbox checked={config.isOn} onChange={(isOn) => update({ isOn })} />
-                <p className="comment">选中后，表示启用当前网站的WAF功能。</p>
+                <p className="comment">选中后,表示启用当前网站的WAF功能.</p>
               </FormRow>
             </tbody>
           ) : null}
@@ -175,13 +175,13 @@ export function WafPage() {
                 </select>
                 <p className="comment">
                   {config.defaultCaptchaType === 'none'
-                    ? '使用系统默认的设置。你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证。'
-                    : `${currentCaptcha?.description || ''}你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证。`}
+                    ? '使用系统默认的设置.你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证.'
+                    : `${currentCaptcha?.description || ''}你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证.`}
                 </p>
               </FormRow>
               <FormRow title="启用系统全局规则">
                 <Checkbox checked={!config.ignoreGlobalRules} onChange={(checked) => update({ ignoreGlobalRules: !checked })} />
-                <p className="comment">选中后，表示使用系统全局WAF策略中定义的规则。</p>
+                <p className="comment">选中后,表示使用系统全局WAF策略中定义的规则.</p>
               </FormRow>
             </tbody>
           ) : null}

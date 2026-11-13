@@ -75,6 +75,6 @@ Vue.component("http-firewall-param-filters-box", {
 		<div v-if="!isAdding">
 			<button class="ui button tiny" type="button" @click.prevent="add">+</button>
 		</div>
-		<p class="comment">可以对参数值进行特定的编解码处理。</p>
+		<p class="comment">可以对参数值进行特定的编解码处理.</p>
 </div>`
 })

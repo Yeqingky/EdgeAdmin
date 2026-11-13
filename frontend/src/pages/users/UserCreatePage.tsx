@@ -58,7 +58,7 @@ export function UserCreatePage() {
         <FormTable>
           <FormRow title="用户名 *">
             <TextInput value={username} maxLength={100} onChange={(event) => setUsername(event.target.value)} autoFocus />
-            <p className="comment">用户名只能是英文、数字、下划线的组合。</p>
+            <p className="comment">用户名只能是英文,数字,下划线的组合.</p>
           </FormRow>
           <FormRow title="密码 *">
             <input type="password" value={pass1} maxLength={100} onChange={(event) => setPass1(event.target.value)} />
@@ -68,11 +68,11 @@ export function UserCreatePage() {
           </FormRow>
           <FormRow title="全名 *">
             <TextInput value={fullname} maxLength={100} onChange={(event) => setFullname(event.target.value)} />
-            <p className="comment">用户姓名或者公司名称等等。</p>
+            <p className="comment">用户姓名或者公司名称等等.</p>
           </FormRow>
           <FormRow title="关联集群 *">
             <ClusterSelect value={clusterId} onChange={setClusterId} />
-            <p className="comment">用户发布的网站会自动部署到此集群。</p>
+            <p className="comment">用户发布的网站会自动部署到此集群.</p>
           </FormRow>
           {session.data?.teaIsPlus ? (
             <FormRow title="开通功能">

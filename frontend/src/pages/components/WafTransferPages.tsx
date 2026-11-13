@@ -33,7 +33,7 @@ function GroupCheckboxes({
   onChange: (selected: number[]) => void
 }) {
   if (groups.length === 0) {
-    return <span className="disabled">暂时还没有规则。</span>
+    return <span className="disabled">暂时还没有规则.</span>
   }
   return (
     <div>
@@ -261,7 +261,7 @@ export function WafTestPage({ firewallPolicyId }: { firewallPolicyId: number }) 
   return (
     <div>
       <WafMenu firewallPolicyId={firewallPolicyId} active="test" />
-      <p className="ui message">此功能暂未开放，敬请期待。</p>
+      <p className="ui message">此功能暂未开放,敬请期待.</p>
     </div>
   )
 }

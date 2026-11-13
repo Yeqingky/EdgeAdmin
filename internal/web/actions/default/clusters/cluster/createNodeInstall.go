@@ -68,7 +68,7 @@ func (this *CreateNodeInstallAction) RunPost(params struct {
 	// 开始安装
 	_, err = this.RPC().NodeRPC().InstallNode(this.AdminContext(), &pb.InstallNodeRequest{NodeId: params.NodeId})
 	if err != nil {
-		this.Fail("安装失败：" + err.Error())
+		this.Fail("安装失败:" + err.Error())
 	}
 
 	this.Success()

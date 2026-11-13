@@ -89,13 +89,13 @@ export function CreateNodeIPAddressPage() {
             <FormRow title="IP地址 *">
               <input type="text" value={ip} maxLength={128} onChange={(event) => setIP(event.target.value)} />
               <p className="comment">
-                支持单个IP、CIDR格式的一组IP（位数不能小于24）、IP范围（类似于
-                <span className="ui label basic small">x.x.x.x-x.x.x.x</span>，最多只取256个）等。
+                支持单个IP,CIDR格式的一组IP(位数不能小于24),IP范围(类似于
+                <span className="ui label basic small">x.x.x.x-x.x.x.x</span>,最多只取256个)等.
               </p>
             </FormRow>
             <FormRow title="允许公开访问">
               <Checkbox checked={canAccess} onChange={setCanAccess} />
-              <p className="comment">是否为可以公开访问的IP，如果选中表示当前IP可以被公开访问，并可被加入到DNS解析记录中。</p>
+              <p className="comment">是否为可以公开访问的IP,如果选中表示当前IP可以被公开访问,并可被加入到DNS解析记录中.</p>
             </FormRow>
             <tr>
               <td colSpan={2}>
@@ -222,17 +222,17 @@ export function UpdateNodeIPAddressPage() {
             <FormRow title="IP地址 *">
               <input type="text" value={ip} maxLength={128} onChange={(event) => setIP(event.target.value)} />
               {addressId > 0 ? (
-                <p className="comment">只支持单个IP。</p>
+                <p className="comment">只支持单个IP.</p>
               ) : (
                 <p className="comment">
-                  支持单个IP、CIDR格式的一组IP（位数不能小于24）、IP范围（类似于
-                  <span className="ui label basic small">x.x.x.x-x.x.x.x</span>，最多只取256个）等。
+                  支持单个IP,CIDR格式的一组IP(位数不能小于24),IP范围(类似于
+                  <span className="ui label basic small">x.x.x.x-x.x.x.x</span>,最多只取256个)等.
                 </p>
               )}
             </FormRow>
             <FormRow title="允许公开访问">
               <Checkbox checked={canAccess} onChange={setCanAccess} />
-              <p className="comment">是否为可以公开访问的IP，如果选中表示当前IP可以被公开访问，并可被加入到DNS解析记录中。</p>
+              <p className="comment">是否为可以公开访问的IP,如果选中表示当前IP可以被公开访问,并可被加入到DNS解析记录中.</p>
             </FormRow>
             <tr>
               <td colSpan={2}>
@@ -245,7 +245,7 @@ export function UpdateNodeIPAddressPage() {
               <>
                 <FormRow title="启用当前IP">
                   <Checkbox checked={isOn} onChange={setIsOn} />
-                  <p className="comment">选中表示当前IP有效。</p>
+                  <p className="comment">选中表示当前IP有效.</p>
                 </FormRow>
                 <FormRow title="备注">
                   <input type="text" value={name} maxLength={50} onChange={(event) => setName(event.target.value)} />

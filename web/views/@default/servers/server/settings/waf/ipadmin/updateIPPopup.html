@@ -15,9 +15,9 @@
                 <span v-if="item.type == 'ipv6'">IPv6</span>
                 <span v-if="item.type == 'all'">所有IP</span>
 
-                <p class="comment" v-if="type == 'ipv4'">单个IPv4或一个IPv4范围。</p>
-                <p class="comment" v-if="type == 'ipv6'">单个IPv6或一个IPv6范围。</p>
-                <p class="comment" v-if="type == 'all'">允许或禁用所有的IP。</p>
+                <p class="comment" v-if="type == 'ipv4'">单个IPv4或一个IPv4范围.</p>
+                <p class="comment" v-if="type == 'ipv6'">单个IPv6或一个IPv6范围.</p>
+                <p class="comment" v-if="type == 'all'">允许或禁用所有的IP.</p>
             </td>
         </tr>
 
@@ -35,7 +35,7 @@
             <td>过期时间</td>
             <td>
                 <datetime-input :v-name="'expiredAt'" :v-timestamp="item.expiredAt"></datetime-input>
-                <p class="comment">在加入名单某一段时间后会失效，留空表示永久有效。</p>
+                <p class="comment">在加入名单某一段时间后会失效,留空表示永久有效.</p>
             </td>
         </tr>
 

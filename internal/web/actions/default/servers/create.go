@@ -109,7 +109,7 @@ func (this *CreateAction) RunPost(params struct {
 		var listen = []*serverconfigs.NetworkAddressConfig{}
 		err := json.Unmarshal([]byte(params.Addresses), &listen)
 		if err != nil {
-			this.Fail("端口地址解析失败：" + err.Error())
+			this.Fail("端口地址解析失败:" + err.Error())
 		}
 		if len(listen) == 0 {
 			this.Fail("至少需要绑定一个端口")
@@ -146,7 +146,7 @@ func (this *CreateAction) RunPost(params struct {
 		var listen = []*serverconfigs.NetworkAddressConfig{}
 		err := json.Unmarshal([]byte(params.Addresses), &listen)
 		if err != nil {
-			this.Fail("端口地址解析失败：" + err.Error())
+			this.Fail("端口地址解析失败:" + err.Error())
 		}
 		if len(listen) == 0 {
 			this.Fail("至少需要绑定一个端口")
@@ -187,7 +187,7 @@ func (this *CreateAction) RunPost(params struct {
 		var listen = []*serverconfigs.NetworkAddressConfig{}
 		err := json.Unmarshal([]byte(params.Addresses), &listen)
 		if err != nil {
-			this.Fail("端口地址解析失败：" + err.Error())
+			this.Fail("端口地址解析失败:" + err.Error())
 		}
 		if len(listen) == 0 {
 			this.Fail("至少需要绑定一个端口")
@@ -264,7 +264,7 @@ func (this *CreateAction) RunPost(params struct {
 	if len(params.ServerNames) > 0 {
 		err := json.Unmarshal(params.ServerNames, &serverNames)
 		if err != nil {
-			this.Fail("域名解析失败：" + err.Error())
+			this.Fail("域名解析失败:" + err.Error())
 		}
 
 		// 检查域名是否已经存在
@@ -284,7 +284,7 @@ func (this *CreateAction) RunPost(params struct {
 				return
 			}
 			if len(dupResp.DuplicatedServerNames) > 0 {
-				this.Fail("域名 " + strings.Join(dupResp.DuplicatedServerNames, ", ") + " 已经被其他网站所占用，不能重复使用")
+				this.Fail("域名 " + strings.Join(dupResp.DuplicatedServerNames, ", ") + " 已经被其他网站所占用,不能重复使用")
 			}
 		}
 	}
@@ -299,7 +299,7 @@ func (this *CreateAction) RunPost(params struct {
 		var originConfigs = []*serverconfigs.OriginConfig{}
 		err := json.Unmarshal([]byte(params.Origins), &originConfigs)
 		if err != nil {
-			this.Fail("源站地址解析失败：" + err.Error())
+			this.Fail("源站地址解析失败:" + err.Error())
 		}
 		if len(originConfigs) == 0 {
 			this.FailField("emptyOrigin", "请添加至少一个源站地址")

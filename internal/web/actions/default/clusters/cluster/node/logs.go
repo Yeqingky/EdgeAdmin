@@ -27,7 +27,7 @@ func (this *LogsAction) RunGet(params struct {
 	Level   string
 	Tag     string
 }) {
-	// 初始化节点信息（用于菜单）
+	// 初始化节点信息(用于菜单)
 	_, err := nodeutils.InitNodeInfo(this.Parent(), params.NodeId)
 	if err != nil {
 		this.ErrorPage(err)

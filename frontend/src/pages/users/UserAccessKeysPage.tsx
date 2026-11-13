@@ -27,7 +27,7 @@ export function UserAccessKeysPage() {
   const [description, setDescription] = useState('')
 
   if (userId <= 0) {
-    return <div className="ui negative message">缺少userId参数。</div>
+    return <div className="ui negative message">缺少userId参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -55,7 +55,7 @@ export function UserAccessKeysPage() {
   }
 
   async function remove(accessKey: AccessKey) {
-    if (!(await confirm({ message: `确定要删除 AccessKey ${accessKey.uniqueId} 吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除 AccessKey ${accessKey.uniqueId} 吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     await apiPost('/users/accesskeys/delete', { accessKeyId: accessKey.id })
@@ -70,7 +70,7 @@ export function UserAccessKeysPage() {
         <a href="" className="item" onClick={(event) => { event.preventDefault(); setCreating(true) }}>[创建AccessKey]</a>
       </div>
 
-      {query.data.accessKeys.length === 0 ? <p className="comment">暂时还没有AccessKey。</p> : null}
+      {query.data.accessKeys.length === 0 ? <p className="comment">暂时还没有AccessKey.</p> : null}
 
       {query.data.accessKeys.length > 0 ? (
         <table className="ui table selectable">

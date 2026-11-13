@@ -84,9 +84,9 @@ export function ReverseProxySettingPage() {
             <tbody>
               <FormRow title="启用源站">
                 <Checkbox checked={ref.isOn} onChange={(isOn) => setRef({ ...ref, isOn })} />
-                <p className="comment">选中后，所有源站设置才会生效。</p>
+                <p className="comment">选中后,所有源站设置才会生效.</p>
               </FormRow>
-              <FormRow title="回源主机名（Host）">
+              <FormRow title="回源主机名(Host)">
                 <div>
                   <label style={{ marginRight: '1em' }}>
                     <input type="radio" checked={config.requestHostType === 0} onChange={() => update({ requestHostType: 0 })} /> 跟随CDN域名
@@ -104,15 +104,15 @@ export function ReverseProxySettingPage() {
                   </div>
                 ) : null}
                 <p className="comment">
-                  请求源站时的主机名（Host），用于修改源站接收到的域名
-                  {config.requestHostType === 0 ? '，"跟随CDN域名"是指源站接收到的域名和当前CDN访问域名保持一致' : null}
-                  {config.requestHostType === 1 ? '，"跟随源站"是指源站接收到的域名仍然是填写的源站地址中的信息，不随代理服务域名改变而改变' : null}
-                  {config.requestHostType === 2 ? '，自定义Host内容中支持请求变量' : null}。
+                  请求源站时的主机名(Host),用于修改源站接收到的域名
+                  {config.requestHostType === 0 ? ',"跟随CDN域名"是指源站接收到的域名和当前CDN访问域名保持一致' : null}
+                  {config.requestHostType === 1 ? ',"跟随源站"是指源站接收到的域名仍然是填写的源站地址中的信息,不随代理服务域名改变而改变' : null}
+                  {config.requestHostType === 2 ? ',自定义Host内容中支持请求变量' : null}.
                 </p>
               </FormRow>
               <FormRow title="回源主机名移除端口">
                 <Checkbox checked={config.requestHostExcludingPort} onChange={(requestHostExcludingPort) => update({ requestHostExcludingPort })} />
-                <p className="comment">选中后表示移除回源主机名中的端口部分。</p>
+                <p className="comment">选中后表示移除回源主机名中的端口部分.</p>
               </FormRow>
             </tbody>
           ) : null}
@@ -129,7 +129,7 @@ export function ReverseProxySettingPage() {
             <tbody>
               <FormRow title="回源跟随">
                 <Checkbox checked={config.followRedirects} onChange={(followRedirects) => update({ followRedirects })} />
-                <p className="comment">选中后，自动读取源站跳转后的网页内容。</p>
+                <p className="comment">选中后,自动读取源站跳转后的网页内容.</p>
               </FormRow>
               <FormRow title="自动添加报头">
                 <div>
@@ -140,9 +140,9 @@ export function ReverseProxySettingPage() {
                   ))}
                   <div style={{ clear: 'both' }} />
                 </div>
-                <p className="comment">选中后，会自动向源站请求添加这些报头，以便于源站获取客户端信息。</p>
+                <p className="comment">选中后,会自动向源站请求添加这些报头,以便于源站获取客户端信息.</p>
               </FormRow>
-              <FormRow title="请求URI（RequestURI）">
+              <FormRow title="请求URI(RequestURI)">
                 <input
                   type="text"
                   placeholder="${requestURI}"
@@ -150,34 +150,34 @@ export function ReverseProxySettingPage() {
                   onChange={(event) => update({ requestURI: event.target.value })}
                 />
                 <p className="comment">
-                  {'${requestURI}'}为完整的请求URI，可以使用类似于"{'${requestURI}'}?arg1=value1&arg2=value2"的形式添加你的参数。
+                  {'${requestURI}'}为完整的请求URI,可以使用类似于"{'${requestURI}'}?arg1=value1&arg2=value2"的形式添加你的参数.
                 </p>
               </FormRow>
-              <FormRow title="去除URL前缀（StripPrefix）">
+              <FormRow title="去除URL前缀(StripPrefix)">
                 <input type="text" placeholder="/PREFIX" value={config.stripPrefix} onChange={(event) => update({ stripPrefix: event.target.value })} />
                 <p className="comment">
-                  可以把请求的路径部分前缀去除后再查找文件，比如把 <span className="ui label tiny">/web/app/index.html</span> 去除前缀{' '}
-                  <span className="ui label tiny">/web</span> 后就变成 <span className="ui label tiny">/app/index.html</span>。
+                  可以把请求的路径部分前缀去除后再查找文件,比如把 <span className="ui label tiny">/web/app/index.html</span> 去除前缀{' '}
+                  <span className="ui label tiny">/web</span> 后就变成 <span className="ui label tiny">/app/index.html</span>.
                 </p>
               </FormRow>
-              <FormRow title="自动刷新缓存区（AutoFlush）">
+              <FormRow title="自动刷新缓存区(AutoFlush)">
                 <Checkbox checked={config.autoFlush} onChange={(autoFlush) => update({ autoFlush })} />
-                <p className="comment">开启后将自动刷新缓冲区数据到客户端，在类似于SSE（server-sent events）等场景下很有用。</p>
+                <p className="comment">开启后将自动刷新缓冲区数据到客户端,在类似于SSE(server-sent events)等场景下很有用.</p>
               </FormRow>
               <FormRow title="自动重试50X">
                 <Checkbox checked={config.retry50X} onChange={(retry50X) => update({ retry50X })} />
-                <p className="comment">选中后，表示当源站返回状态码为50X（比如502、504等）时，自动重试其他源站。</p>
+                <p className="comment">选中后,表示当源站返回状态码为50X(比如502,504等)时,自动重试其他源站.</p>
               </FormRow>
               <FormRow title="自动重试40X">
                 <Checkbox checked={config.retry40X} onChange={(retry40X) => update({ retry40X })} />
-                <p className="comment">选中后，表示当源站返回状态码为40X（403或404）时，自动重试其他源站。</p>
+                <p className="comment">选中后,表示当源站返回状态码为40X(403或404)时,自动重试其他源站.</p>
               </FormRow>
               <FormRow title="PROXY Protocol">
                 <Checkbox
                   checked={config.proxyProtocol.isOn}
                   onChange={(proxyProtocolIsOn) => update({ proxyProtocol: { ...config.proxyProtocol, isOn: proxyProtocolIsOn } })}
                 />
-                <p className="comment">选中后表示启用PROXY Protocol，每次连接源站时都会在头部写入客户端地址信息。</p>
+                <p className="comment">选中后表示启用PROXY Protocol,每次连接源站时都会在头部写入客户端地址信息.</p>
               </FormRow>
               {config.proxyProtocol.isOn ? (
                 <FormRow title="PROXY Protocol版本">
@@ -191,8 +191,8 @@ export function ReverseProxySettingPage() {
                   </select>
                   <p className="comment">
                     {config.proxyProtocol.version === 1
-                      ? '发送类似于PROXY TCP4 192.168.1.1 192.168.1.10 32567 443的头部信息。'
-                      : '发送二进制格式的头部信息。'}
+                      ? '发送类似于PROXY TCP4 192.168.1.1 192.168.1.10 32567 443的头部信息.'
+                      : '发送二进制格式的头部信息.'}
                   </p>
                 </FormRow>
               ) : null}
@@ -208,7 +208,7 @@ export function ReverseProxySettingPage() {
                   </div>
                   <div className="ui field">秒</div>
                 </div>
-                <p className="comment">连接源站失败的最大超时时间，0表示不限制。</p>
+                <p className="comment">连接源站失败的最大超时时间,0表示不限制.</p>
               </FormRow>
               <FormRow title="源站读取超时时间">
                 <div className="ui fields inline">
@@ -222,7 +222,7 @@ export function ReverseProxySettingPage() {
                   </div>
                   <div className="ui field">秒</div>
                 </div>
-                <p className="comment">读取内容时的最大超时时间，0表示不限制。</p>
+                <p className="comment">读取内容时的最大超时时间,0表示不限制.</p>
               </FormRow>
               <FormRow title="源站最大并发连接数">
                 <input
@@ -232,7 +232,7 @@ export function ReverseProxySettingPage() {
                   value={config.maxConns}
                   onChange={(event) => update({ maxConns: Math.max(0, Number(event.target.value) || 0) })}
                 />
-                <p className="comment">源站可以接受到的最大并发连接数，0表示使用系统默认。</p>
+                <p className="comment">源站可以接受到的最大并发连接数,0表示使用系统默认.</p>
               </FormRow>
               <FormRow title="源站最大空闲连接数">
                 <input
@@ -242,7 +242,7 @@ export function ReverseProxySettingPage() {
                   value={config.maxIdleConns}
                   onChange={(event) => update({ maxIdleConns: Math.max(0, Number(event.target.value) || 0) })}
                 />
-                <p className="comment">当没有请求时，源站保持等待的最大空闲连接数量，0表示使用系统默认。</p>
+                <p className="comment">当没有请求时,源站保持等待的最大空闲连接数量,0表示使用系统默认.</p>
               </FormRow>
               <FormRow title="源站最大空闲超时时间">
                 <div className="ui fields inline">
@@ -256,7 +256,7 @@ export function ReverseProxySettingPage() {
                   </div>
                   <div className="ui field">秒</div>
                 </div>
-                <p className="comment">源站保持等待的空闲超时时间，0表示使用默认时间。</p>
+                <p className="comment">源站保持等待的空闲超时时间,0表示使用默认时间.</p>
               </FormRow>
             </tbody>
           ) : null}

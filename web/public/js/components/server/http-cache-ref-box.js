@@ -74,7 +74,7 @@ Vue.component("http-cache-ref-box", {
 
 			moreOptionsVisible: false,
 
-			condCategory: "simple", // 条件分类：simple|complex
+			condCategory: "simple", // 条件分类:simple|complex
 			condType: condType,
 			condComponent: condComponent,
 			condIsCaseInsensitive: (ref.simpleCond != null) ? ref.simpleCond.isCaseInsensitive : true,
@@ -210,7 +210,7 @@ Vue.component("http-cache-ref-box", {
 				<input type="checkbox" name="condIsCaseInsensitive" value="1" v-model="condIsCaseInsensitive"/>
 				<label></label>
 			</div>
-			<p class="comment">选中后表示对比时忽略参数值的大小写。</p>
+			<p class="comment">选中后表示对比时忽略参数值的大小写.</p>
 		</td>
 	</tr>
 	<tr v-if="condCategory == 'complex'">
@@ -230,7 +230,7 @@ Vue.component("http-cache-ref-box", {
 		<td>忽略URI参数</td>
 		<td>
 			<checkbox v-model="keyIgnoreArgs"></checkbox>
-			<p class="comment">选中后，表示缓存Key中不包含URI参数（即问号（?））后面的内容。</p>
+			<p class="comment">选中后,表示缓存Key中不包含URI参数(即问号(?))后面的内容.</p>
 		</td>
 	</tr>
 	<tr v-show="!vIsReverse">
@@ -240,18 +240,18 @@ Vue.component("http-cache-ref-box", {
 		<td>缓存Key *</td>
 		<td>
 			<input type="text" v-model="ref.key" @input="changeKey(ref.key)"/>
-			<p class="comment">用来区分不同缓存内容的唯一Key。<request-variables-describer ref="variablesDescriber"></request-variables-describer>。</p>
+			<p class="comment">用来区分不同缓存内容的唯一Key.<request-variables-describer ref="variablesDescriber"></request-variables-describer>.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>请求方法限制</td>
 		<td>
 			<values-box size="5" maxlength="10" :values="ref.methods" @change="changeMethods"></values-box>
-			<p class="comment">允许请求的缓存方法，默认支持所有的请求方法。</p>
+			<p class="comment">允许请求的缓存方法,默认支持所有的请求方法.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
-		<td>客户端过期时间<em>（Expires）</em></td>
+		<td>客户端过期时间<em>(Expires)</em></td>
 		<td>
 			<http-expires-time-config-box :v-expires-time="ref.expiresTime" @change="changeExpiresTime"></http-expires-time-config-box>		
 		</td>
@@ -260,49 +260,49 @@ Vue.component("http-cache-ref-box", {
 		<td>可缓存的最大内容尺寸</td>
 		<td>
 			<size-capacity-box :v-value="ref.maxSize" @change="changeMaxSize"></size-capacity-box>
-			<p class="comment">内容尺寸如果高于此值则不缓存。</p>
+			<p class="comment">内容尺寸如果高于此值则不缓存.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>可缓存的最小内容尺寸</td>
 		<td>
 			<size-capacity-box :v-value="ref.minSize" @change="changeMinSize"></size-capacity-box>
-			<p class="comment">内容尺寸如果低于此值则不缓存。</p>
+			<p class="comment">内容尺寸如果低于此值则不缓存.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>支持缓存分片内容</td>
 		<td>
 			<checkbox name="allowPartialContent" value="1" v-model="ref.allowPartialContent"></checkbox>
-			<p class="comment">选中后，支持缓存源站返回的某个分片的内容，该内容通过<code-label>206 Partial Content</code-label>状态码返回。</p>
+			<p class="comment">选中后,支持缓存源站返回的某个分片的内容,该内容通过<code-label>206 Partial Content</code-label>状态码返回.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse && ref.allowPartialContent && !ref.alwaysForwardRangeReques">
 		<td>强制返回分片内容</td>
 		<td>
 			<checkbox name="forcePartialContent" value="1" v-model="ref.forcePartialContent"></checkbox>
-			<p class="comment">选中后，表示无论客户端是否发送<code-label>Range</code-label>报头，都会优先尝试返回已缓存的分片内容；如果你的应用有不支持分片内容的客户端（比如有些下载软件不支持<code-label>206 Partial Content</code-label>），请务必关闭此功能。</p>
+			<p class="comment">选中后,表示无论客户端是否发送<code-label>Range</code-label>报头,都会优先尝试返回已缓存的分片内容;如果你的应用有不支持分片内容的客户端(比如有些下载软件不支持<code-label>206 Partial Content</code-label>),请务必关闭此功能.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>强制Range回源</td>
 		<td>
 			<checkbox v-model="ref.alwaysForwardRangeRequest"></checkbox>
-			<p class="comment">选中后，表示把所有包含Range报头的请求都转发到源站，而不是尝试从缓存中读取。</p>
+			<p class="comment">选中后,表示把所有包含Range报头的请求都转发到源站,而不是尝试从缓存中读取.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>状态码列表</td>
 		<td>
 			<values-box name="statusList" size="3" maxlength="3" :values="ref.status" @change="changeStatusList"></values-box>
-			<p class="comment">允许缓存的HTTP状态码列表。</p>
+			<p class="comment">允许缓存的HTTP状态码列表.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>跳过的Cache-Control值</td>
 		<td>
 			<values-box name="skipResponseCacheControlValues" size="10" maxlength="100" :values="ref.skipCacheControlValues"></values-box>
-			<p class="comment">当响应的Cache-Control为这些值时不缓存响应内容，而且不区分大小写。</p>
+			<p class="comment">当响应的Cache-Control为这些值时不缓存响应内容,而且不区分大小写.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
@@ -312,7 +312,7 @@ Vue.component("http-cache-ref-box", {
 				<input type="checkbox" value="1" v-model="ref.skipSetCookie"/>
 				<label></label>
 			</div>
-			<p class="comment">选中后，当响应的报头中有Set-Cookie时不缓存响应内容，防止动态内容被缓存。</p>
+			<p class="comment">选中后,当响应的报头中有Set-Cookie时不缓存响应内容,防止动态内容被缓存.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
@@ -322,35 +322,35 @@ Vue.component("http-cache-ref-box", {
 				<input type="checkbox" name="enableRequestCachePragma" value="1" v-model="ref.enableRequestCachePragma"/>
 				<label></label>
 			</div>
-			<p class="comment">选中后，当请求的报头中含有Pragma: no-cache或Cache-Control: no-cache时，会跳过缓存直接读取源内容，一般仅用于调试。</p>
+			<p class="comment">选中后,当请求的报头中含有Pragma: no-cache或Cache-Control: no-cache时,会跳过缓存直接读取源内容,一般仅用于调试.</p>
 		</td>
 	</tr>	
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>允许If-None-Match回源</td>
 		<td>
 			<checkbox v-model="ref.enableIfNoneMatch"></checkbox>
-			<p class="comment">特殊情况下才需要开启，可能会降低缓存命中率。</p>
+			<p class="comment">特殊情况下才需要开启,可能会降低缓存命中率.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>允许If-Modified-Since回源</td>
 		<td>
 			<checkbox v-model="ref.enableIfModifiedSince"></checkbox>
-			<p class="comment">特殊情况下才需要开启，可能会降低缓存命中率。</p>
+			<p class="comment">特殊情况下才需要开启,可能会降低缓存命中率.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>允许异步读取源站</td>
 		<td>
 			<checkbox v-model="ref.enableReadingOriginAsync"></checkbox>
-			<p class="comment">试验功能。允许客户端中断连接后，仍然继续尝试从源站读取内容并缓存。</p>
+			<p class="comment">试验功能.允许客户端中断连接后,仍然继续尝试从源站读取内容并缓存.</p>
 		</td>
 	</tr>
 	<tr v-show="moreOptionsVisible && !vIsReverse">
 		<td>支持分段内容</td>
 		<td>
 			<checkbox name="allowChunkedEncoding" value="1" v-model="ref.allowChunkedEncoding"></checkbox>
-			<p class="comment">选中后，Gzip等压缩后的Chunked内容可以直接缓存，无需检查内容长度。</p>
+			<p class="comment">选中后,Gzip等压缩后的Chunked内容可以直接缓存,无需检查内容长度.</p>
 		</td>
 	</tr>
 	<tr v-show="false">

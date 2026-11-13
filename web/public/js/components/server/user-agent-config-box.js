@@ -29,7 +29,7 @@ Vue.component("user-agent-config-box", {
 		},
 		remove: function (index) {
 			let that = this
-			teaweb.confirm("确定要删除此名单吗？", function () {
+			teaweb.confirm("确定要删除此名单吗?", function () {
 				that.config.filters.$remove(index)
 			})
 		},
@@ -95,7 +95,7 @@ Vue.component("user-agent-config-box", {
 						<input type="checkbox" value="1" v-model="config.isOn"/>
 						<label></label>
 					</div>
-					<p class="comment">选中后表示开启UserAgent名单。</p>
+					<p class="comment">选中后表示开启UserAgent名单.</p>
 				</td>
 			</tr>
 		</tbody>
@@ -134,7 +134,7 @@ Vue.component("user-agent-config-box", {
 								<td class="title">UA关键词</td>
 								<td>
 									<textarea v-model="batchKeywords" @input="changeKeywords(batchKeywords)" ref="batchKeywords" style="width: 20em" placeholder="*浏览器标识*"></textarea>
-									<p class="comment">每行一个关键词；不区分大小写，比如<code-label>Chrome</code-label>；支持<code-label>*</code-label>通配符，比如<code-label>*Firefox*</code-label>；也支持空行关键词，表示空UserAgent。</p>
+									<p class="comment">每行一个关键词;不区分大小写,比如<code-label>Chrome</code-label>;支持<code-label>*</code-label>通配符,比如<code-label>*Firefox*</code-label>;也支持空行关键词,表示空UserAgent.</p>
 								</td>
 							</tr>
 							<tr>
@@ -162,14 +162,14 @@ Vue.component("user-agent-config-box", {
 				<td>例外URL</td>
 				<td>
 					<url-patterns-box v-model="config.exceptURLPatterns"></url-patterns-box>
-					<p class="comment">如果填写了例外URL，表示这些URL跳过不做处理。</p>
+					<p class="comment">如果填写了例外URL,表示这些URL跳过不做处理.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>限制URL</td>
 				<td>
 					<url-patterns-box v-model="config.onlyURLPatterns"></url-patterns-box>
-					<p class="comment">如果填写了限制URL，表示只对这些URL进行处理；如果不填则表示支持所有的URL。</p>
+					<p class="comment">如果填写了限制URL,表示只对这些URL进行处理;如果不填则表示支持所有的URL.</p>
 				</td>
 			</tr>
 		</tbody>

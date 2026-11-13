@@ -94,7 +94,7 @@ export function AdminUpdatePage() {
           </FormRow>
           <FormRow title="登录密码">
             <input type="password" value={pass1} maxLength={100} onChange={(event) => setPass1(event.target.value)} />
-            <p className="comment">留空表示不修改。</p>
+            <p className="comment">留空表示不修改.</p>
           </FormRow>
           <FormRow title="确认登录密码">
             <input type="password" value={pass2} maxLength={100} onChange={(event) => setPass2(event.target.value)} />

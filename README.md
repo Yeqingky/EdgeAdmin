@@ -1,12 +1,12 @@
 # GoEdge目标
-做一款人人用得起的CDN & WAF系统。
+做一款人人用得起的CDN & WAF系统.
 
 ![截图](doc/screenshot.png)
 
 ## 特性
-* `免费` - 开源、免费、自由、开放
-* `简单` - 架构简单清晰，安装简单，使用简单，运维简单
-* `高扩展性` - 可以自由扩展新的节点，支持亿级数据
+* `免费` - 开源,免费,自由,开放
+* `简单` - 架构简单清晰,安装简单,使用简单,运维简单
+* `高扩展性` - 可以自由扩展新的节点,支持亿级数据
 
 ## 功能介绍
 * 多用户
@@ -48,7 +48,7 @@
 ## 架构
 ![架构图](doc/architect-zh.png)
 
-其中的组件源码地址如下：
+其中的组件源码地址如下:
 * [边缘节点](https://git.ovh.im/yeqing/EdgeNode)
 * [API节点](https://git.ovh.im/yeqing/EdgeAPI)
 * [管理平台](https://git.ovh.im/yeqing/EdgeAdmin)

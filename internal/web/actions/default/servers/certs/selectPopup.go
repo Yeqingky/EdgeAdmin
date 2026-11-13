@@ -29,7 +29,7 @@ func (this *SelectPopupAction) RunGet(params struct {
 	ServerId         int64  // 搜索的服务
 	UserId           int64  // 搜索的用户名
 	SearchingDomains string // 搜索的域名
-	SearchingType    string // 搜索类型：match|all
+	SearchingType    string // 搜索类型:match|all
 
 	ViewSize        string
 	SelectedCertIds string

@@ -14,7 +14,7 @@ Tea.context(function () {
 	// 删除策略
 	this.deletePolicy = function (policyId) {
 		let that = this
-		teaweb.confirm("确定要删除此缓存策略吗？", function () {
+		teaweb.confirm("确定要删除此缓存策略吗?", function () {
 			that.$post("/servers/components/cache/delete")
 				.params({
 					cachePolicyId: policyId

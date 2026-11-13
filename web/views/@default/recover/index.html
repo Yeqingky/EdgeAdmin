@@ -42,14 +42,14 @@
 
     <!-- 介绍 -->
     <div v-if="step == STEP_INTRO">
-        可以通过恢复模式重新设置系统的API节点。
+        可以通过恢复模式重新设置系统的API节点.
 
         <button class="ui button primary" style="margin-top: 10em" type="button" @click.prevent="goIntroNext()">开始<i class="icon long arrow right"></i></button>
     </div>
 
     <!-- 新API地址 -->
     <div v-show="step == STEP_NEW_API">
-        <p class="comment">输入一个可用的API节点信息：</p>
+        <p class="comment">输入一个可用的API节点信息:</p>
         <form method="post" class="ui form" data-tea-action=".validateApi" data-tea-success="apiSuccess" data-tea-before="apiSubmit" data-tea-done="apiDone">
             <table class="ui table definition selectable">
                 <tr>
@@ -59,35 +59,35 @@
                             <option value="http">HTTP</option>
                             <option value="https">HTTPS</option>
                         </select>
-                        <p class="comment">API节点使用的协议。</p>
+                        <p class="comment">API节点使用的协议.</p>
                     </td>
                 </tr>
                 <tr>
                     <td>主机地址 *</td>
                     <td>
                         <input type="text" name="host" maxlength="100" style="width:20em"/>
-                        <p class="comment">API节点所在主机地址。</p>
+                        <p class="comment">API节点所在主机地址.</p>
                     </td>
                 </tr>
                 <tr>
                     <td>服务端口 *</td>
                     <td>
                         <input type="text" name="port" style="width:6em" maxlength="5"/>
-                        <p class="comment">API节点启动的端口。</p>
+                        <p class="comment">API节点启动的端口.</p>
                     </td>
                 </tr>
                 <tr>
                     <td>节点nodeId *</td>
                     <td>
                         <input type="text" name="nodeId" maxlength="100"/>
-                        <p class="comment">在节点的配置文件中<code-label>configs/api.yaml</code-label>中获取，不需要带双引号。</p>
+                        <p class="comment">在节点的配置文件中<code-label>configs/api.yaml</code-label>中获取,不需要带双引号.</p>
                     </td>
                 </tr>
                 <tr>
                     <td>节点secret *</td>
                     <td>
                         <input type="password" name="nodeSecret" maxlength="100"/>
-                        <p class="comment">在节点的配置文件中<code-label>configs/api.yaml</code-label>中获取，不需要带双引号。</p>
+                        <p class="comment">在节点的配置文件中<code-label>configs/api.yaml</code-label>中获取,不需要带双引号.</p>
                     </td>
                 </tr>
             </table>
@@ -111,7 +111,7 @@
                 <thead>
                     <tr>
                         <th style="width: 50%">原地址</th>
-                        <th>新地址（留空表示不修改）</th>
+                        <th>新地址(留空表示不修改)</th>
                     </tr>
                 </thead>
                 <tr v-for="host in apiNodeInfo.hosts">
@@ -130,7 +130,7 @@
 
     <!-- 修改成功 -->
     <div v-show="step == STEP_FINISH">
-        修改成功，请<a href="/">刷新</a>此页面后，进入系统。
+        修改成功,请<a href="/">刷新</a>此页面后,进入系统.
     </div>
 </div>
 

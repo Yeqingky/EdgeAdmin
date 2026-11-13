@@ -45,7 +45,7 @@ func (this *IndexAction) RunPost(params struct {
 	var remoteAddrConfig = &serverconfigs.HTTPRemoteAddrConfig{}
 	err := json.Unmarshal(params.RemoteAddrJSON, remoteAddrConfig)
 	if err != nil {
-		this.Fail("参数校验失败：" + err.Error())
+		this.Fail("参数校验失败:" + err.Error())
 		return
 	}
 
@@ -58,7 +58,7 @@ func (this *IndexAction) RunPost(params struct {
 			return
 		}
 		if !regexp.MustCompile(`^[\w-_,]+$`).MatchString(remoteAddrConfig.RequestHeaderName) {
-			this.FailField("requestHeaderName", "请求报头中只能含有数字、英文字母、下划线、中划线")
+			this.FailField("requestHeaderName", "请求报头中只能含有数字,英文字母,下划线,中划线")
 			return
 		}
 		remoteAddrConfig.Value = "${header." + remoteAddrConfig.RequestHeaderName + "}"
@@ -71,7 +71,7 @@ func (this *IndexAction) RunPost(params struct {
 
 	err = remoteAddrConfig.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 		return
 	}
 

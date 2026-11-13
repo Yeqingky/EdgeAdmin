@@ -139,7 +139,7 @@ export function LoginPage() {
                     checked={remember}
                     onChange={(event) => setRemember(event.target.checked)}
                   />
-                  <label>在这个电脑上记住登录（14天）</label>
+                  <label>在这个电脑上记住登录(14天)</label>
                 </div>
               </div>
             ) : null}

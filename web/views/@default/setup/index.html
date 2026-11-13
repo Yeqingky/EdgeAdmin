@@ -47,16 +47,16 @@
 
 	<!-- 介绍 -->
 	<div v-show="step == STEP_INTRO">
-		<div>感谢你选择使用<strong>GoEdge</strong> CDN系统，下面让我们一起开始配置系统。</div>
-		<div class="margin">在这之前如果你还没有可用的MySQL数据库（支持MySQL 5.7.8/8.0/8.1/TiDB 3.0及以上版本），请先安装MySQL数据库再进行。</div>
-        <div class="margin" style="color: grey">免责声明：GoEdge软件开发者并不对您的软件使用方法、服务对象、服务内容负道德或法律上的约束责任，在使用本软件时产生的一切法律风险自负。</div>
-        <div class="margin" style="color: grey">用户协议：请在遵守中华人民共和国政策、法律、法规的前提下使用本软件；自愿承担因不当使用本软件产生的一切法律后果；承认GoEdge开发者拥有本软件的所有著作权；点击"开始"安装表示你同意此用户协议。</div>
+		<div>感谢你选择使用<strong>GoEdge</strong> CDN系统,下面让我们一起开始配置系统.</div>
+		<div class="margin">在这之前如果你还没有可用的MySQL数据库(支持MySQL 5.7.8/8.0/8.1/TiDB 3.0及以上版本),请先安装MySQL数据库再进行.</div>
+        <div class="margin" style="color: grey">免责声明:GoEdge软件开发者并不对您的软件使用方法,服务对象,服务内容负道德或法律上的约束责任,在使用本软件时产生的一切法律风险自负.</div>
+        <div class="margin" style="color: grey">用户协议:请在遵守中华人民共和国政策,法律,法规的前提下使用本软件;自愿承担因不当使用本软件产生的一切法律后果;承认GoEdge开发者拥有本软件的所有著作权;点击"开始"安装表示你同意此用户协议.</div>
 		<button class="ui button primary" style="margin-top: 10em" type="button" @click.prevent="goIntroNext()">开始<i class="icon long arrow right"></i></button>
 	</div>
 
 	<!-- 设置API节点 -->
 	<div v-show="step == STEP_API">
-		<div class="ui message"><strong>API节点</strong>是管理系统和数据库之间通讯的桥梁，新安装时可以先使用自动启动的API节点，等系统变得庞大时再扩展新的API节点。</div>
+		<div class="ui message"><strong>API节点</strong>是管理系统和数据库之间通讯的桥梁,新安装时可以先使用自动启动的API节点,等系统变得庞大时再扩展新的API节点.</div>
 		<form method="post" class="ui form" data-tea-action=".validateApi" data-tea-success="apiSuccess" data-tea-before="apiSubmit" data-tea-done="apiDone">
 			<table class="ui table definition selectable">
 				<tr>
@@ -78,7 +78,7 @@
 						<td>节点端口 *</td>
 						<td>
 							<input type="text" name="newPort" style="width:6em" maxlength="5" v-model="newAPINodePort"/>
-							<p class="comment">选一个在1024-65535之间并且没有正在使用的端口作为要启动的节点端口。如果你的服务器上有防火墙或者其他安全策略，请记得设置这个端口为通过。<strong>如果你是一名Linux新手，请不要轻易修改此端口。</strong></p>
+							<p class="comment">选一个在1024-65535之间并且没有正在使用的端口作为要启动的节点端口.如果你的服务器上有防火墙或者其他安全策略,请记得设置这个端口为通过.<strong>如果你是一名Linux新手,请不要轻易修改此端口.</strong></p>
 						</td>
 					</tr>
 					<tr>
@@ -89,7 +89,7 @@
                                     <input type="text" name="newHost" value="" ref="newHostRef" placeholder="x.x.x.x" v-model="currentHost"/>
 								</div>
 							</div>
-							<p class="comment">API节点IP地址或者域名。其他节点访问此API节点的主机地址，可以是IP或者域名，第一次安装时通常是<strong>当前服务器</strong>的公网IP地址。后期可以修改这个地址。</p>
+							<p class="comment">API节点IP地址或者域名.其他节点访问此API节点的主机地址,可以是IP或者域名,第一次安装时通常是<strong>当前服务器</strong>的公网IP地址.后期可以修改这个地址.</p>
 						</td>
 					</tr>
 				</tbody>
@@ -102,35 +102,35 @@
 								<option value="http">HTTP</option>
 								<option value="https">HTTPS</option>
 							</select>
-							<p class="comment">API节点使用的协议。</p>
+							<p class="comment">API节点使用的协议.</p>
 						</td>
 					</tr>
 					<tr>
 						<td>主机地址 *</td>
 						<td>
 							<input type="text" name="oldHost" maxlength="100" style="width:20em"/>
-							<p class="comment">API节点所在主机地址。</p>
+							<p class="comment">API节点所在主机地址.</p>
 						</td>
 					</tr>
 					<tr>
 						<td>服务端口 *</td>
 						<td>
 							<input type="text" name="oldPort" style="width:6em" maxlength="5"/>
-							<p class="comment">API节点启动的端口。</p>
+							<p class="comment">API节点启动的端口.</p>
 						</td>
 					</tr>
 					<tr>
 						<td>节点nodeId *</td>
 						<td>
 							<input type="text" name="oldNodeId" maxlength="100"/>
-							<p class="comment">在节点的配置文件中<code-label>configs/api.yaml</code-label>中获取，不需要带双引号。</p>
+							<p class="comment">在节点的配置文件中<code-label>configs/api.yaml</code-label>中获取,不需要带双引号.</p>
 						</td>
 					</tr>
 					<tr>
 						<td>节点secret *</td>
 						<td>
 							<input type="password" name="oldNodeSecret" maxlength="100"/>
-							<p class="comment">在节点的配置文件中<code-label>configs/api.yaml</code-label>中获取，不需要带双引号。</p>
+							<p class="comment">在节点的配置文件中<code-label>configs/api.yaml</code-label>中获取,不需要带双引号.</p>
 						</td>
 					</tr>
 				</tbody>
@@ -150,37 +150,37 @@
 						<td class="title">MySQL主机地址 *</td>
 						<td>
 							<input type="text" name="host" maxlength="100" placeholder="比如 192.168.1.100" style="width:16em" ref="dbHost" v-model="localDB.host" @change="checkDBIP" @input="localDB.isLocal = true"/>
-                            <p class="comment" v-if="localDBHost.length > 0 && localDBHost == localDB.host"><span class="blue">已经自动填入从当前服务器发现的MySQL数据库信息。</span></p>
-                            <p class="comment" v-if="!localDB.isLocal"><span class="red">当前地址不是局域网IP，可能会严重影响系统运行性能，请优先选择局域网IP。</span></p>
-                            <p class="comment" v-if="localDB.host.length == 0 && localDB.canInstall">如果你还没有安装MySQL，可以 <a href="" @click.prevent="installMySQL">尝试自动安装</a> 。</p>
+                            <p class="comment" v-if="localDBHost.length > 0 && localDBHost == localDB.host"><span class="blue">已经自动填入从当前服务器发现的MySQL数据库信息.</span></p>
+                            <p class="comment" v-if="!localDB.isLocal"><span class="red">当前地址不是局域网IP,可能会严重影响系统运行性能,请优先选择局域网IP.</span></p>
+                            <p class="comment" v-if="localDB.host.length == 0 && localDB.canInstall">如果你还没有安装MySQL,可以 <a href="" @click.prevent="installMySQL">尝试自动安装</a> .</p>
 						</td>
 					</tr>
 					<tr>
 						<td>数据库连接端口 *</td>
 						<td>
 							<input type="text" name="port" maxlength="5" placeholder="比如 3306" style="width:7em" v-model="localDB.port"/>
-                            <p class="comment">MySQL默认端口为3306。</p>
+                            <p class="comment">MySQL默认端口为3306.</p>
 						</td>
 					</tr>
 					<tr>
 						<td>数据库名称 *</td>
 						<td>
 							<input type="text" name="database" value="edges" style="width:16em"/>
-							<p class="comment">请事先创建好此数据库，如果不存在，则会尝试自动创建。手动创建数据库语句<code-label>CREATE DATABASE `数据库名称` CHARSET utf8mb4;</code-label>。</p>
+							<p class="comment">请事先创建好此数据库,如果不存在,则会尝试自动创建.手动创建数据库语句<code-label>CREATE DATABASE `数据库名称` CHARSET utf8mb4;</code-label>.</p>
 						</td>
 					</tr>
 					<tr>
 						<td>连接用户名 *</td>
 						<td>
 							<input type="text" name="username" style="width:16em" maxlength="100" v-model="localDB.username"/>
-							<p class="comment">此用户需要可以在数据库中有操作数据和创建数据表的权限。</p>
+							<p class="comment">此用户需要可以在数据库中有操作数据和创建数据表的权限.</p>
 						</td>
 					</tr>
 					<tr>
 						<td>连接密码</td>
 						<td>
 							<input type="password" name="password" style="width:16em" maxlength="100" v-model="localDB.password"/>
-							<p class="comment">连接数据库所需密码，没有密码的话就不需要填写。</p>
+							<p class="comment">连接数据库所需密码,没有密码的话就不需要填写.</p>
 						</td>
 					</tr>
                     <tr>
@@ -190,7 +190,7 @@
                                 <input type="number" name="accessLogKeepDays" style="width: 5em" maxlength="4" value="7"/>
                                 <span class="ui label">天</span>
                             </div>
-                            <p class="comment">网站等服务记录的访问日志保留天数，防止无限制地占用数据库空间，如果你的数据库空间比较小，请适当调小此值。</p>
+                            <p class="comment">网站等服务记录的访问日志保留天数,防止无限制地占用数据库空间,如果你的数据库空间比较小,请适当调小此值.</p>
                         </td>
                     </tr>
 				</table>
@@ -202,7 +202,7 @@
 		</div>
 
 		<div v-show="apiNodeMode == 'old'">
-			<div style="margin-bottom: 2em">你选择使用了已安装节点，无需重新配置数据库。</div>
+			<div style="margin-bottom: 2em">你选择使用了已安装节点,无需重新配置数据库.</div>
 			<button class="ui button margin" type="button" @click.prevent="goBackAPI"><i class="icon long arrow left"></i>上一步</button> &nbsp;
 			<button class="ui button primary margin" type="button" @click.prevent="goDBNext()">下一步<i class="icon long arrow right"></i></button>
 		</div>
@@ -216,7 +216,7 @@
 					<td class="title">登录用户名 *</td>
 					<td>
 						<input type="text" name="adminUsername" style="width:16em" maxlength="100" value="admin" tabindex="1"/>
-						<p class="comment">只能是英文、数字和下划线的组合。</p>
+						<p class="comment">只能是英文,数字和下划线的组合.</p>
 					</td>
 				</tr>
 				<tr>
@@ -224,7 +224,7 @@
 					<td>
 						<input type="password" name="adminPassword" maxlength="100" style="width:16em" v-model="adminPassword" v-show="!adminPasswordVisible" tabindex="2" ref="adminPasswordInput"/>
 						<input type="text" value="" v-model="adminPassword" style="width:16em" v-show="adminPasswordVisible"/>
-						<p class="comment">只能是英文、数字和下划线的组合 <a href="" title="显示明文密码" @click.prevent="showAdminPassword"><i class="icon eye grey"></i></a>。</p>
+						<p class="comment">只能是英文,数字和下划线的组合 <a href="" title="显示明文密码" @click.prevent="showAdminPassword"><i class="icon eye grey"></i></a>.</p>
 					</td>
 				</tr>
 				<tr>
@@ -232,7 +232,7 @@
 					<td>
 						<input type="password" name="adminPassword2" maxlength="100" style="width:16em" v-model="adminPassword2" v-show="!adminPasswordVisible" tabindex="3"/>
 						<input type="text" value="" v-model="adminPassword2" style="width:16em" v-show="adminPasswordVisible"/>
-						<p class="comment">再次输入密码以便于确认  <a href="" title="显示明文密码" @click.prevent="showAdminPassword"><i class="icon eye grey"></i></a>。</p>
+						<p class="comment">再次输入密码以便于确认  <a href="" title="显示明文密码" @click.prevent="showAdminPassword"><i class="icon eye grey"></i></a>.</p>
 					</td>
 				</tr>
 			</table>

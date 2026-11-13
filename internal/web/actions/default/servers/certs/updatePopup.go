@@ -106,7 +106,7 @@ func (this *UpdatePopupAction) RunPost(params struct {
 		if params.CertFile != nil {
 			certConfig.CertData, err = params.CertFile.Read()
 			if err != nil {
-				this.FailField("certFile", "读取证书文件内容错误，请重新上传")
+				this.FailField("certFile", "读取证书文件内容错误,请重新上传")
 			}
 		}
 
@@ -114,7 +114,7 @@ func (this *UpdatePopupAction) RunPost(params struct {
 			if params.KeyFile != nil {
 				certConfig.KeyData, err = params.KeyFile.Read()
 				if err != nil {
-					this.FailField("keyFile", "读取私钥文件内容错误，请重新上传")
+					this.FailField("keyFile", "读取私钥文件内容错误,请重新上传")
 				}
 			}
 		}
@@ -125,21 +125,21 @@ func (this *UpdatePopupAction) RunPost(params struct {
 	err = certConfig.Init(context.TODO())
 	if err != nil {
 		if params.IsCA {
-			this.Fail("证书校验错误：" + err.Error())
+			this.Fail("证书校验错误:" + err.Error())
 		} else {
-			this.Fail("证书或密钥校验错误：" + err.Error())
+			this.Fail("证书或密钥校验错误:" + err.Error())
 		}
 	}
 
 	if len(timeutil.Format("Y", certConfig.TimeEnd())) != 4 {
-		this.Fail("证书格式错误：无法读取到证书有效期")
+		this.Fail("证书格式错误:无法读取到证书有效期")
 	}
 
 	if certConfig.TimeBeginAt < 0 {
-		this.Fail("证书校验错误：有效期开始时间过小，不能小于1970年1月1日")
+		this.Fail("证书校验错误:有效期开始时间过小,不能小于1970年1月1日")
 	}
 	if certConfig.TimeEndAt < 0 {
-		this.Fail("证书校验错误：有效期结束时间过小，不能小于1970年1月1日")
+		this.Fail("证书校验错误:有效期结束时间过小,不能小于1970年1月1日")
 	}
 
 	// 保存

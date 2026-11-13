@@ -65,13 +65,13 @@ export function DatabasePage() {
             <tr>
               <td>用户名</td>
               <td>
-                {data.dbConfig.username.length > 0 ? data.dbConfig.username : <span className="disabled">不使用用户名。</span>}
+                {data.dbConfig.username.length > 0 ? data.dbConfig.username : <span className="disabled">不使用用户名.</span>}
               </td>
             </tr>
             <tr>
               <td>密码</td>
               <td>
-                {data.dbConfig.password.length > 0 ? data.dbConfig.password : <span className="disabled">不使用密码。</span>}
+                {data.dbConfig.password.length > 0 ? data.dbConfig.password : <span className="disabled">不使用密码.</span>}
               </td>
             </tr>
           </tbody>
@@ -106,7 +106,7 @@ export function DatabaseCleanPage() {
   })
 
   async function deleteTable(table: string) {
-    if (!(await confirm({ message: `确定要删除此数据表吗？\n删除后数据不能恢复！`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除此数据表吗?\n删除后数据不能恢复!`, danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -119,7 +119,7 @@ export function DatabaseCleanPage() {
   }
 
   async function truncateTable(table: string) {
-    if (!(await confirm({ message: `确定要清空此数据表吗？\n清空后数据不能恢复！`, danger: true, confirmText: '清空' }))) {
+    if (!(await confirm({ message: `确定要清空此数据表吗?\n清空后数据不能恢复!`, danger: true, confirmText: '清空' }))) {
       return
     }
     try {
@@ -153,7 +153,7 @@ export function DatabaseCleanPage() {
 
       {tables.length > 0 ? (
         <div className="ui message small warning">
-          <p>请确认数据表用途后再执行相关操作。</p>
+          <p>请确认数据表用途后再执行相关操作.</p>
         </div>
       ) : null}
 
@@ -179,7 +179,7 @@ export function DatabaseCleanPage() {
                 <td>{table.name}</td>
                 <td>
                   {table.size}
-                  {table.rows > 0 ? <span className="grey small">（{table.rows}行）</span> : null}
+                  {table.rows > 0 ? <span className="grey small">({table.rows}行)</span> : null}
                 </td>
                 <td>{table.comment}</td>
                 <td>
@@ -338,7 +338,7 @@ export function DatabaseCleanSettingPage() {
                   <span className="ui label">天</span>
                 </div>
                 {item.key === 'serverAccessLog' ? (
-                  <p className="comment">天数包括当天。如果填0表示不自动清理。此设置也会同时作用于日志数据库。</p>
+                  <p className="comment">天数包括当天.如果填0表示不自动清理.此设置也会同时作用于日志数据库.</p>
                 ) : null}
               </FormRow>
             </FormTable>

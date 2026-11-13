@@ -62,7 +62,7 @@ function HttpForm({ webId, config }: { webId: number; config?: RedirectToHttpsCo
           <FormRow title="自动跳转到HTTPS">
             <Checkbox checked={state.isOn} onChange={(isOn) => update({ isOn })} />
             <p className="comment">
-              开启后，所有HTTP的请求都会自动跳转到对应的HTTPS URL上，
+              开启后,所有HTTP的请求都会自动跳转到对应的HTTPS URL上,
               <MoreOptionsIndicator visible={moreOptionsVisible} onToggle={() => setMoreOptionsVisible((visible) => !visible)} />
             </p>
           </FormRow>
@@ -81,7 +81,7 @@ function HttpForm({ webId, config }: { webId: number; config?: RedirectToHttpsCo
           </FormRow>
           <FormRow title="域名或IP地址">
             <input type="text" value={state.host} onChange={(event) => update({ host: event.target.value })} />
-            <p className="comment">默认和用户正在访问的域名或IP地址一致。</p>
+            <p className="comment">默认和用户正在访问的域名或IP地址一致.</p>
           </FormRow>
           <FormRow title="端口">
             <input
@@ -96,7 +96,7 @@ function HttpForm({ webId, config }: { webId: number; config?: RedirectToHttpsCo
                 update({ port: Number.isNaN(port) ? 0 : port })
               }}
             />
-            <p className="comment">默认端口为443。</p>
+            <p className="comment">默认端口为443.</p>
           </FormRow>
         </FormTable>
       ) : null}

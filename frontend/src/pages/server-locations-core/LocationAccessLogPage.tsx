@@ -88,7 +88,7 @@ function AccessLogForm({ data }: { data: AccessLogData }) {
             {advancedVisible ? (
               <>
                 <FormRow title="基础信息">
-                  <p className="comment" style={{ paddingTop: 0 }}>默认记录客户端IP、请求URL等基础信息。</p>
+                  <p className="comment" style={{ paddingTop: 0 }}>默认记录客户端IP,请求URL等基础信息.</p>
                 </FormRow>
                 <FormRow title="高级信息">
                   {data.fields.map((field, index) => (
@@ -109,9 +109,9 @@ function AccessLogForm({ data }: { data: AccessLogData }) {
                     </div>
                   ))}
                   <p className="comment">
-                    在基础信息之外要存储的信息。
+                    在基础信息之外要存储的信息.
                     {hasRequestBodyField ? (
-                      <span className="red">记录"请求Body"将会显著消耗更多的系统资源，建议仅在调试时启用，最大记录尺寸为2MiB。</span>
+                      <span className="red">记录"请求Body"将会显著消耗更多的系统资源,建议仅在调试时启用,最大记录尺寸为2MiB.</span>
                     ) : null}
                   </p>
                 </FormRow>
@@ -125,7 +125,7 @@ function AccessLogForm({ data }: { data: AccessLogData }) {
                 </FormRow>
                 <FormRow title="记录客户端中断日志">
                   <Checkbox checked={enableClientClosed} onChange={setEnableClientClosed} />
-                  <p className="comment">以<code>499</code>的状态码记录客户端主动中断日志。</p>
+                  <p className="comment">以<code>499</code>的状态码记录客户端主动中断日志.</p>
                 </FormRow>
               </>
             ) : null}
@@ -140,7 +140,7 @@ function AccessLogForm({ data }: { data: AccessLogData }) {
           <FormTable>
             <FormRow title="只记录WAF相关日志">
               <Checkbox checked={firewallOnly} onChange={setFirewallOnly} />
-              <p className="comment">选中后只记录WAF相关的日志。通过此选项可有效减少访问日志数量，降低网络带宽和存储压力。</p>
+              <p className="comment">选中后只记录WAF相关的日志.通过此选项可有效减少访问日志数量,降低网络带宽和存储压力.</p>
             </FormRow>
           </FormTable>
         </div>

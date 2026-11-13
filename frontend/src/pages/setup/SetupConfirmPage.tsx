@@ -43,7 +43,7 @@ export function SetupConfirmPage() {
 
   return (
     <div className="install-box">
-      <h4>系统发现你可能将管理系统迁移到了新的服务器，为了让系统能正常运行，请做以下确认：</h4>
+      <h4>系统发现你可能将管理系统迁移到了新的服务器,为了让系统能正常运行,请做以下确认:</h4>
       {error ? <div className="ui negative message">{error}</div> : null}
       <FormTable>
         {endpoints.map((endpoint, index) => (

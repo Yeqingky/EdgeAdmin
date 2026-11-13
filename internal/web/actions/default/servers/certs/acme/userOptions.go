@@ -26,7 +26,7 @@ func (this *UserOptionsAction) RunPost(params struct {
 	for _, user := range usersResp.AcmeUsers {
 		description := user.Description
 		if len(description) > 0 {
-			description = "（" + description + "）"
+			description = "(" + description + ")"
 		}
 
 		userMaps = append(userMaps, maps.Map{

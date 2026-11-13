@@ -24,7 +24,7 @@ Vue.component("http-firewall-config-box", {
 			geeTestIsOn = this.vFirewallPolicy.captchaAction.geeTestConfig.isOn
 		}
 
-		// 如果没有启用geetest，则还原
+		// 如果没有启用geetest,则还原
 		if (!geeTestIsOn && firewall.defaultCaptchaType == "geetest") {
 			firewall.defaultCaptchaType = "none"
 		}
@@ -55,9 +55,9 @@ Vue.component("http-firewall-config-box", {
 			<td class="title">全局WAF策略</td>
 			<td>
 				<div v-if="vFirewallPolicy != null">{{vFirewallPolicy.name}} <span v-if="vFirewallPolicy.modeInfo != null">&nbsp; <span :class="{green: vFirewallPolicy.modeInfo.code == 'defend', blue: vFirewallPolicy.modeInfo.code == 'observe', grey: vFirewallPolicy.modeInfo.code == 'bypass'}">[{{vFirewallPolicy.modeInfo.name}}]</span>&nbsp;</span> <link-icon :href="'/servers/components/waf/policy?firewallPolicyId=' + vFirewallPolicy.id"></link-icon>
-					<p class="comment">当前网站所在集群的设置。</p>
+					<p class="comment">当前网站所在集群的设置.</p>
 				</div>
-				<span v-else class="red">当前集群没有设置WAF策略，当前配置无法生效。</span>
+				<span v-else class="red">当前集群没有设置WAF策略,当前配置无法生效.</span>
 			</td>
 		</tr>
 	</table>
@@ -69,7 +69,7 @@ Vue.component("http-firewall-config-box", {
 				<td class="title">启用Web防火墙</td>
 				<td>
 					<checkbox v-model="firewall.isOn"></checkbox>
-					<p class="comment">选中后，表示启用当前网站的WAF功能。</p>
+					<p class="comment">选中后,表示启用当前网站的WAF功能.</p>
 				</td>
 			</tr>
 		</tbody>
@@ -82,15 +82,15 @@ Vue.component("http-firewall-config-box", {
 						<option value="none">默认</option>
 						<option v-for="captchaType in captchaTypes" v-if="captchaType.code != 'geetest' || geeTestIsOn" :value="captchaType.code">{{captchaType.name}}</option>
 					</select>
-					<p class="comment" v-if="firewall.defaultCaptchaType == 'none'">使用系统默认的设置。你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证。</p>
-					<p class="comment" v-for="captchaType in captchaTypes" v-if="captchaType.code == firewall.defaultCaptchaType">{{captchaType.description}}你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证。</p>
+					<p class="comment" v-if="firewall.defaultCaptchaType == 'none'">使用系统默认的设置.你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证.</p>
+					<p class="comment" v-for="captchaType in captchaTypes" v-if="captchaType.code == firewall.defaultCaptchaType">{{captchaType.description}}你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>启用系统全局规则</td>
 				<td>
 					<checkbox v-model="execGlobalRules"></checkbox>
-					<p class="comment">选中后，表示使用系统全局WAF策略中定义的规则。</p>
+					<p class="comment">选中后,表示使用系统全局WAF策略中定义的规则.</p>
 				</td>
 			</tr>
 		</tbody>

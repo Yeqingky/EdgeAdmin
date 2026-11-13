@@ -71,7 +71,7 @@ func (this *AddOriginPopupAction) RunPost(params struct {
 		}
 		err = ossConfig.Init()
 		if err != nil {
-			this.Fail("校验OSS配置时出错：" + err.Error())
+			this.Fail("校验OSS配置时出错:" + err.Error())
 			return
 		}
 	} else { // 普通源站

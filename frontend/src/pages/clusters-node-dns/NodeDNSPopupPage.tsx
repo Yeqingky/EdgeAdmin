@@ -40,7 +40,7 @@ export function NodeDNSPopupPage() {
   }, [query.data, initialized])
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isError) {
     return <div className="ui negative message">加载失败</div>
@@ -112,18 +112,18 @@ export function NodeDNSPopupPage() {
           {domainName ? (
             <FormRow title="主域名">
               {domainName}
-              <p className="comment">由当前节点所属集群设置。</p>
+              <p className="comment">由当前节点所属集群设置.</p>
             </FormRow>
           ) : null}
           <FormRow title="IP地址 *">
             <input type="text" maxLength={64} value={ipAddr} onChange={(event) => setIpAddr(event.target.value)} />
-            <p className="comment">用于域名解析的节点IP地址。</p>
+            <p className="comment">用于域名解析的节点IP地址.</p>
           </FormRow>
           {domainId > 0 ? (
             <FormRow title="线路">
               {allRoutes.length === 0 ? (
                 <p className="comment">
-                  没有可选的线路。
+                  没有可选的线路.
                   <a href="" onClick={(event) => { event.preventDefault(); void syncDomain() }}>
                     [获取线路]
                   </a>
@@ -132,7 +132,7 @@ export function NodeDNSPopupPage() {
                 <div>
                   <DnsRoutesSelector allRoutes={allRoutes} value={routes} onChange={setRoutes} />
                   <p className="comment">
-                    当前节点IP对应的线路。
+                    当前节点IP对应的线路.
                     <a href="" onClick={(event) => { event.preventDefault(); void syncDomain() }}>
                       [重新获取线路]
                     </a>
@@ -142,7 +142,7 @@ export function NodeDNSPopupPage() {
             </FormRow>
           ) : (
             <FormRow title="线路">
-              <span className="disabled">当前集群没有选择域名。</span>
+              <span className="disabled">当前集群没有选择域名.</span>
             </FormRow>
           )}
         </FormTable>

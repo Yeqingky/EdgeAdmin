@@ -166,21 +166,21 @@ Vue.component("http-compression-config-box", {
 				<td>支持的扩展名</td>
 				<td>
 					<values-box :values="config.extensions" @change="changeExtensions" placeholder="比如 .html"></values-box>
-					<p class="comment">含有这些扩展名的URL将会被压缩，不区分大小写。</p>
+					<p class="comment">含有这些扩展名的URL将会被压缩,不区分大小写.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>例外扩展名</td>
 				<td>
 					<values-box :values="config.exceptExtensions" @change="changeExceptExtensions" placeholder="比如 .html"></values-box>
-					<p class="comment">含有这些扩展名的URL将<strong>不会</strong>被压缩，不区分大小写。</p>
+					<p class="comment">含有这些扩展名的URL将<strong>不会</strong>被压缩,不区分大小写.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>支持的MimeType</td>
 				<td>
 					<values-box :values="config.mimeTypes" @change="changeMimeTypes" placeholder="比如 text/*"></values-box>
-					<p class="comment">响应的Content-Type里包含这些MimeType的内容将会被压缩。</p>
+					<p class="comment">响应的Content-Type里包含这些MimeType的内容将会被压缩.</p>
 				</td>
 			</tr>
 		</tbody>
@@ -191,7 +191,7 @@ Vue.component("http-compression-config-box", {
 				<td>
 					<div class="ui checkbox">
 						<input type="checkbox" v-model="config.useDefaultTypes" id="compression-use-default"/>
-						<label v-if="config.useDefaultTypes" for="compression-use-default">使用默认顺序<span class="grey small">（brotli、gzip、 zstd、deflate）</span></label>
+						<label v-if="config.useDefaultTypes" for="compression-use-default">使用默认顺序<span class="grey small">(brotli,gzip, zstd,deflate)</span></label>
 						<label v-if="!config.useDefaultTypes" for="compression-use-default">使用默认顺序</label>
 					</div>
 					<div v-show="!config.useDefaultTypes">
@@ -204,49 +204,49 @@ Vue.component("http-compression-config-box", {
 						</div>
 					</div>
 					
-					<p class="comment" v-show="!config.useDefaultTypes">选择支持的压缩算法和优先顺序，拖动<i class="icon list small grey"></i>图表排序。</p>
+					<p class="comment" v-show="!config.useDefaultTypes">选择支持的压缩算法和优先顺序,拖动<i class="icon list small grey"></i>图表排序.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>支持已压缩内容</td>
 				<td>
 					<checkbox v-model="config.decompressData"></checkbox>
-					<p class="comment">支持对已压缩内容尝试重新使用新的算法压缩；不选中表示保留当前的压缩格式。</p>
+					<p class="comment">支持对已压缩内容尝试重新使用新的算法压缩;不选中表示保留当前的压缩格式.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>内容最小长度</td>
 				<td>
 					<size-capacity-box :v-name="'minLength'" :v-value="config.minLength" :v-unit="'kb'"></size-capacity-box>
-					<p class="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+					<p class="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>内容最大长度</td>
 				<td>
 					<size-capacity-box :v-name="'maxLength'" :v-value="config.maxLength" :v-unit="'mb'"></size-capacity-box>
-					<p class="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+					<p class="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>支持Partial<br/>Content</td>
 				<td>
 					<checkbox v-model="config.enablePartialContent"></checkbox>
-					<p class="comment">支持对分片内容（PartialContent）的压缩；除非客户端有特殊要求，一般不需要启用。</p>
+					<p class="comment">支持对分片内容(PartialContent)的压缩;除非客户端有特殊要求,一般不需要启用.</p>
 				</td>
 			</tr>
 				<tr>
 				<td>例外URL</td>
 				<td>
 					<url-patterns-box v-model="config.exceptURLPatterns"></url-patterns-box>
-					<p class="comment">如果填写了例外URL，表示这些URL跳过不做处理。</p>
+					<p class="comment">如果填写了例外URL,表示这些URL跳过不做处理.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>限制URL</td>
 				<td>
 					<url-patterns-box v-model="config.onlyURLPatterns"></url-patterns-box>
-					<p class="comment">如果填写了限制URL，表示只对这些URL进行压缩处理；如果不填则表示支持所有的URL。</p>
+					<p class="comment">如果填写了限制URL,表示只对这些URL进行压缩处理;如果不填则表示支持所有的URL.</p>
 				</td>
 			</tr>
 			<tr>

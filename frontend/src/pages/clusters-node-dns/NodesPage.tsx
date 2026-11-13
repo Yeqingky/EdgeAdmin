@@ -83,7 +83,7 @@ export function NodesPage() {
   })
 
   if (!clusterId) {
-    return <div className="ui negative message">缺少集群参数。</div>
+    return <div className="ui negative message">缺少集群参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -127,21 +127,21 @@ export function NodesPage() {
   }
 
   async function toggleNodeOn(nodeId: number, isOn: boolean) {
-    if (!(await confirm({ message: `确定要${isOn ? '启用' : '停用'}此节点吗？` }))) {
+    if (!(await confirm({ message: `确定要${isOn ? '启用' : '停用'}此节点吗?` }))) {
       return
     }
     updateIsOn.mutate({ nodeId, isOn })
   }
 
   async function removeNode(nodeId: number) {
-    if (!(await confirm({ message: '确定要从当前集群中删除这个节点吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要从当前集群中删除这个节点吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     deleteNode.mutate(nodeId)
   }
 
   async function markUp(nodeId: number) {
-    if (!(await confirm({ message: '确定要手动上线此节点吗？' }))) {
+    if (!(await confirm({ message: '确定要手动上线此节点吗?' }))) {
       return
     }
     upNode.mutate(nodeId)
@@ -250,12 +250,12 @@ export function NodesPage() {
 
       {data.countAll === 0 ? (
         <div className="ui message">
-          <p>当前集群下还没有节点，至少添加一个节点后才能提供服务。</p>
+          <p>当前集群下还没有节点,至少添加一个节点后才能提供服务.</p>
           <Link to={`/clusters/cluster/createNode?clusterId=${clusterId}`}>[创建节点]</Link>
         </div>
       ) : null}
 
-      {data.countAll > 0 && data.nodes.length === 0 ? <p className="comment">暂时还没有节点。</p> : null}
+      {data.countAll > 0 && data.nodes.length === 0 ? <p className="comment">暂时还没有节点.</p> : null}
 
       {data.nodes.length > 0 ? (
         <table className="ui table selectable celled">
@@ -303,8 +303,8 @@ export function NodesPage() {
                   <Link to={`/clusters/cluster/node/update?clusterId=${clusterId}&nodeId=${node.id}`} title="设置">
                     &nbsp; <Settings size={12} className="grey" />
                   </Link>
-                  {node.region ? <div><span className="ui label tiny grey basic">区域：{node.region.name}</span></div> : null}
-                  {node.group ? <div><span className="ui label tiny grey basic">分组：{node.group.name}</span></div> : null}
+                  {node.region ? <div><span className="ui label tiny grey basic">区域:{node.region.name}</span></div> : null}
+                  {node.group ? <div><span className="ui label tiny grey basic">分组:{node.group.name}</span></div> : null}
                   {node.secondaryClusters && node.secondaryClusters.length > 0 ? (
                     <div>
                       <span className="ui label tiny basic">{node.cluster.name}</span>
@@ -323,16 +323,16 @@ export function NodesPage() {
                       {isIPv6(address.ip) ? <span className="grey">[IPv6]</span> : null} {address.ip}
                       {address.name ? (
                         <span className="small">
-                          （{address.name}
-                          {!address.canAccess ? '，不公开访问' : ''}）
+                          ({address.name}
+                          {!address.canAccess ? ',不公开访问' : ''})
                         </span>
                       ) : null}
-                      {!address.name && !address.canAccess ? <span className="small">（不公开访问）</span> : null}
+                      {!address.name && !address.canAccess ? <span className="small">(不公开访问)</span> : null}
                       {address.isOn === false ? <span className="small red">[off]</span> : null}
                       {address.isUp === false ? <span className="small red">[down]</span> : null}
                       {address.clusters && address.clusters.length > 0 ? (
                         <div style={{ marginTop: '0.3em', fontWeight: 'normal' }}>
-                          <span className="small grey">[{address.clusters.map((cluster) => cluster.name).join('，')}]</span>
+                          <span className="small grey">[{address.clusters.map((cluster) => cluster.name).join(',')}]</span>
                         </div>
                       ) : null}
                     </div>

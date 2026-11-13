@@ -135,7 +135,7 @@ func (this *IndexAction) RunPost(params struct {
 		for _, ip := range params.AllowIPs {
 			_, err := shared.ParseIPRange(ip)
 			if err != nil {
-				this.Fail("允许访问的IP '" + ip + "' 格式错误：" + err.Error())
+				this.Fail("允许访问的IP '" + ip + "' 格式错误:" + err.Error())
 			}
 		}
 		config.AllowIPs = params.AllowIPs
@@ -159,7 +159,7 @@ func (this *IndexAction) RunPost(params struct {
 	if len(params.DomainsJSON) > 0 {
 		err = json.Unmarshal(params.DomainsJSON, &domains)
 		if err != nil {
-			this.Fail("解析允许访问的域名失败：" + err.Error())
+			this.Fail("解析允许访问的域名失败:" + err.Error())
 		}
 	}
 	config.AllowDomains = domains

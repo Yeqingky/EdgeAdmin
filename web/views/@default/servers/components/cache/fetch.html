@@ -8,14 +8,14 @@
             <td>URL列表</td>
             <td>
                 <textarea name="keys" rows="10" ref="focus"></textarea>
-                <p class="comment">每行一个URL。</p>
+                <p class="comment">每行一个URL.</p>
             </td>
         </tr>
         <tr>
             <td class="title">操作结果</td>
             <td>
                 <div v-if="isRequesting">数据发送中...</div>
-                <span class="red" v-if="!isRequesting && !isOk && message.length > 0">失败：{{message}}</span>
+                <span class="red" v-if="!isRequesting && !isOk && message.length > 0">失败:{{message}}</span>
                 <div v-if="!isRequesting && !isOk && failKeys.length > 0" class="fail-keys-box">
                     <div v-for="failKey in failKeys">
                         <span class="red">{{failKey.key}}: {{failKey.reason}}</span>

@@ -46,7 +46,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 
 	if len(params.Code) > 0 {
 		if !iplistutils.ValidateIPListCode(params.Code) {
-			this.FailField("code", "代号格式错误，只能是英文字母、数字、中划线、下划线的组合")
+			this.FailField("code", "代号格式错误,只能是英文字母,数字,中划线,下划线的组合")
 			return
 		}
 
@@ -56,7 +56,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 			return
 		}
 		if listIdResp.IpListId > 0 {
-			this.FailField("code", "代号'"+params.Code+"'已经被别的名单占用，请更换一个")
+			this.FailField("code", "代号'"+params.Code+"'已经被别的名单占用,请更换一个")
 			return
 		}
 	}

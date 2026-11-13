@@ -29,7 +29,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countResp.Count > 0 {
-		this.Fail("有代理服务正在使用此集群，请修改这些代理服务后再删除")
+		this.Fail("有代理服务正在使用此集群,请修改这些代理服务后再删除")
 	}
 
 	// 删除

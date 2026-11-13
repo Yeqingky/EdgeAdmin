@@ -29,8 +29,8 @@
 <!-- 准备工作 -->
 <div class="step-box" v-if="step == STEP_PREPARE">
     <div class="content">
-        <p>通过此引导程序可以帮助你将当前平台配置迁移到新的平台中。</p>
-        <p>每个步骤请小心操作，一旦配置错误可能需要手工还原。</p>
+        <p>通过此引导程序可以帮助你将当前平台配置迁移到新的平台中.</p>
+        <p>每个步骤请小心操作,一旦配置错误可能需要手工还原.</p>
     </div>
 
     <div class="ui button-group">
@@ -43,7 +43,7 @@
     <form class="ui form">
         <table class="ui table selectable definition">
             <tr>
-                <td class="title">数据库地址是否改变？</td>
+                <td class="title">数据库地址是否改变?</td>
                 <td>
                    <div class="ui fields inline">
                        <div class="ui field">
@@ -62,7 +62,7 @@
                 </td>
             </tr>
             <tr v-if="databaseChanged == 1">
-                <td>数据是否已经导入到新的数据库？</td>
+                <td>数据是否已经导入到新的数据库?</td>
                 <td>
                     <div class="ui fields inline">
                         <div class="ui field">
@@ -78,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="comment" v-if="databaseTransferred == 0"><span class="red">请自行将当前数据库中数据导入到新的数据库中。</span></p>
+                    <p class="comment" v-if="databaseTransferred == 0"><span class="red">请自行将当前数据库中数据导入到新的数据库中.</span></p>
                 </td>
             </tr>
         </table>
@@ -94,7 +94,7 @@
     <form class="ui form">
         <table class="ui table selectable definition">
             <tr>
-                <td class="title">API节点地址是否变更？</td>
+                <td class="title">API节点地址是否变更?</td>
                 <td>
                     <div class="ui fields inline">
                         <div class="ui field">
@@ -130,14 +130,14 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="comment" v-if="apiNodeInstalled == 0"><span class="red">请先安装新的API节点，请拷贝当前的API节点配置<code-label>configs/api.yaml</code-label>和<code-label>configs/db.yaml</code-label>到新API节点对应的位置，并记得修改其中的<code-label>configs/db.yaml</code-label>中的数据库地址、用户名、密码。</span></p>
+                        <p class="comment" v-if="apiNodeInstalled == 0"><span class="red">请先安装新的API节点,请拷贝当前的API节点配置<code-label>configs/api.yaml</code-label>和<code-label>configs/db.yaml</code-label>到新API节点对应的位置,并记得修改其中的<code-label>configs/db.yaml</code-label>中的数据库地址,用户名,密码.</span></p>
                     </td>
                 </tr>
                 <tr>
                     <td>新的API节点IP或域名 *</td>
                     <td>
                         <input type="text" name="newAPINodeHost" placeholder="IP或域名" v-model="apiNodeHost" style="width: 14em" maxlength="100"/>
-                        <p class="comment">如果有多个IP或者域名，填写任意其中一个即可。</p>
+                        <p class="comment">如果有多个IP或者域名,填写任意其中一个即可.</p>
                     </td>
                 </tr>
                 <tr>
@@ -175,7 +175,7 @@
             <thead>
             <tr>
                 <th style="width: 50%">API节点原地址</th>
-                <th>API节点新地址（留空表示不修改）</th>
+                <th>API节点新地址(留空表示不修改)</th>
             </tr>
             </thead>
             <tr v-for="host in apiAddressHosts">
@@ -200,7 +200,7 @@
     <form class="ui form">
         <table class="ui table selectable definition">
             <tr>
-                <td class="title">管理平台地址是否变更？</td>
+                <td class="title">管理平台地址是否变更?</td>
                 <td>
                     <div class="ui fields inline">
                         <div class="ui field">
@@ -236,7 +236,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="comment" v-if="adminNodeInstalled == 0"><span class="red">请先安装新的管理平台，请拷贝当前的管理平台下的<code-label>configs/</code-label>目录下的配置到新管理平台对应的位置。</span></p>
+                        <p class="comment" v-if="adminNodeInstalled == 0"><span class="red">请先安装新的管理平台,请拷贝当前的管理平台下的<code-label>configs/</code-label>目录下的配置到新管理平台对应的位置.</span></p>
                     </td>
                 </tr>
             </tbody>
@@ -294,8 +294,8 @@
 <!-- 完成 -->
 <div class="step-box" v-if="step == STEP_FINISH">
     <div class="content">
-        <p v-if="adminNodeChanged == 1">所有迁移任务已完成，请登录新的管理平台进行管理。</p>
-        <p v-if="adminNodeChanged == 0">所有迁移任务已完成。</p>
+        <p v-if="adminNodeChanged == 1">所有迁移任务已完成,请登录新的管理平台进行管理.</p>
+        <p v-if="adminNodeChanged == 0">所有迁移任务已完成.</p>
     </div>
     <div class="ui button-group">
         <button class="ui button prev" @click.prevent="doBack(STEP_UPGRADE)">上一步</button>

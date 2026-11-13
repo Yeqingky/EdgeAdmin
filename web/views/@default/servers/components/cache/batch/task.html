@@ -81,7 +81,7 @@
                 {{key.key}}
                 <div v-if="key.errors.length > 0" style="margin-top: 0.5em">
                     <a :href="'/clusters/cluster/node?nodeId=' + err.nodeId" v-for="err in key.errors" class="ui label basic tiny red">
-                        节点{{err.nodeId}}：{{err.error}}
+                        节点{{err.nodeId}}:{{err.error}}
                     </a>
                 </div>
             </td>

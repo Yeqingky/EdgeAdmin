@@ -52,7 +52,7 @@ func (this *IndexAction) RunGet(params struct {
 		httpAllDomainMismatchActionCode = config.HTTPAll.DomainMismatchAction.Code
 
 		if config.HTTPAll.DomainMismatchAction.Options != nil {
-			// 即使是非 page 处理动作，也读取这些内容，以便于在切换到 page 时，可以顺利读取到先前的设置
+			// 即使是非 page 处理动作,也读取这些内容,以便于在切换到 page 时,可以顺利读取到先前的设置
 			httpAllDomainMismatchActionContentHTML = config.HTTPAll.DomainMismatchAction.Options.GetString("contentHTML")
 			var statusCode = config.HTTPAll.DomainMismatchAction.Options.GetInt("statusCode")
 			if statusCode > 0 {
@@ -77,9 +77,9 @@ p { color: grey; }
 </head>
 <body>
 <h3>Error: 404 Page Not Found</h3>
-<h3>找不到您要访问的页面。</h3>
+<h3>找不到您要访问的页面.</h3>
 
-<p>原因：找不到当前访问域名对应的网站，请联系网站管理员。</p>
+<p>原因:找不到当前访问域名对应的网站,请联系网站管理员.</p>
 
 </body>
 </html>`
@@ -256,7 +256,7 @@ func (this *IndexAction) RunPost(params struct {
 
 	err = config.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 		return
 	}
 

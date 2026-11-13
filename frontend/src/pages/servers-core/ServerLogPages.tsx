@@ -64,13 +64,13 @@ function LogWarnings({ data }: { data: LogPageData }) {
     <>
       {!data.clusterAccessLogIsOn ? (
         <div className="ui warning message">
-          当前集群已经设置不允许网站记录访问日志，可以在&quot;集群设置&quot; -- &quot;网站设置&quot;中修改此选项。
+          当前集群已经设置不允许网站记录访问日志,可以在&quot;集群设置&quot; -- &quot;网站设置&quot;中修改此选项.
         </div>
       ) : null}
       {!data.serverAccessLogIsOn ? (
         <div className="ui warning message">
-          当前网站尚未启用访问日志，可以在{' '}
-          <a href={`/servers/server/settings/accessLog?serverId=${data.serverId}`}>[这里]</a> 修改。
+          当前网站尚未启用访问日志,可以在{' '}
+          <a href={`/servers/server/settings/accessLog?serverId=${data.serverId}`}>[这里]</a> 修改.
         </div>
       ) : null}
     </>
@@ -246,7 +246,7 @@ export function ServerLogRealtimePage() {
   }, [serverId, filtersKey])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -287,7 +287,7 @@ export function ServerLogRealtimePage() {
           onSubmit={applyFilters}
         />
 
-        {isLoaded && accessLogs.length === 0 ? <p className="comment">今天暂时还没有访问日志。</p> : null}
+        {isLoaded && accessLogs.length === 0 ? <p className="comment">今天暂时还没有访问日志.</p> : null}
 
         <AccessLogList
           accessLogs={accessLogs}
@@ -297,7 +297,7 @@ export function ServerLogRealtimePage() {
           onShowDetail={setDetailRequestId}
         />
 
-        {accessLogs.length > 0 ? <p className="comment">已加载最近100条日志，每5秒自动刷新。</p> : null}
+        {accessLogs.length > 0 ? <p className="comment">已加载最近100条日志,每5秒自动刷新.</p> : null}
       </ServerPageLayout>
 
       {detailRequestId ? (
@@ -333,7 +333,7 @@ export function ServerLogTodayPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -399,7 +399,7 @@ export function ServerLogTodayPage() {
           wafInfos={data.wafInfos}
           keyword={filters.keyword}
           onShowDetail={setDetailRequestId}
-          emptyText="今天暂时还没有访问日志。"
+          emptyText="今天暂时还没有访问日志."
         />
 
         {(data.accessLogs || []).length > 0 ? (
@@ -455,7 +455,7 @@ export function ServerLogHistoryPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />

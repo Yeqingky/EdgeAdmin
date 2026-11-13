@@ -120,7 +120,7 @@ func (this *IndexAction) RunPost(params struct {
 			return
 		}
 		if resp.IsUsed {
-			this.FailField("dnsName", "此DNS子域名已经被使用，请换一个再试")
+			this.FailField("dnsName", "此DNS子域名已经被使用,请换一个再试")
 		}
 	}
 

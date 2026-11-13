@@ -222,7 +222,7 @@ func (this *CreateNodeAction) RunPost(params struct {
 			var ipStrings = addr.GetString("ip")
 			result, err := utils.ExtractIP(ipStrings)
 			if err != nil {
-				this.Fail("节点创建成功，但是保存IP失败：" + err.Error())
+				this.Fail("节点创建成功,但是保存IP失败:" + err.Error())
 			}
 
 			resultIPAddresses = append(resultIPAddresses, result...)

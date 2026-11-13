@@ -1,7 +1,7 @@
 {$layout}
 {$template "grant_menu"}
 
-<div class="ui message">可以在这里测试SSH主机连接是否正常。</div>
+<div class="ui message">可以在这里测试SSH主机连接是否正常.</div>
 
 <form class="ui form" data-tea-action="$" data-tea-success="success" data-tea-before="requestBefore" data-tea-done="requestDone">
     <csrf-token></csrf-token>
@@ -55,8 +55,8 @@
         </tbody>
     </table>
 
-    <div class="ui message green" v-if="resp != null && resp.isOk">连接成功！</div>
-    <div class="ui message red" v-if="resp != null && !resp.isOk">连接失败：{{resp.error}}</div>
+    <div class="ui message green" v-if="resp != null && resp.isOk">连接成功!</div>
+    <div class="ui message red" v-if="resp != null && !resp.isOk">连接失败:{{resp.error}}</div>
 
     <submit-btn v-if="!isRequesting">提交测试</submit-btn>
     <button class="ui button disabled" v-if="isRequesting">连接中...</button>

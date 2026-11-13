@@ -54,7 +54,7 @@ func (this *InitPasswordAction) RunPost(params struct {
 	params.Must.
 		Field("username", params.Username).
 		Require("请输入登录用户名").
-		Match(`^[a-zA-Z0-9_]+$`, "用户名中只能包含英文、数字或下划线").
+		Match(`^[a-zA-Z0-9_]+$`, "用户名中只能包含英文,数字或下划线").
 		Field("password", params.Password).
 		Require("请输入密码")
 
@@ -65,7 +65,7 @@ func (this *InitPasswordAction) RunPost(params struct {
 		return
 	}
 	if adminResp.Admin == nil {
-		this.Fail("数据错误，请将数据库中的edgeAdmins表中的用户名修改为admin后再试")
+		this.Fail("数据错误,请将数据库中的edgeAdmins表中的用户名修改为admin后再试")
 		return
 	}
 	var adminId = adminResp.Admin.Id

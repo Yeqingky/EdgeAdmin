@@ -77,7 +77,7 @@ export interface CondComponentDef {
   description?: string
 }
 
-// 条件类型定义，与 web/public/js/conds/official.json 保持一致
+// 条件类型定义,与 web/public/js/conds/official.json 保持一致
 export const COND_COMPONENTS: CondComponentDef[] = [
   { type: 'url-extension', name: '文件扩展名', paramsTitle: '扩展名列表' },
   { type: 'url-eq-index', name: '首页', paramsTitle: 'URL完整路径' },
@@ -88,11 +88,11 @@ export const COND_COMPONENTS: CondComponentDef[] = [
   { type: 'url-wildcard-match', name: 'URL通配符', paramsTitle: '通配符', caseInsensitive: true },
   { type: 'user-agent-regexp', name: 'User-Agent正则匹配', paramsTitle: '正则表达式', caseInsensitive: true },
   { type: 'params', name: '参数匹配', paramsTitle: '参数配置' },
-  { type: 'url-not-extension', name: '排除：URL扩展名', paramsTitle: '扩展名列表' },
-  { type: 'url-not-prefix', name: '排除：URL前缀', paramsTitle: 'URL前缀', caseInsensitive: true },
-  { type: 'url-not-eq', name: '排除：URL完整路径', paramsTitle: 'URL完整路径', caseInsensitive: true },
-  { type: 'url-not-regexp', name: '排除：URL正则匹配', paramsTitle: '正则表达式', caseInsensitive: true },
-  { type: 'user-agent-not-regexp', name: '排除：User-Agent正则匹配', paramsTitle: '正则表达式', caseInsensitive: true },
+  { type: 'url-not-extension', name: '排除:URL扩展名', paramsTitle: '扩展名列表' },
+  { type: 'url-not-prefix', name: '排除:URL前缀', paramsTitle: 'URL前缀', caseInsensitive: true },
+  { type: 'url-not-eq', name: '排除:URL完整路径', paramsTitle: 'URL完整路径', caseInsensitive: true },
+  { type: 'url-not-regexp', name: '排除:URL正则匹配', paramsTitle: '正则表达式', caseInsensitive: true },
+  { type: 'user-agent-not-regexp', name: '排除:User-Agent正则匹配', paramsTitle: '正则表达式', caseInsensitive: true },
   { type: 'mime-type', name: '内容MimeType', paramsTitle: 'MimeType列表' },
 ]
 
@@ -137,7 +137,7 @@ export function GroupConfigWarning({ href, text }: { href?: string; text?: strin
     <div className="ui message warning">
       {text || '由于已经在当前'}
       {href ? <a href={`${href}`}>网站分组</a> : '网站分组'}
-      {text ? '' : '中进行了对应的配置，在这里的配置将不会生效。'}
+      {text ? '' : '中进行了对应的配置,在这里的配置将不会生效.'}
     </div>
   )
 }
@@ -361,7 +361,7 @@ export function NetworkAddressesEditor({
                 <input
                   type="text"
                   value={address.host}
-                  placeholder="主机地址，比如 0.0.0.0"
+                  placeholder="主机地址,比如 0.0.0.0"
                   style={{ width: '12em' }}
                   onChange={(event) => {
                     const next = [...addresses]
@@ -374,7 +374,7 @@ export function NetworkAddressesEditor({
                 <input
                   type="text"
                   value={address.portRange}
-                  placeholder={supportRange ? '端口或范围，比如 8080-8090' : '端口，比如 80'}
+                  placeholder={supportRange ? '端口或范围,比如 8080-8090' : '端口,比如 80'}
                   style={{ width: '12em' }}
                   onChange={(event) => {
                     const next = [...addresses]
@@ -529,7 +529,7 @@ export function CondsEditor({ conds, onChange }: { conds: RequestCondsConfig | n
 
       {groups.length > 1 ? (
         <div className="ui fields inline">
-          <label>分组之间关系：</label>
+          <label>分组之间关系:</label>
           <select
             className="ui dropdown"
             value={realConds.connector || 'or'}

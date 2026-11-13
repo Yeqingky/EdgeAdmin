@@ -38,7 +38,7 @@ func (this *AddServerNamePopupAction) RunPost(params struct {
 		serverName = regexp.MustCompile(`\s+`).ReplaceAllString(serverName, "")
 
 		// 是否包含了多个域名
-		var splitReg = regexp.MustCompile(`([，、｜,;|])`)
+		var splitReg = regexp.MustCompile(`([,,|,;|])`)
 		if splitReg.MatchString(serverName) {
 			params.ServerNames = strings.Join(splitReg.Split(serverName, -1), "\n")
 			params.Mode = "multiple"

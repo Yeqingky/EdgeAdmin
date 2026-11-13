@@ -240,33 +240,33 @@ function OriginForm({
                 <input type="text" value={state.addr} onChange={(event) => update({ addr: event.target.value })} />
               </div>
               <p className="comment">
-                源站服务器地址，通常是一个IP（或域名）加端口，80和443端口可以省略
-                {serverType === 'httpProxy' ? '，不需要加 http:// 或 https://' : ''}。
+                源站服务器地址,通常是一个IP(或域名)加端口,80和443端口可以省略
+                {serverType === 'httpProxy' ? ',不需要加 http:// 或 https://' : ''}.
               </p>
             </FormRow>
             {showHost ? (
               <FormRow title="回源主机名">
                 <input type="text" maxLength={100} placeholder="比如example.com" value={state.host} onChange={(event) => update({ host: event.target.value })} />
                 <p className="comment">
-                  可选项。请求源站时的Host字段值，用于设置访问源站的站点域名{isHTTP ? '，支持请求变量' : ''}；
-                  如果用户访问的域名和源站域名不一致，请务必设置为源站域名。
+                  可选项.请求源站时的Host字段值,用于设置访问源站的站点域名{isHTTP ? ',支持请求变量' : ''};
+                  如果用户访问的域名和源站域名不一致,请务必设置为源站域名.
                 </p>
               </FormRow>
             ) : null}
             <FormRow title="专属域名">
               <DomainsBox domains={state.domains} onChange={(domains) => update({ domains })} />
-              <p className="comment">默认不需要填写，表示支持所有域名。如果填写了专属域名，表示这些源站只会在所列的专属域名被访问时才生效。</p>
+              <p className="comment">默认不需要填写,表示支持所有域名.如果填写了专属域名,表示这些源站只会在所列的专属域名被访问时才生效.</p>
             </FormRow>
             {state.protocol !== 'udp' ? (
               <FormRow title="端口跟随">
                 <Checkbox checked={state.followPort} onChange={(followPort) => update({ followPort })} />
-                <p className="comment">选中后表示源站的端口保持和用户访问的服务端口保持一致；此时的源站地址中的端口号可以任意填写。</p>
+                <p className="comment">选中后表示源站的端口保持和用户访问的服务端口保持一致;此时的源站地址中的端口号可以任意填写.</p>
               </FormRow>
             ) : null}
             {state.protocol === 'https' ? (
               <FormRow title="支持HTTP/2">
                 <Checkbox checked={state.http2Enabled} onChange={(http2Enabled) => update({ http2Enabled })} />
-                <p className="comment">选中后，表示源站支持HTTP/2协议。</p>
+                <p className="comment">选中后,表示源站支持HTTP/2协议.</p>
               </FormRow>
             ) : null}
             {state.protocol === 'https' || state.protocol === 'tls' ? (
@@ -279,7 +279,7 @@ function OriginForm({
                   value={state.certId > 0 ? String(state.certId) : ''}
                   onChange={(event) => update({ certId: Math.max(0, Number(event.target.value) || 0) })}
                 />
-                <p className="comment">可以选择连接源站使用的证书ID；除非源站有特殊需求，否则不需要添加。</p>
+                <p className="comment">可以选择连接源站使用的证书ID;除非源站有特殊需求,否则不需要添加.</p>
               </FormRow>
             ) : null}
             <FormRow title="权重">
@@ -290,11 +290,11 @@ function OriginForm({
                 value={state.weight}
                 onChange={(event) => update({ weight: Math.max(0, Number(event.target.value) || 0) })}
               />
-              <p className="comment">数字越大，代表分配的请求比例越多。</p>
+              <p className="comment">数字越大,代表分配的请求比例越多.</p>
             </FormRow>
             <FormRow title="名称">
               <input type="text" maxLength={100} value={state.name} onChange={(event) => update({ name: event.target.value })} />
-              <p className="comment">给当前源站起一个容易识别的名称。</p>
+              <p className="comment">给当前源站起一个容易识别的名称.</p>
             </FormRow>
             <FormRow title="连接失败超时时间">
               <div className="ui fields inline">
@@ -303,7 +303,7 @@ function OriginForm({
                 </div>
                 <div className="ui field">秒</div>
               </div>
-              <p className="comment">连接源站失败的最大超时时间，0表示不限制。</p>
+              <p className="comment">连接源站失败的最大超时时间,0表示不限制.</p>
             </FormRow>
             {isHTTP ? (
               <FormRow title="读取超时时间">
@@ -313,19 +313,19 @@ function OriginForm({
                   </div>
                   <div className="ui field">秒</div>
                 </div>
-                <p className="comment">读取内容时的最大超时时间，0表示不限制。</p>
+                <p className="comment">读取内容时的最大超时时间,0表示不限制.</p>
               </FormRow>
             ) : null}
             {isHTTP ? (
               <FormRow title="最大并发连接数">
                 <input type="text" size={6} maxLength={10} value={state.maxConns} onChange={(event) => update({ maxConns: Math.max(0, Number(event.target.value) || 0) })} />
-                <p className="comment">源站可以接受到的最大并发连接数，0表示使用系统默认。</p>
+                <p className="comment">源站可以接受到的最大并发连接数,0表示使用系统默认.</p>
               </FormRow>
             ) : null}
             {isHTTP ? (
               <FormRow title="最大空闲连接数">
                 <input type="text" size={6} maxLength={10} value={state.maxIdleConns} onChange={(event) => update({ maxIdleConns: Math.max(0, Number(event.target.value) || 0) })} />
-                <p className="comment">当没有请求时，源站保持等待的最大空闲连接数量，0表示使用系统默认。</p>
+                <p className="comment">当没有请求时,源站保持等待的最大空闲连接数量,0表示使用系统默认.</p>
               </FormRow>
             ) : null}
             {isHTTP ? (
@@ -336,7 +336,7 @@ function OriginForm({
                   </div>
                   <div className="ui field">秒</div>
                 </div>
-                <p className="comment">源站保持等待的空闲超时时间，0表示使用默认时间。</p>
+                <p className="comment">源站保持等待的空闲超时时间,0表示使用默认时间.</p>
               </FormRow>
             ) : null}
             <FormRow title="备注">
@@ -376,7 +376,7 @@ function OriginTable({
           [添加{originTypeName}]
         </a>
       </h3>
-      {origins.length === 0 ? <p className="comment">暂时还没有{originTypeName}。</p> : null}
+      {origins.length === 0 ? <p className="comment">暂时还没有{originTypeName}.</p> : null}
       {origins.length > 0 ? (
         <table className="ui table selectable">
           <thead>
@@ -462,7 +462,7 @@ export function ReverseProxyOriginsPage() {
   const enabled = !!ref && ref.isPrior && ref.isOn
 
   async function deleteOrigin(origin: OriginSummary, originType: string) {
-    if (!(await confirm({ message: `确定要删除此源站（${origin.addr}）吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除此源站(${origin.addr})吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -476,7 +476,7 @@ export function ReverseProxyOriginsPage() {
 
   async function toggleOrigin(origin: OriginSummary, isOn: boolean) {
     const resultMessage = isOn ? '启用成功' : '停用成功'
-    if (!(await confirm({ message: `确定要${isOn ? '启用' : '停用'}此源站（${origin.addr}）吗？` }))) {
+    if (!(await confirm({ message: `确定要${isOn ? '启用' : '停用'}此源站(${origin.addr})吗?` }))) {
       return
     }
     try {
@@ -493,8 +493,8 @@ export function ReverseProxyOriginsPage() {
       <div className="margin" />
       {!enabled ? (
         <div className="ui message warning">
-          当前源站没有启用，可以通过点击{' '}
-          <a href={`/servers/server/settings/locations/reverseProxy/setting?serverId=${serverId}&locationId=${locationId}`}>[更多设置]</a> 开启 。
+          当前源站没有启用,可以通过点击{' '}
+          <a href={`/servers/server/settings/locations/reverseProxy/setting?serverId=${serverId}&locationId=${locationId}`}>[更多设置]</a> 开启 .
         </div>
       ) : null}
       <OriginTable

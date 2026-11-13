@@ -124,7 +124,7 @@ export function UpdatesSettingsPage() {
   }
 
   async function ignoreVersion(version: string) {
-    if (!(await confirm({ message: `确定要忽略版本 v${version} 版本更新吗？` }))) {
+    if (!(await confirm({ message: `确定要忽略版本 v${version} 版本更新吗?` }))) {
       return
     }
     try {
@@ -136,7 +136,7 @@ export function UpdatesSettingsPage() {
   }
 
   async function resetIgnoredVersion() {
-    if (!(await confirm({ message: '确定要重置已忽略版本吗？' }))) {
+    if (!(await confirm({ message: '确定要重置已忽略版本吗?' }))) {
       return
     }
     try {
@@ -152,7 +152,7 @@ export function UpdatesSettingsPage() {
     try {
       await apiPost('/settings/updates/upgrade', { url: dlURL })
       window.setTimeout(() => {
-        toast(isUpgraded ? '升级成功，当前管理系统将会尝试自动重启，请刷新页面查看重启状态。' : '下载覆盖成功，当前管理系统将会尝试自动重启，请刷新页面查看重启状态。')
+        toast(isUpgraded ? '升级成功,当前管理系统将会尝试自动重启,请刷新页面查看重启状态.' : '下载覆盖成功,当前管理系统将会尝试自动重启,请刷新页面查看重启状态.')
       }, 3000)
     } catch (error) {
       setIsUpgrading(false)
@@ -176,9 +176,9 @@ export function UpdatesSettingsPage() {
 
       {showUpgrading ? (
         <div>
-          {!isUpgradingDB && !isUpgraded ? <p className="ui message warning">正在下载并升级到新版本，请耐心等待 {upgradeProgress}% ...</p> : null}
+          {!isUpgradingDB && !isUpgraded ? <p className="ui message warning">正在下载并升级到新版本,请耐心等待 {upgradeProgress}% ...</p> : null}
           {isUpgradingDB ? <p className="ui message warning">正在升级数据库 ...</p> : null}
-          {!isUpgradingDB && isUpgraded ? <p className="ui message warning">升级完成！</p> : null}
+          {!isUpgradingDB && isUpgraded ? <p className="ui message warning">升级完成!</p> : null}
         </div>
       ) : null}
 
@@ -206,7 +206,7 @@ export function UpdatesSettingsPage() {
                   <td>自动检查</td>
                   <td>
                     <Checkbox checked={autoCheck} onChange={(checked) => void changeAutoCheck(checked)} />
-                    <p className="comment">选中后系统将定时检查是否有新版本更新。</p>
+                    <p className="comment">选中后系统将定时检查是否有新版本更新.</p>
                   </td>
                 </tr>
                 {isStarted ? (
@@ -226,9 +226,9 @@ export function UpdatesSettingsPage() {
                                 {result.message}
                                 {result.hasNew ? (
                                   <>
-                                    ：
+                                    :
                                     <br />
-                                    <a href={result.dlURL}>下载地址：{result.dlURL}</a>
+                                    <a href={result.dlURL}>下载地址:{result.dlURL}</a>
                                   </>
                                 ) : null}
                               </span>
@@ -247,15 +247,15 @@ export function UpdatesSettingsPage() {
                                     忽略此版本
                                   </button>
                                   <div className="ui divider" />
-                                  {result.day ? <div>发布日期：{result.day}</div> : null}
+                                  {result.day ? <div>发布日期:{result.day}</div> : null}
                                   {result.description ? (
                                     <div>
-                                      版本介绍：<pre>{result.description}</pre>
+                                      版本介绍:<pre>{result.description}</pre>
                                       {result.docURL ? (
                                         <div>
                                           <div className="ui divider" />
                                           <div>
-                                            完整变更说明：<a href={result.docURL} target="_blank" rel="noreferrer">{result.docURL}</a>
+                                            完整变更说明:<a href={result.docURL} target="_blank" rel="noreferrer">{result.docURL}</a>
                                           </div>
                                         </div>
                                       ) : null}

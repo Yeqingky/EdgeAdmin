@@ -314,7 +314,7 @@ export function WafRuleEditor({
               <td>配置选项</td>
               <td>
                 <textarea rows={4} value={composedOptionsJSON} onChange={(event) => setComposedOptionsJSON(event.target.value)} />
-                <p className="comment">组合参数的配置选项，使用JSON格式，例如 {'{"period":60,"requests":100}'}。</p>
+                <p className="comment">组合参数的配置选项,使用JSON格式,例如 {'{"period":60,"requests":100}'}.</p>
               </td>
             </tr>
           ) : null}
@@ -387,10 +387,10 @@ export function WafRuleEditor({
                         onChange={(event) => setValue(event.target.value)}
                       />
                     )}
-                    {operatorDefinition.dataType === 'strings' ? <p className="comment">每行一个数据。</p> : null}
+                    {operatorDefinition.dataType === 'strings' ? <p className="comment">每行一个数据.</p> : null}
                     {operatorDefinition.dataType === 'regexp' ? (
                       <p className="comment">
-                        正则表达式中对于要匹配的内容中的特殊字符需要转义处理，比如把 <code>a换行b</code> 改成 <code>a|b</code>。
+                        正则表达式中对于要匹配的内容中的特殊字符需要转义处理,比如把 <code>a换行b</code> 改成 <code>a|b</code>.
                       </p>
                     ) : null}
                     {geoEndpoints[checkpoint.prefix] ? (

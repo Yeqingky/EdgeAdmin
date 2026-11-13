@@ -23,7 +23,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countResp.Count > 0 {
-		this.Fail("当前域名正在被" + numberutils.FormatInt64(countResp.Count) + "个集群所使用，所以不能删除。请修改后再操作。")
+		this.Fail("当前域名正在被" + numberutils.FormatInt64(countResp.Count) + "个集群所使用,所以不能删除.请修改后再操作.")
 	}
 
 	// 执行删除

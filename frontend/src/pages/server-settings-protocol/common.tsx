@@ -195,7 +195,7 @@ export function GroupConfigWarning({ url }: { url?: string }) {
     <WarningMessage>
       由于已经在当前
       <a href={`${url}`}>网站分组</a>
-      中进行了对应的配置，在这里的配置将不会生效。
+      中进行了对应的配置,在这里的配置将不会生效.
     </WarningMessage>
   )
 }
@@ -411,7 +411,7 @@ export function URLPatternsEditor({
               <input
                 type="text"
                 value={pattern}
-                placeholder={type === 'wildcard' ? '可以使用星号（*）通配符' : '可以使用正则表达式'}
+                placeholder={type === 'wildcard' ? '可以使用星号(*)通配符' : '可以使用正则表达式'}
                 onChange={(event) => setPattern(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
@@ -505,7 +505,7 @@ export function CondsEditor({ value, onChange }: { value: CondsConfig; onChange:
           </tbody>
         </table>
       ) : (
-        <p className="comment">暂时还没有匹配条件。</p>
+        <p className="comment">暂时还没有匹配条件.</p>
       )}
       {groups.length > 1 ? (
         <div className="ui fields inline" style={{ marginBottom: '0.5em' }}>
@@ -633,7 +633,7 @@ export function NetworkAddressesEditor({
                   <input
                     type="text"
                     value={address.host}
-                    placeholder="主机地址，留空表示所有"
+                    placeholder="主机地址,留空表示所有"
                     onChange={(event) =>
                       onChange(addresses.map((item, i) => (i === index ? { ...item, host: event.target.value } : item)))
                     }
@@ -666,7 +666,7 @@ export function NetworkAddressesEditor({
           </tbody>
         </table>
       ) : (
-        <p className="comment">暂时还没有绑定端口。</p>
+        <p className="comment">暂时还没有绑定端口.</p>
       )}
       <button
         className="ui button tiny"

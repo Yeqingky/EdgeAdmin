@@ -49,7 +49,7 @@ Tea.context(function () {
 				attackRatio = Math.round(stats[index].attackBytes * 10000 / stats[index].bytes) / 100
 			}
 
-			return stats[index].day + " " + stats[index].hour + "时<br/>总流量：" + teaweb.formatBytes(stats[index].bytes) + "<br/>缓存流量：" + teaweb.formatBytes(stats[index].cachedBytes) + "<br/>缓存命中率：" + cachedRatio + "%<br/>拦截攻击流量：" + teaweb.formatBytes(stats[index].attackBytes) + "<br/>拦截比例：" + attackRatio + "%"
+			return stats[index].day + " " + stats[index].hour + "时<br/>总流量:" + teaweb.formatBytes(stats[index].bytes) + "<br/>缓存流量:" + teaweb.formatBytes(stats[index].cachedBytes) + "<br/>缓存命中率:" + cachedRatio + "%<br/>拦截攻击流量:" + teaweb.formatBytes(stats[index].attackBytes) + "<br/>拦截比例:" + attackRatio + "%"
 		})
 	}
 
@@ -64,7 +64,7 @@ Tea.context(function () {
 				attackRatio = Math.round(stats[index].attackBytes * 10000 / stats[index].bytes) / 100
 			}
 
-			return stats[index].day + "<br/>总流量：" + teaweb.formatBytes(stats[index].bytes) + "<br/>缓存流量：" + teaweb.formatBytes(stats[index].cachedBytes) + "<br/>缓存命中率：" + cachedRatio + "%<br/>拦截攻击流量：" + teaweb.formatBytes(stats[index].attackBytes) + "<br/>拦截比例：" + attackRatio + "%"
+			return stats[index].day + "<br/>总流量:" + teaweb.formatBytes(stats[index].bytes) + "<br/>缓存流量:" + teaweb.formatBytes(stats[index].cachedBytes) + "<br/>缓存命中率:" + cachedRatio + "%<br/>拦截攻击流量:" + teaweb.formatBytes(stats[index].attackBytes) + "<br/>拦截比例:" + attackRatio + "%"
 		})
 	}
 
@@ -172,7 +172,7 @@ Tea.context(function () {
 				return v.domain
 			},
 			tooltip: function (args, stats) {
-				return stats[args.dataIndex].domain + "<br/>请求数：" + " " + teaweb.formatNumber(stats[args.dataIndex].countRequests) + "<br/>流量：" + teaweb.formatBytes(stats[args.dataIndex].bytes)
+				return stats[args.dataIndex].domain + "<br/>请求数:" + " " + teaweb.formatNumber(stats[args.dataIndex].countRequests) + "<br/>流量:" + teaweb.formatBytes(stats[args.dataIndex].bytes)
 			},
 			value: function (v) {
 				return v.countRequests / axis.divider;

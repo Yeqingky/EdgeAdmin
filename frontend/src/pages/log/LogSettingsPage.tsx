@@ -67,7 +67,7 @@ export function LogSettingsPage() {
           {config.canChange ? (
             <FormRow title="日志保留天数">
               <input type="text" style={{ width: '5em' }} maxLength={3} value={String(config.days)} onChange={(event) => setConfig({ ...config, days: Number(event.target.value) || 0 })} />
-              <p className="comment">超过此天数的日志将会被自动清理，0表示不自动清理。</p>
+              <p className="comment">超过此天数的日志将会被自动清理,0表示不自动清理.</p>
             </FormRow>
           ) : null}
           <FormRow title="最大容量限制">

@@ -17,7 +17,7 @@ export function InitPasswordPage() {
     try {
       await apiGet('/index/initPassword')
       await apiPost('/index/initPassword', { csrfToken: await getCsrfToken(), username, password })
-      toast('用户名和密码保存成功，现在去登录')
+      toast('用户名和密码保存成功,现在去登录')
       navigate('/login')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
@@ -32,7 +32,7 @@ export function InitPasswordPage() {
         <div className="ui segment stacked">
           <div className="ui header">
             设置管理员初始密码
-            <p className="comment">由于你是第一次登录，所以需要设置管理员用户名和密码。</p>
+            <p className="comment">由于你是第一次登录,所以需要设置管理员用户名和密码.</p>
           </div>
           <div className="ui field">
             <div className="ui left icon input">

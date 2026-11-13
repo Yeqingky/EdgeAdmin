@@ -44,7 +44,7 @@ Tea.context(function () {
 
 	this.uninstallNode = function () {
 		let that = this
-		teaweb.confirm("html:确定要卸载当前节点吗？<br/>此操作将会删除节点上除缓存以外的相关文件。", function () {
+		teaweb.confirm("html:确定要卸载当前节点吗?<br/>此操作将会删除节点上除缓存以外的相关文件.", function () {
 			that.$post("/clusters/cluster/node/uninstall")
 				.params({
 					nodeId: that.node.id

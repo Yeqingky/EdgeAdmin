@@ -127,7 +127,7 @@ func (this *ProvidersAction) RunPost(params struct {
 	if len(params.ExceptURLPatternsJSON) > 0 {
 		err = json.Unmarshal(params.ExceptURLPatternsJSON, &exceptURLPatterns)
 		if err != nil {
-			this.Fail("校验例外URL参数失败：" + err.Error())
+			this.Fail("校验例外URL参数失败:" + err.Error())
 			return
 		}
 	}
@@ -138,7 +138,7 @@ func (this *ProvidersAction) RunPost(params struct {
 	if len(params.OnlyURLPatternsJSON) > 0 {
 		err = json.Unmarshal(params.OnlyURLPatternsJSON, &onlyURLPatterns)
 		if err != nil {
-			this.Fail("校验限制URL参数失败：" + err.Error())
+			this.Fail("校验限制URL参数失败:" + err.Error())
 			return
 		}
 	}
@@ -153,7 +153,7 @@ func (this *ProvidersAction) RunPost(params struct {
 
 	err = policyConfig.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 		return
 	}
 

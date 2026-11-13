@@ -24,7 +24,7 @@ func RemoteIP(action *actions.ActionObject) string {
 
 	if securityConfig != nil {
 		if len(securityConfig.ClientIPHeaderNames) > 0 {
-			var headerNames = regexp.MustCompile(`[,;\s，、；]`).Split(securityConfig.ClientIPHeaderNames, -1)
+			var headerNames = regexp.MustCompile(`[,;\s,,;]`).Split(securityConfig.ClientIPHeaderNames, -1)
 			for _, headerName := range headerNames {
 				headerName = http.CanonicalHeaderKey(strings.TrimSpace(headerName))
 				if len(headerName) == 0 {

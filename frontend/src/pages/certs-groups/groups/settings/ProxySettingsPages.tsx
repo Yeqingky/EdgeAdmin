@@ -113,14 +113,14 @@ function ProxyIndexPage({ family }: { family: ProxyFamily }) {
   const proxyEnabled = boolField(refConfig, 'isPrior') && boolField(refConfig, 'isOn')
 
   async function deleteOrigin(origin: OriginRow, originType: 'primary' | 'backup') {
-    if (!(await confirm({ message: `确定要删除此源站（${origin.addr}）吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除此源站(${origin.addr})吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate({ reverseProxyId: numberField(config, 'id'), originId: origin.id, originType })
   }
 
   async function toggleOrigin(origin: OriginRow, isOn: boolean) {
-    if (!(await confirm({ message: `确定要${isOn ? '启用' : '停用'}此源站（${origin.addr}）吗？` }))) {
+    if (!(await confirm({ message: `确定要${isOn ? '启用' : '停用'}此源站(${origin.addr})吗?` }))) {
       return
     }
     toggle.mutate({ originId: origin.id, isOn })
@@ -141,7 +141,7 @@ function ProxyIndexPage({ family }: { family: ProxyFamily }) {
             [{originType === 'primary' ? '添加主要源站' : '添加备用源站'}]
           </a>
         </h3>
-        {origins.length === 0 ? <p className="comment">暂时还没有{originType === 'primary' ? '主要' : '备用'}源站。</p> : null}
+        {origins.length === 0 ? <p className="comment">暂时还没有{originType === 'primary' ? '主要' : '备用'}源站.</p> : null}
         {origins.length > 0 ? (
           <table className="ui table selectable">
             <thead>
@@ -217,8 +217,8 @@ function ProxyIndexPage({ family }: { family: ProxyFamily }) {
         <div>
           <div className="margin" />
           <div className="ui message warning">
-            当前源站没有启用，可以通过点击{' '}
-            <a href={`${base}/setting?groupId=${data.group.id}`}>[更多设置]</a> 开启 。
+            当前源站没有启用,可以通过点击{' '}
+            <a href={`${base}/setting?groupId=${data.group.id}`}>[更多设置]</a> 开启 .
           </div>
         </div>
       ) : null}
@@ -349,7 +349,7 @@ function OriginForm({
             <td>匹配域名</td>
             <td>
               <StringListInput values={domains} onChange={setDomains} placeholder="example.com" />
-              <p className="comment">留空表示匹配所有域名，多个域名用英文逗号分隔。</p>
+              <p className="comment">留空表示匹配所有域名,多个域名用英文逗号分隔.</p>
             </td>
           </tr>
           {family === 'http' ? (
@@ -357,7 +357,7 @@ function OriginForm({
               <td>源站Host</td>
               <td>
                 <input type="text" value={host} onChange={(event) => setHost(event.target.value)} />
-                <p className="comment">留空表示使用默认值。</p>
+                <p className="comment">留空表示使用默认值.</p>
               </td>
             </tr>
           ) : null}
@@ -700,7 +700,7 @@ function ProxySettingPage({ family }: { family: ProxyFamily }) {
                   <label />
                 </div>
                 <p className="comment">
-                  {boolField(currentRef, 'isPrior') ? <strong>[已打开]</strong> : null} 打开后可以覆盖父级或子级配置。
+                  {boolField(currentRef, 'isPrior') ? <strong>[已打开]</strong> : null} 打开后可以覆盖父级或子级配置.
                 </p>
               </td>
             </tr>
@@ -740,7 +740,7 @@ function ProxySettingPage({ family }: { family: ProxyFamily }) {
                       />
                     </div>
                   ) : null}
-                  <p className="comment">发送到源站的Host。</p>
+                  <p className="comment">发送到源站的Host.</p>
                 </td>
               </tr>
               <tr>
@@ -750,7 +750,7 @@ function ProxySettingPage({ family }: { family: ProxyFamily }) {
                     checked={boolField(current, 'requestHostExcludingPort')}
                     onChange={(checked) => updateConfig('requestHostExcludingPort', checked)}
                   />
-                  <p className="comment">选中后，在Host中排除端口。</p>
+                  <p className="comment">选中后,在Host中排除端口.</p>
                 </td>
               </tr>
               <tr>

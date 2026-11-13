@@ -55,20 +55,20 @@ export function DnsIssuesPage() {
           <RefreshCw size={12} /> 刷新
         </a>
         <span className="item">|</span>
-        <span className="item">这里是一个全局的DNS解析问题发现页，方便我们诊断并修复问题。</span>
+        <span className="item">这里是一个全局的DNS解析问题发现页,方便我们诊断并修复问题.</span>
       </div>
 
       {isRequesting ? (
         <div>
           <div className="margin" />
-          正在检查系统问题，请耐心等待...
+          正在检查系统问题,请耐心等待...
         </div>
       ) : null}
 
       {!isRequesting && issues.length === 0 ? (
         <div>
           <div className="margin" />
-          <p className="comment">暂时没有发现问题。</p>
+          <p className="comment">暂时没有发现问题.</p>
         </div>
       ) : null}
 

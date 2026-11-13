@@ -197,14 +197,14 @@ export function ServersPage() {
   }
 
   async function removeServer(server: ServerRow) {
-    if (!(await confirm({ message: `确定要删除网站 ${server.name} 吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除网站 ${server.name} 吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     deleteServers.mutate([server.id])
   }
 
   async function removeSelected() {
-    if (!(await confirm({ message: `确定要删除所选的${selectedIds.length}个网站吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除所选的${selectedIds.length}个网站吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     deleteServers.mutate(selectedIds)
@@ -252,7 +252,7 @@ export function ServersPage() {
         <div className="ui icon message small error">
           <AlertTriangle size={20} />
           <div className="content">
-            <a href="/clusters/logs?type=needFix">有{data.countNeedFixLogs}个网站相关的错误需要修复。</a>
+            <a href="/clusters/logs?type=needFix">有{data.countNeedFixLogs}个网站相关的错误需要修复.</a>
           </div>
         </div>
       ) : null}
@@ -313,7 +313,7 @@ export function ServersPage() {
             <input
               type="text"
               style={{ width: '14em' }}
-              placeholder="关键词、域名、端口等"
+              placeholder="关键词,域名,端口等"
               value={keyword}
               onChange={(event) => setKeyword(event.target.value)}
             />
@@ -361,7 +361,7 @@ export function ServersPage() {
 
       {latestVisible ? (
         <div className="ui segment">
-          常用网站：
+          常用网站:
           {data.latestServers.map((server, index) => (
             <span key={server.id}>
               <a href={`/servers/server?serverId=${server.id}`}>{server.name}</a>
@@ -378,7 +378,7 @@ export function ServersPage() {
 
       {data.servers.length === 0 ? (
         <p className="ui message">
-          暂时还没有网站，现在去{' '}
+          暂时还没有网站,现在去{' '}
           <a href="/servers/create" onClick={(event) => { event.preventDefault(); navigate('/servers/create') }}>
             [创建网站 → ]
           </a>
@@ -421,21 +421,21 @@ export function ServersPage() {
               <th>端口</th>
               <th className="center">
                 下行带宽
-                <Tip content="最近5分钟峰值带宽，每5分钟更新一次" />
+                <Tip content="最近5分钟峰值带宽,每5分钟更新一次" />
                 <a href="" onClick={(event) => { event.preventDefault(); toggleOrder('trafficOutOrder') }}>
                   {orderIcon('trafficOutOrder')}
                 </a>
               </th>
               <th className="center">
                 QPS
-                <Tip content="最近5分钟平均QPS，每5分钟更新一次" />
+                <Tip content="最近5分钟平均QPS,每5分钟更新一次" />
                 <a href="" onClick={(event) => { event.preventDefault(); toggleOrder('requestsOrder') }}>
                   {orderIcon('requestsOrder')}
                 </a>
               </th>
               <th className="center">
                 攻击QPS
-                <Tip content="最近5分钟平均攻击QPS，每5分钟更新一次" />
+                <Tip content="最近5分钟平均攻击QPS,每5分钟更新一次" />
                 <a href="" onClick={(event) => { event.preventDefault(); toggleOrder('attackRequestsOrder') }}>
                   {orderIcon('attackRequestsOrder')}
                 </a>
@@ -525,7 +525,7 @@ export function ServersPage() {
                         >
                           审核中
                           {server.auditingTime.length > 0 ? (
-                            <span className="small grey">（{server.auditingTime}）</span>
+                            <span className="small grey">({server.auditingTime})</span>
                           ) : null}{' '}
                           &nbsp;→
                         </a>
@@ -552,7 +552,7 @@ export function ServersPage() {
                         <div key={index}>
                           <span className="ui label basic tiny">
                             <Keyword word={keywordParam}>{port.portRange}</Keyword>
-                            <span className="small">（{port.protocol}）</span>
+                            <span className="small">({port.protocol})</span>
                           </span>
                         </div>
                       ))
@@ -636,7 +636,7 @@ export function ServersPage() {
                 {name}
               </span>
             ))}
-            {visibleNames.length === 0 ? <span className="disabled">暂时还没有域名。</span> : null}
+            {visibleNames.length === 0 ? <span className="disabled">暂时还没有域名.</span> : null}
           </div>
         </Modal>
       ) : null}

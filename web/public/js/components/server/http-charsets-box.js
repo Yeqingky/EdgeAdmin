@@ -42,9 +42,9 @@ Vue.component("http-charsets-box", {
 				<td><select class="ui dropdown" style="width:20em" name="charset" v-model="charsetConfig.charset">
 						<option value="">[未选择]</option>
 						<optgroup label="常用字符编码"></optgroup>
-						<option v-for="charset in vUsualCharsets" :value="charset.charset">{{charset.charset}}（{{charset.name}}）</option>
+						<option v-for="charset in vUsualCharsets" :value="charset.charset">{{charset.charset}}({{charset.name}})</option>
 						<optgroup label="全部字符编码"></optgroup>
-						<option v-for="charset in vAllCharsets" :value="charset.charset">{{charset.charset}}（{{charset.name}}）</option>
+						<option v-for="charset in vAllCharsets" :value="charset.charset">{{charset.charset}}({{charset.name}})</option>
 					</select>
 				</td>
 			</tr>
@@ -55,7 +55,7 @@ Vue.component("http-charsets-box", {
 				<td>强制替换</td>
 				<td>
 					<checkbox v-model="charsetConfig.force"></checkbox>
-					<p class="comment">选中后，表示强制覆盖已经设置的字符集；不选中，表示如果源站已经设置了字符集，则保留不修改。</p>
+					<p class="comment">选中后,表示强制覆盖已经设置的字符集;不选中,表示如果源站已经设置了字符集,则保留不修改.</p>
 				</td>
 			</tr>
 			<tr>
@@ -65,7 +65,7 @@ Vue.component("http-charsets-box", {
 						<input type="checkbox" v-model="charsetConfig.isUpper"/>
 						<label></label>
 					</div>
-					<p class="comment">选中后将指定的字符编码转换为大写，比如默认为<code-label>utf-8</code-label>，选中后将改为<code-label>UTF-8</code-label>。</p>
+					<p class="comment">选中后将指定的字符编码转换为大写,比如默认为<code-label>utf-8</code-label>,选中后将改为<code-label>UTF-8</code-label>.</p>
 				</td>
 			</tr>
 		</tbody>

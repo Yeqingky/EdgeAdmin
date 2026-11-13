@@ -56,7 +56,7 @@ Vue.component("http-cond-url-extension", {
 			}
 
 			let that = this
-			this.addingExt.split(/[,;，；|]/).forEach(function (ext) {
+			this.addingExt.split(/[,;,;|]/).forEach(function (ext) {
 				ext = ext.trim()
 				if (ext.length > 0) {
 					if (ext[0] != ".") {
@@ -92,7 +92,7 @@ Vue.component("http-cond-url-extension", {
 	<div style="margin-top: 1em" v-show="!isAdding">
 		<button class="ui button tiny basic" type="button" @click.prevent="addExt()">+添加扩展名</button>
 	</div>
-	<p class="comment">扩展名需要包含点（.）符号，例如<code-label>.jpg</code-label>、<code-label>.png</code-label>之类；多个扩展名用逗号分割。</p>
+	<p class="comment">扩展名需要包含点(.)符号,例如<code-label>.jpg</code-label>,<code-label>.png</code-label>之类;多个扩展名用逗号分割.</p>
 </div>`
 })
 
@@ -183,7 +183,7 @@ Vue.component("http-cond-url-not-extension", {
 	<div style="margin-top: 1em" v-show="!isAdding">
 		<button class="ui button tiny basic" type="button" @click.prevent="addExt()">+添加扩展名</button>
 	</div>
-	<p class="comment">扩展名需要包含点（.）符号，例如<code-label>.jpg</code-label>、<code-label>.png</code-label>之类。</p>
+	<p class="comment">扩展名需要包含点(.)符号,例如<code-label>.jpg</code-label>,<code-label>.png</code-label>之类.</p>
 </div>`
 })
 
@@ -216,7 +216,7 @@ Vue.component("http-cond-url-prefix", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" ref="valueInput"/>
-	<p class="comment">URL前缀，有此前缀的URL都将会被匹配，通常以<code-label>/</code-label>开头，比如<code-label>/static</code-label>、<code-label>/images</code-label>，不需要带域名。</p>
+	<p class="comment">URL前缀,有此前缀的URL都将会被匹配,通常以<code-label>/</code-label>开头,比如<code-label>/static</code-label>,<code-label>/images</code-label>,不需要带域名.</p>
 </div>`
 })
 
@@ -249,7 +249,7 @@ Vue.component("http-cond-url-not-prefix", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" ref="valueInput"/>
-	<p class="comment">要排除的URL前缀，有此前缀的URL都将会被匹配，通常以<code-label>/</code-label>开头，比如<code-label>/static</code-label>、<code-label>/images</code-label>，不需要带域名。</p>
+	<p class="comment">要排除的URL前缀,有此前缀的URL都将会被匹配,通常以<code-label>/</code-label>开头,比如<code-label>/static</code-label>,<code-label>/images</code-label>,不需要带域名.</p>
 </div>`
 })
 
@@ -279,7 +279,7 @@ Vue.component("http-cond-url-eq-index", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" disabled="disabled" style="background: #eee"/>
-	<p class="comment">检查URL路径是为<code-label>/</code-label>，不需要带域名。</p>
+	<p class="comment">检查URL路径是为<code-label>/</code-label>,不需要带域名.</p>
 </div>`
 })
 
@@ -309,7 +309,7 @@ Vue.component("http-cond-url-all", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" disabled="disabled" style="background: #eee"/>
-	<p class="comment">支持全站所有URL。</p>
+	<p class="comment">支持全站所有URL.</p>
 </div>`
 })
 
@@ -342,7 +342,7 @@ Vue.component("http-cond-url-eq", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" ref="valueInput"/>
-	<p class="comment">完整的URL路径，通常以<code-label>/</code-label>开头，比如<code-label>/static/ui.js</code-label>，不需要带域名。</p>
+	<p class="comment">完整的URL路径,通常以<code-label>/</code-label>开头,比如<code-label>/static/ui.js</code-label>,不需要带域名.</p>
 </div>`
 })
 
@@ -375,7 +375,7 @@ Vue.component("http-cond-url-not-eq", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" ref="valueInput"/>
-	<p class="comment">要排除的完整的URL路径，通常以<code-label>/</code-label>开头，比如<code-label>/static/ui.js</code-label>，不需要带域名。</p>
+	<p class="comment">要排除的完整的URL路径,通常以<code-label>/</code-label>开头,比如<code-label>/static/ui.js</code-label>,不需要带域名.</p>
 </div>`
 })
 
@@ -408,7 +408,7 @@ Vue.component("http-cond-url-regexp", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" ref="valueInput"/>
-	<p class="comment">匹配URL的正则表达式，比如<code-label>^/static/(.*).js$</code-label>，不需要带域名。</p>
+	<p class="comment">匹配URL的正则表达式,比如<code-label>^/static/(.*).js$</code-label>,不需要带域名.</p>
 </div>`
 })
 
@@ -441,7 +441,7 @@ Vue.component("http-cond-url-not-regexp", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" ref="valueInput"/>
-	<p class="comment"><strong>不要</strong>匹配URL的正则表达式，意即只要匹配成功则排除此条件，比如<code-label>^/static/(.*).js$</code-label>，不需要带域名。</p>
+	<p class="comment"><strong>不要</strong>匹配URL的正则表达式,意即只要匹配成功则排除此条件,比如<code-label>^/static/(.*).js$</code-label>,不需要带域名.</p>
 </div>`
 })
 
@@ -474,7 +474,7 @@ Vue.component("http-cond-url-wildcard-match", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" ref="valueInput"/>
-	<p class="comment">匹配URL的通配符，用星号（<code-label>*</code-label>）表示任意字符，比如（<code-label>/images/*.png</code-label>、<code-label>/static/*</code-label>，不需要带域名。</p>
+	<p class="comment">匹配URL的通配符,用星号(<code-label>*</code-label>)表示任意字符,比如(<code-label>/images/*.png</code-label>,<code-label>/static/*</code-label>,不需要带域名.</p>
 </div>`
 })
 
@@ -507,7 +507,7 @@ Vue.component("http-cond-user-agent-regexp", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" ref="valueInput"/>
-	<p class="comment">匹配User-Agent的正则表达式，比如<code-label>Android|iPhone</code-label>。</p>
+	<p class="comment">匹配User-Agent的正则表达式,比如<code-label>Android|iPhone</code-label>.</p>
 </div>`
 })
 
@@ -540,7 +540,7 @@ Vue.component("http-cond-user-agent-not-regexp", {
 	template: `<div>
 	<input type="hidden" name="condJSON" :value="JSON.stringify(cond)"/>
 	<input type="text" v-model="cond.value" ref="valueInput"/>
-	<p class="comment">匹配User-Agent的正则表达式，比如<code-label>Android|iPhone</code-label>，如果匹配，则排除此条件。</p>
+	<p class="comment">匹配User-Agent的正则表达式,比如<code-label>Android|iPhone</code-label>,如果匹配,则排除此条件.</p>
 </div>`
 })
 
@@ -620,7 +620,7 @@ Vue.component("http-cond-mime-type", {
 	<div style="margin-top: 1em">
 		<button class="ui button tiny basic" type="button" @click.prevent="addMimeType()">+添加MimeType</button>
 	</div>
-	<p class="comment">服务器返回的内容的MimeType，比如<span class="ui label tiny">text/html</span>、<span class="ui label tiny">image/*</span>等。</p>
+	<p class="comment">服务器返回的内容的MimeType,比如<span class="ui label tiny">text/html</span>,<span class="ui label tiny">image/*</span>等.</p>
 </div>`
 })
 
@@ -801,7 +801,7 @@ Vue.component("http-cond-params", {
 					</select>
 				</div>
 			</div>
-			<p class="comment">其中可以使用变量，类似于<code-label>\${requestPath}</code-label>，也可以是多个变量的组合。</p>
+			<p class="comment">其中可以使用变量,类似于<code-label>\${requestPath}</code-label>,也可以是多个变量的组合.</p>
 		</td>
 	</tr>
 	<tr>
@@ -821,31 +821,31 @@ Vue.component("http-cond-params", {
 			<!-- 正则表达式 -->
 			<div v-if="['regexp', 'not regexp'].$contains(cond.operator)">
 				<input type="text" v-model="stringValue"/>
-				<p class="comment">要匹配的正则表达式，比如<code-label>^/static/(.+).js</code-label>。</p>
+				<p class="comment">要匹配的正则表达式,比如<code-label>^/static/(.+).js</code-label>.</p>
 			</div>
 			
 			<!-- 数字相关 -->
 			<div v-if="['eq int', 'eq float', 'gt', 'gte', 'lt', 'lte'].$contains(cond.operator)">
 				<input type="text" maxlength="11" size="11" style="width: 5em" v-model="numberValue"/>
-				<p class="comment">要对比的数字。</p>
+				<p class="comment">要对比的数字.</p>
 			</div>
 			
 			<!-- 取模 -->
 			<div v-if="['mod 10'].$contains(cond.operator)">
 				<input type="text" maxlength="11" size="11" style="width: 5em" v-model="numberValue"/>
-				<p class="comment">参数值除以10的余数，在0-9之间。</p>
+				<p class="comment">参数值除以10的余数,在0-9之间.</p>
 			</div>
 			<div v-if="['mod 100'].$contains(cond.operator)">
 				<input type="text" maxlength="11" size="11" style="width: 5em" v-model="numberValue"/>
-				<p class="comment">参数值除以100的余数，在0-99之间。</p>
+				<p class="comment">参数值除以100的余数,在0-99之间.</p>
 			</div>
 			<div v-if="['mod', 'ip mod'].$contains(cond.operator)">
 				<div class="ui fields inline">
-					<div class="ui field">除：</div>
+					<div class="ui field">除:</div>
 					<div class="ui field">
 						<input type="text" maxlength="11" size="11" style="width: 5em" v-model="modDivValue" placeholder="除数"/>
 					</div>
-					<div class="ui field">余：</div>
+					<div class="ui field">余:</div>
 					<div class="ui field">
 						<input type="text" maxlength="11" size="11" style="width: 5em" v-model="modRemValue" placeholder="余数"/>
 					</div>
@@ -855,19 +855,19 @@ Vue.component("http-cond-params", {
 			<!-- 字符串相关 -->
 			<div v-if="['eq', 'not', 'prefix', 'suffix', 'contains', 'not contains'].$contains(cond.operator)">
 				<input type="text" v-model="stringValue"/>
-				<p class="comment" v-if="cond.operator == 'eq'">和参数值一致的字符串。</p>
-				<p class="comment" v-if="cond.operator == 'not'">和参数值不一致的字符串。</p>
-				<p class="comment" v-if="cond.operator == 'prefix'">参数值的前缀。</p>
-				<p class="comment" v-if="cond.operator == 'suffix'">参数值的后缀为此字符串。</p>
-				<p class="comment" v-if="cond.operator == 'contains'">参数值包含此字符串。</p>
-				<p class="comment" v-if="cond.operator == 'not contains'">参数值不包含此字符串。</p>
+				<p class="comment" v-if="cond.operator == 'eq'">和参数值一致的字符串.</p>
+				<p class="comment" v-if="cond.operator == 'not'">和参数值不一致的字符串.</p>
+				<p class="comment" v-if="cond.operator == 'prefix'">参数值的前缀.</p>
+				<p class="comment" v-if="cond.operator == 'suffix'">参数值的后缀为此字符串.</p>
+				<p class="comment" v-if="cond.operator == 'contains'">参数值包含此字符串.</p>
+				<p class="comment" v-if="cond.operator == 'not contains'">参数值不包含此字符串.</p>
 			</div>
 			<div v-if="['in', 'not in', 'file ext', 'mime type'].$contains(cond.operator)">
 				<values-box @change="changeStringValues" :values="stringValues" size="15"></values-box>
-				<p class="comment" v-if="cond.operator == 'in'">添加参数值列表。</p>
-				<p class="comment" v-if="cond.operator == 'not in'">添加参数值列表。</p>
-				<p class="comment" v-if="cond.operator == 'file ext'">添加扩展名列表，比如<code-label>png</code-label>、<code-label>html</code-label>，不包括点。</p>
-				<p class="comment" v-if="cond.operator == 'mime type'">添加MimeType列表，类似于<code-label>text/html</code-label>、<code-label>image/*</code-label>。</p>
+				<p class="comment" v-if="cond.operator == 'in'">添加参数值列表.</p>
+				<p class="comment" v-if="cond.operator == 'not in'">添加参数值列表.</p>
+				<p class="comment" v-if="cond.operator == 'file ext'">添加扩展名列表,比如<code-label>png</code-label>,<code-label>html</code-label>,不包括点.</p>
+				<p class="comment" v-if="cond.operator == 'mime type'">添加MimeType列表,类似于<code-label>text/html</code-label>,<code-label>image/*</code-label>.</p>
 			</div>
 			<div v-if="['version range'].$contains(cond.operator)">
 				<div class="ui fields inline">
@@ -880,15 +880,15 @@ Vue.component("http-cond-params", {
 			<!-- IP相关 -->
 			<div v-if="['eq ip', 'gt ip', 'gte ip', 'lt ip', 'lte ip', 'ip range'].$contains(cond.operator)">
 				<input type="text" style="width: 10em" v-model="stringValue" placeholder="x.x.x.x"/>
-				<p class="comment">要对比的IP。</p>
+				<p class="comment">要对比的IP.</p>
 			</div>
 			<div v-if="['ip mod 10'].$contains(cond.operator)">
 				<input type="text" maxlength="11" size="11" style="width: 5em" v-model="numberValue"/>
-				<p class="comment">参数中IP转换成整数后除以10的余数，在0-9之间。</p>
+				<p class="comment">参数中IP转换成整数后除以10的余数,在0-9之间.</p>
 			</div>
 			<div v-if="['ip mod 100'].$contains(cond.operator)">
 				<input type="text" maxlength="11" size="11" style="width: 5em" v-model="numberValue"/>
-				<p class="comment">参数中IP转换成整数后除以100的余数，在0-99之间。</p>
+				<p class="comment">参数中IP转换成整数后除以100的余数,在0-99之间.</p>
 			</div>
 		</td>
 	</tr>
@@ -899,7 +899,7 @@ Vue.component("http-cond-params", {
 				<input type="checkbox" name="condIsCaseInsensitive" v-model="cond.isCaseInsensitive"/>
 				<label></label>
 			</div>
-			<p class="comment">选中后表示对比时忽略参数值的大小写。</p>
+			<p class="comment">选中后表示对比时忽略参数值的大小写.</p>
 		</td>
 	</tr>
 </tbody>

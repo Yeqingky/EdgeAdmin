@@ -21,7 +21,7 @@ Vue.component("http-common-config-box", {
 					<input type="checkbox" name="mergeSlashes" value="1" v-model="config.mergeSlashes"/>
 					<label></label>
 				</div>
-				<p class="comment">合并URL中重复的路径分隔符为一个，比如<code-label>//hello/world</code-label>中的<code-label>//</code-label>。</p>
+				<p class="comment">合并URL中重复的路径分隔符为一个,比如<code-label>//hello/world</code-label>中的<code-label>//</code-label>.</p>
 			</td>
 		</tr>
 	</table>

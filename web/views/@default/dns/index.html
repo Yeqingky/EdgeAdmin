@@ -5,7 +5,7 @@
 <form class="ui form" method="get" action="/dns">
     <div class="ui fields inline">
         <div class="ui field">
-            <input type="text" name="keyword" placeholder="集群、域名..." v-model="keyword"/>
+            <input type="text" name="keyword" placeholder="集群,域名..." v-model="keyword"/>
         </div>
         <div class="ui field">
             <button class="ui button" type="submit">搜索</button>
@@ -15,7 +15,7 @@
     </div>
 </form>
 
-<p class="comment" v-if="clusters.length == 0" style="margin-top: 1em">暂时还没有集群。</p>
+<p class="comment" v-if="clusters.length == 0" style="margin-top: 1em">暂时还没有集群.</p>
 <table class="ui table selectable celled" v-if="clusters.length > 0">
 	<thead>
 		<tr>
@@ -47,6 +47,6 @@
 		</td>
 	</tr>
 </table>
-<p class="comment" v-if="clusters.length > 0">这里列出了所有集群对应的域名设置。</p>
+<p class="comment" v-if="clusters.length > 0">这里列出了所有集群对应的域名设置.</p>
 
 <div class="page" v-html="page"></div>

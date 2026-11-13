@@ -74,7 +74,7 @@ func (this *UploadBatchPopupAction) RunPost(params struct {
 		func(file *multipart.FileHeader) {
 			fp, err := file.Open()
 			if err != nil {
-				failMessages = append(failMessages, "文件"+file.Filename+"读取失败："+err.Error())
+				failMessages = append(failMessages, "文件"+file.Filename+"读取失败:"+err.Error())
 				return
 			}
 
@@ -84,7 +84,7 @@ func (this *UploadBatchPopupAction) RunPost(params struct {
 
 			data, err := io.ReadAll(fp)
 			if err != nil {
-				failMessages = append(failMessages, "文件"+file.Filename+"读取失败："+err.Error())
+				failMessages = append(failMessages, "文件"+file.Filename+"读取失败:"+err.Error())
 				return
 			}
 
@@ -96,20 +96,20 @@ func (this *UploadBatchPopupAction) RunPost(params struct {
 			} else if bytes.Contains(data, []byte("PRIVATE KEY-")) {
 				keyDataList = append(keyDataList, data)
 			} else {
-				failMessages = append(failMessages, "文件"+file.Filename+"读取失败：文件格式错误，无法识别是证书还是私钥")
+				failMessages = append(failMessages, "文件"+file.Filename+"读取失败:文件格式错误,无法识别是证书还是私钥")
 				return
 			}
 		}(file)
 	}
 
 	if len(failMessages) > 0 {
-		this.Fail("发生了错误：" + strings.Join(failMessages, "；"))
+		this.Fail("发生了错误:" + strings.Join(failMessages, ";"))
 		return
 	}
 
 	// 对比证书和私钥数量是否一致
 	if len(certDataList) != len(keyDataList) {
-		this.Fail("证书文件数量（" + types.String(len(certDataList)) + "）和私钥文件数量（" + types.String(len(keyDataList)) + "）不一致")
+		this.Fail("证书文件数量(" + types.String(len(certDataList)) + ")和私钥文件数量(" + types.String(len(keyDataList)) + ")不一致")
 		return
 	}
 
@@ -150,7 +150,7 @@ func (this *UploadBatchPopupAction) RunPost(params struct {
 		}
 		err := certConfig.Init(context.TODO())
 		if err != nil {
-			this.Fail("证书验证失败：" + err.Error())
+			this.Fail("证书验证失败:" + err.Error())
 			return
 		}
 
@@ -190,7 +190,7 @@ func (this *UploadBatchPopupAction) RunPost(params struct {
 	}
 	var certIds = createResp.SslCertIds
 	if len(certIds) != len(certConfigs) {
-		this.Fail("上传成功但API返回的证书ID数量错误，请反馈给开发者")
+		this.Fail("上传成功但API返回的证书ID数量错误,请反馈给开发者")
 		return
 	}
 

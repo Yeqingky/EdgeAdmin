@@ -3,7 +3,7 @@
 {$template "/left_menu"}
 
 <div class="right-box">
-	<p class="comment" v-if="nodes.length == 0">暂时没有需要升级的节点。</p>
+	<p class="comment" v-if="nodes.length == 0">暂时没有需要升级的节点.</p>
 
 	<div v-if="nodes.length > 0">
 		<h3>所有需要升级的节点
@@ -45,7 +45,7 @@
 						<div v-if="node.installStatus.isRunning" class="blue">升级中...</div>
 						<div v-if="node.installStatus.isFinished">
 							<span v-if="node.installStatus.isOk" class="green">已升级成功</span>
-							<span v-if="!node.installStatus.isOk" class="red">升级过程中发生错误：{{node.installStatus.error}}</span>
+							<span v-if="!node.installStatus.isOk" class="red">升级过程中发生错误:{{node.installStatus.error}}</span>
 						</div>
 					</div>
 					<span v-else class="disabled">等待升级</span>

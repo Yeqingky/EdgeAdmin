@@ -242,7 +242,7 @@ export function PriorRow<T extends PriorConfig>({
             <label />
           </div>
           <p className="comment">
-            {config.isPrior ? <strong>[已打开]</strong> : null} {description || '打开后可以覆盖父级或子级配置'}。
+            {config.isPrior ? <strong>[已打开]</strong> : null} {description || '打开后可以覆盖父级或子级配置'}.
           </p>
         </td>
       </tr>
@@ -415,7 +415,7 @@ export function JsonTextarea({
             }
           }}
         />
-        <p className="comment">{hint || '使用JSON格式填写高级配置。'}</p>
+        <p className="comment">{hint || '使用JSON格式填写高级配置.'}</p>
       </td>
     </tr>
   )
@@ -472,7 +472,7 @@ export function AdminUserCell({ user }: { user?: AdminUser | null }) {
   return (
     <span>
       {user.fullname || user.username}
-      {user.username && user.fullname ? <span className="grey small">（{user.username}）</span> : null}
+      {user.username && user.fullname ? <span className="grey small">({user.username})</span> : null}
     </span>
   )
 }

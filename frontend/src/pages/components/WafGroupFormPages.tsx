@@ -79,7 +79,7 @@ export function WafCreateGroupPage() {
               <td>代号</td>
               <td>
                 <input type="text" maxLength={100} value={code} onChange={(event) => setCode(event.target.value)} />
-                <p className="comment">可选项，在导入时可以合并相同代号的分组。</p>
+                <p className="comment">可选项,在导入时可以合并相同代号的分组.</p>
               </td>
             </tr>
             <tr>
@@ -211,7 +211,7 @@ export function WafUpdateGroupPage() {
               <td>代号</td>
               <td>
                 <input type="text" maxLength={100} value={code} onChange={(event) => setCode(event.target.value)} />
-                <p className="comment">可选项，在导入时可以合并相同代号的分组。</p>
+                <p className="comment">可选项,在导入时可以合并相同代号的分组.</p>
               </td>
             </tr>
             <tr>

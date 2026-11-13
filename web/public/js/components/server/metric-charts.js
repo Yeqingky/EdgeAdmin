@@ -107,7 +107,7 @@ Vue.component("metric-chart", {
 								value = teaweb.formatNumber(value)
 								break
 						}
-						return stat.keys[0] + "<br/>" + that.valueTypeName + ": " + value + "<br/>占比：" + percent + "%"
+						return stat.keys[0] + "<br/>" + that.valueTypeName + ": " + value + "<br/>占比:" + percent + "%"
 					}
 				},
 				series: [
@@ -319,7 +319,7 @@ Vue.component("metric-chart", {
 								value = teaweb.formatNumber(value)
 								break
 						}
-						return stat.keys[0] + "<br/>" + that.valueTypeName + "：" + value + "<br/>占比：" + percent + "%"
+						return stat.keys[0] + "<br/>" + that.valueTypeName + ":" + value + "<br/>占比:" + percent + "%"
 					}
 				},
 				yAxis: {
@@ -415,7 +415,7 @@ Vue.component("metric-chart", {
 		}
 	},
 	template: `<div style="float: left" :style="{'width': this.vColumn ?  '' : width}" :class="{'ui column':this.vColumn}">
-	<h4>{{chart.name}} <span>（{{valueTypeName}}）</span></h4>
+	<h4>{{chart.name}} <span>({{valueTypeName}})</span></h4>
 	<div class="ui divider"></div>
 	<div style="height: 14em; padding-bottom: 1em; " :id="chartId" :class="{'scroll-box': chart.type == 'table'}"></div>
 </div>`

@@ -31,7 +31,7 @@ func init() {
 			Post("/cityOptions", new(CityOptionsAction)).
 			EndAll()
 
-		// 开发环境下总是动态加载，以便于调试
+		// 开发环境下总是动态加载,以便于调试
 		if Tea.IsTesting() {
 			server.
 				Get("/js/components.js", new(ComponentsAction)).

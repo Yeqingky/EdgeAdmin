@@ -33,7 +33,7 @@ export function NodeDNSSettingsPage() {
   }, [query.data, initialized])
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isError) {
     return <div className="ui negative message">加载失败</div>
@@ -87,10 +87,10 @@ export function NodeDNSSettingsPage() {
             {data.allDNSRoutes.length > 0 ? (
               <>
                 <DnsRoutesSelector allRoutes={data.allDNSRoutes} value={routes} onChange={setRoutes} />
-                <p className="comment">当前节点对应的DNS线路，可用线路是根据集群设置的域名获取的，注意DNS服务商可能对这些线路有其他限制。</p>
+                <p className="comment">当前节点对应的DNS线路,可用线路是根据集群设置的域名获取的,注意DNS服务商可能对这些线路有其他限制.</p>
               </>
             ) : (
-              <span className="disabled">暂时没有可选的线路。</span>
+              <span className="disabled">暂时没有可选的线路.</span>
             )}
           </FormRow>
         </FormTable>

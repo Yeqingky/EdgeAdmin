@@ -26,5 +26,5 @@ func (this *StartAction) RunPost(params struct {
 		this.Success()
 	}
 
-	this.Fail("启动失败：" + resp.Error)
+	this.Fail("启动失败:" + resp.Error)
 }

@@ -49,7 +49,7 @@ export function UserUpdatePage() {
   }, [query.data])
 
   if (userId <= 0) {
-    return <div className="ui negative message">缺少userId参数。</div>
+    return <div className="ui negative message">缺少userId参数.</div>
   }
   if (query.isLoading || !user) {
     return <LoadingBlock />
@@ -101,14 +101,14 @@ export function UserUpdatePage() {
         <FormTable>
           <FormRow title="用户名 *">
             <TextInput value={user.username} maxLength={100} onChange={(event) => update('username', event.target.value)} />
-            <p className="comment">用户名只能是英文、数字、下划线的组合。</p>
+            <p className="comment">用户名只能是英文,数字,下划线的组合.</p>
           </FormRow>
           <FormRow title="密码">
             <a href="" onClick={(event) => { event.preventDefault(); setPasswordEditing((value) => !value) }}>修改密码</a>
             {passwordEditing ? (
               <div style={{ marginTop: '0.6em' }}>
                 <input type="password" value={pass1} maxLength={100} onChange={(event) => setPass1(event.target.value)} />
-                <p className="comment">留空表示不修改。</p>
+                <p className="comment">留空表示不修改.</p>
               </div>
             ) : null}
           </FormRow>

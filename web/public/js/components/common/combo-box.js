@@ -4,7 +4,7 @@ Vue.component("combo-box", {
 		"name", "title", "placeholder", "size", "v-items", "v-value",
 		"data-url", // 数据源URL
 		"data-key", // 数据源中数据的键名
-		"data-search", // 是否启用动态搜索，如果值为on或true，则表示启用
+		"data-search", // 是否启用动态搜索,如果值为on或true,则表示启用
 		"width"
 	],
 	mounted: function () {
@@ -68,7 +68,7 @@ Vue.component("combo-box", {
 
 			isInitial: true,
 			dataURL: dataURL,
-			urlRequestId: 0 // 记录URL请求ID，防止并行冲突
+			urlRequestId: 0 // 记录URL请求ID,防止并行冲突
 		}
 	},
 	methods: {
@@ -177,7 +177,7 @@ Vue.component("combo-box", {
 		show: function () {
 			this.visible = true
 
-			// 不要重置hoverIndex，以便焦点可以在输入框和可选项之间切换
+			// 不要重置hoverIndex,以便焦点可以在输入框和可选项之间切换
 		},
 		hide: function () {
 			let that = this
@@ -255,7 +255,7 @@ Vue.component("combo-box", {
 	<!-- 当前选中 -->
 	<div v-if="selectedItem != null">
 		<input type="hidden" :name="name" :value="selectedItem.value"/>
-		<span class="ui label basic" style="line-height: 1.4; font-weight: normal; font-size: 1em" ref="selectedLabel"><span><span v-if="title != null && title.length > 0">{{title}}：</span>{{selectedItem.name}}</span>
+		<span class="ui label basic" style="line-height: 1.4; font-weight: normal; font-size: 1em" ref="selectedLabel"><span><span v-if="title != null && title.length > 0">{{title}}:</span>{{selectedItem.name}}</span>
 			<a href="" title="清除" @click.prevent="reset"><i class="icon remove small"></i></a>
 		</span>
 	</div>

@@ -59,7 +59,7 @@ func (this *UpgradeAction) RunPost(params struct {
 	}()
 	err := manager.Start()
 	if err != nil {
-		this.Fail("下载失败：" + err.Error())
+		this.Fail("下载失败:" + err.Error())
 		return
 	}
 

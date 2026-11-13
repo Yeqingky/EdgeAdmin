@@ -167,11 +167,11 @@ Vue.component("reverse-proxy-box", {
 						<input type="checkbox" v-model="reverseProxyRef.isOn"/>
 						<label></label>
 					</div>
-					<p class="comment">选中后，所有源站设置才会生效。</p>
+					<p class="comment">选中后,所有源站设置才会生效.</p>
 				</td>
 			</tr>
 			<tr v-show="family == null || family == 'http'">
-				<td>回源主机名<em>（Host）</em></td>
+				<td>回源主机名<em>(Host)</em></td>
 				<td>	
 					<radio :v-value="0" v-model="reverseProxyConfig.requestHostType">跟随CDN域名</radio> &nbsp;
 					<radio :v-value="1" v-model="reverseProxyConfig.requestHostType">跟随源站</radio> &nbsp;
@@ -179,16 +179,16 @@ Vue.component("reverse-proxy-box", {
 					<div v-show="reverseProxyConfig.requestHostType == 2" style="margin-top: 0.8em">
 						<input type="text" placeholder="比如example.com" v-model="reverseProxyConfig.requestHost"/>
 					</div>
-					<p class="comment">请求源站时的主机名（Host），用于修改源站接收到的域名
-					<span v-if="reverseProxyConfig.requestHostType == 0">，"跟随CDN域名"是指源站接收到的域名和当前CDN访问域名保持一致</span>
-					<span v-if="reverseProxyConfig.requestHostType == 1">，"跟随源站"是指源站接收到的域名仍然是填写的源站地址中的信息，不随代理服务域名改变而改变</span>					
-					<span v-if="reverseProxyConfig.requestHostType == 2">，自定义Host内容中支持请求变量</span>。</p>
+					<p class="comment">请求源站时的主机名(Host),用于修改源站接收到的域名
+					<span v-if="reverseProxyConfig.requestHostType == 0">,"跟随CDN域名"是指源站接收到的域名和当前CDN访问域名保持一致</span>
+					<span v-if="reverseProxyConfig.requestHostType == 1">,"跟随源站"是指源站接收到的域名仍然是填写的源站地址中的信息,不随代理服务域名改变而改变</span>					
+					<span v-if="reverseProxyConfig.requestHostType == 2">,自定义Host内容中支持请求变量</span>.</p>
 				</td>
 			</tr>
 			<tr v-show="family == null || family == 'http'">
 				<td>回源主机名移除端口</td>
 				<td><checkbox v-model="reverseProxyConfig.requestHostExcludingPort"></checkbox>
-					<p class="comment">选中后表示移除回源主机名中的端口部分。</p>
+					<p class="comment">选中后表示移除回源主机名中的端口部分.</p>
 				</td>
 			</tr>
 		</tbody>
@@ -198,7 +198,7 @@ Vue.component("reverse-proxy-box", {
 				<td>回源跟随</td>
 				<td>
 					<checkbox v-model="reverseProxyConfig.followRedirects"></checkbox>
-					<p class="comment">选中后，自动读取源站跳转后的网页内容。</p>
+					<p class="comment">选中后,自动读取源站跳转后的网页内容.</p>
 				</td>
 			</tr>
 		    <tr v-show="family == null || family == 'http'">
@@ -210,52 +210,52 @@ Vue.component("reverse-proxy-box", {
                         </div>
                         <div style="clear: both"></div>
                     </div>
-                    <p class="comment">选中后，会自动向源站请求添加这些报头，以便于源站获取客户端信息。</p>
+                    <p class="comment">选中后,会自动向源站请求添加这些报头,以便于源站获取客户端信息.</p>
                 </td> 
             </tr>
 			<tr v-show="family == null || family == 'http'">
-				<td>请求URI<em>（RequestURI）</em></td>
+				<td>请求URI<em>(RequestURI)</em></td>
 				<td>
 					<input type="text" placeholder="\${requestURI}" v-model="reverseProxyConfig.requestURI"/>
-					<p class="comment">\${requestURI}为完整的请求URI，可以使用类似于"\${requestURI}?arg1=value1&arg2=value2"的形式添加你的参数。</p>
+					<p class="comment">\${requestURI}为完整的请求URI,可以使用类似于"\${requestURI}?arg1=value1&arg2=value2"的形式添加你的参数.</p>
 				</td>
 			</tr>
 			<tr v-show="family == null || family == 'http'">
-				<td>去除URL前缀<em>（StripPrefix）</em></td>
+				<td>去除URL前缀<em>(StripPrefix)</em></td>
 				<td>
 					<input type="text" v-model="reverseProxyConfig.stripPrefix" placeholder="/PREFIX"/>
-					<p class="comment">可以把请求的路径部分前缀去除后再查找文件，比如把 <span class="ui label tiny">/web/app/index.html</span> 去除前缀 <span class="ui label tiny">/web</span> 后就变成 <span class="ui label tiny">/app/index.html</span>。 </p>
+					<p class="comment">可以把请求的路径部分前缀去除后再查找文件,比如把 <span class="ui label tiny">/web/app/index.html</span> 去除前缀 <span class="ui label tiny">/web</span> 后就变成 <span class="ui label tiny">/app/index.html</span>. </p>
 				</td>
 			</tr>
 			<tr v-if="family == null || family == 'http'">
-				<td>自动刷新缓存区<em>（AutoFlush）</em></td>
+				<td>自动刷新缓存区<em>(AutoFlush)</em></td>
 				<td>
 					<div class="ui checkbox">
 						<input type="checkbox" v-model="reverseProxyConfig.autoFlush"/>
 						<label></label>
 					</div>
-					<p class="comment">开启后将自动刷新缓冲区数据到客户端，在类似于SSE（server-sent events）等场景下很有用。</p>
+					<p class="comment">开启后将自动刷新缓冲区数据到客户端,在类似于SSE(server-sent events)等场景下很有用.</p>
 				</td>
 			</tr>
 			<tr v-show="family == null || family == 'http'">
             	<td>自动重试50X</td>
             	<td>
             		<checkbox v-model="reverseProxyConfig.retry50X"></checkbox>
-            		<p class="comment">选中后，表示当源站返回状态码为50X（比如502、504等）时，自动重试其他源站。</p>
+            		<p class="comment">选中后,表示当源站返回状态码为50X(比如502,504等)时,自动重试其他源站.</p>
 				</td>
 			</tr>
 			<tr v-show="family == null || family == 'http'">
             	<td>自动重试40X</td>
             	<td>
             		<checkbox v-model="reverseProxyConfig.retry40X"></checkbox>
-            		<p class="comment">选中后，表示当源站返回状态码为40X（403或404）时，自动重试其他源站。</p>
+            		<p class="comment">选中后,表示当源站返回状态码为40X(403或404)时,自动重试其他源站.</p>
 				</td>
 			</tr>
             <tr v-show="family != 'unix'">
             	<td>PROXY Protocol</td>
             	<td>
             		<checkbox name="proxyProtocolIsOn" v-model="reverseProxyConfig.proxyProtocol.isOn"></checkbox>
-            		<p class="comment">选中后表示启用PROXY Protocol，每次连接源站时都会在头部写入客户端地址信息。</p>
+            		<p class="comment">选中后表示启用PROXY Protocol,每次连接源站时都会在头部写入客户端地址信息.</p>
 				</td>
 			</tr>
 			<tr v-show="family != 'unix' && reverseProxyConfig.proxyProtocol.isOn">
@@ -265,8 +265,8 @@ Vue.component("reverse-proxy-box", {
 						<option value="1">1</option>
 						<option value="2">2</option>
 					</select>
-					<p class="comment" v-if="reverseProxyConfig.proxyProtocol.version == 1">发送类似于<code-label>PROXY TCP4 192.168.1.1 192.168.1.10 32567 443</code-label>的头部信息。</p>
-					<p class="comment" v-if="reverseProxyConfig.proxyProtocol.version == 2">发送二进制格式的头部信息。</p>
+					<p class="comment" v-if="reverseProxyConfig.proxyProtocol.version == 1">发送类似于<code-label>PROXY TCP4 192.168.1.1 192.168.1.10 32567 443</code-label>的头部信息.</p>
+					<p class="comment" v-if="reverseProxyConfig.proxyProtocol.version == 2">发送二进制格式的头部信息.</p>
 				</td>
 			</tr>
 			<tr v-if="family == null || family == 'http'">
@@ -280,7 +280,7 @@ Vue.component("reverse-proxy-box", {
                             秒
                         </div>
                     </div>
-                    <p class="comment">连接源站失败的最大超时时间，0表示不限制。</p>
+                    <p class="comment">连接源站失败的最大超时时间,0表示不限制.</p>
                 </td>
             </tr>
             <tr v-if="family == null || family == 'http'">
@@ -294,7 +294,7 @@ Vue.component("reverse-proxy-box", {
                             秒
                         </div>
                     </div>
-                    <p class="comment">读取内容时的最大超时时间，0表示不限制。</p>
+                    <p class="comment">读取内容时的最大超时时间,0表示不限制.</p>
                 </td>
             </tr>
             <tr v-if="family == null || family == 'http'">
@@ -305,7 +305,7 @@ Vue.component("reverse-proxy-box", {
                             <input type="text" name="maxConns" value="0" size="6" maxlength="10" v-model="reverseProxyConfig.maxConns"/>
                         </div>
                     </div>
-                    <p class="comment">源站可以接受到的最大并发连接数，0表示使用系统默认。</p>
+                    <p class="comment">源站可以接受到的最大并发连接数,0表示使用系统默认.</p>
                 </td>
             </tr>
             <tr v-if="family == null || family == 'http'">
@@ -316,7 +316,7 @@ Vue.component("reverse-proxy-box", {
                             <input type="text" name="maxIdleConns" value="0" size="6" maxlength="10" v-model="reverseProxyConfig.maxIdleConns"/>
                         </div>
                     </div>
-                    <p class="comment">当没有请求时，源站保持等待的最大空闲连接数量，0表示使用系统默认。</p>
+                    <p class="comment">当没有请求时,源站保持等待的最大空闲连接数量,0表示使用系统默认.</p>
                 </td>
             </tr>
             <tr v-if="family == null || family == 'http'">
@@ -330,7 +330,7 @@ Vue.component("reverse-proxy-box", {
                             秒
                         </div>
                     </div>
-                    <p class="comment">源站保持等待的空闲超时时间，0表示使用默认时间。</p>
+                    <p class="comment">源站保持等待的空闲超时时间,0表示使用默认时间.</p>
                 </td>
             </tr>
 		</tbody>

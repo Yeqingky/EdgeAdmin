@@ -80,7 +80,7 @@ export function ServerHttpSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -106,7 +106,7 @@ export function ServerHttpSettingsPage() {
         webId: data.webId,
         redirectToHTTPSJSON: JSON.stringify(redirect),
       })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -125,20 +125,20 @@ export function ServerHttpSettingsPage() {
             <>
               <FormRow title="绑定端口 *">
                 <div>
-                  {isOn && addresses.length === 0 ? <span className="red">还没有添加端口绑定，会导致HTTP服务无法访问。</span> : null}
+                  {isOn && addresses.length === 0 ? <span className="red">还没有添加端口绑定,会导致HTTP服务无法访问.</span> : null}
                   <NetworkAddressesEditor addresses={addresses} onChange={setAddresses} protocol="http" />
                   {data.conflictingPorts.length > 0 ? (
                     <p className="comment">
                       <span className="red">
-                        配置错误：
+                        配置错误:
                         {data.conflictingPorts.map((port, index) => (
                           <span key={port}>
                             {port}
-                            {index !== data.conflictingPorts.length - 1 ? '、' : ''}
+                            {index !== data.conflictingPorts.length - 1 ? ',' : ''}
                           </span>
                         ))}
                         {data.conflictingPorts.length > 1 ? '等' : ''}
-                        端口同HTTPS设置的端口冲突，请删除HTTP或HTTPS中的相关端口。
+                        端口同HTTPS设置的端口冲突,请删除HTTP或HTTPS中的相关端口.
                       </span>
                     </p>
                   ) : null}
@@ -148,7 +148,7 @@ export function ServerHttpSettingsPage() {
                 <div>
                   <Checkbox checked={redirect.isOn} onChange={(checked) => updateRedirect('isOn', checked)} />
                   <p className="comment">
-                    开启后，所有HTTP的请求都会自动跳转到对应的HTTPS URL上，{' '}
+                    开启后,所有HTTP的请求都会自动跳转到对应的HTTPS URL上,{' '}
                     <MoreOptionsIndicator visible={moreOptions} onChange={setMoreOptions} />
                   </p>
                   {moreOptions ? (
@@ -171,7 +171,7 @@ export function ServerHttpSettingsPage() {
                           <td>跳转后域名或IP地址</td>
                           <td>
                             <input type="text" value={redirect.host} onChange={(event) => updateRedirect('host', event.target.value)} />
-                            <p className="comment">默认和用户正在访问的域名或IP地址一致，不填写就表示使用当前的域名。</p>
+                            <p className="comment">默认和用户正在访问的域名或IP地址一致,不填写就表示使用当前的域名.</p>
                           </td>
                         </tr>
                         <tr>
@@ -184,21 +184,21 @@ export function ServerHttpSettingsPage() {
                               value={redirect.port > 0 ? String(redirect.port) : ''}
                               onChange={(event) => updateRedirect('port', Number(event.target.value) || 0)}
                             />
-                            <p className="comment">默认端口为443。</p>
+                            <p className="comment">默认端口为443.</p>
                           </td>
                         </tr>
                         <tr>
                           <td>允许的域名</td>
                           <td>
                             <StringListEditor values={redirect.onlyDomains || []} onChange={(values) => updateRedirect('onlyDomains', values)} placeholder="比如 example.com" />
-                            <p className="comment">如果填写了允许的域名，那么只有这些域名可以自动跳转。</p>
+                            <p className="comment">如果填写了允许的域名,那么只有这些域名可以自动跳转.</p>
                           </td>
                         </tr>
                         <tr>
                           <td>排除的域名</td>
                           <td>
                             <StringListEditor values={redirect.exceptDomains || []} onChange={(values) => updateRedirect('exceptDomains', values)} placeholder="比如 example.com" />
-                            <p className="comment">如果填写了排除的域名，那么这些域名将不跳转。</p>
+                            <p className="comment">如果填写了排除的域名,那么这些域名将不跳转.</p>
                           </td>
                         </tr>
                       </tbody>

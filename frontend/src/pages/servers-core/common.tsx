@@ -9,7 +9,7 @@ import { LoadingBlock } from '../../components/LoadingBlock'
 /* 请求辅助                                                            */
 /* ------------------------------------------------------------------ */
 
-/** 以重复键的方式提交表单参数（等价于 legacy 的数组参数） */
+/** 以重复键的方式提交表单参数(等价于 legacy 的数组参数) */
 export async function apiPostMulti<T = unknown>(
   url: string,
   entries: Array<[string, string | number]>,
@@ -229,7 +229,7 @@ export function bytesAxis(values: number[]): { unit: string; divider: number } {
   return { unit, divider }
 }
 
-/** 与 legacy teaweb.match 类似的模糊匹配（忽略大小写） */
+/** 与 legacy teaweb.match 类似的模糊匹配(忽略大小写) */
 export function matchKeyword(value: string, keyword: string): boolean {
   if (!keyword) {
     return true
@@ -682,7 +682,7 @@ export function AccessLogList({
   keyword,
   showServerLink,
   onShowDetail,
-  emptyText = '暂时还没有访问日志。',
+  emptyText = '暂时还没有访问日志.',
 }: {
   accessLogs: AccessLog[]
   regions?: Record<string, string>
@@ -779,8 +779,8 @@ export function AccessLogDetailModal({ requestId, onClose }: { requestId: string
 
   const tabs: Array<{ key: typeof tab; name: string }> = [
     { key: 'summary', name: '综合信息' },
-    { key: 'response', name: '响应数据（Response）' },
-    { key: 'request', name: '请求数据（Request）' },
+    { key: 'response', name: '响应数据(Response)' },
+    { key: 'request', name: '请求数据(Request)' },
     { key: 'cookie', name: 'Cookie' },
     { key: 'client', name: '终端信息' },
   ]
@@ -814,51 +814,51 @@ export function AccessLogDetailModal({ requestId, onClose }: { requestId: string
             <table className="ui table selectable small">
               <tbody>
                 <tr>
-                  <td style={{ width: '50%' }}>请求概要<em>(Request)</em>：{accessLog.request}</td>
-                  <td>请求ID：{accessLog.requestId}</td>
+                  <td style={{ width: '50%' }}>请求概要<em>(Request)</em>:{accessLog.request}</td>
+                  <td>请求ID:{accessLog.requestId}</td>
                 </tr>
                 <tr>
-                  <td>请求方法<em>(RequestMethod)</em>：{accessLog.requestMethod}</td>
-                  <td>请求URI<em>(RequestURI)</em>：{accessLog.requestURI}</td>
+                  <td>请求方法<em>(RequestMethod)</em>:{accessLog.requestMethod}</td>
+                  <td>请求URI<em>(RequestURI)</em>:{accessLog.requestURI}</td>
                 </tr>
                 <tr>
-                  <td>主机地址<em>(Host)</em>：{accessLog.host}</td>
-                  <td>终端地址<em>(RemoteAddr:RemotePort)</em>：{accessLog.remoteAddr}:{accessLog.remotePort}</td>
+                  <td>主机地址<em>(Host)</em>:{accessLog.host}</td>
+                  <td>终端地址<em>(RemoteAddr:RemotePort)</em>:{accessLog.remoteAddr}:{accessLog.remotePort}</td>
                 </tr>
                 <tr>
                   <td>
-                    请求来源<em>(Referer)</em>：
+                    请求来源<em>(Referer)</em>:
                     {accessLog.referer ? accessLog.referer : <span className="disabled">[没有设置]</span>}
                   </td>
                   <td>
-                    终端信息<em>(UserAgent)</em>：
+                    终端信息<em>(UserAgent)</em>:
                     {accessLog.userAgent ? accessLog.userAgent : <span className="disabled">[没有设置]</span>}
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    状态<em>(StatusMessage)</em>：
+                    状态<em>(StatusMessage)</em>:
                     <span className={accessLog.status >= 400 ? 'red' : 'green'}>
                       {accessLog.status} {accessLog.statusMessage}
                       {accessLog.originStatus >= 400 ||
                       (accessLog.originStatus > 0 && accessLog.originStatus !== accessLog.status) ? (
-                        <span className="grey small">（源站{accessLog.originStatus}）</span>
+                        <span className="grey small">(源站{accessLog.originStatus})</span>
                       ) : null}
                     </span>
                   </td>
                   <td>
-                    文件类型<em>(ContentType)</em>：
+                    文件类型<em>(ContentType)</em>:
                     {accessLog.contentType ? accessLog.contentType : '-'}
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    下行流量<em>(BytesSent)</em>：
+                    下行流量<em>(BytesSent)</em>:
                     {accessLog.bytesSent != null ? (
                       <span>
                         {accessLog.bytesSent}
                         {accessLog.bytesSent > 0 ? (
-                          <span className="grey small">（{formatBytes(accessLog.bytesSent)}）</span>
+                          <span className="grey small">({formatBytes(accessLog.bytesSent)})</span>
                         ) : null}
                       </span>
                     ) : (
@@ -866,24 +866,24 @@ export function AccessLogDetailModal({ requestId, onClose }: { requestId: string
                     )}
                   </td>
                   <td>
-                    源站地址：
+                    源站地址:
                     {accessLog.originAddress ? accessLog.originAddress : <span className="disabled">未访问源站</span>}
                   </td>
                 </tr>
                 <tr>
-                  <td>ISO8601时间：{accessLog.timeISO8601}</td>
-                  <td>本地时间<em>(TimeLocal)</em>：{accessLog.timeLocal}</td>
+                  <td>ISO8601时间:{accessLog.timeISO8601}</td>
+                  <td>本地时间<em>(TimeLocal)</em>:{accessLog.timeLocal}</td>
                 </tr>
                 {wafInfo ? (
                   <tr>
-                    <td className="color-border">WAF策略：{wafInfo.policy?.name}</td>
-                    <td>WAF规则分组：{wafInfo.group ? wafInfo.group.name : '-'}</td>
+                    <td className="color-border">WAF策略:{wafInfo.policy?.name}</td>
+                    <td>WAF规则分组:{wafInfo.group ? wafInfo.group.name : '-'}</td>
                   </tr>
                 ) : null}
                 {wafInfo && wafInfo.set ? (
                   <tr>
                     <td className="color-border">
-                      WAF规则集：
+                      WAF规则集:
                       {wafInfo.policy && wafInfo.policy.serverId === 0 ? (
                         <a
                           href={`/servers/components/waf/group?firewallPolicyId=${accessLog.firewallPolicyId}&type=inbound&groupId=${accessLog.firewallRuleGroupId}`}
@@ -963,7 +963,7 @@ export function AccessLogDetailModal({ requestId, onClose }: { requestId: string
                 {query.data?.requestBody && query.data.requestBody.length > 0 ? (
                   <>
                     <tr>
-                      <td colSpan={2}>请求内容：</td>
+                      <td colSpan={2}>请求内容:</td>
                     </tr>
                     <tr>
                       <td colSpan={2}>
@@ -980,7 +980,7 @@ export function AccessLogDetailModal({ requestId, onClose }: { requestId: string
 
           {tab === 'cookie' ? (
             cookies.length === 0 ? (
-              <p className="comment">暂时没有Cookie数据。</p>
+              <p className="comment">暂时没有Cookie数据.</p>
             ) : (
               <table className="ui table definition selectable small">
                 <tbody>
@@ -1121,7 +1121,7 @@ export function AccessLogSearchForm({
             </span>
             <input
               type="text"
-              placeholder="路径、UserAgent、请求ID等..."
+              placeholder="路径,UserAgent,请求ID等..."
               value={keyword}
               size={30}
               onChange={(event) => onChange({ keyword: event.target.value })}
@@ -1143,7 +1143,7 @@ export function AccessLogSearchForm({
         <div className="ui field">
           <Tip
             content={
-              '一些特殊的关键词：单个状态码：status:200 / 状态码范围：status:500-504 / 查询IP：ip:192.168.1.100 / 查询路径部分：requestPath:/hello/world / 协议版本：proto:HTTP/1.1 / 协议：scheme:http / 请求方法：method:POST / 请求来源：referer:example.com'
+              '一些特殊的关键词:单个状态码:status:200 / 状态码范围:status:500-504 / 查询IP:ip:192.168.1.100 / 查询路径部分:requestPath:/hello/world / 协议版本:proto:HTTP/1.1 / 协议:scheme:http / 请求方法:method:POST / 请求来源:referer:example.com'
             }
           />
         </div>

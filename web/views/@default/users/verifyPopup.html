@@ -14,9 +14,9 @@
                     <option value="reject">拒绝</option>
                     <option value="delete">拒绝并删除</option>
                 </select>
-                <p class="comment" v-if="result == 'pass'">通过后，用户可正常创建服务。</p>
-                <p class="comment" v-if="result == 'reject'">拒绝后，用户不可创建服务。</p>
-                <p class="comment" v-if="result == 'delete'">将删除当前用户信息。</p>
+                <p class="comment" v-if="result == 'pass'">通过后,用户可正常创建服务.</p>
+                <p class="comment" v-if="result == 'reject'">拒绝后,用户不可创建服务.</p>
+                <p class="comment" v-if="result == 'delete'">将删除当前用户信息.</p>
             </td>
         </tr>
         <tr v-if="result == 'reject' || result == 'delete'">

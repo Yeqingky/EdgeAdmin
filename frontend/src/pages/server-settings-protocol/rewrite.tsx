@@ -139,7 +139,7 @@ export function RewriteForm({
               value={form.pattern}
               onChange={(event) => update('pattern', event.target.value)}
             />
-            <p className="comment">需要符合正则表达式规范。</p>
+            <p className="comment">需要符合正则表达式规范.</p>
           </FormRow>
           <FormRow title="目标URL *">
             <TextInput
@@ -150,7 +150,7 @@ export function RewriteForm({
               onChange={(event) => update('replace', event.target.value)}
             />
             <p className="comment">
-              URL中可以包含内置变量，并且可以用 ${'{1}'}、${'{2}'} 等变量形式表示在匹配规则中匹配的第N个括号里的内容，也可以是一个完整的URL。
+              URL中可以包含内置变量,并且可以用 ${'{1}'},${'{2}'} 等变量形式表示在匹配规则中匹配的第N个括号里的内容,也可以是一个完整的URL.
             </p>
           </FormRow>
           <FormRow title="转发方式">
@@ -158,7 +158,7 @@ export function RewriteForm({
               <option value="proxy">隐式</option>
               <option value="redirect">显式</option>
             </Select>
-            <p className="comment">隐式表示不在客户端显示重写后的URL；显式表示在客户端跳转URL，将会显示重写后的URL。</p>
+            <p className="comment">隐式表示不在客户端显示重写后的URL;显式表示在客户端跳转URL,将会显示重写后的URL.</p>
           </FormRow>
           <FormRow title="匹配条件">
             <CondsEditor value={form.conds || { isOn: true, connector: 'or', groups: [] }} onChange={(conds) => update('conds', conds)} />
@@ -191,7 +191,7 @@ export function RewriteForm({
                     </option>
                   ))}
                 </Select>
-                <p className="comment">通常使用默认的307即可。</p>
+                <p className="comment">通常使用默认的307即可.</p>
               </FormRow>
             ) : null}
             {form.mode === 'proxy' ? (
@@ -203,7 +203,7 @@ export function RewriteForm({
                   value={form.proxyHost}
                   onChange={(event) => update('proxyHost', event.target.value)}
                 />
-                <p className="comment">如果转发的方式为隐式而且目标URL为不同的域名时需要用到此选项，通常不必填写，支持请求变量。</p>
+                <p className="comment">如果转发的方式为隐式而且目标URL为不同的域名时需要用到此选项,通常不必填写,支持请求变量.</p>
               </FormRow>
             ) : null}
             <FormRow title="保留URL参数">
@@ -211,14 +211,14 @@ export function RewriteForm({
                 <input type="checkbox" checked={form.withQuery} onChange={(event) => update('withQuery', event.target.checked)} />
                 <label></label>
               </div>
-              <p className="comment">选中此选项，将会把用户输入的URL中的参数部分转发到目标URL上。</p>
+              <p className="comment">选中此选项,将会把用户输入的URL中的参数部分转发到目标URL上.</p>
             </FormRow>
             <FormRow title="终止往下匹配">
               <div className="ui checkbox">
                 <input type="checkbox" checked={form.isBreak} onChange={(event) => update('isBreak', event.target.checked)} />
                 <label></label>
               </div>
-              <p className="comment">如果选中了此选项，一旦匹配成功，不会继续匹配其他的重写规则或路由规则。</p>
+              <p className="comment">如果选中了此选项,一旦匹配成功,不会继续匹配其他的重写规则或路由规则.</p>
             </FormRow>
             <FormRow title="启用当前重写规则">
               <div className="ui checkbox">
@@ -263,7 +263,7 @@ export function RewritePage() {
   }
 
   async function remove(rule: RewriteRule) {
-    if (!(await confirm({ message: '确定要删除此重写规则吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此重写规则吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -311,7 +311,7 @@ export function RewritePage() {
         </a>
       </div>
       <div className="margin" />
-      {rules.length === 0 ? <p className="comment">暂时还没有重写规则。</p> : null}
+      {rules.length === 0 ? <p className="comment">暂时还没有重写规则.</p> : null}
       {rules.length > 0 ? (
         <table className="ui table selectable">
           <thead>
@@ -378,7 +378,7 @@ export function RewritePage() {
           </tbody>
         </table>
       ) : null}
-      {rules.length > 1 ? <p className="comment">所有规则匹配顺序为从上到下，可以通过上下箭头排序。</p> : null}
+      {rules.length > 1 ? <p className="comment">所有规则匹配顺序为从上到下,可以通过上下箭头排序.</p> : null}
 
       {creating || editing ? (
         <div className="ui dimmer modals page transition visible active" style={{ display: 'flex' }}>

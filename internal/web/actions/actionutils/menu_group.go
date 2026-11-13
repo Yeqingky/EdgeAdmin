@@ -18,7 +18,7 @@ func NewMenuGroup() *MenuGroup {
 	}
 }
 
-// FindMenu 查找菜单，如果找不到则自动创建
+// FindMenu 查找菜单,如果找不到则自动创建
 func (this *MenuGroup) FindMenu(menuId string, menuName string) *Menu {
 	for _, m := range this.Menus {
 		if m.Id == menuId {

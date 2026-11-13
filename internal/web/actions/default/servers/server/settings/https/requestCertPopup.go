@@ -77,7 +77,7 @@ func (this *RequestCertPopupAction) RunGet(params struct {
 	for _, user := range acmeUsersResp.AcmeUsers {
 		description := user.Description
 		if len(description) > 0 {
-			description = "（" + description + "）"
+			description = "(" + description + ")"
 		}
 
 		userMaps = append(userMaps, maps.Map{

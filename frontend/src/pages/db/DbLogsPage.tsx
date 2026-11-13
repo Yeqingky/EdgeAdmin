@@ -81,7 +81,7 @@ export function DbLogsPage() {
         </div>
       </form>
 
-      {query.data.logs.length === 0 ? <p className="comment">暂时还没有日志。</p> : (
+      {query.data.logs.length === 0 ? <p className="comment">暂时还没有日志.</p> : (
         <table className="ui table selectable">
           <tbody>
             {query.data.logs.map((log, index) => (

@@ -72,7 +72,7 @@ export function GroupDetailPage() {
 
       <h3>网站</h3>
 
-      {data.servers.length === 0 ? <p className="comment">暂时还没有网站。</p> : null}
+      {data.servers.length === 0 ? <p className="comment">暂时还没有网站.</p> : null}
 
       {data.servers.length > 0 ? (
         <table className="ui table selectable celled">
@@ -146,7 +146,7 @@ export function GroupDetailPage() {
                           <div key={`${port.protocol}-${port.portRange}`}>
                             <span className="ui label tiny basic">
                               <Keyword word={keyword} text={port.portRange} />
-                              <span className="small">（{port.protocol}）</span>
+                              <span className="small">({port.protocol})</span>
                             </span>
                           </div>
                         ))}

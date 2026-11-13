@@ -14,7 +14,7 @@ Tea.context(function () {
 	// 删除策略
 	this.deletePolicy = function (policyId) {
 		let that = this
-		teaweb.confirm("确定要删除此WAF策略吗？", function () {
+		teaweb.confirm("确定要删除此WAF策略吗?", function () {
 			that.$post("/servers/components/waf/delete")
 				.params({
 					firewallPolicyId: policyId

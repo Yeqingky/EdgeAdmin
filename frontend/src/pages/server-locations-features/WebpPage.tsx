@@ -96,7 +96,7 @@ export function WebpPage() {
             <tbody>
               <FormRow title="启用WebP压缩">
                 <Checkbox checked={config.isOn} onChange={(isOn) => update({ isOn })} />
-                <p className="comment">选中后表示开启自动WebP压缩；图片的宽和高均不能超过16383像素。</p>
+                <p className="comment">选中后表示开启自动WebP压缩;图片的宽和高均不能超过16383像素.</p>
               </FormRow>
             </tbody>
           ) : null}
@@ -121,19 +121,19 @@ export function WebpPage() {
                   }
                   placeholder="比如 .html"
                 />
-                <p className="comment">含有这些扩展名的URL将会被转成WebP，不区分大小写。</p>
+                <p className="comment">含有这些扩展名的URL将会被转成WebP,不区分大小写.</p>
               </FormRow>
               <FormRow title="支持的MimeType">
                 <ValuesBox values={config.mimeTypes} onChange={(mimeTypes) => update({ mimeTypes })} placeholder="比如 text/*" />
-                <p className="comment">响应的Content-Type里包含这些MimeType的内容将会被转成WebP。</p>
+                <p className="comment">响应的Content-Type里包含这些MimeType的内容将会被转成WebP.</p>
               </FormRow>
               <FormRow title="内容最小长度">
                 <SizeCapacityBox value={config.minLength} onChange={(minLength) => update({ minLength })} />
-                <p className="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+                <p className="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
               </FormRow>
               <FormRow title="内容最大长度">
                 <SizeCapacityBox value={config.maxLength} onChange={(maxLength) => update({ maxLength })} />
-                <p className="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+                <p className="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
               </FormRow>
               <FormRow title="匹配条件">
                 <CondsBox conds={defaultConds(config.conds)} onChange={(conds) => update({ conds })} />

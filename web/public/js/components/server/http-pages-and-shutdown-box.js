@@ -68,7 +68,7 @@ Vue.component("http-pages-and-shutdown-box", {
 		},
 		removePage: function (pageIndex) {
 			let that = this
-			teaweb.confirm("确定要删除此自定义页面吗？", function () {
+			teaweb.confirm("确定要删除此自定义页面吗?", function () {
 				that.pages.$remove(pageIndex)
 				that.notifyChange()
 			})
@@ -86,7 +86,7 @@ Vue.component("http-pages-and-shutdown-box", {
 <body>
 
 <h1>网站升级中</h1>
-<p>为了给您提供更好的服务，我们正在升级网站，请稍后重新访问。</p>
+<p>为了给您提供更好的服务,我们正在升级网站,请稍后重新访问.</p>
 
 <address>Connection: \${remoteAddr} (Client) -&gt; \${serverAddr} (Server)</address>
 <address>Request ID: \${requestId}</address>
@@ -118,7 +118,7 @@ Vue.component("http-pages-and-shutdown-box", {
 
 <h4 style="margin-bottom: 0.5em">自定义页面</h4>
 
-<p class="comment" style="padding-top: 0; margin-top: 0">根据响应状态码返回一些自定义页面，比如404，500等错误页面。</p>
+<p class="comment" style="padding-top: 0; margin-top: 0">根据响应状态码返回一些自定义页面,比如404,500等错误页面.</p>
 
 <div v-if="pages.length > 0">
 	<table class="ui table selectable celled">
@@ -190,7 +190,7 @@ Vue.component("http-pages-and-shutdown-box", {
 </div>
 
 <h4 style="margin-top: 2em;">临时关闭页面</h4>
-<p class="comment" style="margin-top: 0; padding-top: 0">开启临时关闭页面时，所有请求都会直接显示此页面。可用于临时升级网站或者禁止用户访问某个网页。</p>	
+<p class="comment" style="margin-top: 0; padding-top: 0">开启临时关闭页面时,所有请求都会直接显示此页面.可用于临时升级网站或者禁止用户访问某个网页.</p>	
 <div>
 	<table class="ui table selectable definition">
 		<prior-checkbox :v-config="shutdownConfig" v-if="vIsLocation"></prior-checkbox>
@@ -202,7 +202,7 @@ Vue.component("http-pages-and-shutdown-box", {
 						<input type="checkbox" value="1" v-model="shutdownConfig.isOn" />
 						<label></label>
 					</div>
-					<p class="comment">选中后，表示临时关闭当前网站，并显示自定义内容。</p>
+					<p class="comment">选中后,表示临时关闭当前网站,并显示自定义内容.</p>
 				</td>
 			</tr>
 		</tbody>
@@ -221,21 +221,21 @@ Vue.component("http-pages-and-shutdown-box", {
 				<td class="title">显示页面URL *</td>
 				<td>
 					<input type="text" v-model="shutdownConfig.url" placeholder="类似于 https://example.com/page.html"/>
-					<p class="comment">将从此URL中读取内容。</p>
+					<p class="comment">将从此URL中读取内容.</p>
 				</td>
 			</tr>
 			<tr v-if="shutdownConfig.bodyType == 'redirectURL'">
 				<td class="title">跳转到URL *</td>
 				<td>
 					<input type="text" v-model="shutdownConfig.url" placeholder="类似于 https://example.com/page.html"/>
-					 <p class="comment">将会跳转到此URL。</p>
+					 <p class="comment">将会跳转到此URL.</p>
 				</td>
 			</tr>
 			<tr v-show="shutdownConfig.bodyType == 'html'">
 				<td>显示页面HTML *</td>
 				<td>
 					<textarea name="body" ref="shutdownHTMLBody" v-model="shutdownConfig.body"></textarea>
-					<p class="comment"><a href="" @click.prevent="addShutdownHTMLTemplate">[使用模板]</a>。填写页面的HTML内容，支持请求变量。</p>
+					<p class="comment"><a href="" @click.prevent="addShutdownHTMLTemplate">[使用模板]</a>.填写页面的HTML内容,支持请求变量.</p>
 				</td>
 			</tr>
 			<tr>
@@ -252,7 +252,7 @@ Vue.component("http-pages-and-shutdown-box", {
 		<td class="title">启用系统自定义页面</td>
 		<td>
 			<checkbox name="enableGlobalPages" v-model="enableGlobalPages"></checkbox>
-			<p class="comment">选中后，表示如果当前网站没有自定义页面，则尝试使用系统对应的自定义页面。</p>
+			<p class="comment">选中后,表示如果当前网站没有自定义页面,则尝试使用系统对应的自定义页面.</p>
 		</td>
 	</tr>
 </table>

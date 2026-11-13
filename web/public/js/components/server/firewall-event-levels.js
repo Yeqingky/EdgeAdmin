@@ -12,7 +12,7 @@ Vue.component("firewall-event-level-options", {
     data: function () {
         let value = this.vValue
         if (value == null || value.length == 0) {
-            value = "" // 不要给默认值，因为黑白名单等默认值均有不同
+            value = "" // 不要给默认值,因为黑白名单等默认值均有不同
         }
 
         return {

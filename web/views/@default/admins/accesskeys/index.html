@@ -5,7 +5,7 @@
     <menu-item @click.prevent="createAccessKey()">[创建AccessKey]</menu-item>
 </second-menu>
 
-<p class="comment" v-if="accessKeys.length == 0">暂时还没有AccessKey。</p>
+<p class="comment" v-if="accessKeys.length == 0">暂时还没有AccessKey.</p>
 
 <table class="ui table selectable" v-if="accessKeys.length > 0">
     <thead>

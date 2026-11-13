@@ -31,7 +31,7 @@ func (this *CreateNodeAction) RunGet(params struct{}) {
 	}
 	this.Data["totalNodes"] = totalNodesResp.Count
 
-	// 如果只有一个默认集群，那么直接跳转到集群
+	// 如果只有一个默认集群,那么直接跳转到集群
 	clustersResp, err := this.RPC().NodeClusterRPC().ListEnabledNodeClusters(this.AdminContext(), &pb.ListEnabledNodeClustersRequest{
 		Offset:  0,
 		Size:    2,

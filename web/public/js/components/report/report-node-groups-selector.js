@@ -70,7 +70,7 @@ Vue.component("report-node-groups-selector", {
 	},
 	template: `<div>
 	<input type="hidden" name="reportNodeGroupIdsJSON" :value="JSON.stringify(groupIds)"/>
-	<span class="disabled" v-if="isLoaded && groups.length == 0">还没有分组。</span>
+	<span class="disabled" v-if="isLoaded && groups.length == 0">还没有分组.</span>
 	<div v-if="groups.length > 0">
 		<div>
 			<div class="ui checkbox">

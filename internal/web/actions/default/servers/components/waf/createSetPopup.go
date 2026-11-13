@@ -96,7 +96,7 @@ func (this *CreateSetPopupAction) RunPost(params struct {
 		return
 	}
 	if groupConfig == nil {
-		this.Fail("找不到分组，Id：" + strconv.FormatInt(params.GroupId, 10))
+		this.Fail("找不到分组,Id:" + strconv.FormatInt(params.GroupId, 10))
 		return
 	}
 
@@ -163,7 +163,7 @@ func (this *CreateSetPopupAction) RunPost(params struct {
 		var setConfig = &firewallconfigs.HTTPFirewallRuleSet{}
 		err = json.Unmarshal(codeJSON, setConfig)
 		if err != nil {
-			this.FailField("code", "解析规则集代码失败："+err.Error())
+			this.FailField("code", "解析规则集代码失败:"+err.Error())
 			return
 		}
 
@@ -190,7 +190,7 @@ func (this *CreateSetPopupAction) RunPost(params struct {
 
 		err = setConfig.Init()
 		if err != nil {
-			this.FailField("code", "校验规则集代码失败："+err.Error())
+			this.FailField("code", "校验规则集代码失败:"+err.Error())
 			return
 		}
 

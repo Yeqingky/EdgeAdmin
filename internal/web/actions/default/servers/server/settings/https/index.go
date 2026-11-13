@@ -171,10 +171,10 @@ func (this *IndexAction) RunPost(params struct {
 	var addresses = []*serverconfigs.NetworkAddressConfig{}
 	err := json.Unmarshal([]byte(params.Addresses), &addresses)
 	if err != nil {
-		this.Fail("端口地址解析失败：" + err.Error())
+		this.Fail("端口地址解析失败:" + err.Error())
 	}
 
-	// 如果启用HTTPS时没有填写端口，则默认为443
+	// 如果启用HTTPS时没有填写端口,则默认为443
 	if params.IsOn && len(addresses) == 0 {
 		addresses = []*serverconfigs.NetworkAddressConfig{
 			{
@@ -188,7 +188,7 @@ func (this *IndexAction) RunPost(params struct {
 	for _, addr := range addresses {
 		err = addr.Init()
 		if err != nil {
-			this.Fail("绑定端口校验失败：" + err.Error())
+			this.Fail("绑定端口校验失败:" + err.Error())
 		}
 
 		if regexp.MustCompile(`^\d+$`).MatchString(addr.PortRange) {
@@ -197,7 +197,7 @@ func (this *IndexAction) RunPost(params struct {
 				this.Fail("绑定的端口地址不能大于65535")
 			}
 			if port == 80 {
-				this.Fail("端口80通常是HTTP的端口，不能用在HTTPS上")
+				this.Fail("端口80通常是HTTP的端口,不能用在HTTPS上")
 			}
 		}
 	}
@@ -208,7 +208,7 @@ func (this *IndexAction) RunPost(params struct {
 		sslPolicy := &sslconfigs.SSLPolicy{}
 		err = json.Unmarshal(params.SslPolicyJSON, sslPolicy)
 		if err != nil {
-			this.ErrorPage(errors.New("解析SSL配置时发生了错误：" + err.Error()))
+			this.ErrorPage(errors.New("解析SSL配置时发生了错误:" + err.Error()))
 			return
 		}
 

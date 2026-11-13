@@ -47,7 +47,7 @@ func (this *InstallAction) RunPost(params struct {
 	var apiNodeMap = maps.Map{}
 	err := json.Unmarshal(params.ApiNodeJSON, &apiNodeMap)
 	if err != nil {
-		this.Fail("API节点配置数据解析错误，请刷新页面后重新尝试安装，错误信息：" + err.Error())
+		this.Fail("API节点配置数据解析错误,请刷新页面后重新尝试安装,错误信息:" + err.Error())
 	}
 
 	// 数据库
@@ -55,7 +55,7 @@ func (this *InstallAction) RunPost(params struct {
 	var dbMap = maps.Map{}
 	err = json.Unmarshal(params.DbJSON, &dbMap)
 	if err != nil {
-		this.Fail("数据库配置数据解析错误，请刷新页面后重新尝试安装，错误信息：" + err.Error())
+		this.Fail("数据库配置数据解析错误,请刷新页面后重新尝试安装,错误信息:" + err.Error())
 	}
 
 	// 管理员
@@ -63,7 +63,7 @@ func (this *InstallAction) RunPost(params struct {
 	var adminMap = maps.Map{}
 	err = json.Unmarshal(params.AdminJSON, &adminMap)
 	if err != nil {
-		this.Fail("管理员数据解析错误，请刷新页面后重新尝试安装，错误信息：" + err.Error())
+		this.Fail("管理员数据解析错误,请刷新页面后重新尝试安装,错误信息:" + err.Error())
 	}
 
 	// 安装API节点
@@ -71,7 +71,7 @@ func (this *InstallAction) RunPost(params struct {
 	if mode == "new" {
 		currentStatusText = "准备启动新API节点"
 
-		// 整个系统目录结构为：
+		// 整个系统目录结构为:
 		//  edge-admin/
 		//    edge-api/
 		//    bin/
@@ -84,9 +84,9 @@ func (this *InstallAction) RunPost(params struct {
 			_, err = os.Stat(searchDir)
 			if err != nil {
 				if os.IsNotExist(err) {
-					this.Fail("在当前目录（" + Tea.Root + "）下找不到" + dir + "目录，请将" + dir + "目录上传或者重新下载解压")
+					this.Fail("在当前目录(" + Tea.Root + ")下找不到" + dir + "目录,请将" + dir + "目录上传或者重新下载解压")
 				}
-				this.Fail("无法检查" + dir + "目录，发生错误：" + err.Error())
+				this.Fail("无法检查" + dir + "目录,发生错误:" + err.Error())
 				return
 			}
 		}
@@ -100,18 +100,18 @@ func (this *InstallAction) RunPost(params struct {
 		}
 		dbConfigData, err := yaml.Marshal(dbConfig)
 		if err != nil {
-			this.Fail("生成数据库配置失败：" + err.Error())
+			this.Fail("生成数据库配置失败:" + err.Error())
 			return
 		}
 		err = os.WriteFile(apiNodeDir+"/configs/db.yaml", dbConfigData, 0666)
 		if err != nil {
-			this.Fail("保存数据库配置失败（db.yaml）：" + err.Error())
+			this.Fail("保存数据库配置失败(db.yaml):" + err.Error())
 			return
 		}
 
 		err = dbConfig.GenerateOldConfig(apiNodeDir + "/configs/.db.yaml")
 		if err != nil {
-			this.Fail("保存数据库配置失败（.db.yaml）：" + err.Error())
+			this.Fail("保存数据库配置失败(.db.yaml):" + err.Error())
 			return
 		}
 
@@ -135,7 +135,7 @@ func (this *InstallAction) RunPost(params struct {
 
 		err = os.WriteFile(Tea.ConfigFile("/api_db.yaml"), dbConfigData, 0666)
 		if err != nil {
-			this.Fail("保存数据库配置失败（api_db.yaml）：" + err.Error())
+			this.Fail("保存数据库配置失败(api_db.yaml):" + err.Error())
 			return
 		}
 
@@ -175,24 +175,24 @@ func (this *InstallAction) RunPost(params struct {
 			err = cmd.Run()
 			this.apiSetupFinished = true
 			if err != nil {
-				this.Fail("安装失败：" + err.Error() + ": " + string(append(output.Bytes(), stderr.Bytes()...)))
+				this.Fail("安装失败:" + err.Error() + ": " + string(append(output.Bytes(), stderr.Bytes()...)))
 			}
 
 			var resultData = output.Bytes()
 			err = json.Unmarshal(resultData, &resultMap)
 			if err != nil {
 
-				this.Fail("安装节点时返回数据错误：" + err.Error() + "(" + string(resultData) + ")")
+				this.Fail("安装节点时返回数据错误:" + err.Error() + "(" + string(resultData) + ")")
 			}
 			if !resultMap.GetBool("isOk") {
-				this.Fail("节点安装错误：" + resultMap.GetString("error"))
+				this.Fail("节点安装错误:" + resultMap.GetString("error"))
 			}
 
 			// 等数据完全写入
 			time.Sleep(1 * time.Second)
 		}
 
-		// 关闭正在运行的API节点，防止冲突
+		// 关闭正在运行的API节点,防止冲突
 		logs.Println("[INSTALL]stop edge-api")
 		{
 			var cmd = exec.Command(apiNodeDir+"/bin/edge-api", "stop")
@@ -206,7 +206,7 @@ func (this *InstallAction) RunPost(params struct {
 			var cmd = exec.Command(apiNodeDir + "/bin/edge-api")
 			err = cmd.Start()
 			if err != nil {
-				this.Fail("API节点启动失败：" + err.Error())
+				this.Fail("API节点启动失败:" + err.Error())
 			}
 
 			// 记录子PID方便退出的时候一起退出
@@ -222,7 +222,7 @@ func (this *InstallAction) RunPost(params struct {
 				}, 3*time.Second)
 				if err != nil {
 					if maxRetries < 0 {
-						this.Fail("API节点启动失败，请查看运行日志检查是否正常")
+						this.Fail("API节点启动失败,请查看运行日志检查是否正常")
 					} else {
 						time.Sleep(3 * time.Second)
 						maxRetries--
@@ -239,7 +239,7 @@ func (this *InstallAction) RunPost(params struct {
 			}
 		}
 
-		// 写入API节点配置，完成安装
+		// 写入API节点配置,完成安装
 		var apiConfig = &configs.APIConfig{
 			RPCEndpoints: []string{"http://" + configutils.QuoteIP(apiNodeMap.GetString("newHost")) + ":" + apiNodeMap.GetString("newPort")},
 			NodeId:       resultMap.GetString("adminNodeId"),
@@ -250,7 +250,7 @@ func (this *InstallAction) RunPost(params struct {
 		currentStatusText = "正在设置管理员"
 		client, err := rpc.NewRPCClient(apiConfig, false)
 		if err != nil {
-			this.FailField("oldHost", "测试API节点时出错，请检查配置，错误信息："+err.Error())
+			this.FailField("oldHost", "测试API节点时出错,请检查配置,错误信息:"+err.Error())
 		}
 		ctx := client.Context(0)
 		for i := 0; i < 3; i++ {
@@ -266,7 +266,7 @@ func (this *InstallAction) RunPost(params struct {
 			}
 		}
 		if err != nil {
-			this.Fail("设置管理员账号出错：" + err.Error())
+			this.Fail("设置管理员账号出错:" + err.Error())
 		}
 
 		// 设置访问日志保留天数
@@ -277,7 +277,7 @@ func (this *InstallAction) RunPost(params struct {
 			config.ServerAccessLog.Clean.Days = accessLogKeepDays
 			configJSON, err := json.Marshal(config)
 			if err != nil {
-				this.Fail("配置设置访问日志保留天数出错：" + err.Error())
+				this.Fail("配置设置访问日志保留天数出错:" + err.Error())
 				return
 			}
 			_, err = client.SysSettingRPC().UpdateSysSetting(ctx, &pb.UpdateSysSettingRequest{
@@ -285,14 +285,14 @@ func (this *InstallAction) RunPost(params struct {
 				ValueJSON: configJSON,
 			})
 			if err != nil {
-				this.Fail("配置设置访问日志保留天数出错：" + err.Error())
+				this.Fail("配置设置访问日志保留天数出错:" + err.Error())
 				return
 			}
 		}
 
 		err = apiConfig.WriteFile(Tea.ConfigFile(configs.ConfigFileName))
 		if err != nil {
-			this.Fail("保存配置失败，原因：" + err.Error())
+			this.Fail("保存配置失败,原因:" + err.Error())
 		}
 
 		this.Success()
@@ -305,7 +305,7 @@ func (this *InstallAction) RunPost(params struct {
 		}
 		client, err := rpc.NewRPCClient(apiConfig, false)
 		if err != nil {
-			this.FailField("oldHost", "测试API节点时出错，请检查配置，错误信息："+err.Error())
+			this.FailField("oldHost", "测试API节点时出错,请检查配置,错误信息:"+err.Error())
 		}
 
 		defer func() {
@@ -319,7 +319,7 @@ func (this *InstallAction) RunPost(params struct {
 			Password: adminMap.GetString("password"),
 		})
 		if err != nil {
-			this.Fail("设置管理员账号出错：" + err.Error())
+			this.Fail("设置管理员账号出错:" + err.Error())
 		}
 
 		// 设置访问日志保留天数
@@ -329,7 +329,7 @@ func (this *InstallAction) RunPost(params struct {
 			config.ServerAccessLog.Clean.Days = accessLogKeepDays
 			configJSON, err := json.Marshal(config)
 			if err != nil {
-				this.Fail("配置设置访问日志保留天数出错：" + err.Error())
+				this.Fail("配置设置访问日志保留天数出错:" + err.Error())
 				return
 			}
 			_, err = client.SysSettingRPC().UpdateSysSetting(ctx, &pb.UpdateSysSettingRequest{
@@ -337,25 +337,25 @@ func (this *InstallAction) RunPost(params struct {
 				ValueJSON: configJSON,
 			})
 			if err != nil {
-				this.Fail("配置设置访问日志保留天数出错：" + err.Error())
+				this.Fail("配置设置访问日志保留天数出错:" + err.Error())
 				return
 			}
 		}
 
-		// 写入API节点配置，完成安装
+		// 写入API节点配置,完成安装
 		err = apiConfig.WriteFile(Tea.ConfigFile(configs.ConfigFileName))
 		if err != nil {
-			this.Fail("保存配置失败，原因：" + err.Error())
+			this.Fail("保存配置失败,原因:" + err.Error())
 		}
 
 		// 成功
 		this.Success()
 	} else {
-		this.Fail("错误的API节点模式：'" + mode + "'")
+		this.Fail("错误的API节点模式:'" + mode + "'")
 	}
 }
 
-// 读取API安装时的日志，以便于显示当前正在执行的任务
+// 读取API安装时的日志,以便于显示当前正在执行的任务
 func (this *InstallAction) startReadingAPIInstallLog() {
 	var tmpDir = os.TempDir()
 	if len(tmpDir) == 0 {

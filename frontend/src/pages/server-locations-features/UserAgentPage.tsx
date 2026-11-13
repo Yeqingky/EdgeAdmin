@@ -136,7 +136,7 @@ export function UserAgentPage() {
             <tbody>
               <FormRow title="启用UA名单">
                 <Checkbox checked={config.isOn} onChange={(isOn) => update({ isOn })} />
-                <p className="comment">选中后表示开启UserAgent名单。</p>
+                <p className="comment">选中后表示开启UserAgent名单.</p>
               </FormRow>
             </tbody>
           ) : null}
@@ -189,8 +189,8 @@ export function UserAgentPage() {
                               onChange={(event) => setBatchKeywords(event.target.value)}
                             />
                             <p className="comment">
-                              每行一个关键词；不区分大小写，比如<code>Chrome</code>；支持<code>*</code>通配符，比如<code>*Firefox*</code>；
-                              也支持空行关键词，表示空UserAgent。
+                              每行一个关键词;不区分大小写,比如<code>Chrome</code>;支持<code>*</code>通配符,比如<code>*Firefox*</code>;
+                              也支持空行关键词,表示空UserAgent.
                             </p>
                           </td>
                         </tr>
@@ -231,11 +231,11 @@ export function UserAgentPage() {
             <tbody>
               <FormRow title="例外URL">
                 <UrlsPatternsBox patterns={config.exceptURLPatterns} onChange={(exceptURLPatterns) => update({ exceptURLPatterns })} />
-                <p className="comment">如果填写了例外URL，表示这些URL跳过不做处理。</p>
+                <p className="comment">如果填写了例外URL,表示这些URL跳过不做处理.</p>
               </FormRow>
               <FormRow title="限制URL">
                 <UrlsPatternsBox patterns={config.onlyURLPatterns} onChange={(onlyURLPatterns) => update({ onlyURLPatterns })} />
-                <p className="comment">如果填写了限制URL，表示只对这些URL进行处理；如果不填则表示支持所有的URL。</p>
+                <p className="comment">如果填写了限制URL,表示只对这些URL进行处理;如果不填则表示支持所有的URL.</p>
               </FormRow>
             </tbody>
           ) : null}

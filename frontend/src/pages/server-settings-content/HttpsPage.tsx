@@ -73,9 +73,9 @@ const EMPTY_POLICY: SslPolicy = {
 
 const CLIENT_AUTH_TYPES = [
   { value: 0, name: '不需要客户端证书' },
-  { value: 1, name: '请求客户端证书，但不验证' },
-  { value: 2, name: '要求客户端证书，但不验证' },
-  { value: 3, name: '如果提供客户端证书，则验证' },
+  { value: 1, name: '请求客户端证书,但不验证' },
+  { value: 2, name: '要求客户端证书,但不验证' },
+  { value: 3, name: '如果提供客户端证书,则验证' },
   { value: 4, name: '要求客户端证书并验证' },
 ]
 
@@ -113,7 +113,7 @@ export function ServerHttpsSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -139,7 +139,7 @@ export function ServerHttpsSettingsPage() {
         addresses: JSON.stringify(addresses.map((address) => ({ ...address, protocol: address.protocol || 'https' }))),
         sslPolicyJSON: JSON.stringify(policy),
       })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -149,10 +149,10 @@ export function ServerHttpsSettingsPage() {
 
   return (
     <ServerSettingsShell data={data}>
-      <p className="comment">提醒：HTTP/2、证书等信息修改后，可能需要清空浏览器缓存后才能浏览效果。</p>
+      <p className="comment">提醒:HTTP/2,证书等信息修改后,可能需要清空浏览器缓存后才能浏览效果.</p>
       {isOn && data.missingCertServerNames.length > 0 ? (
         <div className="ui message warning">
-          警告：当前网站绑定的以下域名尚未配置证书，将无法通过HTTPS协议访问：{data.missingCertServerNames.join('、')} 。
+          警告:当前网站绑定的以下域名尚未配置证书,将无法通过HTTPS协议访问:{data.missingCertServerNames.join(',')} .
         </div>
       ) : null}
       <form className="ui form" onSubmit={submit}>
@@ -163,20 +163,20 @@ export function ServerHttpsSettingsPage() {
           {isOn ? (
             <FormRow title="绑定端口 *">
               <div>
-                {addresses.length === 0 ? <span className="red">还没有添加端口绑定，会导致HTTPS服务无法访问。</span> : null}
+                {addresses.length === 0 ? <span className="red">还没有添加端口绑定,会导致HTTPS服务无法访问.</span> : null}
                 <NetworkAddressesEditor addresses={addresses} onChange={setAddresses} protocol="https" />
                 {data.conflictingPorts.length > 0 ? (
                   <p className="comment">
                     <span className="red">
-                      配置错误：
+                      配置错误:
                       {data.conflictingPorts.map((port, index) => (
                         <span key={port}>
                           {port}
-                          {index !== data.conflictingPorts.length - 1 ? '、' : ''}
+                          {index !== data.conflictingPorts.length - 1 ? ',' : ''}
                         </span>
                       ))}
                       {data.conflictingPorts.length > 1 ? '等' : ''}
-                      端口同HTTP设置的端口冲突，请删除HTTP或HTTPS中的相关端口。
+                      端口同HTTP设置的端口冲突,请删除HTTP或HTTPS中的相关端口.
                     </span>
                   </p>
                 ) : null}
@@ -198,7 +198,7 @@ export function ServerHttpsSettingsPage() {
                       </div>
                     ))
                   ) : (
-                    <span className="disabled">还没有绑定证书。</span>
+                    <span className="disabled">还没有绑定证书.</span>
                   )}
                   <div style={{ marginTop: '0.6em' }}>
                     <a href="" onClick={(event) => { event.preventDefault(); setRequestCertVisible(true) }}>
@@ -214,7 +214,7 @@ export function ServerHttpsSettingsPage() {
               </FormRow>
               <FormRow title="启用HTTP/3">
                 <Checkbox checked={policy.http3Enabled} onChange={(checked) => updatePolicy('http3Enabled', checked)} />
-                {!supportsHTTP3 ? <p className="comment">当前集群不支持HTTP/3，需要更新节点或者开启集群的HTTP/3支持。</p> : null}
+                {!supportsHTTP3 ? <p className="comment">当前集群不支持HTTP/3,需要更新节点或者开启集群的HTTP/3支持.</p> : null}
               </FormRow>
               <FormRow title="支持的最小TLS版本">
                 <Select value={policy.minVersion} onChange={(event) => updatePolicy('minVersion', event.target.value)}>
@@ -227,7 +227,7 @@ export function ServerHttpsSettingsPage() {
               </FormRow>
               <FormRow title="OCSP">
                 <Checkbox checked={policy.ocspIsOn} onChange={(checked) => updatePolicy('ocspIsOn', checked)} />
-                <p className="comment">选中后启用OCSP Stapling。</p>
+                <p className="comment">选中后启用OCSP Stapling.</p>
               </FormRow>
               <FormRow title="客户端认证">
                 <Select value={policy.clientAuthType} onChange={(event) => updatePolicy('clientAuthType', Number(event.target.value))}>
@@ -288,7 +288,7 @@ export function ServerHttpsSettingsPage() {
           onClose={() => setRequestCertVisible(false)}
           onSaved={() => {
             setRequestCertVisible(false)
-            toast('任务提交成功，请等待证书申请完成')
+            toast('任务提交成功,请等待证书申请完成')
             window.location.reload()
           }}
         />
@@ -350,7 +350,7 @@ function RequestCertModal({ serverId, onClose, onSaved }: { serverId: number; on
           <FormTable>
             <FormRow title="证书包含的域名 *">
               <div>
-                {serverNames.length === 0 ? <span className="disabled">还没有需要申请证书的域名，暂时不能申请。</span> : null}
+                {serverNames.length === 0 ? <span className="disabled">还没有需要申请证书的域名,暂时不能申请.</span> : null}
                 {serverNames.map((name, index) => (
                   <div key={`${name}-${index}`} className="ui tiny basic label">
                     {name}{' '}
@@ -374,26 +374,26 @@ function RequestCertModal({ serverId, onClose, onSaved }: { serverId: number; on
                         </option>
                       ))}
                     </Select>
-                    <p className="comment">用来申请证书的用户。</p>
+                    <p className="comment">用来申请证书的用户.</p>
                   </div>
                 ) : (
                   <div>
                     <TextInput type="text" maxLength={100} placeholder="用户E-mail" value={userEmail} onChange={(event) => setUserEmail(event.target.value)} />
-                    <p className="comment">用来申请证书的用户邮箱，可以任意填写，只要格式正确即可。</p>
+                    <p className="comment">用来申请证书的用户邮箱,可以任意填写,只要格式正确即可.</p>
                   </div>
                 )}
               </FormRow>
             ) : null}
             <FormRow title="异步申请证书">
               <Checkbox label="启用" checked={asyncCreateCert} onChange={setAsyncCreateCert} />
-              <p className="comment">建议域名多的时候勾选，异步并发执行证书申请，申请成功后会自动绑定到服务</p>
+              <p className="comment">建议域名多的时候勾选,异步并发执行证书申请,申请成功后会自动绑定到服务</p>
             </FormRow>
             {asyncCreateCert ? (
               <FormRow title="证书类型">
                 <Select value={providerCode} onChange={(event) => setProviderCode(event.target.value)}>
                   <option value="letsencrypt">Let&apos;s Encrypt</option>
                 </Select>
-                <p className="comment">选择证书类型。</p>
+                <p className="comment">选择证书类型.</p>
               </FormRow>
             ) : null}
           </FormTable>

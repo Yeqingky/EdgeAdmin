@@ -25,8 +25,8 @@
         <td>
             <span class="green" v-if="admin.canLogin">Y</span>
             <span class="disabled" v-else>N</span>
-            <p class="comment" v-if="admin.canLogin">允许登录当前管理平台。</p>
-            <p class="comment" v-else="">不允许登录当前管理平台。</p>
+            <p class="comment" v-if="admin.canLogin">允许登录当前管理平台.</p>
+            <p class="comment" v-else="">不允许登录当前管理平台.</p>
         </td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@
                     <i class="icon circle small grey"></i> {{module.name}}
                 </div>
             </div>
-            <span v-else class="disabled">暂时还没有可以管理的模块。</span>
+            <span v-else class="disabled">暂时还没有可以管理的模块.</span>
         </td>
     </tr>
 </table>
@@ -65,7 +65,7 @@
         <td>认证二维码</td>
         <td>
             <img alt="qrcode" :src="'./otpQrcode?adminId=' + admin.id"/>
-            <p class="comment"><a :href="'./otpQrcode?adminId=' + admin.id + '&download=true'">[下载]</a> &nbsp; 可以通过二维码快速添加OTP认证信息到认证App中。</p>
+            <p class="comment"><a :href="'./otpQrcode?adminId=' + admin.id + '&download=true'">[下载]</a> &nbsp; 可以通过二维码快速添加OTP认证信息到认证App中.</p>
         </td>
     </tr>
     <tr v-if="otp != null && otp.isOn && moreOptionsVisible">

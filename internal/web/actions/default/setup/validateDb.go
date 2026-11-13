@@ -63,7 +63,7 @@ func (this *ValidateDbAction) RunPost(params struct {
 		Prefix: "",
 	})
 	if err != nil {
-		this.Fail("数据库信息错误：" + err.Error())
+		this.Fail("数据库信息错误:" + err.Error())
 	}
 
 	defer func() {
@@ -80,52 +80,52 @@ func (this *ValidateDbAction) RunPost(params struct {
 				Prefix: "",
 			})
 			if err != nil {
-				this.Fail("尝试创建数据库失败：" + err.Error())
+				this.Fail("尝试创建数据库失败:" + err.Error())
 				return
 			}
 
 			_, err = db.Exec("CREATE DATABASE `" + params.Database + "`")
 			if err != nil {
-				this.Fail("尝试创建数据库失败：" + err.Error())
+				this.Fail("尝试创建数据库失败:" + err.Error())
 				return
 			}
 		} else {
 			if strings.Contains(err.Error(), "Error 1044:") {
-				this.Fail("无法连接到数据库，权限检查失败：" + err.Error())
+				this.Fail("无法连接到数据库,权限检查失败:" + err.Error())
 				return
 			}
-			this.Fail("无法连接到数据库，请检查配置：" + err.Error())
+			this.Fail("无法连接到数据库,请检查配置:" + err.Error())
 			return
 		}
 	}
 
 	// 检查权限
-	// edgeTest表名需要根据表结构的变更而变更，防止升级时冲突
+	// edgeTest表名需要根据表结构的变更而变更,防止升级时冲突
 	var testTable = "edgeTest1"
 	_, err = db.Exec("CREATE TABLE IF NOT EXISTS `" + testTable + "` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;")
 	if err != nil {
-		this.Fail("当前连接的用户无法创建新表，请检查CREATE权限设置：" + err.Error())
+		this.Fail("当前连接的用户无法创建新表,请检查CREATE权限设置:" + err.Error())
 	}
 
 	_, err = db.Exec("ALTER TABLE `" + testTable + "` CHANGE `id` `id` int(11) NOT NULL AUTO_INCREMENT")
 	if err != nil {
-		this.Fail("当前连接的用户无法修改表结构，请检查ALTER权限设置：" + err.Error())
+		this.Fail("当前连接的用户无法修改表结构,请检查ALTER权限设置:" + err.Error())
 	}
 
-	// 删除edgeTest，忽略可能的错误，因为我们不需要DROP权限
+	// 删除edgeTest,忽略可能的错误,因为我们不需要DROP权限
 	_, _ = db.Exec("DROP TABLE `" + testTable + "`")
 
 	// 检查数据库版本
 	one, err := db.FindOne("SELECT VERSION() AS v")
 	if err != nil {
-		this.Fail("检查数据库版本时出错：" + err.Error())
+		this.Fail("检查数据库版本时出错:" + err.Error())
 	}
 	if one == nil {
-		this.Fail("检查数据库版本时出错：无法获取数据库版本")
+		this.Fail("检查数据库版本时出错:无法获取数据库版本")
 	}
 	version := one.GetString("v")
 	if stringutil.VersionCompare(version, "5.7.8") < 0 {
-		this.Fail("数据库版本至少在v5.7.8以上，你现在使用的是v" + version)
+		this.Fail("数据库版本至少在v5.7.8以上,你现在使用的是v" + version)
 	}
 
 	this.Data["db"] = maps.Map{

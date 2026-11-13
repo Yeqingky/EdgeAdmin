@@ -48,7 +48,7 @@ export function OcspPage() {
   const reset = useMutation({
     mutationFn: (ids: number[]) => (ids.length === 0 ? apiPost('/servers/certs/ocsp/resetAll', {}) : postForm('/servers/certs/ocsp/reset', { certIds: ids })),
     onSuccess: async () => {
-      toast('操作成功，将很快开始重试')
+      toast('操作成功,将很快开始重试')
       setCertIds([])
       await queryClient.invalidateQueries({ queryKey: ['certs-ocsp'] })
     },
@@ -163,7 +163,7 @@ export function OcspPage() {
         </div>
       ) : null}
 
-      {data.certs.length === 0 ? <p className="comment">暂时没有OCSP日志。</p> : null}
+      {data.certs.length === 0 ? <p className="comment">暂时没有OCSP日志.</p> : null}
 
       {data.certs.length > 0 ? (
         <table className="ui table selectable celled">

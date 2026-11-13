@@ -20,7 +20,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countResp.Count > 0 {
-		this.Fail("此缓存策略正在被有些集群引用，请修改后再删除。")
+		this.Fail("此缓存策略正在被有些集群引用,请修改后再删除.")
 	}
 
 	_, err = this.RPC().HTTPCachePolicyRPC().DeleteHTTPCachePolicy(this.AdminContext(), &pb.DeleteHTTPCachePolicyRequest{HttpCachePolicyId: params.CachePolicyId})

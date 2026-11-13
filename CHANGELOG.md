@@ -2,6 +2,7 @@
 
 ## v1.4.2-rc.1 (2026-11-13)
 
+- 全局标点符号统一为英文半角
 - 集群DNS设置新增共用CNAME选项, 默认关闭
 - 共用CNAME时隐藏允许通过CNAME访问网站选项
 - 网站DNS设置显示共用CNAME, 并隐藏重新生成和手动修改入口
@@ -30,13 +31,13 @@
 - 移除界面设置中的显示底部开源信息开关, 底部开源信息始终隐藏
 - 前端整体迁移到 React + TypeScript + Vite SPA (frontend/), 使用 pnpm, Lucide 图标, HashRouter, TanStack Query 和 Playwright e2e, 仅 CSR
 - 新增 `_format=json` 页面数据输出和 `/api/login`, `/api/session` 接口, 未登录 JSON 请求返回 401
-- 迁移网站、集群、节点、DNS、证书、分组、缓存、WAF、系统设置、用户、管理员、数据库、日志、消息、安装和恢复等全部页面, 旧版弹窗 URL 提供兼容路由
+- 迁移网站,集群,节点,DNS,证书,分组,缓存,WAF,系统设置,用户,管理员,数据库,日志,消息,安装和恢复等全部页面, 旧版弹窗 URL 提供兼容路由
 - 新增页面错误边界和登录失效自动跳转
 - 页面 URL 与旧版保持一致, 直接由 Go 返回 SPA 入口, 旧 action 仅作为 JSON 数据接口
 - 修复 SPA 主内容区沿用旧版二级菜单偏移量, 导致内容整体右移的问题
 - SPA 路由改用 BrowserRouter, 移除 `/spa` 前缀和 hash 路由
 - 系统设置页面统一显示顶部设置 tab
-- 修复 Semantic UI 输入框、菜单、消息和按钮中 Lucide 图标与文字错位的问题
+- 修复 Semantic UI 输入框,菜单,消息和按钮中 Lucide 图标与文字错位的问题
 - 按旧版布局对齐主菜单宽度, 内容区起点, 二级菜单和面包屑位置
 - 网站详情, 统计和路由规则页面改用旧版 left-box/right-box 布局
 - 网站创建页恢复旧版 tables-box 双栏比例和次要信息半透明效果
@@ -59,7 +60,7 @@
 - 修复修改管理员用户名后重启 API 容器会重新创建默认 admin 账号的问题
 - 修复登录失败后再次登录提示请先登录的问题, CSRF token 改为单次使用
 - 设置页面顶部 tab 和 PageHeader 使用客户端路由, 切换时不再整页刷新
-- 全局拦截站内链接, 顶部导航、页签和普通链接统一使用 SPA 路由
+- 全局拦截站内链接, 顶部导航,页签和普通链接统一使用 SPA 路由
 - 切换语言不再刷新页面, 改为刷新会话数据
 - 新增 `/spa/` 入口和 Docker 前端构建阶段
 - 新增 docker/entrypoint-api.sh 与 docker/entrypoint-admin.sh, 负责生成数据库配置, API 节点配置和管理面板配置

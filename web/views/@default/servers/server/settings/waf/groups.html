@@ -9,9 +9,9 @@
 		<a href="" class="item" @click.prevent="createGroup(type)">[添加分组]</a>
 	</second-menu>
 
-    <warning-message v-if="!wafIsOn">当前WAF未启用，设置将在<a :href="'/servers/server/settings/waf?serverId=' + serverId">[启用Web防火墙]</a>后生效。</warning-message>
+    <warning-message v-if="!wafIsOn">当前WAF未启用,设置将在<a :href="'/servers/server/settings/waf?serverId=' + serverId">[启用Web防火墙]</a>后生效.</warning-message>
 
-	<p class="comment" v-if="groups.length == 0">暂时还没有规则分组。</p>
+	<p class="comment" v-if="groups.length == 0">暂时还没有规则分组.</p>
 
 	<table class="ui table selectable celled" v-if="groups.length > 0" id="sortable-table">
 		<thead>
@@ -46,6 +46,6 @@
 		</tbody>
 	</table>
 
-	<p class="comment" v-if="groups.length > 0">所有规则匹配顺序为从上到下，可以拖动左侧的<i class="icon bars"></i>排序。</p>
+	<p class="comment" v-if="groups.length > 0">所有规则匹配顺序为从上到下,可以拖动左侧的<i class="icon bars"></i>排序.</p>
 
 </div>

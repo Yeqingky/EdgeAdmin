@@ -79,7 +79,7 @@ Vue.component("node-clusters-selector", {
 				<div style="margin-top: 0.6em" v-if="primaryClusterId == 0">
 					<button class="ui button tiny" type="button" @click.prevent="addPrimary">+</button>
 				</div>
-				<p class="comment">多个集群配置有冲突时，优先使用主集群配置。</p>
+				<p class="comment">多个集群配置有冲突时,优先使用主集群配置.</p>
 			</td>
 		</tr>
 		<tr>

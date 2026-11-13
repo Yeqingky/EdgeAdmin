@@ -12,7 +12,7 @@
 
 <h3>网站</h3>
 
-<p class="comment" v-if="servers.length == 0">暂时还没有网站。</p>
+<p class="comment" v-if="servers.length == 0">暂时还没有网站.</p>
 
 <table class="ui table selectable celled" v-if="servers.length > 0">
     <thead>
@@ -58,7 +58,7 @@
         <td>
             <span v-if="server.ports.length == 0">-</span>
             <div v-for="port in server.ports">
-                <tiny-basic-label><keyword :v-word="keyword">{{port.portRange}}</keyword><span class="small">（{{port.protocol}}）</span></tiny-basic-label>
+                <tiny-basic-label><keyword :v-word="keyword">{{port.portRange}}</keyword><span class="small">({{port.protocol}})</span></tiny-basic-label>
             </div>
         </td>
         <td class="center">

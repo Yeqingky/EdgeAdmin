@@ -23,7 +23,7 @@ Tea.context(function () {
 
     this.deleteTable = function (tableName) {
         let that = this
-        teaweb.confirm("html:确定要删除此数据表吗？<br/>删除后数据不能恢复！", function () {
+        teaweb.confirm("html:确定要删除此数据表吗?<br/>删除后数据不能恢复!", function () {
             that.$post(".deleteTable")
                 .params({
                     table: tableName
@@ -38,7 +38,7 @@ Tea.context(function () {
 
     this.truncateTable = function (tableName) {
         let that = this
-        teaweb.confirm("html:确定要清空此数据表吗？<br/>清空后数据不能恢复！", function () {
+        teaweb.confirm("html:确定要清空此数据表吗?<br/>清空后数据不能恢复!", function () {
             that.$post(".truncateTable")
                 .params({
                     table: tableName

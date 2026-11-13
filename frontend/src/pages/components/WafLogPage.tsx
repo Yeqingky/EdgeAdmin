@@ -178,7 +178,7 @@ export function WafLogPage({ firewallPolicyId }: { firewallPolicyId: number }) {
         </div>
       ) : null}
 
-      {accessLogs.length === 0 ? <p className="comment">暂时还没有日志。</p> : null}
+      {accessLogs.length === 0 ? <p className="comment">暂时还没有日志.</p> : null}
 
       {accessLogs.length > 0 ? (
         <table className="ui table selectable">

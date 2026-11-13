@@ -120,7 +120,7 @@ func (this *CreateRulePopupAction) RunPost(params struct {
 	// 校验
 	err := rule.Init()
 	if err != nil {
-		this.Fail("校验规则 '" + rule.Param + " " + rule.Operator + " " + rule.Value + "' 失败，原因：" + err.Error())
+		this.Fail("校验规则 '" + rule.Param + " " + rule.Operator + " " + rule.Value + "' 失败,原因:" + err.Error())
 	}
 
 	this.Data["rule"] = rule

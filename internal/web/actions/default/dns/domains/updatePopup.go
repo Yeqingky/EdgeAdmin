@@ -63,7 +63,7 @@ func (this *UpdatePopupAction) RunPost(params struct {
 	domain := strings.ToLower(params.Name)
 	domain = strings.Replace(domain, " ", "", -1)
 	if !domainutils.ValidateDomainFormat(domain) {
-		this.Fail("域名格式不正确，请修改后重新提交")
+		this.Fail("域名格式不正确,请修改后重新提交")
 	}
 
 	_, err := this.RPC().DNSDomainRPC().UpdateDNSDomain(this.AdminContext(), &pb.UpdateDNSDomainRequest{

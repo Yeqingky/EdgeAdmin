@@ -31,12 +31,12 @@
 
 <http-access-log-partitions-box :v-partition="partition" :v-day="day" :v-query="currentQuery"></http-access-log-partitions-box>
 
-<warning-message v-if="isSlowQuery">看起来你的访问日志查询非常慢（{{slowQueryCost}}s），建议<span v-if="domain.length == 0"> 1）指定具体域名查询；2）</span>通过添加新的 <a href="/db">[日志节点]</a> 来分散存储访问日志。</warning-message>
+<warning-message v-if="isSlowQuery">看起来你的访问日志查询非常慢({{slowQueryCost}}s),建议<span v-if="domain.length == 0"> 1)指定具体域名查询;2)</span>通过添加新的 <a href="/db">[日志节点]</a> 来分散存储访问日志.</warning-message>
 
-<p class="comment" v-if="accessLogs.length == 0">暂时还没有访问日志。</p>
+<p class="comment" v-if="accessLogs.length == 0">暂时还没有访问日志.</p>
 
 <table class="ui table selectable" v-if="accessLogs.length > 0">
-    <!-- 这里之所以需要添加 :key，是因为要不然不会刷新显示 -->
+    <!-- 这里之所以需要添加 :key,是因为要不然不会刷新显示 -->
     <tr v-for="accessLog in accessLogs" :key="accessLog.requestId">
         <td><http-access-log-box :v-access-log="accessLog" :v-keyword="keyword" :v-show-server-link="true"></http-access-log-box></td>
     </tr>

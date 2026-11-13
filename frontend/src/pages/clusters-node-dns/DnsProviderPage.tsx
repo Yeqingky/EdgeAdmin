@@ -15,7 +15,7 @@ type DomainModal = { kind: 'create' } | { kind: 'update' | 'routes' | 'clusters'
 function apiValue(params: Record<string, unknown>, key: string): ReactNode {
   const value = params[key]
   if (value === undefined || value === null || value === '') {
-    return <span className="disabled">没有设置。</span>
+    return <span className="disabled">没有设置.</span>
   }
   return String(value)
 }
@@ -61,9 +61,9 @@ function providerRows(provider: DNSProviderData['provider']): { label: ReactNode
       ]
     case 'cloudns':
       return [
-        { label: '用户认证ID（auth-id）', value: apiValue(params, 'authId') },
-        { label: '子用户认证ID（sub-auth-id）', value: apiValue(params, 'subAuthId') },
-        { label: '认证密码（auth-password）', value: apiValue(params, 'authPassword') },
+        { label: '用户认证ID(auth-id)', value: apiValue(params, 'authId') },
+        { label: '子用户认证ID(sub-auth-id)', value: apiValue(params, 'subAuthId') },
+        { label: '认证密码(auth-password)', value: apiValue(params, 'authPassword') },
       ]
     case 'dnscom':
       return [
@@ -157,7 +157,7 @@ export function DnsProviderPage() {
   }, [query.data, syncStarted, providerId])
 
   if (!providerId) {
-    return <div className="ui negative message">缺少服务商参数。</div>
+    return <div className="ui negative message">缺少服务商参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -182,7 +182,7 @@ export function DnsProviderPage() {
   }
 
   async function syncDomain(domain: DNSProviderDomainItem) {
-    if (!(await confirm({ message: '确定要同步此域名下的所有解析记录吗？' }))) {
+    if (!(await confirm({ message: '确定要同步此域名下的所有解析记录吗?' }))) {
       return
     }
     setSyncingDomainId(domain.id)
@@ -198,7 +198,7 @@ export function DnsProviderPage() {
   }
 
   async function deleteDomain(domain: DNSProviderDomainItem) {
-    if (!(await confirm({ message: `确定要删除域名"${domain.name}"吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除域名"${domain.name}"吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -210,7 +210,7 @@ export function DnsProviderPage() {
   }
 
   async function recoverDomain(domain: DNSProviderDomainItem) {
-    if (!(await confirm({ message: `确定要恢复域名"${domain.name}"吗？` }))) {
+    if (!(await confirm({ message: `确定要恢复域名"${domain.name}"吗?` }))) {
       return
     }
     try {
@@ -302,7 +302,7 @@ export function DnsProviderPage() {
 
       {data.domains.length === 0 ? (
         <p className="comment">
-          暂时还没有{filter === 'deleted' ? '已删除' : filter === 'down' ? '已下线' : '可以管理'}的域名。
+          暂时还没有{filter === 'deleted' ? '已删除' : filter === 'down' ? '已下线' : '可以管理'}的域名.
         </p>
       ) : null}
 

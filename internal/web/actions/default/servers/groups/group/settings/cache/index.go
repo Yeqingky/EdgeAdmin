@@ -66,7 +66,7 @@ func (this *IndexAction) RunPost(params struct {
 
 	err = cacheConfig.Init()
 	if err != nil {
-		this.Fail("检查配置失败：" + err.Error())
+		this.Fail("检查配置失败:" + err.Error())
 	}
 
 	// 去除不必要的部分

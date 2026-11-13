@@ -23,7 +23,7 @@ func (this *DeleteAction) RunPost(params struct {
 	}
 
 	if countResp.Count > 0 {
-		this.Fail("此分组正在被使用不能删除，请修改相关服务后再删除")
+		this.Fail("此分组正在被使用不能删除,请修改相关服务后再删除")
 	}
 
 	_, err = this.RPC().ServerGroupRPC().DeleteServerGroup(this.AdminContext(), &pb.DeleteServerGroupRequest{ServerGroupId: params.GroupId})

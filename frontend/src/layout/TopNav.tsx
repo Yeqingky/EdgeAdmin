@@ -69,7 +69,7 @@ export function TopNav({ session }: { session: SessionData }) {
           <sup>
             v{session.teaVersion}
             {session.teaVersion.split('.').length === 4 ? (
-              <span title="当前版本为测试版，再次感谢您参与测试"> beta</span>
+              <span title="当前版本为测试版,再次感谢您参与测试"> beta</span>
             ) : null}
           </sup>
         ) : null}

@@ -289,13 +289,13 @@ export interface NodeResult {
 
 export function NodeResultLabels({ results }: { results: NodeResult[] }) {
   if (results.length === 0) {
-    return <span className="red">此集群下没有任何可用的节点。</span>
+    return <span className="red">此集群下没有任何可用的节点.</span>
   }
   return (
     <>
       {results.map((result) => (
         <div key={`${result.nodeId}-${result.nodeName}`} className={`ui label tiny ${result.isOk ? 'green' : 'red'}`} style={{ marginBottom: '0.5em' }}>
-          {result.nodeName}：{result.message}
+          {result.nodeName}:{result.message}
         </div>
       ))}
     </>

@@ -126,14 +126,14 @@ export function CertsAcmePage() {
   }
 
   async function deleteTask(taskId: number) {
-    if (!(await confirm({ message: '确定要删除此任务吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此任务吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     removeTask.mutate(taskId)
   }
 
   async function confirmRunTask(task: AcmeTask) {
-    if (!(await confirm({ message: '确定要立即执行此任务吗？将会重新发起证书申请。' }))) {
+    if (!(await confirm({ message: '确定要立即执行此任务吗?将会重新发起证书申请.' }))) {
       return
     }
     runTask.mutate(task.id)
@@ -227,11 +227,11 @@ export function CertsAcmePage() {
 
       {data.tasks.length === 0 ? (
         <p className="comment">
-          {data.searchingUserId > 0 ? '当前用户下' : ''}暂时还没有证书申请任务。
+          {data.searchingUserId > 0 ? '当前用户下' : ''}暂时还没有证书申请任务.
         </p>
       ) : null}
 
-      {isRunning ? <div className="ui message blue">有任务在执行中，可能需要的时间较长，请耐心等待。</div> : null}
+      {isRunning ? <div className="ui message blue">有任务在执行中,可能需要的时间较长,请耐心等待.</div> : null}
 
       {data.tasks.length > 0 ? (
         <table className="ui table selectable celled">
@@ -281,7 +281,7 @@ export function CertsAcmePage() {
                       <a
                         href=""
                         className="red"
-                        title="任务执行失败，点击查看详情"
+                        title="任务执行失败,点击查看详情"
                         onClick={(event) => {
                           event.preventDefault()
                           setErrorMessage(task.log?.error || '')
@@ -445,7 +445,7 @@ export function UpdateAcmeTaskForm({ taskId, onDone }: { taskId: number; onDone:
       })
     },
     onSuccess: async () => {
-      toast('保存成功，如果证书域名发生了改变，请重新执行生成新证书')
+      toast('保存成功,如果证书域名发生了改变,请重新执行生成新证书')
       await queryClient.invalidateQueries({ queryKey: ['certs-acme'] })
       onDone()
     },
@@ -477,11 +477,11 @@ export function UpdateAcmeTaskForm({ taskId, onDone }: { taskId: number; onDone:
                   <option value="0">[请选择]</option>
                   {query.data.providers.map((provider) => (
                     <option key={provider.id} value={String(provider.id)}>
-                      {provider.name}（{provider.typeName}）
+                      {provider.name}({provider.typeName})
                     </option>
                   ))}
                 </select>
-                <p className="comment">用于自动创建域名解析记录。</p>
+                <p className="comment">用于自动创建域名解析记录.</p>
               </td>
             </tr>
           ) : null}
@@ -490,7 +490,7 @@ export function UpdateAcmeTaskForm({ taskId, onDone }: { taskId: number; onDone:
               <td className="title">顶级域名 *</td>
               <td>
                 <input type="text" maxLength={100} value={dnsDomain} onChange={(event) => setDnsDomain(event.target.value)} />
-                <p className="comment">用于在DNS服务商账号中操作解析记录的域名，比如 example.com，不要输入二级或别的多级域名。</p>
+                <p className="comment">用于在DNS服务商账号中操作解析记录的域名,比如 example.com,不要输入二级或别的多级域名.</p>
               </td>
             </tr>
           ) : null}
@@ -500,8 +500,8 @@ export function UpdateAcmeTaskForm({ taskId, onDone }: { taskId: number; onDone:
               <StringListInput values={domains} onChange={setDomains} placeholder="example.com,*.example.com" />
               <p className="comment">
                 需要申请的证书中包含的域名列表
-                {task.authType === 'dns' ? '，所有域名必须是同一个顶级域名' : ''}
-                {task.authType === 'http' ? '使用HTTP认证方式时，域名中不能含有通配符' : ''}。多个域名用英文逗号分隔。
+                {task.authType === 'dns' ? ',所有域名必须是同一个顶级域名' : ''}
+                {task.authType === 'http' ? '使用HTTP认证方式时,域名中不能含有通配符' : ''}.多个域名用英文逗号分隔.
               </p>
             </td>
           </tr>
@@ -512,14 +512,14 @@ export function UpdateAcmeTaskForm({ taskId, onDone }: { taskId: number; onDone:
                 <input type="checkbox" checked={autoRenew} onChange={(event) => setAutoRenew(event.target.checked)} />
                 <label />
               </div>
-              <p className="comment">选中后，表示在免费证书临近到期之前尝试自动续期。</p>
+              <p className="comment">选中后,表示在免费证书临近到期之前尝试自动续期.</p>
             </td>
           </tr>
           <tr>
             <td>回调URL</td>
             <td>
               <input type="text" maxLength={200} value={authURL} onChange={(event) => setAuthURL(event.target.value)} />
-              <p className="comment">将认证数据以JSON的方式POST到此URL上，可以依此生成认证文件或者设置DNS域名解析；仅适用于未绑定当前CDN系统的域名。</p>
+              <p className="comment">将认证数据以JSON的方式POST到此URL上,可以依此生成认证文件或者设置DNS域名解析;仅适用于未绑定当前CDN系统的域名.</p>
             </td>
           </tr>
         </tbody>

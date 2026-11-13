@@ -148,7 +148,7 @@ function RankingChart({
   title,
   suffix,
   items,
-  emptyText = '暂时还没有统计数据。',
+  emptyText = '暂时还没有统计数据.',
 }: {
   title: string
   suffix: string
@@ -208,7 +208,7 @@ export function ServerStatPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -227,7 +227,7 @@ export function ServerStatPage() {
       <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'index')}>
         <FirstMenu items={requestsTabItems(data.server.id, 'minutely')} />
         <div className="ui column">
-          <h4>请求数统计（即时）</h4>
+          <h4>请求数统计(即时)</h4>
           <EChart
             option={requestsChartOption(stats, labels, (index, series) => {
               const stat = stats[index]
@@ -239,10 +239,10 @@ export function ServerStatPage() {
               }
               return `${stat.day} ${stat.minute}<br/>缓存请求数: ${formatNumber(
                 stat.countCachedRequests,
-              )}<br/>命中率：${percentOf(stat.countCachedRequests, stat.countRequests)}%`
+              )}<br/>命中率:${percentOf(stat.countCachedRequests, stat.countRequests)}%`
             })}
           />
-          <h4>流量统计（即时）</h4>
+          <h4>流量统计(即时)</h4>
           <EChart
             option={trafficChartOption(stats, labels, (index, series) => {
               const stat = stats[index]
@@ -254,7 +254,7 @@ export function ServerStatPage() {
               }
               return `${stat.day} ${stat.minute}<br/>缓存流量: ${formatBytes(
                 stat.cachedBytes,
-              )}<br/>命中率：${percentOf(stat.cachedBytes, stat.bytes)}%`
+              )}<br/>命中率:${percentOf(stat.cachedBytes, stat.bytes)}%`
             })}
           />
         </div>
@@ -273,7 +273,7 @@ export function ServerStatHourlyRequestsPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -292,7 +292,7 @@ export function ServerStatHourlyRequestsPage() {
       <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'index')}>
         <FirstMenu items={requestsTabItems(data.server.id, 'hourly')} />
         <div className="ui column">
-          <h4>请求数统计（小时）</h4>
+          <h4>请求数统计(小时)</h4>
           <EChart
             option={requestsChartOption(stats, labels, (index, series) => {
               const stat = stats[index]
@@ -304,10 +304,10 @@ export function ServerStatHourlyRequestsPage() {
               }
               return `${stat.day} ${stat.hour} 缓存请求数: ${formatNumber(
                 stat.countCachedRequests,
-              )}, 命中率：${percentOf(stat.countCachedRequests, stat.countRequests)}%`
+              )}, 命中率:${percentOf(stat.countCachedRequests, stat.countRequests)}%`
             })}
           />
-          <h4>流量统计（小时）</h4>
+          <h4>流量统计(小时)</h4>
           <EChart
             option={trafficChartOption(stats, labels, (index, series) => {
               const stat = stats[index]
@@ -319,7 +319,7 @@ export function ServerStatHourlyRequestsPage() {
               }
               return `${stat.day} ${stat.hour} 缓存流量: ${formatBytes(
                 stat.cachedBytes,
-              )}, 命中率：${percentOf(stat.cachedBytes, stat.bytes)}%`
+              )}, 命中率:${percentOf(stat.cachedBytes, stat.bytes)}%`
             })}
           />
         </div>
@@ -338,7 +338,7 @@ export function ServerStatDailyRequestsPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -357,7 +357,7 @@ export function ServerStatDailyRequestsPage() {
       <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'index')}>
         <FirstMenu items={requestsTabItems(data.server.id, 'daily')} />
         <div className="ui column">
-          <h4>请求数统计（按天）</h4>
+          <h4>请求数统计(按天)</h4>
           <EChart
             option={requestsChartOption(stats, labels, (index, series) => {
               const stat = stats[index]
@@ -369,10 +369,10 @@ export function ServerStatDailyRequestsPage() {
               }
               return `${stat.day} 缓存请求数: ${formatNumber(
                 stat.countCachedRequests,
-              )}, 命中率：${percentOf(stat.countCachedRequests, stat.countRequests)}%`
+              )}, 命中率:${percentOf(stat.countCachedRequests, stat.countRequests)}%`
             })}
           />
-          <h4>流量统计（按天）</h4>
+          <h4>流量统计(按天)</h4>
           <EChart
             option={trafficChartOption(stats, labels, (index, series) => {
               const stat = stats[index]
@@ -384,7 +384,7 @@ export function ServerStatDailyRequestsPage() {
               }
               return `${stat.day} 缓存流量: ${formatBytes(
                 stat.cachedBytes,
-              )}, 命中率：${percentOf(stat.cachedBytes, stat.bytes)}%`
+              )}, 命中率:${percentOf(stat.cachedBytes, stat.bytes)}%`
             })}
           />
         </div>
@@ -409,7 +409,7 @@ interface RegionData extends StatPageBase {
 function StatDisabledHint({ serverId }: { serverId: number }) {
   return (
     <p className="ui message">
-      要想查看统计数据，需要先开启统计功能，<a href={`/servers/server/settings/stat?serverId=${serverId}`}>[点击这里]</a>修改配置。
+      要想查看统计数据,需要先开启统计功能,<a href={`/servers/server/settings/stat?serverId=${serverId}`}>[点击这里]</a>修改配置.
     </p>
   )
 }
@@ -425,7 +425,7 @@ export function ServerStatRegionsPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -446,17 +446,17 @@ export function ServerStatRegionsPage() {
           <>
             <RankingChart
               title="地区排行"
-              suffix="（按月）"
+              suffix="(按月)"
               items={data.countryStats.map((stat) => ({ name: stat.country.name, count: stat.count }))}
             />
             <RankingChart
               title="省市排行"
-              suffix="（按月）"
+              suffix="(按月)"
               items={data.provinceStats.map((stat) => ({ name: `${stat.country.name} ${stat.province.name}`, count: stat.count }))}
             />
             <RankingChart
               title="城市排行"
-              suffix="（按月）"
+              suffix="(按月)"
               items={data.cityStats.map((stat) => ({
                 name: `${stat.country.name} ${stat.province.name} ${stat.city.name}`,
                 count: stat.count,
@@ -486,7 +486,7 @@ export function ServerStatProvidersPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -506,7 +506,7 @@ export function ServerStatProvidersPage() {
         ) : (
           <RankingChart
             title="运营商排行"
-            suffix="（按月）"
+            suffix="(按月)"
             items={data.providerStats.map((stat) => ({ name: stat.provider.name, count: stat.count }))}
           />
         )}
@@ -533,7 +533,7 @@ export function ServerStatClientsPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -554,12 +554,12 @@ export function ServerStatClientsPage() {
           <>
             <RankingChart
               title="操作系统排行"
-              suffix="（按月）"
+              suffix="(按月)"
               items={data.systemStats.map((stat) => ({ name: stat.system.name, count: stat.count }))}
             />
             <RankingChart
               title="浏览器排行"
-              suffix="（按月）"
+              suffix="(按月)"
               items={data.browserStats.map((stat) => ({ name: stat.browser.name, count: stat.count }))}
             />
           </>
@@ -591,7 +591,7 @@ export function ServerStatWafPage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要查看的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />

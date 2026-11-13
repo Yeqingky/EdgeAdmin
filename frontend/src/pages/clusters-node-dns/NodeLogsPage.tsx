@@ -65,7 +65,7 @@ export function NodeLogsPage() {
   })
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -164,7 +164,7 @@ export function NodeLogsPage() {
         </div>
       </form>
 
-      {data.logs.length === 0 ? <p className="comment">暂时还没有日志。</p> : null}
+      {data.logs.length === 0 ? <p className="comment">暂时还没有日志.</p> : null}
 
       {data.logs.length > 0 ? (
         <table className="ui table selectable">

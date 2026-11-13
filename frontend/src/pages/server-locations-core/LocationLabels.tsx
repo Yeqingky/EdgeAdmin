@@ -21,7 +21,7 @@ function refIsOn(ref?: { isPrior: boolean; isOn: boolean } | null, config?: { is
   return configIsOn(ref) && config != null && config.isOn
 }
 
-// 路由规则标签（对应 legacy http-location-labels）
+// 路由规则标签(对应 legacy http-location-labels)
 export function LocationLabels({ location, serverId }: { location: LocationConfig | LocationListItem; serverId: string }) {
   const web = location.web || undefined
   const locationId = String(location.id)

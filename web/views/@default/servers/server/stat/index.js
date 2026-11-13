@@ -20,7 +20,7 @@ Tea.context(function () {
 				if (that.minutelyStats[args.dataIndex].countRequests > 0) {
 					ratio = Math.round(that.minutelyStats[args.dataIndex].countCachedRequests * 10000 / that.minutelyStats[args.dataIndex].countRequests) / 100
 				}
-				return that.minutelyStats[args.dataIndex].day + " " + that.minutelyStats[args.dataIndex].minute + "<br/>缓存请求数: " + teaweb.formatNumber(that.minutelyStats[args.dataIndex].countCachedRequests) + "<br/>命中率：" + ratio + "%"
+				return that.minutelyStats[args.dataIndex].day + " " + that.minutelyStats[args.dataIndex].minute + "<br/>缓存请求数: " + teaweb.formatNumber(that.minutelyStats[args.dataIndex].countCachedRequests) + "<br/>命中率:" + ratio + "%"
 			}
 			return ""
 		})
@@ -33,7 +33,7 @@ Tea.context(function () {
 				if (that.minutelyStats[args.dataIndex].bytes > 0) {
 					ratio = Math.round(that.minutelyStats[args.dataIndex].cachedBytes * 10000 / that.minutelyStats[args.dataIndex].bytes) / 100
 				}
-				return that.minutelyStats[args.dataIndex].day + " " + that.minutelyStats[args.dataIndex].minute + "<br/>缓存流量: " + teaweb.formatBytes(that.minutelyStats[args.dataIndex].cachedBytes) + "<br/>命中率：" + ratio + "%"
+				return that.minutelyStats[args.dataIndex].day + " " + that.minutelyStats[args.dataIndex].minute + "<br/>缓存流量: " + teaweb.formatBytes(that.minutelyStats[args.dataIndex].cachedBytes) + "<br/>命中率:" + ratio + "%"
 			}
 			return ""
 		})

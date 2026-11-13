@@ -45,7 +45,7 @@ func (this *UpdateCNAMEPopupAction) RunPost(params struct {
 		this.FailField("dnsName", "CNAME长度不能超过"+types.String(maxLen)+"个字符")
 	}
 	if !regexp.MustCompile(`^[a-z0-9]{1,` + types.String(maxLen) + `}$`).MatchString(dnsName) {
-		this.FailField("dnsName", "CNAME中只能包含数字、英文字母")
+		this.FailField("dnsName", "CNAME中只能包含数字,英文字母")
 	}
 
 	serverResp, err := this.RPC().ServerRPC().FindEnabledServer(this.AdminContext(), &pb.FindEnabledServerRequest{
@@ -81,7 +81,7 @@ func (this *UpdateCNAMEPopupAction) RunPost(params struct {
 	}
 
 	if serverIdResp.ServerId > 0 && serverIdResp.ServerId != params.ServerId {
-		this.FailField("dnsName", "当前CNAME已被别的服务占用，请换一个")
+		this.FailField("dnsName", "当前CNAME已被别的服务占用,请换一个")
 	}
 
 	_, err = this.RPC().ServerRPC().UpdateServerDNSName(this.AdminContext(), &pb.UpdateServerDNSNameRequest{

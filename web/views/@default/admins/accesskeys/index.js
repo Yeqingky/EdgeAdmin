@@ -14,9 +14,9 @@ Tea.context(function () {
 
 		let message = ""
 		if (isOn) {
-			message = "确定要启用此AccessKey吗？"
+			message = "确定要启用此AccessKey吗?"
 		} else {
-			message = "确定要禁用此AccessKey吗？"
+			message = "确定要禁用此AccessKey吗?"
 		}
 		teaweb.confirm(message, function () {
 			that.$post(".updateIsOn")
@@ -30,7 +30,7 @@ Tea.context(function () {
 
 	this.deleteAccessKey = function (accessKeyId) {
 		let that = this
-		teaweb.confirm("确定要删除此AccessKey吗？", function () {
+		teaweb.confirm("确定要删除此AccessKey吗?", function () {
 			that.$post(".delete")
 				.params({
 					accessKeyId: accessKeyId

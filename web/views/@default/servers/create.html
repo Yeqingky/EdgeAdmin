@@ -4,13 +4,13 @@
 <form method="post" class="ui form" data-tea-action="$" data-tea-success="success" data-tea-fail="fail">
     <div class="tables-box">
         <div class="table-box left">
-            <h3>新网站主要信息：</h3>
+            <h3>新网站主要信息:</h3>
             <table class="ui table selectable definition">
                 <tr v-show="hasUsers">
                     <td class="title">所属用户<optional-label></optional-label></td>
                     <td>
                         <user-selector @change="changeUserId"></user-selector>
-                        <p class="comment">当前网站所属平台用户。</p>
+                        <p class="comment">当前网站所属平台用户.</p>
                     </td>
                 </tr>
                 <tr v-if="plans.length > 0">
@@ -18,7 +18,7 @@
                     <td>
                         <select class="ui dropdown auto-width" name="userPlanId">
                             <option value="0">[选择套餐]</option>
-                            <option v-for="plan in plans" :value="plan.id">{{plan.name}}（{{plan.dayTo}}）</option>
+                            <option v-for="plan in plans" :value="plan.id">{{plan.name}}({{plan.dayTo}})</option>
                         </select>
                     </td>
                 </tr>
@@ -27,9 +27,9 @@
                     <td>
                         <div v-if="userId == 0">
                             <node-cluster-combo-box></node-cluster-combo-box>
-                            <p class="comment">当前网站将会部署到所选集群的节点上。</p>
+                            <p class="comment">当前网站将会部署到所选集群的节点上.</p>
                         </div>
-                        <div v-else>跟随用户设置。</div>
+                        <div v-else>跟随用户设置.</div>
                     </td>
                 </tr>
 
@@ -38,7 +38,7 @@
                     <td>绑定域名 *</td>
                     <td>
                         <server-name-box ref="serverNameBox"></server-name-box>
-                        <p class="comment">绑定后，才能通过域名可以访问不同的服务。</p>
+                        <p class="comment">绑定后,才能通过域名可以访问不同的服务.</p>
                     </td>
                 </tr>
 
@@ -87,7 +87,7 @@
         </div>
 
         <div class="table-box right">
-            <h3>次要信息：</h3>
+            <h3>次要信息:</h3>
             <table class="ui table selectable definition">
                 <tr>
                     <td class="title">网站类型</td>
@@ -102,7 +102,7 @@
                     <td class="title">网站名称</td>
                     <td>
                         <input type="text" name="name" maxlength="60"/>
-                        <p class="comment">可以是网站用途或者域名等。</p>
+                        <p class="comment">可以是网站用途或者域名等.</p>
                     </td>
                 </tr>
                 <tr v-if="serverType == 'httpProxy' || serverType == 'httpWeb'">
@@ -113,8 +113,8 @@
                             <checkbox checked="checked" name="websocketIsOn">Websocket</checkbox>
                             <checkbox checked="checked" name="cacheIsOn">缓存</checkbox>
                             <checkbox name="wafIsOn">WAF</checkbox>
-                            <checkbox name="remoteAddrIsOn">从上级代理中读取IP <tip-icon content="用来支持读取上级代理传递的X-Real-IP、X-Forwarded-For等信息。如果用户需要通过别的代理服务才能访问到这个网站，才需要选中。"></tip-icon> </checkbox>
-                            <checkbox checked="checked" name="statIsOn">统计 <tip-icon content="开启统计后，会统计访客区域、操作系统、浏览器等信息。"></tip-icon> </checkbox>
+                            <checkbox name="remoteAddrIsOn">从上级代理中读取IP <tip-icon content="用来支持读取上级代理传递的X-Real-IP,X-Forwarded-For等信息.如果用户需要通过别的代理服务才能访问到这个网站,才需要选中."></tip-icon> </checkbox>
+                            <checkbox checked="checked" name="statIsOn">统计 <tip-icon content="开启统计后,会统计访客区域,操作系统,浏览器等信息."></tip-icon> </checkbox>
                         </div>
                     </td>
                 </tr>

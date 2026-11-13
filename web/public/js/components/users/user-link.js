@@ -10,7 +10,7 @@ Vue.component("user-link", {
 		}
 	},
 	template: `<div style="display: inline-block">
-	<span v-if="user.id > 0"><keyword :v-word="vKeyword">{{user.fullname}}</keyword><span class="small grey">（<keyword :v-word="vKeyword">{{user.username}}</keyword>）</span></span>
+	<span v-if="user.id > 0"><keyword :v-word="vKeyword">{{user.fullname}}</keyword><span class="small grey">(<keyword :v-word="vKeyword">{{user.username}}</keyword>)</span></span>
 	<span v-else class="disabled">[已删除]</span>
 </div>`
 })

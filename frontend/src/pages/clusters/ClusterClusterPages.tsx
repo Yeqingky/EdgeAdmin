@@ -79,7 +79,7 @@ export function ClusterDeletePage() {
           className="ui button red"
           type="button"
           onClick={async () => {
-            if (await confirm({ message: '确定要删除当前集群吗？', danger: true, confirmText: '删除' })) {
+            if (await confirm({ message: '确定要删除当前集群吗?', danger: true, confirmText: '删除' })) {
               remove.mutate()
             }
           }}
@@ -152,8 +152,8 @@ export function ClusterCreateBatchPage() {
         >
           <FormTable>
             <FormRow title="节点IP列表">
-              <textarea name="ipList" rows={20} placeholder="IP列表，每行一个IP" value={ipList} onChange={(event) => setIpList(event.target.value)} autoFocus />
-              <p className="comment">每行一个节点IP。</p>
+              <textarea name="ipList" rows={20} placeholder="IP列表,每行一个IP" value={ipList} onChange={(event) => setIpList(event.target.value)} autoFocus />
+              <p className="comment">每行一个节点IP.</p>
             </FormRow>
             <FormRow title="所属分组">
               <Select value={groupId} onChange={(event) => setGroupId(Number(event.target.value))}>
@@ -225,8 +225,8 @@ export function ClusterInstallNodesPage() {
       <ClusterTabMenu clusterId={clusterId} clusterName={clusterName} active="install" />
       <InstallLayout items={query.data.leftMenuItems}>
         <p>
-          在官网下载节点安装包，然后通过修改节点安装包中的 <span className="ui label tiny">configs/api_cluster.yaml</span>
-          （如果此配置文件尚未创建，你需要先创建）为以下内容，启动后会自动注册节点。
+          在官网下载节点安装包,然后通过修改节点安装包中的 <span className="ui label tiny">configs/api_cluster.yaml</span>
+          (如果此配置文件尚未创建,你需要先创建)为以下内容,启动后会自动注册节点.
         </p>
         <table className="ui table definition selectable">
           <tbody>
@@ -294,7 +294,7 @@ export function ClusterInstallManualPage() {
     <div>
       <ClusterTabMenu clusterId={clusterId} clusterName={clusterName} active="install" />
       <InstallLayout items={data.leftMenuItems}>
-        {data.nodes.length === 0 ? <p className="comment">暂时没有需要远程安装的节点。</p> : null}
+        {data.nodes.length === 0 ? <p className="comment">暂时没有需要远程安装的节点.</p> : null}
         {data.nodes.length > 0 ? (
           <div>
             <h3>所有未安装节点</h3>
@@ -430,7 +430,7 @@ export function ClusterInstallRemotePage() {
     <div>
       <ClusterTabMenu clusterId={clusterId} clusterName={clusterName} active="install" />
       <InstallLayout items={data.leftMenuItems}>
-        {data.nodes.length === 0 ? <p className="comment">暂时没有需要远程安装的节点。</p> : null}
+        {data.nodes.length === 0 ? <p className="comment">暂时没有需要远程安装的节点.</p> : null}
         {data.nodes.length > 0 ? (
           <div>
             <h3>
@@ -518,7 +518,7 @@ export function ClusterInstallRemotePage() {
                             {status.isRunning ? <div className="blue">安装中...</div> : null}
                             {status.isFinished ? (
                               <div>
-                                {status.isOk ? <span className="green">已安装成功</span> : <span className="red">安装过程中发生错误：{status.error}</span>}
+                                {status.isOk ? <span className="green">已安装成功</span> : <span className="red">安装过程中发生错误:{status.error}</span>}
                               </div>
                             ) : null}
                           </div>
@@ -686,7 +686,7 @@ export function ClusterUpdateNodeSSHPage() {
                 ))}
               </div>
             ) : null}
-            <p className="comment">比如22。</p>
+            <p className="comment">比如22.</p>
           </FormRow>
           <FormRow title="SSH登录认证 *">
             <Select value={grantId} onChange={(event) => setGrantId(Number(event.target.value))}>
@@ -694,7 +694,7 @@ export function ClusterUpdateNodeSSHPage() {
               {grantsQuery.data?.grants.map((grant) => (
                 <option key={grant.id} value={grant.id}>
                   {grant.name}
-                  {grant.username ? `（${grant.username}）` : ''}
+                  {grant.username ? `(${grant.username})` : ''}
                 </option>
               ))}
             </Select>

@@ -198,7 +198,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                       value={options.dir || ''}
                       onChange={(event) => setOptions((current) => ({ ...current, dir: event.target.value }))}
                     />
-                    <p className="comment">存放文件缓存的目录，通常填写绝对路径。</p>
+                    <p className="comment">存放文件缓存的目录,通常填写绝对路径.</p>
                   </td>
                 </tr>
                 <tr>
@@ -206,7 +206,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                   <td>
                     <CapacityInput value={capacity} onChange={setCapacity} />
                     <p className="comment">
-                      单个节点上缓存所在硬盘的最大用量，超出此用量或硬盘接近用尽时，将会自动尝试清理旧数据，如果为0表示没有限制。
+                      单个节点上缓存所在硬盘的最大用量,超出此用量或硬盘接近用尽时,将会自动尝试清理旧数据,如果为0表示没有限制.
                     </p>
                   </td>
                 </tr>
@@ -215,7 +215,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                   <td>
                     <CapacityInput value={fileMemoryCapacity} onChange={setFileMemoryCapacity} />
                     <p className="comment">
-                      单个节点上作为一级缓存的内存最大容量，可以作为硬盘缓冲区和存储热点缓存内容，如果为0表示不使用内存作为一级缓存。
+                      单个节点上作为一级缓存的内存最大容量,可以作为硬盘缓冲区和存储热点缓存内容,如果为0表示不使用内存作为一级缓存.
                     </p>
                   </td>
                 </tr>
@@ -225,7 +225,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                 <td>缓存最大容量</td>
                 <td>
                   <CapacityInput value={capacity} onChange={setCapacity} />
-                  <p className="comment">单个节点上允许缓存的最大容量，如果为0表示没有限制。</p>
+                  <p className="comment">单个节点上允许缓存的最大容量,如果为0表示没有限制.</p>
                 </td>
               </tr>
             )}
@@ -234,7 +234,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
               <td>最大内容长度</td>
               <td>
                 <CapacityInput value={maxSize} onChange={setMaxSize} />
-                <p className="comment">允许缓存的单个内容最大尺寸，如果为0表示没有限制。</p>
+                <p className="comment">允许缓存的单个内容最大尺寸,如果为0表示没有限制.</p>
               </td>
             </tr>
 
@@ -258,7 +258,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                   <td className="color-border">缓存硬盘最小空余空间</td>
                   <td>
                     <CapacityInput value={fileMinFreeSize} onChange={setFileMinFreeSize} />
-                    <p className="comment">缓存硬盘保留的最小空余空间，如果为0表示使用默认（目前默认保留5GiB）。</p>
+                    <p className="comment">缓存硬盘保留的最小空余空间,如果为0表示使用默认(目前默认保留5GiB).</p>
                   </td>
                 </tr>
                 <tr>
@@ -272,7 +272,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                       onChange={(event) => setFileOpenFileCacheMax(event.target.value)}
                     />
                     <p className="comment">
-                      保持在内存中的缓存文件句柄的数量，提升缓存文件打开速度，同时也会占用系统更多的内存；0表示不启用。
+                      保持在内存中的缓存文件句柄的数量,提升缓存文件打开速度,同时也会占用系统更多的内存;0表示不启用.
                     </p>
                   </td>
                 </tr>
@@ -287,7 +287,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                       />
                       <label />
                     </div>
-                    <p className="comment">使用sendfile提升发送缓存文件的效率。</p>
+                    <p className="comment">使用sendfile提升发送缓存文件的效率.</p>
                   </td>
                 </tr>
                 <tr>
@@ -303,7 +303,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                       />
                       <label />
                     </div>
-                    <p className="comment">允许在有一部分内容缓存的情况下读取分区内容，剩余的部分将会自动回源读取。</p>
+                    <p className="comment">允许在有一部分内容缓存的情况下读取分区内容,剩余的部分将会自动回源读取.</p>
                   </td>
                 </tr>
               </>
@@ -319,7 +319,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                       <label />
                     </div>
                     <p className="comment">
-                      选中后，在压缩设置开启的情况下，在缓存源站内容的同时，也会同步写入压缩缓存；不选中，表示在源站内容缓存后，下一次调用才会缓存压缩内容。
+                      选中后,在压缩设置开启的情况下,在缓存源站内容的同时,也会同步写入压缩缓存;不选中,表示在源站内容缓存后,下一次调用才会缓存压缩内容.
                     </p>
                   </td>
                 </tr>
@@ -327,7 +327,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
                   <td>预热超时时间</td>
                   <td>
                     <DurationInput value={fetchTimeout} onChange={setFetchTimeout} />
-                    <p className="comment">预热读取源站的超时时间，默认20分钟。</p>
+                    <p className="comment">预热读取源站的超时时间,默认20分钟.</p>
                   </td>
                 </tr>
                 <tr>
@@ -351,7 +351,7 @@ export function CacheUpdatePage({ cachePolicyId }: { cachePolicyId: number }) {
         </table>
 
         <h4>默认缓存条件</h4>
-        {refs.length === 0 ? <p className="comment">暂时还没有缓存条件。</p> : null}
+        {refs.length === 0 ? <p className="comment">暂时还没有缓存条件.</p> : null}
         {refs.length > 0 ? (
           <table className="ui table selectable celled">
             <thead>

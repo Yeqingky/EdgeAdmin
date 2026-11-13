@@ -14,7 +14,7 @@ func (this *SyncDomainsAction) RunPost(params struct {
 }) {
 	resp, err := this.RPC().DNSDomainRPC().SyncDNSDomainsFromProvider(this.AdminContext(), &pb.SyncDNSDomainsFromProviderRequest{DnsProviderId: params.ProviderId})
 	if err != nil {
-		this.Fail("更新域名失败：" + err.Error())
+		this.Fail("更新域名失败:" + err.Error())
 	}
 
 	this.Data["hasChanges"] = resp.HasChanges

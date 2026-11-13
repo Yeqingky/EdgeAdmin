@@ -10,7 +10,7 @@ Tea.context(function () {
 
 	this.deleteChart = function (chartId) {
 		let that = this
-		teaweb.confirm("确定要删除这个图表吗？", function () {
+		teaweb.confirm("确定要删除这个图表吗?", function () {
 			that.$post(".delete")
 				.params({ chartId: chartId })
 				.success(function () {

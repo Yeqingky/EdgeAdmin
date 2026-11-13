@@ -117,7 +117,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 	}
 	err = pageConfig.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 		return
 	}
 

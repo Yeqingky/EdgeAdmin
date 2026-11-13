@@ -122,7 +122,7 @@ Vue.component("http-header-policy-box", {
 			})
 		},
 		deleteDeletingHeader: function (policyId, headerName) {
-			teaweb.confirm("确定要删除'" + headerName + "'吗？", function () {
+			teaweb.confirm("确定要删除'" + headerName + "'吗?", function () {
 				Tea.action("/servers/server/settings/headers/deleteDeletingHeader")
 					.params({
 						headerPolicyId: policyId,
@@ -133,7 +133,7 @@ Vue.component("http-header-policy-box", {
 			})
 		},
 		deleteNonStandardHeader: function (policyId, headerName) {
-			teaweb.confirm("确定要删除'" + headerName + "'吗？", function () {
+			teaweb.confirm("确定要删除'" + headerName + "'吗?", function () {
 				Tea.action("/servers/server/settings/headers/deleteNonStandardHeader")
 					.params({
 						headerPolicyId: policyId,
@@ -144,7 +144,7 @@ Vue.component("http-header-policy-box", {
 			})
 		},
 		deleteHeader: function (policyId, type, headerId) {
-			teaweb.confirm("确定要删除此报头吗？", function () {
+			teaweb.confirm("确定要删除此报头吗?", function () {
 					this.$post("/servers/server/settings/headers/delete")
 						.params({
 							headerPolicyId: policyId,
@@ -186,11 +186,11 @@ Vue.component("http-header-policy-box", {
 	<div v-if="((!vIsLocation && !vIsGroup) || requestHeaderRef.isPrior) && type == 'request'">
 		<div v-if="vHasGroupRequestConfig">
         	<div class="margin"></div>
-        	<warning-message>由于已经在当前<a :href="vGroupSettingUrl + '#request'">网站分组</a>中进行了对应的配置，在这里的配置将不会生效。</warning-message>
+        	<warning-message>由于已经在当前<a :href="vGroupSettingUrl + '#request'">网站分组</a>中进行了对应的配置,在这里的配置将不会生效.</warning-message>
     	</div>
     	<div :class="{'opacity-mask': vHasGroupRequestConfig}">
 		<h4>设置请求报头 &nbsp; <a href="" @click.prevent="addSettingHeader(vRequestHeaderPolicy.id)" style="font-size: 0.8em">[添加新报头]</a></h4>
-			<p class="comment" v-if="requestSettingHeaders.length == 0">暂时还没有自定义报头。</p>
+			<p class="comment" v-if="requestSettingHeaders.length == 0">暂时还没有自定义报头.</p>
 			<table class="ui table selectable celled" v-if="requestSettingHeaders.length > 0">
 				<thead>
 					<tr>
@@ -233,7 +233,7 @@ Vue.component("http-header-policy-box", {
 						</td>
 					</tr>
 					<tr>
-						<td class="title">非标报头 <tip-icon content="可以通过此功能设置转发到源站的请求报文中非标准的报头，比如hello_world"></tip-icon></td>
+						<td class="title">非标报头 <tip-icon content="可以通过此功能设置转发到源站的请求报文中非标准的报头,比如hello_world"></tip-icon></td>
 						<td>
 							<div v-if="requestNonStandardHeaders.length > 0">
 								<div class="ui label small basic" v-for="headerName in requestNonStandardHeaders">{{headerName}} <a href=""><i class="icon remove" title="删除" @click.prevent="deleteNonStandardHeader(vRequestHeaderPolicy.id, headerName)"></i></a> </div>
@@ -259,12 +259,12 @@ Vue.component("http-header-policy-box", {
 	<div v-if="((!vIsLocation && !vIsGroup) || responseHeaderRef.isPrior) && type == 'response'">
 		<div v-if="vHasGroupResponseConfig">
         	<div class="margin"></div>
-        	<warning-message>由于已经在当前<a :href="vGroupSettingUrl + '#response'">网站分组</a>中进行了对应的配置，在这里的配置将不会生效。</warning-message>
+        	<warning-message>由于已经在当前<a :href="vGroupSettingUrl + '#response'">网站分组</a>中进行了对应的配置,在这里的配置将不会生效.</warning-message>
     	</div>
     	<div :class="{'opacity-mask': vHasGroupResponseConfig}">
 			<h4>设置响应报头 &nbsp; <a href="" @click.prevent="addSettingHeader(vResponseHeaderPolicy.id)" style="font-size: 0.8em">[添加新报头]</a></h4>
-			<p class="comment" style="margin-top: 0; padding-top: 0">将会覆盖已有的同名报头。</p>
-			<p class="comment" v-if="responseSettingHeaders.length == 0">暂时还没有自定义报头。</p>
+			<p class="comment" style="margin-top: 0; padding-top: 0">将会覆盖已有的同名报头.</p>
+			<p class="comment" v-if="responseSettingHeaders.length == 0">暂时还没有自定义报头.</p>
 			<table class="ui table selectable celled" v-if="responseSettingHeaders.length > 0">
 				<thead>
 					<tr>
@@ -288,7 +288,7 @@ Vue.component("http-header-policy-box", {
 							
 							<!-- CORS -->
 							<div v-if="header.name == 'Access-Control-Allow-Origin' && header.value == '*'">
-								<span class="red small">建议使用当前页面下方的"CORS自适应跨域"功能代替Access-Control-*-*相关报头。</span>
+								<span class="red small">建议使用当前页面下方的"CORS自适应跨域"功能代替Access-Control-*-*相关报头.</span>
 							</div>
 						</td>
 						<td>{{header.value}}</td>
@@ -312,7 +312,7 @@ Vue.component("http-header-policy-box", {
 						</td>
 					</tr>
 					<tr>
-						<td>非标报头 <tip-icon content="可以通过此功能设置响应报文中非标准的报头，比如hello_world"></tip-icon></td>
+						<td>非标报头 <tip-icon content="可以通过此功能设置响应报文中非标准的报头,比如hello_world"></tip-icon></td>
 						<td>
 							<div v-if="responseNonStandardHeaders.length > 0">
 								<div class="ui label small basic" v-for="headerName in responseNonStandardHeaders">{{headerName}} &nbsp; <a href=""><i class="icon remove small" title="删除" @click.prevent="deleteNonStandardHeader(vResponseHeaderPolicy.id, headerName)"></i></a></div>
@@ -325,7 +325,7 @@ Vue.component("http-header-policy-box", {
 						<td class="title">CORS自适应跨域</td>
 						<td>
 							<span v-if="responseCORS.isOn" class="green">已启用</span><span class="disabled" v-else="">未启用</span> &nbsp; <a href="" @click.prevent="updateCORS(vResponseHeaderPolicy.id)">[修改]</a>
-							<p class="comment"><span v-if="!responseCORS.isOn">启用后，服务器可以</span><span v-else>服务器会</span>自动生成<code-label>Access-Control-*-*</code-label>相关的报头。</p>
+							<p class="comment"><span v-if="!responseCORS.isOn">启用后,服务器可以</span><span v-else>服务器会</span>自动生成<code-label>Access-Control-*-*</code-label>相关的报头.</p>
 						</td>
 					</tr>
 				</tbody>

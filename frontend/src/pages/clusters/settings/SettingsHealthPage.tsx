@@ -132,11 +132,11 @@ export function ClusterSettingsHealthPage() {
         <FormTable>
           <FormRow title="启用健康检查">
             <Checkbox label="" checked={current.isOn} onChange={(value) => update({ isOn: value })} />
-            <p className="comment">选中后，表示对当前集群下的网站进行健康检查。</p>
+            <p className="comment">选中后,表示对当前集群下的网站进行健康检查.</p>
           </FormRow>
           <FormRow title="检查URL">
             <TextInput type="text" value={current.url} onChange={(event) => update({ url: event.target.value })} />
-            <p className="comment">可以是一个URL路径，比如 /ping。</p>
+            <p className="comment">可以是一个URL路径,比如 /ping.</p>
           </FormRow>
           <FormRow title="检查周期">
             <TimeDurationInput value={current.interval} onChange={(value) => update({ interval: value })} />
@@ -146,7 +146,7 @@ export function ClusterSettingsHealthPage() {
           </FormRow>
           <FormRow title="期望的状态码">
             <TextInput type="text" placeholder="200,301" value={statusCodes} onChange={(event) => setStatusCodes(event.target.value)} />
-            <p className="comment">多个状态码使用英文逗号分隔。</p>
+            <p className="comment">多个状态码使用英文逗号分隔.</p>
           </FormRow>
           <FormRow title="尝试次数">
             <TextInput
@@ -161,7 +161,7 @@ export function ClusterSettingsHealthPage() {
           </FormRow>
           <FormRow title="自动下线">
             <Checkbox label="" checked={current.autoDown} onChange={(value) => update({ autoDown: value })} />
-            <p className="comment">选中后，连续检查失败达到次数后自动将节点下线。</p>
+            <p className="comment">选中后,连续检查失败达到次数后自动将节点下线.</p>
           </FormRow>
           <FormRow title="连续在线认定次数">
             <TextInput
@@ -184,7 +184,7 @@ export function ClusterSettingsHealthPage() {
           </FormRow>
           <FormRow title="只做基础请求">
             <Checkbox label="" checked={current.onlyBasicRequest} onChange={(value) => update({ onlyBasicRequest: value })} />
-            <p className="comment">选中后，表示不处理WAF、反向代理等，直接返回检查结果。</p>
+            <p className="comment">选中后,表示不处理WAF,反向代理等,直接返回检查结果.</p>
           </FormRow>
           <FormRow title="记录访问日志">
             <Checkbox label="" checked={current.accessLogIsOn} onChange={(value) => update({ accessLogIsOn: value })} />
@@ -241,10 +241,10 @@ function HealthRunModal({ clusterId, onClose }: { clusterId: number; onClose: ()
   return (
     <Modal title="健康检查" onClose={onClose}>
       {!hasServers ? (
-        <span className="red">当前集群尚未部署网站，无法进行健康检查；请至少部署至少一个网站后再试。</span>
+        <span className="red">当前集群尚未部署网站,无法进行健康检查;请至少部署至少一个网站后再试.</span>
       ) : (
         <div>
-          {isRequesting ? <span className="red">正在执行中，请等待执行完毕...</span> : null}
+          {isRequesting ? <span className="red">正在执行中,请等待执行完毕...</span> : null}
           {!isRequesting && errorString ? <span className="red">{errorString}</span> : null}
           {!isRequesting && !errorString && results === null ? (
             <button
@@ -268,7 +268,7 @@ function HealthRunModal({ clusterId, onClose }: { clusterId: number; onClose: ()
           {results !== null ? (
             <form className="ui form">
               <p>
-                成功节点：<span className="green">{countSuccess}</span> &nbsp; 失败节点：<span className="red">{countFail}</span>
+                成功节点:<span className="green">{countSuccess}</span> &nbsp; 失败节点:<span className="red">{countFail}</span>
               </p>
               {results.length > 0 ? (
                 <table className="ui table selectable celled">
@@ -284,9 +284,9 @@ function HealthRunModal({ clusterId, onClose }: { clusterId: number; onClose: ()
                       <tr key={result.node.id}>
                         <td>
                           {result.node.name}
-                          {result.nodeAddr ? <span className="small">（{result.nodeAddr}）</span> : null}
+                          {result.nodeAddr ? <span className="small">({result.nodeAddr})</span> : null}
                         </td>
-                        <td>{result.isOk ? <span className="green">成功</span> : <span className="red">失败：{result.error}</span>}</td>
+                        <td>{result.isOk ? <span className="green">成功</span> : <span className="red">失败:{result.error}</span>}</td>
                         <td>{result.costMs}ms</td>
                       </tr>
                     ))}

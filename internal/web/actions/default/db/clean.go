@@ -40,7 +40,7 @@ func (this *CleanAction) RunPost(params struct {
 		DbNodeId: params.NodeId,
 	})
 	if err != nil {
-		this.Fail("查询数据时出错了：" + err.Error())
+		this.Fail("查询数据时出错了:" + err.Error())
 	}
 
 	tableMaps := []maps.Map{}

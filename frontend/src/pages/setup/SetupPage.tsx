@@ -174,16 +174,16 @@ export function SetupPage() {
 
       {step === 'intro' ? (
         <div>
-          <div>感谢你选择使用<strong>GoEdge</strong> CDN系统，下面让我们一起开始配置系统。</div>
-          <div className="margin">在这之前如果你还没有可用的MySQL数据库（支持MySQL 5.7.8/8.0/8.1/TiDB 3.0及以上版本），请先安装MySQL数据库再进行。</div>
-          <div className="margin" style={{ color: 'grey' }}>免责声明：GoEdge软件开发者并不对您的软件使用方法、服务对象、服务内容负道德或法律上的约束责任，在使用本软件时产生的一切法律风险自负。</div>
+          <div>感谢你选择使用<strong>GoEdge</strong> CDN系统,下面让我们一起开始配置系统.</div>
+          <div className="margin">在这之前如果你还没有可用的MySQL数据库(支持MySQL 5.7.8/8.0/8.1/TiDB 3.0及以上版本),请先安装MySQL数据库再进行.</div>
+          <div className="margin" style={{ color: 'grey' }}>免责声明:GoEdge软件开发者并不对您的软件使用方法,服务对象,服务内容负道德或法律上的约束责任,在使用本软件时产生的一切法律风险自负.</div>
           <button className="ui button primary" style={{ marginTop: '10em' }} type="button" onClick={() => setStep('api')}>开始 <ArrowRight size={14} /></button>
         </div>
       ) : null}
 
       {step === 'api' ? (
         <div>
-          <div className="ui message"><strong>API节点</strong>是管理系统和数据库之间通讯的桥梁，新安装时可以先使用自动启动的API节点。</div>
+          <div className="ui message"><strong>API节点</strong>是管理系统和数据库之间通讯的桥梁,新安装时可以先使用自动启动的API节点.</div>
           <FormTable>
             <FormRow title="API节点类型">
               <label><input type="radio" checked={apiMode === 'new'} onChange={() => setApiMode('new')} /> 自动启动新API节点</label>
@@ -223,7 +223,7 @@ export function SetupPage() {
           <FormTable>
             {localDB?.host ? (
               <FormRow title="本地数据库">
-                <span className="green">已检测到本地MySQL：{localDB.host}:{localDB.port}</span>
+                <span className="green">已检测到本地MySQL:{localDB.host}:{localDB.port}</span>
               </FormRow>
             ) : null}
             <FormRow title="主机地址 *"><input type="text" value={db.host} onChange={(event) => setDb({ ...db, host: event.target.value })} /></FormRow>
@@ -263,7 +263,7 @@ export function SetupPage() {
             <FormRow title="管理员">{adminResult?.username}</FormRow>
           </FormTable>
           {installing ? <div className="ui message">{statusText || '正在安装...'}</div> : null}
-          {installed ? <div className="ui positive message">安装完成，正在跳转...</div> : null}
+          {installed ? <div className="ui positive message">安装完成,正在跳转...</div> : null}
           <button className="ui button" type="button" disabled={installing} onClick={() => setStep('admin')}><ArrowLeft size={14} /> 上一步</button>
           &nbsp;
           <button className="ui button primary" type="button" disabled={installing} onClick={() => void install()}>{installing ? '安装中...' : '开始安装'}</button>

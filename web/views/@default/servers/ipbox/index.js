@@ -25,7 +25,7 @@ Tea.context(function () {
 		this.selectedListId = list.id
 		let expiredAt = this.$refs.itemExpiredTimestamp.resultTimestamp()
 		let that = this
-		teaweb.confirm("确定要将此IP添加到黑名单'" + list.name + "'吗？", function () {
+		teaweb.confirm("确定要将此IP添加到黑名单'" + list.name + "'吗?", function () {
 			that.$post(".addIP")
 				.params({
 					listId: list.id,
@@ -39,7 +39,7 @@ Tea.context(function () {
 	}
 
 	this.deleteFromList = function (listId, itemId) {
-		teaweb.confirm("确定要从此名单中删除此IP吗？", function () {
+		teaweb.confirm("确定要从此名单中删除此IP吗?", function () {
 			this.$post(".deleteFromList")
 				.params({
 					listId: listId,

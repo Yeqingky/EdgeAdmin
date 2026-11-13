@@ -123,7 +123,7 @@ export function SettingsUIPage() {
             maxLength={100}
             onChange={(event) => update('productName', event.target.value)}
           />
-          <p className="comment">可以使用变量 <code>${'{product.name}'}</code> 在网页里展示此名称，建议仅包含英文和数字字符。</p>
+          <p className="comment">可以使用变量 <code>${'{product.name}'}</code> 在网页里展示此名称,建议仅包含英文和数字字符.</p>
         </FormRow>
         <FormRow title="管理员系统名称 *">
           <TextInput
@@ -132,26 +132,26 @@ export function SettingsUIPage() {
             maxLength={100}
             onChange={(event) => update('adminSystemName', event.target.value)}
           />
-          <p className="comment">当前管理系统界面上显示的名称。</p>
+          <p className="comment">当前管理系统界面上显示的名称.</p>
         </FormRow>
         <FormRow title="显示版本号">
           <Checkbox checked={config.showVersion} onChange={(checked) => update('showVersion', checked)} />
-          <p className="comment">选中后，在界面中显示系统版本号。</p>
+          <p className="comment">选中后,在界面中显示系统版本号.</p>
         </FormRow>
         <FormRow title="定制版本号">
           <TextInput type="text" value={config.version} maxLength={100} onChange={(event) => update('version', event.target.value)} />
-          <p className="comment">定制自己的版本号，留空表示使用系统自带的版本号。</p>
+          <p className="comment">定制自己的版本号,留空表示使用系统自带的版本号.</p>
         </FormRow>
         {session.data?.teaIsPlus ? (
           <FormRow title="显示模块">
             <Checkbox label="CDN" checked={supportCDN} onChange={setSupportCDN} /> &nbsp;&nbsp;&nbsp;
             <Checkbox label="智能DNS" checked={supportNS} onChange={setSupportNS} />
-            <p className="comment">当前管理系统中可以显示的模块，不能为空。</p>
+            <p className="comment">当前管理系统中可以显示的模块,不能为空.</p>
           </FormRow>
         ) : null}
         <FormRow title="显示财务相关功能">
           <Checkbox checked={config.showFinance} onChange={(checked) => update('showFinance', checked)} />
-          <p className="comment">选中后，表示在菜单中显示财务管理功能。</p>
+          <p className="comment">选中后,表示在菜单中显示财务管理功能.</p>
         </FormRow>
         <FormRow title="浏览器图标">
           {config.faviconFileId > 0 ? (
@@ -159,12 +159,12 @@ export function SettingsUIPage() {
               <img alt="" src={`/ui/image/${config.faviconFileId}`} style={{ width: 32, border: '1px #ccc solid' }} />
             </a>
           ) : (
-            <span className="disabled">还没有上传。</span>
+            <span className="disabled">还没有上传.</span>
           )}
           <div style={{ marginTop: '0.8em' }}>
             <input type="file" accept=".png" onChange={(event) => setFaviconFile(event.target.files?.[0] || null)} />
           </div>
-          <p className="comment">在浏览器标签栏显示的图标，请使用PNG格式。</p>
+          <p className="comment">在浏览器标签栏显示的图标,请使用PNG格式.</p>
         </FormRow>
         <FormRow title="Logo">
           {config.logoFileId > 0 ? (
@@ -172,12 +172,12 @@ export function SettingsUIPage() {
               <img alt="" src={`/ui/image/${config.logoFileId}`} style={{ width: 32, border: '1px #ccc solid' }} />
             </a>
           ) : (
-            <span className="disabled">还没有上传。</span>
+            <span className="disabled">还没有上传.</span>
           )}
           <div style={{ marginTop: '0.8em' }}>
             <input type="file" accept=".png" onChange={(event) => setLogoFile(event.target.files?.[0] || null)} />
           </div>
-          <p className="comment">显示在系统界面上的图标，请使用PNG格式。</p>
+          <p className="comment">显示在系统界面上的图标,请使用PNG格式.</p>
         </FormRow>
       </FormTable>
 
@@ -191,7 +191,7 @@ export function SettingsUIPage() {
             style={{ width: '4em' }}
             onChange={(event) => update('defaultPageSize', Number(event.target.value) || 10)}
           />
-          <p className="comment">在有分页的地方每页显示数量；不能超过100。</p>
+          <p className="comment">在有分页的地方每页显示数量;不能超过100.</p>
         </FormRow>
         <FormRow title="时区">
           <div className="ui fields inline">
@@ -219,7 +219,7 @@ export function SettingsUIPage() {
               </Select>
             </div>
           </div>
-          <p className="comment">当前管理系统显示时间使用的时区。</p>
+          <p className="comment">当前管理系统显示时间使用的时区.</p>
         </FormRow>
         <FormRow title="使用的DNS解析库">
           <Select value={config.dnsResolver.type} onChange={(event) => update('dnsResolver', { type: event.target.value })}>
@@ -227,7 +227,7 @@ export function SettingsUIPage() {
             <option value="cgo">CGO</option>
             <option value="goNative">Go原生</option>
           </Select>
-          <p className="comment">当前管理系统使用的DNS解析库；修改此项配置后，需要重启管理系统进程才会生效；通常不需要修改；如要修改，请在专家指导下进行。</p>
+          <p className="comment">当前管理系统使用的DNS解析库;修改此项配置后,需要重启管理系统进程才会生效;通常不需要修改;如要修改,请在专家指导下进行.</p>
         </FormRow>
       </FormTable>
 

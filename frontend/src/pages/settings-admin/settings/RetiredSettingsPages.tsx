@@ -1,7 +1,7 @@
 import { SettingsTabs } from '../common'
 
 function RetiredPlaceholder() {
-  return <p className="comment">此功能暂未开放，敬请期待。</p>
+  return <p className="comment">此功能暂未开放,敬请期待.</p>
 }
 
 export function BackupSettingsPage() {
@@ -26,7 +26,7 @@ export function AboutQQPage() {
   return (
     <div>
       <h3>关于</h3>
-      <p className="comment">QQ群信息已下线，如需帮助请访问项目主页。</p>
+      <p className="comment">QQ群信息已下线,如需帮助请访问项目主页.</p>
     </div>
   )
 }

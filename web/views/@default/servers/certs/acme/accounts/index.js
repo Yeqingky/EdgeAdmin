@@ -22,7 +22,7 @@ Tea.context(function () {
 	}
 
 	this.deleteAccount = function (accountId) {
-		teaweb.confirm("确定要删除此账号吗？", function () {
+		teaweb.confirm("确定要删除此账号吗?", function () {
 			this.$post(".delete")
 				.params({
 					accountId: accountId

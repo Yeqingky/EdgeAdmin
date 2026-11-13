@@ -13,7 +13,7 @@ import (
 
 // InitNodeInfo 初始化节点信息
 func InitNodeInfo(parentAction *actionutils.ParentAction, nodeId int64) (*pb.Node, error) {
-	// 节点信息（用于菜单）
+	// 节点信息(用于菜单)
 	nodeResp, err := parentAction.RPC().NodeRPC().FindEnabledNode(parentAction.AdminContext(), &pb.FindEnabledNodeRequest{NodeId: nodeId})
 	if err != nil {
 		return nil, err

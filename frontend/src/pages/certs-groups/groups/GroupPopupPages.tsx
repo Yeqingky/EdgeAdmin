@@ -90,10 +90,10 @@ export function GroupSelectPage() {
                         {group.name}
                       </a>
                     ))}
-                    <p className="comment">点击可以选中要使用的分组。</p>
+                    <p className="comment">点击可以选中要使用的分组.</p>
                   </div>
                 ) : (
-                  <p className="comment">暂时还没有可以使用的分组。</p>
+                  <p className="comment">暂时还没有可以使用的分组.</p>
                 )}
               </td>
             </tr>

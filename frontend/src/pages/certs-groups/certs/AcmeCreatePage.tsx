@@ -166,15 +166,15 @@ export function AcmeCreatePage() {
                     </div>
                     {authType === 'http' ? (
                       <p className="comment">
-                        使用HTTP认证的方式请求网址<code>/.well-known/acme-challenge/令牌</code>校验，该方式要求需要实现将域名解析到集群上，之后系统会自动生成网址信息；这种方式不支持泛域名证书的申请。
+                        使用HTTP认证的方式请求网址<code>/.well-known/acme-challenge/令牌</code>校验,该方式要求需要实现将域名解析到集群上,之后系统会自动生成网址信息;这种方式不支持泛域名证书的申请.
                       </p>
                     ) : (
                       <p className="comment">
-                        我们在申请免费证书的过程中需要自动增加或修改相关域名的TXT记录，请先确保你已经在"域名解析" --{' '}
+                        我们在申请免费证书的过程中需要自动增加或修改相关域名的TXT记录,请先确保你已经在"域名解析" --{' '}
                         <a href="/dns/providers" target="_blank" rel="noreferrer">
                           "DNS服务商"
                         </a>{' '}
-                        中已经添加了对应的DNS服务商账号。
+                        中已经添加了对应的DNS服务商账号.
                       </p>
                     )}
                   </td>
@@ -183,14 +183,14 @@ export function AcmeCreatePage() {
                   <td>选择平台用户</td>
                   <td>
                     <UserSelector userId={platformUserId} onChange={setPlatformUserId} emptyLabel="[不指定]" />
-                    <p className="comment">可选项，选择证书所属用户，如果没有选择，则视为管理员所有。</p>
+                    <p className="comment">可选项,选择证书所属用户,如果没有选择,则视为管理员所有.</p>
                   </td>
                 </tr>
                 <tr>
                   <td>回调URL</td>
                   <td>
                     <input type="text" maxLength={200} value={authURL} onChange={(event) => setAuthURL(event.target.value)} />
-                    <p className="comment">将认证数据以JSON的方式POST到此URL上，可以依此生成认证文件或者设置DNS域名解析；仅适用于未绑定当前CDN系统的域名。</p>
+                    <p className="comment">将认证数据以JSON的方式POST到此URL上,可以依此生成认证文件或者设置DNS域名解析;仅适用于未绑定当前CDN系统的域名.</p>
                   </td>
                 </tr>
               </tbody>
@@ -264,10 +264,10 @@ export function AcmeCreatePage() {
                             setUserModalVisible(true)
                           }}
                         >
-                          {platformUserId > 0 ? '当前平台用户下' : ''}暂时还没有ACME用户，点此创建
+                          {platformUserId > 0 ? '当前平台用户下' : ''}暂时还没有ACME用户,点此创建
                         </a>
                       )}
-                      <p className="comment">选择一个作为申请证书的用户。</p>
+                      <p className="comment">选择一个作为申请证书的用户.</p>
                     </td>
                   </tr>
                 ) : null}
@@ -297,17 +297,17 @@ export function AcmeCreatePage() {
                           <option value="0">[请选择]</option>
                           {data.dnsProviders.map((provider) => (
                             <option key={provider.id} value={String(provider.id)}>
-                              {provider.name}（{provider.typeName}）
+                              {provider.name}({provider.typeName})
                             </option>
                           ))}
                         </select>
                       ) : (
                         <span>
-                          暂时没有DNS服务商，
-                          <a href="/dns/providers">[去添加]</a>。
+                          暂时没有DNS服务商,
+                          <a href="/dns/providers">[去添加]</a>.
                         </span>
                       )}
-                      <p className="comment">用于自动创建域名解析记录。</p>
+                      <p className="comment">用于自动创建域名解析记录.</p>
                     </td>
                   </tr>
                 ) : null}
@@ -316,7 +316,7 @@ export function AcmeCreatePage() {
                     <td>顶级域名 *</td>
                     <td>
                       <input type="text" maxLength={100} value={dnsDomain} onChange={(event) => setDnsDomain(event.target.value)} />
-                      <p className="comment">用于在DNS服务商账号中操作解析记录的域名，比如 example.com，不要输入二级或别的多级域名。</p>
+                      <p className="comment">用于在DNS服务商账号中操作解析记录的域名,比如 example.com,不要输入二级或别的多级域名.</p>
                     </td>
                   </tr>
                 ) : null}
@@ -330,9 +330,9 @@ export function AcmeCreatePage() {
                       onChange={(event) => setDomainsInput(event.target.value)}
                     />
                     <p className="comment">
-                      需要申请的证书中包含的域名列表，多个域名用英文逗号分隔
-                      {authType === 'dns' ? '，所有域名必须是同一个顶级域名' : ''}
-                      {authType === 'http' ? '，使用HTTP认证方式时，域名中不能含有通配符' : ''}。
+                      需要申请的证书中包含的域名列表,多个域名用英文逗号分隔
+                      {authType === 'dns' ? ',所有域名必须是同一个顶级域名' : ''}
+                      {authType === 'http' ? ',使用HTTP认证方式时,域名中不能含有通配符' : ''}.
                     </p>
                   </td>
                 </tr>
@@ -343,7 +343,7 @@ export function AcmeCreatePage() {
                       <input type="checkbox" checked={autoRenew} onChange={(event) => setAutoRenew(event.target.checked)} />
                       <label />
                     </div>
-                    <p className="comment">选中后，表示在免费证书临近到期之前尝试自动续期。</p>
+                    <p className="comment">选中后,表示在免费证书临近到期之前尝试自动续期.</p>
                   </td>
                 </tr>
               </tbody>
@@ -354,7 +354,7 @@ export function AcmeCreatePage() {
               </button>
               {isRequesting ? (
                 <button type="button" className="ui button primary disabled">
-                  提交中，要花费的时间较长，请耐心等待...
+                  提交中,要花费的时间较长,请耐心等待...
                 </button>
               ) : (
                 <button type="button" className="ui button primary" onClick={() => void doDNS()}>
@@ -369,7 +369,7 @@ export function AcmeCreatePage() {
           <div>
             <div className="success-box">
               <p>
-                <span className="green">恭喜，证书申请成功！</span>你可以在证书列表里看到刚申请的证书。
+                <span className="green">恭喜,证书申请成功!</span>你可以在证书列表里看到刚申请的证书.
               </p>
             </div>
             <div style={{ marginTop: '1em' }}>
@@ -394,7 +394,7 @@ export function AcmeCreatePage() {
             onDone={(user) => {
               setUserModalVisible(false)
               if (user) {
-                const description = user.description.length > 0 ? `（${user.description}）` : ''
+                const description = user.description.length > 0 ? `(${user.description})` : ''
                 setUsers((current) => [{ ...user, description }, ...current])
                 setAcmeUserId(user.id)
               }

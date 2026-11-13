@@ -41,7 +41,7 @@ export function ServerNamesSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -78,7 +78,7 @@ export function ServerNamesSettingsPage() {
         serverId,
         serverNames: JSON.stringify(serverNames),
       })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -109,7 +109,7 @@ export function ServerNamesSettingsPage() {
     return (
       <ServerSettingsShell data={data}>
         <div className="margin" />
-        <div className="ui message warning">当前域名正在审核中，请审核域名的所有人、备案情况等。</div>
+        <div className="ui message warning">当前域名正在审核中,请审核域名的所有人,备案情况等.</div>
         <form className="ui form" onSubmit={submitAudit}>
           <FormTable>
             <FormRow title="审核中域名">
@@ -121,7 +121,7 @@ export function ServerNamesSettingsPage() {
                 ))}
                 {hasPassedDomains ? (
                   <p className="comment">
-                    <span className="green">绿色</span>标注的域名表示之前已经审核通过的域名。
+                    <span className="green">绿色</span>标注的域名表示之前已经审核通过的域名.
                   </p>
                 ) : null}
               </div>
@@ -158,7 +158,7 @@ export function ServerNamesSettingsPage() {
     return (
       <ServerSettingsShell data={data}>
         <div className="ui message error">
-          审核不通过，原因：{data.auditingResult.reason} （{data.auditingResult.createdTime}）。等待用户重新提交。
+          审核不通过,原因:{data.auditingResult.reason} ({data.auditingResult.createdTime}).等待用户重新提交.
         </div>
       </ServerSettingsShell>
     )
@@ -194,7 +194,7 @@ export function ServerNamesSettingsPage() {
                         )
                       }
                     />
-                    {config.subNames && config.subNames.length > 0 ? <p className="comment">每行一个域名，共{config.subNames.length}个。</p> : null}
+                    {config.subNames && config.subNames.length > 0 ? <p className="comment">每行一个域名,共{config.subNames.length}个.</p> : null}
                   </div>
                   <div className="ui field" style={{ padding: 0 }}>
                     <a href="" title="删除" onClick={(event) => { event.preventDefault(); setServerNames(serverNames.filter((_, i) => i !== index)) }}>
@@ -207,7 +207,7 @@ export function ServerNamesSettingsPage() {
               <a href="" onClick={(event) => { event.preventDefault(); setServerNames([...serverNames, { type: 'full', name: '', subNames: [] }]) }}>
                 [添加域名绑定]
               </a>
-              <p className="comment">用户可以通过这些域名访问当前网站。</p>
+              <p className="comment">用户可以通过这些域名访问当前网站.</p>
             </div>
           </FormRow>
         </FormTable>

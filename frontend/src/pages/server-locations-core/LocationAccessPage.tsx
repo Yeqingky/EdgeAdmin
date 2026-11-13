@@ -80,10 +80,10 @@ function PolicyParams({ policy }: { policy?: AuthPolicy | null }) {
     <span>
       {notes.join(' ')}
       {(params.exts || []).map((ext) => (
-        <span key={ext} className="ui label tiny basic grey">扩展名：{ext}</span>
+        <span key={ext} className="ui label tiny basic grey">扩展名:{ext}</span>
       ))}
       {(params.domains || []).map((domain) => (
-        <span key={domain} className="ui label tiny basic grey">域名：{domain}</span>
+        <span key={domain} className="ui label tiny basic grey">域名:{domain}</span>
       ))}
     </span>
   )
@@ -129,10 +129,10 @@ function PolicyEditor({ state, onClose, onSaved }: {
       form.set('subRequestMethod', editor.subRequestMethod)
       form.set('subRequestFollowRequest', editor.followRequest ? '1' : '0')
       form.set('domainsJSON', JSON.stringify(
-        editor.domains.split(/[，、,;\n]/).map((item) => item.trim()).filter((item) => item.length > 0),
+        editor.domains.split(/[,,,;\n]/).map((item) => item.trim()).filter((item) => item.length > 0),
       ))
       editor.exts
-        .split(/[，、,;\n]/)
+        .split(/[,,,;\n]/)
         .map((item) => item.trim())
         .filter((item) => item.length > 0)
         .forEach((ext) => form.append('exts', ext))
@@ -185,7 +185,7 @@ function PolicyEditor({ state, onClose, onSaved }: {
               disabled={!editor.isNew}
               onChange={(event) => update({ type: event.target.value })}
             >
-              <option value="basicAuth">基本认证（BasicAuth）</option>
+              <option value="basicAuth">基本认证(BasicAuth)</option>
               <option value="subRequest">子请求</option>
             </Select>
           </FormRow>
@@ -196,7 +196,7 @@ function PolicyEditor({ state, onClose, onSaved }: {
           {editor.type === 'basicAuth' ? (
             <>
               <FormRow title="用户">
-                {editor.users.length === 0 ? <p className="comment">还没有用户。</p> : null}
+                {editor.users.length === 0 ? <p className="comment">还没有用户.</p> : null}
                 {editor.users.map((user, index) => (
                   <div key={index} className="ui fields inline" style={{ marginBottom: '0.4em' }}>
                     <div className="ui field">
@@ -261,7 +261,7 @@ function PolicyEditor({ state, onClose, onSaved }: {
               </FormRow>
               <FormRow title="子请求方法">
                 <input type="text" value={editor.subRequestMethod} placeholder="比如 GET" onChange={(event) => update({ subRequestMethod: event.target.value })} />
-                <p className="comment">留空表示使用默认方法。</p>
+                <p className="comment">留空表示使用默认方法.</p>
               </FormRow>
               <FormRow title="跟随跳转">
                 <Checkbox checked={editor.followRequest} onChange={(followRequest) => update({ followRequest })} />
@@ -271,11 +271,11 @@ function PolicyEditor({ state, onClose, onSaved }: {
 
           <FormRow title="扩展名">
             <input type="text" value={editor.exts} placeholder="比如 .html, .json" onChange={(event) => update({ exts: event.target.value })} />
-            <p className="comment">如果填写了扩展名，则只对这些扩展名的请求进行鉴权，使用逗号分隔。</p>
+            <p className="comment">如果填写了扩展名,则只对这些扩展名的请求进行鉴权,使用逗号分隔.</p>
           </FormRow>
           <FormRow title="专属域名">
             <input type="text" value={editor.domains} placeholder="比如 example.com" onChange={(event) => update({ domains: event.target.value })} />
-            <p className="comment">如果填写了域名，则只对这些域名的请求进行鉴权，使用逗号分隔。</p>
+            <p className="comment">如果填写了域名,则只对这些域名的请求进行鉴权,使用逗号分隔.</p>
           </FormRow>
         </FormTable>
       </form>
@@ -360,7 +360,7 @@ function AccessForm({ data, serverId, locationId }: { data: AccessData; serverId
   }
 
   async function removeRef(index: number) {
-    if (!(await confirm({ message: '确定要删除此鉴权方式吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此鉴权方式吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     const policyRefs = config.policyRefs.filter((_, i) => i !== index)

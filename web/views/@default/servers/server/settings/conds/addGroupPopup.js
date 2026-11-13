@@ -2,7 +2,7 @@ Tea.context(function () {
 	this.success = NotifyPopup
 
 	this.group = {
-		connector: "and", // 默认为and，更符合用户的直觉
+		connector: "and", // 默认为and,更符合用户的直觉
 		description: "",
 		isReverse: false,
 		conds: [],
@@ -17,7 +17,7 @@ Tea.context(function () {
 			this.group = window.parent.UPDATING_COND_GROUP
 			this.isUpdating = true
 		} else if (this.group.conds.length == 0) {
-			// 如果尚未有条件，则自动弹出添加界面
+			// 如果尚未有条件,则自动弹出添加界面
 			this.addCond()
 		}
 	})
@@ -51,7 +51,7 @@ Tea.context(function () {
 	// 删除条件
 	this.removeCond = function (condIndex) {
 		let that = this
-		teaweb.confirm("确定要删除此条件？", function () {
+		teaweb.confirm("确定要删除此条件?", function () {
 			that.group.conds.$remove(condIndex)
 		})
 	}

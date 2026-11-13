@@ -90,7 +90,7 @@ func (this *IndexAction) RunPost(params struct {
 
 	err := config.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 	}
 
 	configJSON, err := json.Marshal(config)

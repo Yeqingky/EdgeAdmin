@@ -23,7 +23,7 @@ Vue.component("http-rewrite-rule-list", {
 		},
 		deleteRewriteRule: function (rewriteRuleId) {
 			let that = this
-			teaweb.confirm("确定要删除此重写规则吗？", function () {
+			teaweb.confirm("确定要删除此重写规则吗?", function () {
 				Tea.action("/servers/server/settings/rewrite/delete")
 					.params({
 						webId: that.vWebId,
@@ -54,7 +54,7 @@ Vue.component("http-rewrite-rule-list", {
 	},
 	template: `<div>
 	<div class="margin"></div>
-	<p class="comment" v-if="rewriteRules.length == 0">暂时还没有重写规则。</p>
+	<p class="comment" v-if="rewriteRules.length == 0">暂时还没有重写规则.</p>
 	<table class="ui table selectable" v-if="rewriteRules.length > 0" id="sortable-table">
 		<thead>
 			<tr>
@@ -90,7 +90,7 @@ Vue.component("http-rewrite-rule-list", {
 			</tr>
 		</tbody>
 	</table>
-	<p class="comment" v-if="rewriteRules.length > 0">拖动左侧的<i class="icon bars grey"></i>图标可以对重写规则进行排序。</p>
+	<p class="comment" v-if="rewriteRules.length > 0">拖动左侧的<i class="icon bars grey"></i>图标可以对重写规则进行排序.</p>
 
 </div>`
 })

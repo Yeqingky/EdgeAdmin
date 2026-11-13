@@ -72,7 +72,7 @@ func (this *UpdatePopupAction) RunPost(params struct {
 		Expect(func() (message string, success bool) {
 			_, err := regexp.Compile(params.Pattern)
 			if err != nil {
-				return "匹配规则错误：" + err.Error(), false
+				return "匹配规则错误:" + err.Error(), false
 			}
 			return "", true
 		})
@@ -86,12 +86,12 @@ func (this *UpdatePopupAction) RunPost(params struct {
 		conds := &shared.HTTPRequestCondsConfig{}
 		err := json.Unmarshal(params.CondsJSON, conds)
 		if err != nil {
-			this.Fail("匹配条件校验失败：" + err.Error())
+			this.Fail("匹配条件校验失败:" + err.Error())
 		}
 
 		err = conds.Init()
 		if err != nil {
-			this.Fail("匹配条件校验失败：" + err.Error())
+			this.Fail("匹配条件校验失败:" + err.Error())
 		}
 	}
 

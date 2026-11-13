@@ -97,7 +97,7 @@ Vue.component("traffic-map-box", {
 							})
 
 							if (stat != null) {
-								return name + "<br/>流量：" + stat.formattedBytes + "<br/>流量占比：" + stat.percent + "%<br/>请求数：" + stat.formattedCountRequests + "<br/>攻击数：" + stat.formattedCountAttackRequests
+								return name + "<br/>流量:" + stat.formattedBytes + "<br/>流量占比:" + stat.percent + "%<br/>请求数:" + stat.formattedCountRequests + "<br/>攻击数:" + stat.formattedCountAttackRequests
 							}
 							return name
 						}
@@ -184,7 +184,7 @@ Vue.component("traffic-map-box", {
 						opacity = 1
 					}
 
-					// 至少是0.5，让用户能够看清
+					// 至少是0.5,让用户能够看清
 					if (opacity < 0.5) {
 						opacity = 0.5
 					}
@@ -242,7 +242,7 @@ Vue.component("traffic-map-box-table", {
 	   <table class="ui table selectable">
 		  <thead>
 			<tr>
-				<th colspan="2">国家/地区排行&nbsp; <tip-icon content="只有开启了统计的网站才会有记录。"></tip-icon></th>
+				<th colspan="2">国家/地区排行&nbsp; <tip-icon content="只有开启了统计的网站才会有记录."></tip-icon></th>
 			</tr>
 		  </thead>
 		   <tbody v-if="stats.length == 0">
@@ -259,7 +259,7 @@ Vue.component("traffic-map-box-table", {
 					  <div>{{stat.name}}</div> 
 					   <div><span class="grey">{{stat.percent}}% </span>
 					   <span class="small grey" v-if="isAttack">{{stat.formattedCountAttackRequests}}</span>
-					   <span class="small grey" v-if="!isAttack">（{{stat.formattedBytes}}）</span></div>
+					   <span class="small grey" v-if="!isAttack">({{stat.formattedBytes}})</span></div>
 				   </td>
 			   </tr>
 		   </tbody>

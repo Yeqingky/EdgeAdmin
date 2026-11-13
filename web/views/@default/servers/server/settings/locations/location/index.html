@@ -13,7 +13,7 @@
 					<td>路径匹配规则 *</td>
 					<td>
 						<input type="text" name="pattern" v-model="pattern" maxlength="500" ref="focus"/>
-						<p class="comment">路径通常以斜杠(/)开头，比如/hello。如果匹配类型是正则表达式匹配，则可以是一个正则表达式</p>
+						<p class="comment">路径通常以斜杠(/)开头,比如/hello.如果匹配类型是正则表达式匹配,则可以是一个正则表达式</p>
 					</td>
 				</tr>
 				<tr>
@@ -32,14 +32,14 @@
 							<input type="checkbox" name="isBreak" value="1" v-model="locationConfig.isBreak"/>
 							<label></label>
 						</div>
-						<p class="comment">如果选中了此选项，一旦匹配成功，不会继续匹配其他的路由规则。</p>
+						<p class="comment">如果选中了此选项,一旦匹配成功,不会继续匹配其他的路由规则.</p>
 					</td>
 				</tr>
 				<tr>
 					<td class="title">名称</td>
 					<td>
 						<input type="text" name="name" maxlength="100" v-model="locationConfig.name"/>
-						<p class="comment">可以用来说明此规则用途。。</p>
+						<p class="comment">可以用来说明此规则用途..</p>
 					</td>
 				</tr>
                 <tr>
@@ -56,7 +56,7 @@
                         <td>专属域名</td>
                         <td>
                             <domains-box :v-domains="domains"></domains-box>
-                            <p class="comment">默认不需要填写，表示支持所有域名。如果填写了专属域名，表示当前路由规则只会在所列的专属域名被访问时才生效。</p>
+                            <p class="comment">默认不需要填写,表示支持所有域名.如果填写了专属域名,表示当前路由规则只会在所列的专属域名被访问时才生效.</p>
                         </td>
                     </tr>
                     <tr>
@@ -67,7 +67,7 @@
                                 <input type="checkbox" name="isCaseInsensitive" value="1" v-model="isCaseInsensitive"/>
                                 <label></label>
                             </div>
-                            <p class="comment">选中表示匹配规则中的路径中的英文字母不区分大小写。</p>
+                            <p class="comment">选中表示匹配规则中的路径中的英文字母不区分大小写.</p>
                         </td>
                     </tr>
                     <tr>
@@ -77,7 +77,7 @@
                                 <input type="checkbox" name="isReverse" value="1" v-model="isReverse"/>
                                 <label></label>
                             </div>
-                            <p class="comment">选中表示匹配所有<strong>不符合规则</strong>的路径。</p>
+                            <p class="comment">选中表示匹配所有<strong>不符合规则</strong>的路径.</p>
                         </td>
                     </tr>
                     <tr>

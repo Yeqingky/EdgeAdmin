@@ -24,7 +24,7 @@ function MenuColumn({ items, size }: { items: MenuItem[]; size: 'small' | 'tiny'
   )
 }
 
-// 网站设置左侧菜单（对应 legacy left_menu_with_menu）
+// 网站设置左侧菜单(对应 legacy left_menu_with_menu)
 export function ServerSettingsLeftMenu({ items, disabled }: { items?: MenuItem[]; disabled?: boolean }) {
   return (
     <div className={`left-box with-menu${disabled ? ' disabled' : ''}`}>
@@ -33,7 +33,7 @@ export function ServerSettingsLeftMenu({ items, disabled }: { items?: MenuItem[]
   )
 }
 
-// 网站设置顶部面包屑（对应 legacy settings_menu）
+// 网站设置顶部面包屑(对应 legacy settings_menu)
 export function ServerSettingsBreadcrumb({ serverId, server }: { serverId: string; server?: ServerInfo }) {
   return (
     <PageHeader
@@ -49,7 +49,7 @@ export function ServerSettingsBreadcrumb({ serverId, server }: { serverId: strin
   )
 }
 
-// 路由规则页面左侧导航（对应 legacy locations/@left_menu.html）
+// 路由规则页面左侧导航(对应 legacy locations/@left_menu.html)
 export function LocationLeftMenu({ items, disabled }: { items?: MenuItem[]; disabled?: boolean }) {
   return (
     <div className={`left-box tiny${disabled ? ' disabled' : ''}`}>
@@ -58,7 +58,7 @@ export function LocationLeftMenu({ items, disabled }: { items?: MenuItem[]; disa
   )
 }
 
-// 路由规则详情面包屑（对应 legacy locations/@location_menu.html）
+// 路由规则详情面包屑(对应 legacy locations/@location_menu.html)
 export function LocationBreadcrumb({ serverId, locationId, pattern }: {
   serverId: string
   locationId: string

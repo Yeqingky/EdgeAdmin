@@ -8,7 +8,7 @@ Vue.component("http-firewall-rule-label", {
 	},
 	methods: {
 		showErr: function (err) {
-			teaweb.popupTip("规则校验错误，请修正：<span class=\"red\">"  + teaweb.encodeHTML(err) + "</span>")
+			teaweb.popupTip("规则校验错误,请修正:<span class=\"red\">"  + teaweb.encodeHTML(err) + "</span>")
 		},
 		calculateParamName: function (param) {
 			let paramName = ""
@@ -99,7 +99,7 @@ Vue.component("http-firewall-rule-label", {
 		</span>
 		
 		<!-- description -->
-		<span v-if="rule.description != null && rule.description.length > 0" class="grey small">（{{rule.description}}）</span>
+		<span v-if="rule.description != null && rule.description.length > 0" class="grey small">({{rule.description}})</span>
 		
 		<a href="" v-if="rule.err != null && rule.err.length > 0" @click.prevent="showErr(rule.err)" style="color: #db2828; opacity: 1; border-bottom: 1px #db2828 dashed; margin-left: 0.5em">规则错误</a>
 	</div>

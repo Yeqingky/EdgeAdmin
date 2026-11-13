@@ -80,7 +80,7 @@ export function WafGroupsPage({ firewallPolicyId, type }: { firewallPolicyId: nu
   }
 
   async function deleteGroup(group: WafGroup) {
-    if (!(await confirm({ message: '确定要删除此规则分组吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此规则分组吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -114,7 +114,7 @@ export function WafGroupsPage({ firewallPolicyId, type }: { firewallPolicyId: nu
         </a>
       </div>
 
-      {groups.length === 0 ? <p className="comment">暂时还没有规则分组。</p> : null}
+      {groups.length === 0 ? <p className="comment">暂时还没有规则分组.</p> : null}
 
       {groups.length > 0 ? (
         <table className="ui table selectable celled">
@@ -152,7 +152,7 @@ export function WafGroupsPage({ firewallPolicyId, type }: { firewallPolicyId: nu
                   <p style={{ marginTop: '0.5em' }}>
                     {group.isOn ? <span className="ui label tiny basic green">启用</span> : <span className="ui label tiny basic red">停用</span>}
                     {group.isTemplate ? <span className="ui label basic tiny">预置</span> : <span className="ui label basic tiny">自定义</span>}
-                    {group.code ? <span className="ui label basic tiny">代号：{group.code}</span> : null}
+                    {group.code ? <span className="ui label basic tiny">代号:{group.code}</span> : null}
                   </p>
                 </td>
                 <td className="center">
@@ -209,7 +209,7 @@ export function WafGroupsPage({ firewallPolicyId, type }: { firewallPolicyId: nu
 
       {groups.length > 0 ? (
         <p className="comment">
-          所有规则匹配顺序为从上到下，可以拖动左侧的 <GripVertical size={12} /> 排序。
+          所有规则匹配顺序为从上到下,可以拖动左侧的 <GripVertical size={12} /> 排序.
         </p>
       ) : null}
     </div>

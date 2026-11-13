@@ -28,6 +28,6 @@ Vue.component("request-variables-describer", {
 		}
 	},
 	template: `<span>
-	<span v-for="(v, index) in vars"><code-label :title="v.description">{{v.code}}</code-label> - {{v.name}}<span v-if="index < vars.length-1">；</span></span>
+	<span v-for="(v, index) in vars"><code-label :title="v.description">{{v.code}}</code-label> - {{v.name}}<span v-if="index < vars.length-1">;</span></span>
 </span>`
 })

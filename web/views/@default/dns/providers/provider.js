@@ -61,7 +61,7 @@ Tea.context(function () {
 
 	this.deleteDomain = function (domain) {
 		let that = this
-		teaweb.confirm("确定要删除域名\"" + domain.name + "\"吗？", function () {
+		teaweb.confirm("确定要删除域名\"" + domain.name + "\"吗?", function () {
 			that.$post("/dns/domains/delete")
 				.params({
 					domainId: domain.id
@@ -73,7 +73,7 @@ Tea.context(function () {
 
 	this.recoverDomain = function (domain) {
 		let that = this
-		teaweb.confirm("确定要恢复域名\"" + domain.name + "\"吗？", function () {
+		teaweb.confirm("确定要恢复域名\"" + domain.name + "\"吗?", function () {
 			that.$post("/dns/domains/recover")
 				.params({
 					domainId: domain.id
@@ -85,7 +85,7 @@ Tea.context(function () {
 
 	this.syncDomain = function (index, domain) {
 		let that = this
-		teaweb.confirm("确定要同步此域名下的所有解析记录吗？", function () {
+		teaweb.confirm("确定要同步此域名下的所有解析记录吗?", function () {
 			domain.isSyncing = true
 			Vue.set(that.domains, index, domain)
 

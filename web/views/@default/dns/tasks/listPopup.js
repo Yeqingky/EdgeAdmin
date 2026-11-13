@@ -17,7 +17,7 @@ Tea.context(function () {
 
     this.deleteTask = function (taskId) {
         let that = this
-        teaweb.confirm("确定要删除这个任务吗？", function () {
+        teaweb.confirm("确定要删除这个任务吗?", function () {
             that.$post(".delete")
                 .params({
                     taskId: taskId
@@ -30,7 +30,7 @@ Tea.context(function () {
 
 	this.deleteAllTasks = function () {
 		let that = this
-		teaweb.confirm("确定要清空所有的任务吗？", function () {
+		teaweb.confirm("确定要清空所有的任务吗?", function () {
 			that.$post(".deleteAll")
 				.success(function () {
 					teaweb.reload()

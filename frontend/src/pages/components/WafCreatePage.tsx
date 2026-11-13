@@ -81,7 +81,7 @@ export function WafCreatePage() {
               <td className="title">策略名称 *</td>
               <td>
                 <input type="text" maxLength={100} value={name} onChange={(event) => setName(event.target.value)} autoFocus />
-                <p className="comment">给策略起一个容易识别的名字。</p>
+                <p className="comment">给策略起一个容易识别的名字.</p>
               </td>
             </tr>
             <tr>
@@ -101,7 +101,7 @@ export function WafCreatePage() {
                     <label>{group.name}</label>
                   </div>
                 ))}
-                <p className="comment">可以启用一些我们预置的规则组。</p>
+                <p className="comment">可以启用一些我们预置的规则组.</p>
               </td>
             </tr>
             <tr>

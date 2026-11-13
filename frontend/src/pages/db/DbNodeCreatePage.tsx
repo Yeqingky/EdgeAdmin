@@ -38,15 +38,15 @@ export function DbNodeCreatePage() {
       <form className="ui form" onSubmit={submit}>
         <FormTable>
           <FormRow title="节点名称 *"><TextInput value={name} maxLength={100} onChange={(event) => setName(event.target.value)} /></FormRow>
-          <FormRow title="主机地址（Host）*"><TextInput value={host} maxLength={100} onChange={(event) => setHost(event.target.value)} /></FormRow>
-          <FormRow title="数据库端口（Port）*">
+          <FormRow title="主机地址(Host)*"><TextInput value={host} maxLength={100} onChange={(event) => setHost(event.target.value)} /></FormRow>
+          <FormRow title="数据库端口(Port)*">
             <TextInput value={port} maxLength={5} style={{ width: '6em' }} onChange={(event) => setPort(event.target.value)} />
           </FormRow>
-          <FormRow title="数据库名称（Database）*">
+          <FormRow title="数据库名称(Database)*">
             <TextInput value={database} maxLength={100} placeholder="比如 edge_logs" onChange={(event) => setDatabase(event.target.value)} />
           </FormRow>
-          <FormRow title="用户名（Username）*"><TextInput value={username} onChange={(event) => setUsername(event.target.value)} /></FormRow>
-          <FormRow title="密码（Password）">
+          <FormRow title="用户名(Username)*"><TextInput value={username} onChange={(event) => setUsername(event.target.value)} /></FormRow>
+          <FormRow title="密码(Password)">
             <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
           </FormRow>
           <tr><td colSpan={2}><a href="" onClick={(event) => { event.preventDefault(); setMore((value) => !value) }}>更多选项</a></td></tr>

@@ -2,8 +2,8 @@ Vue.component("ssl-certs-box", {
 	props: [
 		"v-certs", // 证书列表
 		"v-cert", // 单个证书
-		"v-protocol", // 协议：https|tls
-		"v-view-size", // 弹窗尺寸：normal, mini
+		"v-protocol", // 协议:https|tls
+		"v-view-size", // 弹窗尺寸:normal, mini
 		"v-single-mode", // 单证书模式
 		"v-description", // 描述文字
 		"v-domains", // 搜索的域名列表或者函数
@@ -37,7 +37,7 @@ Vue.component("ssl-certs-box", {
 		// 删除证书
 		removeCert: function (index) {
 			let that = this
-			teaweb.confirm("确定删除此证书吗？证书数据仍然保留，只是当前网站不再使用此证书。", function () {
+			teaweb.confirm("确定删除此证书吗?证书数据仍然保留,只是当前网站不再使用此证书.", function () {
 				that.certs.$remove(index)
 			})
 		},
@@ -142,7 +142,7 @@ Vue.component("ssl-certs-box", {
 			return new Date(timestamp * 1000).format("Y-m-d")
 		},
 
-		// 判断是否显示选择｜上传按钮
+		// 判断是否显示选择|上传按钮
 		buttonsVisible: function () {
 			return this.vSingleMode == null || !this.vSingleMode || this.certs == null || this.certs.length == 0
 		}
@@ -156,7 +156,7 @@ Vue.component("ssl-certs-box", {
 		<div class="ui divider" v-if="buttonsVisible()"></div>
 	</div>
 	<div v-else>
-		<span class="red" v-if="description.length == 0">选择或上传证书后<span v-if="vProtocol == 'https'">HTTPS</span><span v-if="vProtocol == 'tls'">TLS</span>服务才能生效。</span>
+		<span class="red" v-if="description.length == 0">选择或上传证书后<span v-if="vProtocol == 'https'">HTTPS</span><span v-if="vProtocol == 'tls'">TLS</span>服务才能生效.</span>
 		<span class="grey" v-if="description.length > 0">{{description}}</span>
 		<div class="ui divider" v-if="buttonsVisible()"></div>
 	</div>

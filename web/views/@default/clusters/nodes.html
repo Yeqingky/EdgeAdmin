@@ -50,7 +50,7 @@
     </div>
 </form>
 
-<p class="comment" v-if="nodes.length == 0">暂时还没有节点。</p>
+<p class="comment" v-if="nodes.length == 0">暂时还没有节点.</p>
 
 <table class="ui table selectable celled" v-if="nodes.length > 0">
     <thead>
@@ -79,10 +79,10 @@
             <a :href="'/clusters/cluster/node/update?clusterId=' + node.cluster.id + '&nodeId=' + node.id" title="设置"><i class="icon setting grey"></i></a>
 
             <div v-if="node.region != null">
-                <grey-label>区域：{{node.region.name}}</grey-label>
+                <grey-label>区域:{{node.region.name}}</grey-label>
             </div>
             <div v-if="node.group != null">
-                <grey-label>分组：{{node.group.name}}</grey-label>
+                <grey-label>分组:{{node.group.name}}</grey-label>
             </div>
             <div v-if="node.secondaryClusters != null && node.secondaryClusters.length > 0">
                 <node-clusters-labels :v-primary-cluster="node.cluster" :v-secondary-clusters="node.secondaryClusters" size="tiny"></node-clusters-labels>
@@ -93,12 +93,12 @@
             <div v-else class="address-box">
                 <div v-for="(addr, index) in node.ipAddresses" v-if="node.ipAddresses.length < mostIPVisible || node.ipAddressesVisible || index < mostIPVisible" style="margin-bottom:0.3em">
                     <div class="ui label tiny basic">{{addr.ip}}
-                        <span class="small" v-if="addr.name.length > 0">（{{addr.name}}<span v-if="!addr.canAccess">，不公开访问</span>）</span>
-                        <span class="small" v-if="addr.name.length == 0 && !addr.canAccess">（不公开访问）</span>
+                        <span class="small" v-if="addr.name.length > 0">({{addr.name}}<span v-if="!addr.canAccess">,不公开访问</span>)</span>
+                        <span class="small" v-if="addr.name.length == 0 && !addr.canAccess">(不公开访问)</span>
 
                         <!-- 专属集群 -->
                         <div v-if="addr.clusters != null && addr.clusters.length > 0" style="margin-top: 0.3em; font-weight: normal">
-                             <span class="small grey">[</span><span v-for="(cluster, index) in addr.clusters" class="small grey">{{cluster.name}}<span v-if="index < addr.clusters.length - 1">，</span></span><span class="small grey">]</span>
+                             <span class="small grey">[</span><span v-for="(cluster, index) in addr.clusters" class="small grey">{{cluster.name}}<span v-if="index < addr.clusters.length - 1">,</span></span><span class="small grey">]</span>
                         </div>
                     </div>
                 </div>

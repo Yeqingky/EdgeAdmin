@@ -36,7 +36,7 @@ func (this *Menu) Add(name string, subName string, url string, isActive bool) *M
 	return item
 }
 
-// AddSpecial 添加特殊菜单项，不计数
+// AddSpecial 添加特殊菜单项,不计数
 func (this *Menu) AddSpecial(name string, subName string, url string, isActive bool) *MenuItem {
 	item := this.Add(name, subName, url, isActive)
 	this.CountNormalItems--

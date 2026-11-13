@@ -51,15 +51,15 @@ Vue.component("grey-label", {
 
 // 可选标签
 Vue.component("optional-label", {
-	template: `<em><span class="grey">（可选）</span></em>`
+	template: `<em><span class="grey">(可选)</span></em>`
 })
 
 // Plus专属
 Vue.component("plus-label", {
-	template: `<span style="color: #B18701;">Plus专属功能。</span>`
+	template: `<span style="color: #B18701;">Plus专属功能.</span>`
 })
 
 // 提醒设置项为专业设置
 Vue.component("pro-warning-label", {
-	template: `<span><i class="icon warning circle yellow"></i>注意：通常不需要修改；如要修改，请在专家指导下进行。</span>`
+	template: `<span><i class="icon warning circle yellow"></i>注意:通常不需要修改;如要修改,请在专家指导下进行.</span>`
 })

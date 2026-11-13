@@ -28,7 +28,7 @@ func (this *ExportExcelAction) RunGet(params struct {
 }) {
 	logsResp, err := this.RPC().LogRPC().ListLogs(this.AdminContext(), &pb.ListLogsRequest{
 		Offset:   0,
-		Size:     10000, // 日志最大导出10000条，TODO 将来可以配置
+		Size:     10000, // 日志最大导出10000条,TODO 将来可以配置
 		DayFrom:  params.DayFrom,
 		DayTo:    params.DayTo,
 		Keyword:  params.Keyword,

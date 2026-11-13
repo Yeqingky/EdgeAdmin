@@ -122,7 +122,7 @@ Vue.component("http-cache-refs-config-box", {
 		},
 		removeRef: function (index) {
 			let that = this
-			teaweb.confirm("确定要删除此缓存设置吗？", function () {
+			teaweb.confirm("确定要删除此缓存设置吗?", function () {
 				that.refs.$remove(index)
 				that.change()
 			})
@@ -219,7 +219,7 @@ Vue.component("http-cache-refs-config-box", {
 	<input type="hidden" name="refsJSON" :value="JSON.stringify(refs)"/>
 	
 	<div>
-		<p class="comment" v-if="refs.length == 0">暂时还没有缓存条件。</p>
+		<p class="comment" v-if="refs.length == 0">暂时还没有缓存条件.</p>
 		<table class="ui table selectable celled" v-show="refs.length > 0" id="sortable-table">
 			<thead>
 				<tr>
@@ -249,7 +249,7 @@ Vue.component("http-cache-refs-config-box", {
 						
 						<grey-label v-if="cacheRef.methods != null && cacheRef.methods.length > 0">{{cacheRef.methods.join(", ")}}</grey-label>
 						<grey-label v-if="cacheRef.expiresTime != null && cacheRef.expiresTime.isPrior && cacheRef.expiresTime.isOn">Expires</grey-label>
-						<grey-label v-if="cacheRef.status != null && cacheRef.status.length > 0 && (cacheRef.status.length > 1 || cacheRef.status[0] != 200)">状态码：{{cacheRef.status.map(function(v) {return v.toString()}).join(", ")}}</grey-label>
+						<grey-label v-if="cacheRef.status != null && cacheRef.status.length > 0 && (cacheRef.status.length > 1 || cacheRef.status[0] != 200)">状态码:{{cacheRef.status.map(function(v) {return v.toString()}).join(", ")}}</grey-label>
 						<grey-label v-if="cacheRef.allowPartialContent">分片缓存</grey-label>
 						<grey-label v-if="cacheRef.alwaysForwardRangeRequest">Range回源</grey-label>
 						<grey-label v-if="cacheRef.enableIfNoneMatch">If-None-Match</grey-label>
@@ -268,7 +268,7 @@ Vue.component("http-cache-refs-config-box", {
 				</tr>
 			</tbody>
 		</table>
-		<p class="comment" v-if="refs.length > 1">所有条件匹配顺序为从上到下，可以拖动左侧的<i class="icon bars"></i>排序。服务设置的优先级比全局缓存策略设置的优先级要高。</p>
+		<p class="comment" v-if="refs.length > 1">所有条件匹配顺序为从上到下,可以拖动左侧的<i class="icon bars"></i>排序.服务设置的优先级比全局缓存策略设置的优先级要高.</p>
 		
 		<button class="ui button tiny" @click.prevent="addRef(false)" type="button">+添加缓存条件</button> &nbsp; &nbsp; <a href="" @click.prevent="addRef(true)" style="font-size: 0.8em">+添加不缓存条件</a>
 	</div>

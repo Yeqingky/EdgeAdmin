@@ -102,7 +102,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 			return
 		}
 		if countResp.Count > 0 {
-			this.Fail("此服务商账号已被别的用户使用，请换成别的账号")
+			this.Fail("此服务商账号已被别的用户使用,请换成别的账号")
 		}
 	}
 

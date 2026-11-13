@@ -88,7 +88,7 @@ func (this *IndexAction) RunPost(params struct {
 	if err != nil {
 		this.Data["result"] = maps.Map{
 			"isOk":    false,
-			"message": "读取更新信息失败：" + err.Error(),
+			"message": "读取更新信息失败:" + err.Error(),
 		}
 		this.Success()
 		return
@@ -101,7 +101,7 @@ func (this *IndexAction) RunPost(params struct {
 	if err != nil {
 		this.Data["result"] = maps.Map{
 			"isOk":    false,
-			"message": "读取更新信息失败：" + err.Error(),
+			"message": "读取更新信息失败:" + err.Error(),
 		}
 		this.Success()
 		return
@@ -112,7 +112,7 @@ func (this *IndexAction) RunPost(params struct {
 	if err != nil {
 		this.Data["result"] = maps.Map{
 			"isOk":    false,
-			"message": "解析更新信息失败：" + err.Error(),
+			"message": "解析更新信息失败:" + err.Error(),
 		}
 		this.Success()
 		return
@@ -121,7 +121,7 @@ func (this *IndexAction) RunPost(params struct {
 	if apiResponse.Code != 200 {
 		this.Data["result"] = maps.Map{
 			"isOk":    false,
-			"message": "解析更新信息失败：" + apiResponse.Message,
+			"message": "解析更新信息失败:" + apiResponse.Message,
 		}
 		this.Success()
 		return
@@ -156,7 +156,7 @@ func (this *IndexAction) RunPost(params struct {
 				} else {
 					this.Data["result"] = maps.Map{
 						"isOk":    true,
-						"message": "你已安装最新版本，无需更新",
+						"message": "你已安装最新版本,无需更新",
 					}
 					this.Success()
 					return

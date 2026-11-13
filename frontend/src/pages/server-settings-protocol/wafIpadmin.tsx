@@ -77,7 +77,7 @@ function IPBindBox({ firewallPolicyId, type }: { firewallPolicyId: number; type:
         绑定+
       </a>{' '}
       &nbsp;
-      {lists.length > 0 ? <span className="disabled small">|&nbsp; 已绑定：</span> : null}
+      {lists.length > 0 ? <span className="disabled small">|&nbsp; 已绑定:</span> : null}
       {lists.map((list) => (
         <span className="ui label basic small" key={list.id}>
           <a href={`/servers/iplists/list?listId=${list.id}`} style={{ opacity: 1 }}>
@@ -88,7 +88,7 @@ function IPBindBox({ firewallPolicyId, type }: { firewallPolicyId: number; type:
             title="删除"
             onClick={(event) => {
               event.preventDefault()
-              void confirm({ message: '确定要删除这个绑定的IP名单吗？' }).then((ok) => {
+              void confirm({ message: '确定要删除这个绑定的IP名单吗?' }).then((ok) => {
                 if (ok) {
                   void apiPost('/servers/iplists/unbindHTTPFirewall', {
                     httpFirewallPolicyId: firewallPolicyId,
@@ -137,7 +137,7 @@ export function IPListPage({ listType }: { listType: 'white' | 'black' | 'grey' 
   const addType = listType === 'white' ? 'white' : listType === 'black' ? 'black' : 'grey'
 
   async function remove(itemId: number) {
-    if (!(await confirm({ message: '确定要删除这个IP吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个IP吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -152,7 +152,7 @@ export function IPListPage({ listType }: { listType: 'white' | 'black' | 'grey' 
   return (
     <ServerSettingsShell serverId={serverId} activePath="/waf">
       <WafMenu serverId={serverId} firewallPolicyId={firewallPolicyId} active={active} />
-      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能。</div> : null}
+      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能.</div> : null}
       {data.featureIsOn ? (
         <>
           <div className="ui menu text blue first-menu">
@@ -171,12 +171,12 @@ export function IPListPage({ listType }: { listType: 'white' | 'black' | 'grey' 
           </div>
           {!data.wafIsOn ? (
             <div className="ui message warning">
-              当前WAF未启用，设置将在
+              当前WAF未启用,设置将在
               <a href={`${buildSettingsURL('/waf', { serverId })}`}>[启用Web防火墙]</a>
-              后生效。
+              后生效.
             </div>
           ) : null}
-          {items.length === 0 ? <p className="comment">暂时还没有IP。</p> : null}
+          {items.length === 0 ? <p className="comment">暂时还没有IP.</p> : null}
           {items.length > 0 ? (
             <table className="ui table selectable celled">
               <thead>
@@ -397,9 +397,9 @@ export function UpdateIPForm({ itemId, onSaved }: { itemId: number; onSaved: () 
             {item.type === 'ipv4' ? 'IPv4' : null}
             {item.type === 'ipv6' ? 'IPv6' : null}
             {item.type === 'all' ? '所有IP' : null}
-            {item.type === 'ipv4' ? <Comment>单个IPv4或一个IPv4范围。</Comment> : null}
-            {item.type === 'ipv6' ? <Comment>单个IPv6或一个IPv6范围。</Comment> : null}
-            {item.type === 'all' ? <Comment>允许或禁用所有的IP。</Comment> : null}
+            {item.type === 'ipv4' ? <Comment>单个IPv4或一个IPv4范围.</Comment> : null}
+            {item.type === 'ipv6' ? <Comment>单个IPv6或一个IPv6范围.</Comment> : null}
+            {item.type === 'all' ? <Comment>允许或禁用所有的IP.</Comment> : null}
           </FormRow>
           {item.type !== 'all' ? (
             <FormRow title="IP或IP段 *">
@@ -426,7 +426,7 @@ export function UpdateIPForm({ itemId, onSaved }: { itemId: number; onSaved: () 
                 setExpiredAt(Number.isFinite(timestamp) ? String(timestamp) : '')
               }}
             />
-            <Comment>在加入名单某一段时间后会失效，留空表示永久有效。</Comment>
+            <Comment>在加入名单某一段时间后会失效,留空表示永久有效.</Comment>
           </FormRow>
           <FormRow title="级别">
             <Select value={currentLevel} onChange={(event) => setEventLevel(event.target.value)}>
@@ -643,7 +643,7 @@ function RegionPicker({
             </label>
           </div>
         ))}
-        {filtered.length === 0 ? <span className="disabled">没有匹配的数据。</span> : null}
+        {filtered.length === 0 ? <span className="disabled">没有匹配的数据.</span> : null}
       </div>
       <button className="ui button primary" type="button" onClick={confirm}>
         确定
@@ -688,7 +688,7 @@ function ModeWarning({ data }: { data: RegionPageData }) {
     <div className="ui message warning">
       当前网站所在集群的WAF策略模式为
       {data.clusterFirewallPolicy.modeInfo ? <strong>{data.clusterFirewallPolicy.modeInfo.name}</strong> : '非防御模式'}
-      ，当前设置将不会生效。
+      ,当前设置将不会生效.
     </div>
   )
 }
@@ -699,9 +699,9 @@ function WafOnWarning({ serverId, wafIsOn }: { serverId: number; wafIsOn: boolea
   }
   return (
     <div className="ui message warning">
-      当前WAF未启用，设置将在
+      当前WAF未启用,设置将在
       <a href={`${buildSettingsURL('/waf', { serverId })}`}>[启用Web防火墙]</a>
-      后生效。
+      后生效.
     </div>
   )
 }
@@ -771,7 +771,7 @@ export function CountriesPage() {
   return (
     <ServerSettingsShell serverId={serverId} activePath="/waf">
       <WafMenu serverId={serverId} firewallPolicyId={firewallPolicyId} active="country" />
-      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能。</div> : null}
+      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能.</div> : null}
       {data.featureIsOn ? (
         <>
           <WafOnWarning serverId={serverId} wafIsOn={data.wafIsOn} />
@@ -798,7 +798,7 @@ export function CountriesPage() {
                 </FormRow>
                 <FormRow title="仅封禁的区域">
                   {current.allowed.length > 0 ? (
-                    <p className="comment">由于你已设置"仅允许的区域"，所以不需要再设置封禁区域。</p>
+                    <p className="comment">由于你已设置"仅允许的区域",所以不需要再设置封禁区域.</p>
                   ) : (
                     <>
                       <SelectionList values={current.denied} onRemove={(id) => update({ denied: current.denied.filter((item) => item.id !== id) })} />
@@ -831,15 +831,15 @@ export function CountriesPage() {
                 <tbody>
                   <FormRow title="例外URL">
                     <URLPatternsEditor patterns={current.exceptPatterns} onChange={(values) => update({ exceptPatterns: values })} />
-                    <Comment>对这些URL将不做任何限制。</Comment>
+                    <Comment>对这些URL将不做任何限制.</Comment>
                   </FormRow>
                   <FormRow title="限制URL">
                     <URLPatternsEditor patterns={current.onlyPatterns} onChange={(values) => update({ onlyPatterns: values })} />
-                    <Comment>只对这些URL做限制。</Comment>
+                    <Comment>只对这些URL做限制.</Comment>
                   </FormRow>
                   <FormRow title="提示内容">
                     <textarea rows={3} value={current.html} onChange={(event) => update({ html: event.target.value })} />
-                    <Comment>当客户端所在区域被封禁时提示页面的HTML内容；不填则表示使用默认的提示内容；支持请求变量。</Comment>
+                    <Comment>当客户端所在区域被封禁时提示页面的HTML内容;不填则表示使用默认的提示内容;支持请求变量.</Comment>
                   </FormRow>
                   <FormRow title="允许搜索引擎">
                     <div className="ui checkbox">
@@ -850,7 +850,7 @@ export function CountriesPage() {
                       />
                       <label></label>
                     </div>
-                    <Comment>选中后，表示如果请求来自常见搜索引擎的IP，则不受区域限制。</Comment>
+                    <Comment>选中后,表示如果请求来自常见搜索引擎的IP,则不受区域限制.</Comment>
                   </FormRow>
                 </tbody>
               ) : null}
@@ -893,7 +893,7 @@ export function CountriesPage() {
 
 function SelectionList({ values, onRemove }: { values: SelectionValue[]; onRemove: (id: number) => void }) {
   if (values.length === 0) {
-    return <span className="disabled">暂时没有选择。</span>
+    return <span className="disabled">暂时没有选择.</span>
   }
   return (
     <div>
@@ -979,7 +979,7 @@ export function ProvincesPage() {
   return (
     <ServerSettingsShell serverId={serverId} activePath="/waf">
       <WafMenu serverId={serverId} firewallPolicyId={firewallPolicyId} active="province" />
-      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能。</div> : null}
+      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能.</div> : null}
       {data.featureIsOn ? (
         <>
           <WafOnWarning serverId={serverId} wafIsOn={data.wafIsOn} />
@@ -1006,7 +1006,7 @@ export function ProvincesPage() {
                 </FormRow>
                 <FormRow title="仅封禁的省份">
                   {current.allowed.length > 0 ? (
-                    <p className="comment">由于你已设置"仅允许的省份"，所以不需要再设置封禁省份。</p>
+                    <p className="comment">由于你已设置"仅允许的省份",所以不需要再设置封禁省份.</p>
                   ) : (
                     <>
                       <SelectionList values={current.denied} onRemove={(id) => update({ denied: current.denied.filter((item) => item.id !== id) })} />
@@ -1039,15 +1039,15 @@ export function ProvincesPage() {
                 <tbody>
                   <FormRow title="例外URL">
                     <URLPatternsEditor patterns={current.exceptPatterns} onChange={(values) => update({ exceptPatterns: values })} />
-                    <Comment>对这些URL将不做任何限制。</Comment>
+                    <Comment>对这些URL将不做任何限制.</Comment>
                   </FormRow>
                   <FormRow title="限制URL">
                     <URLPatternsEditor patterns={current.onlyPatterns} onChange={(values) => update({ onlyPatterns: values })} />
-                    <Comment>只对这些URL做限制。</Comment>
+                    <Comment>只对这些URL做限制.</Comment>
                   </FormRow>
                   <FormRow title="提示内容">
                     <textarea rows={3} value={current.html} onChange={(event) => update({ html: event.target.value })} />
-                    <Comment>当客户端所在省份被封禁时提示页面的HTML内容。</Comment>
+                    <Comment>当客户端所在省份被封禁时提示页面的HTML内容.</Comment>
                   </FormRow>
                 </tbody>
               ) : null}
@@ -1150,7 +1150,7 @@ export function ProvidersPage() {
   return (
     <ServerSettingsShell serverId={serverId} activePath="/waf">
       <WafMenu serverId={serverId} firewallPolicyId={firewallPolicyId} active="provider" />
-      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能。</div> : null}
+      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能.</div> : null}
       {data.featureIsOn ? (
         <>
           <WafOnWarning serverId={serverId} wafIsOn={data.wafIsOn} />
@@ -1177,7 +1177,7 @@ export function ProvidersPage() {
                 </FormRow>
                 <FormRow title="仅封禁的运营商">
                   {current.allowed.length > 0 ? (
-                    <p className="comment">由于你已设置"仅允许的运营商"，所以不需要再设置封禁运营商。</p>
+                    <p className="comment">由于你已设置"仅允许的运营商",所以不需要再设置封禁运营商.</p>
                   ) : (
                     <>
                       <SelectionList values={current.denied} onRemove={(id) => update({ denied: current.denied.filter((item) => item.id !== id) })} />
@@ -1210,15 +1210,15 @@ export function ProvidersPage() {
                 <tbody>
                   <FormRow title="例外URL">
                     <URLPatternsEditor patterns={current.exceptPatterns} onChange={(values) => update({ exceptPatterns: values })} />
-                    <Comment>对这些URL将不做任何限制。</Comment>
+                    <Comment>对这些URL将不做任何限制.</Comment>
                   </FormRow>
                   <FormRow title="限制URL">
                     <URLPatternsEditor patterns={current.onlyPatterns} onChange={(values) => update({ onlyPatterns: values })} />
-                    <Comment>只对这些URL做限制。</Comment>
+                    <Comment>只对这些URL做限制.</Comment>
                   </FormRow>
                   <FormRow title="提示内容">
                     <textarea rows={3} value={current.html} onChange={(event) => update({ html: event.target.value })} />
-                    <Comment>当客户端所在运营商被封禁时提示页面的HTML内容。</Comment>
+                    <Comment>当客户端所在运营商被封禁时提示页面的HTML内容.</Comment>
                   </FormRow>
                 </tbody>
               ) : null}
@@ -1331,7 +1331,7 @@ export function WafTestPage() {
   return (
     <ServerSettingsShell serverId={serverId} activePath="/waf">
       <WafMenu serverId={serverId} firewallPolicyId={firewallPolicyId} active="test" />
-      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能。</div> : null}
+      {!data.featureIsOn ? <div className="ui message warning">尚未为当前用户开通此功能.</div> : null}
       {data.featureIsOn ? (
         <>
           <WafOnWarning serverId={serverId} wafIsOn={data.wafIsOn} />
@@ -1373,7 +1373,7 @@ export function WafTestPage() {
                                 {result.isAllowed ? (
                                   <span className={result.item.listType === 'white' ? 'green' : 'grey'}>
                                     {result.item.listType === 'white' ? '在白名单中' : '在灰名单中'} {result.item.value || result.item.ipFrom}
-                                    {result.item.eventLevelName ? ` 级别：${result.item.eventLevelName}` : ''}{' '}
+                                    {result.item.eventLevelName ? ` 级别:${result.item.eventLevelName}` : ''}{' '}
                                     <a
                                       href=""
                                       onClick={(event) => {
@@ -1412,7 +1412,7 @@ export function WafTestPage() {
                             ) : null}
                           </>
                         ) : (
-                          <div>没有找到和{ip}匹配的配置。</div>
+                          <div>没有找到和{ip}匹配的配置.</div>
                         )}
                       </div>
                     ) : null
@@ -1428,7 +1428,7 @@ export function WafTestPage() {
             </div>
           </form>
           {result?.item ? (
-            <p className="comment">当前IP名单：{result.list?.name || ''}</p>
+            <p className="comment">当前IP名单:{result.list?.name || ''}</p>
           ) : null}
           {updatingItemId ? (
             <div className="ui dimmer modals page transition visible active" style={{ display: 'flex' }}>
@@ -1474,7 +1474,7 @@ export function SelectCountriesRoute() {
           toast(`已选择 ${values.length} 个区域`)
         }}
       />
-      <p className="comment">当前已选择：{selected.map((item) => item.name).join('、') || '无'}</p>
+      <p className="comment">当前已选择:{selected.map((item) => item.name).join(',') || '无'}</p>
     </PopupPage>
   )
 }
@@ -1501,7 +1501,7 @@ export function SelectProvincesRoute() {
           toast(`已选择 ${values.length} 个省份`)
         }}
       />
-      <p className="comment">当前已选择：{selected.map((item) => item.name).join('、') || '无'}</p>
+      <p className="comment">当前已选择:{selected.map((item) => item.name).join(',') || '无'}</p>
     </PopupPage>
   )
 }
@@ -1528,7 +1528,7 @@ export function SelectProvidersRoute() {
           toast(`已选择 ${values.length} 个运营商`)
         }}
       />
-      <p className="comment">当前已选择：{selected.map((item) => item.name).join('、') || '无'}</p>
+      <p className="comment">当前已选择:{selected.map((item) => item.name).join(',') || '无'}</p>
     </PopupPage>
   )
 }

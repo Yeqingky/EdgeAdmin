@@ -104,7 +104,7 @@ Vue.component("ns-recursion-config-box", {
 						<input type="checkbox" name="isOn" value="1" v-model="config.isOn"/>
 						<label></label>
 					</div>
-					<p class="comment">启用后，如果找不到某个域名的解析记录，则向上一级DNS查找。</p>
+					<p class="comment">启用后,如果找不到某个域名的解析记录,则向上一级DNS查找.</p>
 				</td>
 			</tr>
 		</tbody>
@@ -116,7 +116,7 @@ Vue.component("ns-recursion-config-box", {
 						<input type="checkbox" name="useLocalHosts" value="1" v-model="config.useLocalHosts"/>
 						<label></label>
 					</div>
-					<p class="comment">选中后，节点会试图从<code-label>/etc/resolv.conf</code-label>文件中读取DNS配置。 </p>
+					<p class="comment">选中后,节点会试图从<code-label>/etc/resolv.conf</code-label>文件中读取DNS配置. </p>
 				</td>
 			</tr>
 			<tr v-show="!config.useLocalHosts">
@@ -148,14 +148,14 @@ Vue.component("ns-recursion-config-box", {
 			<tr>
 				<td>允许的域名</td>
 				<td><values-box name="allowDomains" :values="config.allowDomains" @change="changeAllowDomains"></values-box>
-					<p class="comment">支持星号通配符，比如<code-label>*.example.org</code-label>。</p>
+					<p class="comment">支持星号通配符,比如<code-label>*.example.org</code-label>.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>不允许的域名</td>
 				<td>
 					<values-box name="denyDomains" :values="config.denyDomains" @change="changeDenyDomains"></values-box>
-					<p class="comment">支持星号通配符，比如<code-label>*.example.org</code-label>。优先级比允许的域名高。</p>
+					<p class="comment">支持星号通配符,比如<code-label>*.example.org</code-label>.优先级比允许的域名高.</p>
 				</td>
 			</tr>
 		</tbody>

@@ -14,7 +14,7 @@ Tea.context(function () {
 	// 删除节点
 	this.deleteNode = function (nodeId) {
 		let that = this
-		teaweb.confirm("确定要删除此数据库节点吗？", function () {
+		teaweb.confirm("确定要删除此数据库节点吗?", function () {
 			that.$post(".delete")
 				.params({
 					nodeId: nodeId
@@ -25,6 +25,6 @@ Tea.context(function () {
 	
 	// 显示错误信息
     this.showError = function (err) {
-	    teaweb.popupTip("<span style=\"color:#db2828\">错误信息：" + err + "</span>")
+	    teaweb.popupTip("<span style=\"color:#db2828\">错误信息:" + err + "</span>")
     }
 })

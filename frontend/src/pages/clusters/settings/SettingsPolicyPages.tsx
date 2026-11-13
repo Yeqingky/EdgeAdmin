@@ -82,7 +82,7 @@ export function ClusterSettingsCachePage() {
                 </option>
               ))}
             </Select>
-            <p className="comment">部署在当前集群上的所有网站都会自动使用此策略，只是服务可以自定义是否开启。</p>
+            <p className="comment">部署在当前集群上的所有网站都会自动使用此策略,只是服务可以自定义是否开启.</p>
           </FormRow>
         </FormTable>
         <SubmitButton submitting={submitting} />
@@ -147,7 +147,7 @@ export function ClusterSettingsWafPage() {
                 </option>
               ))}
             </Select>
-            <p className="comment">部署在当前集群上的所有网站都会自动使用此策略，只是网站可以自定义是否开启。</p>
+            <p className="comment">部署在当前集群上的所有网站都会自动使用此策略,只是网站可以自定义是否开启.</p>
           </FormRow>
         </FormTable>
         <SubmitButton submitting={submitting} />
@@ -223,7 +223,7 @@ export function ClusterSettingsWebpPage() {
         <FormTable>
           <FormRow title="启用WebP功能">
             <Checkbox label="" checked={policy.isOn} onChange={(value) => setPolicy({ ...policy, isOn: value })} />
-            <p className="comment">选中后，表示当前集群下的网站可以使用WebP转换功能。</p>
+            <p className="comment">选中后,表示当前集群下的网站可以使用WebP转换功能.</p>
           </FormRow>
           {policy.isOn ? (
             <>
@@ -238,11 +238,11 @@ export function ClusterSettingsWebpPage() {
                   />
                   <span className="ui label">%</span>
                 </div>
-                <p className="comment">取值在0到100之间，0表示自动调节。</p>
+                <p className="comment">取值在0到100之间,0表示自动调节.</p>
               </FormRow>
               <FormRow title="需要满足缓存条件">
                 <Checkbox label="" checked={policy.requireCache} onChange={(value) => setPolicy({ ...policy, requireCache: value })} />
-                <p className="comment">选中后，表示图片URL需要满足缓存条件后才会转换。</p>
+                <p className="comment">选中后,表示图片URL需要满足缓存条件后才会转换.</p>
               </FormRow>
               <FormRow title="可转换的最小尺寸">
                 <div className="ui fields inline">
@@ -264,7 +264,7 @@ export function ClusterSettingsWebpPage() {
                     </Select>
                   </div>
                 </div>
-                <p className="comment">不低于此尺寸的图像文件才会转换。</p>
+                <p className="comment">不低于此尺寸的图像文件才会转换.</p>
               </FormRow>
               <FormRow title="可转换的最大尺寸">
                 <div className="ui fields inline">
@@ -286,7 +286,7 @@ export function ClusterSettingsWebpPage() {
                     </Select>
                   </div>
                 </div>
-                <p className="comment">不高于此尺寸的图像文件才会转换。</p>
+                <p className="comment">不高于此尺寸的图像文件才会转换.</p>
               </FormRow>
             </>
           ) : null}
@@ -343,7 +343,7 @@ export function ClusterSettingsServicesPage() {
         <FormTable>
           <FormRow title="自动加入Systemd服务">
             <Checkbox label="" checked={systemdIsOn} onChange={setSystemdIsOn} />
-            <p className="comment">加入后可以利用systemd对节点进程进行管理，并可自动随开机启动。</p>
+            <p className="comment">加入后可以利用systemd对节点进程进行管理,并可自动随开机启动.</p>
           </FormRow>
         </FormTable>
         <SubmitButton submitting={submitting} />
@@ -387,11 +387,11 @@ export function ClusterSettingsServicesStatusPage() {
   return (
     <ClusterSettingsLayout clusterId={clusterId} activePath="/clusters/cluster/settings/services">
       <PolicyMenu clusterId={clusterId} active="status" />
-      {isRequesting ? <div className="ui message">正在节点服务状态检测中，请稍候...</div> : null}
+      {isRequesting ? <div className="ui message">正在节点服务状态检测中,请稍候...</div> : null}
       {!isRequesting ? (
         <div>
           {results.length === 0 ? (
-            <div>暂时还没有节点。</div>
+            <div>暂时还没有节点.</div>
           ) : (
             <div>
               <div className="margin" />
@@ -548,7 +548,7 @@ export function ClusterSettingsDdosProtectionPage() {
         <FormTable>
           <FormRow title="启用DDoS防护">
             <Checkbox label="" checked={tcp.isOn} onChange={(value) => updateTcp({ isOn: value })} />
-            <p className="comment">选中后，表示在当前集群节点上启用TCP层面的DDoS防护。</p>
+            <p className="comment">选中后,表示在当前集群节点上启用TCP层面的DDoS防护.</p>
           </FormRow>
           {tcp.isOn ? (
             <>
@@ -559,7 +559,7 @@ export function ClusterSettingsDdosProtectionPage() {
                   value={String(tcp.maxConnections)}
                   onChange={(event) => updateTcp({ maxConnections: Number(event.target.value) || 0 })}
                 />
-                <p className="comment">0表示不限制。</p>
+                <p className="comment">0表示不限制.</p>
               </FormRow>
               <FormRow title="单IP最大连接数">
                 <TextInput
@@ -576,7 +576,7 @@ export function ClusterSettingsDdosProtectionPage() {
                   value={String(tcp.newConnectionsRate)}
                   onChange={(event) => updateTcp({ newConnectionsRate: Number(event.target.value) || 0 })}
                 />
-                <p className="comment">0表示不限制。</p>
+                <p className="comment">0表示不限制.</p>
               </FormRow>
               <FormRow title="分钟级超限拦截时间">
                 <TextInput
@@ -585,7 +585,7 @@ export function ClusterSettingsDdosProtectionPage() {
                   value={String(tcp.newConnectionsRateBlockTimeout)}
                   onChange={(event) => updateTcp({ newConnectionsRateBlockTimeout: Number(event.target.value) || 0 })}
                 />
-                <p className="comment">单位为秒。</p>
+                <p className="comment">单位为秒.</p>
               </FormRow>
               <FormRow title="单IP每秒新连接数">
                 <TextInput
@@ -602,14 +602,14 @@ export function ClusterSettingsDdosProtectionPage() {
                   value={String(tcp.newConnectionsSecondlyRateBlockTimeout)}
                   onChange={(event) => updateTcp({ newConnectionsSecondlyRateBlockTimeout: Number(event.target.value) || 0 })}
                 />
-                <p className="comment">单位为秒。</p>
+                <p className="comment">单位为秒.</p>
               </FormRow>
               <FormRow title="IP白名单">
                 <textarea rows={4} placeholder="每行一个IP" value={allowIPs} onChange={(event) => setAllowIPs(event.target.value)} />
               </FormRow>
               <FormRow title="仅允许访问的端口">
                 <TextInput type="text" placeholder="80,443" value={ports} onChange={(event) => setPorts(event.target.value)} />
-                <p className="comment">多个端口使用英文逗号分隔。</p>
+                <p className="comment">多个端口使用英文逗号分隔.</p>
               </FormRow>
             </>
           ) : null}
@@ -654,8 +654,8 @@ export function ClusterSettingsDdosStatusPage() {
           状态
         </a>
       </div>
-      {isLoading ? <div className="ui message">检查中，请耐心等待完成...</div> : null}
-      {!isLoading && results.length === 0 ? <p className="comment">当前集群下暂时还没有节点。</p> : null}
+      {isLoading ? <div className="ui message">检查中,请耐心等待完成...</div> : null}
+      {!isLoading && results.length === 0 ? <p className="comment">当前集群下暂时还没有节点.</p> : null}
       {results.length > 0 ? (
         <table className="ui table selectable">
           <thead>

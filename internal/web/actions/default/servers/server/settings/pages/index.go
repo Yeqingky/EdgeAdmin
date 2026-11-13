@@ -79,17 +79,17 @@ func (this *IndexAction) RunPost(params struct {
 		for _, page := range pages {
 			err = page.Init()
 			if err != nil {
-				this.Fail("配置校验失败：" + err.Error())
+				this.Fail("配置校验失败:" + err.Error())
 				return
 			}
 
 			// check url
 			if page.BodyType == serverconfigs.HTTPPageBodyTypeURL && !urlReg.MatchString(page.URL) {
-				this.Fail("自定义页面中 '" + page.URL + "' 不是一个正确的URL，请进行修改")
+				this.Fail("自定义页面中 '" + page.URL + "' 不是一个正确的URL,请进行修改")
 				return
 			}
 			if page.BodyType == serverconfigs.HTTPPageBodyTypeRedirectURL && !urlReg.MatchString(page.URL) {
-				this.Fail("自定义页面中 '" + page.URL + "' 不是一个正确的URL，请进行修改")
+				this.Fail("自定义页面中 '" + page.URL + "' 不是一个正确的URL,请进行修改")
 				return
 			}
 		}
@@ -106,28 +106,28 @@ func (this *IndexAction) RunPost(params struct {
 
 		err = shutdownConfig.Init()
 		if err != nil {
-			this.Fail("配置校验失败：" + err.Error())
+			this.Fail("配置校验失败:" + err.Error())
 			return
 		}
 
 		if shutdownConfig.BodyType == serverconfigs.HTTPPageBodyTypeURL {
 			if len(shutdownConfig.URL) > 512 {
-				this.Fail("临时关闭页面中URL过长，不能超过512字节")
+				this.Fail("临时关闭页面中URL过长,不能超过512字节")
 				return
 			}
 
 			if shutdownConfig.IsOn /** 只有启用的时候才校验 **/ && !urlReg.MatchString(shutdownConfig.URL) {
-				this.Fail("临时关闭页面中 '" + shutdownConfig.URL + "' 不是一个正确的URL，请进行修改")
+				this.Fail("临时关闭页面中 '" + shutdownConfig.URL + "' 不是一个正确的URL,请进行修改")
 				return
 			}
 		} else if shutdownConfig.BodyType == serverconfigs.HTTPPageBodyTypeRedirectURL {
 			if len(shutdownConfig.URL) > 512 {
-				this.Fail("临时关闭页面中URL过长，不能超过512字节")
+				this.Fail("临时关闭页面中URL过长,不能超过512字节")
 				return
 			}
 
 			if shutdownConfig.IsOn /** 只有启用的时候才校验 **/ && !urlReg.MatchString(shutdownConfig.URL) {
-				this.Fail("临时关闭页面中 '" + shutdownConfig.URL + "' 不是一个正确的URL，请进行修改")
+				this.Fail("临时关闭页面中 '" + shutdownConfig.URL + "' 不是一个正确的URL,请进行修改")
 				return
 			}
 		} else if shutdownConfig.Body == serverconfigs.HTTPPageBodyTypeHTML {

@@ -24,7 +24,7 @@ Vue.component("download-link", {
 			} else {
 				let e = document.getElementById(this.vElement)
 				if (e == null) {
-					// 不提示错误，因为此时可能页面未加载完整
+					// 不提示错误,因为此时可能页面未加载完整
 					return
 				}
 				text = e.innerText

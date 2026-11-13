@@ -95,7 +95,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 		for _, listen := range listens {
 			err := listen.Init()
 			if err != nil {
-				this.Fail("校验配置失败：" + configutils.QuoteIP(listen.Host) + ":" + listen.PortRange + ": " + err.Error())
+				this.Fail("校验配置失败:" + configutils.QuoteIP(listen.Host) + ":" + listen.PortRange + ": " + err.Error())
 				return
 			}
 			rpcAddresses = append(rpcAddresses, listen.Addresses()...)
@@ -104,12 +104,12 @@ func (this *CreatePopupAction) RunPost(params struct {
 		for _, listen := range restListens {
 			err := listen.Init()
 			if err != nil {
-				this.Fail("校验配置失败：" + configutils.QuoteIP(listen.Host) + ":" + listen.PortRange + ": " + err.Error())
+				this.Fail("校验配置失败:" + configutils.QuoteIP(listen.Host) + ":" + listen.PortRange + ": " + err.Error())
 				return
 			}
 			for _, address := range listen.Addresses() {
 				if lists.ContainsString(rpcAddresses, address) {
-					this.Fail("HTTP API地址 '" + address + "' 和 GRPC地址冲突，请修改后提交")
+					this.Fail("HTTP API地址 '" + address + "' 和 GRPC地址冲突,请修改后提交")
 					return
 				}
 			}

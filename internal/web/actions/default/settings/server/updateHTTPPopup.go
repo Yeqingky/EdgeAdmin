@@ -43,7 +43,7 @@ func (this *UpdateHTTPPopupAction) RunPost(params struct {
 
 	serverConfig, err := adminserverutils.LoadServerConfig()
 	if err != nil {
-		this.Fail("保存失败：" + err.Error())
+		this.Fail("保存失败:" + err.Error())
 	}
 
 	serverConfig.Http.On = params.IsOn
@@ -63,7 +63,7 @@ func (this *UpdateHTTPPopupAction) RunPost(params struct {
 
 	err = adminserverutils.WriteServerConfig(serverConfig)
 	if err != nil {
-		this.Fail("保存失败：" + err.Error())
+		this.Fail("保存失败:" + err.Error())
 	}
 
 	this.Success()

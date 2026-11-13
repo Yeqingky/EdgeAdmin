@@ -67,7 +67,7 @@ func (this *SettingAction) RunPost(params struct {
 
 	err = reverseProxyConfig.Init(context.TODO())
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 	}
 
 	if reverseProxyConfig.ConnTimeout == nil {

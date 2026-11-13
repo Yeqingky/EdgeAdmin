@@ -33,7 +33,7 @@ export function ServerDeletePage() {
   })
 
   if (serverId <= 0) {
-    return <div className="ui negative message">请先在网站列表中选择要删除的网站。</div>
+    return <div className="ui negative message">请先在网站列表中选择要删除的网站.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -46,7 +46,7 @@ export function ServerDeletePage() {
   const menu: LeftMenuItem[] = [{ name: '删除网站', url: `/servers/server/delete?serverId=${serverId}`, isActive: true }]
 
   async function removeServer() {
-    if (!(await confirm({ message: '确定要删除当前网站吗？请慎重操作，删除后无法恢复！', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除当前网站吗?请慎重操作,删除后无法恢复!', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate()
@@ -58,7 +58,7 @@ export function ServerDeletePage() {
       <ServerPageLayout menu={menu}>
         <div style={{ maxWidth: '40em' }}>
           <div className="ui message warning">
-            请慎重操作，删除后无法恢复！当前网站：{server.name}
+            请慎重操作,删除后无法恢复!当前网站:{server.name}
           </div>
           <button
             className={`ui button red large fluid${remove.isPending ? ' loading disabled' : ''}`}

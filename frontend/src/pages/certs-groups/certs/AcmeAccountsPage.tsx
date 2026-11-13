@@ -52,7 +52,7 @@ export function AcmeAccountsPage() {
   const data = query.data
 
   async function deleteAccount(account: AcmeAccountRow) {
-    if (!(await confirm({ message: '确定要删除此账号吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此账号吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(account.id)
@@ -74,7 +74,7 @@ export function AcmeAccountsPage() {
         </a>
       </div>
 
-      {data.accounts.length === 0 ? <p className="comment">暂时还没有服务商账号。</p> : null}
+      {data.accounts.length === 0 ? <p className="comment">暂时还没有服务商账号.</p> : null}
 
       {data.accounts.length > 0 ? (
         <table className="ui table selectable celled">
@@ -218,7 +218,7 @@ export function AcmeAccountCreateForm({ providerCode: initialCode = '', onDone }
             <td>账号名称 *</td>
             <td>
               <input type="text" maxLength={50} value={name} onChange={(event) => setName(event.target.value)} />
-              <p className="comment">为当前账号起一个容易识别的名称。</p>
+              <p className="comment">为当前账号起一个容易识别的名称.</p>
             </td>
           </tr>
           <tr>

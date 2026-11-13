@@ -108,7 +108,7 @@ function FastcgiEditor({ state, onClose, onSaved }: {
                 value={String(editor.poolSize)}
                 onChange={(event) => update({ poolSize: Number(event.target.value) || 0 })}
               />
-              <p className="comment">0表示不使用连接池。</p>
+              <p className="comment">0表示不使用连接池.</p>
             </td>
           </tr>
           <tr>
@@ -127,7 +127,7 @@ function FastcgiEditor({ state, onClose, onSaved }: {
             <td>PathInfo规则</td>
             <td>
               <input type="text" value={editor.pathInfoPattern} onChange={(event) => update({ pathInfoPattern: event.target.value })} />
-              <p className="comment">用来识别PathInfo的正则表达式，留空表示不识别。</p>
+              <p className="comment">用来识别PathInfo的正则表达式,留空表示不识别.</p>
             </td>
           </tr>
           <tr>

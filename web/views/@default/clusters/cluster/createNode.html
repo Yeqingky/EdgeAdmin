@@ -32,7 +32,7 @@
 				<td>IP地址 *</td>
 				<td>
 					<node-ip-addresses-box></node-ip-addresses-box>
-                    <p class="comment">用于访问节点和域名解析等<span v-if="defaultIP.length > 0"><strong>，如果没有填写默认为{{defaultIP}}</strong></span>。</p>
+                    <p class="comment">用于访问节点和域名解析等<span v-if="defaultIP.length > 0"><strong>,如果没有填写默认为{{defaultIP}}</strong></span>.</p>
 				</td>
 			</tr>
 			<tr v-if="dnsRoutes.length > 0">
@@ -40,21 +40,21 @@
 				<td>
 					<input type="hidden" name="dnsDomainId" :value="dnsDomainId"/>
 					<dns-route-selector :v-all-routes="dnsRoutes"></dns-route-selector>
-					<p class="comment">当前节点对应的DNS线路，可用线路是根据集群设置的域名获取的，注意DNS服务商可能对这些线路有其他限制。</p>
+					<p class="comment">当前节点对应的DNS线路,可用线路是根据集群设置的域名获取的,注意DNS服务商可能对这些线路有其他限制.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>所属分组</td>
 				<td>
 					<node-group-selector :v-cluster-id="clusterId"></node-group-selector>
-                    <p class="comment">用来筛选节点。</p>
+                    <p class="comment">用来筛选节点.</p>
 				</td>
 			</tr>
             <tr>
                 <td>所属区域</td>
                 <td>
                     <node-region-selector></node-region-selector>
-                    <p class="comment">设置区域后可以根据区域进行流量统计和计费。</p>
+                    <p class="comment">设置区域后可以根据区域进行流量统计和计费.</p>
                 </td>
             </tr>
             <tr>
@@ -89,14 +89,14 @@
 				<td>SSH主机地址</td>
 				<td>
 					<input type="text" name="sshHost" maxlength="64"/>
-					<p class="comment">比如192.168.1.100，用于远程安装节点应用程序。</p>
+					<p class="comment">比如192.168.1.100,用于远程安装节点应用程序.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>SSH主机端口</td>
 				<td>
 					<input type="text" name="sshPort" maxlength="5"/>
-					<p class="comment">常见的比如22。</p>
+					<p class="comment">常见的比如22.</p>
 				</td>
 			</tr>
 			<tr>
@@ -128,7 +128,7 @@
                             <div v-if="node.addresses != null && node.addresses.length > 1" style="margin-top: 1em">
                                 <a href="" class="ui label small basic" v-for="addr in node.addresses" title="点击使用" @click.prevent="selectSSHHost(addr)">{{addr}}</a>
                             </div>
-                            <p class="comment">比如192.168.1.100，用于远程安装节点应用程序。</p>
+                            <p class="comment">比如192.168.1.100,用于远程安装节点应用程序.</p>
                         </td>
                     </tr>
                     <tr>
@@ -152,7 +152,7 @@
                     <div v-if="installStatus.isRunning" class="blue">安装中...</div>
                     <div v-if="installStatus.isFinished">
                         <span v-if="installStatus.isOk" class="green">已安装成功</span>
-                        <span v-if="!installStatus.isOk" class="red">安装过程中发生错误：{{installStatus.error}}</span>
+                        <span v-if="!installStatus.isOk" class="red">安装过程中发生错误:{{installStatus.error}}</span>
                     </div>
                 </div>
 
@@ -164,13 +164,13 @@
 
         <!-- 手动安装 -->
         <div v-if="installMethod == 'manual'">
-            <div class="row">上传边缘节点程序到服务器并解压，然后在边缘节点安装目录下，复制<code-label>configs/api_node.template.yaml</code-label>为<code-label>configs/api_node.yaml</code-label>，修改文件里面的内容为以下内容：</div>
+            <div class="row">上传边缘节点程序到服务器并解压,然后在边缘节点安装目录下,复制<code-label>configs/api_node.template.yaml</code-label>为<code-label>configs/api_node.yaml</code-label>,修改文件里面的内容为以下内容:</div>
             <div class="margin"></div>
             <source-code-box id="rpc-code" type="text/yaml">rpc.endpoints: [ {{apiEndpoints}} ]
 nodeId: "{{node.uniqueId}}"
 secret: "{{node.secret}}"</source-code-box>
             <div class="margin"></div>
-            <div class="row">然后再使用<code-label>bin/edge-node start</code-label>命令启动节点。</div>
+            <div class="row">然后再使用<code-label>bin/edge-node start</code-label>命令启动节点.</div>
             <div class="margin"></div>
 
             <div v-if="installerFiles != null && installerFiles.length > 0">
@@ -206,8 +206,8 @@ secret: "{{node.secret}}"</source-code-box>
     <!-- 完成 -->
     <div v-show="step == 'finish'">
         <div>
-            <div style="text-align: center; font-size: 1.4em; margin-top: 2.4em" v-if="isInstalled"><span class="green">"{{node.name}}"节点已被创建并安装成功。</span></div>
-            <div style="text-align: center; font-size: 1.4em; margin-top: 2.4em" v-if="!isInstalled"><span class="green">"{{node.name}}"节点已创建成功。</span></div>
+            <div style="text-align: center; font-size: 1.4em; margin-top: 2.4em" v-if="isInstalled"><span class="green">"{{node.name}}"节点已被创建并安装成功.</span></div>
+            <div style="text-align: center; font-size: 1.4em; margin-top: 2.4em" v-if="!isInstalled"><span class="green">"{{node.name}}"节点已创建成功.</span></div>
             <div style="text-align: center; margin-top: 3em">
                 <a :href="'/clusters/cluster/node?nodeId=' + nodeId + '&clusterId=' + clusterId" class="ui button primary" type="button">现在进入节点详情<i class="ui icon long arrow alternate right"></i></a>
             </div>

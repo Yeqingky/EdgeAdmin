@@ -65,7 +65,7 @@ export function NodeInstallPage() {
     mutationFn: () => postForm('/clusters/cluster/node/install', { nodeId }),
     onSuccess: async () => {
       setInstalling(true)
-      toast('已经开始安装，请稍候...')
+      toast('已经开始安装,请稍候...')
       await refresh()
     },
     onError: (error: Error) => toast(error.message, 'error'),
@@ -80,7 +80,7 @@ export function NodeInstallPage() {
   })
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -97,7 +97,7 @@ export function NodeInstallPage() {
   async function toggleInstalled(isInstalled: boolean) {
     if (
       !(await confirm({
-        message: `确定要将当前节点修改为${isInstalled ? '已安装' : '未安装'}状态？`,
+        message: `确定要将当前节点修改为${isInstalled ? '已安装' : '未安装'}状态?`,
         confirmText: '确定',
       }))
     ) {
@@ -124,16 +124,16 @@ export function NodeInstallPage() {
         <div>
           <div>
             <span className="red">
-              在当前节点完成安装前，相关DNS解析记录将不会生效，
+              在当前节点完成安装前,相关DNS解析记录将不会生效,
               <a href="" onClick={(event) => { event.preventDefault(); void toggleInstalled(true) }}>
                 已完成安装
               </a>
-              。
+              .
             </span>
             <div className="ui divider" />
           </div>
 
-          <h4>方法1：通过SSH自动安装</h4>
+          <h4>方法1:通过SSH自动安装</h4>
 
           <table className="ui table definition selectable">
             <tbody>
@@ -165,7 +165,7 @@ export function NodeInstallPage() {
               {installStatus.isRunning ? <div className="blue">安装中...</div> : null}
               {installStatus.isFinished ? (
                 <div>
-                  {installStatus.isOk ? <span className="green">已安装成功</span> : <span className="red">安装过程中发生错误：{installStatus.error}</span>}
+                  {installStatus.isOk ? <span className="green">已安装成功</span> : <span className="red">安装过程中发生错误:{installStatus.error}</span>}
                 </div>
               ) : null}
             </div>
@@ -181,7 +181,7 @@ export function NodeInstallPage() {
             </button>
           )}
 
-          <h4>方法2：手动安装</h4>
+          <h4>方法2:手动安装</h4>
           <table className="ui table definition selectable">
             <tbody>
               {data.installerFiles && data.installerFiles.length > 0 ? (
@@ -229,7 +229,7 @@ export function NodeInstallPage() {
                 <td>
                   <pre style={{ background: '#f7f7f7', padding: '1em', overflowX: 'auto' }}>{configContent}</pre>
                   <p className="comment">
-                    手动替换edge-node安装目录下的<code>configs/api_node.yaml</code>文件，然后重新启动生效；如果此文件不存在，则需要创建。
+                    手动替换edge-node安装目录下的<code>configs/api_node.yaml</code>文件,然后重新启动生效;如果此文件不存在,则需要创建.
                   </p>
                 </td>
               </tr>
@@ -269,7 +269,7 @@ export function NodeInstallPage() {
                 <td className="title">配置内容</td>
                 <td>
                   <pre style={{ background: '#f7f7f7', padding: '1em', overflowX: 'auto' }}>{configContent}</pre>
-                  <p className="comment">每个节点的配置文件内容均不相同，不能混用。</p>
+                  <p className="comment">每个节点的配置文件内容均不相同,不能混用.</p>
                 </td>
               </tr>
               <tr>
@@ -285,7 +285,7 @@ export function NodeInstallPage() {
             </tbody>
           </table>
 
-          <div className="ui message success">当前节点为已安装状态。</div>
+          <div className="ui message success">当前节点为已安装状态.</div>
           <a href="" onClick={(event) => { event.preventDefault(); void toggleInstalled(false) }}>
             [重新安装]
           </a>
@@ -373,7 +373,7 @@ function NodeSSHModal({ nodeId, onClose, onSaved }: { nodeId: number; onClose: (
               <td>SSH主机端口 *</td>
               <td>
                 <input type="text" maxLength={5} style={{ width: '6em' }} value={port} onChange={(event) => setPort(event.target.value)} />
-                <p className="comment">比如22。</p>
+                <p className="comment">比如22.</p>
               </td>
             </tr>
             <tr>

@@ -92,7 +92,7 @@ func (this *UpdatePopupAction) RunPost(params struct {
 			_, err = ssh.ParsePrivateKey([]byte(params.PrivateKey))
 		}
 		if err != nil {
-			this.Fail("私钥验证失败，请检查格式：" + err.Error())
+			this.Fail("私钥验证失败,请检查格式:" + err.Error())
 			return
 		}
 	default:

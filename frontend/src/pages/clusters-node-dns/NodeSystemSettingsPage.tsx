@@ -44,7 +44,7 @@ export function NodeSystemSettingsPage() {
   }, [query.data, initialized])
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isError) {
     return <div className="ui negative message">加载失败</div>
@@ -99,7 +99,7 @@ export function NodeSystemSettingsPage() {
         <FormTable>
           <FormRow title="CPU线程数">
             <input type="text" maxLength={4} style={{ width: '5em' }} value={maxCPU} onChange={(event) => setMaxCPU(event.target.value)} />
-            <p className="comment">当前节点可以使用的最多的CPU线程数，如果为0则默认为总的CPU线程数。</p>
+            <p className="comment">当前节点可以使用的最多的CPU线程数,如果为0则默认为总的CPU线程数.</p>
           </FormRow>
           {isPlus ? (
             <>
@@ -111,12 +111,12 @@ export function NodeSystemSettingsPage() {
                     setBypassMobile(checked ? '17' : '0')
                   }}
                 />
-                <p className="comment">选中后，可优化移动网络访问成功率，对于正常站点，会增加访问延迟，节点需安装nftables。</p>
+                <p className="comment">选中后,可优化移动网络访问成功率,对于正常站点,会增加访问延迟,节点需安装nftables.</p>
               </FormRow>
               {bypassChecked ? (
-                <FormRow title="BYPASS 移动，窗口大小">
+                <FormRow title="BYPASS 移动,窗口大小">
                   <input type="text" style={{ width: '6em' }} value={bypassMobile} onChange={(event) => setBypassMobile(event.target.value)} />
-                  <p className="comment">TCP接收窗口大小，默认值17。</p>
+                  <p className="comment">TCP接收窗口大小,默认值17.</p>
                 </FormRow>
               ) : null}
             </>
@@ -131,7 +131,7 @@ export function NodeSystemSettingsPage() {
               <option value="cgo">CGO</option>
               <option value="goNative">Go原生</option>
             </Select>
-            <p className="comment">边缘节点使用的DNS解析库。修改此项配置后，需要重启节点进程才会生效。</p>
+            <p className="comment">边缘节点使用的DNS解析库.修改此项配置后,需要重启节点进程才会生效.</p>
           </FormRow>
         </FormTable>
 
@@ -139,7 +139,7 @@ export function NodeSystemSettingsPage() {
         <FormTable>
           <FormRow title="API节点地址">
             <ApiNodeAddressesEditor value={apiNodeAddrs} onChange={setApiNodeAddrs} />
-            <p className="comment">当前节点单独使用的API节点设置。</p>
+            <p className="comment">当前节点单独使用的API节点设置.</p>
           </FormRow>
         </FormTable>
 

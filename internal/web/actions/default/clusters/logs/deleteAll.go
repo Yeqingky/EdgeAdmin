@@ -24,7 +24,7 @@ func (this *DeleteAllAction) RunPost(params struct {
 }) {
 	defer this.CreateLogInfo(codes.NodeLog_LogDeleteNodeLogsBatch)
 
-	// 目前仅允许通过关键词删除，防止误删
+	// 目前仅允许通过关键词删除,防止误删
 	if len(params.Keyword) == 0 {
 		this.Fail("目前仅允许通过关键词删除")
 		return

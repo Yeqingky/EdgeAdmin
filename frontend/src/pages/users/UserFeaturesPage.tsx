@@ -29,7 +29,7 @@ export function UserFeaturesPage() {
   }, [query.data])
 
   if (userId <= 0) {
-    return <div className="ui negative message">缺少userId参数。</div>
+    return <div className="ui negative message">缺少userId参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />

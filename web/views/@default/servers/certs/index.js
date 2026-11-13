@@ -23,7 +23,7 @@ Tea.context(function () {
 	// 删除证书
 	this.deleteCert = function (certId) {
 		let that = this
-		teaweb.confirm("确定要删除此证书吗？", function () {
+		teaweb.confirm("确定要删除此证书吗?", function () {
 			that.$post("/servers/certs/delete")
 				.params({
 					certId: certId

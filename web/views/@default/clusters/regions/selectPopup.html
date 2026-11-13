@@ -11,10 +11,10 @@
 			<td>
 				<div v-if="regions.length > 0">
 					<a href="" class="ui label small basic" v-for="region in regions" :class="{blue:region.id == regionId}" style="margin-bottom:0.5em" @click.prevent="selectRegion(region)">{{region.name}}</a>
-					<p class="comment">点击可已选中要使用的区域。</p>
+					<p class="comment">点击可已选中要使用的区域.</p>
 				</div>
 				<div v-else>
-					<p class="comment">暂时还没有可以使用的区域。</p>
+					<p class="comment">暂时还没有可以使用的区域.</p>
 				</div>
 			</td>
 		</tr>

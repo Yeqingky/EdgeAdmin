@@ -156,7 +156,7 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
   }, [query.data, initialized, mode])
 
   if (mode === 'update' && providerId <= 0) {
-    return <div className="ui negative message">缺少服务商参数。</div>
+    return <div className="ui negative message">缺少服务商参数.</div>
   }
   if (query.isError) {
     return <div className="ui negative message">加载失败</div>
@@ -218,7 +218,7 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
         <FormTable>
           <FormRow title="账号说明 *">
             <input type="text" maxLength={50} value={name} onChange={(event) => setName(event.target.value)} />
-            <p className="comment">用来方便区分不同的账号。</p>
+            <p className="comment">用来方便区分不同的账号.</p>
           </FormRow>
           <FormRow title="服务商厂家 *">
             {mode === 'create' ? (
@@ -232,14 +232,14 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
                 </Select>
                 {typeDescription ? (
                   <p className="comment">
-                    {typeDescription} 系统会保留原有域名下的域名解析，请放心使用。
+                    {typeDescription} 系统会保留原有域名下的域名解析,请放心使用.
                   </p>
                 ) : null}
               </>
             ) : (
               <span>
                 {data.provider?.typeName}
-                <p className="comment">{typeDescription}创建后无法修改此选项。</p>
+                <p className="comment">{typeDescription}创建后无法修改此选项.</p>
               </span>
             )}
           </FormRow>
@@ -259,13 +259,13 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
               </FormRow>
               {apiType === 'tencentDNS' ? (
                 <>
-                  {textField('SecretId *', 'paramDNSPodAccessKeyId', fields, setField, '在DNSPod控制台“账号中心--API密钥”中获取。')}
-                  {textField('SecretKey *', 'paramDNSPodAccessKeySecret', fields, setField, '在DNSPod控制台“账号中心--API密钥”中获取。', true)}
+                  {textField('SecretId *', 'paramDNSPodAccessKeyId', fields, setField, '在DNSPod控制台"账号中心--API密钥"中获取.')}
+                  {textField('SecretKey *', 'paramDNSPodAccessKeySecret', fields, setField, '在DNSPod控制台"账号中心--API密钥"中获取.', true)}
                 </>
               ) : (
                 <>
-                  {textField('密钥ID *', 'paramDNSPodId', fields, setField, '在DNSPod控制台“账号中心--API密钥--DNSPod Token”中获取。')}
-                  {textField('密钥Token *', 'paramDNSPodToken', fields, setField, '在DNSPod控制台“账号中心--API密钥--DNSPod Token”中获取。', true)}
+                  {textField('密钥ID *', 'paramDNSPodId', fields, setField, '在DNSPod控制台"账号中心--API密钥--DNSPod Token"中获取.')}
+                  {textField('密钥Token *', 'paramDNSPodToken', fields, setField, '在DNSPod控制台"账号中心--API密钥--DNSPod Token"中获取.', true)}
                   <FormRow title="区域">
                     <Select value={fields.paramDNSPodRegion || ''} onChange={(event) => setField('paramDNSPodRegion', event.target.value)}>
                       <option value="">中国站</option>
@@ -279,59 +279,59 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
 
           {type === 'alidns' ? (
             <>
-              {textField('AccessKeyId *', 'paramAliDNSAccessKeyId', fields, setField, '登录阿里云控制台 -- 在"访问控制"中创建和获取。')}
-              {textField('AccessKeySecret *', 'paramAliDNSAccessKeySecret', fields, setField, '登录阿里云控制台 -- 在"访问控制"中创建和获取。', true)}
-              {textField('区域ID', 'paramAliDNSRegionId', fields, setField, '阿里云产品所在区域代号，通常不需要填写。')}
+              {textField('AccessKeyId *', 'paramAliDNSAccessKeyId', fields, setField, '登录阿里云控制台 -- 在"访问控制"中创建和获取.')}
+              {textField('AccessKeySecret *', 'paramAliDNSAccessKeySecret', fields, setField, '登录阿里云控制台 -- 在"访问控制"中创建和获取.', true)}
+              {textField('区域ID', 'paramAliDNSRegionId', fields, setField, '阿里云产品所在区域代号,通常不需要填写.')}
             </>
           ) : null}
 
           {type === 'huaweiDNS' ? (
             <>
-              {textField('AccessKeyId *', 'paramHuaweiAccessKeyId', fields, setField, '登录华为云控制台 -- 在"我的凭证 -- 访问密钥"中创建和获取。')}
-              {textField('AccessKeySecret *', 'paramHuaweiAccessKeySecret', fields, setField, '登录华为云控制台 -- 在"我的凭证 -- 访问密钥"中创建和获取。', true)}
-              {textField('终端节点', 'paramHuaweiEndpoint', fields, setField, '选填项。可以填写终端节点（Endpoint）区域代号或者域名。')}
+              {textField('AccessKeyId *', 'paramHuaweiAccessKeyId', fields, setField, '登录华为云控制台 -- 在"我的凭证 -- 访问密钥"中创建和获取.')}
+              {textField('AccessKeySecret *', 'paramHuaweiAccessKeySecret', fields, setField, '登录华为云控制台 -- 在"我的凭证 -- 访问密钥"中创建和获取.', true)}
+              {textField('终端节点', 'paramHuaweiEndpoint', fields, setField, '选填项.可以填写终端节点(Endpoint)区域代号或者域名.')}
             </>
           ) : null}
 
           {type === 'cloudFlare' ? (
             <>
-              {textField('API密钥 *', 'paramCloudFlareAPIKey', fields, setField, '在个人资料中的"API令牌"--"API密钥"--"Global API Key"中获取。', true)}
-              {textField('账号邮箱 *', 'paramCloudFlareEmail', fields, setField, '登录账号使用的邮箱。')}
+              {textField('API密钥 *', 'paramCloudFlareAPIKey', fields, setField, '在个人资料中的"API令牌"--"API密钥"--"Global API Key"中获取.', true)}
+              {textField('账号邮箱 *', 'paramCloudFlareEmail', fields, setField, '登录账号使用的邮箱.')}
             </>
           ) : null}
 
           {type === 'godaddy' ? (
             <>
-              {textField('Key *', 'paramGoDaddyKey', fields, setField, '可以在GoDaddy开发者中心创建，创建时Environment选择Production。')}
+              {textField('Key *', 'paramGoDaddyKey', fields, setField, '可以在GoDaddy开发者中心创建,创建时Environment选择Production.')}
               {textField('Secret *', 'paramGoDaddySecret', fields, setField, '', true)}
             </>
           ) : null}
 
           {type === 'cloudns' ? (
             <>
-              {textField('用户认证ID（auth-id）', 'paramClouDNSAuthId', fields, setField, '和子用户认证ID二选一。')}
-              {textField('子用户认证ID（sub-auth-id）', 'paramClouDNSSubAuthId', fields, setField, '和用户认证ID二选一。')}
-              {textField('认证密码 *（auth-password）', 'paramClouDNSAuthPassword', fields, setField, '', true)}
+              {textField('用户认证ID(auth-id)', 'paramClouDNSAuthId', fields, setField, '和子用户认证ID二选一.')}
+              {textField('子用户认证ID(sub-auth-id)', 'paramClouDNSSubAuthId', fields, setField, '和用户认证ID二选一.')}
+              {textField('认证密码 *(auth-password)', 'paramClouDNSAuthPassword', fields, setField, '', true)}
             </>
           ) : null}
 
           {type === 'dnscom' ? (
             <>
-              {textField('API Key *', 'paramDNSComKey', fields, setField, '在DNS.COM控制台账号中心--API设置中创建和查看。')}
-              {textField('API Secret *', 'paramDNSComSecret', fields, setField, '在DNS.COM控制台账号中心--API设置中创建和查看。', true)}
+              {textField('API Key *', 'paramDNSComKey', fields, setField, '在DNS.COM控制台账号中心--API设置中创建和查看.')}
+              {textField('API Secret *', 'paramDNSComSecret', fields, setField, '在DNS.COM控制台账号中心--API设置中创建和查看.', true)}
             </>
           ) : null}
 
           {type === 'dnsla' ? (
             <>
-              {textField('API ID *', 'paramDNSLaAPIId', fields, setField, '在DNS.LA控制台--账户信息中查看。')}
-              {textField('API密钥 *', 'paramDNSLaSecret', fields, setField, '在DNS.LA控制台--账户信息中查看。', true)}
+              {textField('API ID *', 'paramDNSLaAPIId', fields, setField, '在DNS.LA控制台--账户信息中查看.')}
+              {textField('API密钥 *', 'paramDNSLaSecret', fields, setField, '在DNS.LA控制台--账户信息中查看.', true)}
             </>
           ) : null}
 
           {type === 'volcEngine' ? (
             <>
-              {textField('Access Key ID *', 'paramVolcEngineAccessKeyId', fields, setField, '在火山引擎“访问控制--API访问密钥”中获取。')}
+              {textField('Access Key ID *', 'paramVolcEngineAccessKeyId', fields, setField, '在火山引擎"访问控制--API访问密钥"中获取.')}
               {textField('Secret Access Key *', 'paramVolcEngineAccessKeySecret', fields, setField, '', true)}
             </>
           ) : null}
@@ -340,17 +340,17 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
             <>
               {textField('Access Key ID *', 'paramAmazonRoute53AccessKeyId', fields, setField)}
               {textField('Secret Access Key *', 'paramAmazonRoute53AccessKeySecret', fields, setField, '', true)}
-              {textField('API区域', 'paramAmazonRoute53Region', fields, setField, '通常不需要填写。')}
+              {textField('API区域', 'paramAmazonRoute53Region', fields, setField, '通常不需要填写.')}
             </>
           ) : null}
 
           {type === 'azureDNS' ? (
             <>
-              {textField('订阅ID (Subscription ID) *', 'paramAzureDNSSubscriptionId', fields, setField, '可以在订阅（Subscriptions）服务中查看。')}
-              {textField('目录(租户) ID *', 'paramAzureDNSTenantId', fields, setField, '可以在应用注册（App registrations）中对应应用概述（Overview）中查看。')}
-              {textField('应用程序(客户端) ID *', 'paramAzureDNSClientId', fields, setField, '需要在应用注册（App registrations）中新注册应用程序获得。')}
+              {textField('订阅ID (Subscription ID) *', 'paramAzureDNSSubscriptionId', fields, setField, '可以在订阅(Subscriptions)服务中查看.')}
+              {textField('目录(租户) ID *', 'paramAzureDNSTenantId', fields, setField, '可以在应用注册(App registrations)中对应应用概述(Overview)中查看.')}
+              {textField('应用程序(客户端) ID *', 'paramAzureDNSClientId', fields, setField, '需要在应用注册(App registrations)中新注册应用程序获得.')}
               {textField('客户端密码值 *', 'paramAzureDNSClientSecret', fields, setField, '', true)}
-              {textField('资源组 *', 'paramAzureDNSResourceGroupName', fields, setField, '需要在对应资源组中添加角色分配。')}
+              {textField('资源组 *', 'paramAzureDNSResourceGroupName', fields, setField, '需要在对应资源组中添加角色分配.')}
             </>
           ) : null}
 
@@ -388,8 +388,8 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
 
           {type === 'customHTTP' ? (
             <>
-              {textField('HTTP URL *', 'paramCustomHTTPURL', fields, setField, 'HTTP URL完整地址，DNS所有操作都会以POST的方式转发到此地址。')}
-              {textField('私钥 *', 'paramCustomHTTPSecret', fields, setField, '通讯用的私钥，转发请求时会在Header中加入相关信息。')}
+              {textField('HTTP URL *', 'paramCustomHTTPURL', fields, setField, 'HTTP URL完整地址,DNS所有操作都会以POST的方式转发到此地址.')}
+              {textField('私钥 *', 'paramCustomHTTPSecret', fields, setField, '通讯用的私钥,转发请求时会在Header中加入相关信息.')}
             </>
           ) : null}
 
@@ -412,7 +412,7 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
                 <input type="text" maxLength={6} style={{ width: '6em' }} value={minTTL} onChange={(event) => setMinTTL(event.target.value)} />
                 <span className="ui label">秒</span>
               </div>
-              <p className="comment">生成的DNS时可以使用的最小TTL，请根据你选择的服务商和你在服务商中的账号等级进行填写；不填写或者0表示默认。</p>
+              <p className="comment">生成的DNS时可以使用的最小TTL,请根据你选择的服务商和你在服务商中的账号等级进行填写;不填写或者0表示默认.</p>
             </FormRow>
           ) : null}
         </FormTable>

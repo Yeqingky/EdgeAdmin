@@ -104,7 +104,7 @@ func (this *CreateIPPopupAction) RunPost(params struct {
 				}
 				_, ipFrom, ipTo, ok := utils.ParseIPValue(line)
 				if !ok {
-					this.FailField("ipData", "第"+types.String(index+1)+"行IP格式错误："+line)
+					this.FailField("ipData", "第"+types.String(index+1)+"行IP格式错误:"+line)
 					return
 				}
 				batchIPs = append(batchIPs, &ipData{

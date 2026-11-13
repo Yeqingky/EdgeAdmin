@@ -23,7 +23,7 @@ export function SelectCountriesPage() {
       <CountrySelectBody initialIds={initialIds} onSaved={setSelected} />
       {selected.length > 0 ? (
         <div className="ui message success">
-          已选择：
+          已选择:
           {selected.map((country) => (
             <span key={country.id} className="ui label small basic">
               {country.name}
@@ -46,7 +46,7 @@ export function SelectProvincesPage() {
       <ProvinceSelectBody initialIds={initialIds} onSaved={setSelected} />
       {selected.length > 0 ? (
         <div className="ui message success">
-          已选择：
+          已选择:
           {selected.map((province) => (
             <span key={province.id} className="ui label small basic">
               {province.name}

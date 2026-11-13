@@ -49,7 +49,7 @@
 
 <div class="margin"></div>
 
-<p class="comment" v-if="items.length == 0">暂时还没有IP。</p>
+<p class="comment" v-if="items.length == 0">暂时还没有IP.</p>
 
 <ip-list-table v-if="items.length > 0" :v-items="items" @update-item="updateItem" @delete-item="deleteItem" :v-keyword="keyword" :v-show-search-button="true" :v-total="totalItems"></ip-list-table>
 

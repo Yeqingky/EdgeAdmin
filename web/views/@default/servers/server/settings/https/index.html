@@ -9,10 +9,10 @@
 {$template "/left_menu_with_menu"}
 
 <div class="right-box with-menu">
-	<p class="comment">提醒：HTTP/2、证书等信息修改后，可能需要清空浏览器缓存后才能浏览效果。</p>
+	<p class="comment">提醒:HTTP/2,证书等信息修改后,可能需要清空浏览器缓存后才能浏览效果.</p>
 
     <div v-if="httpsConfig.isOn && missingCertServerNames != null && missingCertServerNames.length > 0" class="ui message warning">
-        警告：当前网站绑定的以下域名尚未配置证书，将无法通过HTTPS协议访问：{{missingCertServerNames.join("、")}} 。
+        警告:当前网站绑定的以下域名尚未配置证书,将无法通过HTTPS协议访问:{{missingCertServerNames.join(",")}} .
     </div>
 
 	<form method="post" class="ui form" data-tea-action="$" data-tea-success="success">
@@ -32,9 +32,9 @@
 				<tr>
 					<td class="title">绑定端口 *</td>
 					<td>
-                        <span class="red" v-if="httpsConfig.isOn && (httpsConfig.addresses == null || httpsConfig.addresses.length == 0)">还没有添加端口绑定，会导致HTTPS服务无法访问。</span>
+                        <span class="red" v-if="httpsConfig.isOn && (httpsConfig.addresses == null || httpsConfig.addresses.length == 0)">还没有添加端口绑定,会导致HTTPS服务无法访问.</span>
 						<network-addresses-box :v-server-type="serverType" :v-addresses="httpsConfig.addresses" :v-protocol="'https'"></network-addresses-box>
-                        <p class="comment"><span v-if="conflictingPorts.length > 0" class="red">配置错误：<span v-for="(port, index) in conflictingPorts">{{port}}<span v-if="index != conflictingPorts.length - 1">、</span></span><span v-if="conflictingPorts.length > 1">等</span>端口同HTTP设置的端口冲突，请删除HTTP或HTTPS中的相关端口。</span></p>
+                        <p class="comment"><span v-if="conflictingPorts.length > 0" class="red">配置错误:<span v-for="(port, index) in conflictingPorts">{{port}}<span v-if="index != conflictingPorts.length - 1">,</span></span><span v-if="conflictingPorts.length > 1">等</span>端口同HTTP设置的端口冲突,请删除HTTP或HTTPS中的相关端口.</span></p>
 					</td>
 				</tr>
 			</tbody>

@@ -12,7 +12,7 @@ Tea.context(function () {
 
 	this.deleteItem = function (itemId) {
 		let that = this
-		teaweb.confirm("确定要删除这个IP吗？", function () {
+		teaweb.confirm("确定要删除这个IP吗?", function () {
 			that.$post(".deleteIP")
 				.params({
 					"itemId": itemId

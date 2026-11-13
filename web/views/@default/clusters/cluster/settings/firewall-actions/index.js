@@ -21,7 +21,7 @@ Tea.context(function () {
 
     this.deleteAction = function (actionId) {
         let that = this
-        teaweb.confirm("确定要删除此动作吗？", function () {
+        teaweb.confirm("确定要删除此动作吗?", function () {
             that.$post(".delete")
                 .params({
                     actionId: actionId

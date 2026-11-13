@@ -73,14 +73,14 @@ export function RecoverPage() {
 
       {step === 'intro' ? (
         <div>
-          可以通过恢复模式重新设置系统的API节点。
+          可以通过恢复模式重新设置系统的API节点.
           <button className="ui button primary" style={{ marginTop: '10em' }} type="button" onClick={() => setStep('newAPI')}>开始 <ArrowRight size={14} /></button>
         </div>
       ) : null}
 
       {step === 'newAPI' ? (
         <div>
-          <p className="comment">输入一个可用的API节点信息：</p>
+          <p className="comment">输入一个可用的API节点信息:</p>
           <FormTable>
             <FormRow title="节点协议 *">
               <select className="ui dropdown" value={protocol} onChange={(event) => setProtocol(event.target.value)}>
@@ -101,7 +101,7 @@ export function RecoverPage() {
       {step === 'apiList' ? (
         <div>
           <table className="ui table selectable celled">
-            <thead><tr><th style={{ width: '50%' }}>原地址</th><th>新地址（留空表示不修改）</th></tr></thead>
+            <thead><tr><th style={{ width: '50%' }}>原地址</th><th>新地址(留空表示不修改)</th></tr></thead>
             <tbody>
               {(apiNode?.hosts || []).map((oldHost, index) => (
                 <tr key={oldHost}>
@@ -124,7 +124,7 @@ export function RecoverPage() {
         </div>
       ) : null}
 
-      {step === 'finish' ? <div>修改成功，请<a href="/">刷新</a>此页面后，进入系统。</div> : null}
+      {step === 'finish' ? <div>修改成功,请<a href="/">刷新</a>此页面后,进入系统.</div> : null}
     </div>
   )
 }

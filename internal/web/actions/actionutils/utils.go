@@ -62,9 +62,9 @@ func Fail(actionPtr actions.ActionWrapper, err error) {
 
 	_, _, isLocalAPI, issuesHTML := parseAPIErr(actionPtr, err)
 	if isLocalAPI && len(issuesHTML) > 0 {
-		actionPtr.Object().Fail(serverErrString + "（" + err.Error() + "；最近一次错误提示：" + issuesHTML + "）")
+		actionPtr.Object().Fail(serverErrString + "(" + err.Error() + ";最近一次错误提示:" + issuesHTML + ")")
 	} else {
-		actionPtr.Object().Fail(serverErrString + "（" + err.Error() + "）")
+		actionPtr.Object().Fail(serverErrString + "(" + err.Error() + ")")
 	}
 
 }
@@ -100,16 +100,16 @@ func FailPage(actionPtr actions.ActionWrapper, err error) {
 	<div style="background: #eee; border: 1px #ccc solid; padding: 10px; font-size: 12px; line-height: 1.8">
 	`
 		if apiNodeIsStarting { // API节点正在启动
-			html += "<div class=\"red\">API节点正在启动，请耐心等待完成"
+			html += "<div class=\"red\">API节点正在启动,请耐心等待完成"
 
 			if len(apiNodeProgress) > 0 {
-				html += "：" + apiNodeProgress + "（刷新当前页面查看最新状态）"
+				html += ":" + apiNodeProgress + "(刷新当前页面查看最新状态)"
 			}
 
 			html += "</div>"
 		} else {
 			html += serverErrString + `
-		<div>可以通过查看 <strong><em>$安装目录/logs/run.log</em></strong> 日志文件查看具体的错误提示。</div>
+		<div>可以通过查看 <strong><em>$安装目录/logs/run.log</em></strong> 日志文件查看具体的错误提示.</div>
 		<hr/>
 		<div class="red">Error: ` + err.Error() + `</div>`
 
@@ -225,7 +225,7 @@ func parseAPIErr(action actions.ActionWrapper, err error) (apiNodeIsStarting boo
 			issuesErr = json.Unmarshal(issuesData, &issueMaps)
 			if issuesErr == nil && len(issueMaps) > 0 {
 				var issueMap = issueMaps[0]
-				issuesHTML = "本地API节点启动错误：" + issueMap.GetString("message") + "，处理建议：" + issueMap.GetString("suggestion")
+				issuesHTML = "本地API节点启动错误:" + issueMap.GetString("message") + ",处理建议:" + issueMap.GetString("suggestion")
 			}
 		}
 	}

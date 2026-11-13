@@ -49,7 +49,7 @@ Vue.component("http-firewall-captcha-options-viewer", {
 				return v.code == that.options.captchaType
 			})
 			if (typeDef != null) {
-				summaryList.push("默认验证方式：" + typeDef.name)
+				summaryList.push("默认验证方式:" + typeDef.name)
 			}
 
 			if (this.options.captchaType == "default") {

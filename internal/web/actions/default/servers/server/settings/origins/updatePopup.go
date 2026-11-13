@@ -180,7 +180,7 @@ func (this *UpdatePopupAction) RunPost(params struct {
 		}
 		err = ossConfig.Init()
 		if err != nil {
-			this.Fail("校验OSS配置时出错：" + err.Error())
+			this.Fail("校验OSS配置时出错:" + err.Error())
 			return
 		}
 	} else { // 普通源站
@@ -198,7 +198,7 @@ func (this *UpdatePopupAction) RunPost(params struct {
 			}
 		}
 
-		addr = strings.ReplaceAll(addr, "：", ":")
+		addr = strings.ReplaceAll(addr, ":", ":")
 		addr = regexp.MustCompile(`\s+`).ReplaceAllString(addr, "")
 		portIndex := strings.LastIndex(addr, ":")
 		if portIndex < 0 {

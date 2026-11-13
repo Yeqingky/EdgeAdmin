@@ -98,9 +98,9 @@ Vue.component("http-cache-config-box", {
 			<td class="title">全局缓存策略</td>
 			<td>
 				<div v-if="vCachePolicy != null">{{vCachePolicy.name}} <link-icon :href="'/servers/components/cache/policy?cachePolicyId=' + vCachePolicy.id"></link-icon>
-					<p class="comment">使用当前网站所在集群的设置。</p>
+					<p class="comment">使用当前网站所在集群的设置.</p>
 				</div>
-				<span v-else class="red">当前集群没有设置缓存策略，当前配置无法生效。</span>
+				<span v-else class="red">当前集群没有设置缓存策略,当前配置无法生效.</span>
 			</td>
 		</tr>
 	</table>
@@ -123,14 +123,14 @@ Vue.component("http-cache-config-box", {
 				<td>缓存主域名</td>
 				<td>
 					<div v-show="!cacheConfig.key.isOn">默认 &nbsp; <a href="" @click.prevent="keyOptionsVisible = !keyOptionsVisible"><span class="small">[修改]</span></a></div>
-					<div v-show="cacheConfig.key.isOn">使用主域名：{{cacheConfig.key.scheme}}://{{cacheConfig.key.host}} &nbsp;  <a href="" @click.prevent="keyOptionsVisible = !keyOptionsVisible"><span class="small">[修改]</span></a></div>
+					<div v-show="cacheConfig.key.isOn">使用主域名:{{cacheConfig.key.scheme}}://{{cacheConfig.key.host}} &nbsp;  <a href="" @click.prevent="keyOptionsVisible = !keyOptionsVisible"><span class="small">[修改]</span></a></div>
 					<div v-show="keyOptionsVisible" style="margin-top: 1em">
 						<div class="ui divider"></div>
 						<table class="ui table definition">
 							<tr>
 								<td class="title">启用主域名</td>
 								<td><checkbox v-model="cacheConfig.key.isOn"></checkbox>
-									<p class="comment">启用主域名后，所有缓存键值中的协议和域名部分都会修改为主域名，用来实现缓存不区分域名。</p>
+									<p class="comment">启用主域名后,所有缓存键值中的协议和域名部分都会修改为主域名,用来实现缓存不区分域名.</p>
 								</td>
 							</tr>	
 							<tr v-show="cacheConfig.key.isOn">
@@ -147,7 +147,7 @@ Vue.component("http-cache-config-box", {
 											<input type="text" v-model="cacheConfig.key.host" placeholder="example.com" @keyup.enter="keyOptionsVisible = false" @keypress.enter.prevent="1"/>
 										</div>
 									</div>
-									<p class="comment">此域名<strong>必须</strong>是当前网站已绑定域名，在刷新缓存时也需要使用此域名。</p>
+									<p class="comment">此域名<strong>必须</strong>是当前网站已绑定域名,在刷新缓存时也需要使用此域名.</p>
 								</td>
 							</tr>
 						</table>
@@ -168,42 +168,42 @@ Vue.component("http-cache-config-box", {
 				<td>使用默认缓存条件</td>
 				<td>	
 					<checkbox v-model="enablePolicyRefs"></checkbox>
-					<p class="comment">选中后使用系统全局缓存策略中已经定义的默认缓存条件。</p>
+					<p class="comment">选中后使用系统全局缓存策略中已经定义的默认缓存条件.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>添加X-Cache报头</td>
 				<td>
 					<checkbox v-model="cacheConfig.addStatusHeader"></checkbox>
-					<p class="comment">选中后自动在响应报头中增加<code-label>X-Cache: BYPASS|MISS|HIT|PURGE</code-label>；在浏览器端查看X-Cache值时请先禁用浏览器缓存，避免影响观察。</p>
+					<p class="comment">选中后自动在响应报头中增加<code-label>X-Cache: BYPASS|MISS|HIT|PURGE</code-label>;在浏览器端查看X-Cache值时请先禁用浏览器缓存,避免影响观察.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>添加Age Header</td>
 				<td>
 					<checkbox v-model="cacheConfig.addAgeHeader"></checkbox>
-					<p class="comment">选中后自动在响应Header中增加<code-label>Age: [存活时间秒数]</code-label>。</p>
+					<p class="comment">选中后自动在响应Header中增加<code-label>Age: [存活时间秒数]</code-label>.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>支持源站控制有效时间</td>
 				<td>
 					<checkbox v-model="cacheConfig.enableCacheControlMaxAge"></checkbox>
-					<p class="comment">选中后表示支持源站在Header中设置的<code-label>Cache-Control: max-age=[有效时间秒数]</code-label>。</p>
+					<p class="comment">选中后表示支持源站在Header中设置的<code-label>Cache-Control: max-age=[有效时间秒数]</code-label>.</p>
 				</td>
 			</tr>
 			<tr>
 				<td class="color-border">允许PURGE</td>
 				<td>
 					<checkbox v-model="cacheConfig.purgeIsOn"></checkbox>
-					<p class="comment">允许使用PURGE方法清除某个URL缓存。</p>
+					<p class="comment">允许使用PURGE方法清除某个URL缓存.</p>
 				</td>
 			</tr>
 			<tr v-show="cacheConfig.purgeIsOn">
 				<td class="color-border">PURGE Key *</td>
 				<td>
 					<input type="text" maxlength="200" v-model="cacheConfig.purgeKey"/>
-					<p class="comment"><a href="" @click.prevent="generatePurgeKey">[随机生成]</a>。需要在PURGE方法调用时加入<code-label>X-Edge-Purge-Key: {{cacheConfig.purgeKey}}</code-label> Header。只能包含字符、数字、下划线。</p>
+					<p class="comment"><a href="" @click.prevent="generatePurgeKey">[随机生成]</a>.需要在PURGE方法调用时加入<code-label>X-Edge-Purge-Key: {{cacheConfig.purgeKey}}</code-label> Header.只能包含字符,数字,下划线.</p>
 				</td>
 			</tr>
 		</tbody>

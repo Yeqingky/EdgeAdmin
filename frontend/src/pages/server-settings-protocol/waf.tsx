@@ -43,10 +43,10 @@ interface WafIndexData {
 }
 
 const CAPTCHA_TYPES = [
-  { name: '验证码', code: 'default', description: '通过输入验证码来验证人机。' },
-  { name: '点击验证', code: 'oneClick', description: '通过点击界面元素来验证人机。' },
-  { name: '滑动解锁', code: 'slide', description: '通过滑动方块解锁来验证人机。' },
-  { name: '极验-行为验', code: 'geetest', description: '使用极验-行为验提供的人机验证方式。' },
+  { name: '验证码', code: 'default', description: '通过输入验证码来验证人机.' },
+  { name: '点击验证', code: 'oneClick', description: '通过点击界面元素来验证人机.' },
+  { name: '滑动解锁', code: 'slide', description: '通过滑动方块解锁来验证人机.' },
+  { name: '极验-行为验', code: 'geetest', description: '使用极验-行为验提供的人机验证方式.' },
 ]
 
 export function WafMenu({ serverId, firewallPolicyId, active }: { serverId: number; firewallPolicyId: number; active: string }) {
@@ -152,10 +152,10 @@ export function WafIndexPage() {
                   {data.firewallPolicy.modeInfo ? (
                     <span className="ui label tiny basic">{data.firewallPolicy.modeInfo.name}</span>
                   ) : null}
-                  <Comment>当前网站所在集群的设置。</Comment>
+                  <Comment>当前网站所在集群的设置.</Comment>
                 </div>
               ) : (
-                <span className="red">当前集群没有设置WAF策略，当前配置无法生效。</span>
+                <span className="red">当前集群没有设置WAF策略,当前配置无法生效.</span>
               )}
             </FormRow>
             <FormRow title="启用Web防火墙">
@@ -163,7 +163,7 @@ export function WafIndexPage() {
                 <input type="checkbox" checked={current.isOn} onChange={(event) => update('isOn', event.target.checked)} />
                 <label></label>
               </div>
-              <Comment>选中后，表示启用当前网站的WAF功能。</Comment>
+              <Comment>选中后,表示启用当前网站的WAF功能.</Comment>
             </FormRow>
             {current.isOn ? (
               <tr>
@@ -196,7 +196,7 @@ export function WafIndexPage() {
                   ))}
                 </Select>
                 {selectedCaptcha ? <Comment>{selectedCaptcha.description}</Comment> : null}
-                <Comment>你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证。</Comment>
+                <Comment>你需要在入站规则中添加规则集来决定哪些请求需要人机识别验证.</Comment>
               </FormRow>
               <FormRow title="启用系统全局规则">
                 <div className="ui checkbox">
@@ -207,7 +207,7 @@ export function WafIndexPage() {
                   />
                   <label></label>
                 </div>
-                <Comment>选中后，表示使用系统全局WAF策略中定义的规则。</Comment>
+                <Comment>选中后,表示使用系统全局WAF策略中定义的规则.</Comment>
               </FormRow>
             </tbody>
           ) : null}
@@ -391,12 +391,12 @@ export function WafGroupsPage() {
       </div>
       {!data.wafIsOn ? (
         <div className="ui message warning">
-          当前WAF未启用，设置将在
+          当前WAF未启用,设置将在
           <a href={`${buildSettingsURL('/waf', { serverId })}`}>[启用Web防火墙]</a>
-          后生效。
+          后生效.
         </div>
       ) : null}
-      {groups.length === 0 ? <p className="comment">暂时还没有规则分组。</p> : null}
+      {groups.length === 0 ? <p className="comment">暂时还没有规则分组.</p> : null}
       {groups.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>
@@ -473,7 +473,7 @@ export function WafGroupsPage() {
                         href=""
                         onClick={(event) => {
                           event.preventDefault()
-                          void confirm({ message: '确定要删除此规则分组吗？', danger: true, confirmText: '删除' }).then((ok) => {
+                          void confirm({ message: '确定要删除此规则分组吗?', danger: true, confirmText: '删除' }).then((ok) => {
                             if (ok) {
                               void action(
                                 '/servers/components/waf/deleteGroup',
@@ -494,7 +494,7 @@ export function WafGroupsPage() {
           </tbody>
         </table>
       ) : null}
-      {groups.length > 1 ? <p className="comment">所有规则匹配顺序为从上到下，可以通过上下箭头排序。</p> : null}
+      {groups.length > 1 ? <p className="comment">所有规则匹配顺序为从上到下,可以通过上下箭头排序.</p> : null}
 
       {creating || editing ? (
         <div className="ui dimmer modals page transition visible active" style={{ display: 'flex' }}>
@@ -655,7 +655,7 @@ export function WafGroupPage() {
         <tbody>
           <FormRow title="名称">{data.group.name}</FormRow>
           <FormRow title="描述">
-            {data.group.description ? data.group.description : <span className="disabled">暂时还没有描述。</span>}
+            {data.group.description ? data.group.description : <span className="disabled">暂时还没有描述.</span>}
           </FormRow>
           <FormRow title="启用状态">
             {data.group.isOn ? (
@@ -678,7 +678,7 @@ export function WafGroupPage() {
           [添加规则集]
         </a>
       </h3>
-      {sets.length === 0 ? <p className="comment">暂时还没有规则。</p> : null}
+      {sets.length === 0 ? <p className="comment">暂时还没有规则.</p> : null}
       {sets.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>
@@ -785,7 +785,7 @@ export function WafGroupPage() {
                     href=""
                     onClick={(event) => {
                       event.preventDefault()
-                      void confirm({ message: '确定要删除此规则集吗？', danger: true, confirmText: '删除' }).then((ok) => {
+                      void confirm({ message: '确定要删除此规则集吗?', danger: true, confirmText: '删除' }).then((ok) => {
                         if (ok) {
                           void action('/servers/components/waf/deleteSet', { groupId, setId: set.id }, '删除成功')
                         }
@@ -800,7 +800,7 @@ export function WafGroupPage() {
           </tbody>
         </table>
       ) : null}
-      {sets.length > 1 ? <p className="comment">所有规则匹配顺序为从上到下，可以通过上下箭头排序。</p> : null}
+      {sets.length > 1 ? <p className="comment">所有规则匹配顺序为从上到下,可以通过上下箭头排序.</p> : null}
 
       {editingGroup ? (
         <div className="ui dimmer modals page transition visible active" style={{ display: 'flex' }}>

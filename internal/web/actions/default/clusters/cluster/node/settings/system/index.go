@@ -121,7 +121,7 @@ func (this *IndexAction) RunPost(params struct {
 
 	err = dnsResolverConfig.Init()
 	if err != nil {
-		this.Fail("校验DNS解析配置失败：" + err.Error())
+		this.Fail("校验DNS解析配置失败:" + err.Error())
 	}
 
 	_, err = this.RPC().NodeRPC().UpdateNodeDNSResolver(this.AdminContext(), &pb.UpdateNodeDNSResolverRequest{
@@ -138,12 +138,12 @@ func (this *IndexAction) RunPost(params struct {
 	if len(params.ApiNodeAddrsJSON) > 0 {
 		err = json.Unmarshal(params.ApiNodeAddrsJSON, &apiNodeAddrs)
 		if err != nil {
-			this.Fail("API节点地址校验错误：" + err.Error())
+			this.Fail("API节点地址校验错误:" + err.Error())
 		}
 		for _, addr := range apiNodeAddrs {
 			err = addr.Init()
 			if err != nil {
-				this.Fail("API节点地址校验错误：" + err.Error())
+				this.Fail("API节点地址校验错误:" + err.Error())
 			}
 		}
 	}

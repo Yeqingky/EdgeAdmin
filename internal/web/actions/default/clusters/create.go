@@ -32,7 +32,7 @@ func (this *CreateAction) RunGet(params struct{}) {
 	}
 	this.Data["hasDomains"] = hasDomainsResp.Exist
 
-	// 菜单：集群总数
+	// 菜单:集群总数
 	totalResp, err := this.RPC().NodeClusterRPC().CountAllEnabledNodeClusters(this.AdminContext(), &pb.CountAllEnabledNodeClustersRequest{})
 	if err != nil {
 		this.ErrorPage(err)
@@ -40,7 +40,7 @@ func (this *CreateAction) RunGet(params struct{}) {
 	}
 	this.Data["totalNodeClusters"] = totalResp.Count
 
-	// 菜单：节点总数
+	// 菜单:节点总数
 	totalNodesResp, err := this.RPC().NodeRPC().CountAllEnabledNodes(this.AdminContext(), &pb.CountAllEnabledNodesRequest{})
 	if err != nil {
 		this.ErrorPage(err)
@@ -112,7 +112,7 @@ func (this *CreateAction) RunPost(params struct {
 			return
 		}
 		if resp.IsUsed {
-			this.FailField("dnsName", "此DNS子域名已经被使用，请换一个再试")
+			this.FailField("dnsName", "此DNS子域名已经被使用,请换一个再试")
 		}
 	}
 

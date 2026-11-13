@@ -36,8 +36,8 @@ interface MetricItemData {
 }
 
 const metricKeys: { code: string; name: string }[] = [
-  { code: '${remoteAddr}', name: '客户端地址（IP）' },
-  { code: '${rawRemoteAddr}', name: '直接客户端地址（IP）' },
+  { code: '${remoteAddr}', name: '客户端地址(IP)' },
+  { code: '${rawRemoteAddr}', name: '直接客户端地址(IP)' },
   { code: '${remoteUser}', name: '客户端用户名' },
   { code: '${requestURI}', name: '请求URI' },
   { code: '${requestPath}', name: '请求路径' },
@@ -73,11 +73,11 @@ const periodUnits: { code: string; name: string }[] = [
 ]
 
 const chartTypes: { code: string; name: string; description: string }[] = [
-  { code: 'bar', name: '柱图', description: '通过柱图展示各个对象的排行。' },
-  { code: 'pie', name: '饼图', description: '通过饼图展示各个对象的占比。' },
-  { code: 'timeBar', name: '时间柱图', description: '通过柱图展示各个对象在不同时间段的变化。' },
-  { code: 'timeLine', name: '时间线图', description: '通过线图展示各个对象在不同时间段的变化。' },
-  { code: 'table', name: '表格', description: '以表格的形式展示数据。' },
+  { code: 'bar', name: '柱图', description: '通过柱图展示各个对象的排行.' },
+  { code: 'pie', name: '饼图', description: '通过饼图展示各个对象的占比.' },
+  { code: 'timeBar', name: '时间柱图', description: '通过柱图展示各个对象在不同时间段的变化.' },
+  { code: 'timeLine', name: '时间线图', description: '通过线图展示各个对象在不同时间段的变化.' },
+  { code: 'table', name: '表格', description: '以表格的形式展示数据.' },
 ]
 
 function keyName(code: string): string {
@@ -88,7 +88,7 @@ function keyName(code: string): string {
   const prefix = code.split('.')[0]
   const parent = metricKeys.find((item) => item.code.startsWith(prefix) && item.code.endsWith('.NAME'))
   if (parent) {
-    return `${parent.name}（${code.substring(code.indexOf('.') + 1, code.length - 1)}）`
+    return `${parent.name}(${code.substring(code.indexOf('.') + 1, code.length - 1)})`
   }
   return code
 }
@@ -261,7 +261,7 @@ function MetricFormFields({
               value={values.expiresPeriod}
               onChange={(event) => onChange({ expiresPeriod: Number(event.target.value) || 0 })}
             />
-            <p className="comment">自动删除此周期以外的数据。单位和统计周期一致。不填或者为0，表示自动计算。</p>
+            <p className="comment">自动删除此周期以外的数据.单位和统计周期一致.不填或者为0,表示自动计算.</p>
           </td>
         </tr>
         <tr>
@@ -276,7 +276,7 @@ function MetricFormFields({
               />
               <label htmlFor="metric-is-public" />
             </div>
-            <p className="comment">选中表示所有集群自动使用此指标。</p>
+            <p className="comment">选中表示所有集群自动使用此指标.</p>
           </td>
         </tr>
         {showIsOn ? (
@@ -435,7 +435,7 @@ export function MetricsPage() {
   const data = query.data
 
   async function deleteItem(item: MetricItem) {
-    if (!(await confirm({ message: '确定要删除此指标吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此指标吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(item.id)
@@ -453,12 +453,12 @@ export function MetricsPage() {
           [创建指标]
         </a>
         <span className="item disabled">|</span>
-        <span className="item" title="在这里创建一些指标后，可以在集群中使用这些指标，从而实现阈值、图表等功能">
+        <span className="item" title="在这里创建一些指标后,可以在集群中使用这些指标,从而实现阈值,图表等功能">
           ?
         </span>
       </FirstMenu>
 
-      {data.items.length === 0 ? <p className="comment">暂时还没有指标。</p> : null}
+      {data.items.length === 0 ? <p className="comment">暂时还没有指标.</p> : null}
 
       {data.items.length > 0 ? (
         <table className="ui table celled selectable">
@@ -551,7 +551,7 @@ export function MetricItemPage() {
   })
 
   if (itemId <= 0) {
-    return <div className="ui negative message">请选择要查看的指标。</div>
+    return <div className="ui negative message">请选择要查看的指标.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -607,7 +607,7 @@ export function MetricItemPage() {
             <td>数据保留周期</td>
             <td>
               {item.expiresPeriod > 0 ? <span>{item.expiresPeriod}</span> : <span>自动</span>}
-              {item.expiresPeriod > 0 ? <p className="comment">单位和统计周期一致。</p> : null}
+              {item.expiresPeriod > 0 ? <p className="comment">单位和统计周期一致.</p> : null}
             </td>
           </tr>
           <tr>
@@ -622,7 +622,7 @@ export function MetricItemPage() {
       </table>
 
       <h4>绑定此指标的集群</h4>
-      {clusters.length === 0 ? <p className="comment">暂时还没有集群使用此策略。</p> : null}
+      {clusters.length === 0 ? <p className="comment">暂时还没有集群使用此策略.</p> : null}
       {clusters.length > 0 ? (
         <table className="ui table selectable">
           <tbody>
@@ -672,7 +672,7 @@ export function MetricUpdatePage() {
   }
 
   if (itemId <= 0) {
-    return <div className="ui negative message">请选择要修改的指标。</div>
+    return <div className="ui negative message">请选择要修改的指标.</div>
   }
   if (query.isLoading || !query.data || !values) {
     return <LoadingBlock />
@@ -713,7 +713,7 @@ export function MetricUpdatePage() {
   return (
     <div>
       <MetricItemMenu item={item} current="update" />
-      <div className="ui warning message">修改统计对象、统计周期、统计数值等任一参数时，将重新记录数据。</div>
+      <div className="ui warning message">修改统计对象,统计周期,统计数值等任一参数时,将重新记录数据.</div>
       <form className="ui form" onSubmit={(event) => void submit(event)}>
         <MetricFormFields
           values={values}
@@ -758,7 +758,7 @@ export function MetricStatsPage() {
   })
 
   if (itemId <= 0) {
-    return <div className="ui negative message">请选择要查看的指标。</div>
+    return <div className="ui negative message">请选择要查看的指标.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -772,7 +772,7 @@ export function MetricStatsPage() {
   return (
     <div>
       <MetricItemMenu item={data.item} current="stat" />
-      {data.stats.length === 0 ? <p className="comment">暂时还没有统计数据。</p> : null}
+      {data.stats.length === 0 ? <p className="comment">暂时还没有统计数据.</p> : null}
       {data.stats.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>
@@ -878,7 +878,7 @@ function ChartFormFields({
               value={values.name}
               onChange={(event) => onChange({ name: event.target.value })}
             />
-            <p className="comment">也会作为有些图表的标题。</p>
+            <p className="comment">也会作为有些图表的标题.</p>
           </td>
         </tr>
         <tr>
@@ -920,7 +920,7 @@ function ChartFormFields({
               value={values.maxItems}
               onChange={(event) => onChange({ maxItems: Number(event.target.value) || 0 })}
             />
-            <p className="comment">在图表中能显示的最多对象数，0表示不限制。</p>
+            <p className="comment">在图表中能显示的最多对象数,0表示不限制.</p>
           </td>
         </tr>
         <tr>
@@ -935,7 +935,7 @@ function ChartFormFields({
               />
               <label htmlFor="chart-ignore-empty" />
             </div>
-            <p className="comment">选中后，空的对象值不会在图表中出现。</p>
+            <p className="comment">选中后,空的对象值不会在图表中出现.</p>
           </td>
         </tr>
         <tr>
@@ -947,7 +947,7 @@ function ChartFormFields({
               value={values.ignoredKeysText}
               onChange={(event) => onChange({ ignoredKeysText: event.target.value })}
             />
-            <p className="comment">这些对象不会在图表中出现。</p>
+            <p className="comment">这些对象不会在图表中出现.</p>
           </td>
         </tr>
       </tbody>
@@ -1051,7 +1051,7 @@ export function MetricChartsPage() {
   })
 
   if (itemId <= 0) {
-    return <div className="ui negative message">请选择要查看的指标。</div>
+    return <div className="ui negative message">请选择要查看的指标.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -1063,7 +1063,7 @@ export function MetricChartsPage() {
   const data = query.data
 
   async function deleteChart(chart: MetricChart) {
-    if (!(await confirm({ message: '确定要删除这个图表吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个图表吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(chart.id)
@@ -1078,7 +1078,7 @@ export function MetricChartsPage() {
         </a>
       </FirstMenu>
 
-      {data.charts.length === 0 ? <p className="comment">暂时还没有图表。</p> : null}
+      {data.charts.length === 0 ? <p className="comment">暂时还没有图表.</p> : null}
       {data.charts.length > 0 ? (
         <table className="ui table celled selectable">
           <thead>
@@ -1207,7 +1207,7 @@ export function MetricChartPage() {
   })
 
   if (chartId <= 0) {
-    return <div className="ui negative message">请选择要查看的图表。</div>
+    return <div className="ui negative message">请选择要查看的图表.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -1294,7 +1294,7 @@ export function MetricChartPage() {
                   </span>
                 ))
               ) : (
-                <span className="disabled">没有要忽略的对象。</span>
+                <span className="disabled">没有要忽略的对象.</span>
               )}
             </td>
           </tr>
@@ -1303,10 +1303,10 @@ export function MetricChartPage() {
 
       <h4>图表示例</h4>
       <p className="comment">
-        <span className="red">图中数据均为测试数据。</span>
+        <span className="red">图中数据均为测试数据.</span>
       </p>
       <MetricChartPreview chart={chart} stats={testingStats} />
-      <p className="comment">指标：{item.name}（{item.valueName}，每 {item.period}{item.periodUnitName}）</p>
+      <p className="comment">指标:{item.name}({item.valueName},每 {item.period}{item.periodUnitName})</p>
     </div>
   )
 }
@@ -1338,7 +1338,7 @@ export function MetricChartUpdatePage() {
   }
 
   if (chartId <= 0) {
-    return <div className="ui negative message">请选择要修改的图表。</div>
+    return <div className="ui negative message">请选择要修改的图表.</div>
   }
   if (query.isLoading || !query.data || !values) {
     return <LoadingBlock />
@@ -1404,7 +1404,7 @@ export function MetricChartUpdatePage() {
         </div>
       </form>
       <p className="comment">
-        指标：{item.name}（每 {item.period} {item.periodUnitName}）
+        指标:{item.name}(每 {item.period} {item.periodUnitName})
       </p>
     </div>
   )

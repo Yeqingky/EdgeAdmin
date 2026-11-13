@@ -15,7 +15,7 @@ Tea.context(function () {
 	// 删除节点
 	this.deleteNode = function (nodeId) {
 		let that = this
-		teaweb.confirm("确定要删除此节点吗？", function () {
+		teaweb.confirm("确定要删除此节点吗?", function () {
 			that.$post(".delete")
 				.params({
 					nodeId: nodeId

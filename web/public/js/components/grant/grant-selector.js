@@ -67,7 +67,7 @@ Vue.component("grant-selector", {
 	},
 	template: `<div>
 	<input type="hidden" name="grantId" :value="grantId"/>
-	<div class="ui label small basic" v-if="grant != null">{{grant.name}}<span class="small grey">（{{grant.methodName}}）</span><span class="small grey" v-if="grant.username != null && grant.username.length > 0">（{{grant.username}}）</span> <a href="" title="修改" @click.prevent="update()"><i class="icon pencil small"></i></a> <a href="" title="删除" @click.prevent="remove()"><i class="icon remove"></i></a> </div>
+	<div class="ui label small basic" v-if="grant != null">{{grant.name}}<span class="small grey">({{grant.methodName}})</span><span class="small grey" v-if="grant.username != null && grant.username.length > 0">({{grant.username}})</span> <a href="" title="修改" @click.prevent="update()"><i class="icon pencil small"></i></a> <a href="" title="删除" @click.prevent="remove()"><i class="icon remove"></i></a> </div>
 	<div v-if="grant == null">
 		<a href="" @click.prevent="select()">[选择已有认证]</a> &nbsp; &nbsp; <a href="" @click.prevent="create()">[添加新认证]</a>
 	</div>

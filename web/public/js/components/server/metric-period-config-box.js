@@ -42,6 +42,6 @@ Vue.component("metric-period-config-box", {
 			</select>
 		</div>
 	</div>
-	<p class="comment">在此周期内同一对象累积为同一数据。</p>
+	<p class="comment">在此周期内同一对象累积为同一数据.</p>
 </div>`
 })

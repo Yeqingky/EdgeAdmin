@@ -179,12 +179,12 @@ func (this *UpdateAction) RunPost(params struct {
 	if len(params.RefsJSON) > 0 {
 		err = json.Unmarshal(params.RefsJSON, &refs)
 		if err != nil {
-			this.Fail("缓存条件解析失败：" + err.Error())
+			this.Fail("缓存条件解析失败:" + err.Error())
 		}
 		for _, ref := range refs {
 			err = ref.Init()
 			if err != nil {
-				this.Fail("缓存条件校验失败：" + err.Error())
+				this.Fail("缓存条件校验失败:" + err.Error())
 			}
 		}
 	}

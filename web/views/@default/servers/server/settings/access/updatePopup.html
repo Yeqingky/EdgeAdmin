@@ -26,7 +26,7 @@
                 <td>鉴权密钥 *</td>
                 <td>
                     <input type="text" maxlength="40" name="typeASecret" v-model="typeASecret" autocomplete="off"/>
-                    <p class="comment">只能包含字母、数字，长度不超过40。<a href="" @click.prevent="generateTypeASecret()">[随机生成]</a></p>
+                    <p class="comment">只能包含字母,数字,长度不超过40.<a href="" @click.prevent="generateTypeASecret()">[随机生成]</a></p>
                 </td>
             </tr>
             <tr>
@@ -42,7 +42,7 @@
                         <input type="text" maxlength="8" name="typeALife" value="30" style="width: 7em" v-model="policy.params.life"/>
                         <span class="ui label">秒</span>
                     </div>
-                    <p class="comment">链接有效时间。</p>
+                    <p class="comment">链接有效时间.</p>
                 </td>
             </tr>
         </tbody>
@@ -53,7 +53,7 @@
                 <td>鉴权密钥 *</td>
                 <td>
                     <input type="text" maxlength="40" name="typeBSecret" v-model="typeBSecret" autocomplete="off"/>
-                    <p class="comment">只能包含字母、数字，长度不超过40。<a href="" @click.prevent="generateTypeBSecret()">[随机生成]</a></p>
+                    <p class="comment">只能包含字母,数字,长度不超过40.<a href="" @click.prevent="generateTypeBSecret()">[随机生成]</a></p>
                 </td>
             </tr>
             <tr>
@@ -63,7 +63,7 @@
                         <input type="text" maxlength="8" name="typeBLife" value="30" style="width: 7em" v-model="policy.params.life"/>
                         <span class="ui label">秒</span>
                     </div>
-                    <p class="comment">链接有效时间。</p>
+                    <p class="comment">链接有效时间.</p>
                 </td>
             </tr>
         </tbody>
@@ -74,7 +74,7 @@
                 <td>鉴权密钥 *</td>
                 <td>
                     <input type="text" maxlength="40" name="typeCSecret" v-model="typeCSecret" autocomplete="off"/>
-                    <p class="comment">只能包含字母、数字，长度不超过40。<a href="" @click.prevent="generateTypeCSecret()">[随机生成]</a></p>
+                    <p class="comment">只能包含字母,数字,长度不超过40.<a href="" @click.prevent="generateTypeCSecret()">[随机生成]</a></p>
                 </td>
             </tr>
             <tr>
@@ -84,7 +84,7 @@
                         <input type="text" maxlength="8" name="typeCLife" value="30" style="width: 7em" v-model="policy.params.life"/>
                         <span class="ui label">秒</span>
                     </div>
-                    <p class="comment">链接有效时间。</p>
+                    <p class="comment">链接有效时间.</p>
                 </td>
             </tr>
         </tbody>
@@ -95,7 +95,7 @@
                 <td>鉴权密钥 *</td>
                 <td>
                     <input type="text" maxlength="40" name="typeDSecret" v-model="typeDSecret" autocomplete="off"/>
-                    <p class="comment">只能包含字母、数字，长度不超过40。<a href="" @click.prevent="generateTypeDSecret()">[随机生成]</a></p>
+                    <p class="comment">只能包含字母,数字,长度不超过40.<a href="" @click.prevent="generateTypeDSecret()">[随机生成]</a></p>
                 </td>
             </tr>
             <tr>
@@ -117,7 +117,7 @@
                         <input type="text" maxlength="8" name="typeDLife" value="30" style="width: 7em" v-model="policy.params.life"/>
                         <span class="ui label">秒</span>
                     </div>
-                    <p class="comment">链接有效时间。</p>
+                    <p class="comment">链接有效时间.</p>
                 </td>
             </tr>
         </tbody>
@@ -136,7 +136,7 @@
                 </td>
             </tr>
             <tr v-show="moreBasicAuthOptionsVisible">
-                <td>认证领域名<em>（Realm）</em></td>
+                <td>认证领域名<em>(Realm)</em></td>
                 <td>
                     <input type="text" name="basicAuthRealm" value="" maxlength="100" v-model="policy.params.realm"/>
                 </td>
@@ -145,7 +145,7 @@
                 <td>字符集</td>
                 <td>
                     <input type="text" name="basicAuthCharset" style="width: 6em" v-model="policy.params.charset" maxlength="50"/>
-                    <p class="comment">类似于<code-label>utf-8</code-label>。</p>
+                    <p class="comment">类似于<code-label>utf-8</code-label>.</p>
                 </td>
             </tr>
         </tbody>
@@ -156,7 +156,7 @@
                 <td>子请求URL *</td>
                 <td>
                     <input type="text" name="subRequestURL" maxlength="1024" v-model="policy.params.url"/>
-                    <p class="comment">可以是一个完整的URL，也可以是一个路径。</p>
+                    <p class="comment">可以是一个完整的URL,也可以是一个路径.</p>
                 </td>
             </tr>
             <tr>
@@ -185,14 +185,14 @@
                 <td>限定文件扩展名</td>
                 <td>
                     <values-box name="exts" :v-values="policy.params.exts"></values-box>
-                    <p class="comment">如果不为空，则表示只有这些扩展名的文件才需要鉴权；扩展名需要包含点符号（.），比如<code-label>.png</code-label></p>
+                    <p class="comment">如果不为空,则表示只有这些扩展名的文件才需要鉴权;扩展名需要包含点符号(.),比如<code-label>.png</code-label></p>
                 </td>
             </tr>
             <tr>
                 <td>限定域名</td>
                 <td>
                     <domains-box :v-domains="policy.params.domains"></domains-box>
-                    <p class="comment">如果不为空，则表示只有这些域名的文件才需要鉴权。</p>
+                    <p class="comment">如果不为空,则表示只有这些域名的文件才需要鉴权.</p>
                 </td>
             </tr>
             <tr>

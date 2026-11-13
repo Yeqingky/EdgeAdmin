@@ -214,7 +214,7 @@ func (this *UpdateAction) RunPost(params struct {
 
 	// 保存
 	if !this.CanUpdateLevel(params.Level) {
-		this.Fail("没有权限修改节点级别：" + types.String(params.Level))
+		this.Fail("没有权限修改节点级别:" + types.String(params.Level))
 	}
 
 	// 检查Ln节点地址
@@ -232,7 +232,7 @@ func (this *UpdateAction) RunPost(params struct {
 			}
 
 			if net.ParseIP(lnAddr) == nil {
-				this.Fail("L2级别访问地址 '" + lnAddr + "' 格式错误，请纠正后再提交")
+				this.Fail("L2级别访问地址 '" + lnAddr + "' 格式错误,请纠正后再提交")
 			}
 			lnAddrs = append(lnAddrs, lnAddr)
 		}

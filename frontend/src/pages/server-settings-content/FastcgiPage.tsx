@@ -58,7 +58,7 @@ export function ServerFastcgiSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -90,7 +90,7 @@ export function ServerFastcgiSettingsPage() {
     setSubmitting(true)
     try {
       await apiPost('/servers/server/settings/fastcgi', { webId: data.webId, fastcgiRefJSON: JSON.stringify(fastcgiRef) })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -221,7 +221,7 @@ function FastcgiEditor({ config, onClose, onSaved }: { config: FastcgiConfig | n
                 <div key={index}>
                   {paramLabel(param) ? (
                     <div className="ui field" style={{ margin: 0 }}>
-                      <label>{paramLabel(param)}：</label>
+                      <label>{paramLabel(param)}:</label>
                     </div>
                   ) : null}
                   <div className="ui fields inline">
@@ -265,7 +265,7 @@ function FastcgiEditor({ config, onClose, onSaved }: { config: FastcgiConfig | n
                   <a href="https://goedge.cloud/docs/Server/Variables.md" target="_blank" rel="noreferrer">
                     点这里查看
                   </a>{' '}
-                  。
+                  .
                 </p>
               ) : null}
               <button className="ui button tiny" type="button" onClick={() => setParams([...params, { name: '', value: '' }])}>
@@ -286,14 +286,14 @@ function FastcgiEditor({ config, onClose, onSaved }: { config: FastcgiConfig | n
               </FormRow>
               <FormRow title="连接池尺寸">
                 <TextInput type="text" maxLength={4} style={{ width: '7em' }} value={poolSize} onChange={(event) => setPoolSize(event.target.value)} />
-                <p className="comment">0表示不限制，通常可以设置为CPU数量的两倍</p>
+                <p className="comment">0表示不限制,通常可以设置为CPU数量的两倍</p>
               </FormRow>
               <FormRow title="PATH_INFO匹配">
                 <TextInput type="text" maxLength={100} value={pathInfoPattern} onChange={(event) => setPathInfoPattern(event.target.value)} />
                 <p className="comment">
-                  匹配PATH_INFO的正则表达式，用括号表示匹配的内容，如果只有一个匹配括号表示第一个括号为${'{fastcgi.pathInfo}'}
-                  值；如果有两个或两个以上的匹配括号，则第一个表示匹配的是${'{fastcgi.filename}'}，第二个匹配的是$
-                  {'{fastcgi.pathInfo}'}，比如(\w+\.php)(.+)$。
+                  匹配PATH_INFO的正则表达式,用括号表示匹配的内容,如果只有一个匹配括号表示第一个括号为${'{fastcgi.pathInfo}'}
+                  值;如果有两个或两个以上的匹配括号,则第一个表示匹配的是${'{fastcgi.filename}'},第二个匹配的是$
+                  {'{fastcgi.pathInfo}'},比如(\w+\.php)(.+)$.
                 </p>
               </FormRow>
               <FormRow title="启用当前Fastcgi">

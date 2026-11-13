@@ -22,7 +22,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countResp.Count > 0 {
-		this.Fail("此证书正在被某些服务引用，请先修改服务后再删除。")
+		this.Fail("此证书正在被某些服务引用,请先修改服务后再删除.")
 	}
 
 	// 是否正在被API节点使用
@@ -32,7 +32,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countResp.Count > 0 {
-		this.Fail("此证书正在被某些API节点引用，请先修改API节点后再删除")
+		this.Fail("此证书正在被某些API节点引用,请先修改API节点后再删除")
 	}
 
 	err = this.filterDelete(params.CertId)

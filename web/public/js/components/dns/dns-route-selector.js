@@ -41,7 +41,7 @@ Vue.component("dns-route-selector", {
 				return
 			}
 			if (this.routeCodes.$contains(this.routeCode)) {
-				teaweb.warn("已经添加过此线路，不能重复添加")
+				teaweb.warn("已经添加过此线路,不能重复添加")
 				return
 			}
 			let that = this
@@ -96,7 +96,7 @@ Vue.component("dns-route-selector", {
 	<input type="hidden" name="dnsRoutesJSON" :value="JSON.stringify(routeCodes)"/>
 	<div v-if="routes.length > 0">
 		<tiny-basic-label v-for="route in routes" :key="route.code + '@' + route.domainId">
-			{{route.name}} <span class="grey small">（{{route.domainName}}）</span><a href="" @click.prevent="remove(route)"><i class="icon remove"></i></a>
+			{{route.name}} <span class="grey small">({{route.domainName}})</span><a href="" @click.prevent="remove(route)"><i class="icon remove"></i></a>
 		</tiny-basic-label>
 		<div class="ui divider"></div>
 	</div>
@@ -106,11 +106,11 @@ Vue.component("dns-route-selector", {
 			<tr>
 				<td class="title">所有线路</td>
 				<td>
-					<span v-if="keyword.length > 0 && searchingRoutes.length == 0">没有和关键词“{{keyword}}”匹配的线路</span>
+					<span v-if="keyword.length > 0 && searchingRoutes.length == 0">没有和关键词"{{keyword}}"匹配的线路</span>
 					<span v-show="keyword.length == 0 || searchingRoutes.length > 0">
 						<select class="ui dropdown" v-model="routeCode">
 							<option value="" v-if="keyword.length == 0">[请选择]</option>
-							<option v-for="route in searchingRoutes" :value="route.code + '@' + route.domainId">{{route.name}}（{{route.code}}/{{route.domainName}}）</option>
+							<option v-for="route in searchingRoutes" :value="route.code + '@' + route.domainId">{{route.name}}({{route.code}}/{{route.domainName}})</option>
 						</select>
 					</span>
 				</td>

@@ -182,7 +182,7 @@ Vue.component("ns-route-ranges-box", {
 				if (line.length == 0) {
 					return
 				}
-				line = line.replace("，", ",")
+				line = line.replace(",", ",")
 				let pieces = line.split(",")
 				if (pieces.length != 2) {
 					invalidLine = line
@@ -363,8 +363,8 @@ Vue.component("ns-route-ranges-box", {
 	<div v-if="ranges.length > 0">
 		<div class="ui label tiny basic" v-for="(range, index) in ranges" style="margin-bottom: 0.3em">
 			<span class="red" v-if="range.params.isReverse">[排除]</span>
-			<span v-if="range.type == 'ipRange'">IP范围：</span>
-			<span v-if="range.type == 'cidr'">CIDR：</span>
+			<span v-if="range.type == 'ipRange'">IP范围:</span>
+			<span v-if="range.type == 'cidr'">CIDR:</span>
 			<span v-if="range.type == 'region'"></span>
 			<span v-if="range.type == 'ipRange'">{{range.params.ipFrom}} - {{range.params.ipTo}}</span>
 			<span v-if="range.type == 'cidr'">{{range.params.cidr}}</span>
@@ -374,7 +374,7 @@ Vue.component("ns-route-ranges-box", {
 					<span v-if="region.type == 'province'">省份</span>
 					<span v-if="region.type == 'city'">城市</span>
 					<span v-if="region.type == 'provider'">ISP</span>
-					：{{region.name}}
+					:{{region.name}}
 					<span v-if="index < range.params.regions.length - 1" class="grey">
 						&nbsp;
 						<span v-if="range.connector == 'OR' || range.connector == '' || range.connector == null">或</span>
@@ -409,7 +409,7 @@ Vue.component("ns-route-ranges-box", {
 					<td>排除</td>
 					<td>
 						<checkbox v-model="isReverse"></checkbox>
-						<p class="comment">选中后表示线路中排除当前条件。</p>
+						<p class="comment">选中后表示线路中排除当前条件.</p>
 					</td>
 				</tr>
 			</table>
@@ -424,14 +424,14 @@ Vue.component("ns-route-ranges-box", {
 					<td class="title">IP范围列表 *</td>
 					<td>
 						<textarea rows="5" ref="batchIPRange" v-model="batchIPRange"></textarea>	
-						<p class="comment">每行一条，格式为<code-label>开始IP,结束IP</code-label>，比如<code-label>192.168.1.100,192.168.1.200</code-label>。</p>	
+						<p class="comment">每行一条,格式为<code-label>开始IP,结束IP</code-label>,比如<code-label>192.168.1.100,192.168.1.200</code-label>.</p>	
 					</td>
 				</tr>
 				<tr>
 					<td>排除</td>
 					<td>
 						<checkbox v-model="isReverse"></checkbox>
-						<p class="comment">选中后表示线路中排除当前条件。</p>
+						<p class="comment">选中后表示线路中排除当前条件.</p>
 					</td>
 				</tr>
 			</table>
@@ -454,14 +454,14 @@ Vue.component("ns-route-ranges-box", {
 					<td class="title">CIDR *</td>
 					<td>
 						<input type="text" placeholder="IP/MASK" maxlength="40" size="40" style="width: 15em" v-model="ipCIDR" ref="ipCIDR"  @keyup.enter="confirmIPCIDR" @keypress.enter.prevent="1"/>
-						<p class="comment">类似于<code-label>192.168.2.1/24</code-label>。</p>
+						<p class="comment">类似于<code-label>192.168.2.1/24</code-label>.</p>
 					</td>
 				</tr>
 				<tr>
 					<td>排除</td>
 					<td>
 						<checkbox v-model="isReverse"></checkbox>
-						<p class="comment">选中后表示线路中排除当前条件。</p>
+						<p class="comment">选中后表示线路中排除当前条件.</p>
 					</td>
 				</tr>
 			</table>
@@ -476,14 +476,14 @@ Vue.component("ns-route-ranges-box", {
 					<td class="title">IP范围列表 *</td>
 					<td>
 						<textarea rows="5" ref="batchIPCIDR" v-model="batchIPCIDR"></textarea>	
-						<p class="comment">每行一条，格式为<code-label>IP/MASK</code-label>，比如<code-label>192.168.2.1/24</code-label>。</p>	
+						<p class="comment">每行一条,格式为<code-label>IP/MASK</code-label>,比如<code-label>192.168.2.1/24</code-label>.</p>	
 					</td>
 				</tr>
 				<tr>
 					<td>排除</td>
 					<td>
 						<checkbox v-model="isReverse"></checkbox>
-						<p class="comment">选中后表示线路中排除当前条件。</p>
+						<p class="comment">选中后表示线路中排除当前条件.</p>
 					</td>
 				</tr>
 			</table>
@@ -511,7 +511,7 @@ Vue.component("ns-route-ranges-box", {
 								<span v-if="region.type == 'province'">省份</span>
 								<span v-if="region.type == 'city'">城市</span>
 								<span v-if="region.type == 'provider'">ISP</span>
-								：{{region.name}} <a href="" title="删除" @click.prevent="removeRegion(index)"><i class="icon remove small"></i></a>
+								:{{region.name}} <a href="" title="删除" @click.prevent="removeRegion(index)"><i class="icon remove small"></i></a>
 							</span>
 							<span v-if="index < regions.length - 1" class="grey">
 								&nbsp;
@@ -562,15 +562,15 @@ Vue.component("ns-route-ranges-box", {
 							<option value="OR">或</option>
 							<option value="AND">且</option>
 						</select>
-						<p class="comment" v-if="regionConnector == 'OR'">匹配所选任一区域即认为匹配成功。</p>
-						<p class="comment" v-if="regionConnector == 'AND'">匹配所有所选区域才认为匹配成功。</p>
+						<p class="comment" v-if="regionConnector == 'OR'">匹配所选任一区域即认为匹配成功.</p>
+						<p class="comment" v-if="regionConnector == 'AND'">匹配所有所选区域才认为匹配成功.</p>
 					</td>
 				</tr>
 				<tr>
 					<td>排除</td>
 					<td>
 						<checkbox v-model="isReverse"></checkbox>
-						<p class="comment">选中后表示线路中排除当前条件。</p>
+						<p class="comment">选中后表示线路中排除当前条件.</p>
 					</td>
 				</tr>
 			</table>

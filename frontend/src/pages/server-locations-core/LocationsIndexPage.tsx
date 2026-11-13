@@ -51,7 +51,7 @@ export function LocationsIndexPage({ serverId }: { serverId: string }) {
   })
 
   async function deleteLocation(locationId: number) {
-    if (!(await confirm({ message: '确定要删除此路由规则吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此路由规则吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(locationId)
@@ -105,7 +105,7 @@ export function LocationsIndexPage({ serverId }: { serverId: string }) {
           ]}
         />
 
-        {items.length === 0 ? <p className="comment">暂时还没有路由规则。</p> : null}
+        {items.length === 0 ? <p className="comment">暂时还没有路由规则.</p> : null}
 
         {items.length > 0 ? (
           <table className="ui table selectable celled">
@@ -165,7 +165,7 @@ export function LocationsIndexPage({ serverId }: { serverId: string }) {
         {items.length > 0 ? (
           <p className="comment">拖动左侧的
             <GripVertical size={12} style={{ verticalAlign: 'middle' }} />
-            图标可以对路由规则进行排序。
+            图标可以对路由规则进行排序.
           </p>
         ) : null}
       </div>

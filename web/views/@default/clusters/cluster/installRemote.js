@@ -37,7 +37,7 @@ Tea.context(function () {
                     nodeId: node.id
                 })
         } else {
-            teaweb.confirm("确定要开始安装此节点吗？", function () {
+            teaweb.confirm("确定要开始安装此节点吗?", function () {
                 installingNode = node
                 that.isInstalling = true
                 node.isInstalling = true
@@ -53,7 +53,7 @@ Tea.context(function () {
     this.installBatch = function () {
         let that = this
         this.isBatch = true
-        teaweb.confirm("确定要批量安装选中的节点吗？", function () {
+        teaweb.confirm("确定要批量安装选中的节点吗?", function () {
             that.installNext()
         })
     }
@@ -121,7 +121,7 @@ Tea.context(function () {
                                             })
                                         })
                                         return
-                                    case "SSH登录失败，请检查设置":
+                                    case "SSH登录失败,请检查设置":
                                         teaweb.warn("需要填写SSH登录信息", function () {
                                             teaweb.popup("/clusters/cluster/updateNodeSSH?nodeId=" + nodeId, {
 												height: "30em",
@@ -132,21 +132,21 @@ Tea.context(function () {
                                         })
                                         return
                                     case "CREATE_ROOT_DIRECTORY_FAILED":
-                                        teaweb.warn("创建根目录失败，请检查目录权限或者手工创建：" + errMsg)
+                                        teaweb.warn("创建根目录失败,请检查目录权限或者手工创建:" + errMsg)
                                         return
                                     case "INSTALL_HELPER_FAILED":
-                                        teaweb.warn("安装助手失败：" + errMsg)
+                                        teaweb.warn("安装助手失败:" + errMsg)
                                         return
                                     case "TEST_FAILED":
-                                        teaweb.warn("环境测试失败：" + errMsg)
+                                        teaweb.warn("环境测试失败:" + errMsg)
                                         return
                                     case "RPC_TEST_FAILED":
-                                        teaweb.confirm("html:要安装的节点到API服务之间的RPC通讯测试失败，具体错误：" + errMsg + "，<br/>现在修改API信息？", function () {
+                                        teaweb.confirm("html:要安装的节点到API服务之间的RPC通讯测试失败,具体错误:" + errMsg + ",<br/>现在修改API信息?", function () {
                                             window.location = "/settings/api"
                                         })
                                         return
                                     default:
-                                        teaweb.warn("安装失败：" + errMsg)
+                                        teaweb.warn("安装失败:" + errMsg)
                                 }
                             }
                         }

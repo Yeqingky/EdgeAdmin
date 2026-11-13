@@ -9,7 +9,7 @@
 		<tr>
 			<td class="title">启用的入站规则</td>
 			<td>
-				<span v-if="enabledInboundGroups.length == 0" class="disabled">暂时还没有入站规则。</span>
+				<span v-if="enabledInboundGroups.length == 0" class="disabled">暂时还没有入站规则.</span>
 				<div class="groups-box" v-show="enabledInboundGroups.length > 0">
 					<div v-for="g in enabledInboundGroups" class="group-box">
 						<checkbox name="inboundGroupIds" :value="true" :v-value="g.id">{{g.name}}</checkbox>
@@ -30,7 +30,7 @@
 		<tr>
 			<td>启用的出站规则</td>
 			<td>
-				<span v-if="enabledOutboundGroups.length == 0" class="disabled">暂时还没有出站规则。</span>
+				<span v-if="enabledOutboundGroups.length == 0" class="disabled">暂时还没有出站规则.</span>
 				<div class="groups-box" v-show="enabledOutboundGroups.length > 0">
 					<div v-for="g in enabledOutboundGroups" class="group-box">
 						<checkbox name="outboundGroupIds" :value="true" :v-value="g.id">{{g.name}}</checkbox>

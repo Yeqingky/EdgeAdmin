@@ -110,7 +110,7 @@ export function SecuritySettingsPage() {
     <div>
       <SettingsTabs kind="basic" active="security" />
       <div className="margin" />
-      <p className="comment">当前安全设置只适用于管理系统，对用户网站没有任何影响。</p>
+      <p className="comment">当前安全设置只适用于管理系统,对用户网站没有任何影响.</p>
       <form className="ui form" onSubmit={submit}>
         <FormTable>
           <FormRow title="Frame嵌套条件">
@@ -118,7 +118,7 @@ export function SecuritySettingsPage() {
               <option value="">不限制</option>
               <option value="SAMEORIGIN">仅限同域名</option>
             </Select>
-            <p className="comment">当前服务被别的网页框架嵌套的条件限制。</p>
+            <p className="comment">当前服务被别的网页框架嵌套的条件限制.</p>
           </FormRow>
           <FormRow title="允许访问的国家和地区">
             <RegionTags
@@ -127,16 +127,16 @@ export function SecuritySettingsPage() {
               onAdd={() => setCountryModal(true)}
               onRemove={(id) => setCountries((current) => current.filter((country) => country.id !== id))}
             />
-            <p className="comment">设置后，只有这些国家和地区才能访问管理界面，如果不设置表示没有限制。</p>
+            <p className="comment">设置后,只有这些国家和地区才能访问管理界面,如果不设置表示没有限制.</p>
           </FormRow>
-          <FormRow title="允许访问的省份（中国）">
+          <FormRow title="允许访问的省份(中国)">
             <RegionTags
               items={provinces}
               addTitle="添加省份"
               onAdd={() => setProvinceModal(true)}
               onRemove={(id) => setProvinces((current) => current.filter((province) => province.id !== id))}
             />
-            <p className="comment">设置后，只有这些省份才能访问管理界面，如果不设置表示没有限制。</p>
+            <p className="comment">设置后,只有这些省份才能访问管理界面,如果不设置表示没有限制.</p>
           </FormRow>
           <FormRow title="允许访问的IP">
             <StringListEditor
@@ -147,16 +147,16 @@ export function SecuritySettingsPage() {
               emptyText="不限制"
             />
             <p className="comment">
-              如果不为空，则<strong>仅仅允许</strong>这些IP访问，其他的IP访问时会被拒绝。
+              如果不为空,则<strong>仅仅允许</strong>这些IP访问,其他的IP访问时会被拒绝.
             </p>
           </FormRow>
           <FormRow title="允许局域网访问">
             <Checkbox checked={config.allowLocal} onChange={(checked) => update('allowLocal', checked)} />
-            <p className="comment">选中表示总是允许在本机和局域网访问，不需要其他限制条件。</p>
+            <p className="comment">选中表示总是允许在本机和局域网访问,不需要其他限制条件.</p>
           </FormRow>
           <FormRow title="允许记住登录">
             <Checkbox checked={config.allowRememberLogin} onChange={(checked) => update('allowRememberLogin', checked)} />
-            <p className="comment">选中表示允许在登录界面可以选择记住登录。</p>
+            <p className="comment">选中表示允许在登录界面可以选择记住登录.</p>
           </FormRow>
           <tr>
             <td colSpan={2}>
@@ -174,7 +174,7 @@ export function SecuritySettingsPage() {
                   onChange={(event) => update('clientIPHeaderNames', event.target.value)}
                 />
                 <p className="comment">
-                  可以通过此报头获取客户端IP，类似于
+                  可以通过此报头获取客户端IP,类似于
                   <span className="ui label basic small" style={{ padding: 3, marginLeft: 2, marginRight: 2 }}>
                     {DEFAULT_CLIENT_IP_HEADERS}
                   </span>
@@ -193,45 +193,45 @@ export function SecuritySettingsPage() {
                   >
                     <span className="small">[填入]</span>
                   </a>
-                  ，用于使用反向代理访问管理系统的情形；如果有多个报头可以使用空格隔开。
+                  ,用于使用反向代理访问管理系统的情形;如果有多个报头可以使用空格隔开.
                 </p>
               </FormRow>
               {config.clientIPHeaderNames.length > 0 ? (
                 <FormRow title={<span className="color-border">仅从自定义报头中获取IP</span>}>
                   <Checkbox checked={config.clientIPHeaderOnly} onChange={(checked) => update('clientIPHeaderOnly', checked)} />
                   <p className="comment">
-                    选中后，表示仅从自定义报头中获取IP，意味着客户端必须使用反向代理访问当前系统，不允许直接访问。
+                    选中后,表示仅从自定义报头中获取IP,意味着客户端必须使用反向代理访问当前系统,不允许直接访问.
                   </p>
                 </FormRow>
               ) : null}
               <FormRow title="禁止搜索引擎">
                 <Checkbox checked={config.denySearchEngines} onChange={(checked) => update('denySearchEngines', checked)} />
-                <p className="comment">禁止常见的搜索引擎访问。</p>
+                <p className="comment">禁止常见的搜索引擎访问.</p>
               </FormRow>
               <FormRow title="禁止爬虫">
                 <Checkbox checked={config.denySpiders} onChange={(checked) => update('denySpiders', checked)} />
-                <p className="comment">禁止常见的爬虫访问。</p>
+                <p className="comment">禁止常见的爬虫访问.</p>
               </FormRow>
               <FormRow title="允许访问的域名">
                 <StringListEditor
                   values={config.allowDomains}
                   onChange={(values) => update('allowDomains', values)}
-                  placeholder="example.com、*.example.com"
+                  placeholder="example.com,*.example.com"
                   maxLength={100}
                   emptyText="不限制"
                 />
-                <p className="comment">只允许通过这些域名（或者IP作为主机地址）访问当前管理系统，不填表示没有限制。</p>
+                <p className="comment">只允许通过这些域名(或者IP作为主机地址)访问当前管理系统,不填表示没有限制.</p>
               </FormRow>
               <FormRow title="检查客户端指纹">
                 <Checkbox checked={config.checkClientFingerprint} onChange={(checked) => update('checkClientFingerprint', checked)} />
                 <p className="comment">
-                  选中后，表示每次管理员访问时都检查客户端相关信息是否跟登录时一致；如果客户端IP或User-Agent信息变化比较频繁，请不要启用此选项；如果当前系统下游有反向代理设置，请设置当前表单中的“自定义客户端IP报头”选项。
+                  选中后,表示每次管理员访问时都检查客户端相关信息是否跟登录时一致;如果客户端IP或User-Agent信息变化比较频繁,请不要启用此选项;如果当前系统下游有反向代理设置,请设置当前表单中的"自定义客户端IP报头"选项.
                 </p>
               </FormRow>
               <FormRow title="检查客户端区域">
                 <Checkbox checked={config.checkClientRegion} onChange={(checked) => update('checkClientRegion', checked)} />
                 <p className="comment">
-                  选中后，表示每次管理员访问时都检查客户端所在地理区域是否和登录时一致；如果客户端所处地理区域变化比较频繁，请不要启用此选项；如果当前系统下游有反向代理设置，请设置当前表单中的“自定义客户端IP报头”选项。
+                  选中后,表示每次管理员访问时都检查客户端所在地理区域是否和登录时一致;如果客户端所处地理区域变化比较频繁,请不要启用此选项;如果当前系统下游有反向代理设置,请设置当前表单中的"自定义客户端IP报头"选项.
                 </p>
               </FormRow>
             </>

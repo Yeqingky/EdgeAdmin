@@ -117,7 +117,7 @@ Vue.component("http-access-log-box", {
 
 // Javascript Punycode converter derived from example in RFC3492.
 // This implementation is created by some@domain.name and released into public domain
-// 代码来自：https://stackoverflow.com/questions/183485/converting-punycode-with-dash-character-to-unicode
+// 代码来自:https://stackoverflow.com/questions/183485/converting-punycode-with-dash-character-to-unicode
 var punycode = new function Punycode() {
 	// This object converts to and from puny-code used in IDN
 	//

@@ -72,7 +72,7 @@ export function DashboardPage() {
         <div className="ui icon message warning">
           <AlertTriangle size={20} />
           <a href={`/clusters/cluster/createNode?clusterId=${dashboard.defaultClusterId}`}>
-            还没有在集群中添加节点，现在去添加？添加节点后才可部署网站。
+            还没有在集群中添加节点,现在去添加?添加节点后才可部署网站.
           </a>
         </div>
       ) : null}
@@ -81,7 +81,7 @@ export function DashboardPage() {
         <div className="ui icon message error">
           <AlertTriangle size={20} />
           <a href="/clusters">
-            升级提醒：有 {data.nodeUpgradeInfo.count} 个边缘节点需要升级到 v{data.nodeUpgradeInfo.version} 版本，系统正在尝试自动升级，请耐心等待...
+            升级提醒:有 {data.nodeUpgradeInfo.count} 个边缘节点需要升级到 v{data.nodeUpgradeInfo.version} 版本,系统正在尝试自动升级,请耐心等待...
           </a>
         </div>
       ) : null}
@@ -90,7 +90,7 @@ export function DashboardPage() {
         <div className="ui icon message error">
           <AlertTriangle size={20} />
           <a href="/settings/api">
-            升级提醒：有 {data.apiNodeUpgradeInfo.count} 个API节点需要升级到 v{data.apiNodeUpgradeInfo.version} 版本；如果已经升级，请尝试重启API节点进程。
+            升级提醒:有 {data.apiNodeUpgradeInfo.count} 个API节点需要升级到 v{data.apiNodeUpgradeInfo.version} 版本;如果已经升级,请尝试重启API节点进程.
           </a>
         </div>
       ) : null}
@@ -99,8 +99,8 @@ export function DashboardPage() {
         <div className="ui icon message error">
           <AlertTriangle size={20} />
           <span>
-            升级提醒：发现一个正在使用的本地API节点版本需要升级，文件位置：{data.localLowerVersionAPINode.exePath}，当前版本：v
-            {data.localLowerVersionAPINode.runtimeVersion}。
+            升级提醒:发现一个正在使用的本地API节点版本需要升级,文件位置:{data.localLowerVersionAPINode.exePath},当前版本:v
+            {data.localLowerVersionAPINode.runtimeVersion}.
           </span>
         </div>
       ) : null}
@@ -116,7 +116,7 @@ export function DashboardPage() {
         <div className="ui icon message error">
           <AlertTriangle size={20} />
           <a href="/admins?hasWeakPassword=1">
-            安全提醒：有 {data.countWeakAdmins} 个管理员登录账号正在使用弱密码，请及时修改密码，避免产生安全风险。
+            安全提醒:有 {data.countWeakAdmins} 个管理员登录账号正在使用弱密码,请及时修改密码,避免产生安全风险.
           </a>
         </div>
       ) : null}
@@ -170,7 +170,7 @@ export function DashboardPage() {
         </div>
 
         <div className="chart-panel">
-          <h4>域名访问排行 <span>（24小时）</span></h4>
+          <h4>域名访问排行 <span>(24小时)</span></h4>
           <div className="ui divider" />
           <TopDomainsChart stats={data.topDomainStats} />
         </div>
@@ -231,9 +231,9 @@ function TrafficChart({ stats }: { stats: TrafficStat[] }) {
         formatter: (params: { dataIndex: number }) => {
           const stat = stats[params.dataIndex]
           const cachedRatio = stat.bytes > 0 ? Math.round((stat.cachedBytes * 10000) / stat.bytes) / 100 : 0
-          return `${stat.day || ''} ${stat.hour != null ? `${stat.hour}时` : ''}<br/>总流量：${formatBytes(stat.bytes)}<br/>缓存流量：${formatBytes(
+          return `${stat.day || ''} ${stat.hour != null ? `${stat.hour}时` : ''}<br/>总流量:${formatBytes(stat.bytes)}<br/>缓存流量:${formatBytes(
             stat.cachedBytes,
-          )}<br/>缓存命中率：${cachedRatio}%`
+          )}<br/>缓存命中率:${cachedRatio}%`
         },
       },
       grid: { left: 50, top: 40, right: 20, bottom: 20 },
@@ -272,7 +272,7 @@ function TopDomainsChart({ stats }: { stats: DashboardData['topDomainStats'] }) 
       tooltip: {
         formatter: (params: { dataIndex: number }) => {
           const stat = stats[params.dataIndex]
-          return `${stat.domain}<br/>请求数：${formatNumber(stat.countRequests)}<br/>流量：${formatBytes(stat.bytes)}`
+          return `${stat.domain}<br/>请求数:${formatNumber(stat.countRequests)}<br/>流量:${formatBytes(stat.bytes)}`
         },
       },
       series: [
@@ -290,7 +290,7 @@ function TopDomainsChart({ stats }: { stats: DashboardData['topDomainStats'] }) 
     }
   }, [stats])
   if (stats.length === 0) {
-    return <p className="comment">暂时没有数据。</p>
+    return <p className="comment">暂时没有数据.</p>
   }
   return <div className="chart-box" ref={ref} />
 }

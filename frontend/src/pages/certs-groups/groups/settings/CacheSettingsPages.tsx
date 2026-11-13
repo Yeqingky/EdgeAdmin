@@ -165,21 +165,21 @@ export function GroupSettingsCachePage() {
                         checked={!boolField(config, 'disablePolicyRefs')}
                         onChange={(checked) => setConfig({ ...config, disablePolicyRefs: !checked })}
                       />
-                      <p className="comment">选中后使用系统全局缓存策略中已经定义的默认缓存条件。</p>
+                      <p className="comment">选中后使用系统全局缓存策略中已经定义的默认缓存条件.</p>
                     </td>
                   </tr>
                   <tr>
                     <td>添加X-Cache报头</td>
                     <td>
                       <Checkbox checked={boolField(config, 'addStatusHeader', true)} onChange={(checked) => setConfig({ ...config, addStatusHeader: checked })} />
-                      <p className="comment">选中后自动在响应报头中增加X-Cache: BYPASS|MISS|HIT|PURGE。</p>
+                      <p className="comment">选中后自动在响应报头中增加X-Cache: BYPASS|MISS|HIT|PURGE.</p>
                     </td>
                   </tr>
                   <tr>
                     <td>添加Age Header</td>
                     <td>
                       <Checkbox checked={boolField(config, 'addAgeHeader')} onChange={(checked) => setConfig({ ...config, addAgeHeader: checked })} />
-                      <p className="comment">选中后自动在响应Header中增加Age: [存活时间秒数]。</p>
+                      <p className="comment">选中后自动在响应Header中增加Age: [存活时间秒数].</p>
                     </td>
                   </tr>
                   <tr>
@@ -189,14 +189,14 @@ export function GroupSettingsCachePage() {
                         checked={boolField(config, 'enableCacheControlMaxAge')}
                         onChange={(checked) => setConfig({ ...config, enableCacheControlMaxAge: checked })}
                       />
-                      <p className="comment">选中后表示支持源站在Header中设置的Cache-Control: max-age=[有效时间秒数]。</p>
+                      <p className="comment">选中后表示支持源站在Header中设置的Cache-Control: max-age=[有效时间秒数].</p>
                     </td>
                   </tr>
                   <tr>
                     <td>允许PURGE</td>
                     <td>
                       <Checkbox checked={boolField(config, 'purgeIsOn')} onChange={(checked) => setConfig({ ...config, purgeIsOn: checked })} />
-                      <p className="comment">允许使用PURGE方法清除某个URL缓存。</p>
+                      <p className="comment">允许使用PURGE方法清除某个URL缓存.</p>
                     </td>
                   </tr>
                 </>
@@ -208,7 +208,7 @@ export function GroupSettingsCachePage() {
         {isOn ? (
           <div>
             <h4>缓存条件</h4>
-            {cacheRefs.length === 0 ? <p className="comment">暂时还没有缓存条件。</p> : null}
+            {cacheRefs.length === 0 ? <p className="comment">暂时还没有缓存条件.</p> : null}
             {cacheRefs.length > 0 ? (
               <table className="ui table selectable celled">
                 <thead>
@@ -287,7 +287,7 @@ export function GroupSettingsCachePage() {
             </div>
           </div>
         ) : null}
-        <p className="comment">修改条件设置后请记得保存。</p>
+        <p className="comment">修改条件设置后请记得保存.</p>
         <div style={{ marginTop: '1em' }}>
           <button className={`ui button primary${save.isPending ? ' loading disabled' : ''}`} type="submit" disabled={save.isPending}>
             保存
@@ -326,7 +326,7 @@ function CacheRefEditor({ cacheRef, onDone }: { cacheRef: CacheRef; onDone: (cac
             <td>缓存键值</td>
             <td>
               <input type="text" value={value.key || ''} onChange={(event) => setValue({ ...value, key: event.target.value })} />
-              <p className="comment">可以使用请求变量，比如 {'${scheme}://${host}${requestPath}${isArgs}${args}'}。</p>
+              <p className="comment">可以使用请求变量,比如 {'${scheme}://${host}${requestPath}${isArgs}${args}'}.</p>
             </td>
           </tr>
           <tr>
@@ -400,7 +400,7 @@ function CacheRefEditor({ cacheRef, onDone }: { cacheRef: CacheRef; onDone: (cac
   )
 }
 
-/* ---------------------------- 刷新、预热 ---------------------------- */
+/* ---------------------------- 刷新,预热 ---------------------------- */
 
 interface WebConfigCache {
   cache?: { isOn: boolean } | null
@@ -473,10 +473,10 @@ function CacheTaskPage({ mode }: { mode: 'purge' | 'fetch' }) {
         <CacheMenu group={data.group || { id: groupId, name: '' }} />
         <div className="margin" />
         {!cacheIsOn ? (
-          <p className="comment">没有开启缓存，不需要{title}。</p>
+          <p className="comment">没有开启缓存,不需要{title}.</p>
         ) : (
           <div>
-            <p className="comment">{mode === 'purge' ? '可以在这里批量删除一组Key。' : '可以在这里批量预热一组缓存URL。'}</p>
+            <p className="comment">{mode === 'purge' ? '可以在这里批量删除一组Key.' : '可以在这里批量预热一组缓存URL.'}</p>
             <form className="ui form" onSubmit={submit}>
               {mode === 'purge' ? (
                 <table className="ui table definition selectable">
@@ -500,8 +500,8 @@ function CacheTaskPage({ mode }: { mode: 'purge' | 'fetch' }) {
                         <textarea rows={10} value={keys} onChange={(event) => setKeys(event.target.value)} />
                         <p className="comment">
                           {keyType === 'key'
-                            ? '每行一个URL，比如 https://example.com/hello/world.html。'
-                            : '每行一个URL目录，比如 https://example.com/hello/；如果只填写域名部分，表示清理全站。'}
+                            ? '每行一个URL,比如 https://example.com/hello/world.html.'
+                            : '每行一个URL目录,比如 https://example.com/hello/;如果只填写域名部分,表示清理全站.'}
                         </p>
                       </td>
                     </tr>
@@ -514,13 +514,13 @@ function CacheTaskPage({ mode }: { mode: 'purge' | 'fetch' }) {
                       <td>URL列表</td>
                       <td>
                         <textarea rows={10} value={keys} onChange={(event) => setKeys(event.target.value)} />
-                        <p className="comment">每行一个URL。</p>
+                        <p className="comment">每行一个URL.</p>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               )}
-              {errorMessage ? <div className="ui negative message">失败：{errorMessage}</div> : null}
+              {errorMessage ? <div className="ui negative message">失败:{errorMessage}</div> : null}
               <div style={{ marginTop: '1em' }}>
                 <button className={`ui button primary${submitting ? ' loading disabled' : ''}`} type="submit" disabled={submitting}>
                   提交

@@ -110,7 +110,7 @@ export function CertDetailView({ certId }: { certId: number }) {
           <td>引用网站</td>
           <td>
             {!servers || servers.length === 0 ? (
-              <span className="disabled">暂时没有引用此证书的网站。</span>
+              <span className="disabled">暂时没有引用此证书的网站.</span>
             ) : (
               <div>
                 {servers.map((server) => (
@@ -244,11 +244,11 @@ export function UploadCertForm({
         <tbody>
           <FormRow title={<span className="title">证书说明 *</span>}>
             <input type="text" maxLength={100} value={name} onChange={(event) => setName(event.target.value)} />
-            <p className="comment">可以简单说明证书的用途。</p>
+            <p className="comment">可以简单说明证书的用途.</p>
           </FormRow>
           <FormRow title="所属用户">
             <UserSelector userId={userId} onChange={setUserId} />
-            <p className="comment">可选项，当前证书所属用户。</p>
+            <p className="comment">可选项,当前证书所属用户.</p>
           </FormRow>
           <FormRow title="证书类型 *">
             <select className="ui dropdown auto-width" value={isCA ? '1' : '0'} onChange={(event) => setIsCA(event.target.value === '1')}>
@@ -289,7 +289,7 @@ export function UploadCertForm({
               >
                 [{textMode ? '上传文件' : '输入内容'}]
               </a>
-              。文件内容中通常含有"-----BEGIN CERTIFICATE-----"类似的信息{textMode ? '，可以直接拖动证书文件到输入框' : ''}。
+              .文件内容中通常含有"-----BEGIN CERTIFICATE-----"类似的信息{textMode ? ',可以直接拖动证书文件到输入框' : ''}.
             </p>
           </FormRow>
           {!isCA ? (
@@ -326,7 +326,7 @@ export function UploadCertForm({
                 >
                   [{textMode ? '上传文件' : '输入内容'}]
                 </a>
-                。文件内容中通常含有"-----BEGIN RSA PRIVATE KEY-----"类似的信息{textMode ? '，可以直接拖动私钥文件到输入框' : ''}。
+                .文件内容中通常含有"-----BEGIN RSA PRIVATE KEY-----"类似的信息{textMode ? ',可以直接拖动私钥文件到输入框' : ''}.
               </p>
             </FormRow>
           ) : null}
@@ -413,8 +413,8 @@ export function UpdateCertForm({ certId, onDone }: { certId: number; onDone?: ()
         修改证书
         {dnsNames.length > 0 ? (
           <span>
-            &nbsp; （包含{dnsNames[0]}
-            {dnsNames.length > 1 ? `等${dnsNames.length}个` : ''}域名）
+            &nbsp; (包含{dnsNames[0]}
+            {dnsNames.length > 1 ? `等${dnsNames.length}个` : ''}域名)
           </span>
         ) : null}
       </h3>
@@ -427,7 +427,7 @@ export function UpdateCertForm({ certId, onDone }: { certId: number; onDone?: ()
               value={config.name}
               onChange={(event) => setConfig({ ...config, name: event.target.value })}
             />
-            <p className="comment">可以简单说明证书的用途。</p>
+            <p className="comment">可以简单说明证书的用途.</p>
           </FormRow>
           <FormRow title="证书类型">
             <select
@@ -466,7 +466,7 @@ export function UpdateCertForm({ certId, onDone }: { certId: number; onDone?: ()
               >
                 [{textMode ? '上传文件' : '输入内容'}]
               </a>
-              。文件内容中通常含有"-----BEGIN CERTIFICATE-----"类似的信息{textMode ? '，留空表示不修改' : ''}。
+              .文件内容中通常含有"-----BEGIN CERTIFICATE-----"类似的信息{textMode ? ',留空表示不修改' : ''}.
             </p>
           </FormRow>
           {!config.isCA ? (
@@ -497,7 +497,7 @@ export function UpdateCertForm({ certId, onDone }: { certId: number; onDone?: ()
                 >
                   [{textMode ? '上传文件' : '输入内容'}]
                 </a>
-                。留空表示不修改。
+                .留空表示不修改.
               </p>
             </FormRow>
           ) : null}
@@ -556,7 +556,7 @@ export function BatchUploadForm({
     onSuccess: async (result) => {
       let message = `成功上传${result.count}个证书`
       if (userId > 0) {
-        message += '；由于你选择了证书用户，所以只有此用户才能在用户系统中查看到这些证书。'
+        message += ';由于你选择了证书用户,所以只有此用户才能在用户系统中查看到这些证书.'
       }
       toast(message)
       await queryClient.invalidateQueries({ queryKey: ['certs'] })
@@ -586,12 +586,12 @@ export function BatchUploadForm({
               onChange={(event) => setFiles(Array.from(event.target.files || []))}
             />
             <p className="comment">
-              点击后在弹出的文件选择框中支持多选；不用担心文件名和顺序问题，系统会自动匹配。
+              点击后在弹出的文件选择框中支持多选;不用担心文件名和顺序问题,系统会自动匹配.
             </p>
           </FormRow>
           <FormRow title="所属用户">
             <UserSelector userId={userId} onChange={setUserId} />
-            <p className="comment">可选项，指定证书所属的用户；指定用户后，上传的证书管理员无法在管理系统查看，只能在用户系统查看。</p>
+            <p className="comment">可选项,指定证书所属的用户;指定用户后,上传的证书管理员无法在管理系统查看,只能在用户系统查看.</p>
           </FormRow>
         </tbody>
       </FormTable>

@@ -30,7 +30,7 @@ export function DbNodesPage() {
   }
 
   async function remove(node: DbNode) {
-    if (!(await confirm({ message: `确定要删除数据库节点 ${node.name} 吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除数据库节点 ${node.name} 吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -48,7 +48,7 @@ export function DbNodesPage() {
       <div className="ui menu text blue first-menu">
         <a className="item" href="/db/create">[添加节点]</a>
       </div>
-      {query.data.nodes.length === 0 ? <p className="comment">暂时还没有数据库节点。</p> : (
+      {query.data.nodes.length === 0 ? <p className="comment">暂时还没有数据库节点.</p> : (
         <table className="ui table selectable celled">
           <thead>
             <tr>

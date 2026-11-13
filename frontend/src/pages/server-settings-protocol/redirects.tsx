@@ -188,8 +188,8 @@ export function RedirectForm({
                   onChange={(event) => update('beforeURL', event.target.value)}
                 />
                 <p className="comment">
-                  需要填写完整的URL，包括<span className="ui label tiny">http://</span>或者<span className="ui label tiny">https://</span>
-                  ，如果有非默认端口，也需要带上端口号。
+                  需要填写完整的URL,包括<span className="ui label tiny">http://</span>或者<span className="ui label tiny">https://</span>
+                  ,如果有非默认端口,也需要带上端口号.
                 </p>
               </FormRow>
               <FormRow title="匹配模式 *">
@@ -199,10 +199,10 @@ export function RedirectForm({
                   <option value="matchRegexp">正则匹配</option>
                 </Select>
                 <p className="comment">
-                  {mode === 'equal' ? '精准匹配跳转前的URL，即只有访问完全一样的URL才会跳转。' : null}
-                  {mode === 'matchPrefix' ? '只要访问的URL头部部分包含跳转前URL，即可跳转。' : null}
+                  {mode === 'equal' ? '精准匹配跳转前的URL,即只有访问完全一样的URL才会跳转.' : null}
+                  {mode === 'matchPrefix' ? '只要访问的URL头部部分包含跳转前URL,即可跳转.' : null}
                   {mode === 'matchRegexp'
-                    ? '可以在跳转前URL中使用正则表达式，然后可以在跳转后URL中使用正则表达式中括号的变量，比如${1}、${2}分别表示第一个和第二个括号内的变量值。'
+                    ? '可以在跳转前URL中使用正则表达式,然后可以在跳转后URL中使用正则表达式中括号的变量,比如${1},${2}分别表示第一个和第二个括号内的变量值.'
                     : null}
                 </p>
               </FormRow>
@@ -213,7 +213,7 @@ export function RedirectForm({
                   value={form.afterURL}
                   onChange={(event) => update('afterURL', event.target.value)}
                 />
-                <p className="comment">需要填写完整的URL，包括http://或者https://，如果有非默认端口，也需要带上端口号。</p>
+                <p className="comment">需要填写完整的URL,包括http://或者https://,如果有非默认端口,也需要带上端口号.</p>
               </FormRow>
               {mode === 'matchPrefix' ? (
                 <FormRow title="是否保留URL路径参数">
@@ -225,7 +225,7 @@ export function RedirectForm({
                     />
                     <label></label>
                   </div>
-                  <p className="comment">选中后，则跳转之后，保留跳转之前的URL路径和参数。</p>
+                  <p className="comment">选中后,则跳转之后,保留跳转之前的URL路径和参数.</p>
                 </FormRow>
               ) : null}
               {mode === 'equal' || mode === 'matchRegexp' ? (
@@ -234,7 +234,7 @@ export function RedirectForm({
                     <input type="checkbox" checked={form.keepArgs} onChange={(event) => update('keepArgs', event.target.checked)} />
                     <label></label>
                   </div>
-                  <p className="comment">选中后，则跳转之后，保留跳转之前的URL上的参数（即问号之后的部分）。</p>
+                  <p className="comment">选中后,则跳转之后,保留跳转之前的URL上的参数(即问号之后的部分).</p>
                 </FormRow>
               ) : null}
             </>
@@ -246,7 +246,7 @@ export function RedirectForm({
                   <input type="checkbox" checked={form.domainsAll} onChange={(event) => update('domainsAll', event.target.checked)} />
                   <label></label>
                 </div>
-                <p className="comment">选中后，表示所有域名都会跳转（只要跳转前后域名不同）；不选中后可以指定域名跳转。</p>
+                <p className="comment">选中后,表示所有域名都会跳转(只要跳转前后域名不同);不选中后可以指定域名跳转.</p>
               </FormRow>
               {!form.domainsAll ? (
                 <FormRow title="指定跳转前域名">
@@ -266,7 +266,7 @@ export function RedirectForm({
                   />
                   <label></label>
                 </div>
-                <p className="comment">选中后，表示忽略跳转前域名端口，只要域名匹配时就跳转；如不选中，则表示只有域名和端口同时匹配时才会跳转。</p>
+                <p className="comment">选中后,表示忽略跳转前域名端口,只要域名匹配时就跳转;如不选中,则表示只有域名和端口同时匹配时才会跳转.</p>
               </FormRow>
               <FormRow title="跳转后域名 *">
                 <TextInput
@@ -276,7 +276,7 @@ export function RedirectForm({
                   value={form.domainAfter}
                   onChange={(event) => update('domainAfter', event.target.value)}
                 />
-                <p className="comment">这里填写的是网址中的域名部分，不需要添加https://部分。</p>
+                <p className="comment">这里填写的是网址中的域名部分,不需要添加https://部分.</p>
               </FormRow>
               <FormRow title="跳转后协议">
                 <Select value={form.domainAfterScheme} onChange={(event) => update('domainAfterScheme', event.target.value)}>
@@ -284,7 +284,7 @@ export function RedirectForm({
                   <option value="https">HTTPS</option>
                   <option value="http">HTTP</option>
                 </Select>
-                <p className="comment">跳转后的URL的协议。</p>
+                <p className="comment">跳转后的URL的协议.</p>
               </FormRow>
             </>
           ) : null}
@@ -295,7 +295,7 @@ export function RedirectForm({
                   <input type="checkbox" checked={form.portsAll} onChange={(event) => update('portsAll', event.target.checked)} />
                   <label></label>
                 </div>
-                <p className="comment">选中后，表示所有端口都会跳转（只要跳转前后端口不同）；不选中后可以指定端口跳转。</p>
+                <p className="comment">选中后,表示所有端口都会跳转(只要跳转前后端口不同);不选中后可以指定端口跳转.</p>
               </FormRow>
               {!form.portsAll ? (
                 <FormRow title="指定跳转前端口">
@@ -317,7 +317,7 @@ export function RedirectForm({
                   <option value="https">HTTPS</option>
                   <option value="http">HTTP</option>
                 </Select>
-                <p className="comment">跳转后的URL的协议。</p>
+                <p className="comment">跳转后的URL的协议.</p>
               </FormRow>
             </>
           ) : null}
@@ -352,11 +352,11 @@ export function RedirectForm({
           <tbody>
             <FormRow title="例外域名">
               <ValuesEditor values={form.exceptDomains || []} onChange={(values) => update('exceptDomains', values)} />
-              <p className="comment">这些域名<strong>不</strong>执行跳转。</p>
+              <p className="comment">这些域名<strong>不</strong>执行跳转.</p>
             </FormRow>
             <FormRow title="仅限域名">
               <ValuesEditor values={form.onlyDomains || []} onChange={(values) => update('onlyDomains', values)} />
-              <p className="comment">只有这些域名执行跳转。</p>
+              <p className="comment">只有这些域名执行跳转.</p>
             </FormRow>
             <FormRow title="匹配条件">
               <CondsEditor value={form.conds || { isOn: true, connector: 'or', groups: [] }} onChange={(conds) => update('conds', conds)} />
@@ -475,7 +475,7 @@ export function RedirectsPage() {
         </a>
       </div>
       <div className="margin" />
-      {current.length === 0 ? <p className="comment">暂时还没有URL跳转规则。</p> : null}
+      {current.length === 0 ? <p className="comment">暂时还没有URL跳转规则.</p> : null}
       {current.length > 0 ? (
         <table className="ui table celled selectable">
           <thead>
@@ -524,7 +524,7 @@ export function RedirectsPage() {
                       href=""
                       onClick={(event) => {
                         event.preventDefault()
-                        void confirm({ message: '确定要删除这条跳转规则吗？' }).then((ok) => {
+                        void confirm({ message: '确定要删除这条跳转规则吗?' }).then((ok) => {
                           if (ok) {
                             void persist(current.filter((_, i) => i !== index))
                           }

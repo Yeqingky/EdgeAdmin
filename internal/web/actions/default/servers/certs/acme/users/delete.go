@@ -21,7 +21,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countResp.Count > 0 {
-		this.Fail("有任务正在和这个用户关联，所以不能删除")
+		this.Fail("有任务正在和这个用户关联,所以不能删除")
 	}
 
 	_, err = this.RPC().ACMEUserRPC().DeleteACMEUser(this.AdminContext(), &pb.DeleteACMEUserRequest{AcmeUserId: params.UserId})

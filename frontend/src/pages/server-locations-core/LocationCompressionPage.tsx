@@ -129,21 +129,21 @@ function CompressionForm({ data }: { data: CompressionData }) {
               <td>支持的扩展名</td>
               <td>
                 <ValueList values={extensions} onChange={setExtensions} placeholder="比如 .html" normalize={normalizeExtension} />
-                <p className="comment">含有这些扩展名的URL将会被压缩，不区分大小写。</p>
+                <p className="comment">含有这些扩展名的URL将会被压缩,不区分大小写.</p>
               </td>
             </tr>
             <tr>
               <td>例外扩展名</td>
               <td>
                 <ValueList values={exceptExtensions} onChange={setExceptExtensions} placeholder="比如 .html" normalize={normalizeExtension} />
-                <p className="comment">含有这些扩展名的URL将<strong>不会</strong>被压缩，不区分大小写。</p>
+                <p className="comment">含有这些扩展名的URL将<strong>不会</strong>被压缩,不区分大小写.</p>
               </td>
             </tr>
             <tr>
               <td>支持的MimeType</td>
               <td>
                 <ValueList values={mimeTypes} onChange={setMimeTypes} placeholder="比如 text/*" />
-                <p className="comment">响应的Content-Type里包含这些MimeType的内容将会被压缩。</p>
+                <p className="comment">响应的Content-Type里包含这些MimeType的内容将会被压缩.</p>
               </td>
             </tr>
           </tbody>
@@ -158,7 +158,7 @@ function CompressionForm({ data }: { data: CompressionData }) {
                     onChange={setUseDefaultTypes}
                   />
                   <span className="grey small">
-                    {useDefaultTypes ? '使用默认顺序（brotli、gzip、zstd、deflate）' : '使用默认顺序'}
+                    {useDefaultTypes ? '使用默认顺序(brotli,gzip,zstd,deflate)' : '使用默认顺序'}
                   </span>
                   {!useDefaultTypes ? (
                     <div>
@@ -199,7 +199,7 @@ function CompressionForm({ data }: { data: CompressionData }) {
                           </a>
                         </div>
                       ))}
-                      <p className="comment">选择支持的压缩算法和优先顺序，使用箭头按钮排序。</p>
+                      <p className="comment">选择支持的压缩算法和优先顺序,使用箭头按钮排序.</p>
                     </div>
                   ) : null}
                 </td>
@@ -208,42 +208,42 @@ function CompressionForm({ data }: { data: CompressionData }) {
                 <td>支持已压缩内容</td>
                 <td>
                   <Checkbox checked={decompressData} onChange={setDecompressData} />
-                  <p className="comment">支持对已压缩内容尝试重新使用新的算法压缩；不选中表示保留当前的压缩格式。</p>
+                  <p className="comment">支持对已压缩内容尝试重新使用新的算法压缩;不选中表示保留当前的压缩格式.</p>
                 </td>
               </tr>
               <tr>
                 <td>内容最小长度</td>
                 <td>
                   <SizeCapacityField value={minLength} unit="kb" onChange={setMinLength} />
-                  <p className="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+                  <p className="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
                 </td>
               </tr>
               <tr>
                 <td>内容最大长度</td>
                 <td>
                   <SizeCapacityField value={maxLength} unit="mb" onChange={setMaxLength} />
-                  <p className="comment">0表示不限制，内容长度从文件尺寸或Content-Length中获取。</p>
+                  <p className="comment">0表示不限制,内容长度从文件尺寸或Content-Length中获取.</p>
                 </td>
               </tr>
               <tr>
                 <td>支持Partial<br />Content</td>
                 <td>
                   <Checkbox checked={enablePartialContent} onChange={setEnablePartialContent} />
-                  <p className="comment">支持对分片内容（PartialContent）的压缩；除非客户端有特殊要求，一般不需要启用。</p>
+                  <p className="comment">支持对分片内容(PartialContent)的压缩;除非客户端有特殊要求,一般不需要启用.</p>
                 </td>
               </tr>
               <tr>
                 <td>例外URL</td>
                 <td>
                   <UrlPatternsField patterns={exceptURLPatterns} onChange={setExceptURLPatterns} />
-                  <p className="comment">如果填写了例外URL，表示这些URL跳过不做处理。</p>
+                  <p className="comment">如果填写了例外URL,表示这些URL跳过不做处理.</p>
                 </td>
               </tr>
               <tr>
                 <td>限制URL</td>
                 <td>
                   <UrlPatternsField patterns={onlyURLPatterns} onChange={setOnlyURLPatterns} />
-                  <p className="comment">如果填写了限制URL，表示只对这些URL进行压缩处理；如果不填则表示支持所有的URL。</p>
+                  <p className="comment">如果填写了限制URL,表示只对这些URL进行压缩处理;如果不填则表示支持所有的URL.</p>
                 </td>
               </tr>
               <tr>

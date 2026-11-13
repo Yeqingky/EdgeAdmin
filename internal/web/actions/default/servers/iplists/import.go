@@ -79,7 +79,7 @@ func (this *ImportAction) RunPost(params struct {
 	case ".xlsx":
 		file, openErr := xlsx.OpenBinary(data)
 		if openErr != nil {
-			this.Fail("Excel读取错误：" + openErr.Error())
+			this.Fail("Excel读取错误:" + openErr.Error())
 			return
 		}
 		if len(file.Sheets) > 0 {
@@ -106,7 +106,7 @@ func (this *ImportAction) RunPost(params struct {
 				return nil
 			})
 			if err != nil {
-				this.Fail("Excel读取错误：" + err.Error())
+				this.Fail("Excel读取错误:" + err.Error())
 			}
 		}
 	case ".csv":
@@ -117,7 +117,7 @@ func (this *ImportAction) RunPost(params struct {
 				if err == io.EOF {
 					break
 				}
-				this.Fail("CSV读取错误：" + err.Error())
+				this.Fail("CSV读取错误:" + err.Error())
 			}
 			item := this.createItemFromValues(values, &countIgnore)
 			if item != nil {
@@ -127,7 +127,7 @@ func (this *ImportAction) RunPost(params struct {
 	case ".json":
 		err = json.Unmarshal(data, &items)
 		if err != nil {
-			this.Fail("导入失败：" + err.Error())
+			this.Fail("导入失败:" + err.Error())
 		}
 	case ".txt":
 		lines := bytes.Split(data, []byte{'\n'})
@@ -158,7 +158,7 @@ func (this *ImportAction) RunPost(params struct {
 			EventLevel: item.EventLevel,
 		})
 		if err != nil {
-			this.Fail("导入过程中出错：" + err.Error())
+			this.Fail("导入过程中出错:" + err.Error())
 		}
 		count++
 	}

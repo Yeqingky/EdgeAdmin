@@ -44,7 +44,7 @@ Tea.context(function () {
 
 	// 删除
 	this.deleteGroup = function (groupId) {
-		teaweb.confirm("确定要删除此规则分组吗？", function () {
+		teaweb.confirm("确定要删除此规则分组吗?", function () {
 			this.$post("/servers/components/waf/deleteGroup")
 				.params({
 					firewallPolicyId: this.firewallPolicyId,

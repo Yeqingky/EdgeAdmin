@@ -105,7 +105,7 @@ func (this *UpdateAction) RunPost(params struct {
 	params.Must.
 		Field("username", params.Username).
 		Require("请输入登录用户名").
-		Match(`^[a-zA-Z0-9_]+$`, "用户名中只能包含英文、数字或下划线")
+		Match(`^[a-zA-Z0-9_]+$`, "用户名中只能包含英文,数字或下划线")
 
 	existsResp, err := this.RPC().AdminRPC().CheckAdminUsername(this.AdminContext(), &pb.CheckAdminUsernameRequest{
 		AdminId:  params.AdminId,
@@ -116,7 +116,7 @@ func (this *UpdateAction) RunPost(params struct {
 		return
 	}
 	if existsResp.Exists {
-		this.FailField("username", "此用户名已经被别的系统用户使用，请换一个")
+		this.FailField("username", "此用户名已经被别的系统用户使用,请换一个")
 	}
 
 	if len(params.Pass1) > 0 {
@@ -183,7 +183,7 @@ func (this *UpdateAction) RunPost(params struct {
 					UserId:  0,
 				}
 			} else {
-				// 如果已经有了，就覆盖，这样可以保留既有的参数
+				// 如果已经有了,就覆盖,这样可以保留既有的参数
 				otpLogin.IsOn = true
 			}
 

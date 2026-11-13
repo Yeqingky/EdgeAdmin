@@ -67,7 +67,7 @@ export function NodeDetailPage() {
   })
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -83,7 +83,7 @@ export function NodeDetailPage() {
   const isActive = status?.isActive ?? false
 
   async function uninstallNode() {
-    if (!(await confirm({ message: '确定要卸载当前节点吗？此操作将会删除节点上除缓存以外的相关文件。', danger: true, confirmText: '卸载' }))) {
+    if (!(await confirm({ message: '确定要卸载当前节点吗?此操作将会删除节点上除缓存以外的相关文件.', danger: true, confirmText: '卸载' }))) {
       return
     }
     await runAction('/clusters/cluster/node/uninstall', '执行成功')
@@ -148,27 +148,27 @@ export function NodeDetailPage() {
           <tr>
             <td>IP地址</td>
             <td>
-              {node.ipAddresses.length === 0 ? <span className="disabled">暂时还没有填写IP地址。</span> : null}
+              {node.ipAddresses.length === 0 ? <span className="disabled">暂时还没有填写IP地址.</span> : null}
               {node.ipAddresses.map((address) => (
                 <div key={address.id} className="ui label small basic" style={{ marginBottom: '0.3em' }}>
                   {isIPv6(address.ip) ? <span className="grey">[IPv6]</span> : null} {address.ip}
                   {address.originIP && address.originIP.length > 0 && address.originIP !== address.ip ? (
-                    <span className="small red">（原：{address.originIP}）</span>
+                    <span className="small red">(原:{address.originIP})</span>
                   ) : null}
                   {address.name ? (
                     <span className="small grey">
-                      （备注：{address.name}
-                      {!address.canAccess ? '，不公开访问' : ''}）
+                      (备注:{address.name}
+                      {!address.canAccess ? ',不公开访问' : ''})
                     </span>
                   ) : null}
-                  {!address.name && !address.canAccess ? <span className="small grey">（不公开访问）</span> : null}
+                  {!address.name && !address.canAccess ? <span className="small grey">(不公开访问)</span> : null}
                   {address.isOn === false ? <span className="small red">[off]</span> : null}
                   {address.isUp === false ? <span className="small red">[down]</span> : null}
                   {address.thresholds && address.thresholds.length > 0 ? <span className="small">[阈值]</span> : null}
                   {address.clusters && address.clusters.length > 0 ? (
                     <span>
-                      &nbsp; <span className="small grey">专属集群：[</span>
-                      <span className="small grey">{address.clusters.map((cluster) => cluster.name).join('，')}</span>
+                      &nbsp; <span className="small grey">专属集群:[</span>
+                      <span className="small grey">{address.clusters.map((cluster) => cluster.name).join(',')}</span>
                       <span className="small grey">]</span>
                     </span>
                   ) : null}
@@ -182,7 +182,7 @@ export function NodeDetailPage() {
               <td>
                 {node.routes.map((route) => (
                   <span key={`${route.domainName}-${route.code}`} className="ui label tiny basic">
-                    {route.name} <span className="grey small">（{route.domainName}）</span>
+                    {route.name} <span className="grey small">({route.domainName})</span>
                   </span>
                 ))}
               </td>
@@ -226,21 +226,21 @@ export function NodeDetailPage() {
                     </tbody>
                   </table>
                   {!data.dnsIsExcludingLnNode ? (
-                    <p className="comment">通过设置A记录可以将集群上的服务请求转发到不同线路的节点上。</p>
+                    <p className="comment">通过设置A记录可以将集群上的服务请求转发到不同线路的节点上.</p>
                   ) : null}
                 </div>
                 {data.dnsIsExcludingLnNode ? (
                   <p className="comment">
                     <span className="red">
-                      当前集群DNS已设置不解析Ln节点，所以当前节点不会加入DNS解析；如需加入，请修改"集群设置" -- "DNS设置" -- "更多选项" -- "包含Ln节点"。
+                      当前集群DNS已设置不解析Ln节点,所以当前节点不会加入DNS解析;如需加入,请修改"集群设置" -- "DNS设置" -- "更多选项" -- "包含Ln节点".
                     </span>
                   </p>
                 ) : null}
                 {!node.isInstalled ? (
                   <p className="comment">
                     <span className="red">
-                      当前节点尚未完成安装，DNS解析记录将不会生效，
-                      <Link to={`/clusters/cluster/node/install?clusterId=${clusterId}&nodeId=${node.id}`}>[点此安装]</Link>。
+                      当前节点尚未完成安装,DNS解析记录将不会生效,
+                      <Link to={`/clusters/cluster/node/install?clusterId=${clusterId}&nodeId=${node.id}`}>[点此安装]</Link>.
                     </span>
                   </p>
                 ) : null}
@@ -249,11 +249,11 @@ export function NodeDetailPage() {
           ) : null}
           <tr>
             <td>所属区域</td>
-            <td>{node.region ? <span className="ui label small basic">{node.region.name}</span> : <span className="disabled">没有设置区域。</span>}</td>
+            <td>{node.region ? <span className="ui label small basic">{node.region.name}</span> : <span className="disabled">没有设置区域.</span>}</td>
           </tr>
           <tr>
             <td>所属分组</td>
-            <td>{node.group ? <span className="ui label small basic">{node.group.name}</span> : <span className="disabled">没有设置分组。</span>}</td>
+            <td>{node.group ? <span className="ui label small basic">{node.group.name}</span> : <span className="disabled">没有设置分组.</span>}</td>
           </tr>
           {isPlus ? (
             <tr>
@@ -271,7 +271,7 @@ export function NodeDetailPage() {
                   </span>
                 ) : null}
                 {node.level > 1 && node.lnAddrs && node.lnAddrs.length > 0 ? (
-                  <p className="comment">指定了Ln节点访问地址。</p>
+                  <p className="comment">指定了Ln节点访问地址.</p>
                 ) : null}
               </td>
             </tr>
@@ -316,8 +316,8 @@ export function NodeDetailPage() {
                 {node.login?.grant && node.login.grant.id > 0 ? (
                   <Link to={`/clusters/grants/grant?grantId=${node.login.grant.id}`}>
                     {node.login.grant.name}
-                    <span className="small grey">（{node.login.grant.methodName}）</span>
-                    {node.login.grant.username ? <span className="small grey">（{node.login.grant.username}）</span> : null}
+                    <span className="small grey">({node.login.grant.methodName})</span>
+                    {node.login.grant.username ? <span className="small grey">({node.login.grant.username})</span> : null}
                   </Link>
                 ) : (
                   <span className="disabled">尚未设置</span>
@@ -363,7 +363,7 @@ export function NodeDetailPage() {
             </tr>
             <tr>
               <td>CPU线程数</td>
-              <td>{node.maxCPU > 0 ? `${node.maxCPU}线程` : <span className="disabled">没有限制。</span>}</td>
+              <td>{node.maxCPU > 0 ? `${node.maxCPU}线程` : <span className="disabled">没有限制.</span>}</td>
             </tr>
             <tr>
               <td>API节点地址</td>
@@ -443,7 +443,7 @@ export function NodeDetailPage() {
                 {status?.cpuUsageText} &nbsp;
                 {status && status.cpuPhysicalCount && status.cpuPhysicalCount > 0 ? (
                   <span className="small grey">
-                    （{status.cpuPhysicalCount}核心/{status.cpuLogicalCount}线程）
+                    ({status.cpuPhysicalCount}核心/{status.cpuLogicalCount}线程)
                   </span>
                 ) : null}
               </td>
@@ -460,13 +460,13 @@ export function NodeDetailPage() {
               <td>负载</td>
               <td>
                 {status?.load1m} &nbsp; {status?.load5m} &nbsp; {status?.load15m} &nbsp;
-                <span className="small grey">（三个数字分别代表1分钟、5分钟、15分钟平均负载）</span>
+                <span className="small grey">(三个数字分别代表1分钟,5分钟,15分钟平均负载)</span>
               </td>
             </tr>
             <tr>
               <td>缓存用量</td>
               <td>
-                硬盘：{status?.cacheTotalDiskSize} &nbsp; 内存：{status?.cacheTotalMemorySize}
+                硬盘:{status?.cacheTotalDiskSize} &nbsp; 内存:{status?.cacheTotalMemorySize}
               </td>
             </tr>
           </tbody>
@@ -498,24 +498,24 @@ export function NodeDetailPage() {
                 <span>
                   {(status.apiSuccessPercent || 0) <= 50 ? (
                     <span className="red">
-                      连接错误异常严重（{Math.round(100 - (status.apiSuccessPercent || 0))}%失败），请改善当前节点和API节点之间通讯
+                      连接错误异常严重({Math.round(100 - (status.apiSuccessPercent || 0))}%失败),请改善当前节点和API节点之间通讯
                     </span>
                   ) : (status.apiSuccessPercent || 0) <= 80 ? (
                     <span className="red">
-                      连接错误较多（{Math.round(100 - (status.apiSuccessPercent || 0))}%失败），请改善当前节点和API节点之间通讯
+                      连接错误较多({Math.round(100 - (status.apiSuccessPercent || 0))}%失败),请改善当前节点和API节点之间通讯
                     </span>
                   ) : (status.apiSuccessPercent || 0) < 100 ? (
                     <span className="orange">
-                      有连接错误发生（{Math.round(100 - (status.apiSuccessPercent || 0))}%失败），请改善当前节点和API节点之间通讯
+                      有连接错误发生({Math.round(100 - (status.apiSuccessPercent || 0))}%失败),请改善当前节点和API节点之间通讯
                     </span>
                   ) : (status.apiAvgCostSeconds || 0) <= 1 ? (
                     <span className="green">连接良好</span>
                   ) : (status.apiAvgCostSeconds || 0) <= 5 ? (
-                    <span className="orange">连接基本稳定（平均{Math.round(status.apiAvgCostSeconds || 0)}秒）</span>
+                    <span className="orange">连接基本稳定(平均{Math.round(status.apiAvgCostSeconds || 0)}秒)</span>
                   ) : (status.apiAvgCostSeconds || 0) <= 10 ? (
-                    <span className="orange">连接速度较慢（平均{Math.round(status.apiAvgCostSeconds || 0)}秒）</span>
+                    <span className="orange">连接速度较慢(平均{Math.round(status.apiAvgCostSeconds || 0)}秒)</span>
                   ) : (
-                    <span className="red">连接非常慢（平均{Math.round(status.apiAvgCostSeconds || 0)}秒），请改善当前节点和API节点之间通讯</span>
+                    <span className="red">连接非常慢(平均{Math.round(status.apiAvgCostSeconds || 0)}秒),请改善当前节点和API节点之间通讯</span>
                   )}
                 </span>
               ) : (
@@ -530,7 +530,7 @@ export function NodeDetailPage() {
                 {data.nodeDatetime}
                 {data.nodeTimeDiff > 30 ? (
                   <p className="comment">
-                    <span className="red">当前节点时间与API节点时间相差 {data.nodeTimeDiff} 秒，请同步节点时间。</span>
+                    <span className="red">当前节点时间与API节点时间相差 {data.nodeTimeDiff} 秒,请同步节点时间.</span>
                   </p>
                 ) : null}
               </td>
@@ -538,7 +538,7 @@ export function NodeDetailPage() {
           ) : null}
         </tbody>
       </table>
-      {isActive ? <p className="comment">每隔30秒钟更新一次运行状态。</p> : null}
+      {isActive ? <p className="comment">每隔30秒钟更新一次运行状态.</p> : null}
 
       <div className="ui divider" />
       <h3>安装信息</h3>
@@ -546,13 +546,13 @@ export function NodeDetailPage() {
         <tbody>
           <tr>
             <td>
-              节点ID<em>（id）</em>
+              节点ID<em>(id)</em>
             </td>
             <td>{node.uniqueId}</td>
           </tr>
           <tr>
             <td>
-              密钥<em>（secret）</em>
+              密钥<em>(secret)</em>
             </td>
             <td>{node.secret}</td>
           </tr>

@@ -113,7 +113,7 @@ export function ApiNodeDetailPage() {
               ) : (
                 <span className="disabled">-</span>
               )}
-              <p className="comment">API节点进程监听的网络端口。</p>
+              <p className="comment">API节点进程监听的网络端口.</p>
             </td>
           </tr>
           {node.hasHTTPS ? (
@@ -131,7 +131,7 @@ export function ApiNodeDetailPage() {
                     </div>
                   ))
                 ) : (
-                  <span className="red">还没有设置证书，可能会导致HTTPS相关服务不可用。</span>
+                  <span className="red">还没有设置证书,可能会导致HTTPS相关服务不可用.</span>
                 )}
               </td>
             </tr>
@@ -148,7 +148,7 @@ export function ApiNodeDetailPage() {
               ) : (
                 <span className="disabled">-</span>
               )}
-              <p className="comment">通过GRPC访问API节点的网络地址。</p>
+              <p className="comment">通过GRPC访问API节点的网络地址.</p>
             </td>
           </tr>
           {node.restIsOn ? (
@@ -164,7 +164,7 @@ export function ApiNodeDetailPage() {
                 ) : (
                   <span className="disabled">-</span>
                 )}
-                <p className="comment">通过HTTP访问API节点的网络地址。</p>
+                <p className="comment">通过HTTP访问API节点的网络地址.</p>
               </td>
             </tr>
           ) : null}
@@ -176,7 +176,7 @@ export function ApiNodeDetailPage() {
                   {node.status.cpuUsageText} &nbsp;{' '}
                   {node.status.cpuPhysicalCount > 0 ? (
                     <span className="small grey">
-                      （{node.status.cpuPhysicalCount}核心/{node.status.cpuLogicalCount}线程）
+                      ({node.status.cpuPhysicalCount}核心/{node.status.cpuLogicalCount}线程)
                     </span>
                   ) : null}
                 </td>
@@ -204,12 +204,12 @@ export function ApiNodeDetailPage() {
             <td>主节点</td>
             <td>
               {node.isPrimary ? <span className="green">Y</span> : <span className="disabled">N</span>}
-              {node.isPrimary ? <p className="comment">设置为主节点后，主要的后台任务会在此节点上运行。</p> : null}
+              {node.isPrimary ? <p className="comment">设置为主节点后,主要的后台任务会在此节点上运行.</p> : null}
             </td>
           </tr>
           <tr>
             <td>描述</td>
-            <td>{node.description.length > 0 ? node.description : <span className="disabled">暂时还没有描述。</span>}</td>
+            <td>{node.description.length > 0 ? node.description : <span className="disabled">暂时还没有描述.</span>}</td>
           </tr>
         </tbody>
       </table>
@@ -255,10 +255,10 @@ export function ApiNodeInstallPage() {
       <h3>安装步骤</h3>
       <ol className="ui list">
         <li>
-          按照下面的配置信息替换<span className="ui label basic small">configs/api.yaml</span>内容；如果文件不存在，请先创建
+          按照下面的配置信息替换<span className="ui label basic small">configs/api.yaml</span>内容;如果文件不存在,请先创建
         </li>
         <li>
-          按照下面的配置信息替换<span className="ui label basic small">configs/db.yaml</span>内容；如果文件不存在，请先创建
+          按照下面的配置信息替换<span className="ui label basic small">configs/db.yaml</span>内容;如果文件不存在,请先创建
         </li>
         <li>
           使用<span className="ui label basic small">bin/edge-api start</span>启动节点
@@ -267,7 +267,7 @@ export function ApiNodeInstallPage() {
           可以在<span className="ui label basic small">logs/run.log</span>中查看启动是否有异常
         </li>
         <li>
-          配置修改后，使用<span className="ui label basic small">bin/edge-api restart</span>重启节点
+          配置修改后,使用<span className="ui label basic small">bin/edge-api restart</span>重启节点
         </li>
       </ol>
 
@@ -304,10 +304,10 @@ export function ApiNodeInstallPage() {
                 <span className="red">
                   {data.dbConfig.isNotFound ? (
                     <>
-                      找不到数据库配置文件：configs/api_db.yaml ，请重新 <a href="/settings/database">[配置数据库]</a>：
+                      找不到数据库配置文件:configs/api_db.yaml ,请重新 <a href="/settings/database">[配置数据库]</a>:
                     </>
                   ) : (
-                    <>无法生成配置内容，错误原因：</>
+                    <>无法生成配置内容,错误原因:</>
                   )}
                   {data.dbConfig.error}
                 </span>
@@ -446,7 +446,7 @@ export function ApiNodeLogsPage() {
       </form>
 
       {query.isLoading ? <LoadingBlock /> : null}
-      {!query.isLoading && logs.length === 0 ? <p className="comment">暂时还没有日志。</p> : null}
+      {!query.isLoading && logs.length === 0 ? <p className="comment">暂时还没有日志.</p> : null}
       {logs.length > 0 ? (
         <table className="ui table selectable">
           <tbody>
@@ -500,8 +500,8 @@ export function ApiNodeUpdatePage() {
       <SettingsTabs kind="advanced" active="apiNodes" />
       <NodeMenu nodeId={node.id} nodeName={node.name} active="update" />
       <div className="ui warning message">
-        如果你修改了GRPC访问地址、端口、证书相关信息时，需要重启<span className="ui label basic small">edge-api</span>进程（
-        <span className="ui label basic small">edge-node restart</span>）才能生效，并可能需要手工修改其他节点的配置信息。
+        如果你修改了GRPC访问地址,端口,证书相关信息时,需要重启<span className="ui label basic small">edge-api</span>进程(
+        <span className="ui label basic small">edge-node restart</span>)才能生效,并可能需要手工修改其他节点的配置信息.
       </div>
       <ApiNodeForm
         node={node}
@@ -539,7 +539,7 @@ interface AddressData {
 function AddressResultData({ addr }: { addr: NetworkAddress }) {
   return (
     <div className="ui message success">
-      已生成访问地址：<span className="ui label small basic">{formatAddress(addr)}</span>
+      已生成访问地址:<span className="ui label small basic">{formatAddress(addr)}</span>
     </div>
   )
 }
@@ -575,7 +575,7 @@ export function CreateAddressPage() {
           </FormRow>
           <FormRow title="访问地址">
             <input type="text" maxLength={100} value={addr} onChange={(event) => setAddr(event.target.value)} />
-            <p className="comment">可以是&quot;IP:端口&quot;或者&quot;域名:端口&quot;。</p>
+            <p className="comment">可以是&quot;IP:端口&quot;或者&quot;域名:端口&quot;.</p>
           </FormRow>
         </FormTable>
         <button className="ui button primary" type="submit">
@@ -619,7 +619,7 @@ export function UpdateAddressPage() {
           </FormRow>
           <FormRow title="访问地址">
             <input type="text" maxLength={100} value={addr} onChange={(event) => setAddr(event.target.value)} />
-            <p className="comment">可以是&quot;IP:端口&quot;或者&quot;域名:端口&quot;。</p>
+            <p className="comment">可以是&quot;IP:端口&quot;或者&quot;域名:端口&quot;.</p>
           </FormRow>
         </FormTable>
         <button className="ui button primary" type="submit">

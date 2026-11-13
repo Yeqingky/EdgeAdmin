@@ -54,7 +54,7 @@ func ListInstallerFiles() []*installerFile {
 		}
 	}
 
-	// 排序，将x86_64排在最上面
+	// 排序,将x86_64排在最上面
 	if len(result) > 0 {
 		sort.Slice(result, func(i, j int) bool {
 			return result[i].Arch == "x86_64"

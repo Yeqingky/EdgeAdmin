@@ -95,7 +95,7 @@ Tea.context(function () {
 
 	this.deleteServers = function () {
 		let that = this
-		teaweb.confirm("确定要删除所选的" + (this.checkedServerIds.length) + "个网站吗？", function () {
+		teaweb.confirm("确定要删除所选的" + (this.checkedServerIds.length) + "个网站吗?", function () {
 			that.$post(".deleteServers")
 				.params({
 					serverIds: this.checkedServerIds

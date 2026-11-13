@@ -55,7 +55,7 @@ function HeaderEditor({ state, policyId, headerType, onClose, onSaved }: {
     setSubmitting(true)
     try {
       const statusList = editor.statusCodes
-        .split(/[，、,;\s]+/)
+        .split(/[,,,;\s]+/)
         .map((value) => Number.parseInt(value.trim(), 10))
         .filter((value) => !Number.isNaN(value))
       const payload = {
@@ -111,34 +111,34 @@ function HeaderEditor({ state, policyId, headerType, onClose, onSaved }: {
             <td>值</td>
             <td>
               <input type="text" value={editor.value} onChange={(event) => update({ value: event.target.value })} />
-              <p className="comment">可以使用变量，比如 ${'${remoteAddr}'}、${'${requestPath}'}。</p>
+              <p className="comment">可以使用变量,比如 ${'${remoteAddr}'},${'${requestPath}'}.</p>
             </td>
           </tr>
           <tr>
             <td>状态码</td>
             <td>
-              <input type="text" value={editor.statusCodes} placeholder="比如 200,404，留空表示所有状态码" onChange={(event) => update({ statusCodes: event.target.value })} />
+              <input type="text" value={editor.statusCodes} placeholder="比如 200,404,留空表示所有状态码" onChange={(event) => update({ statusCodes: event.target.value })} />
             </td>
           </tr>
           <tr>
             <td>请求方法</td>
             <td>
               <ValueList values={editor.methods} onChange={(methods) => update({ methods })} placeholder="比如 GET" />
-              <p className="comment">留空表示支持所有请求方法。</p>
+              <p className="comment">留空表示支持所有请求方法.</p>
             </td>
           </tr>
           <tr>
             <td>专属域名</td>
             <td>
               <ValueList values={editor.domains} onChange={(domains) => update({ domains })} placeholder="比如 example.com" />
-              <p className="comment">留空表示支持所有域名。</p>
+              <p className="comment">留空表示支持所有域名.</p>
             </td>
           </tr>
           <tr>
             <td>附加</td>
             <td>
               <Checkbox checked={editor.shouldAppend} onChange={(value) => update({ shouldAppend: value })} />
-              <p className="comment">选中表示在已有报头值后附加新的值，而不是覆盖。</p>
+              <p className="comment">选中表示在已有报头值后附加新的值,而不是覆盖.</p>
             </td>
           </tr>
           <tr>
@@ -151,7 +151,7 @@ function HeaderEditor({ state, policyId, headerType, onClose, onSaved }: {
             <td>替换值</td>
             <td>
               <Checkbox checked={editor.shouldReplace} onChange={(value) => update({ shouldReplace: value })} />
-              <p className="comment">选中后可以替换报头值中的部分内容。</p>
+              <p className="comment">选中后可以替换报头值中的部分内容.</p>
             </td>
           </tr>
         </tbody>
@@ -226,7 +226,7 @@ function CorsEditor({ cors, policyId, onClose, onSaved }: {
             <td className="title">启用</td>
             <td>
               <Checkbox checked={isOn} onChange={setIsOn} />
-              <p className="comment">启用后，服务器会自动生成<code>Access-Control-*-*</code>相关的报头。</p>
+              <p className="comment">启用后,服务器会自动生成<code>Access-Control-*-*</code>相关的报头.</p>
             </td>
           </tr>
           <tr>
@@ -332,7 +332,7 @@ function HeadersForm({ data, serverId, locationId }: { data: HeadersData; server
   }
 
   async function deleteHeader(header: HeaderConfig) {
-    if (!(await confirm({ message: '确定要删除此报头吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此报头吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -462,7 +462,7 @@ function HeadersForm({ data, serverId, locationId }: { data: HeadersData; server
               [添加新报头]
             </a>
           </h4>
-          {setHeaders.length === 0 ? <p className="comment">暂时还没有自定义报头。</p> : null}
+          {setHeaders.length === 0 ? <p className="comment">暂时还没有自定义报头.</p> : null}
           {setHeaders.length > 0 ? (
             <table className="ui table selectable celled">
               <thead>
@@ -550,7 +550,7 @@ function HeadersForm({ data, serverId, locationId }: { data: HeadersData; server
               <button className="ui button small" type="button" onClick={() => setNameModal({ kind: 'delete', name: '' })}>
                 <Plus size={12} />
               </button>
-              <p className="comment">可以通过此功能删除{activeType === 'request' ? '转发到源站的请求' : '响应'}报文中不需要的报头。</p>
+              <p className="comment">可以通过此功能删除{activeType === 'request' ? '转发到源站的请求' : '响应'}报文中不需要的报头.</p>
             </FormRow>
             <FormRow title="非标报头">
               {nonStandardHeaders.length > 0 ? (
@@ -569,14 +569,14 @@ function HeadersForm({ data, serverId, locationId }: { data: HeadersData; server
               <button className="ui button small" type="button" onClick={() => setNameModal({ kind: 'nonStandard', name: '' })}>
                 <Plus size={12} />
               </button>
-              <p className="comment">可以通过此功能设置报文中非标准的报头，比如 hello_world。</p>
+              <p className="comment">可以通过此功能设置报文中非标准的报头,比如 hello_world.</p>
             </FormRow>
             {activeType === 'response' ? (
               <FormRow title="CORS自适应跨域">
                 {policy?.cors?.isOn ? <span className="green">已启用</span> : <span className="disabled">未启用</span>} &nbsp;
                 <a href="" onClick={(event) => { event.preventDefault(); setCorsOpen(true) }}>[修改]</a>
                 <p className="comment">
-                  {policy?.cors?.isOn ? '服务器会' : '启用后，服务器可以'}自动生成<code>Access-Control-*-*</code>相关的报头。
+                  {policy?.cors?.isOn ? '服务器会' : '启用后,服务器可以'}自动生成<code>Access-Control-*-*</code>相关的报头.
                 </p>
               </FormRow>
             ) : null}

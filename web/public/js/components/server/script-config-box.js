@@ -74,11 +74,11 @@ Vue.component("script-config-box", {
 				<td>脚本代码</td>	
 				<td>
 					<p class="comment" v-if="auditingStatus != null">
-						<span class="green" v-if="auditingStatus.isPassed">管理员审核结果：审核通过。</span>
-						<span class="red" v-else-if="auditingStatus.isRejected">管理员审核结果：驳回 &nbsp; &nbsp; 驳回理由：{{auditingStatus.rejectedReason}}</span>
-						<span class="red" v-else>当前脚本将在审核后生效，请耐心等待审核结果。 <a href="/servers/user-scripts" target="_blank" v-if="isPlus()">去审核 &raquo;</a></span>
+						<span class="green" v-if="auditingStatus.isPassed">管理员审核结果:审核通过.</span>
+						<span class="red" v-else-if="auditingStatus.isRejected">管理员审核结果:驳回 &nbsp; &nbsp; 驳回理由:{{auditingStatus.rejectedReason}}</span>
+						<span class="red" v-else>当前脚本将在审核后生效,请耐心等待审核结果. <a href="/servers/user-scripts" target="_blank" v-if="isPlus()">去审核 &raquo;</a></span>
 					</p>
-					<p class="comment" v-if="auditingStatus == null"><span class="green">管理员审核结果：审核通过。</span></p>
+					<p class="comment" v-if="auditingStatus == null"><span class="green">管理员审核结果:审核通过.</span></p>
 					<source-code-box :id="id" type="text/javascript" :read-only="false" @change="changeCode">{{config.code}}</source-code-box>
 					<p class="comment">{{comment}}</p>
 				</td>

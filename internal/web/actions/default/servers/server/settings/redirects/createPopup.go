@@ -79,7 +79,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 		if params.MatchRegexp {
 			_, err := regexp.Compile(params.BeforeURL)
 			if err != nil {
-				this.Fail("跳转前URL正则表达式错误：" + err.Error())
+				this.Fail("跳转前URL正则表达式错误:" + err.Error())
 			}
 		} else {
 			u, err := url.Parse(params.BeforeURL)
@@ -124,7 +124,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 		if len(params.DomainsBeforeJSON) > 0 {
 			err := json.Unmarshal(params.DomainsBeforeJSON, &domainsBefore)
 			if err != nil {
-				this.Fail("错误的域名格式：" + err.Error())
+				this.Fail("错误的域名格式:" + err.Error())
 				return
 			}
 		}
@@ -169,7 +169,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 			for _, port := range params.PortsBefore {
 				port = strings.ReplaceAll(port, " ", "")
 				if !portReg.MatchString(port) && !portRangeReg.MatchString(port) {
-					this.Fail("端口号" + port + "填写错误（请输入单个端口号或一个端口范围）")
+					this.Fail("端口号" + port + "填写错误(请输入单个端口号或一个端口范围)")
 					return
 				}
 			}
@@ -218,12 +218,12 @@ func (this *CreatePopupAction) RunPost(params struct {
 		conds = &shared.HTTPRequestCondsConfig{}
 		err := json.Unmarshal(params.CondsJSON, conds)
 		if err != nil {
-			this.Fail("匹配条件校验失败：" + err.Error())
+			this.Fail("匹配条件校验失败:" + err.Error())
 		}
 
 		err = conds.Init()
 		if err != nil {
-			this.Fail("匹配条件校验失败：" + err.Error())
+			this.Fail("匹配条件校验失败:" + err.Error())
 		}
 	}
 	config.Conds = conds
@@ -231,7 +231,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 	// 校验配置
 	err := config.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 		return
 	}
 

@@ -8,7 +8,7 @@ Tea.context(function () {
 	this.isLoaded = false
 
 	this.load = function () {
-		// 如果有弹窗时，暂时不更新
+		// 如果有弹窗时,暂时不更新
 		if (teaweb.hasPopup()) {
 			this.$delay(function () {
 				this.load()

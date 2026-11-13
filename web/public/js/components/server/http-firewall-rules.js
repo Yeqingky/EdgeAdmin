@@ -68,7 +68,7 @@ Vue.component("http-cond-general-header-length", {
 			<td class="title">通用Header列表</td>
 			<td>
 				<values-box :values="headers" :placeholder="'Header'" @change="change"></values-box>
-				<p class="comment">需要检查的Header列表。</p>
+				<p class="comment">需要检查的Header列表.</p>
 			</td>
 		</tr>
 		<tr>
@@ -78,7 +78,7 @@ Vue.component("http-cond-general-header-length", {
 					<input type="text" name="" style="width: 5em" v-model="length" maxlength="6"/>
 					<span class="ui label">字节</span>
 				</div>
-				<p class="comment">超出此长度认为匹配成功，0表示不限制。</p>
+				<p class="comment">超出此长度认为匹配成功,0表示不限制.</p>
 			</td>
 		</tr>
 	</table>
@@ -232,21 +232,21 @@ Vue.component("http-firewall-checkpoint-cc", {
 			<td>阈值 *</td>
 			<td>
 				<input type="text" v-model="threshold" style="width: 6em" maxlength="8"/>
-				<p class="comment" v-if="thresholdTooLow()"><span class="red">对于网站类应用来说，当前阈值设置的太低，有可能会影响用户正常访问。</span></p>
+				<p class="comment" v-if="thresholdTooLow()"><span class="red">对于网站类应用来说,当前阈值设置的太低,有可能会影响用户正常访问.</span></p>
 			</td>
 		</tr>
 		<tr>
 			<td>检查请求来源指纹</td>
 			<td>
 				<checkbox v-model="enableFingerprint"></checkbox>
-				<p class="comment">在接收到HTTPS请求时尝试检查请求来源的指纹，用来检测代理服务和爬虫攻击；如果你在网站前面放置了别的反向代理服务，请取消此选项。</p>
+				<p class="comment">在接收到HTTPS请求时尝试检查请求来源的指纹,用来检测代理服务和爬虫攻击;如果你在网站前面放置了别的反向代理服务,请取消此选项.</p>
 			</td>
 		</tr>
 		<tr>
 			<td>忽略常用文件</td>
 			<td>
 				<checkbox v-model="ignoreCommonFiles"></checkbox>
-				<p class="comment">忽略js、css、jpg等常在网页里被引用的文件名，即对这些文件的访问不加入计数，可以减少误判几率。</p>
+				<p class="comment">忽略js,css,jpg等常在网页里被引用的文件名,即对这些文件的访问不加入计数,可以减少误判几率.</p>
 			</td>
 		</tr>
 	</table>
@@ -355,35 +355,35 @@ Vue.component("http-firewall-checkpoint-referer-block", {
 			<td class="title">来源域名允许为空</td>
 			<td>
 				<checkbox v-model="allowEmpty"></checkbox>
-				<p class="comment">允许不带来源的访问。</p>
+				<p class="comment">允许不带来源的访问.</p>
 			</td>
 		</tr>
 		<tr>
 			<td>来源域名允许一致</td>
 			<td>
 				<checkbox v-model="allowSameDomain"></checkbox>
-				<p class="comment">允许来源域名和当前访问的域名一致，相当于在站内访问。</p>
+				<p class="comment">允许来源域名和当前访问的域名一致,相当于在站内访问.</p>
 			</td>
 		</tr>
 		<tr>
 			<td>允许的来源域名</td>
 			<td>
 				<values-box :values="allowDomains" @change="changeAllowDomains"></values-box>
-				<p class="comment">允许的来源域名列表，比如<code-label>example.com</code-label>（顶级域名)、<code-label>*.example.com</code-label>（example.com的所有二级域名）。单个星号<code-label>*</code-label>表示允许所有域名。</p>
+				<p class="comment">允许的来源域名列表,比如<code-label>example.com</code-label>(顶级域名),<code-label>*.example.com</code-label>(example.com的所有二级域名).单个星号<code-label>*</code-label>表示允许所有域名.</p>
 			</td>
 		</tr>
 		<tr>
 			<td>禁止的来源域名</td>
 			<td>
 				<values-box :values="denyDomains" @change="changeDenyDomains"></values-box>
-				<p class="comment">禁止的来源域名列表，比如<code-label>example.org</code-label>（顶级域名）、<code-label>*.example.org</code-label>（example.org的所有二级域名）；除了这些禁止的来源域名外，其他域名都会被允许，除非限定了允许的来源域名。</p>
+				<p class="comment">禁止的来源域名列表,比如<code-label>example.org</code-label>(顶级域名),<code-label>*.example.org</code-label>(example.org的所有二级域名);除了这些禁止的来源域名外,其他域名都会被允许,除非限定了允许的来源域名.</p>
 			</td>
 		</tr>
 		<tr>
 			<td>同时检查Origin</td>
 			<td>
 				<checkbox v-model="checkOrigin"></checkbox>
-				<p class="comment">如果请求没有指定Referer Header，则尝试检查Origin Header，多用于跨站调用。</p>
+				<p class="comment">如果请求没有指定Referer Header,则尝试检查Origin Header,多用于跨站调用.</p>
 			</td>
 		</tr>
 	</table>

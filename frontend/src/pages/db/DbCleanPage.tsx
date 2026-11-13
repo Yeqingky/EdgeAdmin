@@ -44,7 +44,7 @@ export function DbCleanPage() {
   }, [nodeId])
 
   async function deleteTable(name: string) {
-    if (!(await confirm({ message: '确定要删除此数据表吗？删除后数据不能恢复！', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此数据表吗?删除后数据不能恢复!', danger: true, confirmText: '删除' }))) {
       return
     }
     await apiPost('/db/deleteTable', { nodeId, table: name })
@@ -53,7 +53,7 @@ export function DbCleanPage() {
   }
 
   async function truncateTable(name: string) {
-    if (!(await confirm({ message: '确定要清空此数据表吗？清空后数据不能恢复！', danger: true, confirmText: '清空' }))) {
+    if (!(await confirm({ message: '确定要清空此数据表吗?清空后数据不能恢复!', danger: true, confirmText: '清空' }))) {
       return
     }
     await apiPost('/db/truncateTable', { nodeId, table: name })
@@ -62,7 +62,7 @@ export function DbCleanPage() {
   }
 
   if (nodeId <= 0) {
-    return <div className="ui negative message">缺少nodeId参数。</div>
+    return <div className="ui negative message">缺少nodeId参数.</div>
   }
 
   return (
@@ -77,7 +77,7 @@ export function DbCleanPage() {
             {tables.map((table) => (
               <tr key={table.name}>
                 <td>{table.name}</td>
-                <td>{table.size}{table.rows > 0 ? <span className="grey small">（{table.rows}行）</span> : null}</td>
+                <td>{table.size}{table.rows > 0 ? <span className="grey small">({table.rows}行)</span> : null}</td>
                 <td>{table.comment}</td>
                 <td>
                   {table.canDelete ? <><a href="" onClick={(event) => { event.preventDefault(); void deleteTable(table.name) }}>删除</a> &nbsp;</> : null}

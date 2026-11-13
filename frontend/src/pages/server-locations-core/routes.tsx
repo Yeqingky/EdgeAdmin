@@ -28,7 +28,7 @@ function LocationPageRoute({ Page }: { Page: ComponentType<{ serverId: string; l
   )
 }
 
-// 路由规则（对应 legacy /servers/server/settings/locations/*）
+// 路由规则(对应 legacy /servers/server/settings/locations/*)
 export const routes: AppRoute[] = [
   {
     path: '/servers/server/settings/locations',

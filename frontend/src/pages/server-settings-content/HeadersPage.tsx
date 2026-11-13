@@ -97,7 +97,7 @@ export function ServerHeadersSettingsPage() {
   const [corsEditor, setCorsEditor] = useState<{ policyId: number; cors: CorsConfig | null } | null>(null)
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -125,12 +125,12 @@ export function ServerHeadersSettingsPage() {
     if (!policy) {
       return
     }
-    if (!(await confirm({ message: '确定要删除此报头吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此报头吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
       await apiPost('/servers/server/settings/headers/delete', { headerPolicyId: policy.id, type: 'setHeader', headerId })
-      await refresh('删除成功，正在刷新页面')
+      await refresh('删除成功,正在刷新页面')
       window.location.reload()
     } catch (error) {
       toast(error instanceof Error ? error.message : '删除失败', 'error')
@@ -141,7 +141,7 @@ export function ServerHeadersSettingsPage() {
     if (!policy) {
       return
     }
-    if (!(await confirm({ message: `确定要删除'${headerName}'吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除'${headerName}'吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -157,7 +157,7 @@ export function ServerHeadersSettingsPage() {
     if (!policy) {
       return
     }
-    if (!(await confirm({ message: `确定要删除'${headerName}'吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除'${headerName}'吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -201,8 +201,8 @@ export function ServerHeadersSettingsPage() {
             [添加新报头]
           </a>
         </h4>
-        {!isRequest ? <p className="comment">将会覆盖已有的同名报头。</p> : null}
-        {setHeaders.length === 0 ? <p className="comment">暂时还没有自定义报头。</p> : null}
+        {!isRequest ? <p className="comment">将会覆盖已有的同名报头.</p> : null}
+        {setHeaders.length === 0 ? <p className="comment">暂时还没有自定义报头.</p> : null}
         {setHeaders.length > 0 ? (
           <table className="ui table selectable celled">
             <thead>
@@ -249,7 +249,7 @@ export function ServerHeadersSettingsPage() {
                     </div>
                     {!isRequest && header.name === 'Access-Control-Allow-Origin' && header.value === '*' ? (
                       <div>
-                        <span className="red small">建议使用当前页面下方的"CORS自适应跨域"功能代替Access-Control-*-*相关报头。</span>
+                        <span className="red small">建议使用当前页面下方的"CORS自适应跨域"功能代替Access-Control-*-*相关报头.</span>
                       </div>
                     ) : null}
                   </td>
@@ -319,7 +319,7 @@ export function ServerHeadersSettingsPage() {
                   [修改]
                 </a>
                 <p className="comment">
-                  {policy?.cors?.isOn ? '服务器会' : '启用后，服务器可以'}自动生成<code>Access-Control-*-*</code>相关的报头。
+                  {policy?.cors?.isOn ? '服务器会' : '启用后,服务器可以'}自动生成<code>Access-Control-*-*</code>相关的报头.
                 </p>
               </div>
             </FormRow>
@@ -335,7 +335,7 @@ export function ServerHeadersSettingsPage() {
           onClose={() => setSetEditor(null)}
           onSaved={async () => {
             setSetEditor(null)
-            await refresh('保存成功，正在刷新页面')
+            await refresh('保存成功,正在刷新页面')
             window.location.reload()
           }}
         />
@@ -348,7 +348,7 @@ export function ServerHeadersSettingsPage() {
           onClose={() => setNameEditor(null)}
           onSaved={async () => {
             setNameEditor(null)
-            await refresh('保存成功，正在刷新页面')
+            await refresh('保存成功,正在刷新页面')
             window.location.reload()
           }}
         />
@@ -361,7 +361,7 @@ export function ServerHeadersSettingsPage() {
           onClose={() => setCorsEditor(null)}
           onSaved={async () => {
             setCorsEditor(null)
-            await refresh('保存成功，正在刷新页面')
+            await refresh('保存成功,正在刷新页面')
             window.location.reload()
           }}
         />
@@ -434,15 +434,15 @@ function HeaderSetEditor({
     <Modal title={`${header ? '修改' : '添加'}自定义${type === 'request' ? '请求' : '响应'}报头`} onClose={onClose} width="45em">
       <form className="ui form" onSubmit={submit}>
         <FormTable>
-          <FormRow title="报头名称（Name） *">
-            <TextInput type="text" maxLength={200} placeholder="类似于Server、Content-Type之类" autoComplete="off" value={name} onChange={(event) => setName(event.target.value)} />
+          <FormRow title="报头名称(Name) *">
+            <TextInput type="text" maxLength={200} placeholder="类似于Server,Content-Type之类" autoComplete="off" value={name} onChange={(event) => setName(event.target.value)} />
             <p className="comment">
-              请注意报头名称的大小写，如无特殊需求，报头名称的格式通常为<code>Xxx</code>或者<code>Xxx-Yyy</code>。
+              请注意报头名称的大小写,如无特殊需求,报头名称的格式通常为<code>Xxx</code>或者<code>Xxx-Yyy</code>.
             </p>
           </FormRow>
-          <FormRow title="值（Value）">
+          <FormRow title="值(Value)">
             <TextInput type="text" maxLength={500} value={value} onChange={(event) => setValue(event.target.value)} />
-            <p className="comment">可以包含请求变量。</p>
+            <p className="comment">可以包含请求变量.</p>
           </FormRow>
           <FormRow title={<MoreOptionsIndicator visible={moreOptions} onChange={setMoreOptions} />}>
             <span />
@@ -452,7 +452,7 @@ function HeaderSetEditor({
               {type === 'response' ? (
                 <FormRow title="支持的状态码">
                   <StringListEditor values={statusList} onChange={setStatusList} placeholder="比如 200" width="5em" />
-                  <p className="comment">不填表示支持所有的状态码。</p>
+                  <p className="comment">不填表示支持所有的状态码.</p>
                 </FormRow>
               ) : null}
               <FormRow title="支持的请求方法">
@@ -463,17 +463,17 @@ function HeaderSetEditor({
               </FormRow>
               <FormRow title="只附加不替换">
                 <Checkbox checked={shouldAppend} onChange={setShouldAppend} />
-                <p className="comment">选中后表示如果已经存在同名的报头，则只会附加在原有的报头之后，不会覆盖。</p>
+                <p className="comment">选中后表示如果已经存在同名的报头,则只会附加在原有的报头之后,不会覆盖.</p>
               </FormRow>
               {type === 'response' ? (
                 <FormRow title="不在跳转时启用">
                   <Checkbox checked={disableRedirect} onChange={setDisableRedirect} />
-                  <p className="comment">选中后表示在30X跳转时不启用当前报头。</p>
+                  <p className="comment">选中后表示在30X跳转时不启用当前报头.</p>
                 </FormRow>
               ) : null}
               <FormRow title={<span className="color-border">启用内容替换</span>}>
                 <Checkbox checked={shouldReplace} onChange={setShouldReplace} />
-                <p className="comment">可以替换原有报头中的内容。</p>
+                <p className="comment">可以替换原有报头中的内容.</p>
               </FormRow>
               {shouldReplace ? (
                 <FormRow title={<span className="color-border">替换内容</span>}>
@@ -559,16 +559,16 @@ function NameEditor({
     <Modal title={kind === 'delete' ? '添加需要删除的报头' : '添加非标报头'} onClose={onClose} width="35em">
       <form className="ui form" onSubmit={submit}>
         <FormTable>
-          <FormRow title="报头名称（Name）">
+          <FormRow title="报头名称(Name)">
             <TextInput type="text" maxLength={100} value={name} onChange={(event) => setName(event.target.value)} />
             <p className="comment">
               {kind === 'delete' ? (
                 <>
-                  请注意报头名称的大小写，如无特殊需求，报头名称的格式通常为<code>Xxx</code>或者<code>Xxx-Yyy</code>。
+                  请注意报头名称的大小写,如无特殊需求,报头名称的格式通常为<code>Xxx</code>或者<code>Xxx-Yyy</code>.
                 </>
               ) : (
                 <>
-                  比如<code>hello_world</code>。
+                  比如<code>hello_world</code>.
                 </>
               )}
             </p>
@@ -635,7 +635,7 @@ function CorsEditor({ policyId, cors, onClose, onSaved }: { policyId: number; co
                   width="7em"
                 />
               </FormRow>
-              <FormRow title="允许的域名（Origin）">
+              <FormRow title="允许的域名(Origin)">
                 <TextInput type="text" placeholder="比如 *" value={config.allowOrigin} onChange={(event) => update('allowOrigin', event.target.value)} />
               </FormRow>
               <FormRow title="允许携带Cookie">

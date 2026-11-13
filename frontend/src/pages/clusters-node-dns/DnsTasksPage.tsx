@@ -28,7 +28,7 @@ export function DnsTasksPage() {
   const tasks = query.data.tasks || []
 
   async function deleteTask(taskId: number) {
-    if (!(await confirm({ message: '确定要删除这个任务吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个任务吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -40,7 +40,7 @@ export function DnsTasksPage() {
   }
 
   async function deleteAllTasks() {
-    if (!(await confirm({ message: '确定要清空所有的任务吗？', danger: true, confirmText: '清空' }))) {
+    if (!(await confirm({ message: '确定要清空所有的任务吗?', danger: true, confirmText: '清空' }))) {
       return
     }
     try {
@@ -102,7 +102,7 @@ export function DnsTasksPage() {
       />
 
       <h3>正在同步的DNS任务{tasks.length > 0 ? `(共${tasks.length}个)` : ''}</h3>
-      {tasks.length === 0 ? <p className="comment">暂时没有同步的任务。</p> : null}
+      {tasks.length === 0 ? <p className="comment">暂时没有同步的任务.</p> : null}
       {tasks.length > 0 ? (
         <div>
           <button className="ui button tiny basic" type="button" onClick={() => void deleteAllTasks()}>

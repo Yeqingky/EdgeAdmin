@@ -70,7 +70,7 @@ Tea.context(function () {
 	// 删除规则集
 	this.deleteSet = function (setId) {
 		let that = this
-		teaweb.confirm("确定要删除此规则集吗？", function () {
+		teaweb.confirm("确定要删除此规则集吗?", function () {
 			that.$post(".deleteSet")
 				.params({
 					groupId: this.group.id,

@@ -21,7 +21,7 @@ Tea.context(function () {
 	})
 
 	this.query = function (args) {
-		// 初始化时页面尚未设置Vue变量，所以使用全局的变量获取
+		// 初始化时页面尚未设置Vue变量,所以使用全局的变量获取
 		let that = TEA.ACTION.data
 
 		if (that.clusterId == null) {

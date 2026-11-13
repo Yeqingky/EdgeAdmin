@@ -90,7 +90,7 @@ func (this *OtpAction) RunPost(params struct {
 
 	var sid = params.Sid
 	if len(sid) == 0 || len(sid) > 64 {
-		this.Fail("参数错误，请重新登录（001）")
+		this.Fail("参数错误,请重新登录(001)")
 		return
 	}
 	sid += "_otp"
@@ -103,7 +103,7 @@ func (this *OtpAction) RunPost(params struct {
 	}
 	var session = sessionResp.LoginSession
 	if session == nil || session.AdminId <= 0 {
-		this.Fail("参数错误，请重新登录（002）")
+		this.Fail("参数错误,请重新登录(002)")
 		return
 	}
 	var adminId = session.AdminId

@@ -79,13 +79,13 @@ export function DbNodeUpdatePage() {
       <form className="ui form" onSubmit={submit}>
         <FormTable>
           <FormRow title="节点名称 *"><TextInput value={node.name} maxLength={100} onChange={(event) => update('name', event.target.value)} /></FormRow>
-          <FormRow title="主机地址（Host）*"><TextInput value={node.host} maxLength={100} onChange={(event) => update('host', event.target.value)} /></FormRow>
-          <FormRow title="数据库端口（Port）*">
+          <FormRow title="主机地址(Host)*"><TextInput value={node.host} maxLength={100} onChange={(event) => update('host', event.target.value)} /></FormRow>
+          <FormRow title="数据库端口(Port)*">
             <TextInput value={String(node.port)} maxLength={5} style={{ width: '6em' }} onChange={(event) => update('port', Number(event.target.value) || 0)} />
           </FormRow>
-          <FormRow title="数据库名称（Database）*"><TextInput value={node.database} maxLength={100} onChange={(event) => update('database', event.target.value)} /></FormRow>
-          <FormRow title="用户名（Username）*"><TextInput value={node.username} onChange={(event) => update('username', event.target.value)} /></FormRow>
-          <FormRow title="密码（Password）">
+          <FormRow title="数据库名称(Database)*"><TextInput value={node.database} maxLength={100} onChange={(event) => update('database', event.target.value)} /></FormRow>
+          <FormRow title="用户名(Username)*"><TextInput value={node.username} onChange={(event) => update('username', event.target.value)} /></FormRow>
+          <FormRow title="密码(Password)">
             <input type="password" value={node.password} onChange={(event) => update('password', event.target.value)} />
           </FormRow>
           <tr><td colSpan={2}><a href="" onClick={(event) => { event.preventDefault(); setMore((value) => !value) }}>更多选项</a></td></tr>

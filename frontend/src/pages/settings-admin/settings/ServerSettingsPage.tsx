@@ -50,7 +50,7 @@ export function ServerSettingsPage() {
         <div>
           <div className="margin" />
           <div className="ui warning message">
-            服务配置已修改，请在命令行下重启后生效（<span className="ui label basic small">edge-admin restart</span>）。
+            服务配置已修改,请在命令行下重启后生效(<span className="ui label basic small">edge-admin restart</span>).
           </div>
         </div>
       ) : null}
@@ -82,7 +82,7 @@ export function ServerSettingsPage() {
                   {listen}
                 </span>
               ))}
-              <p className="ui comment">访问当前管理系统的HTTP地址；如果地址中的IP是0.0.0.0，表示服务器的所有IP都可以访问。</p>
+              <p className="ui comment">访问当前管理系统的HTTP地址;如果地址中的IP是0.0.0.0,表示服务器的所有IP都可以访问.</p>
             </td>
           </tr>
         </tbody>
@@ -116,12 +116,12 @@ export function ServerSettingsPage() {
                   {listen}
                 </span>
               ))}
-              <p className="ui comment">访问当前管理系统的HTTPS地址；如果地址中的IP是0.0.0.0，表示服务器的所有IP都可以访问。</p>
+              <p className="ui comment">访问当前管理系统的HTTPS地址;如果地址中的IP是0.0.0.0,表示服务器的所有IP都可以访问.</p>
             </td>
           </tr>
           <tr>
             <td>
-              证书文件<span className="small">（Cert）</span>
+              证书文件<span className="small">(Cert)</span>
             </td>
             <td>
               {data.serverConfig.https.cert.length > 0 ? data.serverConfig.https.cert : <span className="disabled">还没有设置证书</span>}
@@ -129,7 +129,7 @@ export function ServerSettingsPage() {
           </tr>
           <tr>
             <td>
-              私钥文件<span className="small">（Key）</span>
+              私钥文件<span className="small">(Key)</span>
             </td>
             <td>
               {data.serverConfig.https.key.length > 0 ? data.serverConfig.https.key : <span className="disabled">还没有设置私钥</span>}
@@ -199,9 +199,9 @@ function UpdateHTTPModal({ onClose }: { onClose: () => void }) {
             <FormRow title="绑定地址">
               <StringListEditor values={listens} onChange={setListens} placeholder="127.0.0.1:7777" maxLength={100} />
               <p className="comment" style={{ marginBottom: 0 }}>
-                地址格式为：&quot;IP:端口&quot;，比如：&quot;127.0.0.1:7777&quot;。
+                地址格式为:&quot;IP:端口&quot;,比如:&quot;127.0.0.1:7777&quot;.
               </p>
-              <p className="comment">如果地址中的IP是0.0.0.0，表示服务器的所有IP都可以用来使用访问此服务。</p>
+              <p className="comment">如果地址中的IP是0.0.0.0,表示服务器的所有IP都可以用来使用访问此服务.</p>
             </FormRow>
           </FormTable>
           <div style={{ marginTop: '1em' }}>
@@ -245,7 +245,7 @@ function UpdateHTTPSModal({ onClose }: { onClose: () => void }) {
       return
     }
     if (on && certs.length === 0) {
-      toast('要启用HTTPS，需要先选择或上传一个可用的证书', 'error')
+      toast('要启用HTTPS,需要先选择或上传一个可用的证书', 'error')
       return
     }
     setSubmitting(true)
@@ -280,9 +280,9 @@ function UpdateHTTPSModal({ onClose }: { onClose: () => void }) {
             <FormRow title="绑定地址">
               <StringListEditor values={listens} onChange={setListens} placeholder="127.0.0.1:7778" maxLength={100} />
               <p className="comment" style={{ marginBottom: 0 }}>
-                每行一个地址，地址格式为：&quot;IP:端口&quot;，比如：&quot;127.0.0.1:7778&quot;。
+                每行一个地址,地址格式为:&quot;IP:端口&quot;,比如:&quot;127.0.0.1:7778&quot;.
               </p>
-              <p className="comment">如果地址中的IP是0.0.0.0，表示服务器的所有IP都可以用来使用访问此服务。</p>
+              <p className="comment">如果地址中的IP是0.0.0.0,表示服务器的所有IP都可以用来使用访问此服务.</p>
             </FormRow>
             {on ? (
               <FormRow title="选择证书文件">
@@ -301,7 +301,7 @@ function UpdateHTTPSModal({ onClose }: { onClose: () => void }) {
         </form>
       )}
       <p className="comment">
-        <Pencil size={11} /> 修改证书相关信息后，需要重启管理系统才能生效。
+        <Pencil size={11} /> 修改证书相关信息后,需要重启管理系统才能生效.
       </p>
     </Modal>
   )

@@ -98,7 +98,7 @@ Vue.component("ssl-config-box", {
 		// 删除证书
 		removeCert: function (index) {
 			let that = this
-			teaweb.confirm("确定删除此证书吗？证书数据仍然保留，只是当前网站不再使用此证书。", function () {
+			teaweb.confirm("确定删除此证书吗?证书数据仍然保留,只是当前网站不再使用此证书.", function () {
 				that.policy.certRefs.$remove(index)
 				that.policy.certs.$remove(index)
 			})
@@ -219,7 +219,7 @@ Vue.component("ssl-config-box", {
 		// 删除单个套件
 		removeCipherSuite: function (cipherSuite) {
 			let that = this
-			teaweb.confirm("确定要删除此套件吗？", function () {
+			teaweb.confirm("确定要删除此套件吗?", function () {
 				that.policy.cipherSuites.$removeValue(cipherSuite)
 				that.allCipherSuites = window.SSL_ALL_CIPHER_SUITES.$findAll(function (k, v) {
 					return !that.policy.cipherSuites.$contains(v)
@@ -230,7 +230,7 @@ Vue.component("ssl-config-box", {
 		// 清除所选套件
 		clearCipherSuites: function () {
 			let that = this
-			teaweb.confirm("确定要清除所有已选套件吗？", function () {
+			teaweb.confirm("确定要清除所有已选套件吗?", function () {
 				that.policy.cipherSuites = []
 				that.allCipherSuites = window.SSL_ALL_CIPHER_SUITES.$copy()
 			})
@@ -239,7 +239,7 @@ Vue.component("ssl-config-box", {
 		// 批量添加套件
 		addBatchCipherSuites: function (suites) {
 			var that = this
-			teaweb.confirm("确定要批量添加套件？", function () {
+			teaweb.confirm("确定要批量添加套件?", function () {
 				suites.$each(function (k, v) {
 					if (that.policy.cipherSuites.$contains(v)) {
 						return
@@ -385,7 +385,7 @@ Vue.component("ssl-config-box", {
 		// 删除客户端CA证书
 		removeClientCACert: function (index) {
 			let that = this
-			teaweb.confirm("确定删除此证书吗？证书数据仍然保留，只是当前网站不再使用此证书。", function () {
+			teaweb.confirm("确定删除此证书吗?证书数据仍然保留,只是当前网站不再使用此证书.", function () {
 				that.policy.clientCARefs.$remove(index)
 				that.policy.clientCACerts.$remove(index)
 			})
@@ -424,7 +424,7 @@ Vue.component("ssl-config-box", {
 						<div class="ui divider"></div>
 					</div>
 					<div v-else>
-						<span class="red">选择或上传证书后<span v-if="vProtocol == 'https'">HTTPS</span><span v-if="vProtocol == 'tls'">TLS</span>服务才能生效。</span>
+						<span class="red">选择或上传证书后<span v-if="vProtocol == 'https'">HTTPS</span><span v-if="vProtocol == 'tls'">TLS</span>服务才能生效.</span>
 						<div class="ui divider"></div>
 					</div>
 					<button class="ui button tiny" type="button" @click.prevent="selectCert()">选择已有证书</button> &nbsp;
@@ -448,7 +448,7 @@ Vue.component("ssl-config-box", {
 		<tbody v-show="moreOptionsVisible">
 			<!-- 加密套件 -->
 			<tr>
-				<td>加密算法套件<em>（CipherSuites）</em></td>
+				<td>加密算法套件<em>(CipherSuites)</em></td>
 				<td>
 					<div class="ui checkbox">
 						<input type="checkbox" value="1" v-model="policy.cipherSuitesIsOn" />
@@ -457,7 +457,7 @@ Vue.component("ssl-config-box", {
 					<div v-show="policy.cipherSuitesIsOn">
 						<div class="ui divider"></div>
 						<div class="cipher-suites-box">
-							已添加套件({{policy.cipherSuites.length}})：
+							已添加套件({{policy.cipherSuites.length}}):
 							<div v-for="cipherSuite in policy.cipherSuites" class="ui label tiny basic" style="margin-bottom: 0.5em">
 								<input type="hidden" name="cipherSuites" :value="cipherSuite"/>
 								<span v-html="formatCipherSuite(cipherSuite)"></span> &nbsp; <a href="" title="删除套件" @click.prevent="removeCipherSuite(cipherSuite)"><i class="icon remove"></i></a>
@@ -476,7 +476,7 @@ Vue.component("ssl-config-box", {
 							<a href="" @click.prevent="showAllCipherSuites()"><span v-if="policy.cipherSuites.length == 0">所有</span>可选套件({{allCipherSuites.length}}) <i class="icon angle" :class="{down:!cipherSuitesVisible, up:cipherSuitesVisible}"></i></a>
 							<a href="" v-if="cipherSuitesVisible" v-for="cipherSuite in allCipherSuites" class="ui label tiny" title="点击添加到自定义套件中" @click.prevent="addCipherSuite(cipherSuite)" v-html="formatCipherSuite(cipherSuite)" style="margin-bottom:0.5em"></a>
 						</div>
-						<p class="comment" v-if="cipherSuitesVisible">点击可选套件添加。</p>
+						<p class="comment" v-if="cipherSuitesVisible">点击可选套件添加.</p>
 					</div>
 				</td>
 			</tr>
@@ -490,7 +490,7 @@ Vue.component("ssl-config-box", {
 						<label></label>
 					</div>
 					<p class="comment">
-						 开启后，会自动在响应Header中加入
+						 开启后,会自动在响应Header中加入
 						 <span class="ui label small">Strict-Transport-Security:
 							 <var v-if="!hsts.isOn">...</var>
 							 <var v-if="hsts.isOn"><span>max-age=</span>{{hsts.maxAge}}</var>
@@ -504,7 +504,7 @@ Vue.component("ssl-config-box", {
 				</td>
 			</tr>
 			<tr v-show="hsts.isOn && hstsOptionsVisible">
-				<td class="color-border">HSTS有效时间<em>（max-age）</em></td>
+				<td class="color-border">HSTS有效时间<em>(max-age)</em></td>
 				<td>
 					<div class="ui fields inline">
 						<div class="ui field">
@@ -523,7 +523,7 @@ Vue.component("ssl-config-box", {
 				</td>
 			</tr>
 			<tr v-show="hsts.isOn && hstsOptionsVisible">
-				<td class="color-border">HSTS包含子域名<em>（includeSubDomains）</em></td>
+				<td class="color-border">HSTS包含子域名<em>(includeSubDomains)</em></td>
 				<td>
 					<div class="ui checkbox">
 						<input type="checkbox" name="hstsIncludeSubDomains" value="1" v-model="hsts.includeSubDomains"/>
@@ -532,7 +532,7 @@ Vue.component("ssl-config-box", {
 				</td>
 			</tr>
 			<tr v-show="hsts.isOn && hstsOptionsVisible">
-				<td class="color-border">HSTS预加载<em>（preload）</em></td>
+				<td class="color-border">HSTS预加载<em>(preload)</em></td>
 				<td>
 					<div class="ui checkbox">
 						<input type="checkbox" name="hstsPreload" value="1" v-model="hsts.preload"/>
@@ -552,7 +552,7 @@ Vue.component("ssl-config-box", {
 					</div>
 					<div class="ui fields inline" v-if="hstsDomainAdding" style="margin-top:0.8em">
 						<div class="ui field">
-							<input type="text" name="addingHstsDomain" ref="addingHstsDomain" style="width:16em" maxlength="100" placeholder="域名，比如example.com" @keyup.enter="confirmAddHstsDomain()" @keypress.enter.prevent="1" v-model="addingHstsDomain" />
+							<input type="text" name="addingHstsDomain" ref="addingHstsDomain" style="width:16em" maxlength="100" placeholder="域名,比如example.com" @keyup.enter="confirmAddHstsDomain()" @keypress.enter.prevent="1" v-model="addingHstsDomain" />
 						</div>
 						<div class="ui field">
 							<button class="ui button tiny" type="button" @click="confirmAddHstsDomain()">确定</button>
@@ -562,7 +562,7 @@ Vue.component("ssl-config-box", {
 					<div class="ui field" style="margin-top: 1em">
 						<button class="ui button tiny" type="button" @click="addHstsDomain()">+</button>
 					</div>
-					<p class="comment">如果没有设置域名的话，则默认支持所有的域名。</p>
+					<p class="comment">如果没有设置域名的话,则默认支持所有的域名.</p>
 				</td>
 			</tr>
 			
@@ -570,7 +570,7 @@ Vue.component("ssl-config-box", {
 			<tr>
 				<td>OCSP Stapling</td>
 				<td><checkbox name="ocspIsOn" v-model="policy.ocspIsOn"></checkbox>
-					<p class="comment">选中表示启用OCSP Stapling。</p>
+					<p class="comment">选中表示启用OCSP Stapling.</p>
 				</td>
 			</tr>
 			
@@ -594,7 +594,7 @@ Vue.component("ssl-config-box", {
 					</div>
 					<button class="ui button tiny" type="button" @click.prevent="selectClientCACert()">选择已有证书</button> &nbsp;
 					<button class="ui button tiny" type="button" @click.prevent="uploadClientCACert()">上传新证书</button>
-					<p class="comment">用来校验客户端证书以增强安全性，通常不需要设置。</p>
+					<p class="comment">用来校验客户端证书以增强安全性,通常不需要设置.</p>
 				</td>
 			</tr>
 		</tbody>	

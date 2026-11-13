@@ -286,7 +286,7 @@ Vue.component("node-ip-address-thresholds-box", {
 				}
 			})
 			if (exists) {
-				teaweb.warn("此动作已经添加过了，无需重复添加")
+				teaweb.warn("此动作已经添加过了,无需重复添加")
 				return
 			}
 
@@ -312,7 +312,7 @@ Vue.component("node-ip-address-thresholds-box", {
 								that.doConfirmAction(true, options)
 							})
 							.fail(function (resp) {
-								teaweb.warn("输入的IP '" + resp.data.failIP + "' 格式不正确，请改正后提交", function () {
+								teaweb.warn("输入的IP '" + resp.data.failIP + "' 格式不正确,请改正后提交", function () {
 									that.$refs.actionBackupIPs.focus()
 								})
 							})
@@ -473,7 +473,7 @@ Vue.component("node-ip-address-thresholds-box", {
 										<option value="1">成功</option>
 										<option value="0">失败</option>
 									</select>
-									<p class="comment" style="font-weight: normal">只有状态发生改变的时候才会触发。</p>
+									<p class="comment" style="font-weight: normal">只有状态发生改变的时候才会触发.</p>
 								</td>
 							</tr>
 							
@@ -523,7 +523,7 @@ Vue.component("node-ip-address-thresholds-box", {
 								<td>备用IP *</td>
 								<td>
 									<textarea rows="2" v-model="actionBackupIPs" ref="actionBackupIPs"></textarea>
-									<p class="comment">每行一个备用IP。</p>
+									<p class="comment">每行一个备用IP.</p>
 								</td>
 							</tr>
 							
@@ -532,7 +532,7 @@ Vue.component("node-ip-address-thresholds-box", {
 								<td>URL *</td>
 								<td>
 									<input type="text" maxlength="1000" placeholder="https://..." v-model="actionWebHookURL" ref="webHookURL" @keyup.enter="confirmAction()" @keypress.enter.prevent="1"/>
-									<p class="comment">完整的URL，比如<code-label>https://example.com/webhook/api</code-label>，系统会在触发阈值的时候通过GET调用此URL。</p>
+									<p class="comment">完整的URL,比如<code-label>https://example.com/webhook/api</code-label>,系统会在触发阈值的时候通过GET调用此URL.</p>
 								</td>
 							</tr>
 						</table>

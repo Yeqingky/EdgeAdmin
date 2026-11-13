@@ -74,7 +74,7 @@ Vue.component("http-access-log-partitions-box", {
 				.post()
 				.success(function (response) {
 					if (response.data.hasLogs) {
-						// 因为是倒序，所以这里需要使用总长度减去index
+						// 因为是倒序,所以这里需要使用总长度减去index
 						that.partitions[that.partitions.length - 1 - index].hasLogs = true
 					}
 

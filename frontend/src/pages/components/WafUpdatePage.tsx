@@ -152,7 +152,7 @@ export function WafUpdatePage({ firewallPolicyId }: { firewallPolicyId: number }
               <td className="title">策略名称 *</td>
               <td>
                 <input type="text" maxLength={100} value={policy.name} onChange={(event) => update({ name: event.target.value })} autoFocus />
-                <p className="comment">给策略起一个容易识别的名字。</p>
+                <p className="comment">给策略起一个容易识别的名字.</p>
               </td>
             </tr>
             <tr>
@@ -191,7 +191,7 @@ export function WafUpdatePage({ firewallPolicyId }: { firewallPolicyId: number }
                     <label>{group.name}</label>
                   </div>
                 ))}
-                <p className="comment">可以启用一些我们预置的规则组。</p>
+                <p className="comment">可以启用一些我们预置的规则组.</p>
               </td>
             </tr>
           </tbody>
@@ -372,7 +372,7 @@ export function WafUpdatePage({ firewallPolicyId }: { firewallPolicyId: number }
                   />
                   <label />
                 </div>
-                <p className="comment">选中后，总是记录WAF相关访问日志，即使服务中没有开启访问日志。</p>
+                <p className="comment">选中后,总是记录WAF相关访问日志,即使服务中没有开启访问日志.</p>
               </td>
             </tr>
             {logConfig.isOn ? (
@@ -388,7 +388,7 @@ export function WafUpdatePage({ firewallPolicyId }: { firewallPolicyId: number }
                       />
                       <label />
                     </div>
-                    <p className="comment">选中后，表示在访问日志中记录匹配的请求内容。注意：此选项会明显增加访问日志占用空间，请谨慎开启。</p>
+                    <p className="comment">选中后,表示在访问日志中记录匹配的请求内容.注意:此选项会明显增加访问日志占用空间,请谨慎开启.</p>
                   </td>
                 </tr>
                 <tr>
@@ -402,7 +402,7 @@ export function WafUpdatePage({ firewallPolicyId }: { firewallPolicyId: number }
                       />
                       <label />
                     </div>
-                    <p className="comment">选中后，表示在访问日志中记录区域封禁（地区和省份）事件。</p>
+                    <p className="comment">选中后,表示在访问日志中记录区域封禁(地区和省份)事件.</p>
                   </td>
                 </tr>
               </>
@@ -421,7 +421,7 @@ export function WafUpdatePage({ firewallPolicyId }: { firewallPolicyId: number }
                   value={policy.denyCountryHTML}
                   onChange={(event) => update({ denyCountryHTML: event.target.value })}
                 />
-                <p className="comment">当客户端所在区域被封禁时提示页面的HTML内容；不填则表示使用默认的提示内容；支持请求变量。</p>
+                <p className="comment">当客户端所在区域被封禁时提示页面的HTML内容;不填则表示使用默认的提示内容;支持请求变量.</p>
               </td>
             </tr>
             <tr>
@@ -432,7 +432,7 @@ export function WafUpdatePage({ firewallPolicyId }: { firewallPolicyId: number }
                   value={policy.denyProvinceHTML}
                   onChange={(event) => update({ denyProvinceHTML: event.target.value })}
                 />
-                <p className="comment">当客户端所在省份被封禁时提示页面的HTML内容；不填则表示使用默认的提示内容；支持请求变量。</p>
+                <p className="comment">当客户端所在省份被封禁时提示页面的HTML内容;不填则表示使用默认的提示内容;支持请求变量.</p>
               </td>
             </tr>
           </tbody>
@@ -453,7 +453,7 @@ export function WafUpdatePage({ firewallPolicyId }: { firewallPolicyId: number }
                   <label />
                 </div>
                 <p className="comment">
-                  开启后，可以在合适的时候自动使用系统自带防火墙进行防御；建议在每个边缘节点都安装nftables以提升封禁性能。
+                  开启后,可以在合适的时候自动使用系统自带防火墙进行防御;建议在每个边缘节点都安装nftables以提升封禁性能.
                 </p>
               </td>
             </tr>
@@ -513,8 +513,8 @@ export function WafUpdatePage({ firewallPolicyId }: { firewallPolicyId: number }
                   <span className="ui label">字节</span>
                 </div>
                 <p className="comment">
-                  {Number(policy.maxRequestBodySize) > 0 ? `当前：${formatBytes(Number(policy.maxRequestBodySize))}。` : ''}
-                  WAF能够分析的最大文件内容尺寸，0表示默认，默认为512K；此值越大，对应使用的系统内存越多。
+                  {Number(policy.maxRequestBodySize) > 0 ? `当前:${formatBytes(Number(policy.maxRequestBodySize))}.` : ''}
+                  WAF能够分析的最大文件内容尺寸,0表示默认,默认为512K;此值越大,对应使用的系统内存越多.
                 </p>
               </td>
             </tr>

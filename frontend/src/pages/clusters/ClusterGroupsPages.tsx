@@ -124,7 +124,7 @@ export function ClusterGroupsPage() {
         </a>
       </div>
 
-      {groups.length === 0 ? <p className="comment">暂时还没有分组。</p> : null}
+      {groups.length === 0 ? <p className="comment">暂时还没有分组.</p> : null}
       {groups.length > 0 ? (
         <div>
           <div className="margin" />
@@ -178,7 +178,7 @@ export function ClusterGroupsPage() {
                       href=""
                       onClick={async (event) => {
                         event.preventDefault()
-                        if (await confirm({ message: '确定要删除这个分组吗？', danger: true, confirmText: '删除' })) {
+                        if (await confirm({ message: '确定要删除这个分组吗?', danger: true, confirmText: '删除' })) {
                           remove.mutate(group.id)
                         }
                       }}
@@ -211,7 +211,7 @@ export function ClusterGroupsPage() {
               ))}
             </tbody>
           </table>
-          <p className="comment">可以使用上下箭头排序。</p>
+          <p className="comment">可以使用上下箭头排序.</p>
         </div>
       ) : null}
 
@@ -376,7 +376,7 @@ export function ClusterGroupSelectPopupPage() {
     <div>
       <h3>选择所属分组</h3>
       {query.data.groups.length === 0 ? (
-        <p className="comment">当前集群下暂时还没有可以使用的分组。</p>
+        <p className="comment">当前集群下暂时还没有可以使用的分组.</p>
       ) : (
         <div>
           {query.data.groups.map((group) => (
@@ -384,7 +384,7 @@ export function ClusterGroupSelectPopupPage() {
               {group.name}
             </a>
           ))}
-          <p className="comment">点击可以进入按此分组筛选的节点列表。</p>
+          <p className="comment">点击可以进入按此分组筛选的节点列表.</p>
         </div>
       )}
     </div>

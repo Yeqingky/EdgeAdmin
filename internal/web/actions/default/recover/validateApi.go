@@ -48,7 +48,7 @@ func (this *ValidateApiAction) RunPost(params struct {
 		Secret:       params.NodeSecret,
 	}, false)
 	if err != nil {
-		this.FailField("host", "测试API节点时出错，请检查配置，错误信息："+err.Error())
+		this.FailField("host", "测试API节点时出错,请检查配置,错误信息:"+err.Error())
 	}
 
 	defer func() {
@@ -57,13 +57,13 @@ func (this *ValidateApiAction) RunPost(params struct {
 
 	_, err = client.APINodeRPC().FindCurrentAPINodeVersion(client.APIContext(0), &pb.FindCurrentAPINodeVersionRequest{})
 	if err != nil {
-		this.FailField("host", "无法连接此API节点，错误信息："+err.Error())
+		this.FailField("host", "无法连接此API节点,错误信息:"+err.Error())
 	}
 
 	// API节点列表
 	nodesResp, err := client.APINodeRPC().FindAllEnabledAPINodes(client.Context(0), &pb.FindAllEnabledAPINodesRequest{})
 	if err != nil {
-		this.Fail("获取API节点列表失败，错误信息：" + err.Error())
+		this.Fail("获取API节点列表失败,错误信息:" + err.Error())
 	}
 	var hosts = []string{}
 	for _, node := range nodesResp.ApiNodes {
@@ -76,7 +76,7 @@ func (this *ValidateApiAction) RunPost(params struct {
 			var config = &serverconfigs.HTTPProtocolConfig{}
 			err = json.Unmarshal(node.HttpJSON, config)
 			if err != nil {
-				this.Fail("读取节点HTTP信息失败：" + err.Error())
+				this.Fail("读取节点HTTP信息失败:" + err.Error())
 			}
 			for _, listen := range config.Listen {
 				if len(listen.Host) > 0 && !lists.ContainsString(hosts, listen.Host) {
@@ -90,7 +90,7 @@ func (this *ValidateApiAction) RunPost(params struct {
 			var config = &serverconfigs.HTTPSProtocolConfig{}
 			err = json.Unmarshal(node.HttpsJSON, config)
 			if err != nil {
-				this.Fail("读取节点HTTPS信息失败：" + err.Error())
+				this.Fail("读取节点HTTPS信息失败:" + err.Error())
 			}
 			for _, listen := range config.Listen {
 				if len(listen.Host) > 0 && !lists.ContainsString(hosts, listen.Host) {
@@ -104,7 +104,7 @@ func (this *ValidateApiAction) RunPost(params struct {
 			var config = &serverconfigs.HTTPProtocolConfig{}
 			err = json.Unmarshal(node.RestHTTPJSON, config)
 			if err != nil {
-				this.Fail("读取节点REST HTTP信息失败：" + err.Error())
+				this.Fail("读取节点REST HTTP信息失败:" + err.Error())
 			}
 			for _, listen := range config.Listen {
 				if len(listen.Host) > 0 && !lists.ContainsString(hosts, listen.Host) {
@@ -118,7 +118,7 @@ func (this *ValidateApiAction) RunPost(params struct {
 			var config = &serverconfigs.HTTPSProtocolConfig{}
 			err = json.Unmarshal(node.RestHTTPSJSON, config)
 			if err != nil {
-				this.Fail("读取节点REST HTTPS信息失败：" + err.Error())
+				this.Fail("读取节点REST HTTPS信息失败:" + err.Error())
 			}
 			for _, listen := range config.Listen {
 				if len(listen.Host) > 0 && !lists.ContainsString(hosts, listen.Host) {
@@ -132,7 +132,7 @@ func (this *ValidateApiAction) RunPost(params struct {
 			var addrs []*serverconfigs.NetworkAddressConfig
 			err = json.Unmarshal(node.AccessAddrsJSON, &addrs)
 			if err != nil {
-				this.Fail("读取节点访问地址失败：" + err.Error())
+				this.Fail("读取节点访问地址失败:" + err.Error())
 			}
 			for _, addr := range addrs {
 				if len(addr.Host) > 0 && !lists.ContainsString(hosts, addr.Host) {

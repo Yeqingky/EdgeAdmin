@@ -61,7 +61,7 @@ func (this *IndexAction) RunPost(params struct {
 	addresses := []*serverconfigs.NetworkAddressConfig{}
 	err := json.Unmarshal([]byte(params.Addresses), &addresses)
 	if err != nil {
-		this.Fail("端口地址解析失败：" + err.Error())
+		this.Fail("端口地址解析失败:" + err.Error())
 	}
 
 	udpConfig := &serverconfigs.UDPProtocolConfig{}

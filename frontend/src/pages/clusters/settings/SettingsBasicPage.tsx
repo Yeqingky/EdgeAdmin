@@ -142,19 +142,19 @@ export function ClusterSettingsBasicPage() {
               {grantsQuery.data?.grants.map((grant) => (
                 <option key={grant.id} value={grant.id}>
                   {grant.name}
-                  {grant.username ? `（${grant.username}）` : ''}
+                  {grant.username ? `(${grant.username})` : ''}
                 </option>
               ))}
             </Select>
-            <p className="comment">当节点没有单独设置SSH认证时，默认使用此设置。</p>
+            <p className="comment">当节点没有单独设置SSH认证时,默认使用此设置.</p>
           </FormRow>
           <FormRow title="默认SSH端口">
             <TextInput type="text" maxLength={5} style={{ width: '5em' }} value={sshPort} onChange={(event) => setSshPort(event.target.value)} />
-            <p className="comment">节点默认SSH登录端口。</p>
+            <p className="comment">节点默认SSH登录端口.</p>
           </FormRow>
           <FormRow title="节点安装目录">
             <TextInput type="text" maxLength={100} value={cluster.installDir} onChange={(event) => update('installDir', event.target.value)} />
-            <p className="comment">当节点没有单独设置安装目录时，默认使用此设置。如果集群和节点都没有设置安装目录，则使用 登录用户HOME路径/edge-node 目录。</p>
+            <p className="comment">当节点没有单独设置安装目录时,默认使用此设置.如果集群和节点都没有设置安装目录,则使用 登录用户HOME路径/edge-node 目录.</p>
           </FormRow>
           <FormRow title="时区">
             <div className="ui fields inline">
@@ -177,7 +177,7 @@ export function ClusterSettingsBasicPage() {
                 </Select>
               </div>
             </div>
-            <p className="comment">节点记录日志使用的时区。</p>
+            <p className="comment">节点记录日志使用的时区.</p>
           </FormRow>
           <FormRow title="单节点最大线程数">
             <TextInput
@@ -187,12 +187,12 @@ export function ClusterSettingsBasicPage() {
               onChange={(event) => update('nodeMaxThreads', Number(event.target.value) || 0)}
             />
             <p className="comment">
-              取值在{data.defaultNodeMaxThreadsMin}和{data.defaultNodeMaxThreadsMax}之间；如果为0，则默认为{data.defaultNodeMaxThreads}。
+              取值在{data.defaultNodeMaxThreadsMin}和{data.defaultNodeMaxThreadsMax}之间;如果为0,则默认为{data.defaultNodeMaxThreads}.
             </p>
           </FormRow>
           <FormRow title="自动开放端口">
             <Checkbox label="" checked={cluster.autoOpenPorts} onChange={(value) => update('autoOpenPorts', value)} />
-            <p className="comment">选中后会自动尝试在边缘节点正在运行的firewalld中开放所需端口。</p>
+            <p className="comment">选中后会自动尝试在边缘节点正在运行的firewalld中开放所需端口.</p>
           </FormRow>
           <FormRow title="自动同步节点时钟">
             <Checkbox
@@ -200,7 +200,7 @@ export function ClusterSettingsBasicPage() {
               checked={cluster.clock.autoSync}
               onChange={(value) => update('clock', { ...cluster.clock, autoSync: value })}
             />
-            <p className="comment">选中后表示尝试自动同步节点时钟。</p>
+            <p className="comment">选中后表示尝试自动同步节点时钟.</p>
           </FormRow>
           {cluster.clock.autoSync ? (
             <>
@@ -211,7 +211,7 @@ export function ClusterSettingsBasicPage() {
                   value={cluster.clock.server}
                   onChange={(event) => update('clock', { ...cluster.clock, server: event.target.value })}
                 />
-                <p className="comment">可选项。默认使用 pool.ntp.org。</p>
+                <p className="comment">可选项.默认使用 pool.ntp.org.</p>
               </FormRow>
               <FormRow title="检查Chrony">
                 <Checkbox
@@ -219,25 +219,25 @@ export function ClusterSettingsBasicPage() {
                   checked={cluster.clock.checkChrony}
                   onChange={(value) => update('clock', { ...cluster.clock, checkChrony: value })}
                 />
-                <p className="comment">选中后，表示如果chrony正在运行，则不重复执行时间同步。</p>
+                <p className="comment">选中后,表示如果chrony正在运行,则不重复执行时间同步.</p>
               </FormRow>
             </>
           ) : null}
           <FormRow title="自动远程启动">
             <Checkbox label="" checked={cluster.autoRemoteStart} onChange={(value) => update('autoRemoteStart', value)} />
-            <p className="comment">当检测到节点离线时，自动尝试远程启动（前提是节点已经设置了SSH登录认证）。</p>
+            <p className="comment">当检测到节点离线时,自动尝试远程启动(前提是节点已经设置了SSH登录认证).</p>
           </FormRow>
           <FormRow title="自动安装nftables">
             <Checkbox label="" checked={cluster.autoInstallNftables} onChange={(value) => update('autoInstallNftables', value)} />
-            <p className="comment">选中后，表示在Linux系统中自动尝试安装 nftables 用于安全防御。</p>
+            <p className="comment">选中后,表示在Linux系统中自动尝试安装 nftables 用于安全防御.</p>
           </FormRow>
           <FormRow title="自动调节系统参数">
             <Checkbox label="" checked={cluster.autoSystemTuning} onChange={(value) => update('autoSystemTuning', value)} />
-            <p className="comment">选中后，表示自动调整Linux内核等参数，以便提升性能。</p>
+            <p className="comment">选中后,表示自动调整Linux内核等参数,以便提升性能.</p>
           </FormRow>
           <FormRow title="自动执行硬盘TRIM">
             <Checkbox label="" checked={cluster.autoTrimDisks} onChange={(value) => update('autoTrimDisks', value)} />
-            <p className="comment">执行TRIM后可以移除SSD硬盘中无效的数据，从而显著提升SSD硬盘写入性能。</p>
+            <p className="comment">执行TRIM后可以移除SSD硬盘中无效的数据,从而显著提升SSD硬盘写入性能.</p>
           </FormRow>
           <FormRow title="节点I/O最大读并发数">
             <TextInput
@@ -247,7 +247,7 @@ export function ClusterSettingsBasicPage() {
               value={String(cluster.maxConcurrentReads)}
               onChange={(event) => update('maxConcurrentReads', Number(event.target.value) || 0)}
             />
-            <p className="comment">0表示根据系统资源自动计算；通常不需要修改，请在专业人士指导下操作。</p>
+            <p className="comment">0表示根据系统资源自动计算;通常不需要修改,请在专业人士指导下操作.</p>
           </FormRow>
           <FormRow title="节点I/O最大写并发数">
             <TextInput
@@ -257,7 +257,7 @@ export function ClusterSettingsBasicPage() {
               value={String(cluster.maxConcurrentWrites)}
               onChange={(event) => update('maxConcurrentWrites', Number(event.target.value) || 0)}
             />
-            <p className="comment">0表示根据系统资源自动计算；通常不需要修改，请在专业人士指导下操作。</p>
+            <p className="comment">0表示根据系统资源自动计算;通常不需要修改,请在专业人士指导下操作.</p>
           </FormRow>
         </FormTable>
         <SubmitButton submitting={submitting} />

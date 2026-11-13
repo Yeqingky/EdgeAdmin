@@ -39,28 +39,28 @@
 					<div>
 						<div v-for="(address, index) in node.ipAddresses" class="ui label small basic">
                             <span v-if="address.ip.indexOf(':') > -1" class="grey">[IPv6]</span> {{address.ip}}
-                            <span class="small red" v-if="address.originIP != null && address.originIP.length > 0 && address.originIP != address.ip">（原：{{address.originIP}}）</span>
-							<span class="small grey" v-if="address.name.length > 0">（备注：{{address.name}}<span v-if="!address.canAccess">，不公开访问</span>）</span>
-							<span class="small grey" v-if="address.name.length == 0 && !address.canAccess">（不公开访问）</span>
+                            <span class="small red" v-if="address.originIP != null && address.originIP.length > 0 && address.originIP != address.ip">(原:{{address.originIP}})</span>
+							<span class="small grey" v-if="address.name.length > 0">(备注:{{address.name}}<span v-if="!address.canAccess">,不公开访问</span>)</span>
+							<span class="small grey" v-if="address.name.length == 0 && !address.canAccess">(不公开访问)</span>
                             <span class="small red" v-if="!address.isOn">[off]</span>
                             <span class="small red" v-if="!address.isUp">[down]</span>
                             <span class="small" v-if="address.thresholds != null && address.thresholds.length > 0">[阈值]</span>
 
                             <span v-if="address.clusters.length > 0">
-                                &nbsp; <span class="small grey">专属集群：[</span><span v-for="(cluster, index) in address.clusters" class="small grey">{{cluster.name}}<span v-if="index < address.clusters.length - 1">，</span></span><span class="small grey">]</span>
+                                &nbsp; <span class="small grey">专属集群:[</span><span v-for="(cluster, index) in address.clusters" class="small grey">{{cluster.name}}<span v-if="index < address.clusters.length - 1">,</span></span><span class="small grey">]</span>
                             </span>
 						</div>
 					</div>
 				</div>
 				<div v-else>
-					<span class="disabled">暂时还没有填写IP地址。</span>
+					<span class="disabled">暂时还没有填写IP地址.</span>
 				</div>
 			</td>
 		</tr>
 		<tr v-if="node.routes.length > 0">
 			<td>DNS线路</td>
 			<td>
-                <span class="ui label tiny basic" v-for="route in node.routes">{{route.name}} <span class="grey small">（{{route.domainName}}）</span></span>
+                <span class="ui label tiny basic" v-for="route in node.routes">{{route.name}} <span class="grey small">({{route.domainName}})</span></span>
 			</td>
 		</tr>
         <tr v-if="node.records.length > 0">
@@ -95,24 +95,24 @@
                             </td>
                         </tr>
                     </table>
-                    <p class="comment" v-if="!dnsIsExcludingLnNode">通过设置A记录可以将集群上的服务请求转发到不同线路的节点上。</p>
+                    <p class="comment" v-if="!dnsIsExcludingLnNode">通过设置A记录可以将集群上的服务请求转发到不同线路的节点上.</p>
                 </div>
-                <p class="comment" v-if="dnsIsExcludingLnNode"><span class="red">当前集群DNS已设置不解析Ln节点，所以当前节点不会加入DNS解析；如需加入，请修改"集群设置" -- "DNS设置" -- "更多选项" -- "包含Ln节点"。</span></p>
-                <p class="comment" v-if="!node.isInstalled"><span class="red">当前节点尚未完成安装，DNS解析记录将不会生效，<a :href="'/clusters/cluster/node/install?clusterId=' + clusterId + '&nodeId=' + node.id">[点此安装]</a>。</span></p>
+                <p class="comment" v-if="dnsIsExcludingLnNode"><span class="red">当前集群DNS已设置不解析Ln节点,所以当前节点不会加入DNS解析;如需加入,请修改"集群设置" -- "DNS设置" -- "更多选项" -- "包含Ln节点".</span></p>
+                <p class="comment" v-if="!node.isInstalled"><span class="red">当前节点尚未完成安装,DNS解析记录将不会生效,<a :href="'/clusters/cluster/node/install?clusterId=' + clusterId + '&nodeId=' + node.id">[点此安装]</a>.</span></p>
             </td>
         </tr>
         <tr>
             <td>所属区域</td>
             <td>
                 <span v-if="node.region != null" class="ui label small basic">{{node.region.name}}</span>
-                <span v-else class="disabled">没有设置区域。</span>
+                <span v-else class="disabled">没有设置区域.</span>
             </td>
         </tr>
 		<tr>
 			<td>所属分组</td>
 			<td>
 				<span v-if="node.group != null" class="ui label small basic">{{node.group.name}}</span>
-				<span v-else class="disabled">没有设置分组。</span>
+				<span v-else class="disabled">没有设置分组.</span>
 			</td>
 		</tr>
         <tr v-if="teaIsPlus">
@@ -122,7 +122,7 @@
                 &nbsp; &nbsp; <span v-if="node.level > 1 && node.lnAddrs != null && node.lnAddrs.length > 0">
                     <span v-for="lnAddr in node.lnAddrs" class="ui label tiny basic">{{lnAddr}}</span>
                 </span>
-                <p class="comment" v-if="node.level > 1 && node.lnAddrs != null && node.lnAddrs.length > 0">指定了Ln节点访问地址。</p>
+                <p class="comment" v-if="node.level > 1 && node.lnAddrs != null && node.lnAddrs.length > 0">指定了Ln节点访问地址.</p>
             </td>
         </tr>
 		<tr>
@@ -164,7 +164,7 @@
 				<td>SSH登录认证</td>
 				<td>
 					<div v-if="node.login != null && node.login.grant != null && node.login.grant.id > 0">
-						<a :href="'/clusters/grants/grant?grantId=' + node.login.grant.id">{{node.login.grant.name}}<span class="small grey">（{{node.login.grant.methodName}}）</span><span class="small grey" v-if="node.login.grant.username.length > 0">（{{node.login.grant.username}}）</span></a>
+						<a :href="'/clusters/grants/grant?grantId=' + node.login.grant.id">{{node.login.grant.name}}<span class="small grey">({{node.login.grant.methodName}})</span><span class="small grey" v-if="node.login.grant.username.length > 0">({{node.login.grant.username}})</span></a>
 					</div>
 					<span v-else class="disabled">
 						尚未设置
@@ -202,7 +202,7 @@
                 <td>CPU线程数</td>
                 <td>
                     <span v-if="node.maxCPU > 0">{{node.maxCPU}}线程</span>
-                    <span v-else class="disabled">没有限制。</span>
+                    <span v-else class="disabled">没有限制.</span>
                 </td>
             </tr>
             <tr>
@@ -240,7 +240,7 @@
 		<tbody v-show="node.status.isActive">
 			<tr>
 				<td>CPU用量</td>
-				<td>{{node.status.cpuUsageText}} &nbsp; <span v-if="node.status.cpuPhysicalCount > 0" class="small grey">（{{node.status.cpuPhysicalCount}}核心/{{node.status.cpuLogicalCount}}线程）</span></td>
+				<td>{{node.status.cpuUsageText}} &nbsp; <span v-if="node.status.cpuPhysicalCount > 0" class="small grey">({{node.status.cpuPhysicalCount}}核心/{{node.status.cpuLogicalCount}}线程)</span></td>
 			</tr>
 			<tr>
 				<td>内存用量</td>
@@ -252,12 +252,12 @@
 			</tr>
             <tr>
                 <td>负载</td>
-                <td>{{node.status.load1m}} &nbsp; {{node.status.load5m}} &nbsp; {{node.status.load15m}} &nbsp; <tip-icon content="三个数字分别代表1分钟、5分钟、15分钟平均负载"></tip-icon></td>
+                <td>{{node.status.load1m}} &nbsp; {{node.status.load5m}} &nbsp; {{node.status.load15m}} &nbsp; <tip-icon content="三个数字分别代表1分钟,5分钟,15分钟平均负载"></tip-icon></td>
             </tr>
             <tr>
                 <td>缓存用量</td>
                 <td>
-                    硬盘：{{node.status.cacheTotalDiskSize}}  &nbsp; 内存：{{node.status.cacheTotalMemorySize}}
+                    硬盘:{{node.status.cacheTotalDiskSize}}  &nbsp; 内存:{{node.status.cacheTotalMemorySize}}
                 </td>
             </tr>
         </tbody>
@@ -276,14 +276,14 @@
                 <td>最近API连接状况</td>
                 <td>
                     <span v-if="node.status.apiSuccessPercent > 0 && node.status.apiAvgCostSeconds > 0">
-                        <span v-if="node.status.apiSuccessPercent <= 50" class="red">连接错误异常严重（{{round(100 - node.status.apiSuccessPercent)}}%失败），请改善当前节点和API节点之间通讯</span>
-                        <span v-else-if="node.status.apiSuccessPercent <= 80" class="red">连接错误较多（{{round(100 - node.status.apiSuccessPercent)}}%失败），请改善当前节点和API节点之间通讯</span>
-                        <span v-else-if="node.status.apiSuccessPercent < 100" class="orange">有连接错误发生（{{round(100 - node.status.apiSuccessPercent)}}%失败），请改善当前节点和API节点之间通讯</span>
+                        <span v-if="node.status.apiSuccessPercent <= 50" class="red">连接错误异常严重({{round(100 - node.status.apiSuccessPercent)}}%失败),请改善当前节点和API节点之间通讯</span>
+                        <span v-else-if="node.status.apiSuccessPercent <= 80" class="red">连接错误较多({{round(100 - node.status.apiSuccessPercent)}}%失败),请改善当前节点和API节点之间通讯</span>
+                        <span v-else-if="node.status.apiSuccessPercent < 100" class="orange">有连接错误发生({{round(100 - node.status.apiSuccessPercent)}}%失败),请改善当前节点和API节点之间通讯</span>
                         <span v-else>
                             <span v-if="node.status.apiAvgCostSeconds <= 1" class="green">连接良好</span>
-                            <span v-else-if="node.status.apiAvgCostSeconds <= 5" class="orange">连接基本稳定（平均{{round(node.status.apiAvgCostSeconds)}}秒）</span>
-                            <span v-else-if="node.status.apiAvgCostSeconds <= 10" class="orange">连接速度较慢（平均{{round(node.status.apiAvgCostSeconds)}}秒）</span>
-                            <span v-else class="red">连接非常慢（平均{{round(node.status.apiAvgCostSeconds)}}秒），请改善当前节点和API节点之间通讯</span>
+                            <span v-else-if="node.status.apiAvgCostSeconds <= 5" class="orange">连接基本稳定(平均{{round(node.status.apiAvgCostSeconds)}}秒)</span>
+                            <span v-else-if="node.status.apiAvgCostSeconds <= 10" class="orange">连接速度较慢(平均{{round(node.status.apiAvgCostSeconds)}}秒)</span>
+                            <span v-else class="red">连接非常慢(平均{{round(node.status.apiAvgCostSeconds)}}秒),请改善当前节点和API节点之间通讯</span>
                         </span>
                     </span>
                     <span v-else class="disabled">尚未上报数据</span>
@@ -293,28 +293,28 @@
                 <td>上次更新时间</td>
                 <td>
                     {{nodeDatetime}}
-                    <p class="comment" v-if="nodeTimeDiff > 30"><span class="red">当前节点时间与API节点时间相差 {{nodeTimeDiff}} 秒，请同步节点时间。</span></p>
+                    <p class="comment" v-if="nodeTimeDiff > 30"><span class="red">当前节点时间与API节点时间相差 {{nodeTimeDiff}} 秒,请同步节点时间.</span></p>
                 </td>
             </tr>
 		</tbody>
 	</table>
-	<p class="comment" v-if="node.status.isActive">每隔30秒钟更新一次运行状态。</p>
+	<p class="comment" v-if="node.status.isActive">每隔30秒钟更新一次运行状态.</p>
 
 	<div class="ui divider"></div>
 	<h3>安装信息</h3>
 	<table class="ui table definition selectable">
 		<tr>
-			<td>节点ID<em>（id）</em></td>
+			<td>节点ID<em>(id)</em></td>
 			<td>{{node.uniqueId}}</td>
 		</tr>
 		<tr>
-			<td>密钥<em>（secret）</em></td>
+			<td>密钥<em>(secret)</em></td>
 			<td>{{node.secret}}</td>
 		</tr>
 		<tr>
 			<td class="title">安装目录</td>
 			<td>
-				<div v-if="node.installDir.length == 0">使用集群设置<span v-if="node.cluster != null && node.cluster.installDir.length > 0">（{{node.cluster.installDir}}）</span></div>
+				<div v-if="node.installDir.length == 0">使用集群设置<span v-if="node.cluster != null && node.cluster.installDir.length > 0">({{node.cluster.installDir}})</span></div>
 				<span v-else>{{node.installDir}}</span>
 			</td>
 		</tr>

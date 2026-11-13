@@ -97,7 +97,7 @@ export function ApiNodeForm({ node, onSaved }: { node?: ApiNodeData; onSaved: ()
         </FormRow>
         <FormRow title="GRPC监听端口 *">
           <AddressListEditor addresses={listens} onChange={setListens} />
-          <p className="comment">通过GRPC访问API节点进程监听的网络端口。</p>
+          <p className="comment">通过GRPC访问API节点进程监听的网络端口.</p>
         </FormRow>
         {hasHTTPS ? (
           <FormRow title="HTTPS证书 *">
@@ -107,8 +107,8 @@ export function ApiNodeForm({ node, onSaved }: { node?: ApiNodeData; onSaved: ()
         <FormRow title="GRPC 外部访问地址 *">
           <AddressListEditor addresses={accessAddrs} onChange={setAccessAddrs} />
           <p className="comment">
-            边缘节点和管理平台等外部节点访问API节点的网络地址，需要保证其他节点能够通过此地址访问到API节点服务。
-            <strong>访问地址里的端口号和监听端口通常一致，除非你做了端口转发。</strong>
+            边缘节点和管理平台等外部节点访问API节点的网络地址,需要保证其他节点能够通过此地址访问到API节点服务.
+            <strong>访问地址里的端口号和监听端口通常一致,除非你做了端口转发.</strong>
           </p>
         </FormRow>
         <tr>
@@ -122,12 +122,12 @@ export function ApiNodeForm({ node, onSaved }: { node?: ApiNodeData; onSaved: ()
           <>
             <FormRow title={<span className={restIsOn ? 'color-border' : undefined}>开启HTTP API端口</span>}>
               <Checkbox label="启用HTTP API" checked={restIsOn} onChange={setRestIsOn} />
-              <p className="comment">启用后用户可以通过HTTP API调用服务接口。</p>
+              <p className="comment">启用后用户可以通过HTTP API调用服务接口.</p>
             </FormRow>
             {restIsOn ? (
               <FormRow title={<span className="color-border">HTTP API监听端口 *</span>}>
                 <AddressListEditor addresses={restListens} onChange={setRestListens} />
-                <p className="comment">HTTP API节点进程监听的网络端口，需要和当前节点的GRPC端口不同。</p>
+                <p className="comment">HTTP API节点进程监听的网络端口,需要和当前节点的GRPC端口不同.</p>
               </FormRow>
             ) : null}
             <FormRow title="描述">
@@ -136,7 +136,7 @@ export function ApiNodeForm({ node, onSaved }: { node?: ApiNodeData; onSaved: ()
             {node ? (
               <FormRow title="主节点">
                 <Checkbox checked={isPrimary} onChange={setIsPrimary} />
-                <p className="comment">设置为主节点后，主要的后台任务会在此节点上运行。</p>
+                <p className="comment">设置为主节点后,主要的后台任务会在此节点上运行.</p>
               </FormRow>
             ) : null}
             <FormRow title="启用当前节点">

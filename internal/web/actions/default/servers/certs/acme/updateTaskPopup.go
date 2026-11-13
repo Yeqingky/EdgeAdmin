@@ -130,7 +130,7 @@ func (this *UpdateTaskPopupAction) RunPost(params struct {
 	if len(params.DomainsJSON) > 0 {
 		err := json.Unmarshal(params.DomainsJSON, &domains)
 		if err != nil {
-			this.Fail("解析域名数据失败：" + err.Error())
+			this.Fail("解析域名数据失败:" + err.Error())
 			return
 		}
 	}

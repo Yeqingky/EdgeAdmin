@@ -320,7 +320,7 @@ export interface LevelOption {
   code: string
 }
 
-// apiPost 的 URLSearchParams 无法表达同名多值字段，而 Go 的 []int64 参数依赖重复字段。
+// apiPost 的 URLSearchParams 无法表达同名多值字段,而 Go 的 []int64 参数依赖重复字段.
 export async function apiPostMulti(url: string, params: Record<string, (string | number)[]>): Promise<void> {
   const body = new URLSearchParams()
   for (const [key, values] of Object.entries(params)) {

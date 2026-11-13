@@ -21,7 +21,7 @@ func (this *IndexAction) Init() {
 func (this *IndexAction) RunGet(params struct {
 	ServerId int64
 }) {
-	// TODO 等看板实现后，需要跳转到看板
+	// TODO 等看板实现后,需要跳转到看板
 
 	// TCP & UDP跳转到设置
 	serverTypeResp, err := this.RPC().ServerRPC().FindEnabledServerType(this.AdminContext(), &pb.FindEnabledServerTypeRequest{ServerId: params.ServerId})

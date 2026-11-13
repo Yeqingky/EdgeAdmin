@@ -88,9 +88,9 @@ export function UpgradeRemotePage() {
           } else {
             const errorCode = status.errorCode || ''
             if (SSH_ERROR_CODES.includes(errorCode)) {
-              toast(`需要填写SSH登录信息：${status.error || ''}`, 'error')
+              toast(`需要填写SSH登录信息:${status.error || ''}`, 'error')
             } else {
-              toast(`升级失败：${status.error || ''}`, 'error')
+              toast(`升级失败:${status.error || ''}`, 'error')
             }
           }
         })
@@ -105,7 +105,7 @@ export function UpgradeRemotePage() {
   }, [installingNodeId, isBatch, nodes, startUpgrade, toast, queryClient, clusterId])
 
   if (!clusterId) {
-    return <div className="ui negative message">缺少集群参数。</div>
+    return <div className="ui negative message">缺少集群参数.</div>
   }
   if (query.isError) {
     return <div className="ui negative message">加载失败</div>
@@ -120,7 +120,7 @@ export function UpgradeRemotePage() {
   const checkedCount = nodes.filter((node) => node.isChecked).length
 
   async function upgradeNode(node: UpgradeNodeItem) {
-    if (!(await confirm({ message: '确定要开始升级此节点吗？' }))) {
+    if (!(await confirm({ message: '确定要开始升级此节点吗?' }))) {
       return
     }
     setIsBatch(false)
@@ -128,7 +128,7 @@ export function UpgradeRemotePage() {
   }
 
   async function upgradeBatch() {
-    if (!(await confirm({ message: '确定要批量升级选中的节点吗？' }))) {
+    if (!(await confirm({ message: '确定要批量升级选中的节点吗?' }))) {
       return
     }
     setIsBatch(true)
@@ -148,7 +148,7 @@ export function UpgradeRemotePage() {
         ]}
       />
 
-      {nodes.length === 0 ? <p className="comment">暂时没有需要升级的节点。</p> : null}
+      {nodes.length === 0 ? <p className="comment">暂时没有需要升级的节点.</p> : null}
 
       {nodes.length > 0 ? (
         <div>
@@ -225,7 +225,7 @@ export function UpgradeRemotePage() {
                             {node.installStatus.isOk ? (
                               <span className="green">已升级成功</span>
                             ) : (
-                              <span className="red">升级过程中发生错误：{node.installStatus.error}</span>
+                              <span className="red">升级过程中发生错误:{node.installStatus.error}</span>
                             )}
                           </div>
                         ) : null}

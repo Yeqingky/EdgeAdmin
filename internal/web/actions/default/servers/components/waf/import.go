@@ -40,13 +40,13 @@ func (this *ImportAction) RunPost(params struct {
 
 	data, err := params.File.Read()
 	if err != nil {
-		this.Fail("读取文件时发生错误：" + err.Error())
+		this.Fail("读取文件时发生错误:" + err.Error())
 	}
 
 	config := &firewallconfigs.HTTPFirewallPolicy{}
 	err = json.Unmarshal(data, config)
 	if err != nil {
-		this.Fail("解析文件时发生错误：" + err.Error())
+		this.Fail("解析文件时发生错误:" + err.Error())
 	}
 
 	_, err = this.RPC().HTTPFirewallPolicyRPC().ImportHTTPFirewallPolicy(this.AdminContext(), &pb.ImportHTTPFirewallPolicyRequest{
@@ -54,7 +54,7 @@ func (this *ImportAction) RunPost(params struct {
 		HttpFirewallPolicyJSON: data,
 	})
 	if err != nil {
-		this.Fail("导入失败：" + err.Error())
+		this.Fail("导入失败:" + err.Error())
 	}
 
 	this.Success()

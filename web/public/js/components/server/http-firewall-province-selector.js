@@ -42,7 +42,7 @@ Vue.component("http-firewall-province-selector", {
 		}
 	},
 	template: `<div>
-	<span v-if="provinces.length == 0" class="disabled">暂时没有选择<span v-if="listType =='allow'">允许</span><span v-else>封禁</span>的省份。</span>
+	<span v-if="provinces.length == 0" class="disabled">暂时没有选择<span v-if="listType =='allow'">允许</span><span v-else>封禁</span>的省份.</span>
 	<div v-show="provinces.length > 0">
 		<div class="ui label tiny basic" v-for="(province, index) in provinces" style="margin-bottom: 0.5em">
 			<input type="hidden" :name="listType + 'ProvinceIds'" :value="province.id"/>

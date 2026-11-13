@@ -7,7 +7,7 @@
     <div class="margin"></div>
     <div class="ui fields inline">
         <div class="ui field">
-            <input type="text" name="keyword" placeholder="名称、用户名等..." v-model="keyword"/>
+            <input type="text" name="keyword" placeholder="名称,用户名等..." v-model="keyword"/>
         </div>
         <div class="ui field">
             <button class="ui button" type="submit">搜索</button>
@@ -18,7 +18,7 @@
 </form>
 
 <!-- SSH认证列表 -->
-<div class="ui message" v-if="grants.length == 0">暂时还没有认证信息。</div>
+<div class="ui message" v-if="grants.length == 0">暂时还没有认证信息.</div>
 
 <table class="ui table selectable celled" v-if="grants.length > 0">
 	<thead>

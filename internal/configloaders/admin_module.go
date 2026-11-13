@@ -82,7 +82,7 @@ func CheckAdmin(adminId int64) bool {
 	locker.Lock()
 	defer locker.Unlock()
 
-	// 如果还没有数据，则尝试加载
+	// 如果还没有数据,则尝试加载
 	if len(sharedAdminModuleMapping) == 0 {
 		_, _ = loadAdminModuleMapping()
 	}

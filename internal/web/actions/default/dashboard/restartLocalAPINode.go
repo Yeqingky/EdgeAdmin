@@ -38,7 +38,7 @@ func (this *RestartLocalAPINodeAction) RunPost(params struct {
 		cmd.Stdout = stdoutBuffer
 		err = cmd.Run()
 		if err != nil {
-			this.Fail("运行失败：输出：" + stdoutBuffer.String())
+			this.Fail("运行失败:输出:" + stdoutBuffer.String())
 		}
 	}
 
@@ -50,7 +50,7 @@ func (this *RestartLocalAPINodeAction) RunPost(params struct {
 	for {
 		countTries--
 		if countTries < 0 {
-			this.Fail("启动超时，请尝试手动启动")
+			this.Fail("启动超时,请尝试手动启动")
 			break
 		}
 

@@ -47,7 +47,7 @@ Vue.component("http-firewall-page-options", {
 	},
 	template: `<div>
 	<input type="hidden" name="pageOptionsJSON" :value="JSON.stringify(pageOptions)"/>
-	<a href="" @click.prevent="edit">状态码：{{status}} / 提示内容：<span v-if="pageOptions.body != null && pageOptions.body.length > 0">[{{pageOptions.body.length}}字符]</span><span v-else class="disabled">[无]</span>
+	<a href="" @click.prevent="edit">状态码:{{status}} / 提示内容:<span v-if="pageOptions.body != null && pageOptions.body.length > 0">[{{pageOptions.body.length}}字符]</span><span v-else class="disabled">[无]</span>
 	 <i class="icon angle" :class="{up: isEditing, down: !isEditing}"></i></a>
 	<table class="ui table" v-show="isEditing">
 		<tr>

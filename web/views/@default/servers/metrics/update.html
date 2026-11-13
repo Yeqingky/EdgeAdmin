@@ -1,7 +1,7 @@
 {$layout "layout"}
 {$template "item_menu"}
 
-<warning-message>修改统计对象、统计周期、统计数值等任一参数时，将重新记录数据。</warning-message>
+<warning-message>修改统计对象,统计周期,统计数值等任一参数时,将重新记录数据.</warning-message>
 
 <form class="ui form" data-tea-action="$" data-tea-success="success">
     <csrf-token></csrf-token>
@@ -50,14 +50,14 @@
                 <div class="ui input">
                     <input type="text" size="4" maxlength="4" name="expiresPeriod" v-model="item.expiresPeriod"/>
                 </div>
-                <p class="comment">自动删除此周期以外的数据。单位和统计周期一致。不填或者为0，表示自动计算。</p>
+                <p class="comment">自动删除此周期以外的数据.单位和统计周期一致.不填或者为0,表示自动计算.</p>
             </td>
         </tr>
         <tr>
             <td>公用</td>
             <td>
                 <checkbox name="isPublic" v-model="item.isPublic"></checkbox>
-                <p class="comment">选中表示所有集群自动使用此指标。</p>
+                <p class="comment">选中表示所有集群自动使用此指标.</p>
             </td>
         </tr>
         <tr>

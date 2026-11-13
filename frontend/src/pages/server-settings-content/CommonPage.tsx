@@ -34,7 +34,7 @@ export function ServerCommonSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -54,7 +54,7 @@ export function ServerCommonSettingsPage() {
         webId: data.webId,
         mergeSlashes: mergeSlashes ? 1 : '',
       })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -70,7 +70,7 @@ export function ServerCommonSettingsPage() {
           <FormRow title="合并重复的路径分隔符">
             <Checkbox checked={mergeSlashes} onChange={setMergeSlashes} />
             <p className="comment">
-              合并URL中重复的路径分隔符为一个，比如<code>//hello/world</code>中的<code>//</code>。
+              合并URL中重复的路径分隔符为一个,比如<code>//hello/world</code>中的<code>//</code>.
             </p>
           </FormRow>
         </FormTable>

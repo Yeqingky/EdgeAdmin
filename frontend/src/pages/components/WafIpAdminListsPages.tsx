@@ -83,16 +83,16 @@ function IPTypeName({ type }: { type: string }) {
 function SourceInfo({ item }: { item: IPItem }) {
   const pieces: string[] = []
   if (item.sourcePolicy?.id > 0) {
-    pieces.push(`策略：${item.sourcePolicy.name || item.sourcePolicy.id}`)
+    pieces.push(`策略:${item.sourcePolicy.name || item.sourcePolicy.id}`)
   }
   if (item.sourceGroup?.id > 0) {
-    pieces.push(`分组：${item.sourceGroup.name || item.sourceGroup.id}`)
+    pieces.push(`分组:${item.sourceGroup.name || item.sourceGroup.id}`)
   }
   if (item.sourceSet?.id > 0) {
-    pieces.push(`规则集：${item.sourceSet.name || item.sourceSet.id}`)
+    pieces.push(`规则集:${item.sourceSet.name || item.sourceSet.id}`)
   }
   if (item.sourceServer?.id > 0) {
-    pieces.push(`网站：${item.sourceServer.name || item.sourceServer.id}`)
+    pieces.push(`网站:${item.sourceServer.name || item.sourceServer.id}`)
   }
   if (pieces.length === 0) {
     return null
@@ -188,7 +188,7 @@ export function WafIpAdminListsPage({ firewallPolicyId }: { firewallPolicyId: nu
   }
 
   async function deleteItem(item: IPItem) {
-    if (!(await confirm({ message: '确定要删除这个IP吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个IP吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -214,7 +214,7 @@ export function WafIpAdminListsPage({ firewallPolicyId }: { firewallPolicyId: nu
   }
 
   async function unbindList(list: BoundList) {
-    if (!(await confirm({ message: '确定要删除这个绑定的IP名单吗？' }))) {
+    if (!(await confirm({ message: '确定要删除这个绑定的IP名单吗?' }))) {
       return
     }
     try {
@@ -261,7 +261,7 @@ export function WafIpAdminListsPage({ firewallPolicyId }: { firewallPolicyId: nu
         </a>
         {boundLists.length > 0 ? (
           <span className="item">
-            <span className="disabled small">|&nbsp;</span> 已绑定：
+            <span className="disabled small">|&nbsp;</span> 已绑定:
             {boundLists.map((list) => (
               <span key={list.id} className="ui label basic small">
                 {list.name}
@@ -325,7 +325,7 @@ export function WafIpAdminListsPage({ firewallPolicyId }: { firewallPolicyId: nu
                       autoFocus
                     />
                     <p className="comment">
-                      支持IPv4和IPv6；支持单个IP、IP范围（192.168.1.1-192.168.1.255）和CIDR（192.168.1.1/24）。
+                      支持IPv4和IPv6;支持单个IP,IP范围(192.168.1.1-192.168.1.255)和CIDR(192.168.1.1/24).
                     </p>
                   </td>
                 </tr>
@@ -335,7 +335,7 @@ export function WafIpAdminListsPage({ firewallPolicyId }: { firewallPolicyId: nu
                   <td>IP列表</td>
                   <td>
                     <textarea rows={3} style={{ width: '20em' }} value={ipData} onChange={(event) => setIpData(event.target.value)} />
-                    <p className="comment">每行一个IP，支持单个IP、IP范围和CIDR。</p>
+                    <p className="comment">每行一个IP,支持单个IP,IP范围和CIDR.</p>
                   </td>
                 </tr>
               ) : null}
@@ -343,7 +343,7 @@ export function WafIpAdminListsPage({ firewallPolicyId }: { firewallPolicyId: nu
                 <td>过期时间</td>
                 <td>
                   <input type="datetime-local" value={expiredAt} onChange={(event) => setExpiredAt(event.target.value)} />
-                  <p className="comment">在加入名单某一段时间后会失效，留空表示永久有效。</p>
+                  <p className="comment">在加入名单某一段时间后会失效,留空表示永久有效.</p>
                 </td>
               </tr>
               <tr>
@@ -379,10 +379,10 @@ export function WafIpAdminListsPage({ firewallPolicyId }: { firewallPolicyId: nu
       {binding ? (
         <div className="ui segment">
           <h4>绑定公共IP名单</h4>
-          {availableLists.length === 0 ? <p className="comment">暂时没有可绑定的IP名单。</p> : null}
+          {availableLists.length === 0 ? <p className="comment">暂时没有可绑定的IP名单.</p> : null}
           {availableLists.map((list) => (
             <div key={list.id} className="ui label basic" style={{ marginBottom: '0.4em' }}>
-              {list.name}（{list.countItems}个IP）
+              {list.name}({list.countItems}个IP)
               {list.isSelected ? (
                 <span className="small grey"> 已绑定</span>
               ) : (
@@ -408,7 +408,7 @@ export function WafIpAdminListsPage({ firewallPolicyId }: { firewallPolicyId: nu
         </div>
       ) : null}
 
-      {items.length === 0 ? <p className="comment">暂时还没有IP。</p> : null}
+      {items.length === 0 ? <p className="comment">暂时还没有IP.</p> : null}
 
       {items.length > 0 ? (
         <table className="ui table selectable celled">
@@ -567,10 +567,10 @@ export function WafIpAdminUpdateIPPage() {
                 <IPTypeName type={item.type} />
                 <p className="comment">
                   {item.type === 'all'
-                    ? '允许或禁用所有的IP。'
+                    ? '允许或禁用所有的IP.'
                     : item.type === 'ipv6'
-                      ? '单个IPv6或一个IPv6范围。'
-                      : '单个IPv4或一个IPv4范围。'}
+                      ? '单个IPv6或一个IPv6范围.'
+                      : '单个IPv4或一个IPv4范围.'}
                 </p>
               </td>
             </tr>
@@ -594,7 +594,7 @@ export function WafIpAdminUpdateIPPage() {
               <td>过期时间</td>
               <td>
                 <input type="datetime-local" value={expiredAt} onChange={(event) => setExpiredAt(event.target.value)} />
-                <p className="comment">在加入名单某一段时间后会失效，留空表示永久有效。</p>
+                <p className="comment">在加入名单某一段时间后会失效,留空表示永久有效.</p>
               </td>
             </tr>
             <tr>
@@ -791,7 +791,7 @@ export function WafIpAdminTestPage({ firewallPolicyId }: { firewallPolicyId: num
                         ) : null}
                       </>
                     ) : null}
-                    {!result.isFound ? <div>没有找到和{ip}匹配的配置。</div> : null}
+                    {!result.isFound ? <div>没有找到和{ip}匹配的配置.</div> : null}
                   </>
                 ) : null}
               </td>

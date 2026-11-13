@@ -16,7 +16,7 @@ Tea.context(function () {
 	})
 
 	this.deleteNode = function (nodeId) {
-		teaweb.confirm("确定要删除这个节点吗？", function () {
+		teaweb.confirm("确定要删除这个节点吗?", function () {
 			this.$post("/cluster/nodes/delete")
 				.params({
 					clusterId: this.clusterId,
@@ -27,7 +27,7 @@ Tea.context(function () {
 	}
 
 	this.upNode = function (nodeId) {
-		teaweb.confirm("确定要手动上线此节点吗？", function () {
+		teaweb.confirm("确定要手动上线此节点吗?", function () {
 			this.$post("/clusters/cluster/node/up")
 				.params({
 					nodeId: nodeId

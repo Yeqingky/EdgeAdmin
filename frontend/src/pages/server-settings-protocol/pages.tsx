@@ -93,7 +93,7 @@ const SHUTDOWN_HTML_TEMPLATE = `<!DOCTYPE html>
 <body>
 
 <h1>网站升级中</h1>
-<p>为了给您提供更好的服务，我们正在升级网站，请稍后重新访问。</p>
+<p>为了给您提供更好的服务,我们正在升级网站,请稍后重新访问.</p>
 
 <address>Connection: \${remoteAddr} (Client) -&gt; \${serverAddr} (Server)</address>
 <address>Request ID: \${requestId}</address>
@@ -194,7 +194,7 @@ export function PageForm({
               value={form.status}
               onChange={(event) => update('status', event.target.value)}
             />
-            <p className="comment">匹配的响应状态码，比如404，或者50x。</p>
+            <p className="comment">匹配的响应状态码,比如404,或者50x.</p>
           </FormRow>
           <FormRow title="内容类型 *">
             <Select value={form.bodyType} onChange={(event) => update('bodyType', event.target.value)}>
@@ -218,7 +218,7 @@ export function PageForm({
                 >
                   [使用模板]
                 </a>
-                。填写页面的HTML内容，支持请求变量。
+                .填写页面的HTML内容,支持请求变量.
               </p>
             </FormRow>
           ) : null}
@@ -231,7 +231,7 @@ export function PageForm({
                 value={form.url}
                 onChange={(event) => update('url', event.target.value)}
               />
-              <p className="comment">将从此URL中读取内容。</p>
+              <p className="comment">将从此URL中读取内容.</p>
             </FormRow>
           ) : null}
           {form.bodyType === 'redirectURL' ? (
@@ -243,7 +243,7 @@ export function PageForm({
                 value={form.url}
                 onChange={(event) => update('url', event.target.value)}
               />
-              <p className="comment">将会跳转到此URL，支持使用变量。</p>
+              <p className="comment">将会跳转到此URL,支持使用变量.</p>
             </FormRow>
           ) : null}
           <tr>
@@ -264,11 +264,11 @@ export function PageForm({
           <tbody>
             <FormRow title="例外URL">
               <URLPatternsEditor patterns={form.exceptURLPatterns} onChange={(values) => update('exceptURLPatterns', values)} />
-              <p className="comment">对这些URL将不做任何限制。</p>
+              <p className="comment">对这些URL将不做任何限制.</p>
             </FormRow>
             <FormRow title="限制URL">
               <URLPatternsEditor patterns={form.onlyURLPatterns} onChange={(values) => update('onlyURLPatterns', values)} />
-              <p className="comment">只对这些URL做限制。</p>
+              <p className="comment">只对这些URL做限制.</p>
             </FormRow>
             <FormRow title="新状态码">
               <TextInput
@@ -280,7 +280,7 @@ export function PageForm({
                 value={form.newStatus > 0 ? String(form.newStatus) : ''}
                 onChange={(event) => update('newStatus', Number(event.target.value) || 0)}
               />
-              <p className="comment">可以用来修改响应的状态码，不填表示不改变原有状态码。</p>
+              <p className="comment">可以用来修改响应的状态码,不填表示不改变原有状态码.</p>
             </FormRow>
           </tbody>
         ) : null}
@@ -484,13 +484,13 @@ export function PagesPage() {
       >
         <h4 style={{ marginBottom: '0.5em' }}>自定义页面</h4>
         <p className="comment" style={{ paddingTop: 0, marginTop: 0 }}>
-          根据响应状态码返回一些自定义页面，比如404，500等错误页面。
+          根据响应状态码返回一些自定义页面,比如404,500等错误页面.
         </p>
         <PagesTable
           pages={currentPages}
           onEdit={(page) => setEditing(page)}
           onRemove={(index) => {
-            void confirm({ message: '确定要删除此自定义页面吗？' }).then((ok) => {
+            void confirm({ message: '确定要删除此自定义页面吗?' }).then((ok) => {
               if (ok) {
                 setPages(currentPages.filter((_, i) => i !== index))
               }
@@ -512,7 +512,7 @@ export function PagesPage() {
 
         <h4 style={{ marginTop: '2em' }}>临时关闭页面</h4>
         <p className="comment" style={{ marginTop: 0, paddingTop: 0 }}>
-          开启临时关闭页面时，所有请求都会直接显示此页面。可用于临时升级网站或者禁止用户访问某个网页。
+          开启临时关闭页面时,所有请求都会直接显示此页面.可用于临时升级网站或者禁止用户访问某个网页.
         </p>
         <FormTable>
           <tbody>
@@ -525,7 +525,7 @@ export function PagesPage() {
                 />
                 <label></label>
               </div>
-              <p className="comment">选中后，表示临时关闭当前网站，并显示自定义内容。</p>
+              <p className="comment">选中后,表示临时关闭当前网站,并显示自定义内容.</p>
             </FormRow>
             {currentShutdown.isOn ? (
               <>
@@ -545,7 +545,7 @@ export function PagesPage() {
                       onChange={(event) => updateShutdown('url', event.target.value)}
                     />
                     <p className="comment">
-                      {currentShutdown.bodyType === 'url' ? '将从此URL中读取内容。' : '将会跳转到此URL。'}
+                      {currentShutdown.bodyType === 'url' ? '将从此URL中读取内容.' : '将会跳转到此URL.'}
                     </p>
                   </FormRow>
                 ) : null}
@@ -562,7 +562,7 @@ export function PagesPage() {
                       >
                         [使用模板]
                       </a>
-                      。填写页面的HTML内容，支持请求变量。
+                      .填写页面的HTML内容,支持请求变量.
                     </p>
                   </FormRow>
                 ) : null}
@@ -594,7 +594,7 @@ export function PagesPage() {
                 />
                 <label></label>
               </div>
-              <p className="comment">选中后，表示如果当前网站没有自定义页面，则尝试使用系统对应的自定义页面。</p>
+              <p className="comment">选中后,表示如果当前网站没有自定义页面,则尝试使用系统对应的自定义页面.</p>
             </FormRow>
           </tbody>
         </FormTable>

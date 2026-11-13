@@ -8,7 +8,7 @@
         <menu-item @click.prevent="createAccount">[创建账号]</menu-item>
     </second-menu>
 
-    <p class="comment" v-if="accounts.length == 0">暂时还没有服务商账号。</p>
+    <p class="comment" v-if="accounts.length == 0">暂时还没有服务商账号.</p>
 
     <table class="ui table selectable celled" v-if="accounts.length > 0">
         <thead>

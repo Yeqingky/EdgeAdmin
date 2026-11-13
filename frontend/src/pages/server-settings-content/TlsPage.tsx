@@ -49,9 +49,9 @@ const DEFAULT_POLICY: TlsPolicy = {
 
 const CLIENT_AUTH_TYPES = [
   { value: 0, name: '不需要客户端证书' },
-  { value: 1, name: '请求客户端证书，但不验证' },
-  { value: 2, name: '要求客户端证书，但不验证' },
-  { value: 3, name: '如果提供客户端证书，则验证' },
+  { value: 1, name: '请求客户端证书,但不验证' },
+  { value: 2, name: '要求客户端证书,但不验证' },
+  { value: 3, name: '如果提供客户端证书,则验证' },
   { value: 4, name: '要求客户端证书并验证' },
 ]
 
@@ -84,7 +84,7 @@ export function ServerTlsSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -110,7 +110,7 @@ export function ServerTlsSettingsPage() {
         addresses: JSON.stringify(addresses.map((address) => ({ ...address, protocol: address.protocol || 'tls' }))),
         sslPolicyJSON: JSON.stringify(policy),
       })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -138,7 +138,7 @@ export function ServerTlsSettingsPage() {
                   </div>
                 ))
               ) : (
-                <span className="disabled">还没有绑定证书。</span>
+                <span className="disabled">还没有绑定证书.</span>
               )}
               <div style={{ marginTop: '0.6em' }}>
                 <a href={`/servers/certs?serverId=${serverId}`}>[管理证书]</a>

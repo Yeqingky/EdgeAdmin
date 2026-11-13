@@ -65,7 +65,7 @@ func (this *IndexAction) RunPost(params struct {
 
 	err = ddosProtectionConfig.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 	}
 
 	// 校验参数

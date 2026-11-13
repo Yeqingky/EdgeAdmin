@@ -95,7 +95,7 @@ export function CacheListPage() {
   }
 
   async function deletePolicy(policy: CachePolicy) {
-    if (!(await confirm({ message: '确定要删除此缓存策略吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此缓存策略吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(policy.id)
@@ -165,7 +165,7 @@ export function CacheListPage() {
         </div>
       </form>
 
-      {policies.length === 0 ? <p className="comment">暂时还没有缓存策略。</p> : null}
+      {policies.length === 0 ? <p className="comment">暂时还没有缓存策略.</p> : null}
 
       {policies.length > 0 ? (
         <table className="ui table selectable celled">
@@ -197,7 +197,7 @@ export function CacheListPage() {
                     </a>
                   </td>
                   <td>
-                    {info.typeName} <span className="small">（{policy.type}）</span>
+                    {info.typeName} <span className="small">({policy.type})</span>
                   </td>
                   <td>
                     {capacityText(policy.capacity) ? (
@@ -205,7 +205,7 @@ export function CacheListPage() {
                         {capacityText(policy.capacity)}
                         {policy.type === 'file' && memoryCapacity && memoryCapacity.count > 0 ? (
                           <span className="small grey" title="内存容量">
-                            （内存：{capacityText(memoryCapacity)}）
+                            (内存:{capacityText(memoryCapacity)})
                           </span>
                         ) : null}
                       </span>

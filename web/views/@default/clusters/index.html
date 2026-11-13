@@ -6,7 +6,7 @@
     <input type="hidden" name="searchType" :value="searchType"/>
     <div class="ui fields inline">
         <div class="ui field">
-            <input type="text" name="keyword" v-model="keyword" placeholder="集群、节点关键词"/>
+            <input type="text" name="keyword" v-model="keyword" placeholder="集群,节点关键词"/>
         </div>
         <div class="ui field">
             <button class="ui button" type="submit">搜索</button>
@@ -17,7 +17,7 @@
     </div>
 </form>
 <div class="ui segment" v-if="latestVisible">
-    常用集群：<span v-for="(cluster, index) in latestClusters"><a :href="'/clusters/cluster?clusterId=' + cluster.id">{{cluster.name}}</a> &nbsp; <span class="disabled" v-if="index != latestClusters.length - 1">|</span> &nbsp;</span>
+    常用集群:<span v-for="(cluster, index) in latestClusters"><a :href="'/clusters/cluster?clusterId=' + cluster.id">{{cluster.name}}</a> &nbsp; <span class="disabled" v-if="index != latestClusters.length - 1">|</span> &nbsp;</span>
 </div>
 
 <div class="ui tabular menu" v-if="isSearching">
@@ -28,7 +28,7 @@
 <!-- 集群 -->
 <div v-show="searchType == '' || searchType == 'cluster'">
     <div class="margin"></div>
-    <p class="comment" v-if="clusters.length == 0">暂时还没有集群。</p>
+    <p class="comment" v-if="clusters.length == 0">暂时还没有集群.</p>
     <table class="ui table selectable celled" v-if="clusters.length > 0">
         <thead>
             <tr>
@@ -47,7 +47,7 @@
                 <a :href="'/clusters/cluster/settings?clusterId=' + cluster.id" title="设置"><i class="icon setting grey"></i></a>
 
                 <div v-if="cluster.timeZone != null && cluster.timeZone.length > 0">
-                    <grey-label>时区：{{cluster.timeZone}}</grey-label>
+                    <grey-label>时区:{{cluster.timeZone}}</grey-label>
                 </div>
 
                 <a href="" title="取消置顶" v-if="cluster.isPinned" @click.prevent="pin(cluster.id, false)"><i class="icon pin grey visible"></i></a>

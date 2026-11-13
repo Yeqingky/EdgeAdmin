@@ -24,7 +24,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countResp.Count > 0 {
-		this.Fail("有集群正在使用此服务，请修改后再删除")
+		this.Fail("有集群正在使用此服务,请修改后再删除")
 	}
 
 	countResp2, err := this.RPC().NodeRPC().CountAllEnabledNodesWithNodeGrantId(this.AdminContext(), &pb.CountAllEnabledNodesWithNodeGrantIdRequest{NodeGrantId: params.GrantId})
@@ -33,7 +33,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countResp2.Count > 0 {
-		this.Fail("有节点正在使用此服务，请修改后再删除")
+		this.Fail("有节点正在使用此服务,请修改后再删除")
 	}
 
 	// 删除

@@ -80,7 +80,7 @@
   },
   {
     "type": "url-not-extension",
-    "name": "排除：URL扩展名",
+    "name": "排除:URL扩展名",
     "description": "根据URL中的文件路径扩展名进行过滤",
     "component": "http-cond-url-not-extension",
     "paramsTitle": "扩展名列表",
@@ -88,7 +88,7 @@
   },
   {
     "type": "url-not-prefix",
-    "name": "排除：URL前缀",
+    "name": "排除:URL前缀",
     "description": "根据URL中的文件路径前缀进行过滤",
     "component": "http-cond-url-not-prefix",
     "paramsTitle": "URL前缀",
@@ -97,7 +97,7 @@
   },
   {
     "type": "url-not-eq",
-    "name": "排除：URL完整路径",
+    "name": "排除:URL完整路径",
     "description": "检查URL中的文件路径是否一致",
     "component": "http-cond-url-not-eq",
     "paramsTitle": "URL完整路径",
@@ -106,8 +106,8 @@
   },
   {
     "type": "url-not-regexp",
-    "name": "排除：URL正则匹配",
-    "description": "使用正则表达式检查URL中的文件路径是否一致，如果一致，则不匹配",
+    "name": "排除:URL正则匹配",
+    "description": "使用正则表达式检查URL中的文件路径是否一致,如果一致,则不匹配",
     "component": "http-cond-url-not-regexp",
     "paramsTitle": "正则表达式",
     "isRequest": true,
@@ -115,8 +115,8 @@
   },
   {
     "type": "user-agent-not-regexp",
-    "name": "排除：User-Agent正则匹配",
-    "description": "使用正则表达式检查User-Agent中是否含有某些浏览器和系统标识，如果含有，则不匹配",
+    "name": "排除:User-Agent正则匹配",
+    "description": "使用正则表达式检查User-Agent中是否含有某些浏览器和系统标识,如果含有,则不匹配",
     "component": "http-cond-user-agent-not-regexp",
     "paramsTitle": "正则表达式",
     "isRequest": true,
@@ -125,7 +125,7 @@
   {
     "type": "mime-type",
     "name": "内容MimeType",
-    "description": "根据服务器返回的内容的MimeType进行过滤。注意：当用于缓存条件时，此条件需要结合别的请求条件使用。",
+    "description": "根据服务器返回的内容的MimeType进行过滤.注意:当用于缓存条件时,此条件需要结合别的请求条件使用.",
     "component": "http-cond-mime-type",
     "paramsTitle": "MimeType列表",
     "isRequest": false

@@ -73,9 +73,9 @@ Vue.component("http-redirect-to-https-box", {
 						<input type="checkbox" v-model="redirectToHttpsConfig.isOn"/>
 						<label></label>
 					</div>
-					<p class="comment">开启后，所有HTTP的请求都会自动跳转到对应的HTTPS URL上，<more-options-angle @change="changeMoreOptions"></more-options-angle></p>
+					<p class="comment">开启后,所有HTTP的请求都会自动跳转到对应的HTTPS URL上,<more-options-angle @change="changeMoreOptions"></more-options-angle></p>
 					
-					<!--  TODO 如果已经设置了特殊设置，需要在界面上显示 -->
+					<!--  TODO 如果已经设置了特殊设置,需要在界面上显示 -->
 					<table class="ui table" v-show="moreOptionsVisible">
 						<tr>
 							<td class="title">状态码</td>
@@ -90,14 +90,14 @@ Vue.component("http-redirect-to-https-box", {
 							<td>域名或IP地址</td>
 							<td>
 								<input type="text" name="host" v-model="redirectToHttpsConfig.host"/>
-								<p class="comment">默认和用户正在访问的域名或IP地址一致。</p>
+								<p class="comment">默认和用户正在访问的域名或IP地址一致.</p>
 							</td>
 						</tr>
 						<tr>
 							<td>端口</td>
 							<td>
 								<input type="text" name="port" v-model="portString" maxlength="5" style="width:6em"/>
-								<p class="comment">默认端口为443。</p>
+								<p class="comment">默认端口为443.</p>
 							</td>
 						</tr>
 					</table>
@@ -112,9 +112,9 @@ Vue.component("http-redirect-to-https-box", {
 			<input type="checkbox" v-model="redirectToHttpsConfig.isOn"/>
 			<label></label>
 		</div>
-		<p class="comment">开启后，所有HTTP的请求都会自动跳转到对应的HTTPS URL上，<more-options-angle @change="changeMoreOptions"></more-options-angle></p>
+		<p class="comment">开启后,所有HTTP的请求都会自动跳转到对应的HTTPS URL上,<more-options-angle @change="changeMoreOptions"></more-options-angle></p>
 		
-		<!--  TODO 如果已经设置了特殊设置，需要在界面上显示 -->
+		<!--  TODO 如果已经设置了特殊设置,需要在界面上显示 -->
 		<table class="ui table" v-show="moreOptionsVisible">
 			<tr>
 				<td class="title">状态码</td>
@@ -129,28 +129,28 @@ Vue.component("http-redirect-to-https-box", {
 				<td>跳转后域名或IP地址</td>
 				<td>
 					<input type="text" name="host" v-model="redirectToHttpsConfig.host"/>
-					<p class="comment">默认和用户正在访问的域名或IP地址一致，不填写就表示使用当前的域名。</p>
+					<p class="comment">默认和用户正在访问的域名或IP地址一致,不填写就表示使用当前的域名.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>端口</td>
 				<td>
 					<input type="text" name="port" v-model="portString" maxlength="5" style="width:6em"/>
-					<p class="comment">默认端口为443。</p>
+					<p class="comment">默认端口为443.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>允许的域名</td>
 				<td>
 					<domains-box :v-domains="redirectToHttpsConfig.onlyDomains" @change="changeOnlyDomains"></domains-box>
-					<p class="comment">如果填写了允许的域名，那么只有这些域名可以自动跳转。</p>
+					<p class="comment">如果填写了允许的域名,那么只有这些域名可以自动跳转.</p>
 				</td>
 			</tr>
 			<tr>
 				<td>排除的域名</td>
 				<td>
 					<domains-box :v-domains="redirectToHttpsConfig.exceptDomains" @change="changeExceptDomains"></domains-box>
-					<p class="comment">如果填写了排除的域名，那么这些域名将不跳转。</p>
+					<p class="comment">如果填写了排除的域名,那么这些域名将不跳转.</p>
 				</td>
 			</tr>
 		</table>

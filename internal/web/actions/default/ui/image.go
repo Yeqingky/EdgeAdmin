@@ -9,7 +9,7 @@ import (
 	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/pb"
 )
 
-// 公开的图片，不需要检查用户权限
+// 公开的图片,不需要检查用户权限
 type ImageAction struct {
 	actionutils.ParentAction
 }

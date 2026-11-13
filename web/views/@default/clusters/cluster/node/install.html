@@ -5,11 +5,11 @@
 <!-- 未安装 -->
 <div v-if="!node.isInstalled">
     <div>
-        <span class="red">在当前节点完成安装前，相关DNS解析记录将不会生效，<link-red href="" @click.prevent="updateNodeIsInstalled(true)">已完成安装</link-red> 。</span>
+        <span class="red">在当前节点完成安装前,相关DNS解析记录将不会生效,<link-red href="" @click.prevent="updateNodeIsInstalled(true)">已完成安装</link-red> .</span>
         <div class="ui divider"></div>
     </div>
 
-    <h4>方法1：通过SSH自动安装</h4>
+    <h4>方法1:通过SSH自动安装</h4>
 
     <table class="ui table definition selectable">
         <tr>
@@ -25,7 +25,7 @@
         <div v-if="installStatus.isRunning" class="blue">安装中...</div>
         <div v-if="installStatus.isFinished">
             <span v-if="installStatus.isOk" class="green">已安装成功</span>
-            <span v-if="!installStatus.isOk" class="red">安装过程中发生错误：{{installStatus.error}}</span>
+            <span v-if="!installStatus.isOk" class="red">安装过程中发生错误:{{installStatus.error}}</span>
         </div>
     </div>
     <div v-if="installStatus != null && installStatus.isFinished">
@@ -35,7 +35,7 @@
         <button class="ui button small primary" type="button" @click.prevent="install()">开始安装</button>
     </div>
 
-    <h4>方法2：手动安装</h4>
+    <h4>方法2:手动安装</h4>
     <table class="ui table definition selectable">
         <tr v-if="installerFiles != null && installerFiles.length > 0">
             <td class="title">下载安装文件</td>
@@ -73,14 +73,14 @@
 					<source-code-box id="rpc-code" type="text/yaml">rpc.endpoints: [ {{apiEndpoints}} ]
 nodeId: "{{node.uniqueId}}"
 secret: "{{node.secret}}"</source-code-box>
-                <p class="comment">手动替换edge-node安装目录下的<code-label>configs/api_node.yaml</code-label>文件，然后重新启动生效；如果此文件不存在，则需要创建。</p>
+                <p class="comment">手动替换edge-node安装目录下的<code-label>configs/api_node.yaml</code-label>文件,然后重新启动生效;如果此文件不存在,则需要创建.</p>
             </td>
         </tr>
         <tr>
             <td class="title">安装目录</td>
             <td>
                 <div v-if="node.installDir.length == 0">
-                    <span v-if="node.cluster != null && node.cluster.installDir.length > 0">建议使用集群设置（{{node.cluster.installDir}}</span>
+                    <span v-if="node.cluster != null && node.cluster.installDir.length > 0">建议使用集群设置({{node.cluster.installDir}}</span>
                     <span v-else>建议安装在 /usr/local/goedge/edge-node</span>
                 </div>
                 <span v-else>{{node.installDir}}</span>
@@ -107,14 +107,14 @@ secret: "{{node.secret}}"</source-code-box>
                 <source-code-box id="rpc-code" type="text/yaml">rpc.endpoints: [ {{apiEndpoints}} ]
 nodeId: "{{node.uniqueId}}"
 secret: "{{node.secret}}"</source-code-box>
-            <p class="comment">每个节点的配置文件内容均不相同，不能混用。</p>
+            <p class="comment">每个节点的配置文件内容均不相同,不能混用.</p>
             </td>
         </tr>
         <tr>
             <td class="title">安装目录</td>
             <td>
                 <div v-if="node.installDir.length == 0">使用集群设置<span
-                        v-if="node.cluster != null && node.cluster.installDir.length > 0">（{{node.cluster.installDir}}）</span>
+                        v-if="node.cluster != null && node.cluster.installDir.length > 0">({{node.cluster.installDir}})</span>
                 </div>
                 <span v-else>{{node.installDir}}</span>
             </td>
@@ -126,7 +126,7 @@ secret: "{{node.secret}}"</source-code-box>
     </table>
 
     <div>
-        <div class="ui message success">当前节点为已安装状态。</div>
+        <div class="ui message success">当前节点为已安装状态.</div>
         <a href="" @click.prevent="updateNodeIsInstalled(false)">[重新安装]</a>
     </div>
 </div>

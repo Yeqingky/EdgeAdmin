@@ -25,7 +25,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countClustersResp.Count > 0 {
-		this.Fail("当前DNS服务商账号正在被" + numberutils.FormatInt64(countClustersResp.Count) + "个集群所使用，所以不能删除。请修改集群设置后再操作。")
+		this.Fail("当前DNS服务商账号正在被" + numberutils.FormatInt64(countClustersResp.Count) + "个集群所使用,所以不能删除.请修改集群设置后再操作.")
 	}
 
 	// 判断是否被ACME任务使用
@@ -35,7 +35,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countACMETasksResp.Count > 0 {
-		this.Fail("当前DNS服务商账号正在被" + numberutils.FormatInt64(countACMETasksResp.Count) + "个ACME证书申请任务使用，所以不能删除。请修改ACME证书申请任务后再操作。")
+		this.Fail("当前DNS服务商账号正在被" + numberutils.FormatInt64(countACMETasksResp.Count) + "个ACME证书申请任务使用,所以不能删除.请修改ACME证书申请任务后再操作.")
 	}
 
 	// 执行删除

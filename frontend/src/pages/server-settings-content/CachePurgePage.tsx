@@ -30,7 +30,7 @@ export function ServerCachePurgePage() {
   const [message, setMessage] = useState('')
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -52,7 +52,7 @@ export function ServerCachePurgePage() {
         keyType,
         keys,
       })
-      toast('任务提交成功，请等待节点配置刷新')
+      toast('任务提交成功,请等待节点配置刷新')
       setKeys('')
     } catch (error) {
       setMessage(error instanceof Error ? error.message : '提交失败')
@@ -66,10 +66,10 @@ export function ServerCachePurgePage() {
       <CacheMenu active="purge" />
       <div className="margin" />
       {!cacheIsOn ? (
-        <p className="comment">没有开启缓存，不需要刷新。</p>
+        <p className="comment">没有开启缓存,不需要刷新.</p>
       ) : (
         <div>
-          <p className="comment">可以在这里批量刷新一组URL缓存。</p>
+          <p className="comment">可以在这里批量刷新一组URL缓存.</p>
           <form className="ui form" onSubmit={submit}>
             <table className="ui table definition selectable">
               <tbody>
@@ -91,12 +91,12 @@ export function ServerCachePurgePage() {
                     <textarea name="keys" rows={10} value={keys} onChange={(event) => setKeys(event.target.value)} />
                     {keyType === 'key' ? (
                       <p className="comment">
-                        每行一个URL，比如<code>https://example.com/hello/world.html</code>。
+                        每行一个URL,比如<code>https://example.com/hello/world.html</code>.
                       </p>
                     ) : (
                       <p className="comment">
-                        每行一个URL目录，比如<code>https://example.com/hello/</code>；如果只填写域名部分，表示清理全站，比如
-                        <code>https://example.com/</code>。
+                        每行一个URL目录,比如<code>https://example.com/hello/</code>;如果只填写域名部分,表示清理全站,比如
+                        <code>https://example.com/</code>.
                       </p>
                     )}
                   </td>
@@ -105,7 +105,7 @@ export function ServerCachePurgePage() {
                   <td>操作结果</td>
                   <td>
                     {submitting ? <div>数据发送中...</div> : null}
-                    {!submitting && message.length > 0 ? <span className="red">失败：{message}</span> : null}
+                    {!submitting && message.length > 0 ? <span className="red">失败:{message}</span> : null}
                   </td>
                 </tr>
               </tbody>

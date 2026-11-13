@@ -30,12 +30,12 @@ func (this *AddGroupPopupAction) RunPost(params struct {
 	groupConfig := &shared.HTTPRequestCondGroup{}
 	err := json.Unmarshal(params.CondGroupJSON, groupConfig)
 	if err != nil {
-		this.Fail("解析条件时发生错误：" + err.Error())
+		this.Fail("解析条件时发生错误:" + err.Error())
 	}
 
 	err = groupConfig.Init()
 	if err != nil {
-		this.Fail("校验条件设置时失败：" + err.Error())
+		this.Fail("校验条件设置时失败:" + err.Error())
 	}
 
 	this.Data["group"] = groupConfig

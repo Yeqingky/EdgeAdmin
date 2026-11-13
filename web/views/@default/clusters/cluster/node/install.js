@@ -20,7 +20,7 @@ Tea.context(function () {
 
     // 设置节点安装状态
     this.updateNodeIsInstalled = function (isInstalled) {
-		let msg = isInstalled ? "html:确定要将当前节点修改为<strong>已安装</strong>状态？" : "html:确定要将当前节点修改为<strong>未安装</strong>状态？"
+		let msg = isInstalled ? "html:确定要将当前节点修改为<strong>已安装</strong>状态?" : "html:确定要将当前节点修改为<strong>未安装</strong>状态?"
         teaweb.confirm(msg, function () {
             this.$post("/clusters/cluster/node/updateInstallStatus")
                 .params({
@@ -69,7 +69,7 @@ Tea.context(function () {
                         })
                         return
                     case "SSH_LOGIN_FAILED":
-                        teaweb.warn("SSH登录失败，请检查设置", function () {
+                        teaweb.warn("SSH登录失败,请检查设置", function () {
                             teaweb.popup("/clusters/cluster/updateNodeSSH?nodeId=" + nodeId, {
 								height: "30em",
                                 callback: function () {
@@ -79,22 +79,22 @@ Tea.context(function () {
                         })
                         return
                     case "CREATE_ROOT_DIRECTORY_FAILED":
-                        teaweb.warn("创建根目录失败，请检查目录权限或者手工创建：" + errMsg)
+                        teaweb.warn("创建根目录失败,请检查目录权限或者手工创建:" + errMsg)
                         return
                     case "INSTALL_HELPER_FAILED":
-                        teaweb.warn("安装助手失败：" + errMsg)
+                        teaweb.warn("安装助手失败:" + errMsg)
                         return
                     case "TEST_FAILED":
-                        teaweb.warn("环境测试失败：" + errMsg)
+                        teaweb.warn("环境测试失败:" + errMsg)
                         return
                     case "RPC_TEST_FAILED":
-                        teaweb.confirm("html:要安装的节点到API服务之间的RPC通讯测试失败，具体错误：" + errMsg + "，<br/>现在修改API信息？", function () {
+                        teaweb.confirm("html:要安装的节点到API服务之间的RPC通讯测试失败,具体错误:" + errMsg + ",<br/>现在修改API信息?", function () {
                             window.location = "/settings/api"
                         })
                         return
                     default:
                         shouldReload = true
-                    //teaweb.warn("安装失败：" + errMsg)
+                    //teaweb.warn("安装失败:" + errMsg)
                 }
             })
             .done(function () {

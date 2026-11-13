@@ -103,10 +103,10 @@ func (this *IndexAction) RunPost(params struct {
 	var addresses = []*serverconfigs.NetworkAddressConfig{}
 	err := json.Unmarshal([]byte(params.Addresses), &addresses)
 	if err != nil {
-		this.Fail("端口地址解析失败：" + err.Error())
+		this.Fail("端口地址解析失败:" + err.Error())
 	}
 
-	// 如果启用HTTP时没有填写端口，则默认为80
+	// 如果启用HTTP时没有填写端口,则默认为80
 	if params.IsOn && len(addresses) == 0 {
 		addresses = []*serverconfigs.NetworkAddressConfig{
 			{
@@ -120,7 +120,7 @@ func (this *IndexAction) RunPost(params struct {
 	for _, addr := range addresses {
 		err = addr.Init()
 		if err != nil {
-			this.Fail("绑定端口校验失败：" + err.Error())
+			this.Fail("绑定端口校验失败:" + err.Error())
 		}
 
 		if regexp.MustCompile(`^\d+$`).MatchString(addr.PortRange) {
@@ -129,7 +129,7 @@ func (this *IndexAction) RunPost(params struct {
 				this.Fail("绑定的端口地址不能大于65535")
 			}
 			if port == 443 {
-				this.Fail("端口443通常是HTTPS的端口，不能用在HTTP上")
+				this.Fail("端口443通常是HTTPS的端口,不能用在HTTP上")
 			}
 		}
 	}

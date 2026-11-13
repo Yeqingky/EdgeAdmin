@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-// 类似于time.Ticker，但能够真正地停止
+// 类似于time.Ticker,但能够真正地停止
 type Ticker struct {
 	raw *time.Ticker
 

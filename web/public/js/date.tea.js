@@ -4,14 +4,14 @@
  * @class Tea.Date
  */
 /**
- * Tea.Date构造器。使用方法如：<br/>
+ * Tea.Date构造器.使用方法如:<br/>
  * var date = new Tea.Date();<br/>
  * var date = new Tea.Date("Y-m-d H:i:s");<br/>
  * var date = new Tea.Date("Y-m-d H:i:s", 1169226085);
  *
  * @constructor Tea.Date
- * @param String format 时间格式，为可选参数，目前支持O,r,Y,y,L,M,m,n,F,t,w,D,l,d,z,H,i,s,j,h,G,g,a,A等字符。
- * @param int time 时间戳，为可选参数
+ * @param String format 时间格式,为可选参数,目前支持O,r,Y,y,L,M,m,n,F,t,w,D,l,d,z,H,i,s,j,h,G,g,a,A等字符.
+ * @param int time 时间戳,为可选参数
  */
 Tea.Date = function (format, time) {
 	var date = new Date();
@@ -57,7 +57,7 @@ Tea.Date = function (format, time) {
 	 * 设置某一时间为某值
 	 *
 	 * @method set
-	 * @param String type 时间选项，如 d 表示天,Y 表示年,H 表示小时，等等。
+	 * @param String type 时间选项,如 d 表示天,Y 表示年,H 表示小时,等等.
 	 * @param int value 新的值
 	 */
 	this.set = function (type, value) {

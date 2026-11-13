@@ -73,7 +73,7 @@ export function NodeDDoSSettingsPage() {
   }, [initialized, nodeId])
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isError) {
     return <div className="ui negative message">加载失败</div>
@@ -152,18 +152,18 @@ export function NodeDDoSSettingsPage() {
 
       <form className="ui form" onSubmit={submit}>
         <p className="comment">
-          功能说明：此功能为<strong>试验性质</strong>，目前仅能防御简单的DDoS攻击，试验期间建议仅在被攻击时启用，仅支持已安装<code>nftables v0.9</code>
-          以上的Linux系统。
+          功能说明:此功能为<strong>试验性质</strong>,目前仅能防御简单的DDoS攻击,试验期间建议仅在被攻击时启用,仅支持已安装<code>nftables v0.9</code>
+          以上的Linux系统.
         </p>
 
-        {data.clusterDDoSProtectionIsOn ? <div className="ui message">当前节点所在集群已设置DDoS防护。</div> : null}
+        {data.clusterDDoSProtectionIsOn ? <div className="ui message">当前节点所在集群已设置DDoS防护.</div> : null}
 
         <h4>TCP设置</h4>
         <FormTable>
           <FormRow title="打开独立配置">
             <Checkbox checked={tcp.isPrior} onChange={(checked) => update('isPrior', checked)} />
             <p className="comment">
-              <strong>{tcp.isPrior ? '[已打开]' : ''}</strong> 打开后可以覆盖父级或子级配置。
+              <strong>{tcp.isPrior ? '[已打开]' : ''}</strong> 打开后可以覆盖父级或子级配置.
             </p>
           </FormRow>
           {tcp.isPrior ? (
@@ -175,16 +175,16 @@ export function NodeDDoSSettingsPage() {
             <>
               <FormRow title="单节点TCP最大连接数">
                 <NumericInput value={tcp.maxConnections} onChange={(value) => update('maxConnections', value)} />
-                <p className="comment">单个节点可以接受的TCP最大连接数。如果为0，则默认为{defaults.tcpMaxConnections}。</p>
+                <p className="comment">单个节点可以接受的TCP最大连接数.如果为0,则默认为{defaults.tcpMaxConnections}.</p>
               </FormRow>
               <FormRow title="单IP TCP最大连接数">
                 <NumericInput value={tcp.maxConnectionsPerIP} onChange={(value) => update('maxConnectionsPerIP', value)} />
                 <p className="comment">
-                  单个IP可以连接到节点的TCP最大连接数。如果为0，则默认为{defaults.tcpMaxConnectionsPerIP}；最小值为
-                  {defaults.tcpMinConnectionsPerIP}。
+                  单个IP可以连接到节点的TCP最大连接数.如果为0,则默认为{defaults.tcpMaxConnectionsPerIP};最小值为
+                  {defaults.tcpMinConnectionsPerIP}.
                 </p>
               </FormRow>
-              <FormRow title="单IP TCP新连接速率（分钟）">
+              <FormRow title="单IP TCP新连接速率(分钟)">
                 <div className="ui fields inline">
                   <div className="ui field">
                     <NumericInput value={tcp.newConnectionsRate} onChange={(value) => update('newConnectionsRate', value)} />
@@ -197,11 +197,11 @@ export function NodeDDoSSettingsPage() {
                   </div>
                 </div>
                 <p className="comment">
-                  单个IP每分钟可以创建TCP新连接的数量。如果为0，则默认为{defaults.tcpNewConnectionsMinutelyRate}；最小值为
-                  {defaults.tcpNewConnectionsMinMinutelyRate}。如果没有填写屏蔽时间，则只丢弃数据包。
+                  单个IP每分钟可以创建TCP新连接的数量.如果为0,则默认为{defaults.tcpNewConnectionsMinutelyRate};最小值为
+                  {defaults.tcpNewConnectionsMinMinutelyRate}.如果没有填写屏蔽时间,则只丢弃数据包.
                 </p>
               </FormRow>
-              <FormRow title="单IP TCP新连接速率（秒钟）">
+              <FormRow title="单IP TCP新连接速率(秒钟)">
                 <div className="ui fields inline">
                   <div className="ui field">
                     <NumericInput value={tcp.newConnectionsSecondlyRate} onChange={(value) => update('newConnectionsSecondlyRate', value)} />
@@ -217,8 +217,8 @@ export function NodeDDoSSettingsPage() {
                   </div>
                 </div>
                 <p className="comment">
-                  单个IP每秒钟可以创建TCP新连接的数量。如果为0，则默认为{defaults.tcpNewConnectionsSecondlyRate}；最小值为
-                  {defaults.tcpNewConnectionsMinSecondlyRate}。如果没有填写屏蔽时间，则只丢弃数据包。
+                  单个IP每秒钟可以创建TCP新连接的数量.如果为0,则默认为{defaults.tcpNewConnectionsSecondlyRate};最小值为
+                  {defaults.tcpNewConnectionsMinSecondlyRate}.如果没有填写屏蔽时间,则只丢弃数据包.
                 </p>
               </FormRow>
               <FormRow title="TCP端口列表">
@@ -226,7 +226,7 @@ export function NodeDDoSSettingsPage() {
                   {ports.map((item: DDoSProtectionPort, index: number) => (
                     <span key={`${item.port}-${index}`} className="ui label tiny basic" style={{ marginBottom: '0.4em' }}>
                       {item.port}
-                      {item.description ? <span className="grey small">（{item.description}）</span> : null}
+                      {item.description ? <span className="grey small">({item.description})</span> : null}
                       <a
                         href=""
                         onClick={(event) => {
@@ -263,14 +263,14 @@ export function NodeDDoSSettingsPage() {
                     </div>
                   </div>
                 </div>
-                <p className="comment">在这些端口上使用当前配置。默认为80和443两个端口。</p>
+                <p className="comment">在这些端口上使用当前配置.默认为80和443两个端口.</p>
               </FormRow>
               <FormRow title="IP白名单">
                 <div>
                   {ipList.map((item: DDoSProtectionIP, index: number) => (
                     <span key={`${item.ip}-${index}`} className="ui label tiny basic" style={{ marginBottom: '0.4em' }}>
                       {item.ip}
-                      {item.description ? <span className="grey small">（{item.description}）</span> : null}
+                      {item.description ? <span className="grey small">({item.description})</span> : null}
                       <a
                         href=""
                         onClick={(event) => {
@@ -306,14 +306,14 @@ export function NodeDDoSSettingsPage() {
                     </div>
                   </div>
                 </div>
-                <p className="comment">在白名单中的IP不受当前设置的限制。</p>
+                <p className="comment">在白名单中的IP不受当前设置的限制.</p>
               </FormRow>
             </>
           ) : null}
         </FormTable>
 
-        {checkResult && checkResult.isOk ? <p className="ui message green">节点检查结果：{checkResult.message}</p> : null}
-        {checkResult && !checkResult.isOk ? <p className="ui message red">节点检查结果：有错误发生：{checkResult.message}</p> : null}
+        {checkResult && checkResult.isOk ? <p className="ui message green">节点检查结果:{checkResult.message}</p> : null}
+        {checkResult && !checkResult.isOk ? <p className="ui message red">节点检查结果:有错误发生:{checkResult.message}</p> : null}
 
         <SubmitButton submitting={submitting} />
       </form>

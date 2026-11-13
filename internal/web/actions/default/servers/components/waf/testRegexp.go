@@ -25,7 +25,7 @@ func (this *TestRegexpAction) RunPost(params struct {
 	if err != nil {
 		this.Data["result"] = maps.Map{
 			"isOk":    false,
-			"message": "解析正则出错：" + err.Error(),
+			"message": "解析正则出错:" + err.Error(),
 		}
 		this.Success()
 	}

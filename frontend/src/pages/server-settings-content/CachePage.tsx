@@ -150,7 +150,7 @@ export function ServerCacheSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -181,7 +181,7 @@ export function ServerCacheSettingsPage() {
   }
 
   async function removeRef(index: number) {
-    if (!(await confirm({ message: '确定要删除此缓存设置吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此缓存设置吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     const refs = config.cacheRefs.filter((_, i) => i !== index)
@@ -201,7 +201,7 @@ export function ServerCacheSettingsPage() {
     setSubmitting(true)
     try {
       await apiPost('/servers/server/settings/cache', { webId: data.webId, cacheJSON: JSON.stringify(config) })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -223,10 +223,10 @@ export function ServerCacheSettingsPage() {
                 <div>
                   {data.cachePolicy.name}{' '}
                   <a href={`/servers/components/cache/policy?cachePolicyId=${data.cachePolicy.id}`}>查看</a>
-                  <p className="comment">使用当前网站所在集群的设置。</p>
+                  <p className="comment">使用当前网站所在集群的设置.</p>
                 </div>
               ) : (
-                <span className="red">当前集群没有设置缓存策略，当前配置无法生效。</span>
+                <span className="red">当前集群没有设置缓存策略,当前配置无法生效.</span>
               )}
             </FormRow>
             <FormRow title="启用缓存">
@@ -241,7 +241,7 @@ export function ServerCacheSettingsPage() {
                   <div>
                     {config.key.isOn ? (
                       <div>
-                        使用主域名：{config.key.scheme}://{config.key.host} &nbsp;
+                        使用主域名:{config.key.scheme}://{config.key.host} &nbsp;
                         <a href="" onClick={(event) => { event.preventDefault(); setKeyOptions(!keyOptions) }}>
                           <span className="small">[修改]</span>
                         </a>
@@ -264,7 +264,7 @@ export function ServerCacheSettingsPage() {
                               <td>
                                 <Checkbox checked={config.key.isOn} onChange={(checked) => update('key', { ...config.key, isOn: checked })} />
                                 <p className="comment">
-                                  启用主域名后，所有缓存键值中的协议和域名部分都会修改为主域名，用来实现缓存不区分域名。
+                                  启用主域名后,所有缓存键值中的协议和域名部分都会修改为主域名,用来实现缓存不区分域名.
                                 </p>
                               </td>
                             </tr>
@@ -289,7 +289,7 @@ export function ServerCacheSettingsPage() {
                                     </div>
                                   </div>
                                   <p className="comment">
-                                    此域名<strong>必须</strong>是当前网站已绑定域名，在刷新缓存时也需要使用此域名。
+                                    此域名<strong>必须</strong>是当前网站已绑定域名,在刷新缓存时也需要使用此域名.
                                   </p>
                                 </td>
                               </tr>
@@ -310,29 +310,29 @@ export function ServerCacheSettingsPage() {
                   <>
                     <FormRow title="使用默认缓存条件">
                       <Checkbox checked={!config.disablePolicyRefs} onChange={(checked) => update('disablePolicyRefs', !checked)} />
-                      <p className="comment">选中后使用系统全局缓存策略中已经定义的默认缓存条件。</p>
+                      <p className="comment">选中后使用系统全局缓存策略中已经定义的默认缓存条件.</p>
                     </FormRow>
                     <FormRow title="添加X-Cache报头">
                       <Checkbox checked={config.addStatusHeader} onChange={(checked) => update('addStatusHeader', checked)} />
                       <p className="comment">
-                        选中后自动在响应报头中增加<code>X-Cache: BYPASS|MISS|HIT|PURGE</code>；在浏览器端查看X-Cache值时请先禁用浏览器缓存，避免影响观察。
+                        选中后自动在响应报头中增加<code>X-Cache: BYPASS|MISS|HIT|PURGE</code>;在浏览器端查看X-Cache值时请先禁用浏览器缓存,避免影响观察.
                       </p>
                     </FormRow>
                     <FormRow title="添加Age Header">
                       <Checkbox checked={config.addAgeHeader} onChange={(checked) => update('addAgeHeader', checked)} />
                       <p className="comment">
-                        选中后自动在响应Header中增加<code>Age: [存活时间秒数]</code>。
+                        选中后自动在响应Header中增加<code>Age: [存活时间秒数]</code>.
                       </p>
                     </FormRow>
                     <FormRow title="支持源站控制有效时间">
                       <Checkbox checked={config.enableCacheControlMaxAge} onChange={(checked) => update('enableCacheControlMaxAge', checked)} />
                       <p className="comment">
-                        选中后表示支持源站在Header中设置的<code>Cache-Control: max-age=[有效时间秒数]</code>。
+                        选中后表示支持源站在Header中设置的<code>Cache-Control: max-age=[有效时间秒数]</code>.
                       </p>
                     </FormRow>
                     <FormRow title={<span className="color-border">允许PURGE</span>}>
                       <Checkbox checked={config.purgeIsOn} onChange={(checked) => update('purgeIsOn', checked)} />
-                      <p className="comment">允许使用PURGE方法清除某个URL缓存。</p>
+                      <p className="comment">允许使用PURGE方法清除某个URL缓存.</p>
                     </FormRow>
                     {config.purgeIsOn ? (
                       <FormRow title={<span className="color-border">PURGE Key *</span>}>
@@ -347,7 +347,7 @@ export function ServerCacheSettingsPage() {
                           >
                             [随机生成]
                           </a>
-                          。需要在PURGE方法调用时加入<code>X-Edge-Purge-Key: {config.purgeKey}</code> Header。只能包含字符、数字、下划线。
+                          .需要在PURGE方法调用时加入<code>X-Edge-Purge-Key: {config.purgeKey}</code> Header.只能包含字符,数字,下划线.
                         </p>
                       </FormRow>
                     ) : null}
@@ -356,7 +356,7 @@ export function ServerCacheSettingsPage() {
               </FormTable>
 
               <h4>缓存条件</h4>
-              {config.cacheRefs.length === 0 ? <p className="comment">暂时还没有缓存条件。</p> : null}
+              {config.cacheRefs.length === 0 ? <p className="comment">暂时还没有缓存条件.</p> : null}
               {config.cacheRefs.length > 0 ? (
                 <table className="ui table selectable celled">
                   <thead>
@@ -416,7 +416,7 @@ export function ServerCacheSettingsPage() {
                 </table>
               ) : null}
               {config.cacheRefs.length > 1 ? (
-                <p className="comment">所有条件匹配顺序为从上到下。服务设置的优先级比全局缓存策略设置的优先级要高。</p>
+                <p className="comment">所有条件匹配顺序为从上到下.服务设置的优先级比全局缓存策略设置的优先级要高.</p>
               ) : null}
               <button className="ui button tiny" type="button" onClick={() => setEditingRef({ ref: null, index: null })}>
                 +添加缓存条件
@@ -427,7 +427,7 @@ export function ServerCacheSettingsPage() {
               </a>
               <div className="margin" />
               <SubmitButton submitting={submitting} />
-              <p className="comment">修改条件设置后请记得保存。</p>
+              <p className="comment">修改条件设置后请记得保存.</p>
             </>
           ) : (
             <SubmitButton submitting={submitting} />
@@ -585,7 +585,7 @@ function CacheRefEditor({
           {category === 'simple' ? (
             <FormRow title={`${condComponent?.name || '条件'}参数`}>
               <TextInput type="text" value={condValue} onChange={(event) => setCondValue(event.target.value)} />
-              {condType === 'url-extension' ? <p className="comment">多个扩展名使用半角逗号分隔，比如 png,jpg。</p> : null}
+              {condType === 'url-extension' ? <p className="comment">多个扩展名使用半角逗号分隔,比如 png,jpg.</p> : null}
             </FormRow>
           ) : (
             <FormRow title="匹配条件">
@@ -595,11 +595,11 @@ function CacheRefEditor({
           <FormRow title="缓存Key *">
             <TextInput type="text" maxLength={1024} value={ref.key} onChange={(event) => update('key', event.target.value)} />
             <Checkbox label="忽略URI参数" checked={ignoreArgs} onChange={setIgnoreArgs} />
-            <p className="comment">可以使用${'{scheme}'}、${'{host}'}、${'{requestPath}'}、${'{args}'}等变量。</p>
+            <p className="comment">可以使用${'{scheme}'},${'{host}'},${'{requestPath}'},${'{args}'}等变量.</p>
           </FormRow>
           <FormRow title="缓存时间">
             <TimeDurationEditor value={ref.life} onChange={(value) => update('life', value)} />
-            <p className="comment">缓存内容在节点上保存的时间。</p>
+            <p className="comment">缓存内容在节点上保存的时间.</p>
           </FormRow>
           <FormRow title={<MoreOptionsIndicator visible={moreOptions} onChange={setMoreOptions} />}>
             <span />
@@ -613,7 +613,7 @@ function CacheRefEditor({
                   placeholder="比如 200"
                   width="5em"
                 />
-                <p className="comment">不填表示缓存所有的状态码。</p>
+                <p className="comment">不填表示缓存所有的状态码.</p>
               </FormRow>
               <FormRow title="支持的请求方法">
                 <StringListEditor
@@ -622,30 +622,30 @@ function CacheRefEditor({
                   placeholder="比如 GET"
                   width="7em"
                 />
-                <p className="comment">不填表示支持所有的请求方法。</p>
+                <p className="comment">不填表示支持所有的请求方法.</p>
               </FormRow>
               <FormRow title="内容最小尺寸">
                 <SizeCapacityEditor value={ref.minSize} unit="kb" onChange={(value) => update('minSize', value)} />
-                <p className="comment">0表示不限制。</p>
+                <p className="comment">0表示不限制.</p>
               </FormRow>
               <FormRow title="内容最大尺寸">
                 <SizeCapacityEditor value={ref.maxSize} unit="mb" onChange={(value) => update('maxSize', value)} />
                 {cachePolicy?.maxBytes && cachePolicy.maxBytes.count > 0 ? (
                   <p className="comment">
-                    不能超过全局缓存策略的最大尺寸：{cachePolicy.maxBytes.count}
+                    不能超过全局缓存策略的最大尺寸:{cachePolicy.maxBytes.count}
                     {cachePolicy.maxBytes.unit}
                   </p>
                 ) : (
-                  <p className="comment">0表示不限制。</p>
+                  <p className="comment">0表示不限制.</p>
                 )}
               </FormRow>
               <FormRow title="跳过Set-Cookie">
                 <Checkbox checked={ref.skipSetCookie ?? true} onChange={(checked) => update('skipSetCookie', checked)} />
-                <p className="comment">选中后，如果响应中含有Set-Cookie则不缓存。</p>
+                <p className="comment">选中后,如果响应中含有Set-Cookie则不缓存.</p>
               </FormRow>
               <FormRow title="支持分片内容">
                 <Checkbox checked={ref.allowPartialContent ?? true} onChange={(checked) => update('allowPartialContent', checked)} />
-                <p className="comment">选中后支持对响应的分片内容（PartialContent）进行缓存。</p>
+                <p className="comment">选中后支持对响应的分片内容(PartialContent)进行缓存.</p>
               </FormRow>
               <FormRow title="支持If-None-Match">
                 <Checkbox checked={ref.enableIfNoneMatch ?? false} onChange={(checked) => update('enableIfNoneMatch', checked)} />
@@ -659,7 +659,7 @@ function CacheRefEditor({
             </>
           ) : null}
         </FormTable>
-        {isReverse ? <p className="comment">如果请求满足当前添加的条件，则不缓存。</p> : null}
+        {isReverse ? <p className="comment">如果请求满足当前添加的条件,则不缓存.</p> : null}
         <SubmitButton submitting={submitting}>确定</SubmitButton>
       </form>
     </Modal>

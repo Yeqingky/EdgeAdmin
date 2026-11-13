@@ -51,7 +51,7 @@ export function AdminsPage() {
   }
 
   async function remove(admin: Admin) {
-    if (!(await confirm({ message: `确定要删除管理员 ${admin.username} 吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除管理员 ${admin.username} 吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -73,7 +73,7 @@ export function AdminsPage() {
         <form className="ui form" onSubmit={submit}>
           <div className="ui fields inline">
             <div className="ui field">
-              <input type="text" placeholder="用户名、全名 ..." value={input} onChange={(event) => setInput(event.target.value)} />
+              <input type="text" placeholder="用户名,全名 ..." value={input} onChange={(event) => setInput(event.target.value)} />
             </div>
             <div className="ui field">
               <button className="ui button" type="submit">搜索</button>
@@ -93,7 +93,7 @@ export function AdminsPage() {
       {query.data.admins.length === 0 ? (
         <div>
           <div className="margin" />
-          <p className="comment">暂时还没有{keyword ? '跟关键词匹配' : ''}管理员。</p>
+          <p className="comment">暂时还没有{keyword ? '跟关键词匹配' : ''}管理员.</p>
         </div>
       ) : (
         <table className="ui table selectable">

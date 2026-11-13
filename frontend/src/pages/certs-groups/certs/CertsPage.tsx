@@ -116,7 +116,7 @@ export function CertsPage({ initialModal }: { initialModal?: 'upload' | 'batch' 
   }
 
   async function deleteCert(cert: CertConfig) {
-    if (!(await confirm({ message: '确定要删除此证书吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此证书吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(cert.id)
@@ -163,7 +163,7 @@ export function CertsPage({ initialModal }: { initialModal?: 'upload' | 'batch' 
           <div className="ui field">
             <input
               type="text"
-              placeholder="域名、说明等关键词"
+              placeholder="域名,说明等关键词"
               style={{ width: '12em' }}
               value={keywordInput}
               onChange={(event) => setKeywordInput(event.target.value)}
@@ -216,7 +216,7 @@ export function CertsPage({ initialModal }: { initialModal?: 'upload' | 'batch' 
 
       {data.certs.length === 0 ? (
         <p className="comment">
-          {data.searchingUserId > 0 ? '当前用户下' : ''}暂时还没有相关的证书。
+          {data.searchingUserId > 0 ? '当前用户下' : ''}暂时还没有相关的证书.
         </p>
       ) : (
         <table className="ui table selectable celled">

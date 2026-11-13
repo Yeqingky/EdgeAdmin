@@ -80,7 +80,7 @@ func (this *IndexAction) RunPost(params struct {
 	}
 	err = authConfig.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 	}
 
 	// 保存之前删除多余的配置信息

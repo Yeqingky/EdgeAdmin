@@ -110,7 +110,7 @@ func (this *UpdateClusterPopupAction) RunPost(params struct {
 		return
 	}
 	if checkResp.IsUsed {
-		this.FailField("dnsName", "此子域名已经被占用，请修改后重新提交")
+		this.FailField("dnsName", "此子域名已经被占用,请修改后重新提交")
 	}
 
 	_, err = this.RPC().NodeClusterRPC().UpdateNodeClusterDNS(this.AdminContext(), &pb.UpdateNodeClusterDNSRequest{

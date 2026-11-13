@@ -155,7 +155,7 @@ export function StringListEditor({
           ))}
         </div>
       ) : (
-        <span className="disabled">{emptyText ?? '暂时还没有内容。'}</span>
+        <span className="disabled">{emptyText ?? '暂时还没有内容.'}</span>
       )}
       {editingIndex >= 0 ? (
         <div className="ui fields inline">
@@ -287,7 +287,7 @@ export function AddressListEditor({
             </select>
           </div>
           <div className="ui field">
-            <input type="text" placeholder="主机地址，0.0.0.0表示全部" value={host} maxLength={100} onChange={(event) => setHost(event.target.value)} />
+            <input type="text" placeholder="主机地址,0.0.0.0表示全部" value={host} maxLength={100} onChange={(event) => setHost(event.target.value)} />
           </div>
           <div className="ui field">
             <input type="text" placeholder="端口" value={portRange} style={{ width: '6em' }} maxLength={20} onChange={(event) => setPortRange(event.target.value)} />
@@ -353,7 +353,7 @@ export function CertSelector({ certs, onChange }: { certs: SSLCertSummary[]; onC
           <div className="ui divider" />
         </div>
       ) : (
-        <span className="red">选择或上传证书后HTTPS服务才能生效。</span>
+        <span className="red">选择或上传证书后HTTPS服务才能生效.</span>
       )}
       <button className="ui button tiny" type="button" onClick={() => setSelecting(true)}>
         选择已有证书
@@ -415,7 +415,7 @@ function CertSelectModal({
         </div>
       </form>
       {query.isLoading ? <p className="comment">正在加载中...</p> : null}
-      {!query.isLoading && certs.length === 0 ? <p className="comment">暂时还没有证书。</p> : null}
+      {!query.isLoading && certs.length === 0 ? <p className="comment">暂时还没有证书.</p> : null}
       {certs.length > 0 ? (
         <table className="ui table selectable">
           <tbody>

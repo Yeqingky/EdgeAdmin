@@ -54,7 +54,7 @@ Tea.context(function () {
 				let acmeUser = resp.data.acmeUser
 				let description = acmeUser.description
 				if (description.length > 0) {
-					description = "（" + description + "）"
+					description = "(" + description + ")"
 				}
 				that.userId = acmeUser.id
 				that.users.unshift({

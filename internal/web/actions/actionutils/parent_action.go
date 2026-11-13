@@ -35,7 +35,7 @@ func (this *ParentAction) Parent() *ParentAction {
 	return this
 }
 
-// Show 显示页面，支持通过 JSON 模式返回页面数据
+// Show 显示页面,支持通过 JSON 模式返回页面数据
 func (this *ParentAction) Show() {
 	if IsJSONRequest(this.Request) {
 		this.ShowJSON()
@@ -134,7 +134,7 @@ func (this *ParentAction) CreateLog(level string, messageCode langs.MessageCode,
 		if this.Code != 200 {
 			level = oplogs.LevelWarn
 			if len(this.Message) > 0 {
-				desc += " 失败：" + this.Message
+				desc += " 失败:" + this.Message
 			}
 		}
 	}

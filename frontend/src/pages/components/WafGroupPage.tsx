@@ -93,7 +93,7 @@ export function WafGroupPage({ firewallPolicyId, type, groupId }: { firewallPoli
         {'> '}
         {rule.value ? rule.value : <span className="disabled">[空]</span>}
         {rule.isCaseInsensitive ? <span className="small grey"> [大小写不敏感]</span> : null}
-        {rule.description ? <span className="grey small">（{rule.description}）</span> : null}
+        {rule.description ? <span className="grey small">({rule.description})</span> : null}
       </span>
     )
   }
@@ -133,7 +133,7 @@ export function WafGroupPage({ firewallPolicyId, type, groupId }: { firewallPoli
   }
 
   async function deleteSet(set: WafRuleSet) {
-    if (!(await confirm({ message: '确定要删除此规则集吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此规则集吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -177,11 +177,11 @@ export function WafGroupPage({ firewallPolicyId, type, groupId }: { firewallPoli
           </tr>
           <tr>
             <td>代号</td>
-            <td>{data.group.code ? data.group.code : <span className="disabled">没有设置。</span>}</td>
+            <td>{data.group.code ? data.group.code : <span className="disabled">没有设置.</span>}</td>
           </tr>
           <tr>
             <td>描述</td>
-            <td>{data.group.description ? data.group.description : <span className="disabled">暂时还没有描述。</span>}</td>
+            <td>{data.group.description ? data.group.description : <span className="disabled">暂时还没有描述.</span>}</td>
           </tr>
           <tr>
             <td>启用状态</td>
@@ -204,7 +204,7 @@ export function WafGroupPage({ firewallPolicyId, type, groupId }: { firewallPoli
           [添加规则集]
         </a>{' '}
       </h3>
-      {sets.length === 0 ? <p className="comment">暂时还没有规则。</p> : null}
+      {sets.length === 0 ? <p className="comment">暂时还没有规则.</p> : null}
       {sets.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>
@@ -315,7 +315,7 @@ export function WafGroupPage({ firewallPolicyId, type, groupId }: { firewallPoli
 
       {sets.length > 1 ? (
         <p className="comment">
-          所有规则匹配顺序为从上到下，可以拖动左侧的 <GripVertical size={12} /> 排序。
+          所有规则匹配顺序为从上到下,可以拖动左侧的 <GripVertical size={12} /> 排序.
         </p>
       ) : null}
     </div>

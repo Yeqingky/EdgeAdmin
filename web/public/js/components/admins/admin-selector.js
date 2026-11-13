@@ -23,7 +23,7 @@ Vue.component("admin-selector", {
     template: `<div>
     <select class="ui dropdown auto-width" name="adminId" v-model="adminId">
         <option value="0">[选择系统用户]</option>
-        <option v-for="admin in admins" :value="admin.id">{{admin.name}}（{{admin.username}}）</option>
+        <option v-for="admin in admins" :value="admin.id">{{admin.name}}({{admin.username}})</option>
     </select>
 </div>`
 })

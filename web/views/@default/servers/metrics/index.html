@@ -7,10 +7,10 @@
     <span class="item disabled">|</span>
     <menu-item @click.prevent="createItem">[创建指标]</menu-item>
     <span class="item disabled">|</span>
-    <span class="item"><tip-icon content="在这里创建一些指标后，可以在集群中使用这些指标，从而实现阈值、图表等功能"></tip-icon></span>
+    <span class="item"><tip-icon content="在这里创建一些指标后,可以在集群中使用这些指标,从而实现阈值,图表等功能"></tip-icon></span>
 </first-menu>
 
-<p class="comment" v-if="items.length == 0">暂时还没有指标。</p>
+<p class="comment" v-if="items.length == 0">暂时还没有指标.</p>
 <table class="ui table celled selectable" v-if="items.length > 0">
     <thead>
         <tr>

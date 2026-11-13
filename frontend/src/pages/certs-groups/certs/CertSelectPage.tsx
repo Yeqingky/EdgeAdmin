@@ -118,8 +118,8 @@ export function CertSelectPage() {
         选择证书
         {domains.length > 0 ? (
           <span>
-            （当前网站域名：{domains[0]}
-            {domains.length > 1 ? `等${domains.length}个域名` : ''}）
+            (当前网站域名:{domains[0]}
+            {domains.length > 1 ? `等${domains.length}个域名` : ''})
           </span>
         ) : null}
       </h3>
@@ -133,7 +133,7 @@ export function CertSelectPage() {
             <input
               type="text"
               name="keyword"
-              placeholder="域名、说明文字等"
+              placeholder="域名,说明文字等"
               size={30}
               value={keywordInput}
               onChange={(event) => setKeywordInput(event.target.value)}
@@ -193,7 +193,7 @@ export function CertSelectPage() {
           {data.searchingUserId > 0 ? '当前用户下' : ''}暂时还没有{data.searchingType === 'match' ? '跟所添加域名匹配的' : ''}相关证书
           {data.searchingUserId > 0 ? (
             <>
-              ，
+              ,
               <a
                 href=""
                 onClick={(event) => {
@@ -206,7 +206,7 @@ export function CertSelectPage() {
               </a>
             </>
           ) : null}
-          。
+          .
         </p>
       ) : null}
 

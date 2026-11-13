@@ -114,7 +114,7 @@ export function ClustersPage() {
             <input
               type="text"
               name="keyword"
-              placeholder="集群、节点关键词"
+              placeholder="集群,节点关键词"
               value={keywordInput}
               onChange={(event) => setKeywordInput(event.target.value)}
             />
@@ -142,7 +142,7 @@ export function ClustersPage() {
 
       {latestVisible ? (
         <div className="ui segment">
-          常用集群：
+          常用集群:
           {data.latestClusters.map((cluster, index) => (
             <span key={cluster.id}>
               <a href={`/clusters/cluster?clusterId=${cluster.id}`}>{cluster.name}</a> &nbsp;
@@ -165,12 +165,12 @@ export function ClustersPage() {
 
       {showNodes ? (
         <div className="ui message">
-          请前往<a href={`/clusters/nodes?keyword=${encodeURIComponent(keyword)}`}>节点搜索页面</a>查看节点搜索结果。
+          请前往<a href={`/clusters/nodes?keyword=${encodeURIComponent(keyword)}`}>节点搜索页面</a>查看节点搜索结果.
         </div>
       ) : (
         <div>
           <div className="margin" />
-          {data.clusters.length === 0 ? <p className="comment">暂时还没有集群。</p> : null}
+          {data.clusters.length === 0 ? <p className="comment">暂时还没有集群.</p> : null}
           {data.clusters.length > 0 ? (
             <table className="ui table selectable celled">
               <thead>
@@ -195,7 +195,7 @@ export function ClustersPage() {
                       </a>
                       {cluster.timeZone ? (
                         <div>
-                          <span className="ui label tiny basic grey">时区：{cluster.timeZone}</span>
+                          <span className="ui label tiny basic grey">时区:{cluster.timeZone}</span>
                         </div>
                       ) : null}
                       {cluster.isPinned ? (

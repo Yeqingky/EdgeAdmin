@@ -40,7 +40,7 @@ Tea.context(function () {
 	}
 
 	this.ignoreVersion = function (version) {
-		teaweb.confirm("确定要忽略版本 v" + version + " 版本更新吗？", function () {
+		teaweb.confirm("确定要忽略版本 v" + version + " 版本更新吗?", function () {
 			this.$post(".ignoreVersion")
 				.params({version: version})
 				.success(function () {
@@ -50,7 +50,7 @@ Tea.context(function () {
 	}
 
 	this.resetIgnoredVersion = function (version) {
-		teaweb.confirm("确定要重置已忽略版本吗？", function () {
+		teaweb.confirm("确定要重置已忽略版本吗?", function () {
 			this.$post(".resetIgnoredVersion")
 				.success(function () {
 					teaweb.reload()
@@ -70,7 +70,7 @@ Tea.context(function () {
 					if (this.isUpgraded) {
 						msg = "升级成功"
 					}
-					teaweb.success(msg + "，当前管理系统将会尝试自动重启，请刷新页面查看重启状态。如果长时间没能重启成功，请使用命令手动重启。", function () {
+					teaweb.success(msg + ",当前管理系统将会尝试自动重启,请刷新页面查看重启状态.如果长时间没能重启成功,请使用命令手动重启.", function () {
 						teaweb.reload()
 					})
 				}, 3000)

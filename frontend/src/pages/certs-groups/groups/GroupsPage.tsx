@@ -55,7 +55,7 @@ export function GroupsPage() {
   const groups = query.data.groups
 
   async function deleteGroup(group: ServerGroupRow) {
-    if (!(await confirm({ message: '确定要删除这个分组吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个分组吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(group.id)
@@ -88,7 +88,7 @@ export function GroupsPage() {
         </a>
       </PageHeader>
 
-      {groups.length === 0 ? <p className="comment">暂时还没有分组。</p> : null}
+      {groups.length === 0 ? <p className="comment">暂时还没有分组.</p> : null}
 
       {groups.length > 0 ? (
         <div>
@@ -142,7 +142,7 @@ export function GroupsPage() {
         </div>
       ) : null}
 
-      {groups.length > 0 ? <p className="comment">可以点击箭头调整分组顺序（对应拖拽排序）。</p> : null}
+      {groups.length > 0 ? <p className="comment">可以点击箭头调整分组顺序(对应拖拽排序).</p> : null}
 
       {createVisible ? (
         <Modal title="创建分组" onClose={() => setCreateVisible(false)} width="36em">

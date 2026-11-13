@@ -109,13 +109,13 @@ function RewriteRuleForm({ webId, rule, onClose }: { webId: number; rule: Rewrit
           <tbody>
             <FormRow title="匹配规则 *">
               <input type="text" maxLength={500} placeholder="比如 /post/(.+)" value={pattern} onChange={(event) => setPattern(event.target.value)} />
-              <p className="comment">需要符合正则表达式规范。</p>
+              <p className="comment">需要符合正则表达式规范.</p>
             </FormRow>
             <FormRow title="目标URL *">
               <input type="text" maxLength={500} placeholder="比如 /post/${1}.html" value={replace} onChange={(event) => setReplace(event.target.value)} />
               <p className="comment">
-                URL中可以包含一些内置的变量，并且可以用<code>{'${1}'}</code>、<code>{'${2}'}</code>等变量形式表示在匹配规则中匹配的第N个括号里的内容，
-                也可以是一个完整的URL，比如：http://example.com/hello。
+                URL中可以包含一些内置的变量,并且可以用<code>{'${1}'}</code>,<code>{'${2}'}</code>等变量形式表示在匹配规则中匹配的第N个括号里的内容,
+                也可以是一个完整的URL,比如:http://example.com/hello.
               </p>
             </FormRow>
             <FormRow title="转发方式">
@@ -123,7 +123,7 @@ function RewriteRuleForm({ webId, rule, onClose }: { webId: number; rule: Rewrit
                 <option value="proxy">隐式</option>
                 <option value="redirect">显式</option>
               </select>
-              <p className="comment">隐式表示不在客户端显示重写后的URL；显式表示在客户端跳转URL，将会显示重写后的URL。</p>
+              <p className="comment">隐式表示不在客户端显示重写后的URL;显式表示在客户端跳转URL,将会显示重写后的URL.</p>
             </FormRow>
             <FormRow title="匹配条件">
               <CondsBox conds={conds} onChange={setConds} />
@@ -145,24 +145,24 @@ function RewriteRuleForm({ webId, rule, onClose }: { webId: number; rule: Rewrit
                       </option>
                     ))}
                   </select>
-                  <p className="comment">通常使用默认的307即可。</p>
+                  <p className="comment">通常使用默认的307即可.</p>
                 </FormRow>
               ) : null}
               {mode === 'proxy' ? (
                 <FormRow title="代理主机名">
                   <input type="text" maxLength={100} placeholder="比如 example.com" value={proxyHost} onChange={(event) => setProxyHost(event.target.value)} />
                   <p className="comment">
-                    如果转发的方式为隐式而且目标URL为不同的域名时需要用到此选项，用于修改被代理服务接收到的域名，默认和客户端请求的主机名一致，通常不必填写，支持请求变量。
+                    如果转发的方式为隐式而且目标URL为不同的域名时需要用到此选项,用于修改被代理服务接收到的域名,默认和客户端请求的主机名一致,通常不必填写,支持请求变量.
                   </p>
                 </FormRow>
               ) : null}
               <FormRow title="保留URL参数">
                 <Checkbox checked={withQuery} onChange={setWithQuery} />
-                <p className="comment">选中此选项，将会把用户输入的URL中的参数部分转发到目标URL上。</p>
+                <p className="comment">选中此选项,将会把用户输入的URL中的参数部分转发到目标URL上.</p>
               </FormRow>
               <FormRow title="终止往下匹配">
                 <Checkbox checked={isBreak} onChange={setIsBreak} />
-                <p className="comment">如果选中了此选项，一旦匹配成功，不会继续匹配其他的重写规则或路由规则。</p>
+                <p className="comment">如果选中了此选项,一旦匹配成功,不会继续匹配其他的重写规则或路由规则.</p>
               </FormRow>
               <FormRow title="启用当前重写规则">
                 <Checkbox checked={isOn} onChange={setIsOn} />
@@ -201,7 +201,7 @@ export function RewritePage() {
   }
 
   async function removeRule(rule: RewriteRule) {
-    if (!(await confirm({ message: '确定要删除此重写规则吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此重写规则吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -237,7 +237,7 @@ export function RewritePage() {
   return (
     <LocationShell data={query.data} menu={[{ name: '[创建]', onClick: () => setEditingRule(null) }]}>
       <div className="margin" />
-      {rules.length === 0 ? <p className="comment">暂时还没有重写规则。</p> : null}
+      {rules.length === 0 ? <p className="comment">暂时还没有重写规则.</p> : null}
       {rules.length > 0 ? (
         <table className="ui table selectable">
           <thead>
@@ -291,7 +291,7 @@ export function RewritePage() {
           </tbody>
         </table>
       ) : null}
-      {rules.length > 0 ? <p className="comment">使用左侧箭头可以对重写规则进行排序。</p> : null}
+      {rules.length > 0 ? <p className="comment">使用左侧箭头可以对重写规则进行排序.</p> : null}
       {editingRule !== undefined ? <RewriteRuleForm webId={query.data.webId} rule={editingRule} onClose={() => setEditingRule(undefined)} /> : null}
     </LocationShell>
   )

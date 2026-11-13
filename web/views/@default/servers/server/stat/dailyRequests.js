@@ -11,7 +11,7 @@ Tea.context(function () {
 				if (that.dailyStats[args.dataIndex].countRequests > 0) {
 					ratio = Math.round(that.dailyStats[args.dataIndex].countCachedRequests * 10000 / that.dailyStats[args.dataIndex].countRequests) / 100
 				}
-				return that.dailyStats[args.dataIndex].day + " 缓存请求数: " + teaweb.formatNumber(that.dailyStats[args.dataIndex].countCachedRequests) + ", 命中率：" + ratio + "%"
+				return that.dailyStats[args.dataIndex].day + " 缓存请求数: " + teaweb.formatNumber(that.dailyStats[args.dataIndex].countCachedRequests) + ", 命中率:" + ratio + "%"
 			}
 			return ""
 		})
@@ -24,7 +24,7 @@ Tea.context(function () {
 				if (that.dailyStats[args.dataIndex].bytes > 0) {
 					ratio = Math.round(that.dailyStats[args.dataIndex].cachedBytes * 10000 / that.dailyStats[args.dataIndex].bytes) / 100
 				}
-				return that.dailyStats[args.dataIndex].day + " 缓存流量: " + teaweb.formatBytes(that.dailyStats[args.dataIndex].cachedBytes) + ", 命中率：" + ratio + "%"
+				return that.dailyStats[args.dataIndex].day + " 缓存流量: " + teaweb.formatBytes(that.dailyStats[args.dataIndex].cachedBytes) + ", 命中率:" + ratio + "%"
 			}
 			return ""
 		})

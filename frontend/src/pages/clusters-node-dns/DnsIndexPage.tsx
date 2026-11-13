@@ -53,7 +53,7 @@ export function DnsIndexPage() {
       <form className="ui form" onSubmit={submit}>
         <div className="ui fields inline">
           <div className="ui field">
-            <input type="text" placeholder="集群、域名..." value={draft} onChange={(event) => setDraft(event.target.value)} />
+            <input type="text" placeholder="集群,域名..." value={draft} onChange={(event) => setDraft(event.target.value)} />
           </div>
           <div className="ui field">
             <button className="ui button" type="submit">
@@ -67,7 +67,7 @@ export function DnsIndexPage() {
 
       {data.clusters.length === 0 ? (
         <p className="comment" style={{ marginTop: '1em' }}>
-          暂时还没有集群。
+          暂时还没有集群.
         </p>
       ) : null}
 
@@ -124,7 +124,7 @@ export function DnsIndexPage() {
         </table>
       ) : null}
 
-      {data.clusters.length > 0 ? <p className="comment">这里列出了所有集群对应的域名设置。</p> : null}
+      {data.clusters.length > 0 ? <p className="comment">这里列出了所有集群对应的域名设置.</p> : null}
 
       <LegacyPagination html={data.page} />
 

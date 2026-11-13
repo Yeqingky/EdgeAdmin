@@ -7,7 +7,7 @@
 
     <div class="ui icon message small error">
         <i class="icon warning circle"></i>
-        <div class="content"><a href="/clusters/logs?type=needFix">有{{countNeedFixLogs}}个网站相关的错误需要修复。</a></div>
+        <div class="content"><a href="/clusters/logs?type=needFix">有{{countNeedFixLogs}}个网站相关的错误需要修复.</a></div>
     </div>
 </div>
 
@@ -30,7 +30,7 @@
             <user-selector :v-user-id="userId"></user-selector>
         </div>
         <div class="ui field">
-            <input type="text" name="keyword" style="width:14em" placeholder="关键词、域名、端口等" v-model="keyword"/>
+            <input type="text" name="keyword" style="width:14em" placeholder="关键词,域名,端口等" v-model="keyword"/>
         </div>
         <div class="ui field">
             <button type="submit" class="ui button">搜索</button>
@@ -50,10 +50,10 @@
 
 <!-- 常用服务 -->
 <div class="ui segment" v-if="latestVisible">
-    常用网站：<span v-for="(server, index) in latestServers"><a :href="'/servers/server?serverId=' + server.id">{{server.name}}</a> &nbsp; <span class="disabled" v-if="index != latestServers.length - 1">|</span> &nbsp;</span>
+    常用网站:<span v-for="(server, index) in latestServers"><a :href="'/servers/server?serverId=' + server.id">{{server.name}}</a> &nbsp; <span class="disabled" v-if="index != latestServers.length - 1">|</span> &nbsp;</span>
 </div>
 
-<p class="ui message" v-if="servers.length == 0">暂时还没有网站，现在去 <a href="/servers/create">[创建网站<i class="ui icon long arrow alternate right"></i> ]</a></p>
+<p class="ui message" v-if="servers.length == 0">暂时还没有网站,现在去 <a href="/servers/create">[创建网站<i class="ui icon long arrow alternate right"></i> ]</a></p>
 
 <div v-if="checkedServerIds.length > 0">
     <div class="ui divider"></div>
@@ -70,9 +70,9 @@
 			<th>部署集群</th>
 			<th>域名</th>
 			<th>端口</th>
-            <th class="value-column center">下行带宽<tip-icon content="最近5分钟峰值带宽，每5分钟更新一次"></tip-icon><sort-arrow name="trafficOutOrder"></sort-arrow></th>
-            <th class="value-column center" v-if="windowWidth < miniWidth || windowWidth > columnWidth4">QPS<tip-icon content="最近5分钟平均QPS，每5分钟更新一次"></tip-icon><sort-arrow name="requestsOrder"></sort-arrow></th>
-            <th class="value-column center" v-if="windowWidth < miniWidth || windowWidth > columnWidth5">攻击QPS<tip-icon content="最近5分钟平均攻击QPS，每5分钟更新一次"></tip-icon><sort-arrow name="attackRequestsOrder"></sort-arrow></th>
+            <th class="value-column center">下行带宽<tip-icon content="最近5分钟峰值带宽,每5分钟更新一次"></tip-icon><sort-arrow name="trafficOutOrder"></sort-arrow></th>
+            <th class="value-column center" v-if="windowWidth < miniWidth || windowWidth > columnWidth4">QPS<tip-icon content="最近5分钟平均QPS,每5分钟更新一次"></tip-icon><sort-arrow name="requestsOrder"></sort-arrow></th>
+            <th class="value-column center" v-if="windowWidth < miniWidth || windowWidth > columnWidth5">攻击QPS<tip-icon content="最近5分钟平均攻击QPS,每5分钟更新一次"></tip-icon><sort-arrow name="attackRequestsOrder"></sort-arrow></th>
 			<th class="two wide center">状态</th>
 			<th class="two op">操作</th>
 		</tr>
@@ -98,7 +98,7 @@
 
             <!-- 审核中 -->
             <div v-if="server.isAuditing" style="margin-top: 0.5em">
-                <a class="ui label basic tiny red" title="点击跳到审核页面" :href="'/servers/server/settings/serverNames?serverId=' + server.id">审核中<span class="small grey" v-if="server.auditingTime.length > 0">（{{server.auditingTime}}）</span> &nbsp;<i class="icon long arrow right alternate"></i></a>
+                <a class="ui label basic tiny red" title="点击跳到审核页面" :href="'/servers/server/settings/serverNames?serverId=' + server.id">审核中<span class="small grey" v-if="server.auditingTime.length > 0">({{server.auditingTime}})</span> &nbsp;<i class="icon long arrow right alternate"></i></a>
             </div>
 
             <!-- 审核失败 -->
@@ -109,7 +109,7 @@
 		<td>
 			<span v-if="server.ports.length == 0">-</span>
 			<div v-for="port in server.ports">
-                <tiny-basic-label><keyword :v-word="keyword">{{port.portRange}}</keyword><span class="small">（{{port.protocol}}）</span></tiny-basic-label>
+                <tiny-basic-label><keyword :v-word="keyword">{{port.portRange}}</keyword><span class="small">({{port.protocol}})</span></tiny-basic-label>
 			</div>
 		</td>
         <td class="center">

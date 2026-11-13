@@ -189,7 +189,7 @@ export function ServerCreatePage() {
       <form className="ui form" onSubmit={(event) => void submit(event)}>
         <div className="tables-box">
           <div className="table-box left">
-            <h3>新网站主要信息：</h3>
+            <h3>新网站主要信息:</h3>
             <table className="ui table selectable definition">
               <tbody>
                 {data.hasUsers ? (
@@ -211,7 +211,7 @@ export function ServerCreatePage() {
                           </option>
                         ))}
                       </select>
-                      <p className="comment">当前网站所属平台用户。</p>
+                      <p className="comment">当前网站所属平台用户.</p>
                     </td>
                   </tr>
                 ) : null}
@@ -227,7 +227,7 @@ export function ServerCreatePage() {
                         <option value={0}>[选择套餐]</option>
                         {plans.map((plan) => (
                           <option key={plan.id} value={plan.id}>
-                            {plan.name}（{plan.dayTo}）
+                            {plan.name}({plan.dayTo})
                           </option>
                         ))}
                       </select>
@@ -251,10 +251,10 @@ export function ServerCreatePage() {
                             </option>
                           ))}
                         </select>
-                        <p className="comment">当前网站将会部署到所选集群的节点上。</p>
+                        <p className="comment">当前网站将会部署到所选集群的节点上.</p>
                       </>
                     ) : (
-                      <span>跟随用户设置。</span>
+                      <span>跟随用户设置.</span>
                     )}
                   </td>
                 </tr>
@@ -287,7 +287,7 @@ export function ServerCreatePage() {
                       <a href="" onClick={(event) => { event.preventDefault(); setShowNameModal(true) }}>
                         [添加域名]
                       </a>
-                      <p className="comment">绑定后，才能通过域名可以访问不同的服务。</p>
+                      <p className="comment">绑定后,才能通过域名可以访问不同的服务.</p>
                     </td>
                   </tr>
                 ) : null}
@@ -319,7 +319,7 @@ export function ServerCreatePage() {
                       <a href="" onClick={(event) => { event.preventDefault(); setShowCertModal(true) }}>
                         [选择证书]
                       </a>
-                      <p className="comment">可以选择当前网站使用的证书；如果留空，则需要使用默认证书或上传新证书。</p>
+                      <p className="comment">可以选择当前网站使用的证书;如果留空,则需要使用默认证书或上传新证书.</p>
                     </td>
                   </tr>
                 ) : null}
@@ -376,7 +376,7 @@ export function ServerCreatePage() {
                           <span key={index} className="ui label basic small" style={{ marginBottom: '0.4em' }}>
                             {address.host ? `${address.host}:` : ''}
                             {address.portRange}
-                            <span className="small">（{address.protocol}）</span>
+                            <span className="small">({address.protocol})</span>
                             <a
                               href=""
                               title="删除"
@@ -402,7 +402,7 @@ export function ServerCreatePage() {
           </div>
 
           <div className="table-box right">
-            <h3>次要信息：</h3>
+            <h3>次要信息:</h3>
             <table className="ui table selectable definition">
               <tbody>
                 <tr>
@@ -428,7 +428,7 @@ export function ServerCreatePage() {
                   <td className="title">网站名称</td>
                   <td>
                     <input type="text" maxLength={60} value={name} onChange={(event) => setName(event.target.value)} />
-                    <p className="comment">可以是网站用途或者域名等。</p>
+                    <p className="comment">可以是网站用途或者域名等.</p>
                   </td>
                 </tr>
                 {isHTTP ? (
@@ -495,7 +495,7 @@ export function ServerCreatePage() {
                 <tr>
                   <td>选择分组</td>
                   <td>
-                    {groups.length === 0 ? <span className="disabled">暂时还没有分组。</span> : null}
+                    {groups.length === 0 ? <span className="disabled">暂时还没有分组.</span> : null}
                     {groups.map((group) => (
                       <div className="ui checkbox" key={group.id} style={{ marginRight: '1em' }}>
                         <input

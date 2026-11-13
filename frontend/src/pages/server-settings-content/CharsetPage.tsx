@@ -60,7 +60,7 @@ export function ServerCharsetSettingsPage() {
   }, [query.data])
 
   if (serverId <= 0) {
-    return <div className="ui negative message">缺少serverId参数。</div>
+    return <div className="ui negative message">缺少serverId参数.</div>
   }
   if (query.isLoading || !query.data) {
     return <LoadingBlock />
@@ -80,7 +80,7 @@ export function ServerCharsetSettingsPage() {
     setSubmitting(true)
     try {
       await apiPost('/servers/server/settings/charset', { webId: data.webId, charsetJSON: JSON.stringify(config) })
-      toast('保存成功，请等待节点配置刷新')
+      toast('保存成功,请等待节点配置刷新')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -103,13 +103,13 @@ export function ServerCharsetSettingsPage() {
                   <optgroup label="常用字符编码" />
                   {data.usualCharsets.map((item) => (
                     <option key={`usual-${item.charset}`} value={item.charset}>
-                      {item.charset}（{item.name}）
+                      {item.charset}({item.name})
                     </option>
                   ))}
                   <optgroup label="全部字符编码" />
                   {data.allCharsets.map((item) => (
                     <option key={`all-${item.charset}`} value={item.charset}>
-                      {item.charset}（{item.name}）
+                      {item.charset}({item.name})
                     </option>
                   ))}
                 </Select>
@@ -123,12 +123,12 @@ export function ServerCharsetSettingsPage() {
                 <FormTable>
                   <FormRow title="强制替换">
                     <Checkbox checked={config.force} onChange={(checked) => update('force', checked)} />
-                    <p className="comment">选中后，表示强制覆盖已经设置的字符集；不选中，表示如果源站已经设置了字符集，则保留不修改。</p>
+                    <p className="comment">选中后,表示强制覆盖已经设置的字符集;不选中,表示如果源站已经设置了字符集,则保留不修改.</p>
                   </FormRow>
                   <FormRow title="字符编码大写">
                     <Checkbox checked={config.isUpper} onChange={(checked) => update('isUpper', checked)} />
                     <p className="comment">
-                      选中后将指定的字符编码转换为大写，比如默认为<code>utf-8</code>，选中后将改为<code>UTF-8</code>。
+                      选中后将指定的字符编码转换为大写,比如默认为<code>utf-8</code>,选中后将改为<code>UTF-8</code>.
                     </p>
                   </FormRow>
                 </FormTable>

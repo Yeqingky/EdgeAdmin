@@ -58,7 +58,7 @@ export function ClusterSettingsMetricsPage() {
   const data = query.data
 
   async function remove(itemId: number) {
-    if (!(await confirm({ message: '确定要删除此指标吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此指标吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -88,10 +88,10 @@ export function ClusterSettingsMetricsPage() {
           <Plus size={14} /> [添加指标]
         </a>
         <span className="disabled item">|</span>
-        <span className="item">在这里设置的指标，会自动应用到部署在当前集群上的所有网站上。</span>
+        <span className="item">在这里设置的指标,会自动应用到部署在当前集群上的所有网站上.</span>
       </div>
 
-      {data.items.length === 0 ? <p className="comment">暂时还没有添加指标。</p> : null}
+      {data.items.length === 0 ? <p className="comment">暂时还没有添加指标.</p> : null}
       {data.items.length > 0 ? (
         <table className="ui table celled selectable">
           <thead>
@@ -213,7 +213,7 @@ function MetricCreateForm({
 
   return (
     <div>
-      {data.items.length === 0 ? <p className="comment">暂时还没有可用的指标。</p> : null}
+      {data.items.length === 0 ? <p className="comment">暂时还没有可用的指标.</p> : null}
       {data.items.length > 0 ? (
         <table className="ui table celled selectable">
           <thead>

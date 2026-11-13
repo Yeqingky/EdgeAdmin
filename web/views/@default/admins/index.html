@@ -5,7 +5,7 @@
 <form class="ui form" method="get" action="/admins" v-show="!hasWeakPassword">
     <div class="ui fields inline">
         <div class="ui field">
-            <input type="text" name="keyword" placeholder="用户名、全名 ..." v-model="keyword"/>
+            <input type="text" name="keyword" placeholder="用户名,全名 ..." v-model="keyword"/>
         </div>
         <div class="ui field">
             <button class="ui button" type="submit">搜索</button>
@@ -17,7 +17,7 @@
 
 <div v-if="admins.length == 0">
     <div class="margin"></div>
-    <p class="comment">暂时还没有<span v-if="keyword.length > 0">跟关键词匹配</span>管理员。</p>
+    <p class="comment">暂时还没有<span v-if="keyword.length > 0">跟关键词匹配</span>管理员.</p>
 </div>
 
 <div v-if="hasWeakPassword">
@@ -39,7 +39,7 @@
         <td :class="{disabled:!admin.isOn}"><a :href="'/admins/admin?adminId=' + admin.id"><keyword :v-word="keyword">{{admin.username}}</keyword></a>
 			<div v-if="admin.isSuper || admin.hasWeakPassword" style="margin-top: 0.5em">
 				<tiny-basic-label class="olive" v-if="admin.isSuper">超级管理员</tiny-basic-label>
-                <a :href="'/admins/update?adminId=' + admin.id" v-if="admin.hasWeakPassword"><tiny-basic-label class="red" title="当前管理员已设置密码为弱密码，有极大的安全风险，请及时修改">弱密码</tiny-basic-label></a>
+                <a :href="'/admins/update?adminId=' + admin.id" v-if="admin.hasWeakPassword"><tiny-basic-label class="red" title="当前管理员已设置密码为弱密码,有极大的安全风险,请及时修改">弱密码</tiny-basic-label></a>
 			</div>
 		</td>
 		<td :class="{disabled:!admin.isOn}"><keyword :v-word="keyword">{{admin.fullname}}</keyword></td>

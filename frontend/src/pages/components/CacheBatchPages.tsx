@@ -128,7 +128,7 @@ export function CacheBatchPurgePage() {
       <div className="margin" />
       <div>
         <span className="grey">
-          刷新缓存指的是标记URL列表或目录为失效状态，当有新的用户请求这些URL时，会再次从源站读取最新的内容。
+          刷新缓存指的是标记URL列表或目录为失效状态,当有新的用户请求这些URL时,会再次从源站读取最新的内容.
         </span>
       </div>
       <form
@@ -158,12 +158,12 @@ export function CacheBatchPurgePage() {
                 <textarea rows={20} value={keys} onChange={(event) => setKeys(event.target.value)} autoFocus />
                 {keyType === 'key' ? (
                   <p className="comment">
-                    每行一个URL，比如<code>https://example.com/hello/world.html</code>。
+                    每行一个URL,比如<code>https://example.com/hello/world.html</code>.
                   </p>
                 ) : (
                   <p className="comment">
-                    每行一个URL目录，比如<code>https://example.com/hello/</code>；如果只填写域名部分，表示清理全站，比如
-                    <code>https://example.com/</code>。
+                    每行一个URL目录,比如<code>https://example.com/hello/</code>;如果只填写域名部分,表示清理全站,比如
+                    <code>https://example.com/</code>.
                   </p>
                 )}
               </td>
@@ -172,7 +172,7 @@ export function CacheBatchPurgePage() {
               <td>操作结果</td>
               <td>
                 {requesting ? <div>数据发送中...</div> : null}
-                {!requesting && !ok && message.length > 0 ? <span className="red">失败：{message}</span> : null}
+                {!requesting && !ok && message.length > 0 ? <span className="red">失败:{message}</span> : null}
                 {!requesting && !ok ? <FailedKeyList failKeys={failKeys} /> : null}
                 {!requesting && ok ? <span className="green">任务提交成功</span> : null}
               </td>
@@ -245,7 +245,7 @@ export function CacheBatchFetchPage() {
       <div className="margin" />
       <div>
         <span className="grey">
-          预热缓存指的是预先从源站读取最新内容，当用户访问预热后的URL时直接从缓存中返回内容，不需要再次回源。
+          预热缓存指的是预先从源站读取最新内容,当用户访问预热后的URL时直接从缓存中返回内容,不需要再次回源.
         </span>
       </div>
       <form
@@ -261,14 +261,14 @@ export function CacheBatchFetchPage() {
               <td>要预热的URL列表</td>
               <td>
                 <textarea rows={20} value={keys} onChange={(event) => setKeys(event.target.value)} autoFocus />
-                <p className="comment">每行一个URL。</p>
+                <p className="comment">每行一个URL.</p>
               </td>
             </tr>
             <tr>
               <td className="title">操作结果</td>
               <td>
                 {requesting ? <div>数据发送中...</div> : null}
-                {!requesting && !ok && message.length > 0 ? <span className="red">失败：{message}</span> : null}
+                {!requesting && !ok && message.length > 0 ? <span className="red">失败:{message}</span> : null}
                 {!requesting && !ok ? <FailedKeyList failKeys={failKeys} /> : null}
                 {!requesting && ok ? <span className="green">任务提交成功</span> : null}
               </td>
@@ -305,7 +305,7 @@ export function CacheBatchTasksPage() {
   const tasks = query.data.tasks || []
 
   async function deleteTask(taskId: number) {
-    if (!(await confirm({ message: '确定要删除此任务吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此任务吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -320,7 +320,7 @@ export function CacheBatchTasksPage() {
   return (
     <div>
       <CacheBatchMenu active="task" countDoingTasks={query.data.countDoingTasks} />
-      {tasks.length === 0 ? <p className="comment">暂时还没有任务。</p> : null}
+      {tasks.length === 0 ? <p className="comment">暂时还没有任务.</p> : null}
       {tasks.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>
@@ -395,7 +395,7 @@ export function CacheBatchTaskPage({ taskId }: { taskId: number }) {
   const task = query.data.task
 
   async function deleteTask() {
-    if (!(await confirm({ message: '确定要删除此任务吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此任务吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -408,7 +408,7 @@ export function CacheBatchTaskPage({ taskId }: { taskId: number }) {
   }
 
   async function resetTask() {
-    if (!(await confirm({ message: '确定要重置任务状态吗？' }))) {
+    if (!(await confirm({ message: '确定要重置任务状态吗?' }))) {
       return
     }
     try {
@@ -517,7 +517,7 @@ export function CacheBatchTaskPage({ taskId }: { taskId: number }) {
                         className="ui label basic tiny red"
                         style={{ marginBottom: '0.2em' }}
                       >
-                        节点{error.nodeId}：{error.error}
+                        节点{error.nodeId}:{error.error}
                       </a>
                     ))}
                   </div>

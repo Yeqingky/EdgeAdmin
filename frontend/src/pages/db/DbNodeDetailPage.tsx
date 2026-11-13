@@ -53,20 +53,20 @@ export function DbNodeDetailPage() {
             <div style={{ marginTop: '0.8em' }}>
               {status.isOk ? (
                 <p className="comment">
-                  {status.version ? `版本： v${status.version} / ` : ''}
-                  用量：{status.size}
+                  {status.version ? `版本: v${status.version} / ` : ''}
+                  用量:{status.size}
                 </p>
               ) : (
-                <span className="red">连接错误：{status.error}</span>
+                <span className="red">连接错误:{status.error}</span>
               )}
             </div>
           ) : null}
         </FormRow>
-        <FormRow title="主机地址（Host）">{node.host}</FormRow>
-        <FormRow title="数据库端口（Port）">{node.port}</FormRow>
-        <FormRow title="数据库名称（Database）">{node.database}</FormRow>
-        <FormRow title="用户名（Username）">{node.username}</FormRow>
-        <FormRow title="密码（Password）">{node.password || <span className="disabled">-</span>}</FormRow>
+        <FormRow title="主机地址(Host)">{node.host}</FormRow>
+        <FormRow title="数据库端口(Port)">{node.port}</FormRow>
+        <FormRow title="数据库名称(Database)">{node.database}</FormRow>
+        <FormRow title="用户名(Username)">{node.username}</FormRow>
+        <FormRow title="密码(Password)">{node.password || <span className="disabled">-</span>}</FormRow>
         <FormRow title="详细描述">{node.description || <span className="disabled">-</span>}</FormRow>
       </FormTable>
     </div>

@@ -94,7 +94,7 @@ func (this *IndexAction) RunPost(params struct {
 	var serverNames = []*serverconfigs.ServerNameConfig{}
 	err := json.Unmarshal([]byte(params.ServerNames), &serverNames)
 	if err != nil {
-		this.Fail("域名解析失败：" + err.Error())
+		this.Fail("域名解析失败:" + err.Error())
 	}
 
 	serverResp, err := this.RPC().ServerRPC().FindEnabledUserServerBasic(this.AdminContext(), &pb.FindEnabledUserServerBasicRequest{ServerId: params.ServerId})
@@ -124,7 +124,7 @@ func (this *IndexAction) RunPost(params struct {
 			return
 		}
 		if len(dupResp.DuplicatedServerNames) > 0 {
-			this.Fail("域名 " + strings.Join(dupResp.DuplicatedServerNames, ", ") + " 已经被其他网站所占用，不能重复使用")
+			this.Fail("域名 " + strings.Join(dupResp.DuplicatedServerNames, ", ") + " 已经被其他网站所占用,不能重复使用")
 		}
 	}
 

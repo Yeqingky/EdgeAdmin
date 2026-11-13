@@ -106,7 +106,7 @@ export function RequestLimitPage() {
                   onChange={(event) => update({ maxConns: Math.max(0, Number(event.target.value) || 0) })}
                 />
                 <p className="comment">
-                  当前网站最大并发连接数，超出此限制则响应用户<code>429</code>代码。为0表示不限制。
+                  当前网站最大并发连接数,超出此限制则响应用户<code>429</code>代码.为0表示不限制.
                 </p>
               </FormRow>
               <FormRow title="单IP最大并发连接数">
@@ -117,9 +117,9 @@ export function RequestLimitPage() {
                   onChange={(event) => update({ maxConnsPerIP: Math.max(0, Number(event.target.value) || 0) })}
                 />
                 <p className="comment">
-                  单IP最大连接数，统计单个IP总连接数时不区分网站，超出此限制则响应用户<code>429</code>代码。为0表示不限制。
+                  单IP最大连接数,统计单个IP总连接数时不区分网站,超出此限制则响应用户<code>429</code>代码.为0表示不限制.
                   {config.maxConnsPerIP > 0 && config.maxConnsPerIP <= 3 ? (
-                    <span className="red">当前设置的并发连接数过低，可能会影响正常用户访问，建议不小于3。</span>
+                    <span className="red">当前设置的并发连接数过低,可能会影响正常用户访问,建议不小于3.</span>
                   ) : null}
                 </p>
               </FormRow>
@@ -129,7 +129,7 @@ export function RequestLimitPage() {
                   units={['byte', 'kb', 'mb']}
                   onChange={(outBandwidthPerConn) => update({ outBandwidthPerConn })}
                 />
-                <p className="comment">客户端单个请求每秒可以读取的下行流量。</p>
+                <p className="comment">客户端单个请求每秒可以读取的下行流量.</p>
               </FormRow>
               <FormRow title="单请求最大尺寸">
                 <SizeCapacityBox
@@ -137,7 +137,7 @@ export function RequestLimitPage() {
                   units={['byte', 'kb', 'mb', 'gb']}
                   onChange={(maxBodySize) => update({ maxBodySize })}
                 />
-                <p className="comment">单个请求能发送的最大内容尺寸。</p>
+                <p className="comment">单个请求能发送的最大内容尺寸.</p>
               </FormRow>
             </tbody>
           ) : null}

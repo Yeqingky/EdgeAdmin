@@ -51,13 +51,13 @@ func (this *UpdateCORSPopupAction) RunPost(params struct {
 	var config = shared.NewHTTPCORSHeaderConfig()
 	err := json.Unmarshal(params.CorsJSON, config)
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 		return
 	}
 
 	err = config.Init()
 	if err != nil {
-		this.Fail("配置校验失败：" + err.Error())
+		this.Fail("配置校验失败:" + err.Error())
 		return
 	}
 

@@ -46,7 +46,7 @@ Vue.component("node-cache-disk-dirs-box", {
 		},
 		remove: function (index) {
 			let that = this
-			teaweb.confirm("确定要删除此目录吗？", function () {
+			teaweb.confirm("确定要删除此目录吗?", function () {
 				that.dirs.$remove(index)
 			})
 		}
@@ -63,7 +63,7 @@ Vue.component("node-cache-disk-dirs-box", {
 	<div v-if="isAdding">
 		<div class="ui fields inline">
 			<div class="ui field">
-				<input type="text" style="width: 30em" v-model="addingPath" @keyup.enter="confirm()" @keypress.enter.prevent="1" @keydown.esc="cancel()" ref="addingPath" placeholder="新的缓存目录，比如 /mnt/cache"/>
+				<input type="text" style="width: 30em" v-model="addingPath" @keyup.enter="confirm()" @keypress.enter.prevent="1" @keydown.esc="cancel()" ref="addingPath" placeholder="新的缓存目录,比如 /mnt/cache"/>
 			</div>
 			<div class="ui field">
 				<button class="ui button small" type="button" @click.prevent="confirm">确定</button>

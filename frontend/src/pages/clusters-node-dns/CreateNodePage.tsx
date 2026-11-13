@@ -111,7 +111,7 @@ export function CreateNodePage() {
   }, [installing, created, toast])
 
   if (!clusterId) {
-    return <div className="ui negative message">缺少集群参数。</div>
+    return <div className="ui negative message">缺少集群参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -197,7 +197,7 @@ export function CreateNodePage() {
       return
     }
     if (!sshHost.trim() || !sshPort || !installGrant || installGrant.id <= 0) {
-      toast('请填写SSH主机地址、端口和登录认证', 'error')
+      toast('请填写SSH主机地址,端口和登录认证', 'error')
       return
     }
     setInstalling(true)
@@ -208,7 +208,7 @@ export function CreateNodePage() {
         sshPort: Number(sshPort) || 0,
         grantId: installGrant.id,
       })
-      toast('已经开始安装，请稍候...')
+      toast('已经开始安装,请稍候...')
     } catch (error) {
       setInstalling(false)
       toast(error instanceof Error ? error.message : '安装失败', 'error')
@@ -254,25 +254,25 @@ export function CreateNodePage() {
                 用于访问节点和域名解析等
                 {defaultIP ? (
                   <strong>
-                    ，如果没有填写默认为{defaultIP}
+                    ,如果没有填写默认为{defaultIP}
                   </strong>
                 ) : null}
-                。
+                .
               </p>
             </FormRow>
             {data.dnsRoutes.length > 0 ? (
               <FormRow title="DNS线路">
                 <DnsRoutesSelector allRoutes={data.dnsRoutes} value={rosterRoutes} onChange={setRoutes} />
-                <p className="comment">当前节点对应的DNS线路，可用线路是根据集群设置的域名获取的，注意DNS服务商可能对这些线路有其他限制。</p>
+                <p className="comment">当前节点对应的DNS线路,可用线路是根据集群设置的域名获取的,注意DNS服务商可能对这些线路有其他限制.</p>
               </FormRow>
             ) : null}
             <FormRow title="所属分组">
               <GroupSelector clusterId={clusterId} value={group} onChange={setGroup} />
-              <p className="comment">用来筛选节点。</p>
+              <p className="comment">用来筛选节点.</p>
             </FormRow>
             <FormRow title="所属区域">
               <RegionSelector value={region} onChange={setRegion} />
-              <p className="comment">设置区域后可以根据区域进行流量统计和计费。</p>
+              <p className="comment">设置区域后可以根据区域进行流量统计和计费.</p>
             </FormRow>
             <FormRow title="所属从集群">
               {secondaryClusters.length > 0 ? (
@@ -315,11 +315,11 @@ export function CreateNodePage() {
               <>
                 <FormRow title="SSH主机地址">
                   <input type="text" maxLength={64} value={sshHost} onChange={(event) => setSshHost(event.target.value)} />
-                  <p className="comment">比如192.168.1.100，用于远程安装节点应用程序。</p>
+                  <p className="comment">比如192.168.1.100,用于远程安装节点应用程序.</p>
                 </FormRow>
                 <FormRow title="SSH主机端口">
                   <input type="text" maxLength={5} style={{ width: '6em' }} value={sshPort} onChange={(event) => setSshPort(event.target.value)} />
-                  <p className="comment">常见的比如22。</p>
+                  <p className="comment">常见的比如22.</p>
                 </FormRow>
                 <FormRow title="SSH登录认证">
                   <GrantSelector clusterId={clusterId} value={grant} onChange={setGrant} />
@@ -379,13 +379,13 @@ export function CreateNodePage() {
                       ))}
                     </div>
                   ) : null}
-                  <p className="comment">比如192.168.1.100，用于远程安装节点应用程序。</p>
+                  <p className="comment">比如192.168.1.100,用于远程安装节点应用程序.</p>
                 </FormRow>
                 <FormRow title="SSH主机端口 *">
                   <input type="text" maxLength={5} style={{ width: '5em' }} value={sshPort} onChange={(event) => setSshPort(event.target.value)} />
                   {suggestPorts.length > 0 ? (
                     <p className="comment">
-                      常用端口：
+                      常用端口:
                       {suggestPorts.map((port) => (
                         <a
                           key={port}
@@ -402,7 +402,7 @@ export function CreateNodePage() {
                       ))}
                     </p>
                   ) : (
-                    <p className="comment">常见的比如22。</p>
+                    <p className="comment">常见的比如22.</p>
                   )}
                 </FormRow>
                 <FormRow title="SSH登录认证 *">
@@ -427,12 +427,12 @@ export function CreateNodePage() {
           ) : (
             <div>
               <div className="row">
-                上传边缘节点程序到服务器并解压，然后在边缘节点安装目录下，复制<code>configs/api_node.template.yaml</code>为
-                <code>configs/api_node.yaml</code>，修改文件里面的内容为以下内容：
+                上传边缘节点程序到服务器并解压,然后在边缘节点安装目录下,复制<code>configs/api_node.template.yaml</code>为
+                <code>configs/api_node.yaml</code>,修改文件里面的内容为以下内容:
               </div>
               <pre style={{ background: '#f7f7f7', padding: '1em', overflowX: 'auto' }}>{configContent}</pre>
               <div className="row">
-                然后再使用<code>bin/edge-node start</code>命令启动节点。
+                然后再使用<code>bin/edge-node start</code>命令启动节点.
               </div>
               <p>
                 <a href="" onClick={(event) => { event.preventDefault(); downloadConfig() }}>
@@ -483,9 +483,9 @@ export function CreateNodePage() {
         <div>
           <div style={{ textAlign: 'center', fontSize: '1.4em', marginTop: '2.4em' }}>
             {isInstalled ? (
-              <span className="green">"{created.node.name}"节点已被创建并安装成功。</span>
+              <span className="green">"{created.node.name}"节点已被创建并安装成功.</span>
             ) : (
-              <span className="green">"{created.node.name}"节点已创建成功。</span>
+              <span className="green">"{created.node.name}"节点已创建成功.</span>
             )}
           </div>
           <div style={{ textAlign: 'center', marginTop: '3em' }}>

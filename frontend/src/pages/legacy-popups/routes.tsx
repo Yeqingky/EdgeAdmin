@@ -19,7 +19,7 @@ function GroupWafRedirect() {
     enabled: groupId > 0,
   })
   if (groupId <= 0) {
-    return <div className="ui negative message">缺少groupId参数。</div>
+    return <div className="ui negative message">缺少groupId参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />

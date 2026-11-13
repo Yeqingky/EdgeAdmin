@@ -96,18 +96,18 @@ function defaultProtocol(serverType: string): string {
 function checkPortError(protocol: string, addr: string): string {
   if (protocol === 'http') {
     if (addr.endsWith(':443')) {
-      return '443通常是HTTPS协议端口，请确认源站协议选择是否正确。'
+      return '443通常是HTTPS协议端口,请确认源站协议选择是否正确.'
     }
     if (addr.endsWith(':8443')) {
-      return '8443通常是HTTPS协议端口，请确认源站协议选择是否正确。'
+      return '8443通常是HTTPS协议端口,请确认源站协议选择是否正确.'
     }
   }
   if (protocol === 'https') {
     if (addr.endsWith(':80')) {
-      return '80通常是HTTP协议端口，请确认源站协议选择是否正确。'
+      return '80通常是HTTP协议端口,请确认源站协议选择是否正确.'
     }
     if (addr.endsWith(':8080')) {
-      return '8080通常是HTTP协议端口，请确认源站协议选择是否正确。'
+      return '8080通常是HTTP协议端口,请确认源站协议选择是否正确.'
     }
   }
   return ''
@@ -259,7 +259,7 @@ function OriginForm({
                   ) : null}
                   {adviceHTTPS && form.protocol === 'http' ? (
                     <Comment>
-                      <span className="red">系统检测到当前源站有HTTPS协议可用，是否切换到HTTPS协议？</span>{' '}
+                      <span className="red">系统检测到当前源站有HTTPS协议可用,是否切换到HTTPS协议?</span>{' '}
                       <a
                         href=""
                         onClick={(event) => {
@@ -277,8 +277,8 @@ function OriginForm({
                     </Comment>
                   ) : null}
                   <Comment>
-                    源站服务器地址，通常是一个IP（或域名）加端口，80和443端口可以省略
-                    {data.serverType === 'httpProxy' ? '，不需要加 http:// 或 https://' : ''}。
+                    源站服务器地址,通常是一个IP(或域名)加端口,80和443端口可以省略
+                    {data.serverType === 'httpProxy' ? ',不需要加 http:// 或 https://' : ''}.
                   </Comment>
                 </FormRow>
                 {isHTTP || form.protocol === 'tls' ? (
@@ -291,8 +291,8 @@ function OriginForm({
                       onChange={(event) => update('host', event.target.value)}
                     />
                     <Comment>
-                      可选项。请求源站时的Host字段值，用于设置访问源站的站点域名{isHTTP ? '，支持请求变量' : ''}
-                      ；如果用户访问的域名和源站域名不一致，请务必设置为源站域名。
+                      可选项.请求源站时的Host字段值,用于设置访问源站的站点域名{isHTTP ? ',支持请求变量' : ''}
+                      ;如果用户访问的域名和源站域名不一致,请务必设置为源站域名.
                     </Comment>
                   </FormRow>
                 ) : null}
@@ -319,17 +319,17 @@ function OriginForm({
                     <TextInput
                       type="text"
                       value={form.certId > 0 ? String(form.certId) : ''}
-                      placeholder="证书ID，留空表示不使用证书"
+                      placeholder="证书ID,留空表示不使用证书"
                       onChange={(event) => update('certId', Number(event.target.value) || 0)}
                     />
-                    <Comment>可以选择连接源站使用的证书；除非源站有特殊需求，否则不需要添加。</Comment>
+                    <Comment>可以选择连接源站使用的证书;除非源站有特殊需求,否则不需要添加.</Comment>
                   </FormRow>
                 ) : null}
                 {form.protocol !== 'udp' ? (
                   <FormRow title="专属域名">
                     <ValuesEditor values={form.domains} onChange={(values) => update('domains', values)} placeholder="比如 example.com" />
                     <Comment>
-                      默认不需要填写，表示支持所有域名。如果填写了专属域名，表示这些源站只会在所列的专属域名被访问时才生效。
+                      默认不需要填写,表示支持所有域名.如果填写了专属域名,表示这些源站只会在所列的专属域名被访问时才生效.
                     </Comment>
                   </FormRow>
                 ) : null}
@@ -339,7 +339,7 @@ function OriginForm({
                       <input type="checkbox" checked={form.followPort} onChange={(event) => update('followPort', event.target.checked)} />
                       <label></label>
                     </div>
-                    <Comment>选中后表示源站的端口保持和用户访问的服务端口保持一致；此时的源站地址中的端口号可以任意填写。</Comment>
+                    <Comment>选中后表示源站的端口保持和用户访问的服务端口保持一致;此时的源站地址中的端口号可以任意填写.</Comment>
                   </FormRow>
                 ) : null}
                 {!isOSS && form.protocol === 'https' ? (
@@ -348,7 +348,7 @@ function OriginForm({
                       <input type="checkbox" checked={form.http2Enabled} onChange={(event) => update('http2Enabled', event.target.checked)} />
                       <label></label>
                     </div>
-                    <Comment>选中后，表示源站支持HTTP/2协议。</Comment>
+                    <Comment>选中后,表示源站支持HTTP/2协议.</Comment>
                   </FormRow>
                 ) : null}
                 <FormRow title="权重">
@@ -359,11 +359,11 @@ function OriginForm({
                     value={String(form.weight)}
                     onChange={(event) => update('weight', Number(event.target.value) || 0)}
                   />
-                  <Comment>数字越大，代表分配的请求比例越多。</Comment>
+                  <Comment>数字越大,代表分配的请求比例越多.</Comment>
                 </FormRow>
                 <FormRow title="名称">
                   <TextInput type="text" maxLength={100} value={form.name} onChange={(event) => update('name', event.target.value)} />
-                  <Comment>给当前源站起一个容易识别的名称。</Comment>
+                  <Comment>给当前源站起一个容易识别的名称.</Comment>
                 </FormRow>
                 {!isOSS ? (
                   <FormRow title="连接失败超时时间">
@@ -378,7 +378,7 @@ function OriginForm({
                       </div>
                       <div className="ui field">秒</div>
                     </div>
-                    <Comment>连接源站失败的最大超时时间，0表示不限制。</Comment>
+                    <Comment>连接源站失败的最大超时时间,0表示不限制.</Comment>
                   </FormRow>
                 ) : null}
                 {isHTTP && !isOSS ? (
@@ -395,7 +395,7 @@ function OriginForm({
                         </div>
                         <div className="ui field">秒</div>
                       </div>
-                      <Comment>读取内容时的最大超时时间，0表示不限制。</Comment>
+                      <Comment>读取内容时的最大超时时间,0表示不限制.</Comment>
                     </FormRow>
                     <FormRow title="最大并发连接数">
                       <TextInput
@@ -405,7 +405,7 @@ function OriginForm({
                         value={String(form.maxConns)}
                         onChange={(event) => update('maxConns', Number(event.target.value) || 0)}
                       />
-                      <Comment>源站可以接受到的最大并发连接数，0表示使用系统默认。</Comment>
+                      <Comment>源站可以接受到的最大并发连接数,0表示使用系统默认.</Comment>
                     </FormRow>
                     <FormRow title="最大空闲连接数">
                       <TextInput
@@ -415,7 +415,7 @@ function OriginForm({
                         value={String(form.maxIdleConns)}
                         onChange={(event) => update('maxIdleConns', Number(event.target.value) || 0)}
                       />
-                      <Comment>当没有请求时，源站保持等待的最大空闲连接数量，0表示使用系统默认。</Comment>
+                      <Comment>当没有请求时,源站保持等待的最大空闲连接数量,0表示使用系统默认.</Comment>
                     </FormRow>
                     <FormRow title="最大空闲超时时间">
                       <div className="ui fields inline">
@@ -429,7 +429,7 @@ function OriginForm({
                         </div>
                         <div className="ui field">秒</div>
                       </div>
-                      <Comment>源站保持等待的空闲超时时间，0表示使用默认时间。</Comment>
+                      <Comment>源站保持等待的空闲超时时间,0表示使用默认时间.</Comment>
                     </FormRow>
                   </>
                 ) : null}

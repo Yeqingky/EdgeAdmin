@@ -39,7 +39,7 @@ export function OtpPage() {
       <form className="ui form" onSubmit={submit} autoComplete="off">
         <div className="ui segment stacked">
           <div className="ui header">OTP 二次验证</div>
-          <div className="ui field">为了保护你的账户安全，需要进行OTP二次身份验证。</div>
+          <div className="ui field">为了保护你的账户安全,需要进行OTP二次身份验证.</div>
           <div className="ui field">
             <div className="ui left icon input">
               <Barcode className="icon" size={16} />

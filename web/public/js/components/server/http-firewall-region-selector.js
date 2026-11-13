@@ -42,7 +42,7 @@ Vue.component("http-firewall-region-selector", {
 		}
 	},
 	template: `<div>
-	<span v-if="countries.length == 0" class="disabled">暂时没有选择<span v-if="listType =='allow'">允许</span><span v-else>封禁</span>的区域。</span>
+	<span v-if="countries.length == 0" class="disabled">暂时没有选择<span v-if="listType =='allow'">允许</span><span v-else>封禁</span>的区域.</span>
 	<div v-show="countries.length > 0">
 		<div class="ui label tiny basic" v-for="(country, index) in countries" style="margin-bottom: 0.5em">
 			<input type="hidden" :name="listType + 'CountryIds'" :value="country.id"/>

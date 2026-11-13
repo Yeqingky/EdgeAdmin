@@ -205,7 +205,7 @@ export function ClusterSettingsGlobalServerConfigPage() {
             <FormTable>
               <FormRow title="禁止未绑定域名访问">
                 <Checkbox label="" checked={httpAll.matchDomainStrictly} onChange={(value) => updateHttpAll({ matchDomainStrictly: value })} />
-                <p className="comment">选中后，表示禁止未在网站绑定的域名和IP访问。</p>
+                <p className="comment">选中后,表示禁止未在网站绑定的域名和IP访问.</p>
               </FormRow>
               {httpAll.matchDomainStrictly ? (
                 <>
@@ -232,11 +232,11 @@ export function ClusterSettingsGlobalServerConfigPage() {
                           value={mismatchStatusCode}
                           onChange={(event) => setMismatchStatusCode(event.target.value)}
                         />
-                        <p className="comment">访问未绑定域名时的提示页面状态码，默认404。</p>
+                        <p className="comment">访问未绑定域名时的提示页面状态码,默认404.</p>
                       </FormRow>
                       <FormRow title="提示页面内容">
                         <textarea rows={5} value={mismatchHTML} onChange={(event) => setMismatchHTML(event.target.value)} />
-                        <p className="comment">访问未绑定的域名时提示页面内容，可以使用HTML。</p>
+                        <p className="comment">访问未绑定的域名时提示页面内容,可以使用HTML.</p>
                       </FormRow>
                     </>
                   ) : null}
@@ -248,12 +248,12 @@ export function ClusterSettingsGlobalServerConfigPage() {
                         value={mismatchURL}
                         onChange={(event) => setMismatchURL(event.target.value)}
                       />
-                      <p className="comment">必须以http://或者https://开头，支持使用变量。</p>
+                      <p className="comment">必须以http://或者https://开头,支持使用变量.</p>
                     </FormRow>
                   ) : null}
                   <FormRow title="允许例外的域名">
                     <textarea rows={3} placeholder="每行一个域名" value={allowDomains} onChange={(event) => setAllowDomains(event.target.value)} />
-                    <p className="comment">允许这些域名不经过绑定就可以直接访问网站。</p>
+                    <p className="comment">允许这些域名不经过绑定就可以直接访问网站.</p>
                   </FormRow>
                   <FormRow title="默认域名">
                     <TextInput type="text" value={httpAll.defaultDomain} onChange={(event) => updateHttpAll({ defaultDomain: event.target.value })} />
@@ -429,11 +429,11 @@ export function ClusterSettingsGlobalServerConfigPage() {
                     />
                   </div>
                 </div>
-                <p className="comment">用户创建TCP/TLS负载均衡服务时可以随机选择的端口范围。</p>
+                <p className="comment">用户创建TCP/TLS负载均衡服务时可以随机选择的端口范围.</p>
               </FormRow>
               <FormRow title="排除的端口">
                 <TextInput type="text" placeholder="端口" style={{ width: '6em' }} value={denyPorts} onChange={(event) => setDenyPorts(event.target.value)} />
-                <p className="comment">多个端口使用英文逗号分隔。</p>
+                <p className="comment">多个端口使用英文逗号分隔.</p>
               </FormRow>
             </FormTable>
           </div>

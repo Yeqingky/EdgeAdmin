@@ -65,7 +65,7 @@ Vue.component("http-auth-config-box", {
 		change: function () {
 			let that = this
 			setTimeout(function () {
-				// 延时通知，是为了让表单有机会变更数据
+				// 延时通知,是为了让表单有机会变更数据
 				that.$emit("change", this.authConfig)
 			}, 100)
 		}
@@ -118,8 +118,8 @@ Vue.component("http-auth-config-box", {
 					<span v-if="ref.authPolicy.type == 'typeD'">{{ref.authPolicy.params.signParamName}}/{{ref.authPolicy.params.timestampParamName}}/有效期{{ref.authPolicy.params.life}}秒</span>
 					
 					<div v-if="(ref.authPolicy.params.exts != null && ref.authPolicy.params.exts.length > 0) || (ref.authPolicy.params.domains != null && ref.authPolicy.params.domains.length > 0)">
-						<grey-label v-if="ref.authPolicy.params.exts != null" v-for="ext in ref.authPolicy.params.exts">扩展名：{{ext}}</grey-label>
-						<grey-label v-if="ref.authPolicy.params.domains != null" v-for="domain in ref.authPolicy.params.domains">域名：{{domain}}</grey-label>
+						<grey-label v-if="ref.authPolicy.params.exts != null" v-for="ext in ref.authPolicy.params.exts">扩展名:{{ext}}</grey-label>
+						<grey-label v-if="ref.authPolicy.params.domains != null" v-for="domain in ref.authPolicy.params.domains">域名:{{domain}}</grey-label>
 					</div>
 				</td>
 				<td>

@@ -129,7 +129,7 @@ export function ClusterCreatePage() {
                 </option>
               ))}
             </Select>
-            <p className="comment">为可选项。集群中的网站可以自行设置是否启用此设置。</p>
+            <p className="comment">为可选项.集群中的网站可以自行设置是否启用此设置.</p>
           </FormRow>
           <FormRow title="默认WAF设置">
             <Select value={firewallPolicyId} onChange={(event) => setFirewallPolicyId(Number(event.target.value))}>
@@ -140,16 +140,16 @@ export function ClusterCreatePage() {
                 </option>
               ))}
             </Select>
-            <p className="comment">为可选项。集群中的网站可以自行设置是否启用此设置。</p>
+            <p className="comment">为可选项.集群中的网站可以自行设置是否启用此设置.</p>
           </FormRow>
           <FormRow title="只允许绑定的域名访问">
             <Checkbox label="" checked={matchDomainStrictly} onChange={setMatchDomainStrictly} />
-            <p className="comment">选中后，表示只有已经绑定的域名才允许访问；不选中表示访问一个不存在的域名时默认选择第一个网站。</p>
+            <p className="comment">选中后,表示只有已经绑定的域名才允许访问;不选中表示访问一个不存在的域名时默认选择第一个网站.</p>
           </FormRow>
         </FormTable>
 
         <h4>
-          节点安装选项 &nbsp;<span className="grey small">（可选）</span>
+          节点安装选项 &nbsp;<span className="grey small">(可选)</span>
         </h4>
         <FormTable>
           <FormRow title="默认SSH登录方式">
@@ -158,32 +158,32 @@ export function ClusterCreatePage() {
               {grantsQuery.data?.grants.map((grant) => (
                 <option key={grant.id} value={grant.id}>
                   {grant.name}
-                  {grant.username ? `（${grant.username}）` : ''}
+                  {grant.username ? `(${grant.username})` : ''}
                 </option>
               ))}
             </Select>
-            <p className="comment">当前集群下节点统一的登录设置；当节点没有单独设置SSH登录方式时，默认使用此设置。</p>
+            <p className="comment">当前集群下节点统一的登录设置;当节点没有单独设置SSH登录方式时,默认使用此设置.</p>
           </FormRow>
           <FormRow title="节点安装目录">
             <TextInput type="text" maxLength={100} value={installDir} onChange={(event) => setInstallDir(event.target.value)} />
-            <p className="comment">当节点没有单独设置安装目录时，默认使用此设置。如果集群和节点都没有设置安装目录，则使用登录用户HOME路径/edge-node目录。</p>
+            <p className="comment">当节点没有单独设置安装目录时,默认使用此设置.如果集群和节点都没有设置安装目录,则使用登录用户HOME路径/edge-node目录.</p>
           </FormRow>
           <FormRow title="自动安装nftables">
             <Checkbox label="" checked={autoInstallNftables} onChange={setAutoInstallNftables} />
-            <p className="comment">选中后，表示在Linux系统中自动尝试安装 nftables 用于安全防御。</p>
+            <p className="comment">选中后,表示在Linux系统中自动尝试安装 nftables 用于安全防御.</p>
           </FormRow>
           <FormRow title="自动调节系统参数">
             <Checkbox label="" checked={autoSystemTuning} onChange={setAutoSystemTuning} />
-            <p className="comment">选中后，表示自动调整Linux内核等参数，以便提升性能。</p>
+            <p className="comment">选中后,表示自动调整Linux内核等参数,以便提升性能.</p>
           </FormRow>
           <FormRow title="自动执行硬盘TRIM">
             <Checkbox label="" checked={autoTrimDisks} onChange={setAutoTrimDisks} />
-            <p className="comment">执行TRIM后可以移除SSD硬盘中无效的数据，从而显著提升SSD硬盘写入性能。</p>
+            <p className="comment">执行TRIM后可以移除SSD硬盘中无效的数据,从而显著提升SSD硬盘写入性能.</p>
           </FormRow>
         </FormTable>
 
         <h4>
-          DNS设置选项 &nbsp;<span className="grey small">（可选）</span>
+          DNS设置选项 &nbsp;<span className="grey small">(可选)</span>
         </h4>
         <FormTable>
           {data.hasDomains ? (
@@ -196,7 +196,7 @@ export function ClusterCreatePage() {
                   </option>
                 ))}
               </Select>
-              <p className="comment">用于生成集群节点和网站的CNAME和DNS解析记录。</p>
+              <p className="comment">用于生成集群节点和网站的CNAME和DNS解析记录.</p>
             </FormRow>
           ) : null}
           <FormRow title="DNS子域名">
@@ -205,8 +205,8 @@ export function ClusterCreatePage() {
               <span className="ui label">{domainName ? `.${domainName}` : '.主域名'}</span>
             </div>
             <p className="comment">
-              {dnsName === data.defaultDNSName ? <span className="red">当前已为你生成默认的子域名。</span> : null}
-              当前集群的子域名，和主域名一起组成集群节点的子域名。
+              {dnsName === data.defaultDNSName ? <span className="red">当前已为你生成默认的子域名.</span> : null}
+              当前集群的子域名,和主域名一起组成集群节点的子域名.
             </p>
           </FormRow>
           <FormRow title="解析记录TTL">
@@ -214,7 +214,7 @@ export function ClusterCreatePage() {
               <TextInput type="text" maxLength={6} style={{ width: '6em' }} value={dnsTTL} onChange={(event) => setDnsTTL(event.target.value)} />
               <span className="ui label">秒</span>
             </div>
-            <p className="comment">生成解析记录时使用的TTL；0表示使用默认。</p>
+            <p className="comment">生成解析记录时使用的TTL;0表示使用默认.</p>
           </FormRow>
         </FormTable>
 
@@ -328,7 +328,7 @@ export function ClusterSelectPopupPage() {
         </div>
       </form>
 
-      {data.clusters.length === 0 ? <p className="comment">没有找到相应的集群。</p> : null}
+      {data.clusters.length === 0 ? <p className="comment">没有找到相应的集群.</p> : null}
       {data.clusters.length > 0 ? (
         <table className="ui table celled selectable">
           <thead>

@@ -22,7 +22,7 @@ func (this *DeleteAction) RunPost(params struct {
 		return
 	}
 	if countResp.Count > 0 {
-		this.Fail("此区域正在使用，不能删除")
+		this.Fail("此区域正在使用,不能删除")
 	}
 
 	// 执行删除

@@ -58,7 +58,7 @@ export function AdminDetailPage() {
                 ))}
               </div>
             ) : (
-              <span className="disabled">暂时还没有可以管理的模块。</span>
+              <span className="disabled">暂时还没有可以管理的模块.</span>
             )}
           </FormRow>
         ) : null}
@@ -79,7 +79,7 @@ export function AdminDetailPage() {
             <FormRow title="认证二维码">
               <img alt="qrcode" src={`/admins/otpQrcode?adminId=${admin.id}`} />
               <p className="comment">
-                <a href={`/admins/otpQrcode?adminId=${admin.id}&download=true`}>[下载]</a> 可以通过二维码快速添加OTP认证信息到认证App中。
+                <a href={`/admins/otpQrcode?adminId=${admin.id}&download=true`}>[下载]</a> 可以通过二维码快速添加OTP认证信息到认证App中.
               </p>
             </FormRow>
             <FormRow title="密钥">{otp.params.secret}</FormRow>

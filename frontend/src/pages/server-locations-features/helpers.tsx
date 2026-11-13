@@ -24,7 +24,7 @@ export function useLocationData<T extends LocationBaseData>(path: string, queryK
 }
 
 export function MissingLocation() {
-  return <div className="ui negative message">缺少路由规则ID，请从路由规则列表进入。</div>
+  return <div className="ui negative message">缺少路由规则ID,请从路由规则列表进入.</div>
 }
 
 export function defaultUrlPatterns(patterns?: UrlPattern[] | null): UrlPattern[] {

@@ -183,9 +183,9 @@ export function ServerLogsPage() {
 
       {data.isSlowQuery ? (
         <div className="ui warning message">
-          看起来你的访问日志查询非常慢（{data.slowQueryCost}s），建议
-          {data.domain.length === 0 ? ' 1）指定具体域名查询；2）' : ''}
-          通过添加新的 <a href="/db">[日志节点]</a> 来分散存储访问日志。
+          看起来你的访问日志查询非常慢({data.slowQueryCost}s),建议
+          {data.domain.length === 0 ? ' 1)指定具体域名查询;2)' : ''}
+          通过添加新的 <a href="/db">[日志节点]</a> 来分散存储访问日志.
         </div>
       ) : null}
 
@@ -277,7 +277,7 @@ export function ServerLogsSettingsPage() {
         enableAutoPartial: config.enableAutoPartial ? 1 : '',
         rowsPerTable: config.rowsPerTable,
       })
-      toast('保存成功，将会在一分钟之内生效')
+      toast('保存成功,将会在一分钟之内生效')
     } catch (error) {
       toast(error instanceof Error ? error.message : '保存失败', 'error')
     } finally {
@@ -325,7 +325,7 @@ export function ServerLogsSettingsPage() {
                   />
                   <span className="ui label">%</span>
                 </div>
-                <p className="comment">表示将写入{config.percent}%的访问日志数据；此设置不影响WAF相关日志。</p>
+                <p className="comment">表示将写入{config.percent}%的访问日志数据;此设置不影响WAF相关日志.</p>
               </td>
             </tr>
             <tr>
@@ -342,7 +342,7 @@ export function ServerLogsSettingsPage() {
                   />
                   <span className="ui label">条/秒</span>
                 </div>
-                <p className="comment">单个API节点每秒写入的访问日志数量；0表示不限制。</p>
+                <p className="comment">单个API节点每秒写入的访问日志数量;0表示不限制.</p>
               </td>
             </tr>
             <tr>
@@ -356,7 +356,7 @@ export function ServerLogsSettingsPage() {
                   value={config.maxLength}
                   onChange={(event) => setConfig({ ...config, maxLength: Number(event.target.value) || 0 })}
                 />
-                <p className="comment">等待写入的队列最大长度，超出此长度的访问日志将被丢弃；0表示不限制。</p>
+                <p className="comment">等待写入的队列最大长度,超出此长度的访问日志将被丢弃;0表示不限制.</p>
               </td>
             </tr>
           </tbody>
@@ -377,7 +377,7 @@ export function ServerLogsSettingsPage() {
                   />
                   <label htmlFor="logs-enable-auto-partial" />
                 </div>
-                <p className="comment">启用后，可以将单天访问日志自动存储到多个数据表中，以提升查询速度。</p>
+                <p className="comment">启用后,可以将单天访问日志自动存储到多个数据表中,以提升查询速度.</p>
               </td>
             </tr>
             {config.enableAutoPartial ? (
@@ -391,7 +391,7 @@ export function ServerLogsSettingsPage() {
                     value={config.rowsPerTable}
                     onChange={(event) => setConfig({ ...config, rowsPerTable: Number(event.target.value) || 0 })}
                   />
-                  <p className="comment">单个数据表最多能存储的最多行数。</p>
+                  <p className="comment">单个数据表最多能存储的最多行数.</p>
                 </td>
               </tr>
             ) : null}

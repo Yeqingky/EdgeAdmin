@@ -30,10 +30,10 @@
 				<td>操作结果</td>
 				<td>
 					<div v-if="isRequestingWrite">数据发送中...</div>
-					<span class="red" v-if="!isRequestingWrite && !writeOk && writeMessage.length > 0">失败：{{writeMessage}}</span>
+					<span class="red" v-if="!isRequestingWrite && !writeOk && writeMessage.length > 0">失败:{{writeMessage}}</span>
 					<div v-if="!isRequestingWrite && writeOk">
-						<span v-if="writeResults.length == 0" class="red">此集群下没有任何可用的节点。</span>
-						<div class="ui label tiny" v-for="result in writeResults" :class="{green:result.isOk, red:!result.isOk}" style="margin-bottom:0.5em">节点{{result.nodeName}}：{{result.message}}</div>
+						<span v-if="writeResults.length == 0" class="red">此集群下没有任何可用的节点.</span>
+						<div class="ui label tiny" v-for="result in writeResults" :class="{green:result.isOk, red:!result.isOk}" style="margin-bottom:0.5em">节点{{result.nodeName}}:{{result.message}}</div>
 					</div>
 				</td>
 			</tr>
@@ -58,10 +58,10 @@
 				<td>操作结果</td>
 				<td>
 					<div v-if="isRequestingRead">数据发送中...</div>
-					<span class="red" v-if="!isRequestingRead && !readOk && readMessage.length > 0">失败：{{readMessage}}</span>
+					<span class="red" v-if="!isRequestingRead && !readOk && readMessage.length > 0">失败:{{readMessage}}</span>
 					<div v-if="!isRequestingRead && readOk">
-						<span v-if="readResults.length == 0" class="red">此集群下没有任何可用的节点。</span>
-						<div class="ui label tiny" v-for="result in readResults" :class="{green:result.isOk, red:!result.isOk}" style="margin-bottom: 0.5em">节点{{result.nodeName}}：{{result.message}}</div>
+						<span v-if="readResults.length == 0" class="red">此集群下没有任何可用的节点.</span>
+						<div class="ui label tiny" v-for="result in readResults" :class="{green:result.isOk, red:!result.isOk}" style="margin-bottom: 0.5em">节点{{result.nodeName}}:{{result.message}}</div>
 					</div>
 				</td>
 			</tr>

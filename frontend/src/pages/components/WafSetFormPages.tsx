@@ -50,7 +50,7 @@ function ActionFields({
       <>
         <div className="ui fields inline">
           <div className="ui field">
-            <label>封禁时长（秒）</label>
+            <label>封禁时长(秒)</label>
             <input
               type="number"
               style={{ width: '8em' }}
@@ -59,7 +59,7 @@ function ActionFields({
             />
           </div>
           <div className="ui field">
-            <label>最大封禁时长（秒）</label>
+            <label>最大封禁时长(秒)</label>
             <input
               type="number"
               style={{ width: '8em' }}
@@ -111,7 +111,7 @@ function ActionFields({
     return (
       <div className="ui fields inline">
         <div className="ui field">
-          <label>有效期（秒）</label>
+          <label>有效期(秒)</label>
           <input
             type="number"
             style={{ width: '8em' }}
@@ -131,7 +131,7 @@ function ActionFields({
               />
             </div>
             <div className="ui field">
-              <label>失败拦截时间（秒）</label>
+              <label>失败拦截时间(秒)</label>
               <input
                 type="number"
                 style={{ width: '8em' }}
@@ -166,7 +166,7 @@ function ActionFields({
           </select>
         </div>
         <div className="ui field">
-          <label>超时时间（秒）</label>
+          <label>超时时间(秒)</label>
           <input
             type="number"
             style={{ width: '8em' }}
@@ -181,7 +181,7 @@ function ActionFields({
     const tags = Array.isArray(options.tags) ? (options.tags as string[]) : []
     return (
       <div className="ui field">
-        <label>标签（用逗号分隔）</label>
+        <label>标签(用逗号分隔)</label>
         <input
           type="text"
           value={tags.join(',')}
@@ -417,7 +417,7 @@ function SetForm({ mode }: { mode: 'create' | 'update' }) {
       <h3>{mode === 'create' ? '添加规则集' : '修改规则集'}</h3>
       {mode === 'create' && data.isGlobalPolicy ? (
         <p className="ui message">
-          当前设置的规则集为WAF策略的规则集，将会应用于对应集群已经启用WAF的网站；如果你只是想设置某个网站相关的规则集，请到对应网站WAF功能中设置。
+          当前设置的规则集为WAF策略的规则集,将会应用于对应集群已经启用WAF的网站;如果你只是想设置某个网站相关的规则集,请到对应网站WAF功能中设置.
         </p>
       ) : null}
 
@@ -436,7 +436,7 @@ function SetForm({ mode }: { mode: 'create' | 'update' }) {
                 <input type="text" maxLength={100} value={name} onChange={(event) => setName(event.target.value)} autoFocus />
                 {mode === 'create' ? (
                   <p className="comment">
-                    可以用来描述当前规则集用途。
+                    可以用来描述当前规则集用途.
                     <a
                       href=""
                       onClick={(event) => {
@@ -460,7 +460,7 @@ function SetForm({ mode }: { mode: 'create' | 'update' }) {
                     {rules.map((rule, index) => (
                       <div key={index} className="ui label small basic" style={{ marginBottom: '0.5em', lineHeight: 1.6 }}>
                         {ruleSummary(rule)}
-                        {rule.description ? <span className="grey small">（{rule.description}）</span> : null}
+                        {rule.description ? <span className="grey small">({rule.description})</span> : null}
                         <a
                           href=""
                           title="修改"
@@ -603,7 +603,7 @@ function SetForm({ mode }: { mode: 'create' | 'update' }) {
                       <input type="checkbox" checked={ignoreLocal} onChange={(event) => setIgnoreLocal(event.target.checked)} />
                       <label />
                     </div>
-                    <p className="comment">选中后，表示如果请求来自局域网IP，则直接跳过当前规则集。</p>
+                    <p className="comment">选中后,表示如果请求来自局域网IP,则直接跳过当前规则集.</p>
                   </td>
                 </tr>
                 <tr>
@@ -613,7 +613,7 @@ function SetForm({ mode }: { mode: 'create' | 'update' }) {
                       <input type="checkbox" checked={ignoreSearchEngine} onChange={(event) => setIgnoreSearchEngine(event.target.checked)} />
                       <label />
                     </div>
-                    <p className="comment">选中后，表示如果请求来自常见搜索引擎的IP，则直接跳过当前规则集。</p>
+                    <p className="comment">选中后,表示如果请求来自常见搜索引擎的IP,则直接跳过当前规则集.</p>
                   </td>
                 </tr>
               </>
@@ -671,7 +671,7 @@ export function WafCreateRulePage() {
     return (
       <div>
         <h3>规则已生成</h3>
-        <p className="comment">以下是可以用于规则集代码中的规则配置：</p>
+        <p className="comment">以下是可以用于规则集代码中的规则配置:</p>
         <textarea readOnly rows={13} value={JSON.stringify(saved, null, 2)} />
         <div style={{ marginTop: '1em' }}>
           <button className="ui button" type="button" onClick={() => navigate(-1)}>
@@ -706,10 +706,10 @@ export function WafSetCodePage() {
   }
   return (
     <div>
-      <h3>规则集 “{query.data.setName}” 代码</h3>
+      <h3>规则集 "{query.data.setName}" 代码</h3>
       <form className="ui form">
         <textarea readOnly rows={13} value={query.data.code} />
-        <p className="comment">你可以将此段代码复制并在创建规则集的时候使用。</p>
+        <p className="comment">你可以将此段代码复制并在创建规则集的时候使用.</p>
       </form>
     </div>
   )

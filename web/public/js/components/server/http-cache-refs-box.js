@@ -32,7 +32,7 @@ Vue.component("http-cache-refs-box", {
 	template: `<div>
 	<input type="hidden" name="refsJSON" :value="JSON.stringify(refs)"/>
 	
-	<p class="comment" v-if="refs.length == 0">暂时还没有缓存条件。</p>
+	<p class="comment" v-if="refs.length == 0">暂时还没有缓存条件.</p>
 	<div v-show="refs.length > 0">
 		<table class="ui table selectable celled">
 			<thead>
@@ -54,7 +54,7 @@ Vue.component("http-cache-refs-box", {
 						<grey-label v-else-if="cacheRef.maxSize != null && cacheRef.maxSize.count > 0">0 - {{cacheRef.maxSize.count}}{{cacheRef.maxSize.unit}}</grey-label>
 						<grey-label v-if="cacheRef.methods != null && cacheRef.methods.length > 0">{{cacheRef.methods.join(", ")}}</grey-label>
 						<grey-label v-if="cacheRef.expiresTime != null && cacheRef.expiresTime.isPrior && cacheRef.expiresTime.isOn">Expires</grey-label>
-						<grey-label v-if="cacheRef.status != null && cacheRef.status.length > 0 && (cacheRef.status.length > 1 || cacheRef.status[0] != 200)">状态码：{{cacheRef.status.map(function(v) {return v.toString()}).join(", ")}}</grey-label>
+						<grey-label v-if="cacheRef.status != null && cacheRef.status.length > 0 && (cacheRef.status.length > 1 || cacheRef.status[0] != 200)">状态码:{{cacheRef.status.map(function(v) {return v.toString()}).join(", ")}}</grey-label>
 						<grey-label v-if="cacheRef.allowPartialContent">分片缓存</grey-label>
 						<grey-label v-if="cacheRef.alwaysForwardRangeRequest">Range回源</grey-label>
 						<grey-label v-if="cacheRef.enableIfNoneMatch">If-None-Match</grey-label>

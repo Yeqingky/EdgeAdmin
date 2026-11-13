@@ -167,7 +167,7 @@ export function GroupSettingsHeadersPage() {
   }
 
   async function removeHeader(header: SetHeader) {
-    if (!(await confirm({ message: `确定要删除此报头（${header.name}）吗？`, danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: `确定要删除此报头(${header.name})吗?`, danger: true, confirmText: '删除' }))) {
       return
     }
     deleteHeader.mutate({ headerPolicyId: ref.headerPolicyId, headerId: header.id })
@@ -227,7 +227,7 @@ export function GroupSettingsHeadersPage() {
                   <label />
                 </div>
                 <p className="comment">
-                  {ref.isPrior ? <strong>[已打开]</strong> : null} 打开后可以覆盖父级或子级配置。
+                  {ref.isPrior ? <strong>[已打开]</strong> : null} 打开后可以覆盖父级或子级配置.
                 </p>
               </td>
             </tr>
@@ -257,7 +257,7 @@ export function GroupSettingsHeadersPage() {
                 [添加新报头]
               </a>
             </h4>
-            {setHeaders.length === 0 ? <p className="comment">暂时还没有自定义报头。</p> : null}
+            {setHeaders.length === 0 ? <p className="comment">暂时还没有自定义报头.</p> : null}
             {setHeaders.length > 0 ? (
               <table className="ui table selectable celled">
                 <thead>
@@ -300,7 +300,7 @@ export function GroupSettingsHeadersPage() {
             ) : null}
 
             <h4>删除报头</h4>
-            {deleteHeaders.length === 0 ? <p className="comment">暂时还没有要删除的报头。</p> : null}
+            {deleteHeaders.length === 0 ? <p className="comment">暂时还没有要删除的报头.</p> : null}
             <div>
               {deleteHeaders.map((name) => (
                 <span key={name} className="ui label small basic">
@@ -324,7 +324,7 @@ export function GroupSettingsHeadersPage() {
             </div>
 
             <h4>保留非标准报头</h4>
-            {nonStandardHeaders.length === 0 ? <p className="comment">暂时还没有非标准报头。</p> : null}
+            {nonStandardHeaders.length === 0 ? <p className="comment">暂时还没有非标准报头.</p> : null}
             <div>
               {nonStandardHeaders.map((name) => (
                 <span key={name} className="ui label small basic">
@@ -485,7 +485,7 @@ function SetHeaderForm({
             <td>状态码</td>
             <td>
               <NumberListInput values={statusList} onChange={setStatusList} placeholder="比如 200,301" />
-              <p className="comment">留空表示所有状态码。</p>
+              <p className="comment">留空表示所有状态码.</p>
             </td>
           </tr>
           <tr>
@@ -562,14 +562,14 @@ function CorsForm({ headerPolicyId, cors, onDone }: { headerPolicyId: number; co
             <td className="title">启用CORS自适应跨域</td>
             <td>
               <Checkbox checked={boolField(config, 'isOn')} onChange={(checked) => setConfig({ ...config, isOn: checked })} />
-              <p className="comment">启用后，自动在响应报头中增加对应的Access-Control-*相关内容。</p>
+              <p className="comment">启用后,自动在响应报头中增加对应的Access-Control-*相关内容.</p>
             </td>
           </tr>
           <tr>
             <td>允许的来源域</td>
             <td>
               <input type="text" value={stringField(config, 'allowOrigin')} onChange={(event) => setConfig({ ...config, allowOrigin: event.target.value })} />
-              <p className="comment">可以使用 * 表示所有来源域。</p>
+              <p className="comment">可以使用 * 表示所有来源域.</p>
             </td>
           </tr>
           <tr>
@@ -607,7 +607,7 @@ function CorsForm({ headerPolicyId, cors, onDone }: { headerPolicyId: number; co
             </td>
           </tr>
           <tr>
-            <td>缓存时间（秒）</td>
+            <td>缓存时间(秒)</td>
             <td>
               <input
                 type="text"

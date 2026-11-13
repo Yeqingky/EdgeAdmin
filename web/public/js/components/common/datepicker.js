@@ -49,7 +49,7 @@ Vue.component("datepicker", {
 	},
 	methods: {
 		change: function () {
-			this.$emit("input", this.day) // support v-model，事件触发需要在 change 之前
+			this.$emit("input", this.day) // support v-model,事件触发需要在 change 之前
 			this.$emit("change", this.day)
 		}
 	},

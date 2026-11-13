@@ -15,7 +15,7 @@ Vue.component("ns-access-log-box", {
 				}
 			}
 
-			// 没有找到记录的不需要高亮显示，防止管理员看到红色就心理恐慌
+			// 没有找到记录的不需要高亮显示,防止管理员看到红色就心理恐慌
 		}
 
 		return {
@@ -61,7 +61,7 @@ Vue.component("ns-access-log-box", {
 		<span class="ui label tiny basic grey" v-if="accessLog.isRecursive">递归DNS</span>
 	</div>
 	<div v-if="accessLog.error != null && accessLog.error.length > 0" style="color:#dc143c">
-		<i class="icon warning circle"></i>错误：[{{accessLog.error}}]
+		<i class="icon warning circle"></i>错误:[{{accessLog.error}}]
 	</div>
 </div>`
 })

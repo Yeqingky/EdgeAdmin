@@ -84,7 +84,7 @@ function CacheRefEditor({ initial, isNew, onSave, onCancel }: {
       isCaseInsensitive: simpleCaseInsensitive,
     }
     const status = statusText
-      .split(/[，、,;\s]+/)
+      .split(/[,,,;\s]+/)
       .map((value) => Number.parseInt(value.trim(), 10))
       .filter((value) => !Number.isNaN(value))
 
@@ -148,7 +148,7 @@ function CacheRefEditor({ initial, isNew, onSave, onCancel }: {
                 <td>条件值</td>
                 <td>
                   <input type="text" value={simpleValue} onChange={(event) => setSimpleValue(event.target.value)} />
-                  <p className="comment">扩展名和MimeType列表使用JSON数组格式，比如 ["png","jpg"]。</p>
+                  <p className="comment">扩展名和MimeType列表使用JSON数组格式,比如 ["png","jpg"].</p>
                 </td>
               </tr>
               <tr>
@@ -174,7 +174,7 @@ function CacheRefEditor({ initial, isNew, onSave, onCancel }: {
                 <input type="checkbox" checked={ignoreArgs} onChange={(event) => setIgnoreArgs(event.target.checked)} />
                 <label>忽略URI参数</label>
               </div>
-              <p className="comment">可以使用变量，比如 ${'${scheme}'}、${'${host}'}、${'${requestPath}'}、${'${args}'}。</p>
+              <p className="comment">可以使用变量,比如 ${'${scheme}'},${'${host}'},${'${requestPath}'},${'${args}'}.</p>
             </td>
           </tr>
           <tr>
@@ -206,7 +206,7 @@ function CacheRefEditor({ initial, isNew, onSave, onCancel }: {
             <td>缓存的状态码</td>
             <td>
               <input type="text" value={statusText} onChange={(event) => setStatusText(event.target.value)} />
-              <p className="comment">多个状态码使用逗号分隔，默认200。</p>
+              <p className="comment">多个状态码使用逗号分隔,默认200.</p>
             </td>
           </tr>
           <tr>
@@ -233,7 +233,7 @@ function CacheRefEditor({ initial, isNew, onSave, onCancel }: {
             <td>支持的请求方法</td>
             <td>
               <ValueList values={ref.methods || []} onChange={(methods) => update({ methods })} placeholder="比如 GET" />
-              <p className="comment">留空表示支持所有请求方法。</p>
+              <p className="comment">留空表示支持所有请求方法.</p>
             </td>
           </tr>
           <tr>
@@ -389,10 +389,10 @@ function CacheForm({ data }: { data: CacheData }) {
             <div>
               {data.cachePolicy.name}{' '}
               <a href={`/servers/components/cache/policy?cachePolicyId=${data.cachePolicy.id}`}>查看</a>
-              <p className="comment">使用当前网站所在集群的设置。</p>
+              <p className="comment">使用当前网站所在集群的设置.</p>
             </div>
           ) : (
-            <span className="red">当前集群没有设置缓存策略，当前配置无法生效。</span>
+            <span className="red">当前集群没有设置缓存策略,当前配置无法生效.</span>
           )}
         </FormRow>
       </FormTable>
@@ -411,7 +411,7 @@ function CacheForm({ data }: { data: CacheData }) {
           <FormRow title="缓存主域名">
             {keyIsOn ? (
               <div>
-                使用主域名：{keyScheme}://{keyHost} &nbsp;
+                使用主域名:{keyScheme}://{keyHost} &nbsp;
                 <a href="" onClick={(event) => { event.preventDefault(); setKeyOptionsVisible((visible) => !visible) }}>
                   <span className="small">[修改]</span>
                 </a>
@@ -433,7 +433,7 @@ function CacheForm({ data }: { data: CacheData }) {
                       <td className="title">启用主域名</td>
                       <td>
                         <Checkbox checked={keyIsOn} onChange={setKeyIsOn} />
-                        <p className="comment">启用主域名后，所有缓存键值中的协议和域名部分都会修改为主域名，用来实现缓存不区分域名。</p>
+                        <p className="comment">启用主域名后,所有缓存键值中的协议和域名部分都会修改为主域名,用来实现缓存不区分域名.</p>
                       </td>
                     </tr>
                     {keyIsOn ? (
@@ -451,7 +451,7 @@ function CacheForm({ data }: { data: CacheData }) {
                               <input type="text" placeholder="example.com" value={keyHost} onChange={(event) => setKeyHost(event.target.value)} />
                             </div>
                           </div>
-                          <p className="comment">此域名<strong>必须</strong>是当前网站已绑定域名，在刷新缓存时也需要使用此域名。</p>
+                          <p className="comment">此域名<strong>必须</strong>是当前网站已绑定域名,在刷新缓存时也需要使用此域名.</p>
                         </td>
                       </tr>
                     ) : null}
@@ -479,35 +479,35 @@ function CacheForm({ data }: { data: CacheData }) {
                 <td>使用默认缓存条件</td>
                 <td>
                   <Checkbox checked={!disablePolicyRefs} onChange={(checked) => setDisablePolicyRefs(!checked)} />
-                  <p className="comment">选中后使用系统全局缓存策略中已经定义的默认缓存条件。</p>
+                  <p className="comment">选中后使用系统全局缓存策略中已经定义的默认缓存条件.</p>
                 </td>
               </tr>
               <tr>
                 <td>添加X-Cache报头</td>
                 <td>
                   <Checkbox checked={addStatusHeader} onChange={setAddStatusHeader} />
-                  <p className="comment">选中后自动在响应报头中增加<code>X-Cache: BYPASS|MISS|HIT|PURGE</code>；在浏览器端查看X-Cache值时请先禁用浏览器缓存，避免影响观察。</p>
+                  <p className="comment">选中后自动在响应报头中增加<code>X-Cache: BYPASS|MISS|HIT|PURGE</code>;在浏览器端查看X-Cache值时请先禁用浏览器缓存,避免影响观察.</p>
                 </td>
               </tr>
               <tr>
                 <td>添加Age Header</td>
                 <td>
                   <Checkbox checked={addAgeHeader} onChange={setAddAgeHeader} />
-                  <p className="comment">选中后自动在响应Header中增加<code>Age: [存活时间秒数]</code>。</p>
+                  <p className="comment">选中后自动在响应Header中增加<code>Age: [存活时间秒数]</code>.</p>
                 </td>
               </tr>
               <tr>
                 <td>支持源站控制有效时间</td>
                 <td>
                   <Checkbox checked={enableCacheControlMaxAge} onChange={setEnableCacheControlMaxAge} />
-                  <p className="comment">选中后表示支持源站在Header中设置的<code>Cache-Control: max-age=[有效时间秒数]</code>。</p>
+                  <p className="comment">选中后表示支持源站在Header中设置的<code>Cache-Control: max-age=[有效时间秒数]</code>.</p>
                 </td>
               </tr>
               <tr>
                 <td className="color-border">允许PURGE</td>
                 <td>
                   <Checkbox checked={purgeIsOn} onChange={setPurgeIsOn} />
-                  <p className="comment">允许使用PURGE方法清除某个URL缓存。</p>
+                  <p className="comment">允许使用PURGE方法清除某个URL缓存.</p>
                 </td>
               </tr>
               {purgeIsOn ? (
@@ -516,8 +516,8 @@ function CacheForm({ data }: { data: CacheData }) {
                   <td>
                     <input type="text" maxLength={200} value={purgeKey} onChange={(event) => setPurgeKey(event.target.value)} />
                     <p className="comment">
-                      <a href="" onClick={(event) => { event.preventDefault(); generatePurgeKey() }}>[随机生成]</a>。
-                      需要在PURGE方法调用时加入<code>X-Edge-Purge-Key: {purgeKey}</code> Header。只能包含字符、数字、下划线。
+                      <a href="" onClick={(event) => { event.preventDefault(); generatePurgeKey() }}>[随机生成]</a>.
+                      需要在PURGE方法调用时加入<code>X-Edge-Purge-Key: {purgeKey}</code> Header.只能包含字符,数字,下划线.
                     </p>
                   </td>
                 </tr>
@@ -568,7 +568,7 @@ function CacheForm({ data }: { data: CacheData }) {
             ) : null}
           </h4>
 
-          {visibleRefs.length === 0 ? <p className="comment">暂时还没有缓存条件。</p> : null}
+          {visibleRefs.length === 0 ? <p className="comment">暂时还没有缓存条件.</p> : null}
 
           {visibleRefs.length > 0 ? (
             <table className="ui table selectable celled">
@@ -649,7 +649,7 @@ function CacheForm({ data }: { data: CacheData }) {
                       <a href="" onClick={(event) => {
                         event.preventDefault()
                         void (async () => {
-                          if (!(await confirm({ message: '确定要删除此缓存设置吗？', danger: true, confirmText: '删除' }))) {
+                          if (!(await confirm({ message: '确定要删除此缓存设置吗?', danger: true, confirmText: '删除' }))) {
                             return
                           }
                           await saveRefs(refs.filter((_, i) => i !== refs.indexOf(cacheRef)))
@@ -666,9 +666,9 @@ function CacheForm({ data }: { data: CacheData }) {
 
           {refs.length > 1 ? (
             <p className="comment">
-              所有条件匹配顺序为从上到下，可以拖动左侧的
+              所有条件匹配顺序为从上到下,可以拖动左侧的
               <GripVertical size={12} style={{ verticalAlign: 'middle' }} />
-              排序。服务设置的优先级比全局缓存策略设置的优先级要高。
+              排序.服务设置的优先级比全局缓存策略设置的优先级要高.
             </p>
           ) : null}
 
@@ -694,7 +694,7 @@ function CacheForm({ data }: { data: CacheData }) {
       ) : null}
 
       <SubmitButton submitting={submitting} />
-      <p className="comment">修改条件设置后请记得保存。</p>
+      <p className="comment">修改条件设置后请记得保存.</p>
 
       {editingRef ? (
         <CacheRefEditor

@@ -19,7 +19,7 @@
         <input type="hidden" name="userType" :value="userType"/>
         <div class="ui fields inline">
             <div class="ui field">
-                <input type="text" name="keyword" placeholder="域名、说明等关键词" style="width:12em" v-model="keyword"/>
+                <input type="text" name="keyword" placeholder="域名,说明等关键词" style="width:12em" v-model="keyword"/>
             </div>
             <div class="ui field">
                 <user-selector :v-user-id="searchingUserId"></user-selector>
@@ -40,7 +40,7 @@
         <div class="ui divider" style="margin-top:0"></div>
     </div>
 
-	<p class="comment" v-if="certs.length == 0"><span v-if="searchingUserId > 0">当前用户下</span>暂时还没有相关的证书。</p>
+	<p class="comment" v-if="certs.length == 0"><span v-if="searchingUserId > 0">当前用户下</span>暂时还没有相关的证书.</p>
 
 
 

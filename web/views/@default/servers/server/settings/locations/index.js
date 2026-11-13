@@ -5,7 +5,7 @@ Tea.context(function () {
 
 	// 删除路由规则
 	this.deleteLocation = function (locationId) {
-		teaweb.confirm("确定要删除此路由规则吗？", function () {
+		teaweb.confirm("确定要删除此路由规则吗?", function () {
 			this.$post(".delete")
 				.params({
 					webId: this.webId,

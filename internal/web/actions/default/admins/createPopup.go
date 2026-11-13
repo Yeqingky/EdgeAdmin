@@ -48,7 +48,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 	params.Must.
 		Field("username", params.Username).
 		Require("请输入登录用户名").
-		Match(`^[a-zA-Z0-9_]+$`, "用户名中只能包含英文、数字或下划线")
+		Match(`^[a-zA-Z0-9_]+$`, "用户名中只能包含英文,数字或下划线")
 
 	existsResp, err := this.RPC().AdminRPC().CheckAdminUsername(this.AdminContext(), &pb.CheckAdminUsernameRequest{
 		AdminId:  0,
@@ -59,7 +59,7 @@ func (this *CreatePopupAction) RunPost(params struct {
 		return
 	}
 	if existsResp.Exists {
-		this.FailField("username", "此用户名已经被别的系统用户使用，请换一个")
+		this.FailField("username", "此用户名已经被别的系统用户使用,请换一个")
 	}
 
 	params.Must.

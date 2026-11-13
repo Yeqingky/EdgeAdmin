@@ -104,7 +104,7 @@ func SendMessageToCluster(ctx context.Context, clusterId int64, code string, msg
 					NodeId:   node.Id,
 					NodeName: node.Name,
 					IsOK:     false,
-					Message:  "无法读取对应的API节点信息：" + err.Error(),
+					Message:  "无法读取对应的API节点信息:" + err.Error(),
 				})
 				locker.Unlock()
 				wg.Done()
@@ -117,7 +117,7 @@ func SendMessageToCluster(ctx context.Context, clusterId int64, code string, msg
 					NodeId:   node.Id,
 					NodeName: node.Name,
 					IsOK:     false,
-					Message:  "无法读取对应的API节点信息：API节点ID：" + strconv.FormatInt(apiNodeId, 10),
+					Message:  "无法读取对应的API节点信息:API节点ID:" + strconv.FormatInt(apiNodeId, 10),
 				})
 				locker.Unlock()
 				wg.Done()
@@ -136,7 +136,7 @@ func SendMessageToCluster(ctx context.Context, clusterId int64, code string, msg
 					NodeId:   node.Id,
 					NodeName: node.Name,
 					IsOK:     false,
-					Message:  "初始化API节点错误：API节点ID：" + strconv.FormatInt(apiNodeId, 10) + "：" + err.Error(),
+					Message:  "初始化API节点错误:API节点ID:" + strconv.FormatInt(apiNodeId, 10) + ":" + err.Error(),
 				})
 				locker.Unlock()
 				wg.Done()
@@ -162,7 +162,7 @@ func SendMessageToCluster(ctx context.Context, clusterId int64, code string, msg
 					NodeId:   node.Id,
 					NodeName: node.Name,
 					IsOK:     false,
-					Message:  "API返回错误：" + err.Error(),
+					Message:  "API返回错误:" + err.Error(),
 				})
 				locker.Unlock()
 				return
@@ -280,7 +280,7 @@ func SendMessageToNodeIds(ctx context.Context, nodeIds []int64, code string, msg
 					NodeId:   node.Id,
 					NodeName: node.Name,
 					IsOK:     false,
-					Message:  "无法读取对应的API节点信息：" + err.Error(),
+					Message:  "无法读取对应的API节点信息:" + err.Error(),
 				})
 				locker.Unlock()
 				wg.Done()
@@ -293,7 +293,7 @@ func SendMessageToNodeIds(ctx context.Context, nodeIds []int64, code string, msg
 					NodeId:   node.Id,
 					NodeName: node.Name,
 					IsOK:     false,
-					Message:  "无法读取对应的API节点信息：API节点ID：" + strconv.FormatInt(apiNodeId, 10),
+					Message:  "无法读取对应的API节点信息:API节点ID:" + strconv.FormatInt(apiNodeId, 10),
 				})
 				locker.Unlock()
 				wg.Done()
@@ -312,7 +312,7 @@ func SendMessageToNodeIds(ctx context.Context, nodeIds []int64, code string, msg
 					NodeId:   node.Id,
 					NodeName: node.Name,
 					IsOK:     false,
-					Message:  "初始化API节点错误：API节点ID：" + strconv.FormatInt(apiNodeId, 10) + "：" + err.Error(),
+					Message:  "初始化API节点错误:API节点ID:" + strconv.FormatInt(apiNodeId, 10) + ":" + err.Error(),
 				})
 				locker.Unlock()
 				wg.Done()
@@ -338,7 +338,7 @@ func SendMessageToNodeIds(ctx context.Context, nodeIds []int64, code string, msg
 					NodeId:   node.Id,
 					NodeName: node.Name,
 					IsOK:     false,
-					Message:  "API返回错误：" + err.Error(),
+					Message:  "API返回错误:" + err.Error(),
 				})
 				locker.Unlock()
 				return

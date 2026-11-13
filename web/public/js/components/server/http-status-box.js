@@ -35,7 +35,7 @@ Vue.component("http-status-box", {
 
 			// 是否已经存在
 			if (this.statusList.$contains(this.addingStatus)) {
-				teaweb.warn("此状态码已经存在，无需重复添加", function () {
+				teaweb.warn("此状态码已经存在,无需重复添加", function () {
 					that.$refs.addingStatus.focus()
 				})
 				return
@@ -79,7 +79,7 @@ Vue.component("http-status-box", {
 				&nbsp; <a href="" title="取消" @click.prevent="cancel"><i class="icon remove small"></i></a>
 			</div>
 		</div>
-		<p class="comment">格式为三位数字，比如<code-label>200</code-label>、<code-label>404</code-label>等。</p>
+		<p class="comment">格式为三位数字,比如<code-label>200</code-label>,<code-label>404</code-label>等.</p>
 		<div class="ui divider"></div>
 	</div>
 	<div style="margin-top: 0.5em" v-if="!isAdding">

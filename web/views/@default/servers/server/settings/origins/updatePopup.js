@@ -38,14 +38,14 @@ Tea.context(function () {
 		// HTTP
 		if (this.origin.protocol == "http") {
 			if (this.origin.addr.endsWith(":443")) {
-				this.addrError = "443通常是HTTPS协议端口，请确认源站协议选择是否正确。"
+				this.addrError = "443通常是HTTPS协议端口,请确认源站协议选择是否正确."
 			}
 		}
 
 		// HTTPS
 		if (this.origin.protocol == "https") {
 			if (this.origin.addr.endsWith(":80")) {
-				this.addrError = "80通常是HTTP协议端口，请确认源站协议选择是否正确。"
+				this.addrError = "80通常是HTTP协议端口,请确认源站协议选择是否正确."
 			}
 		}
 	}

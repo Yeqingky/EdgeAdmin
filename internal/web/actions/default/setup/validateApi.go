@@ -108,7 +108,7 @@ func (this *ValidateApiAction) RunPost(params struct {
 		Secret:       params.OldNodeSecret,
 	}, false)
 	if err != nil {
-		this.FailField("oldHost", "测试API节点时出错，请检查配置，错误信息："+err.Error())
+		this.FailField("oldHost", "测试API节点时出错,请检查配置,错误信息:"+err.Error())
 	}
 
 	defer func() {
@@ -117,7 +117,7 @@ func (this *ValidateApiAction) RunPost(params struct {
 
 	_, err = client.APINodeRPC().FindCurrentAPINodeVersion(client.APIContext(0), &pb.FindCurrentAPINodeVersionRequest{})
 	if err != nil {
-		this.FailField("oldHost", "无法连接此API节点，错误信息："+err.Error())
+		this.FailField("oldHost", "无法连接此API节点,错误信息:"+err.Error())
 	}
 
 	this.Success()

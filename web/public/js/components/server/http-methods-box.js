@@ -35,7 +35,7 @@ Vue.component("http-methods-box", {
 
 			// 是否已经存在
 			if (this.methods.$contains(this.addingMethod)) {
-				teaweb.warn("此请求方法已经存在，无需重复添加", function () {
+				teaweb.warn("此请求方法已经存在,无需重复添加", function () {
 					that.$refs.addingMethod.focus()
 				})
 				return
@@ -71,7 +71,7 @@ Vue.component("http-methods-box", {
 				&nbsp; <a href="" title="取消" @click.prevent="cancel"><i class="icon remove small"></i></a>
 			</div>
 		</div>
-		<p class="comment">格式为大写，比如<code-label>GET</code-label>、<code-label>POST</code-label>等。</p>
+		<p class="comment">格式为大写,比如<code-label>GET</code-label>,<code-label>POST</code-label>等.</p>
 		<div class="ui divider"></div>
 	</div>
 	<div style="margin-top: 0.5em" v-if="!isAdding">

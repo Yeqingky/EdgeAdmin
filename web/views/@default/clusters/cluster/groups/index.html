@@ -5,7 +5,7 @@
 	<a href="" class="item" @click.prevent="createGroup()">[创建分组]</a>
 </first-menu>
 
-<p class="comment" v-if="groups.length == 0">暂时还没有分组。</p>
+<p class="comment" v-if="groups.length == 0">暂时还没有分组.</p>
 <div v-show="groups.length > 0">
 	<div class="margin"></div>
 	<table class="ui table selectable celled" id="sortable-table">
@@ -33,4 +33,4 @@
 	</table>
 </div>
 
-<p v-if="groups.length > 0" class="comment">可以拖动左侧的<i class="icon bars"></i>排序。</p>
+<p v-if="groups.length > 0" class="comment">可以拖动左侧的<i class="icon bars"></i>排序.</p>

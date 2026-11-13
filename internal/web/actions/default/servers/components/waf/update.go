@@ -141,7 +141,7 @@ func (this *UpdateAction) RunPost(params struct {
 	var blockOptions = firewallconfigs.NewHTTPFirewallBlockAction()
 	err := json.Unmarshal(params.BlockOptionsJSON, blockOptions)
 	if err != nil {
-		this.Fail("拦截动作参数校验失败：" + err.Error())
+		this.Fail("拦截动作参数校验失败:" + err.Error())
 		return
 	}
 
@@ -149,11 +149,11 @@ func (this *UpdateAction) RunPost(params struct {
 	var pageOptions = firewallconfigs.NewHTTPFirewallPageAction()
 	err = json.Unmarshal(params.PageOptionsJSON, pageOptions)
 	if err != nil {
-		this.Fail("校验显示页面动作配置失败：" + err.Error())
+		this.Fail("校验显示页面动作配置失败:" + err.Error())
 		return
 	}
 	if pageOptions.Status < 100 && pageOptions.Status > 999 {
-		this.Fail("显示页面动作的状态码配置错误：" + types.String(pageOptions.Status))
+		this.Fail("显示页面动作的状态码配置错误:" + types.String(pageOptions.Status))
 		return
 	}
 
@@ -161,14 +161,14 @@ func (this *UpdateAction) RunPost(params struct {
 	var captchaOptions = firewallconfigs.NewHTTPFirewallCaptchaAction()
 	err = json.Unmarshal(params.CaptchaOptionsJSON, captchaOptions)
 	if err != nil {
-		this.Fail("验证码动作参数校验失败：" + err.Error())
+		this.Fail("验证码动作参数校验失败:" + err.Error())
 		return
 	}
 
 	// 检查极验配置
 	if captchaOptions.CaptchaType == firewallconfigs.CaptchaTypeGeeTest || captchaOptions.GeeTestConfig.IsOn {
 		if captchaOptions.CaptchaType == firewallconfigs.CaptchaTypeGeeTest && !captchaOptions.GeeTestConfig.IsOn {
-			this.Fail("人机识别动作配置的默认验证方式为极验-行为验，所以需要选择允许用户使用极验")
+			this.Fail("人机识别动作配置的默认验证方式为极验-行为验,所以需要选择允许用户使用极验")
 			return
 		}
 
@@ -187,7 +187,7 @@ func (this *UpdateAction) RunPost(params struct {
 	if len(params.JsCookieOptionsJSON) > 0 {
 		err = json.Unmarshal(params.JsCookieOptionsJSON, jsCookieOptions)
 		if err != nil {
-			this.Fail("JSCookie动作参数校验失败：" + err.Error())
+			this.Fail("JSCookie动作参数校验失败:" + err.Error())
 			return
 		}
 	}

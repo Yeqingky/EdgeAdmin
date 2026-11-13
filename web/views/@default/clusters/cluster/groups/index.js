@@ -38,7 +38,7 @@ Tea.context(function () {
 
 	this.deleteGroup = function (groupId) {
 		let that = this
-		teaweb.confirm("确定要删除这个分组吗？", function () {
+		teaweb.confirm("确定要删除这个分组吗?", function () {
 			that.$post("/clusters/cluster/groups/delete")
 				.params({
 					groupId: groupId

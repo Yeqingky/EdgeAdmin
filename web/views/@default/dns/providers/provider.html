@@ -67,7 +67,7 @@
             <td>区域ID</td>
             <td>
                 <span v-if="provider.apiParams.regionId != null && provider.apiParams.regionId.length > 0">{{provider.apiParams.regionId}}</span>
-                <span v-else class="disabled">没有设置。</span>
+                <span v-else class="disabled">没有设置.</span>
             </td>
         </tr>
 	</tbody>
@@ -122,15 +122,15 @@
     <!-- ClouDNS -->
     <tbody v-if="provider.type == 'cloudns'">
         <tr v-if="provider.apiParams.authId > 0">
-            <td class="color-border">用户认证ID<em>（auth-id）</em></td>
+            <td class="color-border">用户认证ID<em>(auth-id)</em></td>
             <td>{{provider.apiParams.authId}}</td>
         </tr>
         <tr v-if="provider.apiParams.subAuthId > 0">
-            <td class="color-border">子用户认证ID<em>（sub-auth-id）</em></td>
+            <td class="color-border">子用户认证ID<em>(sub-auth-id)</em></td>
             <td>{{provider.apiParams.subAuthId}}</td>
         </tr>
         <tr>
-            <td class="color-border">认证密码<em>（auth-password）</em></td>
+            <td class="color-border">认证密码<em>(auth-password)</em></td>
             <td>{{provider.apiParams.authPassword}}</td>
         </tr>
     </tbody>
@@ -296,7 +296,7 @@
     <menu-item :href="'/dns/providers/provider?providerId=' + provider.id + '&filter=deleted'" :active="filter == 'deleted'">已删除</menu-item>
 </second-menu>
 
-<p class="comment" v-if="domains.length == 0">暂时还没有<span v-if="filter == 'deleted'">已删除</span><span v-if="filter == 'down'">已下线</span><span v-if="filter == ''">可以管理</span>的域名。</p>
+<p class="comment" v-if="domains.length == 0">暂时还没有<span v-if="filter == 'deleted'">已删除</span><span v-if="filter == 'down'">已下线</span><span v-if="filter == ''">可以管理</span>的域名.</p>
 
 <table class="ui table selectable celled" v-if="domains.length > 0">
     <thead>

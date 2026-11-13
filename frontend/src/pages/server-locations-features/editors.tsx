@@ -33,7 +33,7 @@ export function PriorCheckbox({ checked, onChange, description }: { checked: boo
             <label className="red" />
           </div>
           <p className="comment">
-            {checked ? <strong>[已打开]</strong> : null} {description || '打开后可以覆盖父级或子级配置'}。
+            {checked ? <strong>[已打开]</strong> : null} {description || '打开后可以覆盖父级或子级配置'}.
           </p>
         </td>
       </tr>
@@ -97,7 +97,7 @@ export function UrlsPatternsBox({ patterns, onChange }: { patterns: UrlPattern[]
       return
     }
     if ((type === 'wildcard' || type === 'regexp') && value.includes('?')) {
-      setError(`${type === 'wildcard' ? '通配符' : '正则表达式'}中不能包含问号（?）及问号以后的内容`)
+      setError(`${type === 'wildcard' ? '通配符' : '正则表达式'}中不能包含问号(?)及问号以后的内容`)
       return
     }
     const next = patterns.map((item) => ({ ...item }))
@@ -153,7 +153,7 @@ export function UrlsPatternsBox({ patterns, onChange }: { patterns: UrlPattern[]
                 type="text"
                 size={36}
                 value={pattern}
-                placeholder={type === 'wildcard' ? '可以使用星号（*）通配符，不区分大小写' : '可以使用正则表达式，不区分大小写'}
+                placeholder={type === 'wildcard' ? '可以使用星号(*)通配符,不区分大小写' : '可以使用正则表达式,不区分大小写'}
                 onChange={(event) => setPattern(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
@@ -243,15 +243,15 @@ export function DomainsBox({ domains, onChange }: { domains: string[]; onChange:
       try {
         new RegExp(value.substring(1))
       } catch (exception) {
-        setError(`正则表达式错误：${exception instanceof Error ? exception.message : String(exception)}`)
+        setError(`正则表达式错误:${exception instanceof Error ? exception.message : String(exception)}`)
         return
       }
     }
     const next = [...domains]
     if (editingIndex >= 0) {
       next[editingIndex] = value
-    } else if (/[，、,;]/.test(value)) {
-      value.split(/[，、,;]/).forEach((piece) => {
+    } else if (/[,,,;]/.test(value)) {
+      value.split(/[,,,;]/).forEach((piece) => {
         if (piece.length > 0) {
           next.push(piece)
         }
@@ -314,7 +314,7 @@ export function DomainsBox({ domains, onChange }: { domains: string[]; onChange:
                   size={30}
                   maxLength={100}
                   value={addingDomain}
-                  placeholder="example.com、*.example.com"
+                  placeholder="example.com,*.example.com"
                   onChange={(event) => setAddingDomain(event.target.value)}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') {
@@ -338,7 +338,7 @@ export function DomainsBox({ domains, onChange }: { domains: string[]; onChange:
             </div>
           </div>
           <p className="comment">
-            支持普通域名（<code>example.com</code>）、泛域名（<code>*.example.com</code>）、域名后缀（以点号开头，如<code>.example.com</code>）和正则表达式（以波浪号开头，如<code>~.*.example.com</code>）。
+            支持普通域名(<code>example.com</code>),泛域名(<code>*.example.com</code>),域名后缀(以点号开头,如<code>.example.com</code>)和正则表达式(以波浪号开头,如<code>~.*.example.com</code>).
           </p>
           <div className="ui divider" />
         </div>
@@ -668,7 +668,7 @@ export function CondsBox({ conds, onChange }: { conds: RequestCondsConfig; onCha
                   <option value="and">和</option>
                   <option value="or">或</option>
                 </select>
-                <p className="comment">{conds.connector === 'or' ? '只要满足其中一个条件分组即可。' : '需要满足所有条件分组。'}</p>
+                <p className="comment">{conds.connector === 'or' ? '只要满足其中一个条件分组即可.' : '需要满足所有条件分组.'}</p>
               </td>
             </tr>
           </tbody>

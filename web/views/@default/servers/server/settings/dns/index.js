@@ -3,7 +3,7 @@ Tea.context(function () {
 
 	this.regenerateCNAME = function () {
 		let serverId = this.serverId
-		teaweb.confirm("确定要重新生成此服务的CNAME吗？", function () {
+		teaweb.confirm("确定要重新生成此服务的CNAME吗?", function () {
 			this.$post(".regenerateCNAME")
 				.params({
 					serverId: serverId

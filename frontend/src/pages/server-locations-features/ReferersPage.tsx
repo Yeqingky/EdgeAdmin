@@ -100,7 +100,7 @@ export function ReferersPage() {
             <tbody>
               <FormRow title="启用防盗链">
                 <Checkbox checked={config.isOn} onChange={(isOn) => update({ isOn })} />
-                <p className="comment">选中后表示开启防盗链。</p>
+                <p className="comment">选中后表示开启防盗链.</p>
               </FormRow>
             </tbody>
           ) : null}
@@ -108,23 +108,23 @@ export function ReferersPage() {
             <tbody>
               <FormRow title="允许直接访问网站">
                 <Checkbox checked={config.allowEmpty} onChange={(allowEmpty) => update({ allowEmpty })} />
-                <p className="comment">允许用户直接访问网站，用户第一次访问网站时来源域名通常为空。</p>
+                <p className="comment">允许用户直接访问网站,用户第一次访问网站时来源域名通常为空.</p>
               </FormRow>
               <FormRow title="来源域名允许一致">
                 <Checkbox checked={config.allowSameDomain} onChange={(allowSameDomain) => update({ allowSameDomain })} />
-                <p className="comment">允许来源域名和当前访问的域名一致，相当于在站内访问。</p>
+                <p className="comment">允许来源域名和当前访问的域名一致,相当于在站内访问.</p>
               </FormRow>
               <FormRow title="允许的来源域名">
                 <DomainsBox domains={config.allowDomains} onChange={(allowDomains) => update({ allowDomains })} />
                 <p className="comment">
-                  允许的其他来源域名列表，比如<code>example.com</code>、<code>*.example.com</code>。单个星号<code>*</code>表示允许所有域名。
+                  允许的其他来源域名列表,比如<code>example.com</code>,<code>*.example.com</code>.单个星号<code>*</code>表示允许所有域名.
                 </p>
               </FormRow>
               <FormRow title="禁止的来源域名">
                 <DomainsBox domains={config.denyDomains} onChange={(denyDomains) => update({ denyDomains })} />
                 <p className="comment">
-                  禁止的来源域名列表，比如<code>example.org</code>、<code>*.example.org</code>；除了这些禁止的来源域名外，其他域名都会被允许，
-                  除非限定了允许的来源域名。
+                  禁止的来源域名列表,比如<code>example.org</code>,<code>*.example.org</code>;除了这些禁止的来源域名外,其他域名都会被允许,
+                  除非限定了允许的来源域名.
                 </p>
               </FormRow>
               <tr>
@@ -138,15 +138,15 @@ export function ReferersPage() {
             <tbody>
               <FormRow title="同时检查Origin">
                 <Checkbox checked={config.checkOrigin} onChange={(checkOrigin) => update({ checkOrigin })} />
-                <p className="comment">如果请求没有指定Referer Header，则尝试检查Origin Header，多用于跨站调用。</p>
+                <p className="comment">如果请求没有指定Referer Header,则尝试检查Origin Header,多用于跨站调用.</p>
               </FormRow>
               <FormRow title="例外URL">
                 <UrlsPatternsBox patterns={config.exceptURLPatterns} onChange={(exceptURLPatterns) => update({ exceptURLPatterns })} />
-                <p className="comment">如果填写了例外URL，表示这些URL跳过不做处理。</p>
+                <p className="comment">如果填写了例外URL,表示这些URL跳过不做处理.</p>
               </FormRow>
               <FormRow title="限制URL">
                 <UrlsPatternsBox patterns={config.onlyURLPatterns} onChange={(onlyURLPatterns) => update({ onlyURLPatterns })} />
-                <p className="comment">如果填写了限制URL，表示只对这些URL进行处理；如果不填则表示支持所有的URL。</p>
+                <p className="comment">如果填写了限制URL,表示只对这些URL进行处理;如果不填则表示支持所有的URL.</p>
               </FormRow>
             </tbody>
           ) : null}

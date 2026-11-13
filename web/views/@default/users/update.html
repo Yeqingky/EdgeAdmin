@@ -9,7 +9,7 @@
             <td class="title">用户名 *</td>
             <td>
                 <input type="text" name="username" maxlength="100" ref="focus" v-model="user.username"/>
-                <p class="comment">用户名只能是英文、数字、下划线的组合。</p>
+                <p class="comment">用户名只能是英文,数字,下划线的组合.</p>
             </td>
         </tr>
         <tr>
@@ -21,7 +21,7 @@
 
                 <div v-show="passwordEditing" style="margin-top: 0.6em">
                     <input type="password" name="pass1" maxlength="100"/>
-                    <p class="comment">留空表示不修改。</p>
+                    <p class="comment">留空表示不修改.</p>
                 </div>
             </td>
         </tr>
@@ -35,14 +35,14 @@
             <td>全名 *</td>
             <td>
                 <input type="text" name="fullname" maxlength="100" v-model="user.fullname"/>
-                <p class="comment">用户姓名或者公司名称等等。</p>
+                <p class="comment">用户姓名或者公司名称等等.</p>
             </td>
         </tr>
         <tr>
             <td>关联集群 *</td>
             <td>
                 <cluster-selector :v-cluster-id="clusterId"></cluster-selector>
-                <p class="comment">用户发布的网站会自动部署到此集群，修改此选项会同步修改当前用户下的所有网站，但不影响和套餐绑定的服务。</p>
+                <p class="comment">用户发布的网站会自动部署到此集群,修改此选项会同步修改当前用户下的所有网站,但不影响和套餐绑定的服务.</p>
             </td>
         </tr>
         <tr>
@@ -71,7 +71,7 @@
                 <td>OTP认证</td>
                 <td>
                     <checkbox name="otpOn" v-model="user.otpLoginIsOn">启用OTP</checkbox>
-                    <p class="comment">启用OTP认证后，在用户登录的时候需要同时填写OTP动态密码。</p>
+                    <p class="comment">启用OTP认证后,在用户登录的时候需要同时填写OTP动态密码.</p>
                 </td>
             </tr>
             <tr>
@@ -88,8 +88,8 @@
                         <option value="secondly">峰值带宽</option>
                         <option value="avg">平均带宽</option>
                     </select>
-                    <p class="comment" v-if="user.bandwidthAlgo == 'secondly'">按在计时时间段内（5分钟）最高带宽峰值计算，比如5分钟内最高的某个时间点带宽为100Mbps，那么就认为此时间段内的峰值带宽为100Mbps。</p>
-                    <p class="comment" v-if="user.bandwidthAlgo == 'avg'">按在计时时间段内（5分钟）平均带宽计算，即此时间段内的总流量除以时间段的秒数，比如5分钟（300秒）内总流量600MiB，那么带宽即为<code-label>600MiB * 8bit/300s = 16Mbps</code-label>；通常平均带宽算法要比峰值带宽要少很多。</p>
+                    <p class="comment" v-if="user.bandwidthAlgo == 'secondly'">按在计时时间段内(5分钟)最高带宽峰值计算,比如5分钟内最高的某个时间点带宽为100Mbps,那么就认为此时间段内的峰值带宽为100Mbps.</p>
+                    <p class="comment" v-if="user.bandwidthAlgo == 'avg'">按在计时时间段内(5分钟)平均带宽计算,即此时间段内的总流量除以时间段的秒数,比如5分钟(300秒)内总流量600MiB,那么带宽即为<code-label>600MiB * 8bit/300s = 16Mbps</code-label>;通常平均带宽算法要比峰值带宽要少很多.</p>
                 </td>
             </tr>
             <tr>

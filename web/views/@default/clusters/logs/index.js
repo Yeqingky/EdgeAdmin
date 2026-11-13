@@ -63,7 +63,7 @@ Tea.context(function () {
 		let logIds = this.logs.map(function (v) {
 			return v.id
 		})
-		teaweb.confirm("确定已修复并消除当前页的问题？", function () {
+		teaweb.confirm("确定已修复并消除当前页的问题?", function () {
 			this.$post(".fix")
 				.params({
 					logIds: logIds
@@ -75,7 +75,7 @@ Tea.context(function () {
 	}
 
 	this.fixAllLogs = function () {
-		teaweb.confirm("确定已修复并消除所有的问题？", function () {
+		teaweb.confirm("确定已修复并消除所有的问题?", function () {
 			this.$post(".fixAll")
 				.success(function () {
 					teaweb.reload()
@@ -84,7 +84,7 @@ Tea.context(function () {
 	}
 
 	this.deleteLogs = function () {
-		teaweb.confirm("确定要删除当前关键词\"" + this.searchedKeyword + "\"匹配的" + this.countLogs + "个运行日志？", function () {
+		teaweb.confirm("确定要删除当前关键词\"" + this.searchedKeyword + "\"匹配的" + this.countLogs + "个运行日志?", function () {
 			this.$post(".deleteAll")
 				.params({
 					dayFrom: this.dayFrom,

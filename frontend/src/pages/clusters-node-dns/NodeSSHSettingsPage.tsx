@@ -78,7 +78,7 @@ export function NodeSSHSettingsPage() {
   }, [data, initialized])
 
   if (clusterId <= 0 || nodeId <= 0) {
-    return <div className="ui negative message">缺少节点参数。</div>
+    return <div className="ui negative message">缺少节点参数.</div>
   }
   if (query.isError) {
     return <div className="ui negative message">加载失败</div>
@@ -134,15 +134,15 @@ export function NodeSSHSettingsPage() {
             <p className="comment">
               {data.hostIsAutoFilled ? (
                 <span className="red">
-                  <strong>已自动填充</strong>，需要点击"保存"按钮后生效。
+                  <strong>已自动填充</strong>,需要点击"保存"按钮后生效.
                 </span>
               ) : null}
-              比如192.168.1.100。
+              比如192.168.1.100.
             </p>
           </FormRow>
           <FormRow title="SSH主机端口">
             <input type="text" maxLength={5} style={{ width: '6em' }} value={sshPort} onChange={(event) => setSshPort(event.target.value)} />
-            <p className="comment">比如22。</p>
+            <p className="comment">比如22.</p>
           </FormRow>
           <FormRow title="SSH登录认证">
             <GrantSelector clusterId={clusterId} value={grant} onChange={setGrant} />
@@ -150,8 +150,8 @@ export function NodeSSHSettingsPage() {
         </FormTable>
 
         {testing ? <div className="ui message">正在测试连接 ...</div> : null}
-        {!testing && testResult && testResult.isOk ? <div className="ui message green">连接成功！</div> : null}
-        {!testing && testResult && !testResult.isOk ? <div className="ui message red">连接失败：{testResult.error}</div> : null}
+        {!testing && testResult && testResult.isOk ? <div className="ui message green">连接成功!</div> : null}
+        {!testing && testResult && !testResult.isOk ? <div className="ui message red">连接失败:{testResult.error}</div> : null}
 
         <div style={{ marginTop: '0.6em' }}>
           <button

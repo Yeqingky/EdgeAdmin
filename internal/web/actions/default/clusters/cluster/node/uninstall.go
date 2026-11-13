@@ -26,5 +26,5 @@ func (this *UninstallAction) RunPost(params struct {
 		this.Success()
 	}
 
-	this.Fail("执行失败：" + resp.Error)
+	this.Fail("执行失败:" + resp.Error)
 }

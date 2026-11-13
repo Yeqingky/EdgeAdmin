@@ -80,7 +80,7 @@ Vue.component("ip-list-table", {
 		},
 		deleteCount: function () {
 			let that = this
-			teaweb.confirm("确定要批量删除当前列表中的" + this.MaxDeletes + "个IP吗？", function () {
+			teaweb.confirm("确定要批量删除当前列表中的" + this.MaxDeletes + "个IP吗?", function () {
 				let query = window.location.search
 				if (query.startsWith("?")) {
 					query = query.substring(1)
@@ -123,7 +123,7 @@ Vue.component("ip-list-table", {
  	<div class="ui divider"></div>
  	<button class="ui button basic" type="button" @click.prevent="deleteAll">批量删除所选</button>
  	&nbsp; &nbsp; 
- 	<button class="ui button basic" type="button" @click.prevent="deleteCount" v-if="vTotal != null && vTotal >= MaxDeletes">批量删除所有搜索结果（{{MaxDeletes}}个）</button>
+ 	<button class="ui button basic" type="button" @click.prevent="deleteCount" v-if="vTotal != null && vTotal >= MaxDeletes">批量删除所有搜索结果({{MaxDeletes}}个)</button>
  	
  	&nbsp; &nbsp; 
  	<button class="ui button basic" type="button" @click.prevent="cancelChecked">取消选中</button>
@@ -174,17 +174,17 @@ Vue.component("ip-list-table", {
 							<span v-if="item.list != null && item.list.id > 0">
 								@ 
 								
-								<a :href="'/servers/iplists/list?listId=' + item.list.id" v-if="item.policy.id == 0"><span>[<span v-if="item.list.type == 'black'">黑</span><span v-if="item.list.type == 'white'">白</span><span v-if="item.list.type == 'grey'">灰</span>名单：{{item.list.name}}]</span></a>
-								<span v-else>[<span v-if="item.list.type == 'black'">黑</span><span v-if="item.list.type == 'white'">白</span><span v-if="item.list.type == 'grey'">灰</span>名单：{{item.list.name}}</span>
+								<a :href="'/servers/iplists/list?listId=' + item.list.id" v-if="item.policy.id == 0"><span>[<span v-if="item.list.type == 'black'">黑</span><span v-if="item.list.type == 'white'">白</span><span v-if="item.list.type == 'grey'">灰</span>名单:{{item.list.name}}]</span></a>
+								<span v-else>[<span v-if="item.list.type == 'black'">黑</span><span v-if="item.list.type == 'white'">白</span><span v-if="item.list.type == 'grey'">灰</span>名单:{{item.list.name}}</span>
 								
 								<span v-if="item.policy.id > 0">
 									<span v-if="item.policy.server != null">
-										<a :href="'/servers/server/settings/waf/ipadmin/allowList?serverId=' + item.policy.server.id + '&firewallPolicyId=' + item.policy.id" v-if="item.list.type == 'white'">[网站：{{item.policy.server.name}}]</a>
-										<a :href="'/servers/server/settings/waf/ipadmin/denyList?serverId=' + item.policy.server.id + '&firewallPolicyId=' + item.policy.id" v-if="item.list.type == 'black'">[网站：{{item.policy.server.name}}]</a>
-										<a :href="'/servers/server/settings/waf/ipadmin/greyList?serverId=' + item.policy.server.id + '&firewallPolicyId=' + item.policy.id" v-if="item.list.type == 'grey'">[网站：{{item.policy.server.name}}]</a>
+										<a :href="'/servers/server/settings/waf/ipadmin/allowList?serverId=' + item.policy.server.id + '&firewallPolicyId=' + item.policy.id" v-if="item.list.type == 'white'">[网站:{{item.policy.server.name}}]</a>
+										<a :href="'/servers/server/settings/waf/ipadmin/denyList?serverId=' + item.policy.server.id + '&firewallPolicyId=' + item.policy.id" v-if="item.list.type == 'black'">[网站:{{item.policy.server.name}}]</a>
+										<a :href="'/servers/server/settings/waf/ipadmin/greyList?serverId=' + item.policy.server.id + '&firewallPolicyId=' + item.policy.id" v-if="item.list.type == 'grey'">[网站:{{item.policy.server.name}}]</a>
 									</span>
 									<span v-else>
-										<a :href="'/servers/components/waf/ipadmin/lists?firewallPolicyId=' + item.policy.id +  '&type=' + item.list.type">[策略：{{item.policy.name}}]</a>
+										<a :href="'/servers/components/waf/ipadmin/lists?firewallPolicyId=' + item.policy.id +  '&type=' + item.list.type">[策略:{{item.policy.name}}]</a>
 									</span>
 								</span>
 							</span>

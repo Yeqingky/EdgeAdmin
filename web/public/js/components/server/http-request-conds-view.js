@@ -26,7 +26,7 @@ Vue.component("http-request-conds-view", {
 		}
 	},
 	computed: {
-		// 之所以使用computed，是因为需要动态更新
+		// 之所以使用computed,是因为需要动态更新
 		conds: function () {
 			return this.initConds
 		}

@@ -25,7 +25,7 @@ Tea.context(function () {
 	this.isSyncing = false
 	this.syncCluster = function (clusterId) {
 		let that = this
-		teaweb.confirm("确定要执行数据同步吗？", function () {
+		teaweb.confirm("确定要执行数据同步吗?", function () {
 			that.isSyncing = true
 			that.$post("/dns/clusters/sync")
 				.params({clusterId: clusterId})
@@ -43,7 +43,7 @@ Tea.context(function () {
 
 	this.deleteTask = function (taskId) {
 		let that = this
-		teaweb.confirm("确定要删除这个任务吗？", function () {
+		teaweb.confirm("确定要删除这个任务吗?", function () {
 			that.$post("/dns/tasks/delete")
 				.params({
 					taskId: taskId

@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react'
 import { ChevronDown, ChevronUp, Pencil, Plus, X } from 'lucide-react'
 import type { SizeCapacity, URLPattern } from './types'
 
-// 打开独立配置（对应 legacy prior-checkbox）
+// 打开独立配置(对应 legacy prior-checkbox)
 export function PriorRow({ isPrior, onChange, description }: {
   isPrior: boolean
   onChange: (value: boolean) => void
@@ -19,7 +19,7 @@ export function PriorRow({ isPrior, onChange, description }: {
           </div>
           <p className="comment">
             {isPrior ? <strong>[已打开] </strong> : null}
-            {description || '打开后可以覆盖父级或子级配置'}。
+            {description || '打开后可以覆盖父级或子级配置'}.
           </p>
         </td>
       </tr>
@@ -27,7 +27,7 @@ export function PriorRow({ isPrior, onChange, description }: {
   )
 }
 
-// 更多选项（对应 legacy more-options-indicator，放在已有的单元格内）
+// 更多选项(对应 legacy more-options-indicator,放在已有的单元格内)
 export function MoreOptionsIndicator({ visible, onToggle }: { visible: boolean; onToggle: () => void }) {
   return (
     <a href="" style={{ fontWeight: 'normal' }} onClick={(event) => { event.preventDefault(); onToggle() }}>
@@ -37,7 +37,7 @@ export function MoreOptionsIndicator({ visible, onToggle }: { visible: boolean; 
   )
 }
 
-// 更多选项（对应 legacy more-options-tbody）
+// 更多选项(对应 legacy more-options-tbody)
 export function MoreOptionsRow({ visible, onToggle }: { visible: boolean; onToggle: () => void }) {
   return (
     <tbody>
@@ -53,7 +53,7 @@ export function MoreOptionsRow({ visible, onToggle }: { visible: boolean; onTogg
   )
 }
 
-// 字符串列表（对应 legacy values-box）
+// 字符串列表(对应 legacy values-box)
 export function ValueList({ values, onChange, placeholder, normalize }: {
   values: string[]
   onChange: (values: string[]) => void
@@ -159,7 +159,7 @@ export function ValueList({ values, onChange, placeholder, normalize }: {
   )
 }
 
-// 域名列表（对应 legacy domains-box）
+// 域名列表(对应 legacy domains-box)
 export function DomainsField({ domains, onChange, placeholder }: {
   domains: string[]
   onChange: (domains: string[]) => void
@@ -186,7 +186,7 @@ export function DomainsField({ domains, onChange, placeholder }: {
       if (value.length === 0) {
         return
       }
-      const pieces = value.split(/[，、,;]/).filter((piece) => piece.length > 0)
+      const pieces = value.split(/[,,,;]/).filter((piece) => piece.length > 0)
       if (editingIndex >= 0) {
         const next = domains.slice()
         next[editingIndex] = value
@@ -263,7 +263,7 @@ export function DomainsField({ domains, onChange, placeholder }: {
                 autoFocus
                 size={30}
                 maxLength={100}
-                placeholder={placeholder || 'example.com、*.example.com'}
+                placeholder={placeholder || 'example.com,*.example.com'}
                 onChange={(event) => setInput(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
@@ -305,7 +305,7 @@ const sizeUnits: { value: string; name: string }[] = [
   { value: 'tb', name: 'TiB' },
 ]
 
-// 尺寸容量（对应 legacy size-capacity-box）
+// 尺寸容量(对应 legacy size-capacity-box)
 export function SizeCapacityField({ value, onChange, unit }: {
   value: SizeCapacity | null | undefined
   onChange: (value: SizeCapacity) => void
@@ -349,7 +349,7 @@ const urlPatternTypeNames: Record<string, string> = {
   videos: '常见视频文件',
 }
 
-// URL 规则列表（对应 legacy url-patterns-box）
+// URL 规则列表(对应 legacy url-patterns-box)
 export function UrlPatternsField({ patterns, onChange }: {
   patterns: URLPattern[]
   onChange: (patterns: URLPattern[]) => void
@@ -432,7 +432,7 @@ export function UrlPatternsField({ patterns, onChange }: {
                 value={pattern}
                 autoFocus
                 spellCheck={false}
-                placeholder={type === 'wildcard' ? '可以使用星号（*）通配符，不区分大小写' : '可以使用正则表达式，不区分大小写'}
+                placeholder={type === 'wildcard' ? '可以使用星号(*)通配符,不区分大小写' : '可以使用正则表达式,不区分大小写'}
                 onChange={(event) => setPattern(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
@@ -443,7 +443,7 @@ export function UrlPatternsField({ patterns, onChange }: {
               />
               {invalid ? (
                 <p className="comment">
-                  <span className="red">通配符中不能包含问号（?）及问号以后的内容。</span>
+                  <span className="red">通配符中不能包含问号(?)及问号以后的内容.</span>
                 </p>
               ) : null}
             </div>
@@ -467,7 +467,7 @@ export function UrlPatternsField({ patterns, onChange }: {
   )
 }
 
-// 提示图标（对应 legacy tip-icon）
+// 提示图标(对应 legacy tip-icon)
 export function Tip({ content, children }: { content: string; children?: ReactNode }) {
   return (
     <span className="ui label small" title={content} style={{ cursor: 'help' }}>

@@ -103,7 +103,7 @@ func (this *UpgradePopupAction) RunPost(params struct {
 
 	var oldUpgrader = manager.FindUpgrader(params.NodeId)
 	if oldUpgrader != nil {
-		this.Fail("正在升级中，无需重复提交 ...")
+		this.Fail("正在升级中,无需重复提交 ...")
 		return
 	}
 
@@ -115,7 +115,7 @@ func (this *UpgradePopupAction) RunPost(params struct {
 
 	err := upgrader.Upgrade()
 	if err != nil {
-		this.Fail("升级失败：" + err.Error())
+		this.Fail("升级失败:" + err.Error())
 		return
 	}
 

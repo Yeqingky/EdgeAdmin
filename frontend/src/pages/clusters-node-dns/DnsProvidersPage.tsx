@@ -65,7 +65,7 @@ export function DnsProvidersPage() {
   }
 
   async function deleteProvider(providerId: number) {
-    if (!(await confirm({ message: '确定要删除这个DNS服务商账号吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个DNS服务商账号吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     remove.mutate(providerId)
@@ -138,7 +138,7 @@ export function DnsProvidersPage() {
         </div>
       </form>
 
-      {data.providers.length === 0 ? <p className="comment">暂时还没有第三方DNS服务商。</p> : null}
+      {data.providers.length === 0 ? <p className="comment">暂时还没有第三方DNS服务商.</p> : null}
 
       {data.providers.length > 0 ? (
         <table className="ui table selectable celled">

@@ -429,7 +429,7 @@ Vue.component("http-firewall-actions-box", {
 						}
 						let that = this
 
-						// VUE需要在函数执行完之后才会调用watch函数，这样会导致设置的值被覆盖，所以这里使用setTimeout
+						// VUE需要在函数执行完之后才会调用watch函数,这样会导致设置的值被覆盖,所以这里使用setTimeout
 						setTimeout(function () {
 							that.recordIPListId = config.options.ipListId
 							that.recordIPListName = config.options.ipListName
@@ -485,7 +485,7 @@ Vue.component("http-firewall-actions-box", {
 							return v.id == config.options.groupId
 						})
 
-						// VUE需要在函数执行完之后才会调用watch函数，这样会导致设置的值被覆盖，所以这里使用setTimeout
+						// VUE需要在函数执行完之后才会调用watch函数,这样会导致设置的值被覆盖,所以这里使用setTimeout
 						let that = this
 						setTimeout(function () {
 							that.goSetId = config.options.setId
@@ -694,41 +694,41 @@ Vue.component("http-firewall-actions-box", {
 			</span>
 			
 			<!-- block -->
-			<span v-if="config.code == 'block' && config.options.timeout > 0">：封禁时长{{config.options.timeout}}<span v-if="config.options.timeoutMax > config.options.timeout">-{{config.options.timeoutMax}}</span>秒</span>
+			<span v-if="config.code == 'block' && config.options.timeout > 0">:封禁时长{{config.options.timeout}}<span v-if="config.options.timeoutMax > config.options.timeout">-{{config.options.timeoutMax}}</span>秒</span>
 			
 			<!-- captcha -->
-			<span v-if="config.code == 'captcha' && config.options.life > 0">：有效期{{config.options.life}}秒
+			<span v-if="config.code == 'captcha' && config.options.life > 0">:有效期{{config.options.life}}秒
 				<span v-if="config.options.maxFails > 0"> / 最多失败{{config.options.maxFails}}次</span>
 			</span>
 			
 			<!-- js cookie -->
-			<span v-if="config.code == 'js_cookie' && config.options.life > 0">：有效期{{config.options.life}}秒
+			<span v-if="config.code == 'js_cookie' && config.options.life > 0">:有效期{{config.options.life}}秒
 				<span v-if="config.options.maxFails > 0"> / 最多失败{{config.options.maxFails}}次</span>
 			</span>
 			
 			<!-- get 302 -->
-			<span v-if="config.code == 'get_302' && config.options.life > 0">：有效期{{config.options.life}}秒</span>
+			<span v-if="config.code == 'get_302' && config.options.life > 0">:有效期{{config.options.life}}秒</span>
 			
 			<!-- post 307 -->
-			<span v-if="config.code == 'post_307' && config.options.life > 0">：有效期{{config.options.life}}秒</span>
+			<span v-if="config.code == 'post_307' && config.options.life > 0">:有效期{{config.options.life}}秒</span>
 			
 			<!-- record_ip -->
-			<span v-if="config.code == 'record_ip'">：<span :class="{red: config.options.ipListIsDeleted}">{{config.options.ipListName}}</span></span>
+			<span v-if="config.code == 'record_ip'">:<span :class="{red: config.options.ipListIsDeleted}">{{config.options.ipListName}}</span></span>
 			
 			<!-- tag -->
-			<span v-if="config.code == 'tag'">：{{config.options.tags.join(", ")}}</span>
+			<span v-if="config.code == 'tag'">:{{config.options.tags.join(", ")}}</span>
 			
 			<!-- page -->
-			<span v-if="config.code == 'page'">：[{{config.options.status}}]<span v-if="config.options.useDefault">&nbsp; [默认页面]</span></span>
+			<span v-if="config.code == 'page'">:[{{config.options.status}}]<span v-if="config.options.useDefault">&nbsp; [默认页面]</span></span>
 			
 			<!-- redirect -->
-			<span v-if="config.code == 'redirect'">：{{config.options.url}}</span>
+			<span v-if="config.code == 'redirect'">:{{config.options.url}}</span>
 			
 			<!-- go_group -->
-			<span v-if="config.code == 'go_group'">：{{config.options.groupName}}</span>
+			<span v-if="config.code == 'go_group'">:{{config.options.groupName}}</span>
 			
 			<!-- go_set -->
-			<span v-if="config.code == 'go_set'">：{{config.options.groupName}} / {{config.options.setName}}</span>
+			<span v-if="config.code == 'go_set'">:{{config.options.groupName}} / {{config.options.setName}}</span>
 			
 			<!-- 范围 -->
 			<span v-if="config.code != 'allow' && config.options.scope != null && config.options.scope.length > 0" class="small grey">
@@ -763,9 +763,9 @@ Vue.component("http-firewall-actions-box", {
 						<option value="server">网站</option>
 						<option value="global">网站和策略</option>
 					</select>
-					<p class="comment" v-if="allowScope == 'group'">跳过当前分组其他规则集，继续执行其他分组的规则集。</p>
-					<p class="comment" v-if="allowScope == 'server'">跳过当前网站所有的规则集。</p>
-					<p class="comment" v-if="allowScope =='global'">跳过当前网站和网站对应WAF策略所有的规则集。</p>
+					<p class="comment" v-if="allowScope == 'group'">跳过当前分组其他规则集,继续执行其他分组的规则集.</p>
+					<p class="comment" v-if="allowScope == 'server'">跳过当前网站所有的规则集.</p>
+					<p class="comment" v-if="allowScope =='global'">跳过当前网站和网站对应WAF策略所有的规则集.</p>
 				</td>
 			</tr>
 			
@@ -777,8 +777,8 @@ Vue.component("http-firewall-actions-box", {
 						<option value="service">当前网站</option>
 						<option value="global">所有网站</option>
 					</select>
-					<p class="comment" v-if="blockScope == 'service'">只封禁用户对当前网站的访问，其他网站不受影响。</p>
-					<p class="comment" v-if="blockScope =='global'">封禁用户对所有网站的访问。</p>
+					<p class="comment" v-if="blockScope == 'service'">只封禁用户对当前网站的访问,其他网站不受影响.</p>
+					<p class="comment" v-if="blockScope =='global'">封禁用户对所有网站的访问.</p>
 				</td>
 			</tr>
 			<tr v-if="actionCode == 'block'">
@@ -797,7 +797,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 5em" maxlength="9" v-model="blockTimeoutMax" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">秒</span>
 					</div>
-					<p class="comment">选填项。如果同时填写了封禁时长和最大封禁时长，则会在两者之间随机选择一个数字作为最终的封禁时长。</p>
+					<p class="comment">选填项.如果同时填写了封禁时长和最大封禁时长,则会在两者之间随机选择一个数字作为最终的封禁时长.</p>
 				</td>
 			</tr>
 			
@@ -809,7 +809,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 5em" maxlength="9" v-model="captchaLife" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">秒</span>
 					</div>
-					<p class="comment">验证通过后在这个时间内不再验证；如果为空或者为0表示默认。</p>
+					<p class="comment">验证通过后在这个时间内不再验证;如果为空或者为0表示默认.</p>
 				</td>
 			</tr>
 			<tr v-if="actionCode == 'captcha'">
@@ -819,7 +819,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 5em" maxlength="9" v-model="captchaMaxFails" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">次</span>
 					</div>
-					<p class="comment"><span v-if="captchaMaxFails > 0 && captchaMaxFails < 5" class="red">建议填入一个不小于5的数字，以减少误判几率。</span>允许用户失败尝试的最多次数，超过这个次数将被自动加入黑名单；如果为空或者为0表示默认。</p>
+					<p class="comment"><span v-if="captchaMaxFails > 0 && captchaMaxFails < 5" class="red">建议填入一个不小于5的数字,以减少误判几率.</span>允许用户失败尝试的最多次数,超过这个次数将被自动加入黑名单;如果为空或者为0表示默认.</p>
 				</td>
 			</tr>
 			<tr v-if="actionCode == 'captcha'">
@@ -829,7 +829,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 5em" maxlength="9" v-model="captchaFailBlockTimeout" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">秒</span>
 					</div>
-					<p class="comment">在达到最多失败次数（大于0）时，自动拦截的时间；如果为空或者为0表示默认。</p>
+					<p class="comment">在达到最多失败次数(大于0)时,自动拦截的时间;如果为空或者为0表示默认.</p>
 				</td>
 			</tr>
 			
@@ -841,7 +841,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 5em" maxlength="9" v-model="jsCookieLife" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">秒</span>
 					</div>
-					<p class="comment">验证通过后在这个时间内不再验证；如果为空或者为0表示默认。</p>
+					<p class="comment">验证通过后在这个时间内不再验证;如果为空或者为0表示默认.</p>
 				</td>
 			</tr>
 			<tr v-if="actionCode == 'js_cookie'">
@@ -851,7 +851,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 5em" maxlength="9" v-model="jsCookieMaxFails" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">次</span>
 					</div>
-					<p class="comment">允许用户失败尝试的最多次数，超过这个次数将被自动加入黑名单；如果为空或者为0表示默认。</p>
+					<p class="comment">允许用户失败尝试的最多次数,超过这个次数将被自动加入黑名单;如果为空或者为0表示默认.</p>
 				</td>
 			</tr>
 			<tr v-if="actionCode == 'js_cookie'">
@@ -861,7 +861,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 5em" maxlength="9" v-model="jsCookieFailBlockTimeout" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">秒</span>
 					</div>
-					<p class="comment">在达到最多失败次数（大于0）时，自动拦截的时间；如果为空或者为0表示默认。</p>
+					<p class="comment">在达到最多失败次数(大于0)时,自动拦截的时间;如果为空或者为0表示默认.</p>
 				</td>
 			</tr>
 			
@@ -873,7 +873,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 5em" maxlength="9" v-model="get302Life" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">秒</span>
 					</div>
-					<p class="comment">验证通过后在这个时间内不再验证。</p>
+					<p class="comment">验证通过后在这个时间内不再验证.</p>
 				</td>
 			</tr>
 			
@@ -885,7 +885,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 5em" maxlength="9" v-model="post307Life" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">秒</span>
 					</div>
-					<p class="comment">验证通过后在这个时间内不再验证。</p>
+					<p class="comment">验证通过后在这个时间内不再验证.</p>
 				</td>
 			</tr>
 			
@@ -905,7 +905,7 @@ Vue.component("http-firewall-actions-box", {
 				<td>
 					<div v-if="recordIPListId > 0" class="ui label basic small">{{recordIPListName}} <a href="" @click.prevent="removeRecordIPList"><i class="icon remove small"></i></a></div>
 					<button type="button" class="ui button tiny" @click.prevent="selectRecordIPList">+</button>
-					<p class="comment">如不选择，则自动添加到当前策略的IP名单中。</p>
+					<p class="comment">如不选择,则自动添加到当前策略的IP名单中.</p>
 				</td>
 			</tr>
 			<tr v-if="actionCode == 'record_ip'">
@@ -923,7 +923,7 @@ Vue.component("http-firewall-actions-box", {
 						<input type="text" style="width: 6em" maxlength="9" v-model="recordIPTimeout" @keyup.enter="confirm()" @keypress.enter.prevent="1"/>
 						<span class="ui label">秒</span>
 					</div>
-					<p class="comment">0表示不超时。</p>
+					<p class="comment">0表示不超时.</p>
 				</td>
 			</tr>
 			
@@ -975,8 +975,8 @@ Vue.component("http-firewall-actions-box", {
 				<td>
 					<select class="ui dropdown auto-width" v-model="goGroupId">
 						<option value="0">[选择分组]</option>
-						<option v-if="vFirewallPolicy.inbound != null && vFirewallPolicy.inbound.groups != null" v-for="group in vFirewallPolicy.inbound.groups" :value="group.id">入站：{{group.name}}</option>
-						<option v-if="vGroupType == 'outbound' && vFirewallPolicy.outbound != null && vFirewallPolicy.outbound.groups != null" v-for="group in vFirewallPolicy.outbound.groups" :value="group.id">出站：{{group.name}}</option>
+						<option v-if="vFirewallPolicy.inbound != null && vFirewallPolicy.inbound.groups != null" v-for="group in vFirewallPolicy.inbound.groups" :value="group.id">入站:{{group.name}}</option>
+						<option v-if="vGroupType == 'outbound' && vFirewallPolicy.outbound != null && vFirewallPolicy.outbound.groups != null" v-for="group in vFirewallPolicy.outbound.groups" :value="group.id">出站:{{group.name}}</option>
 					</select>
 				</td>
 			</tr>
@@ -987,8 +987,8 @@ Vue.component("http-firewall-actions-box", {
 				<td>
 					<select class="ui dropdown auto-width" v-model="goGroupId">
 						<option value="0">[选择分组]</option>
-						<option v-if="vFirewallPolicy.inbound != null && vFirewallPolicy.inbound.groups != null" v-for="group in vFirewallPolicy.inbound.groups" :value="group.id">入站：{{group.name}}</option>
-						<option v-if="vGroupType == 'outbound' && vFirewallPolicy.outbound != null && vFirewallPolicy.outbound.groups != null" v-for="group in vFirewallPolicy.outbound.groups" :value="group.id">出站：{{group.name}}</option>
+						<option v-if="vFirewallPolicy.inbound != null && vFirewallPolicy.inbound.groups != null" v-for="group in vFirewallPolicy.inbound.groups" :value="group.id">入站:{{group.name}}</option>
+						<option v-if="vGroupType == 'outbound' && vFirewallPolicy.outbound != null && vFirewallPolicy.outbound.groups != null" v-for="group in vFirewallPolicy.outbound.groups" :value="group.id">出站:{{group.name}}</option>
 					</select>
 				</td>
 			</tr>
@@ -1008,6 +1008,6 @@ Vue.component("http-firewall-actions-box", {
 	<div v-if="!isAdding">
 		<button class="ui button tiny" type="button" @click.prevent="add">+</button>
 	</div>
-	<p class="comment">系统总是会先执行记录日志、标签等不会修改请求的动作，再执行阻止、验证码等可能改变请求的动作。</p>
+	<p class="comment">系统总是会先执行记录日志,标签等不会修改请求的动作,再执行阻止,验证码等可能改变请求的动作.</p>
 </div>`
 })

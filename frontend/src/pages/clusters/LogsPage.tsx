@@ -118,7 +118,7 @@ export function LogsPage() {
   }
 
   async function deleteLogs() {
-    if (!(await confirm({ message: '确定要清除这些日志吗？', danger: true, confirmText: '清除' }))) {
+    if (!(await confirm({ message: '确定要清除这些日志吗?', danger: true, confirmText: '清除' }))) {
       return
     }
     try {
@@ -273,7 +273,7 @@ export function LogsPage() {
                   .catch((error: Error) => toast(error.message, 'error'))
               }}
             >
-              [“{data.firstUnreadNode.name}”节点已读]
+              ["{data.firstUnreadNode.name}"节点已读]
             </a>
           ) : null}
         </div>
@@ -307,20 +307,20 @@ export function LogsPage() {
               [全部已修复]
             </a>
           </div>
-          <p className="ui message">已合并重复内容，当前显示数据和总数量可能不一致。</p>
+          <p className="ui message">已合并重复内容,当前显示数据和总数量可能不一致.</p>
         </div>
       ) : null}
 
       {data.logs.length === 0 ? (
         <p className="comment">
-          暂时还没有{type === 'unread' ? '未读' : type === 'needFix' ? '需修复' : ''}日志。
+          暂时还没有{type === 'unread' ? '未读' : type === 'needFix' ? '需修复' : ''}日志.
         </p>
       ) : null}
 
       {data.countLogs > 0 && data.searchedKeyword ? (
         <div className="search-keyword-label">
           <div className="ui label basic small">
-            正在搜索关键词"{data.searchedKeyword}"，共{data.countLogs}条记录 &nbsp;{' '}
+            正在搜索关键词"{data.searchedKeyword}",共{data.countLogs}条记录 &nbsp;{' '}
             <a href="" onClick={(event) => { event.preventDefault(); void deleteLogs() }}>
               <span className="small">[清除日志]</span>
             </a>
@@ -356,8 +356,8 @@ export function LogsPage() {
                   <span>{log.description}</span>
                   <div className="comment">
                     {log.createdTime}
-                    {log.isToday ? '（今天）' : ''}
-                    {log.server.id > 0 && log.server.name ? ` · 网站：${log.server.name}` : ''}
+                    {log.isToday ? '(今天)' : ''}
+                    {log.server.id > 0 && log.server.name ? ` · 网站:${log.server.name}` : ''}
                   </div>
                 </td>
                 <td>

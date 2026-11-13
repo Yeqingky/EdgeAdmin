@@ -115,7 +115,7 @@ export function ReferersPage() {
                 <input type="checkbox" checked={current.isOn} onChange={(event) => update('isOn', event.target.checked)} />
                 <label></label>
               </div>
-              <Comment>选中后表示开启防盗链。</Comment>
+              <Comment>选中后表示开启防盗链.</Comment>
             </FormRow>
             {current.isOn ? (
               <>
@@ -124,7 +124,7 @@ export function ReferersPage() {
                     <input type="checkbox" checked={current.allowEmpty} onChange={(event) => update('allowEmpty', event.target.checked)} />
                     <label></label>
                   </div>
-                  <Comment>允许用户直接访问网站，用户第一次访问网站时来源域名通常为空。</Comment>
+                  <Comment>允许用户直接访问网站,用户第一次访问网站时来源域名通常为空.</Comment>
                 </FormRow>
                 <FormRow title="来源域名允许一致">
                   <div className="ui checkbox">
@@ -135,7 +135,7 @@ export function ReferersPage() {
                     />
                     <label></label>
                   </div>
-                  <Comment>允许来源域名和当前访问的域名一致，相当于在站内访问。</Comment>
+                  <Comment>允许来源域名和当前访问的域名一致,相当于在站内访问.</Comment>
                 </FormRow>
                 <FormRow title="允许的来源域名">
                   <ValuesEditor
@@ -144,7 +144,7 @@ export function ReferersPage() {
                     placeholder="比如 example.com 或 *.example.com"
                   />
                   <Comment>
-                    允许的其他来源域名列表，比如 example.com、*.example.com。单个星号 * 表示允许所有域名。
+                    允许的其他来源域名列表,比如 example.com,*.example.com.单个星号 * 表示允许所有域名.
                   </Comment>
                 </FormRow>
                 <FormRow title="禁止的来源域名">
@@ -154,7 +154,7 @@ export function ReferersPage() {
                     placeholder="比如 example.org 或 *.example.org"
                   />
                   <Comment>
-                    禁止的来源域名列表，比如 example.org、*.example.org；除了这些禁止的来源域名外，其他域名都会被允许，除非限定了允许的来源域名。
+                    禁止的来源域名列表,比如 example.org,*.example.org;除了这些禁止的来源域名外,其他域名都会被允许,除非限定了允许的来源域名.
                   </Comment>
                 </FormRow>
                 <tr>
@@ -180,15 +180,15 @@ export function ReferersPage() {
                   <input type="checkbox" checked={current.checkOrigin} onChange={(event) => update('checkOrigin', event.target.checked)} />
                   <label></label>
                 </div>
-                <Comment>如果请求没有指定Referer Header，则尝试检查Origin Header，多用于跨站调用。</Comment>
+                <Comment>如果请求没有指定Referer Header,则尝试检查Origin Header,多用于跨站调用.</Comment>
               </FormRow>
               <FormRow title="例外URL">
                 <URLPatternsEditor patterns={current.exceptURLPatterns || []} onChange={(values) => update('exceptURLPatterns', values)} />
-                <Comment>如果填写了例外URL，表示这些URL跳过不做处理。</Comment>
+                <Comment>如果填写了例外URL,表示这些URL跳过不做处理.</Comment>
               </FormRow>
               <FormRow title="限制URL">
                 <URLPatternsEditor patterns={current.onlyURLPatterns || []} onChange={(values) => update('onlyURLPatterns', values)} />
-                <Comment>如果填写了限制URL，表示只对这些URL进行处理；如果不填则表示支持所有的URL。</Comment>
+                <Comment>如果填写了限制URL,表示只对这些URL进行处理;如果不填则表示支持所有的URL.</Comment>
               </FormRow>
             </tbody>
           ) : null}
@@ -220,18 +220,18 @@ const REMOTE_ADDR_OPTIONS = [
     type: 'default',
     name: '直接获取',
     description:
-      '用户直接访问边缘节点，即 "用户 --> 边缘节点" 模式，这时候系统会试图从直接的连接中读取到客户端IP地址。',
+      '用户直接访问边缘节点,即 "用户 --> 边缘节点" 模式,这时候系统会试图从直接的连接中读取到客户端IP地址.',
     value: '${rawRemoteAddr}',
   },
   {
     type: 'proxy',
     name: '从上级代理中获取',
     description:
-      '用户和边缘节点之间有别的代理服务转发，即 "用户 --> [第三方代理服务] --> 边缘节点"，这时候只能从上级代理中获取传递的IP地址；上级代理传递的请求报头中必须包含 X-Forwarded-For 或 X-Real-IP 信息。',
+      '用户和边缘节点之间有别的代理服务转发,即 "用户 --> [第三方代理服务] --> 边缘节点",这时候只能从上级代理中获取传递的IP地址;上级代理传递的请求报头中必须包含 X-Forwarded-For 或 X-Real-IP 信息.',
     value: '${remoteAddr}',
   },
-  { type: 'requestHeader', name: '从请求报头中读取', description: '从自定义请求报头读取客户端IP。', value: '' },
-  { type: 'variable', name: '[自定义变量]', description: '通过自定义变量来获取客户端真实的IP地址。', value: '' },
+  { type: 'requestHeader', name: '从请求报头中读取', description: '从自定义请求报头读取客户端IP.', value: '' },
+  { type: 'variable', name: '[自定义变量]', description: '通过自定义变量来获取客户端真实的IP地址.', value: '' },
 ]
 
 export function RemoteAddrPage() {
@@ -309,7 +309,7 @@ export function RemoteAddrPage() {
                 <input type="checkbox" checked={current.isOn} onChange={(event) => update('isOn', event.target.checked)} />
                 <label></label>
               </div>
-              <Comment>选中后，表示使用自定义的请求变量获取客户端IP。</Comment>
+              <Comment>选中后,表示使用自定义的请求变量获取客户端IP.</Comment>
             </FormRow>
             {current.isOn ? (
               <>
@@ -338,7 +338,7 @@ export function RemoteAddrPage() {
                       }
                     />
                     <Comment>
-                      请输入包含有客户端IP的请求报头，需要注意大小写，常见的有 X-Forwarded-For、X-Real-IP、X-Client-IP 等。
+                      请输入包含有客户端IP的请求报头,需要注意大小写,常见的有 X-Forwarded-For,X-Real-IP,X-Client-IP 等.
                     </Comment>
                   </FormRow>
                 ) : null}
@@ -351,7 +351,7 @@ export function RemoteAddrPage() {
                       onChange={(event) => update('value', event.target.value)}
                     />
                     <Comment>
-                      通过此变量获取用户的IP地址，比如使用 ${'{header.你的自定义报头}'} 的形式。
+                      通过此变量获取用户的IP地址,比如使用 ${'{header.你的自定义报头}'} 的形式.
                     </Comment>
                   </FormRow>
                 ) : null}
@@ -462,7 +462,7 @@ export function RequestLimitPage() {
                     value={String(current.maxConns)}
                     onChange={(event) => update('maxConns', Math.max(0, Number(event.target.value) || 0))}
                   />
-                  <Comment>当前网站最大并发连接数，超出此限制则响应用户 429 代码。为0表示不限制。</Comment>
+                  <Comment>当前网站最大并发连接数,超出此限制则响应用户 429 代码.为0表示不限制.</Comment>
                 </FormRow>
                 <FormRow title="单IP最大并发连接数">
                   <TextInput
@@ -472,9 +472,9 @@ export function RequestLimitPage() {
                     onChange={(event) => update('maxConnsPerIP', Math.max(0, Number(event.target.value) || 0))}
                   />
                   <Comment>
-                    单IP最大连接数，超出此限制则响应用户 429 代码。为0表示不限制。
+                    单IP最大连接数,超出此限制则响应用户 429 代码.为0表示不限制.
                     {current.maxConnsPerIP > 0 && current.maxConnsPerIP <= 3 ? (
-                      <span className="red">当前设置的并发连接数过低，可能会影响正常用户访问，建议不小于3。</span>
+                      <span className="red">当前设置的并发连接数过低,可能会影响正常用户访问,建议不小于3.</span>
                     ) : null}
                   </Comment>
                 </FormRow>
@@ -484,7 +484,7 @@ export function RequestLimitPage() {
                     onChange={(value) => update('outBandwidthPerConn', value)}
                     units={['byte', 'kb', 'mb']}
                   />
-                  <Comment>客户端单个请求每秒可以读取的下行流量。</Comment>
+                  <Comment>客户端单个请求每秒可以读取的下行流量.</Comment>
                 </FormRow>
                 <FormRow title="单请求最大尺寸">
                   <SizeCapacityEditor
@@ -492,7 +492,7 @@ export function RequestLimitPage() {
                     onChange={(value) => update('maxBodySize', value)}
                     units={['byte', 'kb', 'mb', 'gb']}
                   />
-                  <Comment>单个请求能发送的最大内容尺寸。</Comment>
+                  <Comment>单个请求能发送的最大内容尺寸.</Comment>
                 </FormRow>
               </>
             ) : null}

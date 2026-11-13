@@ -76,7 +76,7 @@ export function ClusterSettingsFirewallActionsPage() {
   const data = query.data
 
   async function remove(actionId: number) {
-    if (!(await confirm({ message: '确定要删除此动作吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除此动作吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -103,11 +103,11 @@ export function ClusterSettingsFirewallActionsPage() {
           <Plus size={14} /> 添加动作
         </a>
         <span className="disabled item">|</span>
-        <span className="item">可以设置WAF中的规则集和IP名单中的IP级别，从而在匹配时触发对应的动作。</span>
+        <span className="item">可以设置WAF中的规则集和IP名单中的IP级别,从而在匹配时触发对应的动作.</span>
       </div>
 
       <div className="margin" />
-      {!data.hasActions ? <p className="comment">暂时还没有自定义动作。</p> : null}
+      {!data.hasActions ? <p className="comment">暂时还没有自定义动作.</p> : null}
       {data.levels
         .filter((level) => level.actions.length > 0)
         .map((level) => (
@@ -344,7 +344,7 @@ export function FirewallActionForm({
         {type === 'script' ? (
           <FormRow title="脚本路径 *">
             <TextInput type="text" maxLength={200} value={scriptPath} onChange={(event) => setScriptPath(event.target.value)} />
-            <p className="comment">可执行脚本文件的完整路径。</p>
+            <p className="comment">可执行脚本文件的完整路径.</p>
           </FormRow>
         ) : null}
         {type === 'httpAPI' ? (
