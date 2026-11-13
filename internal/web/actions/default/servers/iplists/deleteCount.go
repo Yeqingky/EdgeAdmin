@@ -1,5 +1,3 @@
-// Copyright 2023 GoEdge CDN goedge.cdn@gmail.com. All rights reserved.
-
 package iplists
 
 import (
