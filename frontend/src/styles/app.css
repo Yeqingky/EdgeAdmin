@@ -233,3 +233,10 @@
 .cluster-settings-menu .ui.menu .item {
   padding-left: 1em;
 }
+
+.cluster-settings-menu .ui.vertical.menu .item.separator {
+  width: 5em;
+  margin: 0.3em 0 0.3em 1em !important;
+  background: #eee;
+  border: 0 !important;
+}

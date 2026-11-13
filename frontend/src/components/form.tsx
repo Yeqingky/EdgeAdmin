@@ -32,7 +32,7 @@ export function Select(props: SelectHTMLAttributes<HTMLSelectElement>) {
 
 export function SubmitButton({ submitting, children = '保存' }: { submitting?: boolean; children?: ReactNode }) {
   return (
-    <div style={{ marginTop: '1em' }}>
+    <div style={{ display: 'inline-block', marginTop: '1em', marginRight: '0.5em', verticalAlign: 'middle' }}>
       <button className={`ui button primary${submitting ? ' loading disabled' : ''}`} type="submit" disabled={submitting}>
         {children}
       </button>
