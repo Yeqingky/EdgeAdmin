@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { Pencil, Plus, X } from 'lucide-react'
 import { apiGet } from '../../api/client'
@@ -39,10 +40,10 @@ export function SettingsTabs({ kind, active }: { kind: 'basic' | 'advanced'; act
   return (
     <div className="ui top menu tabular tab-menu small">
       {tabs.map((tab) => (
-        <a key={tab.code} className={`item${tab.code === active ? ' active' : ''}`} href={`${tab.url}`}>
+        <Link key={tab.code} className={`item${tab.code === active ? ' active' : ''}`} to={tab.url}>
           <var>{tab.name}</var>
           {tab.code === active ? <div className="bottom-indicator" /> : null}
-        </a>
+        </Link>
       ))}
     </div>
   )

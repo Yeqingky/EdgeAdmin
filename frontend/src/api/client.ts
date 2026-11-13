@@ -23,7 +23,11 @@ async function parse<T>(resp: Response): Promise<ApiResponse<T>> {
   }
   const contentType = resp.headers.get('content-type') || ''
   if (!contentType.includes('application/json')) {
-    throw new UnauthorizedError()
+    const text = (await resp.text()).trim()
+    if (resp.status === 401) {
+      throw new UnauthorizedError()
+    }
+    throw new ApiError(text.slice(0, 200) || `请求失败 (HTTP ${resp.status})`, resp.status)
   }
   const body = (await resp.json()) as ApiResponse<T>
   if (body.code !== 200) {
@@ -107,16 +111,11 @@ export async function apiPost<T>(url: string, params?: Record<string, unknown>):
   }
 }
 
-let cachedCsrfToken: { token: string; timestamp: number } | null = null
-
 export async function getCsrfToken(): Promise<string> {
-  if (cachedCsrfToken && Date.now() - cachedCsrfToken.timestamp < 10 * 60 * 1000) {
-    return cachedCsrfToken.token
-  }
   for (let attempt = 0; ; attempt++) {
     try {
       const data = await apiGet<{ token: string }>('/csrf/token')
-      cachedCsrfToken = { token: data.token, timestamp: Date.now() }
+      // 服务端校验收到的 token 后立即失效, 不能缓存复用
       return data.token
     } catch (error) {
       if (attempt === 0 && error instanceof ApiError && error.message.includes('请求速度过快')) {

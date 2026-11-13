@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 
 export interface PageMenuItem {
   name: string
@@ -14,12 +15,23 @@ export function PageHeader({ items, children }: { items?: PageMenuItem[]; childr
   }
   return (
     <div className="ui menu text blue first-menu">
-      {items?.map((item) =>
-        item.hidden ? null : (
+      {items?.map((item) => {
+        if (item.hidden) {
+          return null
+        }
+        const className = `item${item.active ? ' active' : ''}`
+        if (item.href && item.href.startsWith('/') && !item.onClick) {
+          return (
+            <Link key={item.name} className={className} to={item.href}>
+              {item.name}
+            </Link>
+          )
+        }
+        return (
           <a
             key={item.name}
-            className={`item${item.active ? ' active' : ''}`}
-            href={item.href}
+            className={className}
+            href={item.href || ''}
             onClick={(event) => {
               if (item.onClick) {
                 event.preventDefault()
@@ -29,8 +41,8 @@ export function PageHeader({ items, children }: { items?: PageMenuItem[]; childr
           >
             {item.name}
           </a>
-        ),
-      )}
+        )
+      })}
       {children}
     </div>
   )

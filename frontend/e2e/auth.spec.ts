@@ -36,3 +36,16 @@ test('users page lists users and settings ui renders without footer switch', asy
   await expect(page.getByText('产品名称 *')).toBeVisible()
   await expect(page.getByText('显示底部开源信息')).toHaveCount(0)
 })
+
+test('login again with correct password after a failed attempt', async ({ page }) => {
+  await page.goto('/login')
+  await page.getByPlaceholder('请输入用户名').fill(username)
+  await page.getByPlaceholder('请输入密码').fill('wrong-password')
+  await page.getByRole('button', { name: '登录' }).click()
+  await expect(page.getByText('请输入正确的用户名密码')).toBeVisible()
+
+  await page.getByPlaceholder('请输入密码').fill(password)
+  await page.getByRole('button', { name: '登录' }).click()
+  await expect(page).toHaveURL(/\/dashboard/)
+  await expect(page.getByText('当天流量')).toBeVisible()
+})
