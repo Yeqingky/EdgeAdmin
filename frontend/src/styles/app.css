@@ -232,13 +232,13 @@
 .cluster-settings-grid {
   display: grid;
   grid-template-columns: 8em minmax(0, 1fr);
-  gap: 2em;
+  gap: 1em;
   align-items: start;
-  margin: 4.1em -1em 0;
+  margin-top: 4.1em;
 }
 
 .cluster-settings-content {
-  padding-right: 2em;
+  padding-right: 1em;
 }
 
 .cluster-settings-menu {

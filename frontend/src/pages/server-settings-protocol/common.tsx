@@ -152,8 +152,8 @@ export function ServerSettingsShell({
 }) {
   const items = FAMILY_MENU[family] || HTTP_MENU
   return (
-    <div className="server-settings-layout" style={{ display: 'flex', alignItems: 'flex-start', gap: '1em' }}>
-      <div className="left-box with-menu" style={{ flex: '0 0 10em' }}>
+    <div className="server-settings-layout">
+      <div className="left-box with-menu">
         <div className="ui menu text blue vertical small">
           {items.map((item, index) =>
             item.path === '' && index > 0 ? (
@@ -170,9 +170,7 @@ export function ServerSettingsShell({
           )}
         </div>
       </div>
-      <div className="right-box with-menu" style={{ flex: '1 1 auto', minWidth: 0 }}>
-        {children}
-      </div>
+      <div className="right-box with-menu">{children}</div>
     </div>
   )
 }

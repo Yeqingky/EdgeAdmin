@@ -25,6 +25,7 @@ import { SelectCountriesPage, SelectProvincesPage } from './ui/RegionPages'
 
 export const routes: AppRoute[] = [
   { path: '/settings', element: <Navigate to="/settings/server" replace /> },
+  { path: '/settings/advanced', element: <Navigate to="/settings/database" replace /> },
 
   { path: '/settings/server', element: <ServerSettingsPage /> },
   { path: '/settings/server/updateHTTPPopup', element: <UpdateHTTPPopupPage /> },

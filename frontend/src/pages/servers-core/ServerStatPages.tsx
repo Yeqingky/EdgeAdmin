@@ -224,7 +224,7 @@ export function ServerStatPage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="stat" />
-      <ServerPageLayout menu={statMenuItems(data.server.id, 'index')}>
+      <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'index')}>
         <FirstMenu items={requestsTabItems(data.server.id, 'minutely')} />
         <div className="ui column">
           <h4>请求数统计（即时）</h4>
@@ -289,7 +289,7 @@ export function ServerStatHourlyRequestsPage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="stat" />
-      <ServerPageLayout menu={statMenuItems(data.server.id, 'index')}>
+      <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'index')}>
         <FirstMenu items={requestsTabItems(data.server.id, 'hourly')} />
         <div className="ui column">
           <h4>请求数统计（小时）</h4>
@@ -354,7 +354,7 @@ export function ServerStatDailyRequestsPage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="stat" />
-      <ServerPageLayout menu={statMenuItems(data.server.id, 'index')}>
+      <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'index')}>
         <FirstMenu items={requestsTabItems(data.server.id, 'daily')} />
         <div className="ui column">
           <h4>请求数统计（按天）</h4>
@@ -439,7 +439,7 @@ export function ServerStatRegionsPage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="stat" />
-      <ServerPageLayout menu={statMenuItems(data.server.id, 'region')}>
+      <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'region')}>
         {!data.statIsOn ? (
           <StatDisabledHint serverId={data.serverId} />
         ) : (
@@ -500,7 +500,7 @@ export function ServerStatProvidersPage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="stat" />
-      <ServerPageLayout menu={statMenuItems(data.server.id, 'provider')}>
+      <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'provider')}>
         {!data.statIsOn ? (
           <StatDisabledHint serverId={data.serverId} />
         ) : (
@@ -547,7 +547,7 @@ export function ServerStatClientsPage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="stat" />
-      <ServerPageLayout menu={statMenuItems(data.server.id, 'client')}>
+      <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'client')}>
         {!data.statIsOn ? (
           <StatDisabledHint serverId={data.serverId} />
         ) : (
@@ -703,7 +703,7 @@ export function ServerStatWafPage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="stat" />
-      <ServerPageLayout menu={statMenuItems(data.server.id, 'waf')}>
+      <ServerPageLayout withMenu menu={statMenuItems(data.server.id, 'waf')}>
         <div className="dashboard-grid">
           <div className="ui column">
             <h4>今日拦截</h4>

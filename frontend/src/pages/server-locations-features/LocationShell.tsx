@@ -44,20 +44,11 @@ export function LocationShell({
   const leftMenuItems = data?.tinyLeftMenuItems || []
 
   return (
-    <div>
+    <div className="right-box">
       <PageHeader items={items} />
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1em' }}>
-        {leftMenuItems.length > 0 ? (
-          <div
-            style={{
-              flex: '0 0 9em',
-              maxHeight: 'calc(100vh - 13em)',
-              overflowY: 'auto',
-              borderRight: '1px solid #ddd',
-              paddingRight: '0.4em',
-            }}
-          >
-            <div className="ui menu text blue vertical tiny" style={{ width: '100%' }}>
+      {leftMenuItems.length > 0 ? (
+        <div className="left-box tiny">
+          <div className="ui menu text blue vertical tiny">
               {leftMenuItems.map((item, index) =>
                 item.name === '-' ? (
                   <div key={`separator-${index}`} className="item separator" style={{ borderBottom: '1px #eee solid', paddingTop: 0, paddingBottom: 0 }} />
@@ -84,15 +75,13 @@ export function LocationShell({
                   </a>
                 ),
               )}
-            </div>
           </div>
-        ) : null}
-        <div style={{ flex: '1 1 auto', minWidth: 0 }}>
-          {menu && menu.length > 0 ? <PageHeader items={menu} /> : null}
-          {children}
         </div>
+      ) : null}
+      <div className="right-box tiny">
+        {menu && menu.length > 0 ? <PageHeader items={menu} /> : null}
+        {children}
       </div>
-      <div className="clear" />
     </div>
   )
 }

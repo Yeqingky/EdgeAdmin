@@ -5,6 +5,7 @@ import { X } from 'lucide-react'
 import { apiGet, apiPost } from '../../api/client'
 import { useToast } from '../../components/Toast'
 import { LoadingBlock } from '../../components/LoadingBlock'
+import '../../../../web/views/@default/servers/create.css'
 import { FirstMenu, apiPostMulti, useClusterOptions, useUserOptions } from './common'
 import {
   CertModal,
@@ -186,8 +187,8 @@ export function ServerCreatePage() {
       />
 
       <form className="ui form" onSubmit={(event) => void submit(event)}>
-        <div style={{ display: 'flex', gap: '1em', alignItems: 'flex-start' }}>
-          <div style={{ flex: 1, minWidth: 0 }}>
+        <div className="tables-box">
+          <div className="table-box left">
             <h3>新网站主要信息：</h3>
             <table className="ui table selectable definition">
               <tbody>
@@ -400,7 +401,7 @@ export function ServerCreatePage() {
             </table>
           </div>
 
-          <div style={{ flex: 1, minWidth: 0 }}>
+          <div className="table-box right">
             <h3>次要信息：</h3>
             <table className="ui table selectable definition">
               <tbody>
@@ -517,6 +518,7 @@ export function ServerCreatePage() {
               </tbody>
             </table>
           </div>
+          <div className="clear" />
         </div>
 
         <div style={{ marginTop: '1em' }}>

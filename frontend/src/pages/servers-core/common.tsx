@@ -486,10 +486,10 @@ export interface LeftMenuItem {
   separator?: boolean
 }
 
-export function ServerPageLayout({ menu, children }: { menu: LeftMenuItem[]; children: ReactNode }) {
+export function ServerPageLayout({ menu, children, withMenu = false }: { menu: LeftMenuItem[]; children: ReactNode; withMenu?: boolean }) {
   return (
-    <div style={{ display: 'flex', gap: '1em', alignItems: 'flex-start' }}>
-      <div style={{ width: '10em', flex: '0 0 10em' }}>
+    <>
+      <div className={`left-box${withMenu ? ' with-menu' : ''}`}>
         <div className="ui menu text blue vertical small">
           {menu.map((item, index) =>
             item.separator ? (
@@ -509,8 +509,8 @@ export function ServerPageLayout({ menu, children }: { menu: LeftMenuItem[]; chi
           )}
         </div>
       </div>
-      <div style={{ flex: 1, minWidth: 0 }}>{children}</div>
-    </div>
+      <div className={`right-box${withMenu ? ' with-menu' : ''}`}>{children}</div>
+    </>
   )
 }
 
