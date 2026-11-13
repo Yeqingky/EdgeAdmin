@@ -14,6 +14,7 @@
 - docker-compose.yml 全部使用宿主机目录挂载, 不使用 Docker 卷, 挂载路径下注释进程 uid/gid 和需要执行的权限命令
 - docker-compose.yml 数据库名称, 用户名, 密码和 root 密码统一为 goedge 并写死, 服务顺序调整为管理面板, API 节点, 数据库, 新增显式 IPv6 NAT 网络
 - docker-compose.yml 镜像名改为 ghcr.io/yeqingky/goedge-admin 与 ghcr.io/yeqingky/goedge-api, 三个容器使用固定容器名, 开发环境启动使用 --build
+- 修复 Dockerfile.dockerignore 的 **/dist 误排除 web/public/js/sweetalert2/dist, 导致管理面板提示框失效和无法修改密码
 - 新增 docker/entrypoint-api.sh 与 docker/entrypoint-admin.sh, 负责生成数据库配置, API 节点配置和管理面板配置
 - docker/build.sh 与 docker/run.sh 改为 docker compose 封装
 - 新增 AGENTS.md, 说明 EdgeAdmin 作为六个仓库主仓库的定位, 开发环境 192.168.5.30 与 192.168.5.31 的分工和容器化部署方式

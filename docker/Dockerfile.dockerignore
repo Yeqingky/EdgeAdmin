@@ -1,4 +1,6 @@
 **/.git
-**/dist
+EdgeAdmin/dist
+EdgeAPI/dist
+EdgeNode/dist
 **/node_modules
 **/data
