@@ -7,7 +7,6 @@
 		<csrf-token></csrf-token>
 		<input type="hidden" name="clusterId" :value="clusterId"/>
 
-        <div v-if="quota.maxNodes > 0 && quota.leftNodes >= 0"><span style="color: #959da6">当前授权最多支持节点数：{{quota.maxNodes}}个，剩余节点数：{{quota.leftNodes}}个。</span></div>
 
         <table class="ui table definition selectable">
 			<tr>
@@ -21,7 +20,7 @@
 				<td>所属分组</td>
 				<td>
 					<node-group-selector :v-cluster-id="clusterId"></node-group-selector>
-                    <p class="comment">用来筛选节点<span v-if="teaIsPlus">，同时可以在分组中设置二级缓存节点</span>。</p>
+                    <p class="comment">用来筛选节点。</p>
 				</td>
 			</tr>
             <tr>

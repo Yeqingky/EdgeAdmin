@@ -521,7 +521,6 @@ export function UpdateCertForm({ certId, onDone }: { certId: number; onDone?: ()
 
 interface BatchData {
   userId: number
-  maxFiles: number
 }
 
 export function BatchUploadForm({
@@ -575,8 +574,6 @@ export function BatchUploadForm({
     mutation.mutate()
   }
 
-  const maxFiles = dataQuery.data?.maxFiles || 0
-
   return (
     <form className="ui form" onSubmit={submit}>
       <FormTable>
@@ -589,8 +586,7 @@ export function BatchUploadForm({
               onChange={(event) => setFiles(Array.from(event.target.files || []))}
             />
             <p className="comment">
-              点击后在弹出的文件选择框中支持多选；不用担心文件名和顺序问题，系统会自动匹配
-              {maxFiles > 0 ? `；免费版本限制每次最多上传${maxFiles}个文件` : ''}。
+              点击后在弹出的文件选择框中支持多选；不用担心文件名和顺序问题，系统会自动匹配。
             </p>
           </FormRow>
           <FormRow title="所属用户">

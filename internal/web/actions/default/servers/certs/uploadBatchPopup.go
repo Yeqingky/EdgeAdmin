@@ -43,7 +43,6 @@ func (this *UploadBatchPopupAction) RunGet(params struct {
 	}
 
 	this.Data["userId"] = params.UserId
-	this.Data["maxFiles"] = this.maxFiles()
 
 	this.Show()
 }
@@ -59,13 +58,6 @@ func (this *UploadBatchPopupAction) RunPost(params struct {
 	var files = this.Request.MultipartForm.File["certFiles"]
 	if len(files) == 0 {
 		this.Fail("请选择要上传的证书和私钥文件")
-		return
-	}
-
-	// 限制每次上传的文件数量
-	var maxFiles = this.maxFiles()
-	if len(files) > maxFiles {
-		this.Fail("每次上传最多不能超过" + types.String(maxFiles) + "个文件")
 		return
 	}
 

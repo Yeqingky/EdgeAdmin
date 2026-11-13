@@ -209,7 +209,7 @@ export function CacheCreatePage() {
                       <input type="checkbox" checked={fileEnableSendfile} onChange={(event) => setFileEnableSendfile(event.target.checked)} />
                       <label />
                     </div>
-                    <p className="comment">使用sendfile提升发送缓存文件的效率（商业版）。</p>
+                    <p className="comment">使用sendfile提升发送缓存文件的效率。</p>
                   </td>
                 </tr>
                 <tr>

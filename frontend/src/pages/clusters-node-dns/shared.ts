@@ -355,7 +355,6 @@ export interface CreateNodeData {
   dnsRoutes: DnsRouteOption[]
   apiEndpoints: string
   installerFiles: InstallerFile[] | null
-  quota: { maxNodes: number; leftNodes: number }
 }
 
 export interface CreatedNode {

@@ -2,7 +2,6 @@ import { useEffect, useState, type FormEvent } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { apiGet } from '../../api/client'
-import { useSession } from '../../api/session'
 import { useToast } from '../../components/Toast'
 import { LoadingBlock } from '../../components/LoadingBlock'
 import { FormRow, FormTable, Select } from '../../components/form'
@@ -27,7 +26,6 @@ function textField(label: string, name: string, fields: FieldBag, set: (name: st
 }
 
 export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
-  const session = useSession()
   const toast = useToast()
   const navigate = useNavigate()
   const location = useLocation()
@@ -170,7 +168,6 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
     return <div className="ui negative message">加载失败</div>
   }
   const data = query.data
-  const isPlus = session.data?.teaIsPlus ?? false
   const typeDescription = data.types.find((item) => item.code === type)?.description || ''
 
   async function submit(event: FormEvent) {
@@ -236,7 +233,6 @@ export function DnsProviderFormPage({ mode }: { mode: 'create' | 'update' }) {
                 {typeDescription ? (
                   <p className="comment">
                     {typeDescription} 系统会保留原有域名下的域名解析，请放心使用。
-                    {!isPlus ? '购买商业版可获得更多厂商支持。' : ''}
                   </p>
                 ) : null}
               </>

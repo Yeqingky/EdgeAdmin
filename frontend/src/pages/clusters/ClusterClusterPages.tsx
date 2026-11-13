@@ -93,7 +93,6 @@ export function ClusterDeletePage() {
 
 interface BatchData {
   leftMenuItems: LeftMenuItem[]
-  quota: { maxNodes: number; leftNodes: number }
 }
 
 export function ClusterCreateBatchPage() {
@@ -151,13 +150,6 @@ export function ClusterCreateBatchPage() {
             void submit()
           }}
         >
-          {data.quota.maxNodes > 0 && data.quota.leftNodes >= 0 ? (
-            <div>
-              <span style={{ color: '#959da6' }}>
-                当前授权最多支持节点数：{data.quota.maxNodes}个，剩余节点数：{data.quota.leftNodes}个。
-              </span>
-            </div>
-          ) : null}
           <FormTable>
             <FormRow title="节点IP列表">
               <textarea name="ipList" rows={20} placeholder="IP列表，每行一个IP" value={ipList} onChange={(event) => setIpList(event.target.value)} autoFocus />

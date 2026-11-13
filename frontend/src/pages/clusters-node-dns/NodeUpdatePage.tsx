@@ -134,7 +134,7 @@ export function NodeUpdatePage() {
           </FormRow>
           <FormRow title="所属分组">
             <GroupSelector clusterId={nodeClusterId} value={group} onChange={setGroup} />
-            <p className="comment">用来筛选节点{isPlus ? '，同时可以在分组中设置二级缓存节点' : ''}。</p>
+            <p className="comment">用来筛选节点。</p>
           </FormRow>
           <FormRow title="所属区域">
             <RegionSelector value={region} onChange={setRegion} />

@@ -108,10 +108,6 @@ export function UsersPage() {
         </a>
       </PageHeader>
 
-      {!session.data?.teaIsPlus ? (
-        <div className="ui message warning">当前系统为免费版本，这里的平台用户仅作为登记用途，无法登录系统。</div>
-      ) : null}
-
       <form className="ui form" onSubmit={submitSearch}>
         <div className="ui fields inline">
           <div className="ui field">

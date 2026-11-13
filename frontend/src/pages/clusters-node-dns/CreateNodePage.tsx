@@ -244,11 +244,6 @@ export function CreateNodePage() {
 
       {step === 'info' ? (
         <form className="ui form" onSubmit={submitInfo}>
-          {data.quota.maxNodes > 0 && data.quota.leftNodes >= 0 ? (
-            <div style={{ color: '#959da6', marginBottom: '1em' }}>
-              当前授权最多节点数：{data.quota.maxNodes}个，剩余节点数：{data.quota.leftNodes}个。
-            </div>
-          ) : null}
           <FormTable>
             <FormRow title="节点名称 *">
               <input type="text" maxLength={50} value={name} onChange={(event) => setName(event.target.value)} />
