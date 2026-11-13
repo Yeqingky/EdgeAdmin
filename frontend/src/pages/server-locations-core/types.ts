@@ -230,6 +230,7 @@ export interface CharsetItem {
 export interface CompressionRef {
   id: number
   isOn: boolean
+  isPrior?: boolean
 }
 
 export interface CompressionConfig {
