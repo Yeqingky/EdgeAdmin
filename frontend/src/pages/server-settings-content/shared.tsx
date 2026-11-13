@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { ChevronDown, ChevronUp, Play, Trash2, X } from 'lucide-react'
+import { ChevronDown, ChevronUp, Trash2, X } from 'lucide-react'
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { PageHeader } from '../../components/PageHeader'
@@ -178,7 +178,6 @@ export function ServerSettingsShell({
                 className={`item${item.isActive ? ' active' : ''}${item.isOn ? ' on' : ''}${item.isOff || item.isImportant ? ' off' : ''}`}
                 href={`${item.url}`}
               >
-                <Play size={10} style={{ visibility: item.isActive ? 'visible' : 'hidden' }} />
                 {item.name}
                 {item.isOff ? <var>关</var> : null}
                 {item.isImportant ? <var>开</var> : null}

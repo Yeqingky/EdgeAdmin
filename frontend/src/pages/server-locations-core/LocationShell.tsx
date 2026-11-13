@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { ChevronRight } from 'lucide-react'
 import { PageHeader } from '../../components/PageHeader'
 import { spaLink, type MenuItem, type ServerInfo } from './types'
 
@@ -13,7 +12,6 @@ function MenuColumn({ items, size }: { items: MenuItem[]; size: 'small' | 'tiny'
         const className = `item${item.isActive ? ' active' : ''}${item.isOn ? ' on' : ''}${item.isOff || item.isImportant ? ' off' : ''}`
         return (
           <a key={`${item.name}-${item.url}-${index}`} className={className} href={item.url ? spaLink(item.url) : undefined}>
-            <ChevronRight size={11} style={{ visibility: item.isActive ? 'visible' : 'hidden' }} />
             <span>
               {item.name}
               {item.isOff ? <var>关</var> : null}

@@ -270,3 +270,35 @@
   width: auto;
   height: 1px;
 }
+
+.main-menu .ui.menu .module-item {
+  display: flex;
+  align-items: center;
+}
+
+.main-menu .ui.menu .module-item .expand-arrow {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.main-menu .ui.menu .module-item .expand-arrow.open {
+  transform: rotate(90deg);
+}
+
+.main-menu .ui.menu .sub-items {
+  animation: submenu-open 0.2s ease-out;
+}
+
+@keyframes submenu-open {
+  from {
+    opacity: 0;
+    transform: translateY(-0.3em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

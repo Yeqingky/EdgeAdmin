@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { ChevronRight } from 'lucide-react'
 import { PageHeader, type PageMenuItem } from '../../components/PageHeader'
 import type { LocationBaseData } from './types'
 
@@ -59,16 +58,6 @@ export function LocationShell({
                     href={`${item.url}`}
                     style={{ position: 'relative', paddingLeft: '1em', lineHeight: 1.2 }}
                   >
-                    <ChevronRight
-                      size={10}
-                      style={{
-                        position: 'absolute',
-                        left: 0,
-                        top: '50%',
-                        marginTop: '-5px',
-                        visibility: item.isActive ? 'visible' : 'hidden',
-                      }}
-                    />
                     <span style={{ borderBottom: item.isOn ? '1px #666 dashed' : undefined }}>{item.name}</span>
                     {item.isOff ? <Badge text="关" /> : null}
                     {item.isImportant ? <Badge text="开" /> : null}

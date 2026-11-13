@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
-import { ChevronRight, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { apiGet } from '../../api/client'
 
 export interface ClusterBasic {
@@ -234,7 +234,6 @@ export function ClusterSettingsLayout({
                 <div key={`separator-${index}`} className="item separator" />
               ) : (
                 <a key={item.name} className={`item${isActive(item.href) ? ' active' : ''}`} href={item.href}>
-                  <ChevronRight size={10} style={{ visibility: isActive(item.href) ? 'visible' : 'hidden' }} />
                   {item.name}
                 </a>
               ),

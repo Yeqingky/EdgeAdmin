@@ -211,7 +211,6 @@ export function SettingsLeftMenu({ items }: { items?: LeftMenuItem[] }) {
               href={`${item.url}`}
             >
               <span>
-                <span style={{ visibility: item.isActive ? 'visible' : 'hidden' }}>▶ </span>
                 {item.name}
                 {item.isOff ? <var>关</var> : null}
                 {item.isImportant ? <var>开</var> : null}

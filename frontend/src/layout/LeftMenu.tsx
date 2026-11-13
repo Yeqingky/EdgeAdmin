@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
 import type { SessionData } from '../api/types'
@@ -10,6 +11,12 @@ export function LeftMenu({ session }: { session: SessionData }) {
   const activeModule = session.teaModules.find(
     (module) => module.code.length > 0 && (current === `/${module.code}` || current.startsWith(`/${module.code}/`)),
   )
+  const [openCode, setOpenCode] = useState(activeModule?.code || '')
+  useEffect(() => {
+    if (activeModule?.code) {
+      setOpenCode(activeModule.code)
+    }
+  }, [activeModule?.code])
 
   return (
     <div className={`main-menu ${theme}`}>
@@ -25,16 +32,39 @@ export function LeftMenu({ session }: { session: SessionData }) {
           const Icon = menuIcon(module.code)
           const isActive = activeModule?.code === module.code
           const firstUrl = module.subItems?.[0]?.url || `/${module.code}`
+          const hasSubItems = !!module.subItems && module.subItems.length > 0
+          const isOpen = openCode === module.code
+          function toggleOpen(event: React.MouseEvent | React.KeyboardEvent) {
+            event.preventDefault()
+            event.stopPropagation()
+            setOpenCode((value) => (value === module.code ? '' : module.code))
+          }
           return (
             <div key={module.code}>
-              <Link className={`item${isActive ? ' active expend' : ''}`} to={firstUrl}>
+              <Link className={`item module-item${isActive ? ' active expend' : ''}`} to={firstUrl}>
                 <Icon size={16} />
                 <span className="module-name">{module.name}</span>
                 {module.subtitle ? <div className="subtitle">{module.subtitle}</div> : null}
+                {hasSubItems ? (
+                  <span
+                    className={`expand-arrow${isOpen ? ' open' : ''}`}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={isOpen ? '收起' : '展开'}
+                    onClick={toggleOpen}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        toggleOpen(event)
+                      }
+                    }}
+                  >
+                    <ChevronRight size={14} />
+                  </span>
+                ) : null}
               </Link>
-              {isActive && module.subItems ? (
+              {isOpen && hasSubItems ? (
                 <div className="sub-items">
-                  {module.subItems.map((item, index) =>
+                  {module.subItems!.map((item, index) =>
                     item.name === '-' ? (
                       <div key={`${module.code}-separator-${index}`} className="item separator" />
                     ) : item.isOn === false ? null : (
@@ -43,7 +73,6 @@ export function LeftMenu({ session }: { session: SessionData }) {
                         className={`item${current === item.url ? ' active' : ''}`}
                         to={item.url}
                       >
-                        {current === item.url ? <ChevronRight size={12} /> : null}
                         <span>{item.name}</span>
                         {item.badge && item.badge > 0 ? (
                           <span className="ui label tiny red">{item.badge < 100 ? item.badge : '99+'}</span>

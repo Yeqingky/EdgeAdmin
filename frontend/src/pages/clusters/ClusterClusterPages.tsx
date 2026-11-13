@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Navigate, useSearchParams } from 'react-router-dom'
-import { ChevronRight, RefreshCw } from 'lucide-react'
+import { RefreshCw } from 'lucide-react'
 import { apiGet, apiPost, getCsrfToken } from '../../api/client'
 import { LoadingBlock } from '../../components/LoadingBlock'
 import { useConfirm } from '../../components/Confirm'
@@ -24,7 +24,6 @@ function InstallLeftMenu({ items }: { items: LeftMenuItem[] }) {
     <div className="ui menu text blue vertical small">
       {items.map((item) => (
         <a key={item.url} className={`item${item.isActive ? ' active' : ''}`} href={`${item.url}`}>
-          <ChevronRight size={10} style={{ visibility: item.isActive ? 'visible' : 'hidden' }} />
           {item.name}
         </a>
       ))}
