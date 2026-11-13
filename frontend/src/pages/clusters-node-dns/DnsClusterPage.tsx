@@ -362,6 +362,12 @@ export function DnsClusterPage() {
         </table>
       ) : null}
 
+      {dnsInfo.sharedCNAME ? (
+        <p className="comment">
+          所有网站共用CNAME：{dnsInfo.dnsName}.{dnsInfo.domainName || '根域名'}。
+        </p>
+      ) : (
+        <>
       <h3>网站解析记录 &nbsp; ({data.servers.length}个)</h3>
       {data.servers.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录。</p> : null}
       {data.servers.length > 0 ? (
@@ -400,6 +406,8 @@ export function DnsClusterPage() {
           </tbody>
         </table>
       ) : null}
+        </>
+      )}
 
       {updateClusterOpened ? (
         <Modal title="修改集群DNS设置" onClose={() => setUpdateClusterOpened(false)}>

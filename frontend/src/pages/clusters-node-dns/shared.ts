@@ -571,6 +571,7 @@ export interface DNSClusterPageData {
     providerName: string
     providerTypeName: string
     cnameRecords: string[]
+    sharedCNAME: boolean
   }
   nodes: DNSClusterNodeRecord[]
   servers: DNSClusterServerRecord[]
@@ -598,6 +599,7 @@ export interface UpdateClusterDNSData {
   cnameRecords: string[]
   ttl: number
   cnameAsDomain: boolean
+  sharedCNAME: boolean
   includingLnNodes: boolean
   providerTypes: DNSProviderTypeOption[]
 }

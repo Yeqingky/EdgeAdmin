@@ -31,6 +31,7 @@ func (this *IndexAction) RunGet(params struct {
 		this.Data["dnsDomain"] = ""
 	}
 	this.Data["supportCNAME"] = dnsInfoResp.SupportCNAME
+	this.Data["sharedCNAME"] = dnsInfoResp.SharedCNAME
 
 	this.Show()
 }

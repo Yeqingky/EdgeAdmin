@@ -174,9 +174,10 @@
     </table>
 
     <!-- 网站解析记录 -->
-    <h3>网站解析记录 <span>&nbsp; ({{servers.length}}个)</span></h3>
-    <p class="comment" v-if="servers.length == 0">暂时没有需要设置的DNS记录。</p>
-    <table class="ui table selectable celled" v-if="servers.length > 0">
+    <p class="comment" v-if="dnsInfo.sharedCNAME">所有网站共用CNAME：{{dnsInfo.dnsName}}.{{dnsInfo.domainName}}。</p>
+    <h3 v-if="!dnsInfo.sharedCNAME">网站解析记录 <span>&nbsp; ({{servers.length}}个)</span></h3>
+    <p class="comment" v-if="!dnsInfo.sharedCNAME && servers.length == 0">暂时没有需要设置的DNS记录。</p>
+    <table class="ui table selectable celled" v-if="!dnsInfo.sharedCNAME && servers.length > 0">
         <thead>
         <tr>
             <th>网站</th>

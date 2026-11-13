@@ -11,6 +11,7 @@ interface DnsData extends ServerSettingsBase {
   dnsName: string
   dnsDomain: string
   supportCNAME: boolean
+  sharedCNAME: boolean
 }
 
 export function ServerDnsSettingsPage() {
@@ -79,7 +80,7 @@ export function ServerDnsSettingsPage() {
     <ServerSettingsShell data={data}>
       <form className="ui form" onSubmit={submit}>
         <FormTable>
-          <FormRow title="当前网站CNAME">
+          <FormRow title={data.sharedCNAME ? '共用CNAME' : '当前网站CNAME'}>
             <span id="cname-text">{cname}</span> &nbsp;
             <a
               href=""
@@ -92,13 +93,17 @@ export function ServerDnsSettingsPage() {
               [复制]
             </a>{' '}
             &nbsp;
-            <a href="" style={{ fontSize: '0.8em' }} onClick={(event) => { event.preventDefault(); void regenerate() }}>
-              [重新生成]
-            </a>{' '}
-            &nbsp;
-            <a href="" style={{ fontSize: '0.8em' }} onClick={(event) => { event.preventDefault(); setCnameEditor({ dnsName: data.dnsName }) }}>
-              [手动修改]
-            </a>
+            {!data.sharedCNAME ? (
+              <>
+                <a href="" style={{ fontSize: '0.8em' }} onClick={(event) => { event.preventDefault(); void regenerate() }}>
+                  [重新生成]
+                </a>{' '}
+                &nbsp;
+                <a href="" style={{ fontSize: '0.8em' }} onClick={(event) => { event.preventDefault(); setCnameEditor({ dnsName: data.dnsName }) }}>
+                  [手动修改]
+                </a>
+              </>
+            ) : null}
             <p className="comment">
               你需要为你的每个<a href={`/servers/server/settings/serverNames?serverId=${serverId}`}>网站域名</a>设置一个CNAME解析，值为上面内容。
             </p>

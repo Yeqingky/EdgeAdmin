@@ -20,6 +20,7 @@ interface DnsSettingsData {
   cnameRecords: string[]
   ttl: number
   cnameAsDomain: boolean
+  sharedCNAME: boolean
   includingLnNodes: boolean
 }
 
@@ -45,6 +46,7 @@ export function ClusterSettingsDnsPage() {
   const [cnameRecords, setCnameRecords] = useState<string[]>([])
   const [ttl, setTtl] = useState('0')
   const [cnameAsDomain, setCnameAsDomain] = useState(false)
+  const [sharedCNAME, setSharedCNAME] = useState(false)
   const [includingLnNodes, setIncludingLnNodes] = useState(false)
   const [confirmResetDomain, setConfirmResetDomain] = useState(false)
   const [newRecord, setNewRecord] = useState('')
@@ -59,6 +61,7 @@ export function ClusterSettingsDnsPage() {
       setCnameRecords(query.data.cnameRecords || [])
       setTtl(String(query.data.ttl || 0))
       setCnameAsDomain(query.data.cnameAsDomain)
+      setSharedCNAME(query.data.sharedCNAME)
       setIncludingLnNodes(query.data.includingLnNodes)
     }
   }, [query.data])
@@ -85,7 +88,8 @@ export function ClusterSettingsDnsPage() {
         serversAutoSync: [serversAutoSync ? '1' : ''],
         cnameRecords,
         ttl: [ttl],
-        cnameAsDomain: [cnameAsDomain ? '1' : ''],
+        cnameAsDomain: [sharedCNAME ? '' : cnameAsDomain ? '1' : ''],
+        sharedCNAME: [sharedCNAME ? '1' : ''],
         includingLnNodes: [includingLnNodes ? '1' : ''],
         confirmResetDomain: [confirmResetDomain ? '1' : ''],
         csrfToken: [csrfToken],
@@ -156,6 +160,19 @@ export function ClusterSettingsDnsPage() {
               。
             </p>
           </FormRow>
+          <FormRow title="所有网站共用一个CNAME">
+            <Checkbox
+              label=""
+              checked={sharedCNAME}
+              onChange={(checked) => {
+                setSharedCNAME(checked)
+                if (checked) {
+                  setCnameAsDomain(false)
+                }
+              }}
+            />
+            <p className="comment">选中后，所有网站使用当前集群的DNS子域名作为CNAME，不再为每个网站生成独立CNAME。</p>
+          </FormRow>
           <FormRow title="自动设置CNAME记录">
             <div>
               {cnameRecords.map((record, index) => (
@@ -204,10 +221,12 @@ export function ClusterSettingsDnsPage() {
             </div>
             <p className="comment">除集群已创建的网站之外，自动解析到集群的CNAME记录，比如 www。</p>
           </FormRow>
-          <FormRow title="允许通过CNAME访问网站">
-            <Checkbox label="" checked={cnameAsDomain} onChange={setCnameAsDomain} />
-            <p className="comment">选中后，表示允许使用CNAME直接访问网站；如果取消选中，则表示CNAME只作为DNS解析记录使用。</p>
-          </FormRow>
+          {!sharedCNAME ? (
+            <FormRow title="允许通过CNAME访问网站">
+              <Checkbox label="" checked={cnameAsDomain} onChange={setCnameAsDomain} />
+              <p className="comment">选中后，表示允许使用CNAME直接访问网站；如果取消选中，则表示CNAME只作为DNS解析记录使用。</p>
+            </FormRow>
+          ) : null}
           <FormRow title="包含Ln节点">
             <Checkbox label="" checked={includingLnNodes} onChange={setIncludingLnNodes} />
             <p className="comment">选中后，表示域名解析中包含L2及以上级别节点。</p>
@@ -283,6 +302,7 @@ interface DnsRecordsData {
     providerName: string
     providerTypeName: string
     cnameRecords: string[]
+    sharedCNAME: boolean
   }
   nodes: DnsRecordNode[]
   servers: DnsRecordServer[]
@@ -600,6 +620,12 @@ export function ClusterSettingsDnsRecordsPage() {
         </table>
       ) : null}
 
+      {data.dnsInfo.sharedCNAME ? (
+        <p className="comment">
+          所有网站共用CNAME：{data.dnsInfo.dnsName}.{data.dnsInfo.domainName || '根域名'}。
+        </p>
+      ) : (
+        <>
       <h3>网站解析记录 &nbsp; ({data.servers.length}个)</h3>
       {data.servers.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录。</p> : null}
       {data.servers.length > 0 ? (
@@ -638,6 +664,8 @@ export function ClusterSettingsDnsRecordsPage() {
           </tbody>
         </table>
       ) : null}
+        </>
+      )}
     </ClusterSettingsLayout>
   )
 }

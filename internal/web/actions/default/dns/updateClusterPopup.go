@@ -54,6 +54,7 @@ func (this *UpdateClusterPopupAction) RunGet(params struct {
 
 	this.Data["ttl"] = dnsInfoResp.Ttl
 	this.Data["cnameAsDomain"] = dnsInfoResp.CnameAsDomain
+	this.Data["sharedCNAME"] = dnsInfoResp.SharedCNAME
 	this.Data["includingLnNodes"] = dnsInfoResp.IncludingLnNodes
 
 	// 所有服务商
@@ -83,6 +84,7 @@ func (this *UpdateClusterPopupAction) RunPost(params struct {
 	CnameRecords     []string
 	Ttl              int32
 	CnameAsDomain    bool
+	SharedCNAME      bool
 	IncludingLnNodes bool
 
 	Must *actions.Must
@@ -120,6 +122,7 @@ func (this *UpdateClusterPopupAction) RunPost(params struct {
 		CnameRecords:     params.CnameRecords,
 		Ttl:              params.Ttl,
 		CnameAsDomain:    params.CnameAsDomain,
+		SharedCNAME:      params.SharedCNAME,
 		IncludingLnNodes: params.IncludingLnNodes,
 	})
 	if err != nil {

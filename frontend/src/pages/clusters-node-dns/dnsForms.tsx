@@ -37,6 +37,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
   const [cnameRecords, setCnameRecords] = useState<string[]>([])
   const [ttl, setTtl] = useState('0')
   const [cnameAsDomain, setCnameAsDomain] = useState(false)
+  const [sharedCNAME, setSharedCNAME] = useState(false)
   const [includingLnNodes, setIncludingLnNodes] = useState(false)
   const [nodesAutoSync, setNodesAutoSync] = useState(false)
   const [serversAutoSync, setServersAutoSync] = useState(false)
@@ -66,6 +67,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
       setCnameRecords(data.cnameRecords || [])
       setTtl(String(data.ttl || 0))
       setCnameAsDomain(data.cnameAsDomain)
+      setSharedCNAME(data.sharedCNAME)
       setIncludingLnNodes(data.includingLnNodes)
       setNodesAutoSync(data.nodesAutoSync)
       setServersAutoSync(data.serversAutoSync)
@@ -138,7 +140,8 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
           serversAutoSync,
           cnameRecords,
           ttl: Number(ttl) || 0,
-          cnameAsDomain,
+          cnameAsDomain: sharedCNAME ? false : cnameAsDomain,
+          sharedCNAME,
           includingLnNodes,
         },
         true,
@@ -206,6 +209,18 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
           </div>
           <p className="comment">子域名和主域名共同组成集群的域名。</p>
         </FormRow>
+        <FormRow title="所有网站共用一个CNAME">
+          <Checkbox
+            checked={sharedCNAME}
+            onChange={(checked) => {
+              setSharedCNAME(checked)
+              if (checked) {
+                setCnameAsDomain(false)
+              }
+            }}
+          />
+          <p className="comment">选中后，所有网站使用当前集群的DNS子域名作为CNAME，不再为每个网站生成独立CNAME。</p>
+        </FormRow>
         <FormRow title="自动设置CNAME记录">
           <ValueList values={cnameRecords} onChange={setCnameRecords} placeholder="记录名" />
           <p className="comment">
@@ -239,10 +254,12 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
         </tr>
         {moreOptionsVisible ? (
           <>
-            <FormRow title="允许通过CNAME访问网站">
-              <Checkbox checked={cnameAsDomain} onChange={setCnameAsDomain} />
-              <p className="comment">选中后，表示允许使用CNAME直接访问网站；如果取消选中，则表示CNAME只作为DNS解析记录使用。</p>
-            </FormRow>
+            {!sharedCNAME ? (
+              <FormRow title="允许通过CNAME访问网站">
+                <Checkbox checked={cnameAsDomain} onChange={setCnameAsDomain} />
+                <p className="comment">选中后，表示允许使用CNAME直接访问网站；如果取消选中，则表示CNAME只作为DNS解析记录使用。</p>
+              </FormRow>
+            ) : null}
             {isPlus ? (
               <FormRow title="包含Ln节点">
                 <Checkbox checked={includingLnNodes} onChange={setIncludingLnNodes} />

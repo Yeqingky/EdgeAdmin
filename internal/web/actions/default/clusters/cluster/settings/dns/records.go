@@ -51,6 +51,7 @@ func (this *RecordsAction) RunGet(params struct {
 		"providerId":       0,
 		"providerName":     "",
 		"providerTypeName": "",
+		"sharedCNAME":      dnsResp.SharedCNAME,
 	}
 	if dnsResp.Domain != nil {
 		domainName = dnsResp.Domain.Name
