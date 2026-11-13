@@ -307,3 +307,21 @@
 .main-menu .ui.menu .module-item[role='button'] {
   cursor: pointer;
 }
+
+.ui.dimmer.modals.page {
+  position: fixed !important;
+  inset: 0;
+  z-index: 1000;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow-y: auto;
+  margin: 0 !important;
+  padding: 1em;
+}
+
+.ui.dimmer.modals.page > .ui.modal {
+  margin: auto !important;
+  max-height: calc(100vh - 2em);
+  overflow-y: auto;
+}
