@@ -25,6 +25,11 @@ func FindAllMenuMaps(langCode string, nodeLogsType string, countUnreadNodeLogs i
 			"icon":     "clone outsize",
 			"subItems": []maps.Map{
 				{
+					"name": langs.Message(langCode, codes.AdminMenu_Servers),
+					"url":  "/servers",
+					"code": "index",
+				},
+				{
 					"name": langs.Message(langCode, codes.AdminMenu_ServerAccessLogs),
 					"url":  "/servers/logs",
 					"code": "log",
