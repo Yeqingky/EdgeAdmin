@@ -37,6 +37,16 @@ function withJsonFormat(url: string): string {
   return `${url}${separator}_format=json`
 }
 
+function redirectToLogin(url: string) {
+  if (url === '/' || url.startsWith('/api/login') || url.startsWith('/login/')) {
+    return
+  }
+  if (window.location.hash.startsWith('#/login')) {
+    return
+  }
+  window.location.assign('/spa/#/login')
+}
+
 export async function apiGet<T>(url: string, params?: Record<string, unknown>): Promise<T> {
   const search = new URLSearchParams()
   if (params) {
@@ -51,7 +61,14 @@ export async function apiGet<T>(url: string, params?: Record<string, unknown>): 
     credentials: 'include',
     headers: { Accept: 'application/json' },
   })
-  return (await parse<T>(resp)).data
+  try {
+    return (await parse<T>(resp)).data
+  } catch (error) {
+    if (error instanceof UnauthorizedError) {
+      redirectToLogin(url)
+    }
+    throw error
+  }
 }
 
 export async function apiPost<T>(url: string, params?: Record<string, unknown>): Promise<T> {
@@ -80,7 +97,14 @@ export async function apiPost<T>(url: string, params?: Record<string, unknown>):
     },
     body,
   })
-  return (await parse<T>(resp)).data
+  try {
+    return (await parse<T>(resp)).data
+  } catch (error) {
+    if (error instanceof UnauthorizedError) {
+      redirectToLogin(url)
+    }
+    throw error
+  }
 }
 
 let cachedCsrfToken: { token: string; timestamp: number } | null = null
