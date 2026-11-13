@@ -16,6 +16,10 @@ func init() {
 			Get("/users/create", new(IndexAction)).
 			Get("/admins/create", new(IndexAction)).
 			Get("/db/create", new(IndexAction)).
+			Get("/dashboard/boards", new(IndexAction)).
+			Get("/clusters/cluster/boards", new(IndexAction)).
+			Get("/clusters/cluster/node/boards", new(IndexAction)).
+			Get("/servers/server/boards", new(IndexAction)).
 			EndAll()
 	})
 }
