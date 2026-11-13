@@ -207,3 +207,29 @@
 .main .main-box {
   padding-top: 1em;
 }
+
+.ui.vertical.menu .item.separator {
+  height: 1px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid #eee !important;
+  pointer-events: none;
+}
+
+.cluster-settings-grid {
+  display: grid;
+  grid-template-columns: 10em minmax(0, 1fr);
+  gap: 1.5em;
+  align-items: start;
+  margin-top: 0.5em;
+}
+
+.cluster-settings-menu .ui.menu {
+  width: 100%;
+}
+
+.cluster-settings-menu .ui.menu .item {
+  padding-left: 1em;
+}

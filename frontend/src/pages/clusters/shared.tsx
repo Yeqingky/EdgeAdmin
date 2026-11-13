@@ -226,8 +226,8 @@ export function ClusterSettingsLayout({
         </span>
         <span className="item active">{activeItem ? `"${activeItem.name}"设置` : '设置'}</span>
       </div>
-      <div className="ui grid" style={{ marginTop: 0 }}>
-        <div className="three wide column">
+      <div className="cluster-settings-grid">
+        <div className="cluster-settings-menu">
           <div className="ui menu text blue vertical small">
             {items.map((item, index) =>
               item.separator ? (
@@ -241,7 +241,7 @@ export function ClusterSettingsLayout({
             )}
           </div>
         </div>
-        <div className="thirteen wide column">{children}</div>
+        <div className="cluster-settings-content">{children}</div>
       </div>
     </div>
   )
