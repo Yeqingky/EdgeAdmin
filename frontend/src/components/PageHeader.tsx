@@ -7,6 +7,7 @@ export interface PageMenuItem {
   active?: boolean
   onClick?: () => void
   hidden?: boolean
+  disabled?: boolean
 }
 
 export function PageHeader({ items, children }: { items?: PageMenuItem[]; children?: ReactNode }) {
@@ -27,6 +28,13 @@ export function PageHeader({ items, children }: { items?: PageMenuItem[]; childr
           )
         }
         const className = `item${item.active ? ' active' : ''}`
+        if (item.disabled) {
+          return (
+            <span key={`${item.name}-${index}`} className="disabled item">
+              {item.name}
+            </span>
+          )
+        }
         if (item.href && item.href.startsWith('/') && !item.onClick) {
           return (
             <Link key={item.name} className={className} to={item.href}>

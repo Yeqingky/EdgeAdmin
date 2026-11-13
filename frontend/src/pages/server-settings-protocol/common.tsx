@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ExternalLink, Plus, Trash2 } from 'lucide-react'
 import { PageHeader } from '../../components/PageHeader'
+import { ServerTabs } from '../../components/ServerTabs'
 import { LoadingBlock } from '../../components/LoadingBlock'
 
 export const SETTINGS_BASE = '/servers/server/settings'
@@ -151,8 +152,11 @@ export function ServerSettingsShell({
   children: ReactNode
 }) {
   const items = FAMILY_MENU[family] || HTTP_MENU
+  const activeName = items.find((item) => item.path === activePath)?.name
   return (
-    <div className="server-settings-layout">
+    <div>
+      <ServerTabs serverId={serverId} activeName={activeName} />
+      <div className="server-settings-layout">
       <div className="left-box with-menu">
         <div className="ui menu text blue vertical small">
           {items.map((item, index) =>
@@ -171,6 +175,7 @@ export function ServerSettingsShell({
         </div>
       </div>
       <div className="right-box with-menu">{children}</div>
+      </div>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { ChevronDown, ChevronUp, Trash2, X } from 'lucide-react'
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { PageHeader } from '../../components/PageHeader'
+import { ServerTabs } from '../../components/ServerTabs'
 
 export interface LeftMenuItem {
   name: string
@@ -157,13 +157,7 @@ export function ServerSettingsShell({
 
   return (
     <div>
-      <PageHeader
-        items={[
-          { name: '网站列表', href: '/servers' },
-          { name: `"${server.name}"设置`, href: `/servers/server/settings?serverId=${server.id}`, active: !active },
-          { name: active ? `"${active.name}"设置` : '', href: active ? `${active.url}` : undefined, active: !!active, hidden: !active },
-        ]}
-      />
+      <ServerTabs serverId={server.id} serverName={server.name} activeName={active?.name} />
 
       <div className="margin" />
 

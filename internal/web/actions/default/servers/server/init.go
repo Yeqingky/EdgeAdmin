@@ -14,6 +14,7 @@ func init() {
 			Helper(serverutils.NewServerHelper()).
 			Prefix("/servers/server").
 			Get("", new(IndexAction)).
+			Get("/name", new(NameAction)).
 			EndAll()
 	})
 }

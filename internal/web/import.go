@@ -137,5 +137,6 @@ import (
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/setup/confirm"
 
 	// 平台用户
+	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/spa/fallback"
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/users"
 )

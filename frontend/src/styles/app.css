@@ -359,3 +359,9 @@
 .main .ui.table td > select:focus {
   border-color: #85b7d9;
 }
+
+.main .tab-menu .item.active:not(.title) {
+  background: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  border-bottom-color: #fff;
+}
