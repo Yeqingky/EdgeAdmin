@@ -123,7 +123,7 @@ export function NodeDetailPage() {
                 {node.isBackupForCluster ? <span className="ui label basic small">集群备用节点</span> : null}
                 {node.isBackupForGroup ? <span className="ui label basic small">分组备用节点</span> : null}
                 &nbsp;{' '}
-                <Link to={`/clusters/cluster/node/settings/schedule?clusterId=${clusterId}&nodeId=${node.id}`} style={{ fontSize: '0.8em' }}>
+                <Link to={`/clusters/cluster/node/update?clusterId=${clusterId}&nodeId=${node.id}`} style={{ fontSize: '0.8em' }}>
                   [修改]
                 </Link>
               </td>
@@ -134,7 +134,7 @@ export function NodeDetailPage() {
               <td>租期结束日期</td>
               <td>
                 {formatDay(node.offlineDay)} &nbsp;{' '}
-                <Link to={`/clusters/cluster/node/settings/schedule?clusterId=${clusterId}&nodeId=${node.id}`} style={{ fontSize: '0.8em' }}>
+                <Link to={`/clusters/cluster/node/update?clusterId=${clusterId}&nodeId=${node.id}`} style={{ fontSize: '0.8em' }}>
                   [修改]
                 </Link>
                 {node.isOffline ? (

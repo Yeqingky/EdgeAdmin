@@ -307,7 +307,7 @@ export function ClustersNodesPage() {
                       </sup>
                     ) : null}
                   </a>
-                  <a href={`/clusters/cluster/node/settings/schedule?clusterId=${node.cluster.id}&nodeId=${node.id}`}>
+                  <a href={`/clusters/cluster/node/update?clusterId=${node.cluster.id}&nodeId=${node.id}`}>
                     {node.isBackup ? (
                       <sup>
                         <span className="blue"> &nbsp;备用</span>

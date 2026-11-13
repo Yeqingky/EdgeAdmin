@@ -1,18 +1,20 @@
 import { Link } from 'react-router-dom'
 import { useSession } from '../../api/session'
 import type { NodeBase } from './shared'
+import { useClusterName } from '../clusters/shared'
 
 export type NodeMenuActive = 'node' | 'log' | 'install' | 'update'
 
 export function NodeMenu({ clusterId, node, active }: { clusterId: number; node: NodeBase; active: NodeMenuActive }) {
   const session = useSession()
   const isPlus = session.data?.teaIsPlus ?? false
+  const clusterName = useClusterName(clusterId)
   const base = `/clusters/cluster/node?clusterId=${clusterId}&nodeId=${node.id}`
+  const detailPath = isPlus ? '/clusters/cluster/node/detail' : '/clusters/cluster/node'
 
   const items: { name: string; to: string; active: boolean; hidden?: boolean }[] = [
-    { name: '节点详情', to: `/clusters/cluster/node/detail?clusterId=${clusterId}&nodeId=${node.id}`, active: active === 'node', hidden: !isPlus },
-    { name: '节点看板', to: `/clusters/cluster/node/boards?clusterId=${clusterId}&nodeId=${node.id}`, active: false, hidden: isPlus },
-    { name: '节点详情', to: `/clusters/cluster/node/detail?clusterId=${clusterId}&nodeId=${node.id}`, active: active === 'node', hidden: isPlus },
+    { name: '节点看板', to: `/clusters/cluster/node/boards?clusterId=${clusterId}&nodeId=${node.id}`, active: false, hidden: !isPlus },
+    { name: '节点详情', to: `${detailPath}?clusterId=${clusterId}&nodeId=${node.id}`, active: active === 'node' },
     { name: '运行日志', to: `/clusters/cluster/node/logs?clusterId=${clusterId}&nodeId=${node.id}`, active: active === 'log' },
     { name: '安装节点', to: `/clusters/cluster/node/install?clusterId=${clusterId}&nodeId=${node.id}`, active: active === 'install' },
     { name: '节点设置', to: `/clusters/cluster/node/update?clusterId=${clusterId}&nodeId=${node.id}`, active: active === 'update' },
@@ -21,9 +23,17 @@ export function NodeMenu({ clusterId, node, active }: { clusterId: number; node:
   return (
     <div className="ui menu text blue first-menu">
       <Link className="item" to={`/clusters/cluster/nodes?clusterId=${clusterId}`}>
-        {node.group ? node.group.name : '所有节点'}
+        {clusterName || '所有节点'}
       </Link>
       <span className="item">»</span>
+      {node.group ? (
+        <>
+          <Link className="item" to={`/clusters/cluster/nodes?clusterId=${clusterId}&groupId=${node.group.id}`}>
+            {node.group.name}
+          </Link>
+          <span className="item">»</span>
+        </>
+      ) : null}
       <Link className="item" to={base}>
         {node.name}
         {node.level > 1 ? (

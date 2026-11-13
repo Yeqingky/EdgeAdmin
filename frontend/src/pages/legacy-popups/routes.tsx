@@ -32,6 +32,10 @@ function GroupWafRedirect() {
 }
 
 const redirects: Record<string, string> = {
+  '/clusters/cluster/node/boards': '/clusters/cluster/node/detail',
+  '/clusters/cluster/boards': '/clusters/cluster/nodes',
+  '/dashboard/boards': '/dashboard',
+  '/servers/server/boards': '/servers/server',
   '/clusters/cluster/settings/message': '/clusters/cluster/settings',
   '/clusters/cluster/settings/message/selectReceiverPopup': '/clusters/cluster/settings',
   '/dns/domains/clustersPopup': '/dns',

@@ -154,7 +154,7 @@ export function MessagesPage() {
                           <a href={`/clusters/cluster?clusterId=${message.cluster.id}`}>集群：{message.cluster.name}</a>
                         ) : null}
                         {message.role === 'dns' ? (
-                          <a href={`/ns/clusters/cluster?clusterId=${message.cluster.id}`}>DNS集群：{message.cluster.name}</a>
+                          <a href={`/dns/clusters/cluster?clusterId=${message.cluster.id}`}>DNS集群：{message.cluster.name}</a>
                         ) : null}
                       </span>
                     ) : null}
@@ -165,7 +165,7 @@ export function MessagesPage() {
                           <a href={`/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>节点：{message.node.name}</a>
                         ) : null}
                         {message.role === 'dns' ? (
-                          <a href={`/ns/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>DNS节点：{message.node.name}</a>
+                          <a href={`/dns/clusters/cluster?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>DNS节点：{message.node.name}</a>
                         ) : null}
                       </span>
                     ) : null}
@@ -227,7 +227,7 @@ export function MessagesPage() {
 
                     {message.type === 'NodeSchedule' ? (
                       <div style={{ marginTop: '0.8em' }}>
-                        <a href={`/clusters/cluster/node/settings/schedule?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>
+                        <a href={`/clusters/cluster/node/update?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>
                           查看调度状态 &raquo;
                         </a>
                       </div>
