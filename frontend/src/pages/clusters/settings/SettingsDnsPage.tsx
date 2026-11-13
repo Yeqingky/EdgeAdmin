@@ -160,7 +160,7 @@ export function ClusterSettingsDnsPage() {
               。
             </p>
           </FormRow>
-          <FormRow title="所有网站共用一个CNAME">
+          <FormRow title="共用CNAME">
             <Checkbox
               label=""
               checked={sharedCNAME}
@@ -171,7 +171,7 @@ export function ClusterSettingsDnsPage() {
                 }
               }}
             />
-            <p className="comment">选中后，所有网站使用当前集群的DNS子域名作为CNAME，不再为每个网站生成独立CNAME。</p>
+            <p className="comment">所有网站使用子域名作为CNAME, 不再为每个网站生成独立的CNAME.</p>
           </FormRow>
           <FormRow title="自动设置CNAME记录">
             <div>

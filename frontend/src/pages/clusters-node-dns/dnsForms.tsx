@@ -209,7 +209,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
           </div>
           <p className="comment">子域名和主域名共同组成集群的域名。</p>
         </FormRow>
-        <FormRow title="所有网站共用一个CNAME">
+        <FormRow title="共用CNAME">
           <Checkbox
             checked={sharedCNAME}
             onChange={(checked) => {
@@ -219,7 +219,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
               }
             }}
           />
-          <p className="comment">选中后，所有网站使用当前集群的DNS子域名作为CNAME，不再为每个网站生成独立CNAME。</p>
+          <p className="comment">所有网站使用子域名作为CNAME, 不再为每个网站生成独立的CNAME.</p>
         </FormRow>
         <FormRow title="自动设置CNAME记录">
           <ValueList values={cnameRecords} onChange={setCnameRecords} placeholder="记录名" />
