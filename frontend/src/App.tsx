@@ -7,6 +7,7 @@ import { PlaceholderPage } from './pages/PlaceholderPage'
 import { ConfirmProvider } from './components/Confirm'
 import { ToastProvider } from './components/Toast'
 import type { AppRoute } from './pages/types'
+import { InitPasswordPage } from './pages/init/InitPasswordPage'
 
 const modules = import.meta.glob<{ routes: AppRoute[] }>('./pages/**/routes.tsx', { eager: true })
 const appRoutes = Object.values(modules).flatMap((module) => module.routes)
@@ -18,6 +19,8 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/login/otp" element={<OtpPage />} />
+          <Route path="/index/otp" element={<OtpPage />} />
+          <Route path="/index/initPassword" element={<InitPasswordPage />} />
           <Route
             element={
               <RequireAuth>

@@ -58,7 +58,14 @@ export async function apiPost<T>(url: string, params?: Record<string, unknown>):
   const body = new URLSearchParams()
   if (params) {
     for (const [key, value] of Object.entries(params)) {
-      if (value !== undefined && value !== null) {
+      if (value === undefined || value === null) {
+        continue
+      }
+      if (Array.isArray(value)) {
+        for (const item of value) {
+          body.append(key, String(item))
+        }
+      } else {
         body.set(key, String(value))
       }
     }

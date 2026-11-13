@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { Navigate, useNavigate } from 'react-router-dom'
 import SparkMD5 from 'spark-md5'
-import { Lock, User } from 'lucide-react'
+import { Leaf, Lock, User } from 'lucide-react'
 import { apiPost, getCsrfToken, ApiError } from '../api/client'
 import { useLoginInfo } from '../api/login'
 import { SESSION_KEY } from '../api/session'
@@ -76,7 +76,7 @@ export function LoginPage() {
     <div>
       <div className="ui menu top-nav blue inverted small borderless theme2 login-top-nav">
         <a href="/" className="item">
-          <i className="ui icon leaf" /> &nbsp; {info.data.systemName}
+          <Leaf size={16} /> &nbsp; {info.data.systemName}
           {info.data.showVersion ? (
             <sup>
               v{info.data.version}
