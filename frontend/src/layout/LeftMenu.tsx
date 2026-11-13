@@ -11,10 +11,12 @@ export function LeftMenu({ session }: { session: SessionData }) {
   const activeModule = session.teaModules.find(
     (module) => module.code.length > 0 && (current === `/${module.code}` || current.startsWith(`/${module.code}/`)),
   )
-  const [openCode, setOpenCode] = useState(activeModule?.code || '')
+  const [openCodes, setOpenCodes] = useState<Record<string, boolean>>(() =>
+    activeModule?.code ? { [activeModule.code]: true } : {},
+  )
   useEffect(() => {
     if (activeModule?.code) {
-      setOpenCode(activeModule.code)
+      setOpenCodes((codes) => (codes[activeModule.code] ? codes : { ...codes, [activeModule.code]: true }))
     }
   }, [activeModule?.code])
 
@@ -33,11 +35,11 @@ export function LeftMenu({ session }: { session: SessionData }) {
           const isActive = activeModule?.code === module.code
           const firstUrl = module.subItems?.[0]?.url || `/${module.code}`
           const hasSubItems = !!module.subItems && module.subItems.length > 0
-          const isOpen = openCode === module.code
+          const isOpen = !!openCodes[module.code]
           function toggleOpen(event: React.MouseEvent | React.KeyboardEvent) {
             event.preventDefault()
             event.stopPropagation()
-            setOpenCode((value) => (value === module.code ? '' : module.code))
+            setOpenCodes((codes) => ({ ...codes, [module.code]: !codes[module.code] }))
           }
           return (
             <div key={module.code}>
