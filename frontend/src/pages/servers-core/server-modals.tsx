@@ -373,7 +373,9 @@ export function ServerNameModal({ onClose, onCreated }: ServerNameModalProps) {
             <tr>
               <td className="title">单个域名 *</td>
               <td>
-                <input type="text" maxLength={1024} value={serverName} onChange={(event) => setServerName(event.target.value)} />
+                <div className="ui input" style={{ width: '100%' }}>
+                  <input type="text" maxLength={1024} value={serverName} onChange={(event) => setServerName(event.target.value)} style={{ width: '100%' }} />
+                </div>
                 <p className="comment">
                   请输入单个域名,比如<span className="ui label tiny basic">example.com</span>,
                   <span className="ui label tiny basic">www.example.com</span>,<strong>不要</strong>包含
@@ -387,7 +389,7 @@ export function ServerNameModal({ onClose, onCreated }: ServerNameModalProps) {
             <tr>
               <td className="title">多个域名 *</td>
               <td>
-                <textarea rows={5} value={serverNames} onChange={(event) => setServerNames(event.target.value)} />
+                <textarea rows={5} value={serverNames} onChange={(event) => setServerNames(event.target.value)} style={{ width: '100%' }} />
                 <p className="comment">每行一个域名,比如 example.com,www.example.com;也可以使用泛域名,比如 *.example.com.</p>
               </td>
             </tr>
