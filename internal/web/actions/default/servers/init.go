@@ -26,7 +26,6 @@ func init() {
 			GetPost("/addServerNamePopup", new(AddServerNamePopupAction)).
 			GetPost("/addOriginPopup", new(AddOriginPopupAction)).
 			Get("/serverNamesPopup", new(ServerNamesPopupAction)).
-			Post("/status", new(StatusAction)).
 
 			// user
 			Post("/users/options", new(users.OptionsAction)).

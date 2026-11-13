@@ -27,7 +27,6 @@ func (this *IndexAction) RunGet(params struct {
 	GroupId      int64
 	Keyword      string
 	AuditingFlag int32
-	CheckDNS     bool
 	UserId       int64
 
 	TrafficOutOrder     string
@@ -38,7 +37,6 @@ func (this *IndexAction) RunGet(params struct {
 	this.Data["groupId"] = params.GroupId
 	this.Data["keyword"] = params.Keyword
 	this.Data["auditingFlag"] = params.AuditingFlag
-	this.Data["checkDNS"] = params.CheckDNS
 	this.Data["hasOrder"] = len(params.TrafficOutOrder) > 0
 	this.Data["userId"] = params.UserId
 

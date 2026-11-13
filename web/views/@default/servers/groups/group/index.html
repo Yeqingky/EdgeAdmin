@@ -62,17 +62,7 @@
             </div>
         </td>
         <td class="center">
-            <div v-if="!checkDNS">
-                <label-on :v-is-on="server.isOn"></label-on>
-            </div>
-            <div v-else>
-                <span v-if="!server.isOn" class="grey">停用中</span>
-                <span v-else-if="server.status.isOk" class="green">正常</span>
-                <span v-else-if="server.status.message.length == 0">检查中</span>
-                <span v-else class="red">{{server.status.message}}
-                    <tip-icon :content="server.status.todo"></tip-icon>
-                </span>
-            </div>
+            <label-on :v-is-on="server.isOn"></label-on>
         </td>
         <td>
             <a :href="'/servers/server?serverId=' + server.id">详情</a> &nbsp;

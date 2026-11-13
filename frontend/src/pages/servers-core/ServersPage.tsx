@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { AlertTriangle, ChevronDown, ChevronUp, Settings, Trash2 } from 'lucide-react'
@@ -49,7 +49,6 @@ interface ServersData {
   groupId: number
   keyword: string
   auditingFlag: number
-  checkDNS: boolean
   hasOrder: boolean
   userId: number
   latestServers: { id: number; name: string }[]
@@ -61,12 +60,6 @@ interface ServersData {
   servers: ServerRow[]
   clusters: { id: number; name: string }[]
   groups: { id: number; name: string }[]
-}
-
-interface DnsStatus {
-  isOk: boolean
-  message: string
-  todo: string
 }
 
 export function ServersPage() {
@@ -81,7 +74,6 @@ export function ServersPage() {
   const userId = Number(searchParams.get('userId') || 0) || 0
   const keywordParam = searchParams.get('keyword') || ''
   const auditingFlag = Number(searchParams.get('auditingFlag') || 0) || 0
-  const checkDNS = searchParams.get('checkDNS') === '1'
   const trafficOutOrder = searchParams.get('trafficOutOrder') || ''
   const requestsOrder = searchParams.get('requestsOrder') || ''
   const attackRequestsOrder = searchParams.get('attackRequestsOrder') || ''
@@ -90,12 +82,11 @@ export function ServersPage() {
   const [keyword, setKeyword] = useState(keywordParam)
   const [selectedIds, setSelectedIds] = useState<number[]>([])
   const [latestVisible, setLatestVisible] = useState(false)
-  const [statusMap, setStatusMap] = useState<Record<number, DnsStatus>>({})
   const [namesServer, setNamesServer] = useState<{ id: number; name: string } | null>(null)
   const [namesKeyword, setNamesKeyword] = useState('')
 
   const query = useQuery({
-    queryKey: ['servers-core', 'servers', clusterId, groupId, userId, keywordParam, auditingFlag, checkDNS, trafficOutOrder, requestsOrder, attackRequestsOrder, page],
+    queryKey: ['servers-core', 'servers', clusterId, groupId, userId, keywordParam, auditingFlag, trafficOutOrder, requestsOrder, attackRequestsOrder, page],
     queryFn: () =>
       apiGet<ServersData>('/servers', {
         clusterId,
@@ -103,7 +94,6 @@ export function ServersPage() {
         userId,
         keyword: keywordParam,
         auditingFlag,
-        checkDNS: checkDNS ? 1 : 0,
         trafficOutOrder,
         requestsOrder,
         attackRequestsOrder,
@@ -134,26 +124,6 @@ export function ServersPage() {
   })
 
   const data = query.data
-
-  useEffect(() => {
-    if (!data || !checkDNS) {
-      return
-    }
-    let cancelled = false
-    apiPostMulti<{ status: Record<string, DnsStatus> }>(
-      '/servers/status',
-      data.servers.map((server) => ['serverIds', server.id] as [string, number]),
-    )
-      .then((resp) => {
-        if (!cancelled) {
-          setStatusMap(resp.status || {})
-        }
-      })
-      .catch(() => undefined)
-    return () => {
-      cancelled = true
-    }
-  }, [data, checkDNS])
 
   if (query.isLoading) {
     return <LoadingBlock />
@@ -345,17 +315,6 @@ export function ServersPage() {
               </MoreAngle>
             </div>
           ) : null}
-          <div className="ui field" style={{ position: 'absolute', right: '1em' }}>
-            <div className="ui checkbox">
-              <input
-                type="checkbox"
-                id="check-dns-checkbox"
-                checked={checkDNS}
-                onChange={(event) => updateParams({ checkDNS: event.target.checked ? 1 : undefined })}
-              />
-              <label htmlFor="check-dns-checkbox">检查域名解析</label>
-            </div>
-          </div>
         </div>
       </form>
 
@@ -446,7 +405,6 @@ export function ServersPage() {
           </thead>
           <tbody>
             {data.servers.map((server) => {
-              const status = statusMap[server.id]
               return (
                 <tr key={server.id}>
                   <td>
@@ -572,25 +530,10 @@ export function ServersPage() {
                     {server.attackQPS !== '0' ? server.attackQPS : <span className="disabled">-</span>}
                   </td>
                   <td className="center">
-                    {!checkDNS ? (
-                      server.isOn ? (
-                        <span className="ui label green basic">已启用</span>
-                      ) : (
-                        <span className="ui label grey basic">已禁用</span>
-                      )
-                    ) : !server.isOn ? (
-                      <span className="grey">停用中</span>
-                    ) : status?.isOk ? (
-                      <span className="green">正常</span>
-                    ) : !status ? (
-                      <span>检查中</span>
-                    ) : status.message.length === 0 ? (
-                      <span>检查中</span>
+                    {server.isOn ? (
+                      <span className="ui label green basic">已启用</span>
                     ) : (
-                      <span className="red">
-                        {status.message}
-                        <Tip content={status.todo} />
-                      </span>
+                      <span className="ui label grey basic">已禁用</span>
                     )}
                   </td>
                   <td>
