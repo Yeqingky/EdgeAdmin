@@ -1,10 +1,10 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { Plus } from 'lucide-react'
 import { apiGet, apiPost } from '../../api/client'
 import { useConfirm } from '../../components/Confirm'
 import { useToast } from '../../components/Toast'
 import { LoadingBlock } from '../../components/LoadingBlock'
 import { LegacyPagination } from '../../components/LegacyPagination'
+import { SettingsTabs } from '../settings-admin/common'
 
 interface DbNode {
   id: number
@@ -44,8 +44,9 @@ export function DbNodesPage() {
 
   return (
     <div>
+      <SettingsTabs kind="advanced" active="dbNodes" />
       <div className="ui menu text blue first-menu">
-        <a className="item" href="/db/create"><Plus size={14} /> [添加节点]</a>
+        <a className="item" href="/db/create">[添加节点]</a>
       </div>
       {query.data.nodes.length === 0 ? <p className="comment">暂时还没有数据库节点。</p> : (
         <table className="ui table selectable celled">
