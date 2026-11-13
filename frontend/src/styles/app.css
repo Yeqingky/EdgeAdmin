@@ -137,10 +137,6 @@
   border-left-color: #db2828;
 }
 
-.first-menu {
-  margin-bottom: 1em !important;
-}
-
 .install-box {
   width: 50em;
   max-width: 92%;
@@ -205,17 +201,36 @@
 }
 
 .main .main-box {
-  padding-top: 1em;
+  padding-top: 0.15em;
 }
 
-.ui.vertical.menu .item.separator {
-  height: 1px !important;
+.first-menu {
+  margin-top: 0 !important;
+  margin-bottom: 0.4em !important;
+}
+
+.first-menu .item.divider {
+  width: 1px;
+  min-width: 1px;
+  padding: 0 !important;
+  margin: 0.5em 0.6em !important;
+  align-self: center;
+  height: 1.1em;
+  background: #ccc;
+}
+
+.main-menu .ui.vertical.menu .item.separator {
+  height: 0.6em !important;
   min-height: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
   border: 0 !important;
-  border-bottom: 1px solid #eee !important;
+  background: transparent !important;
   pointer-events: none;
+}
+
+.ui.label {
+  white-space: nowrap;
 }
 
 .cluster-settings-grid {

@@ -15,9 +15,12 @@ export function PageHeader({ items, children }: { items?: PageMenuItem[]; childr
   }
   return (
     <div className="ui menu text blue first-menu">
-      {items?.map((item) => {
+      {items?.map((item, index) => {
         if (item.hidden) {
           return null
+        }
+        if (item.name === '[|]') {
+          return <span key={`divider-${index}`} className="item divider" />
         }
         const className = `item${item.active ? ' active' : ''}`
         if (item.href && item.href.startsWith('/') && !item.onClick) {
