@@ -27,7 +27,7 @@ export function DnsClusterPage() {
   })
 
   if (!clusterId) {
-    return <div className="ui negative message">缺少集群参数。</div>
+    return <div className="ui negative message">缺少集群参数.</div>
   }
   if (query.isLoading) {
     return <LoadingBlock />
@@ -39,7 +39,7 @@ export function DnsClusterPage() {
   const dnsInfo = data.dnsInfo
 
   async function syncCluster() {
-    if (!(await confirm({ message: '确定要执行数据同步吗？' }))) {
+    if (!(await confirm({ message: '确定要执行数据同步吗?' }))) {
       return
     }
     setSyncing(true)
@@ -55,7 +55,7 @@ export function DnsClusterPage() {
   }
 
   async function deleteTask(task: DNSTaskItem) {
-    if (!(await confirm({ message: '确定要删除这个任务吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个任务吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -152,7 +152,7 @@ export function DnsClusterPage() {
             <td>自动设置CNAME记录</td>
             <td>
               {dnsInfo.cnameRecords.length === 0 ? (
-                <span className="disabled">暂时还没有设置。</span>
+                <span className="disabled">暂时还没有设置.</span>
               ) : (
                 dnsInfo.cnameRecords.map((record) => (
                   <span key={record} className="ui label basic small">
@@ -170,7 +170,7 @@ export function DnsClusterPage() {
                   <span>DNS服务商同步中...</span>
                 ) : data.dnsHasChanges ? (
                   <a href="" onClick={(event) => { event.preventDefault(); void syncCluster() }}>
-                    检测到解析记录有变化，需要同步
+                    检测到解析记录有变化,需要同步
                   </a>
                 ) : (
                   <a href="" onClick={(event) => { event.preventDefault(); void syncCluster() }}>
@@ -283,10 +283,10 @@ export function DnsClusterPage() {
         </div>
       ) : null}
 
-      <p className="comment">下面的DNS解析记录也可以手工在DNS服务商提供的管理平台添加。</p>
+      <p className="comment">下面的DNS解析记录也可以手工在DNS服务商提供的管理平台添加.</p>
 
       <h3>节点DNS解析记录 &nbsp; ({data.nodes.length}个)</h3>
-      {data.nodes.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录。</p> : null}
+      {data.nodes.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录.</p> : null}
       {data.nodes.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>
@@ -364,12 +364,12 @@ export function DnsClusterPage() {
 
       {dnsInfo.sharedCNAME ? (
         <p className="comment">
-          所有网站共用CNAME：{dnsInfo.dnsName}.{dnsInfo.domainName || '根域名'}。
+          所有网站共用CNAME:{dnsInfo.dnsName}.{dnsInfo.domainName || '根域名'}.
         </p>
       ) : (
         <>
       <h3>网站解析记录 &nbsp; ({data.servers.length}个)</h3>
-      {data.servers.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录。</p> : null}
+      {data.servers.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录.</p> : null}
       {data.servers.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>

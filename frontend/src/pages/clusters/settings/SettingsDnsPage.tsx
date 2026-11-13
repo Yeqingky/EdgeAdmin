@@ -127,18 +127,18 @@ export function ClusterSettingsDnsPage() {
                     </option>
                   ))}
                 </Select>
-                <p className="comment">用于生成集群节点和网站的CNAME和DNS解析记录，修改后将自动删除旧域名中的相关记录。</p>
+                <p className="comment">用于生成集群节点和网站的CNAME和DNS解析记录,修改后将自动删除旧域名中的相关记录.</p>
               </>
             ) : (
               <span>
-                没有可用的域名，请在 <a href="/dns/providers">[域名解析]</a> 中添加。
+                没有可用的域名,请在 <a href="/dns/providers">[域名解析]</a> 中添加.
               </span>
             )}
           </FormRow>
           {data.domainId > 0 && domainId === 0 ? (
             <FormRow title="不使用主域名">
               <Checkbox label="" checked={confirmResetDomain} onChange={setConfirmResetDomain} />
-              <p className="comment">选中后，表示确认当前集群不使用主域名；否则必须选择一个主域名。</p>
+              <p className="comment">选中后,表示确认当前集群不使用主域名;否则必须选择一个主域名.</p>
             </FormRow>
           ) : null}
           <FormRow title="DNS子域名 *">
@@ -147,7 +147,7 @@ export function ClusterSettingsDnsPage() {
               <span className="ui label">{domainName ? `.${domainName}` : '.主域名'}</span>
             </div>
             <p className="comment">
-              当前集群的子域名，和主域名一起组成集群节点的子域名，修改后将自动删除旧域名中的相关记录。
+              当前集群的子域名,和主域名一起组成集群节点的子域名,修改后将自动删除旧域名中的相关记录.
               <a
                 href=""
                 onClick={(event) => {
@@ -157,7 +157,7 @@ export function ClusterSettingsDnsPage() {
               >
                 [随机生成]
               </a>
-              。
+              .
             </p>
           </FormRow>
           <FormRow title="共用CNAME">
@@ -219,24 +219,24 @@ export function ClusterSettingsDnsPage() {
                 <Plus size={13} /> 添加
               </button>
             </div>
-            <p className="comment">除集群已创建的网站之外，自动解析到集群的CNAME记录，比如 www。</p>
+            <p className="comment">除集群已创建的网站之外,自动解析到集群的CNAME记录,比如 www.</p>
           </FormRow>
           {!sharedCNAME ? (
             <FormRow title="允许通过CNAME访问网站">
               <Checkbox label="" checked={cnameAsDomain} onChange={setCnameAsDomain} />
-              <p className="comment">选中后，表示允许使用CNAME直接访问网站；如果取消选中，则表示CNAME只作为DNS解析记录使用。</p>
+              <p className="comment">选中后,表示允许使用CNAME直接访问网站;如果取消选中,则表示CNAME只作为DNS解析记录使用.</p>
             </FormRow>
           ) : null}
           <FormRow title="包含Ln节点">
             <Checkbox label="" checked={includingLnNodes} onChange={setIncludingLnNodes} />
-            <p className="comment">选中后，表示域名解析中包含L2及以上级别节点。</p>
+            <p className="comment">选中后,表示域名解析中包含L2及以上级别节点.</p>
           </FormRow>
           <FormRow title="解析记录TTL">
             <div className="ui input right labeled">
               <TextInput type="text" maxLength={6} style={{ width: '6em' }} value={ttl} onChange={(event) => setTtl(event.target.value)} />
               <span className="ui label">秒</span>
             </div>
-            <p className="comment">每个DNS服务商或者账号的TTL限制各有不同，0表示使用默认。</p>
+            <p className="comment">每个DNS服务商或者账号的TTL限制各有不同,0表示使用默认.</p>
           </FormRow>
           <FormRow title="同步节点DNS状态">
             <Checkbox label="" checked={nodesAutoSync} onChange={setNodesAutoSync} />
@@ -333,7 +333,7 @@ export function ClusterSettingsDnsRecordsPage() {
   const data = query.data
 
   async function syncCluster() {
-    if (!(await confirm({ message: '确定要执行数据同步吗？' }))) {
+    if (!(await confirm({ message: '确定要执行数据同步吗?' }))) {
       return
     }
     setIsSyncing(true)
@@ -349,7 +349,7 @@ export function ClusterSettingsDnsRecordsPage() {
   }
 
   async function deleteTask(taskId: number) {
-    if (!(await confirm({ message: '确定要删除这个任务吗？', danger: true, confirmText: '删除' }))) {
+    if (!(await confirm({ message: '确定要删除这个任务吗?', danger: true, confirmText: '删除' }))) {
       return
     }
     try {
@@ -411,7 +411,7 @@ export function ClusterSettingsDnsRecordsPage() {
             <td>自动设置CNAME记录</td>
             <td>
               {data.dnsInfo.cnameRecords.length === 0 ? (
-                <span className="disabled">暂时还没有设置。</span>
+                <span className="disabled">暂时还没有设置.</span>
               ) : (
                 data.dnsInfo.cnameRecords.map((record) => (
                   <span key={record} className="ui label basic small">
@@ -435,7 +435,7 @@ export function ClusterSettingsDnsRecordsPage() {
                       void syncCluster()
                     }}
                   >
-                    {data.dnsHasChanges ? <span className="red">检测到解析记录有变化，需要同步</span> : 'DNS服务商同步'}
+                    {data.dnsHasChanges ? <span className="red">检测到解析记录有变化,需要同步</span> : 'DNS服务商同步'}
                   </a>
                 )}
               </td>
@@ -537,10 +537,10 @@ export function ClusterSettingsDnsRecordsPage() {
         </div>
       ) : null}
 
-      <p className="comment">下面的DNS解析记录也可以手工在DNS服务商提供的管理平台添加。</p>
+      <p className="comment">下面的DNS解析记录也可以手工在DNS服务商提供的管理平台添加.</p>
 
       <h3>节点DNS解析记录 &nbsp; ({data.nodes.length}个)</h3>
-      {data.nodes.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录。</p> : null}
+      {data.nodes.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录.</p> : null}
       {data.nodes.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>
@@ -622,12 +622,12 @@ export function ClusterSettingsDnsRecordsPage() {
 
       {data.dnsInfo.sharedCNAME ? (
         <p className="comment">
-          所有网站共用CNAME：{data.dnsInfo.dnsName}.{data.dnsInfo.domainName || '根域名'}。
+          所有网站共用CNAME:{data.dnsInfo.dnsName}.{data.dnsInfo.domainName || '根域名'}.
         </p>
       ) : (
         <>
       <h3>网站解析记录 &nbsp; ({data.servers.length}个)</h3>
-      {data.servers.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录。</p> : null}
+      {data.servers.length === 0 ? <p className="comment">暂时没有需要设置的DNS记录.</p> : null}
       {data.servers.length > 0 ? (
         <table className="ui table selectable celled">
           <thead>

@@ -207,7 +207,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
             <input type="text" maxLength={64} size={20} style={{ width: '10em' }} value={dnsName} onChange={(event) => setDnsName(event.target.value)} />
             <span className="ui label">.{domainName || '主域名'}</span>
           </div>
-          <p className="comment">子域名和主域名共同组成集群的域名。</p>
+          <p className="comment">子域名和主域名共同组成集群的域名.</p>
         </FormRow>
         <FormRow title="共用CNAME">
           <Checkbox
@@ -224,7 +224,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
         <FormRow title="自动设置CNAME记录">
           <ValueList values={cnameRecords} onChange={setCnameRecords} placeholder="记录名" />
           <p className="comment">
-            除集群已创建的网站之外，自动解析到集群的CNAME记录，比如
+            除集群已创建的网站之外,自动解析到集群的CNAME记录,比如
             <a
               href=""
               onClick={(event) => {
@@ -236,7 +236,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
             >
               www
             </a>
-            。
+            .
           </p>
         </FormRow>
         <tr>
@@ -257,13 +257,13 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
             {!sharedCNAME ? (
               <FormRow title="允许通过CNAME访问网站">
                 <Checkbox checked={cnameAsDomain} onChange={setCnameAsDomain} />
-                <p className="comment">选中后，表示允许使用CNAME直接访问网站；如果取消选中，则表示CNAME只作为DNS解析记录使用。</p>
+                <p className="comment">选中后,表示允许使用CNAME直接访问网站;如果取消选中,则表示CNAME只作为DNS解析记录使用.</p>
               </FormRow>
             ) : null}
             {isPlus ? (
               <FormRow title="包含Ln节点">
                 <Checkbox checked={includingLnNodes} onChange={setIncludingLnNodes} />
-                <p className="comment">选中后，表示域名解析中包含L2及以上级别节点，也就意味着用户请求可能会被分配到这些节点。</p>
+                <p className="comment">选中后,表示域名解析中包含L2及以上级别节点,也就意味着用户请求可能会被分配到这些节点.</p>
               </FormRow>
             ) : null}
             <FormRow title="记录TTL">
@@ -271,7 +271,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
                 <input type="text" maxLength={6} style={{ width: '6em' }} value={ttl} onChange={(event) => setTtl(event.target.value)} />
                 <span className="ui label">秒</span>
               </div>
-              <p className="comment">每个DNS服务商或者账号的TTL限制各有不同，请注意取值范围；修改后，只对新的解析记录生效。0表示使用默认。</p>
+              <p className="comment">每个DNS服务商或者账号的TTL限制各有不同,请注意取值范围;修改后,只对新的解析记录生效.0表示使用默认.</p>
             </FormRow>
             <FormRow title="同步节点DNS状态">
               <Checkbox checked={nodesAutoSync} onChange={setNodesAutoSync} />
@@ -386,18 +386,18 @@ export function UpdateNodeDNSForm({
         {domainName ? (
           <FormRow title="主域名">
             {domainName}
-            <p className="comment">由当前节点所属集群设置。</p>
+            <p className="comment">由当前节点所属集群设置.</p>
           </FormRow>
         ) : null}
         <FormRow title="IP地址 *">
           <input type="text" maxLength={64} value={ipAddr} onChange={(event) => setIpAddr(event.target.value)} />
-          <p className="comment">用于域名解析的节点IP地址。</p>
+          <p className="comment">用于域名解析的节点IP地址.</p>
         </FormRow>
         {domainId > 0 ? (
           <FormRow title="线路">
             {allRoutes.length === 0 ? (
               <p className="comment">
-                没有可选的线路。
+                没有可选的线路.
                 <a href="" onClick={(event) => { event.preventDefault(); void syncDomain() }}>
                   [获取线路]
                 </a>
@@ -406,7 +406,7 @@ export function UpdateNodeDNSForm({
               <div>
                 <DnsRoutesSelector allRoutes={allRoutes} value={routes} onChange={setRoutes} />
                 <p className="comment">
-                  当前节点IP对应的线路。
+                  当前节点IP对应的线路.
                   <a href="" onClick={(event) => { event.preventDefault(); void syncDomain() }}>
                     [重新获取线路]
                   </a>
@@ -416,7 +416,7 @@ export function UpdateNodeDNSForm({
           </FormRow>
         ) : (
           <FormRow title="线路">
-            <span className="disabled">当前集群没有选择域名。</span>
+            <span className="disabled">当前集群没有选择域名.</span>
           </FormRow>
         )}
       </FormTable>
@@ -456,7 +456,7 @@ export function CreateDomainForm({ providerId, onSaved }: { providerId: number; 
       <FormTable>
         <FormRow title="域名 *">
           <input type="text" maxLength={64} value={name} onChange={(event) => setName(event.target.value)} autoFocus />
-          <p className="comment">在DNS服务商中可以管理的域名。</p>
+          <p className="comment">在DNS服务商中可以管理的域名.</p>
         </FormRow>
       </FormTable>
       <button className={`ui button primary${submitting ? ' loading disabled' : ''}`} type="submit" disabled={submitting}>
@@ -542,14 +542,14 @@ export function DomainRoutesContent({ domainId }: { domainId: number }) {
           <tr>
             <td className="title">线路</td>
             <td>
-              {routes.length === 0 ? <p className="comment">暂时还没有支持的线路。</p> : null}
+              {routes.length === 0 ? <p className="comment">暂时还没有支持的线路.</p> : null}
               {routes.map((route) => (
                 <span key={route.code} className="ui label tiny basic" style={{ marginBottom: '0.5em' }}>
                   {route.name}
                   {route.code && route.code !== route.name ? <span> ({route.code})</span> : null}
                 </span>
               ))}
-              <p className="comment">注意：有些DNS服务商会根据账号的会员级别等限制线路的使用。</p>
+              <p className="comment">注意:有些DNS服务商会根据账号的会员级别等限制线路的使用.</p>
             </td>
           </tr>
         </tbody>
@@ -837,7 +837,7 @@ export function DomainSelectForm({ onDone }: { onDone?: (result: DomainSelectRes
       if (onDone) {
         onDone(result)
       } else {
-        toast(`已选择域名：${result.domainName || '-'}`)
+        toast(`已选择域名:${result.domainName || '-'}`)
       }
     } catch (error) {
       toast(error instanceof Error ? error.message : '操作失败', 'error')
