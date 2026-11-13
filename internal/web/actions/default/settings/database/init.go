@@ -14,7 +14,6 @@ func init() {
 			Helper(settingutils.NewAdvancedHelper("database")).
 			Prefix("/settings/database").
 			Get("", new(IndexAction)).
-			GetPost("/update", new(UpdateAction)).
 			GetPost("/clean", new(CleanAction)).
 			GetPost("/cleanSetting", new(CleanSettingAction)).
 			GetPost("/truncateTable", new(TruncateTableAction)).
