@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Plus, Trash2 } from 'lucide-react'
 import { apiGet, apiPost } from '../../api/client'
 import { useSession } from '../../api/session'
@@ -43,10 +43,11 @@ export function UsersPage() {
   const navigate = useNavigate()
   const confirm = useConfirm()
   const toast = useToast()
-  const [keyword, setKeyword] = useState('')
-  const [searchKeyword, setSearchKeyword] = useState('')
-  const [page, setPage] = useState(1)
-  const [verifying] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const searchKeyword = searchParams.get('keyword') || ''
+  const page = Number(searchParams.get('page') || 1) || 1
+  const verifying = searchParams.get('verifying') === '1'
+  const [keyword, setKeyword] = useState(searchKeyword)
 
   const query = useQuery({
     queryKey: ['users', searchKeyword, page, verifying],
@@ -77,8 +78,14 @@ export function UsersPage() {
 
   function submitSearch(event: FormEvent) {
     event.preventDefault()
-    setSearchKeyword(keyword)
-    setPage(1)
+    const next = new URLSearchParams()
+    if (keyword) {
+      next.set('keyword', keyword)
+    }
+    if (verifying) {
+      next.set('verifying', '1')
+    }
+    setSearchParams(next)
   }
 
   async function deleteUser(user: UserItem) {
@@ -126,8 +133,7 @@ export function UsersPage() {
                 onClick={(event) => {
                   event.preventDefault()
                   setKeyword('')
-                  setSearchKeyword('')
-                  setPage(1)
+                  setSearchParams(new URLSearchParams())
                 }}
               >
                 [清除条件]
