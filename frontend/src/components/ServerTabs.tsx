@@ -7,10 +7,14 @@ export function ServerTabs({
   serverId,
   serverName,
   activeName,
+  activeTab = 'settings',
+  showBreadcrumb = true,
 }: {
   serverId: number
   serverName?: string
   activeName?: string
+  activeTab?: 'settings' | 'stat' | 'log'
+  showBreadcrumb?: boolean
 }) {
   const nameQuery = useQuery({
     queryKey: ['server-name', serverId],
@@ -26,21 +30,23 @@ export function ServerTabs({
         <a className="item" href="/servers">
           <var>网站列表</var>
         </a>
-        <a className="item active" href={`/servers/server/settings?serverId=${serverId}`}>
+        <a className={`item${activeTab === 'settings' ? ' active' : ''}`} href={`/servers/server/settings?serverId=${serverId}`}>
           <var>设置</var>
           <Settings size={14} />
-          <div className="bottom-indicator" />
+          {activeTab === 'settings' ? <div className="bottom-indicator" /> : null}
         </a>
-        <a className="item" href={`/servers/server/stat?serverId=${serverId}`}>
+        <a className={`item${activeTab === 'stat' ? ' active' : ''}`} href={`/servers/server/stat?serverId=${serverId}`}>
           <var>统计</var>
           <BarChart3 size={14} />
+          {activeTab === 'stat' ? <div className="bottom-indicator" /> : null}
         </a>
-        <a className="item" href={`/servers/server/log?serverId=${serverId}`}>
+        <a className={`item${activeTab === 'log' ? ' active' : ''}`} href={`/servers/server/log?serverId=${serverId}`}>
           <var>日志</var>
           <History size={14} />
+          {activeTab === 'log' ? <div className="bottom-indicator" /> : null}
         </a>
       </div>
-      <PageHeader
+      {showBreadcrumb ? <PageHeader
         items={[
           { name: '网站列表', href: '/servers' },
           { name: '|', disabled: true },
@@ -48,7 +54,7 @@ export function ServerTabs({
           { name: '»', disabled: true, hidden: !activeName },
           { name: activeName ? `"${activeName}"设置` : '', href: currentUrl, active: !!activeName, hidden: !activeName },
         ]}
-      />
+      /> : null}
     </>
   )
 }

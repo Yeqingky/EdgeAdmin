@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { PageHeader } from '../../components/PageHeader'
+import { ServerTabs } from '../../components/ServerTabs'
 import { spaLink, type MenuItem, type ServerInfo } from './types'
 
 function MenuColumn({ items, size }: { items: MenuItem[]; size: 'small' | 'tiny' }) {
@@ -36,7 +37,9 @@ export function ServerSettingsLeftMenu({ items, disabled }: { items?: MenuItem[]
 // 网站设置顶部面包屑(对应 legacy settings_menu)
 export function ServerSettingsBreadcrumb({ serverId, server }: { serverId: string; server?: ServerInfo }) {
   return (
-    <PageHeader
+    <>
+      <ServerTabs serverId={Number(serverId)} serverName={server?.name} showBreadcrumb={false} />
+      <PageHeader
       items={[
         { name: '网站列表', href: '/servers' },
         { name: '|' },
@@ -45,7 +48,8 @@ export function ServerSettingsBreadcrumb({ serverId, server }: { serverId: strin
           href: spaLink(`/servers/server/settings?serverId=${serverId}`),
         },
       ]}
-    />
+      />
+    </>
   )
 }
 

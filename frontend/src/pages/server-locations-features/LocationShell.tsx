@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { PageHeader, type PageMenuItem } from '../../components/PageHeader'
+import { ServerTabs } from '../../components/ServerTabs'
 import type { LocationBaseData } from './types'
 
 function Badge({ text }: { text: string }) {
@@ -44,6 +45,7 @@ export function LocationShell({
 
   return (
     <div className="right-box">
+      {serverId > 0 ? <ServerTabs serverId={serverId} activeTab="settings" showBreadcrumb={false} /> : null}
       <PageHeader items={items} />
       {leftMenuItems.length > 0 ? (
         <div className="left-box tiny">

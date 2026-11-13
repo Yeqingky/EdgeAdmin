@@ -4,6 +4,7 @@ import * as echarts from 'echarts'
 import { ChevronDown, ChevronUp, HelpCircle, Loader2, X } from 'lucide-react'
 import { ApiError, UnauthorizedError, apiGet, apiPost } from '../../api/client'
 import { LoadingBlock } from '../../components/LoadingBlock'
+import { ServerTabs } from '../../components/ServerTabs'
 
 /* ------------------------------------------------------------------ */
 /* 请求辅助                                                            */
@@ -541,8 +542,11 @@ export function ServerTopMenu({
     delete: '/servers/server/delete',
     settings: '/servers/server/settings',
   }
+  const activeTab = current === 'stat' ? 'stat' : current === 'log' ? 'log' : current === 'settings' ? 'settings' : undefined
   return (
-    <FirstMenu>
+    <>
+      <ServerTabs serverId={serverId} serverName={serverName} activeTab={activeTab} showBreadcrumb={false} />
+      <FirstMenu>
       <a className="item" href="/servers">网站列表</a>
       <DividerItem />
       <a className="item active" href={`${paths[current]}?serverId=${serverId}`}>
@@ -556,7 +560,8 @@ export function ServerTopMenu({
         删除
       </a>
       {children}
-    </FirstMenu>
+      </FirstMenu>
+    </>
   )
 }
 
