@@ -285,6 +285,8 @@ export interface NodeUpdateData {
     secondaryClusters: ClusterRef[]
     enableIPLists: boolean
     lnAddrs: string[]
+    region?: OptionRef | null
+    group?: OptionRef | null
   }
   canUpdateLevel: boolean
 }
