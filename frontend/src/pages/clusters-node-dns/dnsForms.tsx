@@ -45,11 +45,6 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
   const [initialized, setInitialized] = useState(false)
   const [submitting, setSubmitting] = useState(false)
 
-  const providersQuery = useQuery({
-    queryKey: ['dns-provider-options', providerType],
-    queryFn: () => apiPost<OptionsProviderData>('/dns/providerOptions', { type: providerType }),
-    enabled: providerType.length > 0,
-  })
   const domainsQuery = useQuery({
     queryKey: ['dns-domain-options', providerId],
     queryFn: () => apiPost<OptionsDomainData>('/dns/domainOptions', { providerId }),
@@ -59,7 +54,8 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
   useEffect(() => {
     if (query.data && !initialized) {
       const data = query.data
-      setProviderType(data.providerType || (data.providerTypes[0] ? data.providerTypes[0].code : ''))
+      const hasCurrentProviderType = data.providerTypes.some((type) => type.code === data.providerType)
+      setProviderType(hasCurrentProviderType ? data.providerType : data.providerTypes[0]?.code || '')
       setProviderId(data.providerId || 0)
       setDomainId(data.domainId || 0)
       setDomainName(data.domain || '')
@@ -76,10 +72,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
   }, [query.data, initialized])
 
   useEffect(() => {
-    if (!providersQuery.data) {
-      return
-    }
-    const list = providersQuery.data.providers
+    const list = query.data?.providerTypes.find((type) => type.code === providerType)?.providers || []
     if (list.length === 0) {
       setProviderId(0)
       return
@@ -87,7 +80,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
     if (!list.some((provider) => provider.id === providerId)) {
       setProviderId(list[0].id)
     }
-  }, [providersQuery.data, providerId])
+  }, [query.data, providerType, providerId])
 
   useEffect(() => {
     if (!domainsQuery.data) {
@@ -118,7 +111,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
     return <div className="ui negative message">加载失败</div>
   }
   const data = query.data
-  const providers = providersQuery.data?.providers || []
+  const providers = data.providerTypes.find((type) => type.code === providerType)?.providers || []
   const domains = domainsQuery.data?.domains || []
   const isPlus = session.data?.teaIsPlus ?? false
 

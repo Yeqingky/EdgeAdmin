@@ -601,7 +601,7 @@ export interface UpdateClusterDNSData {
   cnameAsDomain: boolean
   sharedCNAME: boolean
   includingLnNodes: boolean
-  providerTypes: DNSProviderTypeOption[]
+  providerTypes: (DNSProviderTypeOption & { providers: { id: number; name: string }[] })[]
 }
 
 export interface DNSProviderItem {

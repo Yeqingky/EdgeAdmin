@@ -57,17 +57,31 @@ func (this *UpdateClusterPopupAction) RunGet(params struct {
 	this.Data["sharedCNAME"] = dnsInfoResp.SharedCNAME
 	this.Data["includingLnNodes"] = dnsInfoResp.IncludingLnNodes
 
-	// 所有服务商
-	providerTypesResp, err := this.RPC().DNSProviderRPC().FindAllDNSProviderTypes(this.AdminContext(), &pb.FindAllDNSProviderTypesRequest{})
+	// 已经添加账号的服务商
+	providersResp, err := this.RPC().DNSProviderRPC().FindAllEnabledDNSProviders(this.AdminContext(), &pb.FindAllEnabledDNSProvidersRequest{
+		AdminId: this.AdminId(),
+		UserId:  0,
+	})
 	if err != nil {
 		this.ErrorPage(err)
 		return
 	}
-	providerTypeMaps := []maps.Map{}
-	for _, providerType := range providerTypesResp.ProviderTypes {
-		providerTypeMaps = append(providerTypeMaps, maps.Map{
-			"name": providerType.Name,
-			"code": providerType.Code,
+	var providerTypeMaps = []maps.Map{}
+	var providerTypeIndexMap = map[string]int{}
+	for _, provider := range providersResp.DnsProviders {
+		index, ok := providerTypeIndexMap[provider.Type]
+		if !ok {
+			providerTypeMaps = append(providerTypeMaps, maps.Map{
+				"name":      provider.TypeName,
+				"code":      provider.Type,
+				"providers": []maps.Map{},
+			})
+			index = len(providerTypeMaps) - 1
+			providerTypeIndexMap[provider.Type] = index
+		}
+		providerTypeMaps[index]["providers"] = append(providerTypeMaps[index]["providers"].([]maps.Map), maps.Map{
+			"id":   provider.Id,
+			"name": provider.Name,
 		})
 	}
 	this.Data["providerTypes"] = providerTypeMaps
