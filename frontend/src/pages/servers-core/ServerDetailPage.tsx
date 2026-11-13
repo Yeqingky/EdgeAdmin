@@ -89,7 +89,7 @@ export function ServerDetailPage() {
               <td>部署集群</td>
               <td>
                 {server.clusterId > 0 ? (
-                  <a href={`#/clusters/cluster?clusterId=${server.clusterId}`}>查看集群 #{server.clusterId}</a>
+                  <a href={`/clusters/cluster?clusterId=${server.clusterId}`}>查看集群 #{server.clusterId}</a>
                 ) : (
                   <span className="disabled">-</span>
                 )}
@@ -106,7 +106,7 @@ export function ServerDetailPage() {
               key={tab.path}
               className="ui label basic"
               style={{ marginBottom: '0.5em' }}
-              href={`#${tab.path}?serverId=${server.id}`}
+              href={`${tab.path}?serverId=${server.id}`}
             >
               {tab.name}
             </a>
@@ -116,10 +116,10 @@ export function ServerDetailPage() {
         <h4>其他操作</h4>
         <FirstMenu
           items={[
-            { name: '统计', href: `#/servers/server/stat?serverId=${server.id}` },
-            { name: '访问日志', href: `#/servers/server/log?serverId=${server.id}` },
-            { name: '删除网站', href: `#/servers/server/delete?serverId=${server.id}` },
-            { name: '返回网站列表', href: '#/servers' },
+            { name: '统计', href: `/servers/server/stat?serverId=${server.id}` },
+            { name: '访问日志', href: `/servers/server/log?serverId=${server.id}` },
+            { name: '删除网站', href: `/servers/server/delete?serverId=${server.id}` },
+            { name: '返回网站列表', href: '/servers' },
           ]}
         />
       </ServerPageLayout>

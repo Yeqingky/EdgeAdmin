@@ -58,7 +58,7 @@ export function TopNav({ session }: { session: SessionData }) {
 
   return (
     <div className={`ui menu top-nav blue inverted small borderless ${theme}`}>
-      <a href="/spa/#/dashboard" className="item">
+      <a href="/dashboard" className="item">
         {session.teaLogoFileId > 0 ? (
           <img alt="logo" src={`/ui/image/${session.teaLogoFileId}`} style={{ width: 'auto', height: '1.6em' }} />
         ) : (
@@ -76,11 +76,11 @@ export function TopNav({ session }: { session: SessionData }) {
       </a>
 
       <div className="right menu">
-        <a href="/spa/#/messages" className="item" title="消息">
+        <a href="/messages" className="item" title="消息">
           {messageCount > 0 ? <Bell size={14} /> : <Bell size={14} className="disabled" />}
           <span>消息({messageCount})</span>
         </a>
-        <a href="/spa/#/settings/profile" className="item" title="个人信息">
+        <a href="/settings/profile" className="item" title="个人信息">
           {session.teaUsername ? (
             <>
               <User size={14} />

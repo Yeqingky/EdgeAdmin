@@ -193,7 +193,7 @@ export function WafLogPage({ firewallPolicyId }: { firewallPolicyId: number }) {
                     <div>
                       {accessLog.node?.nodeCluster ? (
                         <a
-                          href={`#/clusters/cluster/node?nodeId=${accessLog.node.id}&clusterId=${accessLog.node.nodeCluster.id}`}
+                          href={`/clusters/cluster/node?nodeId=${accessLog.node.id}&clusterId=${accessLog.node.nodeCluster.id}`}
                           className="grey"
                         >
                           [{accessLog.node.name}]
@@ -215,8 +215,8 @@ export function WafLogPage({ firewallPolicyId }: { firewallPolicyId: number }) {
                           <a
                             href={
                               wafInfo.policy.serverId === 0
-                                ? `#/servers/components/waf/group?firewallPolicyId=${firewallPolicyId}&type=inbound&groupId=${accessLog.firewallRuleGroupId}`
-                                : `#/servers/server/settings/waf/group?serverId=${accessLog.serverId}&firewallPolicyId=${firewallPolicyId}&type=inbound&groupId=${accessLog.firewallRuleGroupId}`
+                                ? `/servers/components/waf/group?firewallPolicyId=${firewallPolicyId}&type=inbound&groupId=${accessLog.firewallRuleGroupId}`
+                                : `/servers/server/settings/waf/group?serverId=${accessLog.serverId}&firewallPolicyId=${firewallPolicyId}&type=inbound&groupId=${accessLog.firewallRuleGroupId}`
                             }
                           >
                             WAF -{wafInfo.group ? ` ${wafInfo.group.name} -` : ''}

@@ -10,5 +10,12 @@ func init() {
 			Get("/", new(IndexAction)).
 			Get("/index.html", new(IndexAction)).
 			EndAll()
+
+		server.
+			Get("/login", new(IndexAction)).
+			Get("/users/create", new(IndexAction)).
+			Get("/admins/create", new(IndexAction)).
+			Get("/db/create", new(IndexAction)).
+			EndAll()
 	})
 }

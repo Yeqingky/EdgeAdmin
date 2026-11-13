@@ -66,7 +66,7 @@ export function AdminsPage() {
   return (
     <div>
       <div className="ui menu text blue first-menu">
-        <a className="item" href="#/admins/create"><Plus size={14} /> [创建管理员]</a>
+        <a className="item" href="/admins/create"><Plus size={14} /> [创建管理员]</a>
       </div>
 
       {!hasWeakPassword ? (
@@ -78,7 +78,7 @@ export function AdminsPage() {
             <div className="ui field">
               <button className="ui button" type="submit">搜索</button>
               &nbsp;
-              {keyword ? <a href="#/admins" onClick={(event) => { event.preventDefault(); setInput(''); setParams(new URLSearchParams()) }}>[清除条件]</a> : null}
+              {keyword ? <a href="/admins" onClick={(event) => { event.preventDefault(); setInput(''); setParams(new URLSearchParams()) }}>[清除条件]</a> : null}
             </div>
           </div>
         </form>
@@ -86,7 +86,7 @@ export function AdminsPage() {
 
       {hasWeakPassword ? (
         <span className="ui label small basic blue">
-          当前正在筛选弱密码管理员 <a href="#/admins">×</a>
+          当前正在筛选弱密码管理员 <a href="/admins">×</a>
         </span>
       ) : null}
 
@@ -111,12 +111,12 @@ export function AdminsPage() {
             {query.data.admins.map((admin) => (
               <tr key={admin.id}>
                 <td className={admin.isOn ? undefined : 'disabled'}>
-                  <a href={`#/admins/admin?adminId=${admin.id}`}>{admin.username}</a>
+                  <a href={`/admins/admin?adminId=${admin.id}`}>{admin.username}</a>
                   {admin.isSuper || admin.hasWeakPassword ? (
                     <div style={{ marginTop: '0.5em' }}>
                       {admin.isSuper ? <span className="ui label olive basic tiny">超级管理员</span> : null}
                       {admin.hasWeakPassword ? (
-                        <a href={`#/admins/update?adminId=${admin.id}`}>
+                        <a href={`/admins/update?adminId=${admin.id}`}>
                           <span className="ui label red basic tiny">弱密码</span>
                         </a>
                       ) : null}
@@ -128,7 +128,7 @@ export function AdminsPage() {
                 <td>{admin.otpLoginIsOn ? <span className="green">Y</span> : <span className="disabled">N</span>}</td>
                 <td className="center"><StatusLabel isOn={admin.isOn} /></td>
                 <td>
-                  <a href={`#/admins/admin?adminId=${admin.id}`}>详情</a> &nbsp;
+                  <a href={`/admins/admin?adminId=${admin.id}`}>详情</a> &nbsp;
                   <a href="" onClick={(event) => { event.preventDefault(); void remove(admin) }}>删除</a>
                 </td>
               </tr>

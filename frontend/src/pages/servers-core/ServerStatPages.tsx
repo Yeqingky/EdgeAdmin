@@ -57,9 +57,9 @@ function statMenuItems(serverId: number, current: 'index' | 'region' | 'provider
 
 function requestsTabItems(serverId: number, active: 'minutely' | 'hourly' | 'daily') {
   return [
-    { name: '即时', href: `#/servers/server/stat?serverId=${serverId}`, active: active === 'minutely' },
-    { name: '按小时', href: `#/servers/server/stat/hourlyRequests?serverId=${serverId}`, active: active === 'hourly' },
-    { name: '按天', href: `#/servers/server/stat/dailyRequests?serverId=${serverId}`, active: active === 'daily' },
+    { name: '即时', href: `/servers/server/stat?serverId=${serverId}`, active: active === 'minutely' },
+    { name: '按小时', href: `/servers/server/stat/hourlyRequests?serverId=${serverId}`, active: active === 'hourly' },
+    { name: '按天', href: `/servers/server/stat/dailyRequests?serverId=${serverId}`, active: active === 'daily' },
   ]
 }
 
@@ -409,7 +409,7 @@ interface RegionData extends StatPageBase {
 function StatDisabledHint({ serverId }: { serverId: number }) {
   return (
     <p className="ui message">
-      要想查看统计数据，需要先开启统计功能，<a href={`#/servers/server/settings/stat?serverId=${serverId}`}>[点击这里]</a>修改配置。
+      要想查看统计数据，需要先开启统计功能，<a href={`/servers/server/settings/stat?serverId=${serverId}`}>[点击这里]</a>修改配置。
     </p>
   )
 }

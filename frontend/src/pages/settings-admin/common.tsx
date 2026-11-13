@@ -39,7 +39,7 @@ export function SettingsTabs({ kind, active }: { kind: 'basic' | 'advanced'; act
   return (
     <div className="ui top menu tabular tab-menu small">
       {tabs.map((tab) => (
-        <a key={tab.code} className={`item${tab.code === active ? ' active' : ''}`} href={`#${tab.url}`}>
+        <a key={tab.code} className={`item${tab.code === active ? ' active' : ''}`} href={`${tab.url}`}>
           <var>{tab.name}</var>
           {tab.code === active ? <div className="bottom-indicator" /> : null}
         </a>

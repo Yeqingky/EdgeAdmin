@@ -36,11 +36,11 @@ function collectRoutes(): string[] {
 }
 
 async function login(page: Page) {
-  await page.goto('/spa/#/login')
+  await page.goto('/login')
   await page.getByPlaceholder('请输入用户名').fill(username)
   await page.getByPlaceholder('请输入密码').fill(password)
   await page.getByRole('button', { name: '登录' }).click()
-  await expect(page).toHaveURL(/\/spa\/#\/dashboard/)
+  await expect(page).toHaveURL(/\/dashboard/)
 }
 
 test('every registered route renders without crashes or migration placeholder', async ({ page }) => {
@@ -54,7 +54,10 @@ test('every registered route renders without crashes or migration placeholder', 
   })
   for (const route of routes) {
     pageErrors.length = 0
-    await page.goto(`/spa/#${route}`)
+    await page.evaluate((next) => {
+      window.history.pushState({}, '', next)
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    }, route)
     await page.waitForTimeout(500)
     const body = await page.locator('body').innerText()
     if (body.includes('正在迁移中')) {

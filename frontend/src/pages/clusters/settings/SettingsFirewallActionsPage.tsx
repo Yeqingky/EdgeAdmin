@@ -376,10 +376,10 @@ export function ClusterSettingsFirewallActionCreatePopupPage() {
         clusterId={clusterId}
         actionId={0}
         onCancel={() => {
-          window.location.hash = `#/clusters/cluster/settings/firewall-actions?clusterId=${clusterId}`
+          window.location.href = `/clusters/cluster/settings/firewall-actions?clusterId=${clusterId}`
         }}
         onSaved={async () => {
-          window.location.hash = `#/clusters/cluster/settings/firewall-actions?clusterId=${clusterId}`
+          window.location.href = `/clusters/cluster/settings/firewall-actions?clusterId=${clusterId}`
         }}
       />
     </div>
@@ -396,10 +396,10 @@ export function ClusterSettingsFirewallActionUpdatePopupPage() {
         clusterId={0}
         actionId={actionId}
         onCancel={() => {
-          window.location.hash = '#/clusters/cluster/settings/firewall-actions'
+          window.location.href = '/clusters/cluster/settings/firewall-actions'
         }}
         onSaved={async () => {
-          window.location.hash = '#/clusters/cluster/settings/firewall-actions'
+          window.location.href = '/clusters/cluster/settings/firewall-actions'
         }}
       />
     </div>

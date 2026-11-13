@@ -97,7 +97,7 @@ export function LogListPage() {
           <div className="ui field"><button className="ui button" type="submit">查询</button></div>
           {dayFrom || dayTo || keyword || level ? (
             <div className="ui field">
-              <a href="#/log" onClick={(event) => { event.preventDefault(); setForm({ dayFrom: '', dayTo: '', keyword: '', level: '', userType: '' }); setParams(new URLSearchParams()) }}>[清除条件]</a>
+              <a href="/log" onClick={(event) => { event.preventDefault(); setForm({ dayFrom: '', dayTo: '', keyword: '', level: '', userType: '' }); setParams(new URLSearchParams()) }}>[清除条件]</a>
             </div>
           ) : null}
           <div className="ui field"><a href="" onClick={(event) => { event.preventDefault(); exportExcel() }}><Download size={13} /> [导出到Excel]</a></div>

@@ -84,7 +84,7 @@ export function GrantsPage() {
               搜索
             </button>
             &nbsp;
-            {keyword ? <a href="#/clusters/grants">[清除条件]</a> : null}
+            {keyword ? <a href="/clusters/grants">[清除条件]</a> : null}
           </div>
         </div>
       </form>
@@ -106,7 +106,7 @@ export function GrantsPage() {
             {data.grants.map((grant) => (
               <tr key={grant.id}>
                 <td>
-                  <a href={`#/clusters/grants/grant?grantId=${grant.id}`}>{grant.name}</a>
+                  <a href={`/clusters/grants/grant?grantId=${grant.id}`}>{grant.name}</a>
                 </td>
                 <td>
                   <span className="ui label tiny basic">{grant.method.name}</span>
@@ -115,7 +115,7 @@ export function GrantsPage() {
                 <td className="center">{grant.countClusters > 0 ? grant.countClusters : <span className="disabled">0</span>}</td>
                 <td className="center">{grant.countNodes > 0 ? grant.countNodes : <span className="disabled">0</span>}</td>
                 <td>
-                  <a href={`#/clusters/grants/grant?grantId=${grant.id}`}>详情</a> &nbsp;{' '}
+                  <a href={`/clusters/grants/grant?grantId=${grant.id}`}>详情</a> &nbsp;{' '}
                   <a
                     href=""
                     onClick={(event) => {
@@ -423,7 +423,7 @@ export function GrantDetailPage() {
       <div>
         {clusters.length === 0 ? <p className="comment">暂时还没有集群使用此认证。</p> : null}
         {clusters.map((cluster) => (
-          <a key={cluster.id} href={`#/clusters/cluster?clusterId=${cluster.id}`} className="ui label small basic">
+          <a key={cluster.id} href={`/clusters/cluster?clusterId=${cluster.id}`} className="ui label small basic">
             {cluster.name}
           </a>
         ))}
@@ -436,7 +436,7 @@ export function GrantDetailPage() {
         {nodes.map((node) => (
           <a
             key={node.id}
-            href={`#/clusters/cluster/node?clusterId=${node.cluster.id}&nodeId=${node.id}`}
+            href={`/clusters/cluster/node?clusterId=${node.cluster.id}&nodeId=${node.id}`}
             className={`ui label small basic${node.isOn ? '' : ' red'}`}
           >
             {node.name}
@@ -546,7 +546,7 @@ export function GrantCreatePopupPage() {
           try {
             await apiPost('/clusters/grants/createPopup', values)
             toast('保存成功')
-            window.location.hash = '#/clusters/grants'
+            window.location.href = '/clusters/grants'
           } catch (error) {
             toast(error instanceof Error ? error.message : '保存失败', 'error')
           }
@@ -582,7 +582,7 @@ export function GrantUpdatePopupPage() {
           try {
             await apiPost('/clusters/grants/updatePopup', values)
             toast('保存成功')
-            window.location.hash = '#/clusters/grants'
+            window.location.href = '/clusters/grants'
           } catch (error) {
             toast(error instanceof Error ? error.message : '保存失败', 'error')
           }
@@ -636,7 +636,7 @@ export function GrantSelectPopupPage() {
           <h4>可能的认证</h4>
           <div>
             {suggestGrants.map((grant) => (
-              <a key={grant.id} href={`#/clusters/grants/grant?grantId=${grant.id}`} className="ui label basic" style={{ marginBottom: '0.4em' }}>
+              <a key={grant.id} href={`/clusters/grants/grant?grantId=${grant.id}`} className="ui label basic" style={{ marginBottom: '0.4em' }}>
                 {grant.name}
                 {grant.username ? <span className="small grey">（{grant.username}）</span> : null}
               </a>
@@ -647,7 +647,7 @@ export function GrantSelectPopupPage() {
       <h4>全部认证</h4>
       <div>
         {grants.map((grant) => (
-          <a key={grant.id} href={`#/clusters/grants/grant?grantId=${grant.id}`} className="ui label basic" style={{ marginBottom: '0.4em' }}>
+          <a key={grant.id} href={`/clusters/grants/grant?grantId=${grant.id}`} className="ui label basic" style={{ marginBottom: '0.4em' }}>
             {grant.name}
             {grant.username ? <span className="small grey">（{grant.username}）</span> : null}
           </a>

@@ -270,16 +270,16 @@ export function ReverseProxyPage() {
     <ServerSettingsShell serverId={serverId} family={family} activePath="/reverseProxy">
       <SubMenu
         items={[
-          { name: '源站列表', active: true, href: `#${makeQuery(serverId, '/reverseProxy')}` },
-          { name: '调度算法', href: `#${makeQuery(serverId, '/reverseProxy/scheduling')}` },
-          { name: '更多设置', href: `#${makeQuery(serverId, '/reverseProxy/setting')}` },
+          { name: '源站列表', active: true, href: `${makeQuery(serverId, '/reverseProxy')}` },
+          { name: '调度算法', href: `${makeQuery(serverId, '/reverseProxy/scheduling')}` },
+          { name: '更多设置', href: `${makeQuery(serverId, '/reverseProxy/setting')}` },
         ]}
       />
       <GroupConfigWarning url={data.hasGroupConfig ? data.groupSettingURL : ''} />
       {!data.reverseProxyRef.isOn ? (
         <div className="ui message warning" style={{ marginTop: '1em' }}>
           当前源站没有启用，可以通过点击{' '}
-          <a href={`#${makeQuery(serverId, '/reverseProxy/setting')}`}>[更多设置]</a> 开启 。
+          <a href={`${makeQuery(serverId, '/reverseProxy/setting')}`}>[更多设置]</a> 开启 。
         </div>
       ) : null}
       <h3>
@@ -348,9 +348,9 @@ export function ReverseProxySchedulingPage() {
     <ServerSettingsShell serverId={serverId} activePath="/reverseProxy">
       <SubMenu
         items={[
-          { name: '源站列表', href: `#${makeQuery(serverId, '/reverseProxy')}` },
-          { name: '调度算法', active: true, href: `#${makeQuery(serverId, '/reverseProxy/scheduling')}` },
-          { name: '更多设置', href: `#${makeQuery(serverId, '/reverseProxy/setting')}` },
+          { name: '源站列表', href: `${makeQuery(serverId, '/reverseProxy')}` },
+          { name: '调度算法', active: true, href: `${makeQuery(serverId, '/reverseProxy/scheduling')}` },
+          { name: '更多设置', href: `${makeQuery(serverId, '/reverseProxy/setting')}` },
         ]}
       />
       <div className="margin" />
@@ -617,9 +617,9 @@ export function ReverseProxySettingPage() {
     <ServerSettingsShell serverId={serverId} family={family} activePath="/reverseProxy">
       <SubMenu
         items={[
-          { name: '源站列表', href: `#${makeQuery(serverId, '/reverseProxy')}` },
-          { name: '调度算法', href: `#${makeQuery(serverId, '/reverseProxy/scheduling')}` },
-          { name: '更多设置', active: true, href: `#${makeQuery(serverId, '/reverseProxy/setting')}` },
+          { name: '源站列表', href: `${makeQuery(serverId, '/reverseProxy')}` },
+          { name: '调度算法', href: `${makeQuery(serverId, '/reverseProxy/scheduling')}` },
+          { name: '更多设置', active: true, href: `${makeQuery(serverId, '/reverseProxy/setting')}` },
         ]}
       />
       <div className="margin" />

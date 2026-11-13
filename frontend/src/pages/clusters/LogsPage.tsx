@@ -232,7 +232,7 @@ export function LogsPage() {
           </div>
           {hasFilter ? (
             <div className="ui field">
-              <a href={`#/clusters/logs${type ? `?type=${type}` : ''}`}>[清除条件]</a>
+              <a href={`/clusters/logs${type ? `?type=${type}` : ''}`}>[清除条件]</a>
             </div>
           ) : null}
         </div>
@@ -342,10 +342,10 @@ export function LogsPage() {
             {data.logs.map((log) => (
               <tr key={log.id}>
                 <td style={{ whiteSpace: 'nowrap' }}>
-                  <a href={`#/clusters/cluster?clusterId=${log.node.cluster.id}`}>{log.node.cluster.name}</a>
+                  <a href={`/clusters/cluster?clusterId=${log.node.cluster.id}`}>{log.node.cluster.name}</a>
                 </td>
                 <td style={{ whiteSpace: 'nowrap' }}>
-                  <a href={`#/clusters/cluster/node?clusterId=${log.node.cluster.id}&nodeId=${log.node.id}`}>{log.node.name}</a>
+                  <a href={`/clusters/cluster/node?clusterId=${log.node.cluster.id}&nodeId=${log.node.id}`}>{log.node.name}</a>
                 </td>
                 <td>
                   <span className={`ui label tiny ${log.level === 'error' ? 'red' : log.level === 'warning' ? 'orange' : log.level === 'success' ? 'green' : 'blue'} basic`}>

@@ -350,5 +350,5 @@ export interface LeftMenuData {
 }
 
 export function spaLink(url: string): string {
-  return `#${url}`
+  return url
 }

@@ -87,7 +87,7 @@ export function WafListPage() {
         <span className="item disabled">|</span>
         <a
           className="item"
-          href="#/servers/components/waf/createPopup"
+          href="/servers/components/waf/createPopup"
           onClick={(event) => {
             event.preventDefault()
             navigate('/servers/components/waf/createPopup')
@@ -120,7 +120,7 @@ export function WafListPage() {
             &nbsp;
             {keyword.length > 0 || clusterId > 0 ? (
               <a
-                href="#/servers/components/waf"
+                href="/servers/components/waf"
                 onClick={(event) => {
                   event.preventDefault()
                   setKeywordInput('')
@@ -153,15 +153,15 @@ export function WafListPage() {
             {policies.map((policy) => (
               <tr key={policy.id}>
                 <td>
-                  <a href={`#/servers/components/waf/policy?firewallPolicyId=${policy.id}`}>{policy.name}</a>
+                  <a href={`/servers/components/waf/policy?firewallPolicyId=${policy.id}`}>{policy.name}</a>
                 </td>
                 <td className="center">
-                  <a href={`#/servers/components/waf/groups?firewallPolicyId=${policy.id}&type=inbound`}>
+                  <a href={`/servers/components/waf/groups?firewallPolicyId=${policy.id}&type=inbound`}>
                     <span className={policy.countInbound === 0 ? 'disabled' : undefined}>{policy.countInbound}</span>
                   </a>
                 </td>
                 <td className="center">
-                  <a href={`#/servers/components/waf/groups?firewallPolicyId=${policy.id}&type=outbound`}>
+                  <a href={`/servers/components/waf/groups?firewallPolicyId=${policy.id}&type=outbound`}>
                     <span className={policy.countOutbound === 0 ? 'disabled' : undefined}>{policy.countOutbound}</span>
                   </a>
                 </td>
@@ -184,7 +184,7 @@ export function WafListPage() {
                   ) : null}
                 </td>
                 <td>
-                  <a href={`#/servers/components/waf/policy?firewallPolicyId=${policy.id}`}>详情</a> &nbsp;
+                  <a href={`/servers/components/waf/policy?firewallPolicyId=${policy.id}`}>详情</a> &nbsp;
                   <a
                     href=""
                     onClick={(event) => {

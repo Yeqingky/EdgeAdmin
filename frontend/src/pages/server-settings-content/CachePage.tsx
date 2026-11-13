@@ -112,9 +112,9 @@ export function CacheMenu({ active }: { active: 'index' | 'purge' | 'fetch' }) {
   return (
     <PageHeader
       items={[
-        { name: '设置', href: `#/servers/server/settings/cache?serverId=${serverId}`, active: active === 'index' },
-        { name: '刷新', href: `#/servers/server/settings/cache/purge?serverId=${serverId}`, active: active === 'purge' },
-        { name: '预热', href: `#/servers/server/settings/cache/fetch?serverId=${serverId}`, active: active === 'fetch' },
+        { name: '设置', href: `/servers/server/settings/cache?serverId=${serverId}`, active: active === 'index' },
+        { name: '刷新', href: `/servers/server/settings/cache/purge?serverId=${serverId}`, active: active === 'purge' },
+        { name: '预热', href: `/servers/server/settings/cache/fetch?serverId=${serverId}`, active: active === 'fetch' },
       ]}
     />
   )
@@ -222,7 +222,7 @@ export function ServerCacheSettingsPage() {
               {data.cachePolicy ? (
                 <div>
                   {data.cachePolicy.name}{' '}
-                  <a href={`#/servers/components/cache/policy?cachePolicyId=${data.cachePolicy.id}`}>查看</a>
+                  <a href={`/servers/components/cache/policy?cachePolicyId=${data.cachePolicy.id}`}>查看</a>
                   <p className="comment">使用当前网站所在集群的设置。</p>
                 </div>
               ) : (

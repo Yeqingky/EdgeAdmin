@@ -388,7 +388,7 @@ function CacheForm({ data }: { data: CacheData }) {
           {data.cachePolicy ? (
             <div>
               {data.cachePolicy.name}{' '}
-              <a href={`#/servers/components/cache/policy?cachePolicyId=${data.cachePolicy.id}`}>查看</a>
+              <a href={`/servers/components/cache/policy?cachePolicyId=${data.cachePolicy.id}`}>查看</a>
               <p className="comment">使用当前网站所在集群的设置。</p>
             </div>
           ) : (

@@ -205,7 +205,7 @@ export function ServerHttpsSettingsPage() {
                       [申请免费证书]
                     </a>{' '}
                     &nbsp;
-                    <a href={`#/servers/certs?serverId=${serverId}`}>[管理证书]</a>
+                    <a href={`/servers/certs?serverId=${serverId}`}>[管理证书]</a>
                   </div>
                 </div>
               </FormRow>

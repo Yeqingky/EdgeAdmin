@@ -140,7 +140,7 @@ export function ClusterTasksPage() {
                     <td>{cluster.name}</td>
                     <td style={{ whiteSpace: 'nowrap' }}>
                       {task.node.name} &nbsp;{' '}
-                      <a href={`#/clusters/cluster/node?clusterId=${cluster.id}&nodeId=${task.node.id}`} target="_blank" rel="noreferrer">
+                      <a href={`/clusters/cluster/node?clusterId=${cluster.id}&nodeId=${task.node.id}`} target="_blank" rel="noreferrer">
                         查看
                       </a>
                     </td>

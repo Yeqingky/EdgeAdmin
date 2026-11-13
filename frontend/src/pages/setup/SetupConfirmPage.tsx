@@ -59,7 +59,7 @@ export function SetupConfirmPage() {
         <FormRow title="管理系统Secret *"><input type="text" maxLength={64} value={secret} onChange={(event) => setSecret(event.target.value)} /></FormRow>
       </FormTable>
       <div style={{ marginTop: '2em' }} />
-      {query.data?.canInstall ? <a href="#/setup" className="ui button">重新安装</a> : null}
+      {query.data?.canInstall ? <a href="/setup" className="ui button">重新安装</a> : null}
       <button className="ui button primary" type="button" disabled={submitting} onClick={() => void submit()}>{submitting ? '检查中...' : '确认'}</button>
     </div>
   )

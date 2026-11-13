@@ -54,24 +54,24 @@ export function WafMenu({ serverId, firewallPolicyId, active }: { serverId: numb
   return (
     <SubMenu
       items={[
-        { name: '设置', active: active === 'index', href: `#${buildSettingsURL('/waf', base)}` },
+        { name: '设置', active: active === 'index', href: `${buildSettingsURL('/waf', base)}` },
         {
           name: '入站规则',
           active: active === 'inbound',
-          href: `#${buildSettingsURL('/waf/groups', { ...base, type: 'inbound' })}`,
+          href: `${buildSettingsURL('/waf/groups', { ...base, type: 'inbound' })}`,
         },
         {
           name: '出站规则',
           active: active === 'outbound',
-          href: `#${buildSettingsURL('/waf/groups', { ...base, type: 'outbound' })}`,
+          href: `${buildSettingsURL('/waf/groups', { ...base, type: 'outbound' })}`,
         },
-        { name: '国家/地区封禁', active: active === 'country', href: `#${buildSettingsURL('/waf/ipadmin/countries', base)}` },
-        { name: '省份封禁', active: active === 'province', href: `#${buildSettingsURL('/waf/ipadmin/provinces', base)}` },
-        { name: '运营商封禁', active: active === 'provider', href: `#${buildSettingsURL('/waf/ipadmin/providers', base)}` },
-        { name: '白名单', active: active === 'allowList', href: `#${buildSettingsURL('/waf/ipadmin/allowList', base)}` },
-        { name: '黑名单', active: active === 'denyList', href: `#${buildSettingsURL('/waf/ipadmin/denyList', base)}` },
-        { name: '灰名单', active: active === 'greyList', href: `#${buildSettingsURL('/waf/ipadmin/greyList', base)}` },
-        { name: 'IP检查', active: active === 'test', href: `#${buildSettingsURL('/waf/ipadmin/test', base)}` },
+        { name: '国家/地区封禁', active: active === 'country', href: `${buildSettingsURL('/waf/ipadmin/countries', base)}` },
+        { name: '省份封禁', active: active === 'province', href: `${buildSettingsURL('/waf/ipadmin/provinces', base)}` },
+        { name: '运营商封禁', active: active === 'provider', href: `${buildSettingsURL('/waf/ipadmin/providers', base)}` },
+        { name: '白名单', active: active === 'allowList', href: `${buildSettingsURL('/waf/ipadmin/allowList', base)}` },
+        { name: '黑名单', active: active === 'denyList', href: `${buildSettingsURL('/waf/ipadmin/denyList', base)}` },
+        { name: '灰名单', active: active === 'greyList', href: `${buildSettingsURL('/waf/ipadmin/greyList', base)}` },
+        { name: 'IP检查', active: active === 'test', href: `${buildSettingsURL('/waf/ipadmin/test', base)}` },
       ]}
     />
   )
@@ -392,7 +392,7 @@ export function WafGroupsPage() {
       {!data.wafIsOn ? (
         <div className="ui message warning">
           当前WAF未启用，设置将在
-          <a href={`#${buildSettingsURL('/waf', { serverId })}`}>[启用Web防火墙]</a>
+          <a href={`${buildSettingsURL('/waf', { serverId })}`}>[启用Web防火墙]</a>
           后生效。
         </div>
       ) : null}
@@ -426,7 +426,7 @@ export function WafGroupsPage() {
                     </button>
                   </td>
                   <td>
-                    <a href={`#${href}`}>
+                    <a href={`${href}`}>
                       <span className={group.isOn ? '' : 'disabled'}>{group.name}</span>
                     </a>
                     {group.description ? <p className="comment" style={{ paddingBottom: 0 }}>{group.description}</p> : null}
@@ -440,10 +440,10 @@ export function WafGroupsPage() {
                     </p>
                   </td>
                   <td className="center">
-                    <a href={`#${href}`}>{group.countSets}</a>
+                    <a href={`${href}`}>{group.countSets}</a>
                   </td>
                   <td>
-                    <a href={`#${href}`}>详情</a> &nbsp;
+                    <a href={`${href}`}>详情</a> &nbsp;
                     <a
                       href=""
                       onClick={(event) => {
@@ -776,7 +776,7 @@ export function WafGroupPage() {
                   </a>{' '}
                   &nbsp;
                   <a
-                    href={`#${buildSettingsURL('/servers/components/waf/setCodePopup', { setId: set.id })}`}
+                    href={`${buildSettingsURL('/servers/components/waf/setCodePopup', { setId: set.id })}`}
                   >
                     代码
                   </a>{' '}

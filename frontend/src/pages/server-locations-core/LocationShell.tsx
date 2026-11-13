@@ -40,7 +40,7 @@ export function ServerSettingsBreadcrumb({ serverId, server }: { serverId: strin
   return (
     <PageHeader
       items={[
-        { name: '网站列表', href: '#/servers' },
+        { name: '网站列表', href: '/servers' },
         { name: '|' },
         {
           name: server ? `"${server.name}"设置` : '网站设置',

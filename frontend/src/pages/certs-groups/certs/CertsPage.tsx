@@ -128,12 +128,12 @@ export function CertsPage({ initialModal }: { initialModal?: 'upload' | 'batch' 
     <div>
       <PageHeader
         items={[
-          { name: `所有证书(${data.countAll})`, href: `#/servers/certs?${buildQuery({ type: '' }).toString()}`, active: type === '' },
-          { name: `CA证书(${data.countCA})`, href: `#/servers/certs?${buildQuery({ type: 'ca' }).toString()}`, active: type === 'ca' },
-          { name: `有效证书(${data.countAvailable})`, href: `#/servers/certs?${buildQuery({ type: 'available' }).toString()}`, active: type === 'available' },
-          { name: `过期证书(${data.countExpired})`, href: `#/servers/certs?${buildQuery({ type: 'expired' }).toString()}`, active: type === 'expired' },
-          { name: `7天内过期(${data.count7Days})`, href: `#/servers/certs?${buildQuery({ type: '7days' }).toString()}`, active: type === '7days' },
-          { name: `30天内过期(${data.count30Days})`, href: `#/servers/certs?${buildQuery({ type: '30days' }).toString()}`, active: type === '30days' },
+          { name: `所有证书(${data.countAll})`, href: `/servers/certs?${buildQuery({ type: '' }).toString()}`, active: type === '' },
+          { name: `CA证书(${data.countCA})`, href: `/servers/certs?${buildQuery({ type: 'ca' }).toString()}`, active: type === 'ca' },
+          { name: `有效证书(${data.countAvailable})`, href: `/servers/certs?${buildQuery({ type: 'available' }).toString()}`, active: type === 'available' },
+          { name: `过期证书(${data.countExpired})`, href: `/servers/certs?${buildQuery({ type: 'expired' }).toString()}`, active: type === 'expired' },
+          { name: `7天内过期(${data.count7Days})`, href: `/servers/certs?${buildQuery({ type: '7days' }).toString()}`, active: type === '7days' },
+          { name: `30天内过期(${data.count30Days})`, href: `/servers/certs?${buildQuery({ type: '30days' }).toString()}`, active: type === '30days' },
         ]}
       >
         <a
@@ -179,7 +179,7 @@ export function CertsPage({ initialModal }: { initialModal?: 'upload' | 'batch' 
             &nbsp;
             {keyword.length > 0 || userId > 0 ? (
               <a
-                href="#/servers/certs"
+                href="/servers/certs"
                 onClick={(event) => {
                   event.preventDefault()
                   setKeywordInput('')
@@ -199,13 +199,13 @@ export function CertsPage({ initialModal }: { initialModal?: 'upload' | 'batch' 
           <div className="ui menu text basic tiny blue" style={{ marginBottom: 0 }}>
             <a
               className={`item${userType === '' ? ' active' : ''}`}
-              href={`#/servers/certs?${buildQuery({ userType: '' }).toString()}`}
+              href={`/servers/certs?${buildQuery({ userType: '' }).toString()}`}
             >
               管理员证书
             </a>
             <a
               className={`item${userType === 'user' ? ' active' : ''}`}
-              href={`#/servers/certs?${buildQuery({ userType: 'user' }).toString()}`}
+              href={`/servers/certs?${buildQuery({ userType: 'user' }).toString()}`}
             >
               用户证书
             </a>

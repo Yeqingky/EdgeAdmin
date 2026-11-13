@@ -73,7 +73,7 @@ export function DbLogsPage() {
           <div className="ui field"><button className="ui button" type="submit">查询</button></div>
           {dayFrom || dayTo || keyword || level ? (
             <div className="ui field">
-              <a href={`#/db/logs?nodeId=${nodeId}`} onClick={(event) => { event.preventDefault(); setForm({ dayFrom: '', dayTo: '', keyword: '', level: '' }); setParams(new URLSearchParams({ nodeId: String(nodeId) })) }}>
+              <a href={`/db/logs?nodeId=${nodeId}`} onClick={(event) => { event.preventDefault(); setForm({ dayFrom: '', dayTo: '', keyword: '', level: '' }); setParams(new URLSearchParams({ nodeId: String(nodeId) })) }}>
                 [清除条件]
               </a>
             </div>

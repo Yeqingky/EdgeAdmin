@@ -58,7 +58,7 @@ export function OtpPage() {
             {submitting ? '验证中...' : '验证'}
           </button>
           <div className="ui field cancel-login">
-            <a href="/spa/#/login">&laquo; 取消登录</a>
+            <a href="/login">&laquo; 取消登录</a>
           </div>
         </div>
       </form>

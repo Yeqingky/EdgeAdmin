@@ -83,7 +83,7 @@ export function ApiNodesPage() {
         </a>
         {data.hasMethodStats ? (
           <a
-            href="#/settings/api/methodStats"
+            href="/settings/api/methodStats"
             className="item"
             onClick={(event) => { event.preventDefault(); navigate('/settings/api/methodStats') }}
           >
@@ -113,7 +113,7 @@ export function ApiNodesPage() {
               {nodes.map((node) => (
                 <tr key={node.id}>
                   <td>
-                    <a href={`#/settings/api/node?nodeId=${node.id}`}>{node.name}</a>
+                    <a href={`/settings/api/node?nodeId=${node.id}`}>{node.name}</a>
                     {node.isPrimary ? (
                       <div>
                         <span className="ui label grey basic">主节点</span>
@@ -192,7 +192,7 @@ export function ApiNodesPage() {
                     )}
                   </td>
                   <td>
-                    <a href={`#/settings/api/node?nodeId=${node.id}`}>详情</a> &nbsp;
+                    <a href={`/settings/api/node?nodeId=${node.id}`}>详情</a> &nbsp;
                     <a href="" onClick={(event) => { event.preventDefault(); void deleteNode(node.id) }}>
                       删除
                     </a>
@@ -277,7 +277,7 @@ export function ApiMethodStatsPage() {
   return (
     <div>
       <SettingsTabs kind="advanced" active="apiNodes" />
-      <PageHeader items={[{ name: '节点列表', href: '#/settings/api' }, { name: '用时统计', href: '#/settings/api/methodStats', active: true }]} />
+      <PageHeader items={[{ name: '节点列表', href: '/settings/api' }, { name: '用时统计', href: '/settings/api/methodStats', active: true }]} />
       <div className="margin" />
       <form className="ui form" onSubmit={submit}>
         <div className="ui fields inline">
@@ -303,7 +303,7 @@ export function ApiMethodStatsPage() {
             &nbsp;
             {appliedMethod.length > 0 || appliedTag.length > 0 || appliedOrder.length > 0 ? (
               <a
-                href="#/settings/api/methodStats"
+                href="/settings/api/methodStats"
                 onClick={(event) => {
                   event.preventDefault()
                   setMethod('')

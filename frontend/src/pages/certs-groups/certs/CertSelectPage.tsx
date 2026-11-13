@@ -146,7 +146,7 @@ export function CertSelectPage() {
             &nbsp;{' '}
             {keyword.length > 0 ? (
               <a
-                href={`#/servers/certs/selectPopup?${buildQuery({ keyword: '', page: 1 }).toString()}`}
+                href={`/servers/certs/selectPopup?${buildQuery({ keyword: '', page: 1 }).toString()}`}
                 onClick={(event) => {
                   event.preventDefault()
                   setKeywordInput('')
@@ -165,13 +165,13 @@ export function CertSelectPage() {
           <div className="ui divider" style={{ marginBottom: 0 }} />
           <div className="ui menu text blue">
             <span className="item">{data.searchingUserId > 0 ? '当前用户' : '未指定用户'} »</span>
-            <a className={`item${data.searchingType === 'all' ? ' active' : ''}`} href={`#/servers/certs/selectPopup?${buildQuery({ searchingType: 'all' }).toString()}`}>
+            <a className={`item${data.searchingType === 'all' ? ' active' : ''}`} href={`/servers/certs/selectPopup?${buildQuery({ searchingType: 'all' }).toString()}`}>
               所有证书 <span className="small">({data.totalAll})</span>
             </a>
             <span className="item disabled">|</span>
             <a
               className={`item${data.searchingType === 'match' ? ' active' : ''}`}
-              href={`#/servers/certs/selectPopup?${buildQuery({ searchingType: 'match' }).toString()}`}
+              href={`/servers/certs/selectPopup?${buildQuery({ searchingType: 'match' }).toString()}`}
             >
               域名匹配证书 <span className="small">({data.totalMatch})</span>
             </a>

@@ -160,10 +160,10 @@ export function GroupFirstMenu({
   return (
     <PageHeader
       items={[
-        { name: '分组列表', href: '#/servers/groups' },
-        { name: `"${group.name}"详情`, href: `#/servers/groups/group?groupId=${group.id}`, active: active === 'index' },
-        { name: '全局设置', href: `#/servers/groups/group/settings?groupId=${group.id}`, active: active === 'settings' },
-        { name: '修改', href: `#/servers/groups/group/update?groupId=${group.id}`, active: active === 'update' },
+        { name: '分组列表', href: '/servers/groups' },
+        { name: `"${group.name}"详情`, href: `/servers/groups/group?groupId=${group.id}`, active: active === 'index' },
+        { name: '全局设置', href: `/servers/groups/group/settings?groupId=${group.id}`, active: active === 'settings' },
+        { name: '修改', href: `/servers/groups/group/update?groupId=${group.id}`, active: active === 'update' },
       ]}
     />
   )
@@ -179,9 +179,9 @@ export function GroupSecondMenu({
   current: 'index' | 'scheduling' | 'setting'
 }) {
   const items = [
-    { key: 'index' as const, name: '源站列表', href: `#${base}?groupId=${group.id}` },
-    { key: 'scheduling' as const, name: '调度算法', href: `#${base}/scheduling?groupId=${group.id}` },
-    { key: 'setting' as const, name: '更多设置', href: `#${base}/setting?groupId=${group.id}` },
+    { key: 'index' as const, name: '源站列表', href: `${base}?groupId=${group.id}` },
+    { key: 'scheduling' as const, name: '调度算法', href: `${base}/scheduling?groupId=${group.id}` },
+    { key: 'setting' as const, name: '更多设置', href: `${base}/setting?groupId=${group.id}` },
   ]
   return (
     <div className="ui menu text blue">
@@ -208,7 +208,7 @@ export function SettingsLeftMenu({ items }: { items?: LeftMenuItem[] }) {
             <a
               key={index}
               className={`item${item.isActive ? ' active' : ''}${item.isOn ? ' on' : ''}${item.isOff || item.isImportant ? ' off' : ''}`}
-              href={`#${item.url}`}
+              href={`${item.url}`}
             >
               <span>
                 <span style={{ visibility: item.isActive ? 'visible' : 'hidden' }}>▶ </span>

@@ -73,7 +73,7 @@ export function ClusterSettingsMetricsPage() {
   return (
     <ClusterSettingsLayout clusterId={clusterId} activePath="/clusters/cluster/settings/metrics">
       <div className="ui menu text blue first-menu">
-        <a className={`item${category === 'http' ? ' active' : ''}`} href={`#/clusters/cluster/settings/metrics?category=http&clusterId=${clusterId}`}>
+        <a className={`item${category === 'http' ? ' active' : ''}`} href={`/clusters/cluster/settings/metrics?category=http&clusterId=${clusterId}`}>
           HTTP
         </a>
         <span className="disabled item">|</span>
@@ -302,7 +302,7 @@ export function ClusterSettingsMetricCreatePopupPage() {
         clusterId={clusterId}
         category={category}
         onClose={() => {
-          window.location.hash = `#/clusters/cluster/settings/metrics?clusterId=${clusterId}&category=${category}`
+          window.location.href = `/clusters/cluster/settings/metrics?clusterId=${clusterId}&category=${category}`
         }}
         onChanged={async () => undefined}
       />

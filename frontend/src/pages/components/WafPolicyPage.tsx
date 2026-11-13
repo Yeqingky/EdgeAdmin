@@ -266,7 +266,7 @@ export function WafPolicyPage({ firewallPolicyId }: { firewallPolicyId: number }
               <tr key={cluster.id}>
                 <td>
                   {cluster.name}
-                  <a href={`#/clusters/cluster?clusterId=${cluster.id}`} style={{ marginLeft: '0.5em' }}>
+                  <a href={`/clusters/cluster?clusterId=${cluster.id}`} style={{ marginLeft: '0.5em' }}>
                     <Link2 size={13} />
                   </a>
                 </td>

@@ -157,7 +157,7 @@ export function ClusterGroupsPage() {
                   </td>
                   <td className="center">
                     {group.countNodes > 0 ? (
-                      <a href={`#/clusters/cluster/nodes?clusterId=${clusterId}&groupId=${group.id}`}>{group.countNodes}</a>
+                      <a href={`/clusters/cluster/nodes?clusterId=${clusterId}&groupId=${group.id}`}>{group.countNodes}</a>
                     ) : (
                       <span className="disabled">0</span>
                     )}
@@ -289,14 +289,14 @@ export function ClusterGroupCreatePopupPage() {
         submitting={submitting}
         onChange={setName}
         onCancel={() => {
-          window.location.hash = `#/clusters/cluster/groups?clusterId=${clusterId}`
+          window.location.href = `/clusters/cluster/groups?clusterId=${clusterId}`
         }}
         onSubmit={() => {
           setSubmitting(true)
           apiPost('/clusters/cluster/groups/createPopup', { clusterId, name })
             .then(() => {
               toast('保存成功')
-              window.location.hash = `#/clusters/cluster/groups?clusterId=${clusterId}`
+              window.location.href = `/clusters/cluster/groups?clusterId=${clusterId}`
             })
             .catch((error: Error) => toast(error.message, 'error'))
             .finally(() => setSubmitting(false))
@@ -339,14 +339,14 @@ export function ClusterGroupUpdatePopupPage() {
         submitting={submitting}
         onChange={setName}
         onCancel={() => {
-          window.location.hash = '#/clusters'
+          window.location.href = '/clusters'
         }}
         onSubmit={() => {
           setSubmitting(true)
           apiPost('/clusters/cluster/groups/updatePopup', { groupId, name })
             .then(() => {
               toast('保存成功')
-              window.location.hash = '#/clusters'
+              window.location.href = '/clusters'
             })
             .catch((error: Error) => toast(error.message, 'error'))
             .finally(() => setSubmitting(false))
@@ -380,7 +380,7 @@ export function ClusterGroupSelectPopupPage() {
       ) : (
         <div>
           {query.data.groups.map((group) => (
-            <a key={group.id} className="ui label small basic" style={{ marginBottom: '0.5em' }} href={`#/clusters/cluster/nodes?clusterId=${clusterId}&groupId=${group.id}`}>
+            <a key={group.id} className="ui label small basic" style={{ marginBottom: '0.5em' }} href={`/clusters/cluster/nodes?clusterId=${clusterId}&groupId=${group.id}`}>
               {group.name}
             </a>
           ))}

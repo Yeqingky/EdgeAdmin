@@ -124,7 +124,7 @@ export function RegionsPage() {
                 </td>
                 <td>{region.description ? region.description : <span className="disabled">-</span>}</td>
                 <td className="center">
-                  <a href={`#/clusters/regions/nodes?regionId=${region.id}`}>
+                  <a href={`/clusters/regions/nodes?regionId=${region.id}`}>
                     <span className={region.countNodes === 0 ? 'disabled' : undefined}>{region.countNodes}</span>
                   </a>
                 </td>
@@ -300,7 +300,7 @@ export function RegionNodesPage() {
                 搜索
               </button>
               &nbsp;
-              {regionId > 0 ? <a href="#/clusters/regions/nodes">[清除条件]</a> : null}
+              {regionId > 0 ? <a href="/clusters/regions/nodes">[清除条件]</a> : null}
             </div>
           </div>
         </form>
@@ -330,7 +330,7 @@ export function RegionNodesPage() {
                 .map((node) => (
                   <tr key={node.id}>
                     <td>
-                      <a href={`#/clusters/cluster/node/detail?clusterId=${node.cluster!.id}&nodeId=${node.id}`}>{node.name}</a>
+                      <a href={`/clusters/cluster/node/detail?clusterId=${node.cluster!.id}&nodeId=${node.id}`}>{node.name}</a>
                     </td>
                     <td>{node.cluster ? node.cluster.name : <span className="disabled">-</span>}</td>
                     <td>{node.region ? node.region.name : <span className="disabled">尚未设置</span>}</td>
@@ -400,11 +400,11 @@ export function RegionCreatePopupPage() {
       <RegionForm
         region={null}
         onCancel={() => {
-          window.location.hash = '#/clusters/regions'
+          window.location.href = '/clusters/regions'
         }}
         onSaved={async () => {
           toast('保存成功')
-          window.location.hash = '#/clusters/regions'
+          window.location.href = '/clusters/regions'
         }}
       />
     </div>
@@ -431,10 +431,10 @@ export function RegionUpdatePopupPage() {
       <RegionForm
         region={query.data.region}
         onCancel={() => {
-          window.location.hash = '#/clusters/regions'
+          window.location.href = '/clusters/regions'
         }}
         onSaved={async () => {
-          window.location.hash = '#/clusters/regions'
+          window.location.href = '/clusters/regions'
         }}
       />
     </div>
@@ -483,7 +483,7 @@ export function RegionUpdateNodeRegionPopupPage() {
           try {
             await postWithCsrf('/clusters/regions/updateNodeRegionPopup', { nodeId: data.node.id, regionId: selected })
             toast('保存成功')
-            window.location.hash = '#/clusters/regions/nodes'
+            window.location.href = '/clusters/regions/nodes'
           } catch (error) {
             toast(error instanceof Error ? error.message : '保存失败', 'error')
           } finally {
@@ -535,7 +535,7 @@ export function RegionSelectPopupPage() {
           {query.data.regions.map((region) => (
             <a
               key={region.id}
-              href={`#/clusters/regions/nodes?regionId=${region.id}`}
+              href={`/clusters/regions/nodes?regionId=${region.id}`}
               className={`ui label small basic${region.id === regionId ? ' blue' : ''}`}
               style={{ marginBottom: '0.5em' }}
             >

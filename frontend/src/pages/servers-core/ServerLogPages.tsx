@@ -70,7 +70,7 @@ function LogWarnings({ data }: { data: LogPageData }) {
       {!data.serverAccessLogIsOn ? (
         <div className="ui warning message">
           当前网站尚未启用访问日志，可以在{' '}
-          <a href={`#/servers/server/settings/accessLog?serverId=${data.serverId}`}>[这里]</a> 修改。
+          <a href={`/servers/server/settings/accessLog?serverId=${data.serverId}`}>[这里]</a> 修改。
         </div>
       ) : null}
     </>

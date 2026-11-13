@@ -22,6 +22,7 @@ export default function App() {
     <ToastProvider>
       <ConfirmProvider>
         <Routes>
+          <Route path="/" element={<LoginPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/index" element={<LoginPage />} />
           <Route path="/login/otp" element={<OtpPage />} />

@@ -110,18 +110,18 @@ export function IpListMenu({ list, current }: { list: IpListDetail; current: 'li
   return (
     <FirstMenu
       items={[
-        { name: 'IP列表', href: '#/servers/iplists' },
-        { name: list.typeName, href: `#/servers/iplists/lists?type=${list.type}` },
+        { name: 'IP列表', href: '/servers/iplists' },
+        { name: list.typeName, href: `/servers/iplists/lists?type=${list.type}` },
         {
           name: `"${list.name}"详情`,
-          href: `#/servers/iplists/list?listId=${list.id}`,
+          href: `/servers/iplists/list?listId=${list.id}`,
           active: current === 'list',
         },
-        { name: `IP(${list.countItems})`, href: `#/servers/iplists/items?listId=${list.id}`, active: current === 'item' },
-        { name: '修改', href: `#/servers/iplists/update?listId=${list.id}`, active: current === 'update' },
-        { name: 'IP检查', href: `#/servers/iplists/test?listId=${list.id}`, active: current === 'test' },
-        { name: '导出', href: `#/servers/iplists/export?listId=${list.id}`, active: current === 'export' },
-        { name: '导入', href: `#/servers/iplists/import?listId=${list.id}`, active: current === 'import' },
+        { name: `IP(${list.countItems})`, href: `/servers/iplists/items?listId=${list.id}`, active: current === 'item' },
+        { name: '修改', href: `/servers/iplists/update?listId=${list.id}`, active: current === 'update' },
+        { name: 'IP检查', href: `/servers/iplists/test?listId=${list.id}`, active: current === 'test' },
+        { name: '导出', href: `/servers/iplists/export?listId=${list.id}`, active: current === 'export' },
+        { name: '导入', href: `/servers/iplists/import?listId=${list.id}`, active: current === 'import' },
       ]}
     />
   )
@@ -279,7 +279,7 @@ export function IpListTable({
                           <span>
                             {item.isRead === false ? <span className="small red">&nbsp;New&nbsp;</span> : null}
                             {showSearchButton ? (
-                              <a href={`#/servers/iplists?ip=${item.ipFrom}`} title="搜索此IP">
+                              <a href={`/servers/iplists?ip=${item.ipFrom}`} title="搜索此IP">
                                 <span className="grey small"> 搜索</span>
                               </a>
                             ) : null}
@@ -315,7 +315,7 @@ export function IpListTable({
                         <span>
                           {' @ '}
                           {item.policy && item.policy.id === 0 ? (
-                            <a href={`#/servers/iplists/list?listId=${item.list.id}`}>
+                            <a href={`/servers/iplists/list?listId=${item.list.id}`}>
                               [
                               {item.list.type === 'black' ? '黑' : item.list.type === 'white' ? '白' : '灰'}
                               名单：{item.list.name}]
@@ -329,13 +329,13 @@ export function IpListTable({
                                 <span>
                                   {item.policy.server ? (
                                     <a
-                                      href={`#/servers/server/settings/waf/ipadmin/${item.list.type === 'white' ? 'allowList' : item.list.type === 'grey' ? 'greyList' : 'denyList'}?serverId=${item.policy.server.id}&firewallPolicyId=${item.policy.id}`}
+                                      href={`/servers/server/settings/waf/ipadmin/${item.list.type === 'white' ? 'allowList' : item.list.type === 'grey' ? 'greyList' : 'denyList'}?serverId=${item.policy.server.id}&firewallPolicyId=${item.policy.id}`}
                                     >
                                       [网站：{item.policy.server.name}]
                                     </a>
                                   ) : (
                                     <a
-                                      href={`#/servers/components/waf/ipadmin/lists?firewallPolicyId=${item.policy.id}&type=${item.list.type}`}
+                                      href={`/servers/components/waf/ipadmin/lists?firewallPolicyId=${item.policy.id}&type=${item.list.type}`}
                                     >
                                       [策略：{item.policy.name}]
                                     </a>
@@ -382,14 +382,14 @@ export function IpListTable({
                   {item.reason.length > 0 ? item.reason : <span className="disabled">-</span>}
                   {item.sourceNode && item.sourceNode.id > 0 ? (
                     <div style={{ marginTop: '0.4em' }}>
-                      <a href={`#/clusters/cluster/node?clusterId=${item.sourceNode.clusterId}&nodeId=${item.sourceNode.id}`}>
+                      <a href={`/clusters/cluster/node?clusterId=${item.sourceNode.clusterId}&nodeId=${item.sourceNode.id}`}>
                         <span className="small">{item.sourceNode.name}</span>
                       </a>
                     </div>
                   ) : null}
                   {item.sourceServer && item.sourceServer.id > 0 ? (
                     <div style={{ marginTop: '0.4em' }}>
-                      <a href={`#/servers/server?serverId=${item.sourceServer.id}`}>
+                      <a href={`/servers/server?serverId=${item.sourceServer.id}`}>
                         <span className="small">{item.sourceServer.name}</span>
                       </a>
                     </div>
@@ -398,7 +398,7 @@ export function IpListTable({
                     <div style={{ marginTop: '0.4em' }}>
                       {item.sourcePolicy.serverId === 0 ? (
                         <a
-                          href={`#/servers/components/waf/group?firewallPolicyId=${item.sourcePolicy.id}&type=inbound&groupId=${item.sourceGroup.id}`}
+                          href={`/servers/components/waf/group?firewallPolicyId=${item.sourcePolicy.id}&type=inbound&groupId=${item.sourceGroup.id}`}
                         >
                           <span className="small">
                             {item.sourcePolicy.name} &raquo; {item.sourceGroup.name} &raquo; {item.sourceSet.name}
@@ -406,7 +406,7 @@ export function IpListTable({
                         </a>
                       ) : (
                         <a
-                          href={`#/servers/server/settings/waf/group?serverId=${item.sourcePolicy.serverId}&firewallPolicyId=${item.sourcePolicy.id}&type=inbound&groupId=${item.sourceGroup.id}`}
+                          href={`/servers/server/settings/waf/group?serverId=${item.sourcePolicy.serverId}&firewallPolicyId=${item.sourcePolicy.id}&type=inbound&groupId=${item.sourceGroup.id}`}
                         >
                           <span className="small">
                             {item.sourcePolicy.name} &raquo; {item.sourceGroup.name} &raquo; {item.sourceSet.name}

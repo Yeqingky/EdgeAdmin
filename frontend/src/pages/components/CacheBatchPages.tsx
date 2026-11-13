@@ -338,7 +338,7 @@ export function CacheBatchTasksPage() {
             {tasks.map((task) => (
               <tr key={task.id}>
                 <td>
-                  <a href={`#/servers/components/cache/batch/task?taskId=${task.id}`}>{task.id}</a>
+                  <a href={`/servers/components/cache/batch/task?taskId=${task.id}`}>{task.id}</a>
                 </td>
                 <td>
                   <TaskTypeLabel type={task.type} />
@@ -353,7 +353,7 @@ export function CacheBatchTasksPage() {
                   <TaskStatus task={task} />
                 </td>
                 <td>
-                  <a href={`#/servers/components/cache/batch/task?taskId=${task.id}`}>详情</a> &nbsp;
+                  <a href={`/servers/components/cache/batch/task?taskId=${task.id}`}>详情</a> &nbsp;
                   <a
                     href=""
                     onClick={(event) => {
@@ -424,7 +424,7 @@ export function CacheBatchTaskPage({ taskId }: { taskId: number }) {
     <div>
       <CacheBatchMenu active="task" countDoingTasks={query.data.countDoingTasks} />
       <div className="ui menu text blue second-menu">
-        <a className="item" href="#/servers/components/cache/batch/tasks">
+        <a className="item" href="/servers/components/cache/batch/tasks">
           所有任务
         </a>
         <span className="disabled item" style={{ padding: 0 }}>
@@ -513,7 +513,7 @@ export function CacheBatchTaskPage({ taskId }: { taskId: number }) {
                     {key.errors.map((error) => (
                       <a
                         key={error.nodeId}
-                        href={`#/clusters/cluster/node?nodeId=${error.nodeId}`}
+                        href={`/clusters/cluster/node?nodeId=${error.nodeId}`}
                         className="ui label basic tiny red"
                         style={{ marginBottom: '0.2em' }}
                       >

@@ -127,7 +127,7 @@ export function ClusterSettingsDnsPage() {
               </>
             ) : (
               <span>
-                没有可用的域名，请在 <a href="#/dns/providers">[域名解析]</a> 中添加。
+                没有可用的域名，请在 <a href="/dns/providers">[域名解析]</a> 中添加。
               </span>
             )}
           </FormRow>
@@ -351,10 +351,10 @@ export function ClusterSettingsDnsRecordsPage() {
   return (
     <ClusterSettingsLayout clusterId={clusterId} activePath="/clusters/cluster/settings/dns">
       <div className="ui menu text blue first-menu">
-        <a className="item" href={`#/clusters/cluster/settings/dns?clusterId=${clusterId}`}>
+        <a className="item" href={`/clusters/cluster/settings/dns?clusterId=${clusterId}`}>
           DNS设置
         </a>
-        <a className="item active" href={`#/clusters/cluster/settings/dns/records?clusterId=${clusterId}`}>
+        <a className="item active" href={`/clusters/cluster/settings/dns/records?clusterId=${clusterId}`}>
           解析记录
         </a>
       </div>
@@ -377,7 +377,7 @@ export function ClusterSettingsDnsRecordsPage() {
             <td>DNS服务商</td>
             <td>
               {data.dnsInfo.providerName ? (
-                <a href={`#/dns/providers/provider?providerId=${data.dnsInfo.providerId}`}>
+                <a href={`/dns/providers/provider?providerId=${data.dnsInfo.providerId}`}>
                   {data.dnsInfo.providerTypeName} - {data.dnsInfo.providerName}
                 </a>
               ) : data.dnsInfo.domainName ? (
@@ -487,25 +487,25 @@ export function ClusterSettingsDnsRecordsPage() {
                   <td>
                     {issue.type === 'cluster' ? (
                       <div>
-                        集群 "{issue.target}" <a href={`#/clusters/cluster?clusterId=${issue.targetId}`}>查看</a>
+                        集群 "{issue.target}" <a href={`/clusters/cluster?clusterId=${issue.targetId}`}>查看</a>
                       </div>
                     ) : null}
                     {issue.type === 'node' ? (
                       <div>
                         集群 "{issue.params.clusterName}" 节点 "{issue.target}"{' '}
-                        <a href={`#/clusters/cluster/node?clusterId=${issue.params.clusterId}&nodeId=${issue.targetId}`}>查看</a>
+                        <a href={`/clusters/cluster/node?clusterId=${issue.params.clusterId}&nodeId=${issue.targetId}`}>查看</a>
                       </div>
                     ) : null}
                   </td>
                   <td>{issue.description}</td>
                   <td>
                     {issue.type === 'cluster' ? (
-                      <a href={`#/dns/updateClusterPopup?clusterId=${issue.targetId}`} className="red">
+                      <a href={`/dns/updateClusterPopup?clusterId=${issue.targetId}`} className="red">
                         修复
                       </a>
                     ) : null}
                     {issue.type === 'node' ? (
-                      <a href={`#/dns/issues/updateNodePopup?clusterId=${issue.params.clusterId}&nodeId=${issue.targetId}&ipAddrId=0`} className="red">
+                      <a href={`/dns/issues/updateNodePopup?clusterId=${issue.params.clusterId}&nodeId=${issue.targetId}&ipAddrId=0`} className="red">
                         修复
                       </a>
                     ) : null}
@@ -538,13 +538,13 @@ export function ClusterSettingsDnsRecordsPage() {
             {data.nodes.map((node) => (
               <tr key={`${node.id}-${node.ipAddrId}-${node.route.code}`}>
                 <td>
-                  <a href={`#/clusters/cluster/node?clusterId=${node.clusterId}&nodeId=${node.id}`}>{node.name}</a>
+                  <a href={`/clusters/cluster/node?clusterId=${node.clusterId}&nodeId=${node.id}`}>{node.name}</a>
                 </td>
                 <td>
                   {data.dnsInfo.dnsName ? (
                     data.dnsInfo.dnsName
                   ) : (
-                    <a href={`#/clusters/cluster/settings/dns?clusterId=${data.cluster.id}`} className="red">
+                    <a href={`/clusters/cluster/settings/dns?clusterId=${data.cluster.id}`} className="red">
                       没有设置
                     </a>
                   )}
@@ -555,7 +555,7 @@ export function ClusterSettingsDnsRecordsPage() {
                     node.ipAddr
                   ) : (
                     <a
-                      href={`#/dns/issues/updateNodePopup?clusterId=${node.clusterId}&nodeId=${node.id}&ipAddrId=${node.ipAddrId}`}
+                      href={`/dns/issues/updateNodePopup?clusterId=${node.clusterId}&nodeId=${node.id}&ipAddrId=${node.ipAddrId}`}
                       className="red"
                     >
                       没有设置
@@ -567,7 +567,7 @@ export function ClusterSettingsDnsRecordsPage() {
                     node.route.name
                   ) : (
                     <a
-                      href={`#/dns/issues/updateNodePopup?clusterId=${node.clusterId}&nodeId=${node.id}&ipAddrId=${node.ipAddrId}`}
+                      href={`/dns/issues/updateNodePopup?clusterId=${node.clusterId}&nodeId=${node.id}&ipAddrId=${node.ipAddrId}`}
                       className="red"
                     >
                       没有设置
@@ -586,13 +586,13 @@ export function ClusterSettingsDnsRecordsPage() {
                       <span className="red">未解析</span>
                     )
                   ) : (
-                    <a href={`#/clusters/cluster/node/install?clusterId=${data.cluster.id}&nodeId=${node.id}`} className="red" title="节点未安装">
+                    <a href={`/clusters/cluster/node/install?clusterId=${data.cluster.id}&nodeId=${node.id}`} className="red" title="节点未安装">
                       未安装
                     </a>
                   )}
                 </td>
                 <td>
-                  <a href={`#/dns/issues/updateNodePopup?clusterId=${node.clusterId}&nodeId=${node.id}&ipAddrId=${node.ipAddrId}`}>修改</a>
+                  <a href={`/dns/issues/updateNodePopup?clusterId=${node.clusterId}&nodeId=${node.id}&ipAddrId=${node.ipAddrId}`}>修改</a>
                 </td>
               </tr>
             ))}
@@ -617,7 +617,7 @@ export function ClusterSettingsDnsRecordsPage() {
             {data.servers.map((server) => (
               <tr key={server.id}>
                 <td>
-                  <a href={`#/servers/server?serverId=${server.id}`}>{server.name}</a>
+                  <a href={`/servers/server?serverId=${server.id}`}>{server.name}</a>
                 </td>
                 <td>{server.dnsName}</td>
                 <td>CNAME</td>
@@ -627,7 +627,7 @@ export function ClusterSettingsDnsRecordsPage() {
                       <var>{data.dnsInfo.dnsName}</var>.{data.dnsInfo.domainName}.
                     </span>
                   ) : (
-                    <a href={`#/clusters/cluster/settings/dns?clusterId=${data.cluster.id}`} className="red">
+                    <a href={`/clusters/cluster/settings/dns?clusterId=${data.cluster.id}`} className="red">
                       没有设置
                     </a>
                   )}

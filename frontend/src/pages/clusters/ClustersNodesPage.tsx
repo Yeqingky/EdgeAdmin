@@ -180,7 +180,7 @@ export function ClustersNodesPage() {
       next.delete(field.key)
     }
     next.set(key, current === 'asc' ? 'desc' : 'asc')
-    return `#/clusters/nodes?${next.toString()}`
+    return `/clusters/nodes?${next.toString()}`
   }
 
   const hasFilter =
@@ -268,7 +268,7 @@ export function ClustersNodesPage() {
               搜索
             </button>{' '}
             &nbsp;
-            {hasFilter ? <a href="#/clusters/nodes">[清除条件]</a> : null}
+            {hasFilter ? <a href="/clusters/nodes">[清除条件]</a> : null}
           </div>
         </div>
       </form>
@@ -299,7 +299,7 @@ export function ClustersNodesPage() {
             {data.nodes.map((node) => (
               <tr key={node.id}>
                 <td className="node-name-td">
-                  <a href={`#/clusters/cluster/node?clusterId=${node.cluster.id}&nodeId=${node.id}`}>
+                  <a href={`/clusters/cluster/node?clusterId=${node.cluster.id}&nodeId=${node.id}`}>
                     {node.name}
                     {node.level > 1 ? (
                       <sup>
@@ -307,7 +307,7 @@ export function ClustersNodesPage() {
                       </sup>
                     ) : null}
                   </a>
-                  <a href={`#/clusters/cluster/node/settings/schedule?clusterId=${node.cluster.id}&nodeId=${node.id}`}>
+                  <a href={`/clusters/cluster/node/settings/schedule?clusterId=${node.cluster.id}&nodeId=${node.id}`}>
                     {node.isBackup ? (
                       <sup>
                         <span className="blue"> &nbsp;备用</span>
@@ -323,7 +323,7 @@ export function ClustersNodesPage() {
                       </sup>
                     ) : null}
                   </a>
-                  <a href={`#/clusters/cluster/node/update?clusterId=${node.cluster.id}&nodeId=${node.id}`} title="设置">
+                  <a href={`/clusters/cluster/node/update?clusterId=${node.cluster.id}&nodeId=${node.id}`} title="设置">
                     <Settings size={13} style={{ color: 'grey' }} />
                   </a>
                   {node.region ? (
@@ -389,12 +389,12 @@ export function ClustersNodesPage() {
                           </span>
                         </div>
                       ))}
-                      <a href={`#/clusters/cluster/node/updateDNSPopup?clusterId=${node.cluster.id}&nodeId=${node.id}`} className="small">
+                      <a href={`/clusters/cluster/node/updateDNSPopup?clusterId=${node.cluster.id}&nodeId=${node.id}`} className="small">
                         [修改]
                       </a>
                     </div>
                   ) : data.hasClusterDNS ? (
-                    <a href={`#/clusters/cluster/node/updateDNSPopup?clusterId=${node.cluster.id}&nodeId=${node.id}`} className="small">
+                    <a href={`/clusters/cluster/node/updateDNSPopup?clusterId=${node.cluster.id}&nodeId=${node.id}`} className="small">
                       [设置]
                     </a>
                   ) : (
@@ -459,7 +459,7 @@ export function ClustersNodesPage() {
                       ) : (
                         <a
                           className="red"
-                          href={`#/clusters/cluster/node/install?clusterId=${node.cluster.id}&nodeId=${node.id}`}
+                          href={`/clusters/cluster/node/install?clusterId=${node.cluster.id}&nodeId=${node.id}`}
                           title={node.installStatus.isFinished && !node.installStatus.isOk ? '点击看安装错误' : '点击进安装界面'}
                         >
                           {node.installStatus.isFinished && !node.installStatus.isOk ? '安装出错' : '未安装'}
@@ -469,7 +469,7 @@ export function ClustersNodesPage() {
                   )}
                 </td>
                 <td>
-                  <a href={`#/clusters/cluster/node?clusterId=${node.cluster.id}&nodeId=${node.id}`}>详情</a>
+                  <a href={`/clusters/cluster/node?clusterId=${node.cluster.id}&nodeId=${node.id}`}>详情</a>
                 </td>
               </tr>
             ))}

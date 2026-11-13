@@ -152,7 +152,7 @@ export function SetupPage() {
       })
       setInstalled(true)
       window.setTimeout(() => {
-        window.location.href = '/spa/'
+        window.location.href = '/'
       }, 1500)
     } catch (err) {
       setError(err instanceof Error ? err.message : '安装失败')

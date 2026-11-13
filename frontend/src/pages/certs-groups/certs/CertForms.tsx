@@ -114,7 +114,7 @@ export function CertDetailView({ certId }: { certId: number }) {
             ) : (
               <div>
                 {servers.map((server) => (
-                  <a key={server.id} href={`#/servers/server?serverId=${server.id}`} className="ui label small basic">
+                  <a key={server.id} href={`/servers/server?serverId=${server.id}`} className="ui label small basic">
                     {server.name}
                   </a>
                 ))}

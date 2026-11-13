@@ -9,12 +9,12 @@ const bypass: ProxyOptions['bypass'] = (req) => {
     url.startsWith('/spa') ||
     url.startsWith('/src') ||
     url.startsWith('/@') ||
-    url.startsWith('/node_modules') ||
-    url.startsWith('/favicon')
+    url.startsWith('/node_modules')
   ) {
     return req.url
   }
-  if (req.method === 'GET' && (url === '/' || url.startsWith('/?'))) {
+  const accept = String(req.headers.accept || '')
+  if (req.method === 'GET' && accept.includes('text/html') && !url.includes('_format=json')) {
     return req.url
   }
   return undefined

@@ -178,7 +178,7 @@ export function ServerBasicSettingsPage() {
             {data.user ? (
               <span>
                 {data.user.fullname} <span className="small">（{data.user.username}）</span>{' '}
-                <a href={`#/users/user?userId=${data.user.id}`}>查看</a>
+                <a href={`/users/user?userId=${data.user.id}`}>查看</a>
               </span>
             ) : userId > 0 ? (
               <span>

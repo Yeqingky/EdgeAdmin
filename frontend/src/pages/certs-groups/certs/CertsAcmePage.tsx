@@ -146,27 +146,27 @@ export function CertsAcmePage() {
       <AcmeMenu active="task" />
 
       <div className="ui menu text blue">
-        <a className={`item${type === '' ? ' active' : ''}`} href={`#/servers/certs/acme?${buildQuery({ type: '' }).toString()}`}>
+        <a className={`item${type === '' ? ' active' : ''}`} href={`/servers/certs/acme?${buildQuery({ type: '' }).toString()}`}>
           所有任务({data.countAll})
         </a>
         <a
           className={`item${type === 'available' ? ' active' : ''}`}
-          href={`#/servers/certs/acme?${buildQuery({ type: 'available' }).toString()}`}
+          href={`/servers/certs/acme?${buildQuery({ type: 'available' }).toString()}`}
         >
           有效证书({data.countAvailable})
         </a>
         <a
           className={`item${type === 'expired' ? ' active' : ''}`}
-          href={`#/servers/certs/acme?${buildQuery({ type: 'expired' }).toString()}`}
+          href={`/servers/certs/acme?${buildQuery({ type: 'expired' }).toString()}`}
         >
           过期证书<span className={data.countExpired > 0 ? 'red' : undefined}>({data.countExpired})</span>
         </a>
-        <a className={`item${type === '7days' ? ' active' : ''}`} href={`#/servers/certs/acme?${buildQuery({ type: '7days' }).toString()}`}>
+        <a className={`item${type === '7days' ? ' active' : ''}`} href={`/servers/certs/acme?${buildQuery({ type: '7days' }).toString()}`}>
           7天内过期<span className={data.count7Days > 0 ? 'red' : undefined}>({data.count7Days})</span>
         </a>
         <a
           className={`item${type === '30days' ? ' active' : ''}`}
-          href={`#/servers/certs/acme?${buildQuery({ type: '30days' }).toString()}`}
+          href={`/servers/certs/acme?${buildQuery({ type: '30days' }).toString()}`}
         >
           30天内过期({data.count30Days})
         </a>
@@ -193,7 +193,7 @@ export function CertsAcmePage() {
             </button>
             {keyword.length > 0 || userId > 0 ? (
               <a
-                href="#/servers/certs/acme"
+                href="/servers/certs/acme"
                 onClick={(event) => {
                   event.preventDefault()
                   setKeywordInput('')
@@ -211,12 +211,12 @@ export function CertsAcmePage() {
       {data.searchingUserId === 0 ? (
         <div>
           <div className="ui menu text basic tiny blue" style={{ marginBottom: 0 }}>
-            <a className={`item${userType === '' ? ' active' : ''}`} href={`#/servers/certs/acme?${buildQuery({ userType: '' }).toString()}`}>
+            <a className={`item${userType === '' ? ' active' : ''}`} href={`/servers/certs/acme?${buildQuery({ userType: '' }).toString()}`}>
               管理员证书
             </a>
             <a
               className={`item${userType === 'user' ? ' active' : ''}`}
-              href={`#/servers/certs/acme?${buildQuery({ userType: 'user' }).toString()}`}
+              href={`/servers/certs/acme?${buildQuery({ userType: 'user' }).toString()}`}
             >
               用户证书
             </a>

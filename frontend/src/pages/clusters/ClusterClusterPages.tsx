@@ -23,7 +23,7 @@ function InstallLeftMenu({ items }: { items: LeftMenuItem[] }) {
   return (
     <div className="ui menu text blue vertical small">
       {items.map((item) => (
-        <a key={item.url} className={`item${item.isActive ? ' active' : ''}`} href={`#${item.url}`}>
+        <a key={item.url} className={`item${item.isActive ? ' active' : ''}`} href={`${item.url}`}>
           <ChevronRight size={10} style={{ visibility: item.isActive ? 'visible' : 'hidden' }} />
           {item.name}
         </a>
@@ -59,7 +59,7 @@ export function ClusterDeletePage() {
     mutationFn: () => apiPost('/clusters/cluster/delete', { clusterId }),
     onSuccess: () => {
       toast('删除成功')
-      window.location.hash = '#/clusters'
+      window.location.href = '/clusters'
     },
     onError: (error: Error) => toast(error.message, 'error'),
   })
@@ -67,7 +67,7 @@ export function ClusterDeletePage() {
   return (
     <div>
       <div className="ui menu text blue second-menu">
-        <a className="item" href={`#/clusters/cluster?clusterId=${clusterId}`}>
+        <a className="item" href={`/clusters/cluster?clusterId=${clusterId}`}>
           {clusterName}
         </a>
         <span className="disabled item" style={{ padding: 0 }}>
@@ -321,7 +321,7 @@ export function ClusterInstallManualPage() {
                 {data.nodes.map((node) => (
                   <tr key={node.id}>
                     <td>
-                      <a href={`#/clusters/cluster/node?clusterId=${clusterId}&nodeId=${node.id}`}>{node.name}</a>
+                      <a href={`/clusters/cluster/node?clusterId=${clusterId}&nodeId=${node.id}`}>{node.name}</a>
                     </td>
                     <td>
                       {node.addresses
@@ -345,7 +345,7 @@ export function ClusterInstallManualPage() {
                       <span className="disabled">等待安装</span>
                     </td>
                     <td>
-                      <a href={`#/clusters/cluster/node/install?clusterId=${clusterId}&nodeId=${node.id}`}>手动安装</a>
+                      <a href={`/clusters/cluster/node/install?clusterId=${clusterId}&nodeId=${node.id}`}>手动安装</a>
                     </td>
                   </tr>
                 ))}
@@ -501,7 +501,7 @@ export function ClusterInstallRemotePage() {
                         ) : null}
                       </td>
                       <td>
-                        <a href={`#/clusters/cluster/node?clusterId=${clusterId}&nodeId=${node.id}`}>{node.name}</a>
+                        <a href={`/clusters/cluster/node?clusterId=${clusterId}&nodeId=${node.id}`}>{node.name}</a>
                       </td>
                       <td>
                         {node.addresses

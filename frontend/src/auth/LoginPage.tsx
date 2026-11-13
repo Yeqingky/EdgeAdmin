@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom'
 import SparkMD5 from 'spark-md5'
 import { Leaf, Lock, User } from 'lucide-react'
 import { apiPost, getCsrfToken, ApiError } from '../api/client'
@@ -19,6 +19,7 @@ interface LoginResult {
 export function LoginPage() {
   const info = useLoginInfo()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const queryClient = useQueryClient()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -34,15 +35,15 @@ export function LoginPage() {
     return <div className="login-error">无法连接管理服务</div>
   }
   if (!info.data.isConfigured) {
-    window.location.href = '/spa/#/setup'
+    window.location.href = '/setup'
     return <LoadingBlock />
   }
   if (info.data.isNewInstalled) {
-    window.location.href = '/spa/#/setup/confirm'
+    window.location.href = '/setup/confirm'
     return <LoadingBlock />
   }
   if (info.data.isUser) {
-    return <Navigate to="/dashboard" replace />
+    return <Navigate to={searchParams.get('from') || '/dashboard'} replace />
   }
 
   async function submit(event: FormEvent) {
@@ -68,7 +69,7 @@ export function LoginPage() {
         return
       }
       await queryClient.invalidateQueries({ queryKey: SESSION_KEY })
-      navigate('/dashboard', { replace: true })
+      navigate(searchParams.get('from') || '/dashboard', { replace: true })
     } catch (err) {
       setError(err instanceof ApiError ? err.message : '登录失败')
     } finally {

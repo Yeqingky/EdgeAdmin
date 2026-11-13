@@ -70,13 +70,13 @@ export function MessagesPage() {
                 {message.cluster?.id ? (
                   <span>
                     {' | '}
-                    <a href={`#/clusters/cluster?clusterId=${message.cluster.id}`}>集群：{message.cluster.name}</a>
+                    <a href={`/clusters/cluster?clusterId=${message.cluster.id}`}>集群：{message.cluster.name}</a>
                   </span>
                 ) : null}
                 {message.node?.id ? (
                   <span>
                     {' | '}
-                    <a href={`#/clusters/cluster/node?clusterId=${message.cluster?.id}&nodeId=${message.node.id}`}>节点：{message.node.name}</a>
+                    <a href={`/clusters/cluster/node?clusterId=${message.cluster?.id}&nodeId=${message.node.id}`}>节点：{message.node.name}</a>
                   </span>
                 ) : null}
                 <a

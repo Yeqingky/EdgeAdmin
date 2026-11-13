@@ -52,7 +52,7 @@ func (this *IndexAction) RunGet(params struct {
 
 	// 前端已迁移到 React SPA
 	if !actionutils.IsJSONRequest(this.Request) {
-		this.RedirectURL("/spa/")
+		actionutils.ServeSPA(&this.ActionObject)
 		return
 	}
 

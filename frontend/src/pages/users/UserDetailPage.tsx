@@ -99,7 +99,7 @@ export function UserDetailPage() {
         <FormRow title="关联集群">
           {user.cluster ? (
             <span>
-              {user.cluster.name} <a href={`#/clusters/cluster?clusterId=${user.cluster.id}`}>查看</a>
+              {user.cluster.name} <a href={`/clusters/cluster?clusterId=${user.cluster.id}`}>查看</a>
             </span>
           ) : (
             <span className="disabled">没有设置。</span>

@@ -55,11 +55,11 @@ function NodeMenu({ nodeId, nodeName, active }: { nodeId: number; nodeName: stri
   return (
     <PageHeader
       items={[
-        { name: '节点列表', href: '#/settings/api' },
-        { name: `"${nodeName}"详情`, href: `#/settings/api/node?nodeId=${nodeId}`, active: active === 'index' },
-        { name: '运行日志', href: `#/settings/api/node/logs?nodeId=${nodeId}`, active: active === 'log' },
-        { name: '安装节点', href: `#/settings/api/node/install?nodeId=${nodeId}`, active: active === 'install' },
-        { name: '修改节点', href: `#/settings/api/node/update?nodeId=${nodeId}`, active: active === 'update' },
+        { name: '节点列表', href: '/settings/api' },
+        { name: `"${nodeName}"详情`, href: `/settings/api/node?nodeId=${nodeId}`, active: active === 'index' },
+        { name: '运行日志', href: `/settings/api/node/logs?nodeId=${nodeId}`, active: active === 'log' },
+        { name: '安装节点', href: `/settings/api/node/install?nodeId=${nodeId}`, active: active === 'install' },
+        { name: '修改节点', href: `/settings/api/node/update?nodeId=${nodeId}`, active: active === 'update' },
       ]}
     />
   )
@@ -304,7 +304,7 @@ export function ApiNodeInstallPage() {
                 <span className="red">
                   {data.dbConfig.isNotFound ? (
                     <>
-                      找不到数据库配置文件：configs/api_db.yaml ，请重新 <a href="#/settings/database">[配置数据库]</a>：
+                      找不到数据库配置文件：configs/api_db.yaml ，请重新 <a href="/settings/database">[配置数据库]</a>：
                     </>
                   ) : (
                     <>无法生成配置内容，错误原因：</>
@@ -431,7 +431,7 @@ export function ApiNodeLogsPage() {
           {dayFrom.length > 0 || dayTo.length > 0 || keyword.length > 0 || level.length > 0 ? (
             <div className="ui field">
               <a
-                href={`#/settings/api/node/logs?nodeId=${nodeId}`}
+                href={`/settings/api/node/logs?nodeId=${nodeId}`}
                 onClick={(event) => {
                   event.preventDefault()
                   setForm({ dayFrom: '', dayTo: '', keyword: '', level: '' })
@@ -520,7 +520,7 @@ export function ApiNodeCreatePage() {
   return (
     <div>
       <SettingsTabs kind="advanced" active="apiNodes" />
-      <PageHeader items={[{ name: '节点列表', href: '#/settings/api' }, { name: '添加API节点', href: '#/settings/api/node/createPopup', active: true }]} />
+      <PageHeader items={[{ name: '节点列表', href: '/settings/api' }, { name: '添加API节点', href: '/settings/api/node/createPopup', active: true }]} />
       <h3>添加API节点</h3>
       <ApiNodeForm
         onSaved={() => {

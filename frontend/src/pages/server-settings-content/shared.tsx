@@ -136,7 +136,7 @@ export function GroupConfigWarning({ href, text }: { href?: string; text?: strin
   return (
     <div className="ui message warning">
       {text || '由于已经在当前'}
-      {href ? <a href={`#${href}`}>网站分组</a> : '网站分组'}
+      {href ? <a href={`${href}`}>网站分组</a> : '网站分组'}
       {text ? '' : '中进行了对应的配置，在这里的配置将不会生效。'}
     </div>
   )
@@ -159,9 +159,9 @@ export function ServerSettingsShell({
     <div>
       <PageHeader
         items={[
-          { name: '网站列表', href: '#/servers' },
-          { name: `"${server.name}"设置`, href: `#/servers/server/settings?serverId=${server.id}`, active: !active },
-          { name: active ? `"${active.name}"设置` : '', href: active ? `#${active.url}` : undefined, active: !!active, hidden: !active },
+          { name: '网站列表', href: '/servers' },
+          { name: `"${server.name}"设置`, href: `/servers/server/settings?serverId=${server.id}`, active: !active },
+          { name: active ? `"${active.name}"设置` : '', href: active ? `${active.url}` : undefined, active: !!active, hidden: !active },
         ]}
       />
 
@@ -176,7 +176,7 @@ export function ServerSettingsShell({
               <a
                 key={`${item.url}-${index}`}
                 className={`item${item.isActive ? ' active' : ''}${item.isOn ? ' on' : ''}${item.isOff || item.isImportant ? ' off' : ''}`}
-                href={`#${item.url}`}
+                href={`${item.url}`}
               >
                 <Play size={10} style={{ visibility: item.isActive ? 'visible' : 'hidden' }} />
                 {item.name}

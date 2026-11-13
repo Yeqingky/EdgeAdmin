@@ -218,7 +218,7 @@ function ProxyIndexPage({ family }: { family: ProxyFamily }) {
           <div className="margin" />
           <div className="ui message warning">
             当前源站没有启用，可以通过点击{' '}
-            <a href={`#${base}/setting?groupId=${data.group.id}`}>[更多设置]</a> 开启 。
+            <a href={`${base}/setting?groupId=${data.group.id}`}>[更多设置]</a> 开启 。
           </div>
         </div>
       ) : null}

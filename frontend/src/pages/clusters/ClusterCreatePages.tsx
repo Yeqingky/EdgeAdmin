@@ -101,7 +101,7 @@ export function ClusterCreatePage() {
         dnsTTL,
       })
       toast('集群创建成功')
-      window.location.hash = `#/clusters/cluster/nodes?clusterId=${resp.clusterId}`
+      window.location.href = `/clusters/cluster/nodes?clusterId=${resp.clusterId}`
     } catch (error) {
       toast(error instanceof Error ? error.message : '创建失败', 'error')
     } finally {
@@ -268,7 +268,7 @@ export function ClusterCreateNodeIndexPage() {
           className={`ui button primary${clusterId <= 0 ? ' disabled' : ''}`}
           onClick={() => {
             if (clusterId > 0) {
-              window.location.hash = `#/clusters/cluster/createNode?clusterId=${clusterId}`
+              window.location.href = `/clusters/cluster/createNode?clusterId=${clusterId}`
             }
           }}
         >
@@ -349,7 +349,7 @@ export function ClusterSelectPopupPage() {
                   {cluster.isSelected ? (
                     <span className="disabled">已选择</span>
                   ) : (
-                    <a href={`#/clusters/cluster?clusterId=${cluster.id}`}>选择</a>
+                    <a href={`/clusters/cluster?clusterId=${cluster.id}`}>选择</a>
                   )}
                 </td>
               </tr>

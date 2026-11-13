@@ -179,9 +179,9 @@ export function ServerCreatePage() {
     <div>
       <FirstMenu
         items={[
-          { name: '网站列表', href: '#/servers' },
-          { name: `审核中(${data.countAuditing})`, href: '#/servers?auditingFlag=1' },
-          { name: '[创建网站]', href: '#/servers/create', active: true },
+          { name: '网站列表', href: '/servers' },
+          { name: `审核中(${data.countAuditing})`, href: '/servers?auditingFlag=1' },
+          { name: '[创建网站]', href: '/servers/create', active: true },
         ]}
       />
 

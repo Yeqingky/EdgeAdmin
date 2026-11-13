@@ -104,7 +104,7 @@ export function WafGroupsPage({ firewallPolicyId, type }: { firewallPolicyId: nu
       <div className="ui menu text blue second-menu" style={{ marginTop: '-1em' }}>
         <a
           className="item"
-          href={`#/servers/components/waf/createGroupPopup?firewallPolicyId=${firewallPolicyId}&type=${type}`}
+          href={`/servers/components/waf/createGroupPopup?firewallPolicyId=${firewallPolicyId}&type=${type}`}
           onClick={(event) => {
             event.preventDefault()
             navigate(`/servers/components/waf/createGroupPopup?firewallPolicyId=${firewallPolicyId}&type=${type}`)
@@ -140,7 +140,7 @@ export function WafGroupsPage({ firewallPolicyId, type }: { firewallPolicyId: nu
                 </td>
                 <td>
                   <a
-                    href={`#/servers/components/waf/group?firewallPolicyId=${firewallPolicyId}&type=${type}&groupId=${group.id}`}
+                    href={`/servers/components/waf/group?firewallPolicyId=${firewallPolicyId}&type=${type}&groupId=${group.id}`}
                   >
                     <span className={group.isOn ? undefined : 'disabled'}>{group.name}</span>
                   </a>
@@ -157,13 +157,13 @@ export function WafGroupsPage({ firewallPolicyId, type }: { firewallPolicyId: nu
                 </td>
                 <td className="center">
                   <a
-                    href={`#/servers/components/waf/group?firewallPolicyId=${firewallPolicyId}&type=${type}&groupId=${group.id}`}
+                    href={`/servers/components/waf/group?firewallPolicyId=${firewallPolicyId}&type=${type}&groupId=${group.id}`}
                   >
                     {group.countSets}
                   </a>
                 </td>
                 <td>
-                  <a href={`#/servers/components/waf/group?firewallPolicyId=${firewallPolicyId}&type=${type}&groupId=${group.id}`}>
+                  <a href={`/servers/components/waf/group?firewallPolicyId=${firewallPolicyId}&type=${type}&groupId=${group.id}`}>
                     详情
                   </a>{' '}
                   &nbsp;

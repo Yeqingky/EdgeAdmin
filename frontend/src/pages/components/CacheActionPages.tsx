@@ -131,7 +131,7 @@ export function CacheCleanPage({ cachePolicyId }: { cachePolicyId: number }) {
                 <td>新手操作建议</td>
                 <td>
                   请使用左侧主菜单中的{' '}
-                  <a href="#/servers/components/cache/batch?keyType=prefix" target="_blank" rel="noreferrer">
+                  <a href="/servers/components/cache/batch?keyType=prefix" target="_blank" rel="noreferrer">
                     [刷新预热]
                   </a>{' '}
                   功能来清理你的缓存。
@@ -143,7 +143,7 @@ export function CacheCleanPage({ cachePolicyId }: { cachePolicyId: number }) {
                 <td>操作建议</td>
                 <td>
                   当前系统提供的{' '}
-                  <a href="#/servers/components/cache/batch?keyType=prefix" target="_blank" rel="noreferrer">
+                  <a href="/servers/components/cache/batch?keyType=prefix" target="_blank" rel="noreferrer">
                     [刷新预热]
                   </a>{' '}
                   功能运行非常可靠，如果你确认发现功能异常，且能100%几率重现问题，请及时报告给软件开发者。
@@ -155,7 +155,7 @@ export function CacheCleanPage({ cachePolicyId }: { cachePolicyId: number }) {
                 <td>操作建议</td>
                 <td>
                   请尽可能使用{' '}
-                  <a href="#/servers/components/cache/batch?keyType=prefix" target="_blank" rel="noreferrer">
+                  <a href="/servers/components/cache/batch?keyType=prefix" target="_blank" rel="noreferrer">
                     [刷新预热]
                   </a>{' '}
                   功能，避免影响当前系统上的别的网站。

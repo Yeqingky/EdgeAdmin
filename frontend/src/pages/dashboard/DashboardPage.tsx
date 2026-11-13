@@ -71,7 +71,7 @@ export function DashboardPage() {
       {dashboard.defaultClusterId > 0 && dashboard.countNodes === 0 ? (
         <div className="ui icon message warning">
           <AlertTriangle size={20} />
-          <a href={`#/clusters/cluster/createNode?clusterId=${dashboard.defaultClusterId}`}>
+          <a href={`/clusters/cluster/createNode?clusterId=${dashboard.defaultClusterId}`}>
             还没有在集群中添加节点，现在去添加？添加节点后才可部署网站。
           </a>
         </div>
@@ -80,7 +80,7 @@ export function DashboardPage() {
       {data.nodeUpgradeInfo.count > 0 ? (
         <div className="ui icon message error">
           <AlertTriangle size={20} />
-          <a href="#/clusters">
+          <a href="/clusters">
             升级提醒：有 {data.nodeUpgradeInfo.count} 个边缘节点需要升级到 v{data.nodeUpgradeInfo.version} 版本，系统正在尝试自动升级，请耐心等待...
           </a>
         </div>
@@ -89,7 +89,7 @@ export function DashboardPage() {
       {data.apiNodeUpgradeInfo.count > 0 ? (
         <div className="ui icon message error">
           <AlertTriangle size={20} />
-          <a href="#/settings/api">
+          <a href="/settings/api">
             升级提醒：有 {data.apiNodeUpgradeInfo.count} 个API节点需要升级到 v{data.apiNodeUpgradeInfo.version} 版本；如果已经升级，请尝试重启API节点进程。
           </a>
         </div>
@@ -115,7 +115,7 @@ export function DashboardPage() {
       {data.countWeakAdmins > 0 ? (
         <div className="ui icon message error">
           <AlertTriangle size={20} />
-          <a href="#/admins?hasWeakPassword=1">
+          <a href="/admins?hasWeakPassword=1">
             安全提醒：有 {data.countWeakAdmins} 个管理员登录账号正在使用弱密码，请及时修改密码，避免产生安全风险。
           </a>
         </div>
@@ -193,7 +193,7 @@ function StatCard({ title, value, extra, link }: { title: string; value: string 
       <h4>
         {title}
         {link ? (
-          <a href={`#${link}`} className="stat-link">
+          <a href={`${link}`} className="stat-link">
             <ArrowRight size={13} />
           </a>
         ) : null}

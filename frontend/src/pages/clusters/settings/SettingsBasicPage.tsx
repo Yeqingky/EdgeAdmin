@@ -131,7 +131,7 @@ export function ClusterSettingsBasicPage() {
           {cluster.domainName ? (
             <FormRow title="域名">
               {cluster.domainName}
-              <a href={`#/clusters/cluster/settings/dns?clusterId=${cluster.id}`} title="DNS设置">
+              <a href={`/clusters/cluster/settings/dns?clusterId=${cluster.id}`} title="DNS设置">
                 <ExternalLink size={12} style={{ color: 'grey' }} />
               </a>
             </FormRow>

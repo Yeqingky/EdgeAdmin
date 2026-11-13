@@ -21,7 +21,7 @@ export function TicketPage() {
           localStorage.setItem('ip', data.ip)
         }
         if (!data.errorMsg) {
-          window.location.href = data.redirect || '/spa/#/dashboard'
+          window.location.href = data.redirect || '/dashboard'
         }
       })
       .catch((err) => setError(err instanceof Error ? err.message : '登录失败'))

@@ -75,7 +75,7 @@ export function GroupsPage() {
 
   return (
     <div>
-      <PageHeader items={[{ name: '列表', href: '#/servers/groups', active: true }]}>
+      <PageHeader items={[{ name: '列表', href: '/servers/groups', active: true }]}>
         <a
           className="item"
           href=""
@@ -114,17 +114,17 @@ export function GroupsPage() {
                     </button>
                   </td>
                   <td>
-                    <a href={`#/servers/groups/group?groupId=${group.id}`}>{group.name}</a>
+                    <a href={`/servers/groups/group?groupId=${group.id}`}>{group.name}</a>
                   </td>
                   <td className="center">
                     {group.countServers > 0 ? (
-                      <a href={`#/servers?groupId=${group.id}`}>{group.countServers}</a>
+                      <a href={`/servers?groupId=${group.id}`}>{group.countServers}</a>
                     ) : (
                       <span className="disabled">0</span>
                     )}
                   </td>
                   <td>
-                    <a href={`#/servers/groups/group?groupId=${group.id}`}>详情</a> &nbsp;{' '}
+                    <a href={`/servers/groups/group?groupId=${group.id}`}>详情</a> &nbsp;{' '}
                     <a
                       href=""
                       onClick={(event) => {

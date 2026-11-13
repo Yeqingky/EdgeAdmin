@@ -108,8 +108,8 @@ export function IpboxPage() {
     <div>
       <FirstMenu
         items={[
-          { name: '网站列表', href: '#/servers' },
-          { name: 'IP列表', href: '#/servers/iplists' },
+          { name: '网站列表', href: '/servers' },
+          { name: 'IP列表', href: '/servers/iplists' },
         ]}
       >
         <span className="item disabled">|</span>

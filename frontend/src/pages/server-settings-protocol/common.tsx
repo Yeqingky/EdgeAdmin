@@ -162,7 +162,7 @@ export function ServerSettingsShell({
               <a
                 key={item.path || 'basic'}
                 className={`item${item.path === activePath ? ' active' : ''}`}
-                href={`#${buildSettingsURL(item.path || '', { serverId })}`}
+                href={`${buildSettingsURL(item.path || '', { serverId })}`}
               >
                 {item.name}
               </a>
@@ -196,7 +196,7 @@ export function GroupConfigWarning({ url }: { url?: string }) {
   return (
     <WarningMessage>
       由于已经在当前
-      <a href={`#${url}`}>网站分组</a>
+      <a href={`${url}`}>网站分组</a>
       中进行了对应的配置，在这里的配置将不会生效。
     </WarningMessage>
   )
@@ -209,7 +209,7 @@ export function PopupPage({ title, children, backTo }: { title: string; children
       <h3>
         {title}{' '}
         <a
-          href={`#${backTo}`}
+          href={`${backTo}`}
           onClick={(event) => {
             event.preventDefault()
             goBack()
@@ -686,7 +686,7 @@ export function NetworkAddressesEditor({
 
 export function LegacyPopupLink({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <a href={`#${href}`}>
+    <a href={`${href}`}>
       {children} <ExternalLink size={12} />
     </a>
   )

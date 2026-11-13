@@ -94,7 +94,7 @@ export function GroupDetailPage() {
               return (
                 <tr key={server.id}>
                   <td>
-                    <a href={`#/servers/server?serverId=${server.id}`}>
+                    <a href={`/servers/server?serverId=${server.id}`}>
                       <Keyword word={keyword} text={server.name} />
                     </a>
                     <div style={{ marginTop: '0.4em' }}>
@@ -105,7 +105,7 @@ export function GroupDetailPage() {
                     {server.user ? (
                       <span>
                         {server.user.fullname}
-                        {data.canVisitUser ? <a href={`#/users/user?userId=${server.user.id}`}>[查看]</a> : null}
+                        {data.canVisitUser ? <a href={`/users/user?userId=${server.user.id}`}>[查看]</a> : null}
                       </span>
                     ) : (
                       '-'
@@ -126,14 +126,14 @@ export function GroupDetailPage() {
                     )}
                     {server.isAuditing ? (
                       <div style={{ marginTop: '0.5em' }}>
-                        <a className="ui label basic tiny red" href={`#/servers/server/settings/serverNames?serverId=${server.id}`}>
+                        <a className="ui label basic tiny red" href={`/servers/server/settings/serverNames?serverId=${server.id}`}>
                           审核中
                         </a>
                       </div>
                     ) : null}
                     {!server.auditingIsOk ? (
                       <div style={{ marginTop: '0.5em' }}>
-                        <a className="ui label basic tiny red" href={`#/servers/server/settings/serverNames?serverId=${server.id}`}>
+                        <a className="ui label basic tiny red" href={`/servers/server/settings/serverNames?serverId=${server.id}`}>
                           审核不通过
                         </a>
                       </div>
@@ -155,8 +155,8 @@ export function GroupDetailPage() {
                     {server.isOn ? <span className="ui label green basic">已启用</span> : <span className="ui label grey basic">已禁用</span>}
                   </td>
                   <td>
-                    <a href={`#/servers/server?serverId=${server.id}`}>详情</a> &nbsp;{' '}
-                    <a href={`#/servers/server/settings?serverId=${server.id}`}>设置</a>
+                    <a href={`/servers/server?serverId=${server.id}`}>详情</a> &nbsp;{' '}
+                    <a href={`/servers/server/settings?serverId=${server.id}`}>设置</a>
                   </td>
                 </tr>
               )

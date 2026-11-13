@@ -51,15 +51,15 @@ export function ClustersTopMenu({ active, counts }: { active: string; counts?: C
   return (
     <Menu
       entries={[
-        { name: `集群 (${counts?.totalNodeClusters ?? 0})`, href: '#/clusters', active: active === 'index' },
-        { name: `节点 (${counts?.totalNodes ?? 0})`, href: '#/clusters/nodes', active: active === 'node' },
+        { name: `集群 (${counts?.totalNodeClusters ?? 0})`, href: '/clusters', active: active === 'index' },
+        { name: `节点 (${counts?.totalNodes ?? 0})`, href: '/clusters/nodes', active: active === 'node' },
       ]}
     >
       <Separator />
-      <a className="item" href="#/clusters/create">
+      <a className="item" href="/clusters/create">
         [创建集群]
       </a>
-      <a className="item" href="#/clusters/createNode">
+      <a className="item" href="/clusters/createNode">
         [创建节点]
       </a>
     </Menu>
@@ -68,9 +68,9 @@ export function ClustersTopMenu({ active, counts }: { active: string; counts?: C
 
 export function GrantsTopMenu({ active }: { active: 'index' | 'create' }) {
   return (
-    <Menu entries={[{ name: '认证列表', href: '#/clusters/grants', active: active === 'index' }]}>
+    <Menu entries={[{ name: '认证列表', href: '/clusters/grants', active: active === 'index' }]}>
       <Separator />
-      <a className={`item${active === 'create' ? ' active' : ''}`} href="#/clusters/grants/create">
+      <a className={`item${active === 'create' ? ' active' : ''}`} href="/clusters/grants/create">
         [创建认证]
       </a>
     </Menu>
@@ -81,10 +81,10 @@ export function GrantMenu({ grantId, grantName, active }: { grantId: number; gra
   return (
     <Menu
       entries={[
-        { name: '认证列表', href: '#/clusters/grants' },
-        { name: `${grantName}详情`, href: `#/clusters/grants/grant?grantId=${grantId}`, active: active === 'index' },
-        { name: '测试', href: `#/clusters/grants/test?grantId=${grantId}`, active: active === 'test' },
-        { name: '修改', href: `#/clusters/grants/update?grantId=${grantId}`, active: active === 'update' },
+        { name: '认证列表', href: '/clusters/grants' },
+        { name: `${grantName}详情`, href: `/clusters/grants/grant?grantId=${grantId}`, active: active === 'index' },
+        { name: '测试', href: `/clusters/grants/test?grantId=${grantId}`, active: active === 'test' },
+        { name: '修改', href: `/clusters/grants/update?grantId=${grantId}`, active: active === 'update' },
       ]}
     />
   )
@@ -94,8 +94,8 @@ export function RegionsMenu({ active }: { active: 'index' | 'node' }) {
   return (
     <Menu
       entries={[
-        { name: '区域', href: '#/clusters/regions', active: active === 'index' },
-        { name: '节点', href: '#/clusters/regions/nodes', active: active === 'node' },
+        { name: '区域', href: '/clusters/regions', active: active === 'index' },
+        { name: '节点', href: '/clusters/regions/nodes', active: active === 'node' },
       ]}
     />
   )
@@ -113,15 +113,15 @@ export function LogsMenu({
   return (
     <Menu
       entries={[
-        { name: '所有', href: '#/clusters/logs', active: active === 'index' },
+        { name: '所有', href: '/clusters/logs', active: active === 'index' },
         {
           name: `未读(${countUnreadLogs})`,
-          href: '#/clusters/logs?type=unread',
+          href: '/clusters/logs?type=unread',
           active: active === 'unread',
         },
         {
           name: `需修复(${countNeedFixLogs})`,
-          href: '#/clusters/logs?type=needFix',
+          href: '/clusters/logs?type=needFix',
           active: active === 'needFix',
         },
       ]}
@@ -149,24 +149,24 @@ export function ClusterTabMenu({
 }) {
   return (
     <div className="ui menu text blue second-menu">
-      <a className="item" href={`#/clusters/cluster?clusterId=${clusterId}`}>
+      <a className="item" href={`/clusters/cluster?clusterId=${clusterId}`}>
         {clusterName}
       </a>
       <span className="disabled item" style={{ padding: 0 }}>
         &raquo;
       </span>
-      <a className={`item${active === 'index' ? ' active' : ''}`} href={`#/clusters/cluster/nodes?clusterId=${clusterId}`}>
+      <a className={`item${active === 'index' ? ' active' : ''}`} href={`/clusters/cluster/nodes?clusterId=${clusterId}`}>
         节点列表
       </a>
       <span className="disabled item">|</span>
-      <a className={`item${active === 'create' ? ' active' : ''}`} href={`#/clusters/cluster/createNode?clusterId=${clusterId}`}>
+      <a className={`item${active === 'create' ? ' active' : ''}`} href={`/clusters/cluster/createNode?clusterId=${clusterId}`}>
         [创建节点]
       </a>
       <span className="disabled item">|</span>
-      <a className={`item${active === 'install' ? ' active' : ''}`} href={`#/clusters/cluster/installManual?clusterId=${clusterId}`}>
+      <a className={`item${active === 'install' ? ' active' : ''}`} href={`/clusters/cluster/installManual?clusterId=${clusterId}`}>
         安装升级
       </a>
-      <a className={`item${active === 'group' ? ' active' : ''}`} href={`#/clusters/cluster/groups?clusterId=${clusterId}`}>
+      <a className={`item${active === 'group' ? ' active' : ''}`} href={`/clusters/cluster/groups?clusterId=${clusterId}`}>
         节点分组
       </a>
     </div>
@@ -181,19 +181,19 @@ export interface SettingsMenuItem {
 }
 
 export const clusterSettingsItems = (clusterId: number): SettingsMenuItem[] => [
-  { name: '基本信息', href: `#/clusters/cluster/settings?clusterId=${clusterId}` },
-  { name: 'DNS', href: `#/clusters/cluster/settings/dns?clusterId=${clusterId}` },
-  { name: '健康检查', href: `#/clusters/cluster/settings/health?clusterId=${clusterId}` },
+  { name: '基本信息', href: `/clusters/cluster/settings?clusterId=${clusterId}` },
+  { name: 'DNS', href: `/clusters/cluster/settings/dns?clusterId=${clusterId}` },
+  { name: '健康检查', href: `/clusters/cluster/settings/health?clusterId=${clusterId}` },
   { name: '-', href: '', separator: true },
-  { name: '全局服务配置', href: `#/clusters/cluster/settings/global-server-config?clusterId=${clusterId}` },
-  { name: '缓存策略', href: `#/clusters/cluster/settings/cache?clusterId=${clusterId}` },
-  { name: 'WAF策略', href: `#/clusters/cluster/settings/waf?clusterId=${clusterId}` },
-  { name: 'WAF动作', href: `#/clusters/cluster/settings/firewall-actions?clusterId=${clusterId}` },
-  { name: 'WebP', href: `#/clusters/cluster/settings/webp?clusterId=${clusterId}` },
-  { name: '指标', href: `#/clusters/cluster/settings/metrics?clusterId=${clusterId}` },
+  { name: '全局服务配置', href: `/clusters/cluster/settings/global-server-config?clusterId=${clusterId}` },
+  { name: '缓存策略', href: `/clusters/cluster/settings/cache?clusterId=${clusterId}` },
+  { name: 'WAF策略', href: `/clusters/cluster/settings/waf?clusterId=${clusterId}` },
+  { name: 'WAF动作', href: `/clusters/cluster/settings/firewall-actions?clusterId=${clusterId}` },
+  { name: 'WebP', href: `/clusters/cluster/settings/webp?clusterId=${clusterId}` },
+  { name: '指标', href: `/clusters/cluster/settings/metrics?clusterId=${clusterId}` },
   { name: '-', href: '', separator: true },
-  { name: 'DDoS防护', href: `#/clusters/cluster/settings/ddos-protection?clusterId=${clusterId}` },
-  { name: '系统服务', href: `#/clusters/cluster/settings/services?clusterId=${clusterId}` },
+  { name: 'DDoS防护', href: `/clusters/cluster/settings/ddos-protection?clusterId=${clusterId}` },
+  { name: '系统服务', href: `/clusters/cluster/settings/services?clusterId=${clusterId}` },
 ]
 
 export function ClusterSettingsLayout({
@@ -212,13 +212,13 @@ export function ClusterSettingsLayout({
   return (
     <div>
       <div className="ui menu text blue second-menu">
-        <a className="item" href={`#/clusters/cluster?clusterId=${clusterId}`}>
+        <a className="item" href={`/clusters/cluster?clusterId=${clusterId}`}>
           {clusterName}
         </a>
         <span className="disabled item" style={{ padding: 0 }}>
           &raquo;
         </span>
-        <a className="item" href={`#/clusters/cluster/settings?clusterId=${clusterId}`}>
+        <a className="item" href={`/clusters/cluster/settings?clusterId=${clusterId}`}>
           集群设置
         </a>
         <span className="disabled item" style={{ padding: 0 }}>

@@ -130,7 +130,7 @@ export function WafPage() {
                         &nbsp;[{policy.modeInfo.name}]&nbsp;
                       </span>
                     ) : null}
-                    <a href={`#/servers/components/waf/policy?firewallPolicyId=${policy.id}`} title="查看策略">
+                    <a href={`/servers/components/waf/policy?firewallPolicyId=${policy.id}`} title="查看策略">
                       [查看]
                     </a>
                     <p className="comment">当前网站所在集群的设置。</p>

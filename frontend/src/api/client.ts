@@ -41,10 +41,10 @@ function redirectToLogin(url: string) {
   if (url === '/' || url.startsWith('/api/login') || url.startsWith('/login/')) {
     return
   }
-  if (window.location.hash.startsWith('#/login')) {
+  if (window.location.pathname === '/login') {
     return
   }
-  window.location.assign('/spa/#/login')
+  window.location.assign('/login')
 }
 
 export async function apiGet<T>(url: string, params?: Record<string, unknown>): Promise<T> {

@@ -207,7 +207,7 @@ export function RecoverPage() {
 
       {step === 'finish' ? (
         <div>
-          修改成功，请<a href="#/dashboard">刷新</a>此页面后，进入系统。
+          修改成功，请<a href="/dashboard">刷新</a>此页面后，进入系统。
         </div>
       ) : null}
     </div>

@@ -99,11 +99,11 @@ export function UsersPage() {
     <div>
       <PageHeader
         items={[
-          { name: '全部用户', active: !verifying, href: '#/users' },
+          { name: '全部用户', active: !verifying, href: '/users' },
           { name: '待审核', active: verifying, hidden: !session.data?.teaIsPlus },
         ]}
       >
-        <a className="item" href="#/users/create" onClick={(event) => { event.preventDefault(); navigate('/users/create') }}>
+        <a className="item" href="/users/create" onClick={(event) => { event.preventDefault(); navigate('/users/create') }}>
           <Plus size={14} /> [创建用户]
         </a>
       </PageHeader>
@@ -129,7 +129,7 @@ export function UsersPage() {
             &nbsp;
             {searchKeyword ? (
               <a
-                href="#/users"
+                href="/users"
                 onClick={(event) => {
                   event.preventDefault()
                   setKeyword('')
@@ -163,10 +163,10 @@ export function UsersPage() {
             {data.users.map((user) => (
               <tr key={user.id}>
                 <td className={user.isOn ? undefined : 'disabled'}>
-                  <a href={`#/users/user?userId=${user.id}`}>{user.username}</a>
+                  <a href={`/users/user?userId=${user.id}`}>{user.username}</a>
                   {!user.isVerified ? (
                     <div>
-                      <a href={`#/users/user?userId=${user.id}`}>
+                      <a href={`/users/user?userId=${user.id}`}>
                         <span className="ui label red basic">信息未审核</span>
                       </a>
                     </div>
@@ -178,7 +178,7 @@ export function UsersPage() {
                   ) : null}
                   {user.identityIsSubmitted ? (
                     <div>
-                      <a href={`#/users/identity?userId=${user.id}`}>
+                      <a href={`/users/identity?userId=${user.id}`}>
                         <span className="ui label red basic">实名未审核</span>
                       </a>
                     </div>
@@ -189,7 +189,7 @@ export function UsersPage() {
                   {user.cluster ? (
                     <span>
                       {user.cluster.name}{' '}
-                      <a href={`#/clusters/cluster?clusterId=${user.cluster.id}`}>查看</a>
+                      <a href={`/clusters/cluster?clusterId=${user.cluster.id}`}>查看</a>
                     </span>
                   ) : (
                     <span className="disabled">-</span>
@@ -206,7 +206,7 @@ export function UsersPage() {
                   <StatusLabel isOn={user.isOn} />
                 </td>
                 <td>
-                  <a href={`#/users/user?userId=${user.id}`}>详情</a> &nbsp;
+                  <a href={`/users/user?userId=${user.id}`}>详情</a> &nbsp;
                   <a
                     href=""
                     onClick={(event) => {

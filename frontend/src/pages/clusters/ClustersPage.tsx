@@ -107,7 +107,7 @@ export function ClustersPage() {
       <ClustersTopMenu active="index" counts={{ totalNodeClusters: data.totalNodeClusters, totalNodes: data.totalNodes }} />
 
       <div className="margin" />
-      <form method="get" action="#/clusters" className="ui form" onSubmit={submitSearch}>
+      <form method="get" action="/clusters" className="ui form" onSubmit={submitSearch}>
         <input type="hidden" name="searchType" value={searchType} />
         <div className="ui fields inline">
           <div className="ui field">
@@ -145,7 +145,7 @@ export function ClustersPage() {
           常用集群：
           {data.latestClusters.map((cluster, index) => (
             <span key={cluster.id}>
-              <a href={`#/clusters/cluster?clusterId=${cluster.id}`}>{cluster.name}</a> &nbsp;
+              <a href={`/clusters/cluster?clusterId=${cluster.id}`}>{cluster.name}</a> &nbsp;
               {index !== data.latestClusters.length - 1 ? <span className="disabled">|</span> : null} &nbsp;
             </span>
           ))}
@@ -154,10 +154,10 @@ export function ClustersPage() {
 
       {data.isSearching ? (
         <div className="ui tabular menu">
-          <a className={`item${!showNodes ? ' active' : ''}`} href={`#/clusters?searchType=cluster&keyword=${encodeURIComponent(keyword)}`}>
+          <a className={`item${!showNodes ? ' active' : ''}`} href={`/clusters?searchType=cluster&keyword=${encodeURIComponent(keyword)}`}>
             集群({data.countClusters})
           </a>
-          <a className={`item${showNodes ? ' active' : ''}`} href={`#/clusters/nodes?keyword=${encodeURIComponent(keyword)}`}>
+          <a className={`item${showNodes ? ' active' : ''}`} href={`/clusters/nodes?keyword=${encodeURIComponent(keyword)}`}>
             节点({data.countNodes})
           </a>
         </div>
@@ -165,7 +165,7 @@ export function ClustersPage() {
 
       {showNodes ? (
         <div className="ui message">
-          请前往<a href={`#/clusters/nodes?keyword=${encodeURIComponent(keyword)}`}>节点搜索页面</a>查看节点搜索结果。
+          请前往<a href={`/clusters/nodes?keyword=${encodeURIComponent(keyword)}`}>节点搜索页面</a>查看节点搜索结果。
         </div>
       ) : (
         <div>
@@ -187,10 +187,10 @@ export function ClustersPage() {
                 {data.clusters.map((cluster) => (
                   <tr key={cluster.id}>
                     <td className="cluster-name-td">
-                      <a href={`#/clusters/cluster?clusterId=${cluster.id}`}>
+                      <a href={`/clusters/cluster?clusterId=${cluster.id}`}>
                         <Highlight word={keyword}>{cluster.name}</Highlight>
                       </a>{' '}
-                      <a href={`#/clusters/cluster/settings?clusterId=${cluster.id}`} title="设置">
+                      <a href={`/clusters/cluster/settings?clusterId=${cluster.id}`} title="设置">
                         <Settings size={13} style={{ color: 'grey' }} />
                       </a>
                       {cluster.timeZone ? (
@@ -224,7 +224,7 @@ export function ClustersPage() {
                     </td>
                     <td className="center">
                       {cluster.countAllNodes > 0 ? (
-                        <a href={`#/clusters/cluster/nodes?clusterId=${cluster.id}`}>
+                        <a href={`/clusters/cluster/nodes?clusterId=${cluster.id}`}>
                           <span className={cluster.countAllNodes > cluster.countActiveNodes ? 'red' : undefined}>{cluster.countAllNodes}</span>
                         </a>
                       ) : (
@@ -232,7 +232,7 @@ export function ClustersPage() {
                       )}
                       {cluster.countUpgradeNodes > 0 ? (
                         <div style={{ marginTop: '0.5em' }}>
-                          <a href={`#/clusters/cluster/upgradeRemote?clusterId=${cluster.id}`} title="点击进入远程升级页面">
+                          <a href={`/clusters/cluster/upgradeRemote?clusterId=${cluster.id}`} title="点击进入远程升级页面">
                             <span className="red">有节点需要升级</span>
                           </a>
                         </div>
@@ -240,7 +240,7 @@ export function ClustersPage() {
                     </td>
                     <td className="center">
                       {cluster.countActiveNodes > 0 ? (
-                        <a href={`#/clusters/cluster/nodes?clusterId=${cluster.id}&activeState=1`}>
+                        <a href={`/clusters/cluster/nodes?clusterId=${cluster.id}&activeState=1`}>
                           <span className="green">{cluster.countActiveNodes}</span>
                         </a>
                       ) : (
@@ -261,7 +261,7 @@ export function ClustersPage() {
                             <span className="disabled">主域名</span>
                           )}
                           {cluster.dnsDomainId > 0 ? (
-                            <a href={`#/dns/clusters/cluster?clusterId=${cluster.id}`} title="DNS">
+                            <a href={`/dns/clusters/cluster?clusterId=${cluster.id}`} title="DNS">
                               <ExternalLink size={12} style={{ color: 'grey' }} />
                             </a>
                           ) : null}
@@ -271,8 +271,8 @@ export function ClustersPage() {
                       )}
                     </td>
                     <td>
-                      <a href={`#/clusters/cluster?clusterId=${cluster.id}`}>详情</a> &nbsp;
-                      <a href={`#/clusters/cluster/settings?clusterId=${cluster.id}`}>设置</a>
+                      <a href={`/clusters/cluster?clusterId=${cluster.id}`}>详情</a> &nbsp;
+                      <a href={`/clusters/cluster/settings?clusterId=${cluster.id}`}>设置</a>
                     </td>
                   </tr>
                 ))}

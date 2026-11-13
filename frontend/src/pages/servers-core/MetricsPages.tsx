@@ -302,11 +302,11 @@ function MetricFormFields({
 
 function MetricItemMenu({ item, current }: { item: MetricItem; current: 'item' | 'update' | 'chart' | 'stat' }) {
   const items: MenuItemDef[] = [
-    { name: '指标列表', href: '#/servers/metrics' },
-    { name: `"${item.name}"详情`, href: `#/servers/metrics/item?itemId=${item.id}`, active: current === 'item' },
-    { name: '修改', href: `#/servers/metrics/update?itemId=${item.id}`, active: current === 'update' },
-    { name: `图表(${item.countCharts})`, href: `#/servers/metrics/charts?itemId=${item.id}`, active: current === 'chart' },
-    { name: '数据', href: `#/servers/metrics/stats?itemId=${item.id}`, active: current === 'stat' },
+    { name: '指标列表', href: '/servers/metrics' },
+    { name: `"${item.name}"详情`, href: `/servers/metrics/item?itemId=${item.id}`, active: current === 'item' },
+    { name: '修改', href: `/servers/metrics/update?itemId=${item.id}`, active: current === 'update' },
+    { name: `图表(${item.countCharts})`, href: `/servers/metrics/charts?itemId=${item.id}`, active: current === 'chart' },
+    { name: '数据', href: `/servers/metrics/stats?itemId=${item.id}`, active: current === 'stat' },
   ]
   return <FirstMenu items={items} />
 }
@@ -445,7 +445,7 @@ export function MetricsPage() {
     <div>
       <FirstMenu
         items={[
-          { name: 'HTTP', href: '#/servers/metrics?category=http', active: category === 'http' },
+          { name: 'HTTP', href: '/servers/metrics?category=http', active: category === 'http' },
         ]}
       >
         <span className="item disabled">|</span>
@@ -476,7 +476,7 @@ export function MetricsPage() {
             {data.items.map((item) => (
               <tr key={item.id}>
                 <td>
-                  <a href={`#/servers/metrics/item?itemId=${item.id}`}>{item.name}</a>
+                  <a href={`/servers/metrics/item?itemId=${item.id}`}>{item.name}</a>
                   {item.isPublic || item.code.length > 0 ? (
                     <div style={{ marginTop: '0.3em' }}>
                       {item.isPublic ? <span className="ui label olive tiny basic">公用</span> : null}
@@ -505,7 +505,7 @@ export function MetricsPage() {
                   )}
                 </td>
                 <td>
-                  <a href={`#/servers/metrics/item?itemId=${item.id}`}>详情</a> &nbsp;
+                  <a href={`/servers/metrics/item?itemId=${item.id}`}>详情</a> &nbsp;
                   <a href="" onClick={(event) => { event.preventDefault(); void deleteItem(item) }}>
                     <Trash2 size={13} /> 删除
                   </a>
@@ -630,7 +630,7 @@ export function MetricItemPage() {
               <tr key={cluster.id}>
                 <td>
                   {cluster.name}
-                  <a href={`#/clusters/cluster?clusterId=${cluster.id}`} style={{ marginLeft: '0.3em' }}>
+                  <a href={`/clusters/cluster?clusterId=${cluster.id}`} style={{ marginLeft: '0.3em' }}>
                     ↗
                   </a>
                 </td>
@@ -797,7 +797,7 @@ export function MetricStatsPage() {
                 <td>{stat.node.name}</td>
                 <td>
                   {stat.server.name}
-                  <a href={`#/servers/server/stat?serverId=${stat.server.id}`} style={{ marginLeft: '0.3em' }}>
+                  <a href={`/servers/server/stat?serverId=${stat.server.id}`} style={{ marginLeft: '0.3em' }}>
                     ↗
                   </a>
                 </td>
@@ -1102,7 +1102,7 @@ export function MetricChartsPage() {
                   )}
                 </td>
                 <td>
-                  <a href={`#/servers/metrics/charts/chart?chartId=${chart.id}`}>详情</a> &nbsp;
+                  <a href={`/servers/metrics/charts/chart?chartId=${chart.id}`}>详情</a> &nbsp;
                   <a href="" onClick={(event) => { event.preventDefault(); void deleteChart(chart) }}>
                     删除
                   </a>
@@ -1250,9 +1250,9 @@ export function MetricChartPage() {
       <MetricItemMenu item={item} current="chart" />
       <FirstMenu
         items={[
-          { name: '图表列表', href: `#/servers/metrics/charts?itemId=${item.id}` },
-          { name: `详情"${chart.name}"`, href: `#/servers/metrics/charts/chart?chartId=${chart.id}`, active: true },
-          { name: '修改', href: `#/servers/metrics/charts/update?chartId=${chart.id}` },
+          { name: '图表列表', href: `/servers/metrics/charts?itemId=${item.id}` },
+          { name: `详情"${chart.name}"`, href: `/servers/metrics/charts/chart?chartId=${chart.id}`, active: true },
+          { name: '修改', href: `/servers/metrics/charts/update?chartId=${chart.id}` },
         ]}
       />
 
@@ -1386,9 +1386,9 @@ export function MetricChartUpdatePage() {
       <MetricItemMenu item={item} current="chart" />
       <FirstMenu
         items={[
-          { name: '图表列表', href: `#/servers/metrics/charts?itemId=${item.id}` },
-          { name: `详情"${chart.name}"`, href: `#/servers/metrics/charts/chart?chartId=${chart.id}` },
-          { name: '修改', href: `#/servers/metrics/charts/update?chartId=${chart.id}`, active: true },
+          { name: '图表列表', href: `/servers/metrics/charts?itemId=${item.id}` },
+          { name: `详情"${chart.name}"`, href: `/servers/metrics/charts/chart?chartId=${chart.id}` },
+          { name: '修改', href: `/servers/metrics/charts/update?chartId=${chart.id}`, active: true },
         ]}
       />
       <form className="ui form" onSubmit={(event) => void submit(event)}>

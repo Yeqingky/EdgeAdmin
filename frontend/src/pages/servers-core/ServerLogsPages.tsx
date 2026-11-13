@@ -133,7 +133,7 @@ export function ServerLogsPage() {
         ]}
       >
         <span className="item disabled">|</span>
-        <a className="item" href="#/servers/logs/settings">
+        <a className="item" href="/servers/logs/settings">
           设置
         </a>
       </FirstMenu>
@@ -185,7 +185,7 @@ export function ServerLogsPage() {
         <div className="ui warning message">
           看起来你的访问日志查询非常慢（{data.slowQueryCost}s），建议
           {data.domain.length === 0 ? ' 1）指定具体域名查询；2）' : ''}
-          通过添加新的 <a href="#/db">[日志节点]</a> 来分散存储访问日志。
+          通过添加新的 <a href="/db">[日志节点]</a> 来分散存储访问日志。
         </div>
       ) : null}
 
@@ -289,13 +289,13 @@ export function ServerLogsSettingsPage() {
     <div>
       <FirstMenu
         items={[
-          { name: '所有日志', href: '#/servers/logs' },
-          { name: '错误日志', href: '#/servers/logs?hasError=1' },
-          { name: 'WAF日志', href: '#/servers/logs?hasWAF=1' },
+          { name: '所有日志', href: '/servers/logs' },
+          { name: '错误日志', href: '/servers/logs?hasError=1' },
+          { name: 'WAF日志', href: '/servers/logs?hasWAF=1' },
         ]}
       >
         <span className="item disabled">|</span>
-        <a className="item active" href="#/servers/logs/settings">
+        <a className="item active" href="/servers/logs/settings">
           设置
         </a>
       </FirstMenu>

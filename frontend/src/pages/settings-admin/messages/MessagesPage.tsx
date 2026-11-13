@@ -151,10 +151,10 @@ export function MessagesPage() {
                       <span>
                         <span> | </span>
                         {message.role === 'node' ? (
-                          <a href={`#/clusters/cluster?clusterId=${message.cluster.id}`}>集群：{message.cluster.name}</a>
+                          <a href={`/clusters/cluster?clusterId=${message.cluster.id}`}>集群：{message.cluster.name}</a>
                         ) : null}
                         {message.role === 'dns' ? (
-                          <a href={`#/ns/clusters/cluster?clusterId=${message.cluster.id}`}>DNS集群：{message.cluster.name}</a>
+                          <a href={`/ns/clusters/cluster?clusterId=${message.cluster.id}`}>DNS集群：{message.cluster.name}</a>
                         ) : null}
                       </span>
                     ) : null}
@@ -162,10 +162,10 @@ export function MessagesPage() {
                       <span>
                         <span> | </span>
                         {message.role === 'node' ? (
-                          <a href={`#/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>节点：{message.node.name}</a>
+                          <a href={`/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>节点：{message.node.name}</a>
                         ) : null}
                         {message.role === 'dns' ? (
-                          <a href={`#/ns/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>DNS节点：{message.node.name}</a>
+                          <a href={`/ns/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>DNS节点：{message.node.name}</a>
                         ) : null}
                       </span>
                     ) : null}
@@ -192,7 +192,7 @@ export function MessagesPage() {
                       ? paramItems.map((param, index) => (
                           <a
                             key={index}
-                            href={`#/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${param.node?.id ?? ''}`}
+                            href={`/clusters/cluster/node?clusterId=${message.cluster.id}&nodeId=${param.node?.id ?? ''}`}
                             className="ui label small basic"
                             style={{ marginBottom: '0.5em' }}
                           >
@@ -203,17 +203,17 @@ export function MessagesPage() {
 
                     {message.type === 'ClusterDNSSyncFailed' ? (
                       <div style={{ marginTop: '0.8em' }}>
-                        <a href={`#/dns/clusters/cluster?clusterId=${message.cluster.id}`}>查看问题 &raquo;</a>
+                        <a href={`/dns/clusters/cluster?clusterId=${message.cluster.id}`}>查看问题 &raquo;</a>
                       </div>
                     ) : null}
 
                     {message.type === 'SSLCertExpiring' || message.type === 'SSLCertACMETaskSuccess' || message.type === 'SSLCertACMETaskFailed' ? (
                       <div style={{ marginTop: '0.8em' }}>
-                        <a href={`#/servers/certs/certPopup?certId=${String(params?.certId ?? '')}`}>查看证书</a>
+                        <a href={`/servers/certs/certPopup?certId=${String(params?.certId ?? '')}`}>查看证书</a>
                         {params && Number(params.acmeTaskId) > 0 ? (
                           <span>
                             {' '}
-                            | <a href="#/servers/certs/acme">查看任务&raquo;</a>
+                            | <a href="/servers/certs/acme">查看任务&raquo;</a>
                           </span>
                         ) : null}
                       </div>
@@ -221,13 +221,13 @@ export function MessagesPage() {
 
                     {message.type === 'serverNamesRequireAuditing' ? (
                       <div style={{ marginTop: '0.8em' }}>
-                        <a href={`#/servers/server/settings/serverNames?serverId=${String(params?.serverId ?? '')}`}>去审核</a>
+                        <a href={`/servers/server/settings/serverNames?serverId=${String(params?.serverId ?? '')}`}>去审核</a>
                       </div>
                     ) : null}
 
                     {message.type === 'NodeSchedule' ? (
                       <div style={{ marginTop: '0.8em' }}>
-                        <a href={`#/clusters/cluster/node/settings/schedule?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>
+                        <a href={`/clusters/cluster/node/settings/schedule?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>
                           查看调度状态 &raquo;
                         </a>
                       </div>
@@ -235,7 +235,7 @@ export function MessagesPage() {
 
                     {message.type === 'NodeOfflineDay' ? (
                       <div style={{ marginTop: '0.8em' }}>
-                        <a href={`#/clusters/cluster/node/detail?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>查看详情 &raquo;</a>
+                        <a href={`/clusters/cluster/node/detail?clusterId=${message.cluster.id}&nodeId=${message.node.id}`}>查看详情 &raquo;</a>
                       </div>
                     ) : null}
                   </td>

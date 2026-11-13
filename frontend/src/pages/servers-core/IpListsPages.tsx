@@ -36,10 +36,10 @@ function IpListsTopMenu({ type }: { type?: string }) {
   return (
     <FirstMenu
       items={[
-        { name: 'IP列表', href: '#/servers/iplists', active: !type },
-        { name: '黑名单', href: '#/servers/iplists/lists?type=black', active: type === 'black' },
-        { name: '白名单', href: '#/servers/iplists/lists?type=white', active: type === 'white' },
-        { name: '灰名单', href: '#/servers/iplists/lists?type=grey', active: type === 'grey' },
+        { name: 'IP列表', href: '/servers/iplists', active: !type },
+        { name: '黑名单', href: '/servers/iplists/lists?type=black', active: type === 'black' },
+        { name: '白名单', href: '/servers/iplists/lists?type=white', active: type === 'white' },
+        { name: '灰名单', href: '/servers/iplists/lists?type=grey', active: type === 'grey' },
       ]}
     >
       {type ? <span className="item disabled">|</span> : null}
@@ -266,7 +266,7 @@ export function IpListsPage() {
             &nbsp;
             {keyword || listType || eventLevel || globalOnly || unread ? (
               <a
-                href="#/servers/iplists"
+                href="/servers/iplists"
                 onClick={(event) => {
                   event.preventDefault()
                   setKeyword('')
@@ -403,10 +403,10 @@ export function IpListListsPage() {
     <div>
       <FirstMenu
         items={[
-          { name: 'IP列表', href: '#/servers/iplists' },
-          { name: '黑名单', href: '#/servers/iplists/lists?type=black', active: type === 'black' },
-          { name: '白名单', href: '#/servers/iplists/lists?type=white', active: type === 'white' },
-          { name: '灰名单', href: '#/servers/iplists/lists?type=grey', active: type === 'grey' },
+          { name: 'IP列表', href: '/servers/iplists' },
+          { name: '黑名单', href: '/servers/iplists/lists?type=black', active: type === 'black' },
+          { name: '白名单', href: '/servers/iplists/lists?type=white', active: type === 'white' },
+          { name: '灰名单', href: '/servers/iplists/lists?type=grey', active: type === 'grey' },
         ]}
       >
         <span className="item disabled">|</span>
@@ -487,7 +487,7 @@ export function IpListListsPage() {
               <tr key={list.id}>
                 <td className="center">{list.id}</td>
                 <td>
-                  <a href={`#/servers/iplists/list?listId=${list.id}`}>
+                  <a href={`/servers/iplists/list?listId=${list.id}`}>
                     <Keyword word={data.keyword}>{list.name}</Keyword>
                   </a>
                   {list.isGlobal ? (
@@ -505,13 +505,13 @@ export function IpListListsPage() {
                 <td>{list.description ? list.description : <span className="disabled">-</span>}</td>
                 <td className="center">
                   {list.countItems > 0 ? (
-                    <a href={`#/servers/iplists/items?listId=${list.id}`}>{list.countItems}</a>
+                    <a href={`/servers/iplists/items?listId=${list.id}`}>{list.countItems}</a>
                   ) : (
                     <span className="disabled">0</span>
                   )}
                 </td>
                 <td>
-                  <a href={`#/servers/iplists/list?listId=${list.id}`}>详情</a> &nbsp;
+                  <a href={`/servers/iplists/list?listId=${list.id}`}>详情</a> &nbsp;
                   <a href="" onClick={(event) => { event.preventDefault(); void deleteList(list) }}>
                     删除
                   </a>
@@ -712,7 +712,7 @@ export function IpListItemsPage() {
             &nbsp;
             {keyword || eventLevel ? (
               <a
-                href={`#/servers/iplists/items?listId=${listId}`}
+                href={`/servers/iplists/items?listId=${listId}`}
                 onClick={(event) => {
                   event.preventDefault()
                   setKeyword('')

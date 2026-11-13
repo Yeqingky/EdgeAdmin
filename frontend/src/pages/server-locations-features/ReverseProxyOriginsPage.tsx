@@ -494,7 +494,7 @@ export function ReverseProxyOriginsPage() {
       {!enabled ? (
         <div className="ui message warning">
           当前源站没有启用，可以通过点击{' '}
-          <a href={`#/servers/server/settings/locations/reverseProxy/setting?serverId=${serverId}&locationId=${locationId}`}>[更多设置]</a> 开启 。
+          <a href={`/servers/server/settings/locations/reverseProxy/setting?serverId=${serverId}&locationId=${locationId}`}>[更多设置]</a> 开启 。
         </div>
       ) : null}
       <OriginTable

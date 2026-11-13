@@ -8,7 +8,7 @@ export function UserTabs({ userId, active }: { userId: number; active: 'index' |
   return (
     <div className="ui menu text blue first-menu">
       {items.map((item) => (
-        <a key={item.code} className={`item${item.code === active ? ' active' : ''}`} href={`#${item.url}`}>
+        <a key={item.code} className={`item${item.code === active ? ' active' : ''}`} href={`${item.url}`}>
           {item.name}
         </a>
       ))}

@@ -107,7 +107,7 @@ export function CacheListPage() {
         <span className="item disabled">|</span>
         <a
           className="item"
-          href="#/servers/components/cache/createPopup"
+          href="/servers/components/cache/createPopup"
           onClick={(event) => {
             event.preventDefault()
             navigate('/servers/components/cache/createPopup')
@@ -150,7 +150,7 @@ export function CacheListPage() {
             &nbsp;
             {keyword.length > 0 || clusterId > 0 || storageType.length > 0 ? (
               <a
-                href="#/servers/components/cache"
+                href="/servers/components/cache"
                 onClick={(event) => {
                   event.preventDefault()
                   setKeywordInput('')
@@ -186,7 +186,7 @@ export function CacheListPage() {
               return (
                 <tr key={policy.id}>
                   <td>
-                    <a href={`#/servers/components/cache/policy?cachePolicyId=${policy.id}`}>
+                    <a href={`/servers/components/cache/policy?cachePolicyId=${policy.id}`}>
                       {policy.name}
                       {policy.type === 'file' ? (
                         <>
@@ -218,7 +218,7 @@ export function CacheListPage() {
                     <StatusLabel isOn={policy.isOn} />
                   </td>
                   <td>
-                    <a href={`#/servers/components/cache/policy?cachePolicyId=${policy.id}`}>详情</a> &nbsp;
+                    <a href={`/servers/components/cache/policy?cachePolicyId=${policy.id}`}>详情</a> &nbsp;
                     <a
                       href=""
                       onClick={(event) => {

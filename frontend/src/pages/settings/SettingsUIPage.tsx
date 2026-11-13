@@ -5,6 +5,7 @@ import { useSession } from '../../api/session'
 import { useToast } from '../../components/Toast'
 import { LoadingBlock } from '../../components/LoadingBlock'
 import { Checkbox, FormRow, FormTable, Select, SubmitButton, TextInput } from '../../components/form'
+import { SettingsTabs } from '../settings-admin/common'
 
 interface UIConfig {
   productName: string
@@ -111,6 +112,8 @@ export function SettingsUIPage() {
   }
 
   return (
+    <div>
+    <SettingsTabs kind="basic" active="ui" />
     <form className="ui form" onSubmit={submit}>
       <FormTable>
         <FormRow title="产品名称 *">
@@ -230,5 +233,6 @@ export function SettingsUIPage() {
 
       <SubmitButton submitting={submitting} />
     </form>
+    </div>
   )
 }

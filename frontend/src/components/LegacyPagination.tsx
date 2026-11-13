@@ -25,7 +25,7 @@ export function LegacyPagination({ html }: { html?: string }) {
         item.href ? (
           <a
             key={`${item.text}-${index}`}
-            href={`#${item.href}`}
+            href={`${item.href}`}
             className={item.active ? 'active' : undefined}
             onClick={(event) => {
               event.preventDefault()

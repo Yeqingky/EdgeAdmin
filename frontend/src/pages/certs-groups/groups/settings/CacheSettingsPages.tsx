@@ -61,13 +61,13 @@ interface CacheRef {
 function CacheMenu({ group }: { group: GroupBasic }) {
   return (
     <div className="ui menu text blue">
-      <a className="item active" href={`#/servers/groups/group/settings/cache?groupId=${group.id}`}>
+      <a className="item active" href={`/servers/groups/group/settings/cache?groupId=${group.id}`}>
         设置
       </a>
-      <a className="item" href={`#/servers/groups/group/settings/cache/purge?groupId=${group.id}`}>
+      <a className="item" href={`/servers/groups/group/settings/cache/purge?groupId=${group.id}`}>
         刷新
       </a>
-      <a className="item" href={`#/servers/groups/group/settings/cache/fetch?groupId=${group.id}`}>
+      <a className="item" href={`/servers/groups/group/settings/cache/fetch?groupId=${group.id}`}>
         预热
       </a>
     </div>

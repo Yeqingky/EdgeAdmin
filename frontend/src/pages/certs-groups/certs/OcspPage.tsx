@@ -90,13 +90,13 @@ export function OcspPage() {
   return (
     <div>
       <div className="ui menu text blue first-menu">
-        <a className="item active" href="#/servers/certs">
+        <a className="item active" href="/servers/certs">
           所有证书
         </a>
-        <a className="item" href="#/servers/certs/acme">
+        <a className="item" href="/servers/certs/acme">
           申请证书
         </a>
-        <a className="item active" href="#/servers/certs/ocsp">
+        <a className="item active" href="/servers/certs/ocsp">
           OCSP
         </a>
       </div>
@@ -119,7 +119,7 @@ export function OcspPage() {
             &nbsp;{' '}
             {keyword.length > 0 ? (
               <a
-                href="#/servers/certs/ocsp"
+                href="/servers/certs/ocsp"
                 onClick={(event) => {
                   event.preventDefault()
                   setKeywordInput('')

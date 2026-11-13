@@ -307,5 +307,5 @@ function HealthRunModal({ clusterId, onClose }: { clusterId: number; onClose: ()
 export function ClusterSettingsHealthRunPopupPage() {
   const [searchParams] = useSearchParams()
   const clusterId = parseId(searchParams.get('clusterId'))
-  return <HealthRunModal clusterId={clusterId} onClose={() => { window.location.hash = `#/clusters/cluster/settings/health?clusterId=${clusterId}` }} />
+  return <HealthRunModal clusterId={clusterId} onClose={() => { window.location.href = `/clusters/cluster/settings/health?clusterId=${clusterId}` }} />
 }

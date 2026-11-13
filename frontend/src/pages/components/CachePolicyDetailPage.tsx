@@ -88,7 +88,7 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
                 <tr>
                   <td className="color-border">内存最大容量</td>
                   <td>
-                    <a href={`#/servers/components/cache/update?cachePolicyId=${cachePolicyId}`}>
+                    <a href={`/servers/components/cache/update?cachePolicyId=${cachePolicyId}`}>
                       <span className="red">请设置一个内存容量作为缓冲区，以提升缓存写入性能。</span>
                     </a>
                   </td>
@@ -225,7 +225,7 @@ export function CachePolicyDetailPage({ cachePolicyId }: { cachePolicyId: number
               <tr key={cluster.id}>
                 <td>
                   {cluster.name}
-                  <a href={`#/clusters/cluster?clusterId=${cluster.id}`} title="查看集群" style={{ marginLeft: '0.5em' }}>
+                  <a href={`/clusters/cluster?clusterId=${cluster.id}`} title="查看集群" style={{ marginLeft: '0.5em' }}>
                     <Link2 size={13} />
                   </a>
                 </td>

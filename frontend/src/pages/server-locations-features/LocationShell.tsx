@@ -32,14 +32,14 @@ export function LocationShell({
 }) {
   const serverId = data?.serverId || 0
   const locationId = data?.locationId || 0
-  const locationsUrl = serverId > 0 ? `#/servers/server/settings/locations?serverId=${serverId}` : '#/servers'
+  const locationsUrl = serverId > 0 ? `/servers/server/settings/locations?serverId=${serverId}` : '/servers'
   const pattern = data?.locationConfig?.pattern || ''
   const items: PageMenuItem[] = [
     { name: '« 返回网站设置', href: locationsUrl },
     { name: '路由规则', href: locationsUrl },
   ]
   if (pattern) {
-    items.push({ name: pattern, href: `#/servers/server/settings/locations/location?serverId=${serverId}&locationId=${locationId}`, active: true })
+    items.push({ name: pattern, href: `/servers/server/settings/locations/location?serverId=${serverId}&locationId=${locationId}`, active: true })
   }
   const leftMenuItems = data?.tinyLeftMenuItems || []
 
@@ -65,7 +65,7 @@ export function LocationShell({
                   <a
                     key={`${item.name}-${index}`}
                     className={`item${item.isActive ? ' active' : ''}`}
-                    href={`#${item.url}`}
+                    href={`${item.url}`}
                     style={{ position: 'relative', paddingLeft: '1em', lineHeight: 1.2 }}
                   >
                     <ChevronRight

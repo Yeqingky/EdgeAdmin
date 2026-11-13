@@ -149,19 +149,19 @@ export function CachePolicyMenu({
 }) {
   const suffix = `cachePolicyId=${cachePolicyId}`
   const items: PageMenuItem[] = [
-    { name: '策略列表', href: '#/servers/components/cache', active: active === 'list' },
+    { name: '策略列表', href: '/servers/components/cache', active: active === 'list' },
     { name: '[|]', href: undefined },
     {
       name: cachePolicyName || `策略 #${cachePolicyId}`,
-      href: `#/servers/components/cache/policy?${suffix}`,
+      href: `/servers/components/cache/policy?${suffix}`,
       active: active === 'index',
     },
-    { name: '测试', href: `#/servers/components/cache/test?${suffix}`, active: active === 'test' },
-    { name: '统计', href: `#/servers/components/cache/stat?${suffix}`, active: active === 'stat' },
-    { name: '清理', href: `#/servers/components/cache/clean?${suffix}`, active: active === 'clean' },
-    { name: '刷新', href: `#/servers/components/cache/purge?${suffix}`, active: active === 'purge' },
-    { name: '预热', href: `#/servers/components/cache/fetch?${suffix}`, active: active === 'fetch' },
-    { name: '修改', href: `#/servers/components/cache/update?${suffix}`, active: active === 'update' },
+    { name: '测试', href: `/servers/components/cache/test?${suffix}`, active: active === 'test' },
+    { name: '统计', href: `/servers/components/cache/stat?${suffix}`, active: active === 'stat' },
+    { name: '清理', href: `/servers/components/cache/clean?${suffix}`, active: active === 'clean' },
+    { name: '刷新', href: `/servers/components/cache/purge?${suffix}`, active: active === 'purge' },
+    { name: '预热', href: `/servers/components/cache/fetch?${suffix}`, active: active === 'fetch' },
+    { name: '修改', href: `/servers/components/cache/update?${suffix}`, active: active === 'update' },
   ]
   return (
     <PageHeader items={items}>
@@ -186,28 +186,28 @@ export function WafMenu({
 }) {
   const suffix = `firewallPolicyId=${firewallPolicyId}`
   const items: PageMenuItem[] = [
-    { name: '列表', href: '#/servers/components/waf', active: active === 'list' },
+    { name: '列表', href: '/servers/components/waf', active: active === 'list' },
     { name: '[|]', href: undefined },
     {
       name: firewallPolicyName || `策略 #${firewallPolicyId}`,
-      href: `#/servers/components/waf/policy?${suffix}`,
+      href: `/servers/components/waf/policy?${suffix}`,
       active: active === 'index',
     },
     {
       name: `入站规则(${countInboundGroups || 0})`,
-      href: `#/servers/components/waf/groups?${suffix}&type=inbound`,
+      href: `/servers/components/waf/groups?${suffix}&type=inbound`,
       active: active === 'inbound',
     },
     {
       name: `出站规则(${countOutboundGroups || 0})`,
-      href: `#/servers/components/waf/groups?${suffix}&type=outbound`,
+      href: `/servers/components/waf/groups?${suffix}&type=outbound`,
       active: active === 'outbound',
     },
-    { name: 'IP管理', href: `#/servers/components/waf/ipadmin?${suffix}`, active: active === 'ipadmin' },
-    { name: '拦截日志', href: `#/servers/components/waf/log?${suffix}`, active: active === 'log' },
-    { name: '导入', href: `#/servers/components/waf/import?${suffix}`, active: active === 'import' },
-    { name: '导出', href: `#/servers/components/waf/export?${suffix}`, active: active === 'export' },
-    { name: '修改', href: `#/servers/components/waf/update?${suffix}`, active: active === 'update' },
+    { name: 'IP管理', href: `/servers/components/waf/ipadmin?${suffix}`, active: active === 'ipadmin' },
+    { name: '拦截日志', href: `/servers/components/waf/log?${suffix}`, active: active === 'log' },
+    { name: '导入', href: `/servers/components/waf/import?${suffix}`, active: active === 'import' },
+    { name: '导出', href: `/servers/components/waf/export?${suffix}`, active: active === 'export' },
+    { name: '修改', href: `/servers/components/waf/update?${suffix}`, active: active === 'update' },
   ]
   return <PageHeader items={items} />
 }
@@ -223,38 +223,38 @@ export function IpAdminMenu({
   const items: PageMenuItem[] = [
     {
       name: '国家/地区封禁',
-      href: `#/servers/components/waf/ipadmin?${suffix}`,
+      href: `/servers/components/waf/ipadmin?${suffix}`,
       active: subMenuItem === 'region',
     },
     {
       name: '省份封禁',
-      href: `#/servers/components/waf/ipadmin/provinces?${suffix}`,
+      href: `/servers/components/waf/ipadmin/provinces?${suffix}`,
       active: subMenuItem === 'province',
     },
     {
       name: '运营商封禁',
-      href: `#/servers/components/waf/ipadmin/providers?${suffix}`,
+      href: `/servers/components/waf/ipadmin/providers?${suffix}`,
       active: subMenuItem === 'provider',
     },
     { name: '[|]', href: undefined },
     {
       name: '白名单',
-      href: `#/servers/components/waf/ipadmin/lists?${suffix}&type=white`,
+      href: `/servers/components/waf/ipadmin/lists?${suffix}&type=white`,
       active: subMenuItem === 'white',
     },
     {
       name: '黑名单',
-      href: `#/servers/components/waf/ipadmin/lists?${suffix}&type=black`,
+      href: `/servers/components/waf/ipadmin/lists?${suffix}&type=black`,
       active: subMenuItem === 'black',
     },
     {
       name: '灰名单',
-      href: `#/servers/components/waf/ipadmin/lists?${suffix}&type=grey`,
+      href: `/servers/components/waf/ipadmin/lists?${suffix}&type=grey`,
       active: subMenuItem === 'grey',
     },
     {
       name: 'IP检查',
-      href: `#/servers/components/waf/ipadmin/test?${suffix}`,
+      href: `/servers/components/waf/ipadmin/test?${suffix}`,
       active: subMenuItem === 'test',
     },
   ]
@@ -263,12 +263,12 @@ export function IpAdminMenu({
 
 export function CacheBatchMenu({ active, countDoingTasks }: { active: 'purge' | 'fetch' | 'task'; countDoingTasks?: number }) {
   const items: PageMenuItem[] = [
-    { name: '刷新缓存', href: '#/servers/components/cache/batch', active: active === 'purge' },
-    { name: '预热缓存', href: '#/servers/components/cache/batch/fetch', active: active === 'fetch' },
+    { name: '刷新缓存', href: '/servers/components/cache/batch', active: active === 'purge' },
+    { name: '预热缓存', href: '/servers/components/cache/batch/fetch', active: active === 'fetch' },
     { name: '[|]', href: undefined },
     {
       name: `所有任务${countDoingTasks && countDoingTasks > 0 ? `(${countDoingTasks})` : ''}`,
-      href: '#/servers/components/cache/batch/tasks',
+      href: '/servers/components/cache/batch/tasks',
       active: active === 'task',
     },
   ]

@@ -16,10 +16,10 @@ async function postWithCsrf(url: string, params: Record<string, unknown>) {
 function PolicyMenu({ clusterId, active }: { clusterId: number; active: 'setting' | 'status' }) {
   return (
     <div className="ui menu text blue first-menu">
-      <a className={`item${active === 'setting' ? ' active' : ''}`} href={`#/clusters/cluster/settings/services?clusterId=${clusterId}`}>
+      <a className={`item${active === 'setting' ? ' active' : ''}`} href={`/clusters/cluster/settings/services?clusterId=${clusterId}`}>
         设置
       </a>
-      <a className={`item${active === 'status' ? ' active' : ''}`} href={`#/clusters/cluster/settings/services/status?clusterId=${clusterId}`}>
+      <a className={`item${active === 'status' ? ' active' : ''}`} href={`/clusters/cluster/settings/services/status?clusterId=${clusterId}`}>
         状态
       </a>
     </div>
@@ -505,10 +505,10 @@ export function ClusterSettingsDdosProtectionPage() {
   return (
     <ClusterSettingsLayout clusterId={clusterId} activePath="/clusters/cluster/settings/ddos-protection">
       <div className="ui menu text blue first-menu">
-        <a className="item active" href={`#/clusters/cluster/settings/ddos-protection?clusterId=${clusterId}`}>
+        <a className="item active" href={`/clusters/cluster/settings/ddos-protection?clusterId=${clusterId}`}>
           设置
         </a>
-        <a className="item" href={`#/clusters/cluster/settings/ddos-protection/status?clusterId=${clusterId}`}>
+        <a className="item" href={`/clusters/cluster/settings/ddos-protection/status?clusterId=${clusterId}`}>
           状态
         </a>
       </div>
@@ -647,10 +647,10 @@ export function ClusterSettingsDdosStatusPage() {
   return (
     <ClusterSettingsLayout clusterId={clusterId} activePath="/clusters/cluster/settings/ddos-protection">
       <div className="ui menu text blue first-menu">
-        <a className="item" href={`#/clusters/cluster/settings/ddos-protection?clusterId=${clusterId}`}>
+        <a className="item" href={`/clusters/cluster/settings/ddos-protection?clusterId=${clusterId}`}>
           设置
         </a>
-        <a className="item active" href={`#/clusters/cluster/settings/ddos-protection/status?clusterId=${clusterId}`}>
+        <a className="item active" href={`/clusters/cluster/settings/ddos-protection/status?clusterId=${clusterId}`}>
           状态
         </a>
       </div>
@@ -669,10 +669,10 @@ export function ClusterSettingsDdosStatusPage() {
             {results.map((result) => (
               <tr key={result.nodeId}>
                 <td>
-                  <a href={`#/clusters/cluster/node?clusterId=${clusterId}&nodeId=${result.nodeId}`}>{result.nodeName}</a>
+                  <a href={`/clusters/cluster/node?clusterId=${clusterId}&nodeId=${result.nodeId}`}>{result.nodeName}</a>
                   {result.isPrior ? (
                     <div>
-                      <a href={`#/clusters/cluster/node/settings/ddos-protection?clusterId=${clusterId}&nodeId=${result.nodeId}`}>
+                      <a href={`/clusters/cluster/node/settings/ddos-protection?clusterId=${clusterId}&nodeId=${result.nodeId}`}>
                         <span className="ui label tiny basic grey">定制</span>
                       </a>
                     </div>
@@ -682,7 +682,7 @@ export function ClusterSettingsDdosStatusPage() {
                   <span className={result.isOk ? 'green' : 'red'}>{result.message}</span>
                 </td>
                 <td>
-                  <a href={`#/clusters/cluster/node/settings/ddos-protection?clusterId=${clusterId}&nodeId=${result.nodeId}`}>设置</a>
+                  <a href={`/clusters/cluster/node/settings/ddos-protection?clusterId=${clusterId}&nodeId=${result.nodeId}`}>设置</a>
                 </td>
               </tr>
             ))}

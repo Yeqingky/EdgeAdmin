@@ -183,7 +183,7 @@ export function UpdateClusterDNSForm({ clusterId, onSaved }: { clusterId: number
             ))}
           </Select>
           <p className="comment">
-            <a href="#/dns/providers">去管理DNS服务商账号»</a>
+            <a href="/dns/providers">去管理DNS服务商账号»</a>
           </p>
         </FormRow>
         {providerId > 0 ? (
@@ -568,7 +568,7 @@ export function DomainClustersContent({ domainId }: { domainId: number }) {
           {data.clusters.map((cluster) => (
             <tr key={cluster.id}>
               <td>
-                <a href={`#/clusters/cluster?clusterId=${cluster.id}`} target="_blank" rel="noreferrer">
+                <a href={`/clusters/cluster?clusterId=${cluster.id}`} target="_blank" rel="noreferrer">
                   {cluster.name}
                 </a>
               </td>
@@ -653,12 +653,12 @@ export function DomainNodesContent({ domainId }: { domainId: number }) {
           {filtered.map((row, index) => (
             <tr key={`${row.node.id}-${row.node.route.code}-${index}`}>
               <td>
-                <a href={`#/clusters/cluster?clusterId=${row.clusterId}`} target="_blank" rel="noreferrer">
+                <a href={`/clusters/cluster?clusterId=${row.clusterId}`} target="_blank" rel="noreferrer">
                   {row.clusterName}
                 </a>
               </td>
               <td>
-                <a href={`#/clusters/cluster/node?clusterId=${row.clusterId}&nodeId=${row.node.id}`} target="_blank" rel="noreferrer">
+                <a href={`/clusters/cluster/node?clusterId=${row.clusterId}&nodeId=${row.node.id}`} target="_blank" rel="noreferrer">
                   {row.node.name}
                 </a>
               </td>
@@ -742,12 +742,12 @@ export function DomainServersContent({ domainId }: { domainId: number }) {
           {filtered.map((row, index) => (
             <tr key={`${row.server.id}-${index}`}>
               <td>
-                <a href={`#/clusters/cluster?clusterId=${row.clusterId}`} target="_blank" rel="noreferrer">
+                <a href={`/clusters/cluster?clusterId=${row.clusterId}`} target="_blank" rel="noreferrer">
                   {row.clusterName}
                 </a>
               </td>
               <td>
-                <a href={`#/servers/server?clusterId=${row.clusterId}&serverId=${row.server.id}`} target="_blank" rel="noreferrer">
+                <a href={`/servers/server?clusterId=${row.clusterId}&serverId=${row.server.id}`} target="_blank" rel="noreferrer">
                   {row.server.name}
                 </a>
               </td>

@@ -231,14 +231,14 @@ export function ServersPage() {
     <div>
       <FirstMenu
         items={[
-          { name: '网站列表', href: '#/servers', active: auditingFlag !== 1 },
-          { name: `审核中(${data.countAuditing})`, href: '#/servers?auditingFlag=1', active: auditingFlag === 1 },
+          { name: '网站列表', href: '/servers', active: auditingFlag !== 1 },
+          { name: `审核中(${data.countAuditing})`, href: '/servers?auditingFlag=1', active: auditingFlag === 1 },
         ]}
       >
         <DividerItem />
         <a
           className="item"
-          href="#/servers/create"
+          href="/servers/create"
           onClick={(event) => {
             event.preventDefault()
             navigate('/servers/create')
@@ -252,7 +252,7 @@ export function ServersPage() {
         <div className="ui icon message small error">
           <AlertTriangle size={20} />
           <div className="content">
-            <a href="#/clusters/logs?type=needFix">有{data.countNeedFixLogs}个网站相关的错误需要修复。</a>
+            <a href="/clusters/logs?type=needFix">有{data.countNeedFixLogs}个网站相关的错误需要修复。</a>
           </div>
         </div>
       ) : null}
@@ -325,7 +325,7 @@ export function ServersPage() {
             &nbsp;
             {hasConditions ? (
               <a
-                href="#/servers"
+                href="/servers"
                 onClick={(event) => {
                   event.preventDefault()
                   setKeyword('')
@@ -364,7 +364,7 @@ export function ServersPage() {
           常用网站：
           {data.latestServers.map((server, index) => (
             <span key={server.id}>
-              <a href={`#/servers/server?serverId=${server.id}`}>{server.name}</a>
+              <a href={`/servers/server?serverId=${server.id}`}>{server.name}</a>
               {index !== data.latestServers.length - 1 ? (
                 <>
                   {' '}
@@ -379,7 +379,7 @@ export function ServersPage() {
       {data.servers.length === 0 ? (
         <p className="ui message">
           暂时还没有网站，现在去{' '}
-          <a href="#/servers/create" onClick={(event) => { event.preventDefault(); navigate('/servers/create') }}>
+          <a href="/servers/create" onClick={(event) => { event.preventDefault(); navigate('/servers/create') }}>
             [创建网站 → ]
           </a>
         </p>
@@ -466,11 +466,11 @@ export function ServersPage() {
                     </div>
                   </td>
                   <td>
-                    <a href={`#/servers/server?serverId=${server.id}`}>
+                    <a href={`/servers/server?serverId=${server.id}`}>
                       <Keyword word={keywordParam}>{server.name}</Keyword>
                     </a>{' '}
                     &nbsp;{' '}
-                    <a href={`#/servers/server/settings?serverId=${server.id}`} title="设置">
+                    <a href={`/servers/server/settings?serverId=${server.id}`} title="设置">
                       <Settings size={13} className="grey" />
                     </a>
                     <div style={{ marginTop: '0.4em' }}>
@@ -482,7 +482,7 @@ export function ServersPage() {
                       <span>
                         {server.user.fullname}
                         {data.canVisitUser ? (
-                          <a href={`#/users/user?userId=${server.user.id}`} style={{ marginLeft: '0.3em' }}>
+                          <a href={`/users/user?userId=${server.user.id}`} style={{ marginLeft: '0.3em' }}>
                             ↗
                           </a>
                         ) : null}
@@ -521,7 +521,7 @@ export function ServersPage() {
                         <a
                           className="ui label basic tiny red"
                           title="点击跳到审核页面"
-                          href={`#/servers/server/settings/serverNames?serverId=${server.id}`}
+                          href={`/servers/server/settings/serverNames?serverId=${server.id}`}
                         >
                           审核中
                           {server.auditingTime.length > 0 ? (
@@ -537,7 +537,7 @@ export function ServersPage() {
                         <a
                           className="ui label basic tiny red"
                           title="点击跳到审核页面"
-                          href={`#/servers/server/settings/serverNames?serverId=${server.id}`}
+                          href={`/servers/server/settings/serverNames?serverId=${server.id}`}
                         >
                           审核不通过 &nbsp;→
                         </a>
@@ -594,8 +594,8 @@ export function ServersPage() {
                     )}
                   </td>
                   <td>
-                    <a href={`#/servers/server?serverId=${server.id}`}>详情</a> &nbsp;
-                    <a href={`#/servers/server/settings?serverId=${server.id}`}>设置</a> &nbsp;
+                    <a href={`/servers/server?serverId=${server.id}`}>详情</a> &nbsp;
+                    <a href={`/servers/server/settings?serverId=${server.id}`}>设置</a> &nbsp;
                     <a
                       href=""
                       onClick={(event) => {

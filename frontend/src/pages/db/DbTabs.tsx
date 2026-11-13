@@ -10,7 +10,7 @@ export function DbTabs({ nodeId, active }: { nodeId?: number; active: 'index' | 
   return (
     <div className="ui menu text blue first-menu">
       {items.map((item) => (
-        <a key={item.code} className={`item${item.code === active ? ' active' : ''}`} href={`#${item.url}`}>{item.name}</a>
+        <a key={item.code} className={`item${item.code === active ? ' active' : ''}`} href={`${item.url}`}>{item.name}</a>
       ))}
     </div>
   )

@@ -24,6 +24,17 @@ import (
 	"github.com/iwind/gosock/pkg/gosock"
 )
 
+// ServeSPA 输出前端 SPA 入口页面
+func ServeSPA(action *actions.ActionObject) {
+	content, err := os.ReadFile(Tea.PublicFile("spa" + Tea.DS + "index.html"))
+	if err != nil {
+		action.WriteString("SPA not found")
+		return
+	}
+	action.AddHeader("Content-Type", "text/html; charset=utf-8")
+	_, _ = action.Write(content)
+}
+
 // IsJSONRequest 判断是否请求 JSON 数据
 func IsJSONRequest(request *http.Request) bool {
 	if request == nil {

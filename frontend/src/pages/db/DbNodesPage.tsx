@@ -45,7 +45,7 @@ export function DbNodesPage() {
   return (
     <div>
       <div className="ui menu text blue first-menu">
-        <a className="item" href="#/db/create"><Plus size={14} /> [添加节点]</a>
+        <a className="item" href="/db/create"><Plus size={14} /> [添加节点]</a>
       </div>
       {query.data.nodes.length === 0 ? <p className="comment">暂时还没有数据库节点。</p> : (
         <table className="ui table selectable celled">
@@ -63,7 +63,7 @@ export function DbNodesPage() {
           <tbody>
             {query.data.nodes.map((node) => (
               <tr key={node.id}>
-                <td><a href={`#/db/node?nodeId=${node.id}`}>{node.name}</a></td>
+                <td><a href={`/db/node?nodeId=${node.id}`}>{node.name}</a></td>
                 <td>{node.host}:{node.port}</td>
                 <td>{node.database}</td>
                 <td>{node.status.version ? `v${node.status.version}` : <span className="disabled">-</span>}</td>
@@ -74,7 +74,7 @@ export function DbNodesPage() {
                   ) : <span className="disabled">已禁用</span>}
                 </td>
                 <td>
-                  <a href={`#/db/node?nodeId=${node.id}`}>详情</a> &nbsp;
+                  <a href={`/db/node?nodeId=${node.id}`}>详情</a> &nbsp;
                   <a href="" onClick={(event) => { event.preventDefault(); void remove(node) }}>删除</a>
                 </td>
               </tr>

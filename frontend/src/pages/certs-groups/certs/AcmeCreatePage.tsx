@@ -171,7 +171,7 @@ export function AcmeCreatePage() {
                     ) : (
                       <p className="comment">
                         我们在申请免费证书的过程中需要自动增加或修改相关域名的TXT记录，请先确保你已经在"域名解析" --{' '}
-                        <a href="#/dns/providers" target="_blank" rel="noreferrer">
+                        <a href="/dns/providers" target="_blank" rel="noreferrer">
                           "DNS服务商"
                         </a>{' '}
                         中已经添加了对应的DNS服务商账号。
@@ -304,7 +304,7 @@ export function AcmeCreatePage() {
                       ) : (
                         <span>
                           暂时没有DNS服务商，
-                          <a href="#/dns/providers">[去添加]</a>。
+                          <a href="/dns/providers">[去添加]</a>。
                         </span>
                       )}
                       <p className="comment">用于自动创建域名解析记录。</p>

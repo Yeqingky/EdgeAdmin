@@ -498,7 +498,7 @@ export function ServerPageLayout({ menu, children }: { menu: LeftMenuItem[]; chi
               <a
                 key={index}
                 className={`item${item.isActive ? ' active' : ''}${item.isOn || item.isOff ? ' off' : ''}`}
-                href={`#${item.url || ''}`}
+                href={`${item.url || ''}`}
                 style={{ lineHeight: 1.3 }}
               >
                 {item.name}
@@ -543,16 +543,16 @@ export function ServerTopMenu({
   }
   return (
     <FirstMenu>
-      <a className="item" href="#/servers">网站列表</a>
+      <a className="item" href="/servers">网站列表</a>
       <DividerItem />
-      <a className="item active" href={`#${paths[current]}?serverId=${serverId}`}>
+      <a className="item active" href={`${paths[current]}?serverId=${serverId}`}>
         &quot;{serverName}&quot;{labels[current]}
       </a>
       <DividerItem />
-      <a className="item" href={`#/servers/server/settings?serverId=${serverId}`}>
+      <a className="item" href={`/servers/server/settings?serverId=${serverId}`}>
         设置
       </a>
-      <a className="item" href={`#/servers/server/delete?serverId=${serverId}`}>
+      <a className="item" href={`/servers/server/delete?serverId=${serverId}`}>
         删除
       </a>
       {children}
@@ -598,7 +598,7 @@ export function AccessLogBox({
       <div>
         {accessLog.node && accessLog.node.nodeCluster ? (
           <a
-            href={`#/clusters/cluster/node?nodeId=${accessLog.node.id}&clusterId=${accessLog.node.nodeCluster.id}`}
+            href={`/clusters/cluster/node?nodeId=${accessLog.node.id}&clusterId=${accessLog.node.nodeCluster.id}`}
             title="点击查看节点详情"
           >
             <span className="grey">
@@ -609,7 +609,7 @@ export function AccessLogBox({
         ) : null}
 
         {showServerLink && accessLog.serverId > 0 ? (
-          <a href={`#/servers/server/log?serverId=${accessLog.serverId}`} title="点击到网站">
+          <a href={`/servers/server/log?serverId=${accessLog.serverId}`} title="点击到网站">
             <span className="grey">[网站]</span>
           </a>
         ) : null}
@@ -886,13 +886,13 @@ export function AccessLogDetailModal({ requestId, onClose }: { requestId: string
                       WAF规则集：
                       {wafInfo.policy && wafInfo.policy.serverId === 0 ? (
                         <a
-                          href={`#/servers/components/waf/group?firewallPolicyId=${accessLog.firewallPolicyId}&type=inbound&groupId=${accessLog.firewallRuleGroupId}`}
+                          href={`/servers/components/waf/group?firewallPolicyId=${accessLog.firewallPolicyId}&type=inbound&groupId=${accessLog.firewallRuleGroupId}`}
                         >
                           {wafInfo.set.name}
                         </a>
                       ) : (
                         <a
-                          href={`#/servers/server/settings/waf/group?serverId=${accessLog.serverId}&firewallPolicyId=${accessLog.firewallPolicyId}&type=inbound&groupId=${accessLog.firewallRuleGroupId}`}
+                          href={`/servers/server/settings/waf/group?serverId=${accessLog.serverId}&firewallPolicyId=${accessLog.firewallPolicyId}&type=inbound&groupId=${accessLog.firewallRuleGroupId}`}
                         >
                           {wafInfo.set.name}
                         </a>

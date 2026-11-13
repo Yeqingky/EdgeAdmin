@@ -100,13 +100,13 @@ export function ServerDnsSettingsPage() {
               [手动修改]
             </a>
             <p className="comment">
-              你需要为你的每个<a href={`#/servers/server/settings/serverNames?serverId=${serverId}`}>网站域名</a>设置一个CNAME解析，值为上面内容。
+              你需要为你的每个<a href={`/servers/server/settings/serverNames?serverId=${serverId}`}>网站域名</a>设置一个CNAME解析，值为上面内容。
             </p>
             {data.dnsDomain.length === 0 ? (
               <p>
                 <span className="red">
                   你尚未为当前网站所在集群指定CNAME根域名，可以在{' '}
-                  <a href={`#/clusters/cluster/settings/dns?clusterId=${data.server.clusterId}`}>[这里]</a> 修改。
+                  <a href={`/clusters/cluster/settings/dns?clusterId=${data.server.clusterId}`}>[这里]</a> 修改。
                 </span>
               </p>
             ) : null}

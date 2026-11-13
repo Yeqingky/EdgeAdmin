@@ -41,9 +41,9 @@ export function DatabasePage() {
       <SettingsTabs kind="advanced" active="database" />
       <PageHeader
         items={[
-          { name: '配置模板', href: '#/settings/database', active: true },
-          { name: '手动清理', href: '#/settings/database/clean' },
-          { name: '自动清理设置', href: '#/settings/database/cleanSetting' },
+          { name: '配置模板', href: '/settings/database', active: true },
+          { name: '手动清理', href: '/settings/database/clean' },
+          { name: '自动清理设置', href: '/settings/database/cleanSetting' },
         ]}
       />
       {data.error.length > 0 ? <p className="ui message error">{data.error}</p> : null}
@@ -143,9 +143,9 @@ export function DatabaseCleanPage() {
       <SettingsTabs kind="advanced" active="database" />
       <PageHeader
         items={[
-          { name: '配置模板', href: '#/settings/database' },
-          { name: '手动清理', href: '#/settings/database/clean', active: true },
-          { name: '自动清理设置', href: '#/settings/database/cleanSetting' },
+          { name: '配置模板', href: '/settings/database' },
+          { name: '手动清理', href: '/settings/database/clean', active: true },
+          { name: '自动清理设置', href: '/settings/database/cleanSetting' },
         ]}
       />
 
@@ -315,9 +315,9 @@ export function DatabaseCleanSettingPage() {
       <SettingsTabs kind="advanced" active="database" />
       <PageHeader
         items={[
-          { name: '配置模板', href: '#/settings/database' },
-          { name: '手动清理', href: '#/settings/database/clean' },
-          { name: '自动清理设置', href: '#/settings/database/cleanSetting', active: true },
+          { name: '配置模板', href: '/settings/database' },
+          { name: '手动清理', href: '/settings/database/clean' },
+          { name: '自动清理设置', href: '/settings/database/cleanSetting', active: true },
         ]}
       />
       <form className="ui form" onSubmit={submit}>

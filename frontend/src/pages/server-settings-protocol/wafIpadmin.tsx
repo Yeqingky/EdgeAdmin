@@ -73,14 +73,14 @@ function IPBindBox({ firewallPolicyId, type }: { firewallPolicyId: number; type:
 
   return (
     <span>
-      <a href={`#/servers/iplists/bindHTTPFirewallPopup?httpFirewallPolicyId=${firewallPolicyId}&type=${type}`} style={{ color: 'rgba(0,0,0,.6)' }}>
+      <a href={`/servers/iplists/bindHTTPFirewallPopup?httpFirewallPolicyId=${firewallPolicyId}&type=${type}`} style={{ color: 'rgba(0,0,0,.6)' }}>
         绑定+
       </a>{' '}
       &nbsp;
       {lists.length > 0 ? <span className="disabled small">|&nbsp; 已绑定：</span> : null}
       {lists.map((list) => (
         <span className="ui label basic small" key={list.id}>
-          <a href={`#/servers/iplists/list?listId=${list.id}`} style={{ opacity: 1 }}>
+          <a href={`/servers/iplists/list?listId=${list.id}`} style={{ opacity: 1 }}>
             {list.name}
           </a>
           <a
@@ -158,7 +158,7 @@ export function IPListPage({ listType }: { listType: 'white' | 'black' | 'grey' 
           <div className="ui menu text blue first-menu">
             <a
               className="item"
-              href={`#/servers/iplists/createIPPopup?listId=${data.listId}&type=${addType}`}
+              href={`/servers/iplists/createIPPopup?listId=${data.listId}&type=${addType}`}
             >
               添加IP
             </a>
@@ -172,7 +172,7 @@ export function IPListPage({ listType }: { listType: 'white' | 'black' | 'grey' 
           {!data.wafIsOn ? (
             <div className="ui message warning">
               当前WAF未启用，设置将在
-              <a href={`#${buildSettingsURL('/waf', { serverId })}`}>[启用Web防火墙]</a>
+              <a href={`${buildSettingsURL('/waf', { serverId })}`}>[启用Web防火墙]</a>
               后生效。
             </div>
           ) : null}
@@ -246,7 +246,7 @@ export function IPListPage({ listType }: { listType: 'white' | 'black' | 'grey' 
                     </td>
                     <td>
                       <a
-                        href={`#/servers/iplists/accessLogsPopup?itemId=${item.id}`}
+                        href={`/servers/iplists/accessLogsPopup?itemId=${item.id}`}
                       >
                         日志
                       </a>{' '}
@@ -700,7 +700,7 @@ function WafOnWarning({ serverId, wafIsOn }: { serverId: number; wafIsOn: boolea
   return (
     <div className="ui message warning">
       当前WAF未启用，设置将在
-      <a href={`#${buildSettingsURL('/waf', { serverId })}`}>[启用Web防火墙]</a>
+      <a href={`${buildSettingsURL('/waf', { serverId })}`}>[启用Web防火墙]</a>
       后生效。
     </div>
   )

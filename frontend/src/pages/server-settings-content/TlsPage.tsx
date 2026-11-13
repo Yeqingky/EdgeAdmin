@@ -141,7 +141,7 @@ export function ServerTlsSettingsPage() {
                 <span className="disabled">还没有绑定证书。</span>
               )}
               <div style={{ marginTop: '0.6em' }}>
-                <a href={`#/servers/certs?serverId=${serverId}`}>[管理证书]</a>
+                <a href={`/servers/certs?serverId=${serverId}`}>[管理证书]</a>
               </div>
             </div>
           </FormRow>
