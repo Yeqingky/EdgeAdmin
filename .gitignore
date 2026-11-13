@@ -7,3 +7,5 @@
 *_plus.css
 *_plus.css.map
 /data/
+/frontend/node_modules/
+/web/public/spa/

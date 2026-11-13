@@ -1,0 +1,41 @@
+import {
+  Bell,
+  Boxes,
+  Cpu,
+  Database,
+  FileText,
+  Folder,
+  Gauge,
+  Globe,
+  LayoutDashboard,
+  Network,
+  ScrollText,
+  Server,
+  Settings,
+  Shield,
+  Users,
+  Wallet,
+  type LucideIcon,
+} from 'lucide-react'
+
+const iconsByCode: Record<string, LucideIcon> = {
+  dashboard: LayoutDashboard,
+  servers: Server,
+  clusters: Network,
+  users: Users,
+  dns: Globe,
+  nodes: Cpu,
+  db: Database,
+  log: ScrollText,
+  messages: Bell,
+  settings: Settings,
+  admins: Shield,
+  files: Folder,
+  finance: Wallet,
+  plans: FileText,
+  gauge: Gauge,
+}
+
+export function menuIcon(code: string): LucideIcon {
+  return iconsByCode[code] || Boxes
+}

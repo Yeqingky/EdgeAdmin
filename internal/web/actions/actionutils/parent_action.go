@@ -2,6 +2,7 @@ package actionutils
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
@@ -32,6 +33,33 @@ type ParentAction struct {
 // Parent 可以调用自身的一个简便方法
 func (this *ParentAction) Parent() *ParentAction {
 	return this
+}
+
+// Show 显示页面，支持通过 JSON 模式返回页面数据
+func (this *ParentAction) Show() {
+	if IsJSONRequest(this.Request) {
+		this.ShowJSON()
+		return
+	}
+	this.ActionObject.Show()
+}
+
+// ShowJSON 以 JSON 输出页面数据
+func (this *ParentAction) ShowJSON() {
+	var data = map[string]interface{}{}
+	for key, value := range this.Data {
+		if _, err := json.Marshal(value); err != nil {
+			data[key] = fmt.Sprint(value)
+		} else {
+			data[key] = value
+		}
+	}
+	this.AddHeader("Content-Type", "application/json; charset=utf-8")
+	this.WriteJSON(map[string]interface{}{
+		"code":    200,
+		"message": "",
+		"data":    data,
+	})
 }
 
 func (this *ParentAction) ErrorPage(err error) {

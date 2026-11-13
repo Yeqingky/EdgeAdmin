@@ -3,6 +3,7 @@ package web
 import (
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/tasks"
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/about"
+	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/api"
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/files"
 
 	// 系统用户
@@ -126,6 +127,7 @@ import (
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/settings/ui"
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/settings/updates"
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/settings/upgrade"
+	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/spa"
 
 	// 恢复
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/recover"

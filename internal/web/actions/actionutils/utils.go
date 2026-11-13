@@ -24,6 +24,20 @@ import (
 	"github.com/iwind/gosock/pkg/gosock"
 )
 
+// IsJSONRequest 判断是否请求 JSON 数据
+func IsJSONRequest(request *http.Request) bool {
+	if request == nil {
+		return false
+	}
+	if request.URL.Query().Get("_format") == "json" {
+		return true
+	}
+	if request.Header.Get("X-Tea-Format") == "json" {
+		return true
+	}
+	return strings.Contains(request.Header.Get("Accept"), "application/json")
+}
+
 // Fail 提示服务器错误信息
 func Fail(actionPtr actions.ActionWrapper, err error) {
 	if err == nil {

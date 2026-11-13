@@ -1,5 +1,19 @@
 # syntax=docker/dockerfile:1
 
+# 前端 SPA 构建
+FROM node:24-alpine AS frontend
+
+RUN corepack enable
+
+WORKDIR /src/EdgeAdmin/frontend
+
+COPY EdgeAdmin/frontend/package.json EdgeAdmin/frontend/pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
+COPY EdgeAdmin/frontend ./
+COPY EdgeAdmin/web /src/EdgeAdmin/web
+RUN pnpm build
+
 # 构建上下文是上层 GoEdge 目录:
 #   GoEdge/EdgeAdmin, GoEdge/EdgeAPI, GoEdge/EdgeCommon, GoEdge/EdgeNode
 FROM golang:1.27.4-alpine AS build
@@ -14,6 +28,7 @@ COPY EdgeCommon ./EdgeCommon
 COPY EdgeAPI ./EdgeAPI
 COPY EdgeNode ./EdgeNode
 COPY EdgeAdmin ./EdgeAdmin
+COPY --from=frontend /src/EdgeAdmin/web/public/spa ./EdgeAdmin/web/public/spa
 
 ENV CGO_ENABLED=0 \
     GOOS=linux \

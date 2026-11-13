@@ -12,6 +12,7 @@ import (
 	"git.ovh.im/yeqing/EdgeAdmin/internal/goman"
 	"git.ovh.im/yeqing/EdgeAdmin/internal/rpc"
 	"git.ovh.im/yeqing/EdgeAdmin/internal/setup"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
 	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/index/loginutils"
 	"git.ovh.im/yeqing/EdgeCommon/pkg/langs"
 	"git.ovh.im/yeqing/EdgeCommon/pkg/nodeconfigs"
@@ -374,5 +375,15 @@ func (this *userMustAuth) modules(langCode string, actionPtr actions.ActionWrapp
 
 // 跳转到登录页
 func (this *userMustAuth) login(action *actions.ActionObject) {
+	if actionutils.IsJSONRequest(action.Request) {
+		action.ResponseWriter.Header().Set("Content-Type", "application/json; charset=utf-8")
+		action.ResponseWriter.WriteHeader(http.StatusUnauthorized)
+		action.WriteJSON(map[string]interface{}{
+			"code":    401,
+			"message": "请先登录",
+			"data":    nil,
+		})
+		return
+	}
 	action.RedirectURL("/?from=" + url.QueryEscape(action.Request.RequestURI))
 }
