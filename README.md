@@ -78,7 +78,7 @@ GoEdge/
 
 ```sh
 docker compose build
-docker compose up -d
+docker compose up -d --build
 ```
 
 - 管理面板地址为 `http://主机:7788`.
@@ -110,7 +110,7 @@ sudo chown -R 999:999 data/mysql && sudo chmod 750 data/mysql
 | --- | --- | --- |
 | `ADMIN_PORT` | `7788` | 管理面板端口 |
 | `API_PORT` | `8001` | API 节点端口 |
-| `API_NODE_HOST` | `edge-api` | API 节点对外地址, 必须能被边缘节点访问 |
+| `API_NODE_HOST` | `goedge-api` | API 节点对外地址, 必须能被边缘节点访问 |
 | `ADMIN_USERNAME` | `admin` | 初始管理员用户名 |
 | `ADMIN_PASSWORD` | `123456` | 初始管理员密码 |
 

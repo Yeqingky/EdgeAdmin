@@ -1,12 +1,11 @@
-name: goedge
-
 services:
-  edge-admin:
+  goedge-admin:
+    container_name: goedge-admin
     build:
       context: ..
       dockerfile: EdgeAdmin/docker/Dockerfile
       target: admin
-    image: goedge/edge-admin:local
+    image: ghcr.io/yeqingky/goedge-admin
     restart: unless-stopped
     environment:
       TZ: Asia/Shanghai
@@ -15,26 +14,27 @@ services:
       - ./data/edge-admin/logs:/usr/local/goedge/logs
       - ./data/shared:/shared:ro
     depends_on:
-      edge-api:
+      goedge-api:
         condition: service_started
     ports:
       - "${ADMIN_PORT:-7788}:7788"
     networks:
       - goedge
 
-  edge-api:
+  goedge-api:
+    container_name: goedge-api
     build:
       context: ..
       dockerfile: EdgeAdmin/docker/Dockerfile
       target: api
-    image: goedge/edge-api:local
+    image: ghcr.io/yeqingky/goedge-api
     restart: unless-stopped
     environment:
       DB_HOST: mysql
       DB_PORT: "3306"
-      API_NODE_HOST: ${API_NODE_HOST:-edge-api}
+      API_NODE_HOST: ${API_NODE_HOST:-goedge-api}
       API_NODE_PORT: "8001"
-      ADMIN_RPC_ENDPOINT: http://edge-api:8001
+      ADMIN_RPC_ENDPOINT: http://goedge-api:8001
       ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-123456}
     volumes:
@@ -51,6 +51,7 @@ services:
       - goedge
 
   mysql:
+    container_name: goedge-mysql
     image: mariadb:11
     restart: unless-stopped
     environment:
