@@ -201,30 +201,26 @@
 }
 
 .main .main-box {
-  padding-top: 0.15em;
+  padding-top: 0;
 }
 
 .first-menu {
   margin-top: 0 !important;
-  margin-bottom: 0.4em !important;
+  margin-bottom: 0 !important;
 }
 
-.first-menu .item.divider {
-  width: 1px;
-  min-width: 1px;
-  padding: 0 !important;
-  margin: 0.5em 0.6em !important;
-  align-self: center;
-  height: 1.1em;
-  background: #ccc;
+.second-menu {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .main-menu .ui.vertical.menu .item.separator {
-  height: 0.6em !important;
+  height: 1px !important;
   min-height: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
   border: 0 !important;
+  border-top: 1px rgba(0, 0, 0, 0.2) solid !important;
   background: transparent !important;
   pointer-events: none;
 }
@@ -235,23 +231,42 @@
 
 .cluster-settings-grid {
   display: grid;
-  grid-template-columns: 10em minmax(0, 1fr);
-  gap: 1.5em;
+  grid-template-columns: 8em minmax(0, 1fr);
+  gap: 2em;
   align-items: start;
+  margin: 4.1em -1em 0;
+}
+
+.cluster-settings-content {
+  padding-right: 2em;
+}
+
+.cluster-settings-menu {
   margin-top: 0.5em;
 }
 
 .cluster-settings-menu .ui.menu {
-  width: 100%;
+  width: 90%;
 }
 
 .cluster-settings-menu .ui.menu .item {
-  padding-left: 1em;
+  position: relative;
+  padding-left: 1em !important;
+  line-height: 1.2;
+}
+
+.cluster-settings-menu .ui.menu .item svg {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .cluster-settings-menu .ui.vertical.menu .item.separator {
-  width: 5em;
-  margin: 0.3em 0 0.3em 1em !important;
-  background: #eee;
   border: 0 !important;
+  border-bottom: 1px #eee solid !important;
+  background: transparent;
+  margin: 0 !important;
+  width: auto;
+  height: 1px;
 }

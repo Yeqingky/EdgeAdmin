@@ -20,7 +20,11 @@ export function PageHeader({ items, children }: { items?: PageMenuItem[]; childr
           return null
         }
         if (item.name === '[|]') {
-          return <span key={`divider-${index}`} className="item divider" />
+          return (
+            <span key={`divider-${index}`} className="disabled item">
+              |
+            </span>
+          )
         }
         const className = `item${item.active ? ' active' : ''}`
         if (item.href && item.href.startsWith('/') && !item.onClick) {

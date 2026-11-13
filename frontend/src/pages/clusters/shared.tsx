@@ -211,7 +211,7 @@ export function ClusterSettingsLayout({
   const activeItem = items.find((item) => !item.separator && isActive(item.href))
   return (
     <div>
-      <div className="ui menu text blue second-menu">
+      <div className="ui menu text blue second-menu top-secondary-menu">
         <a className="item" href={`/clusters/cluster?clusterId=${clusterId}`}>
           {clusterName}
         </a>
