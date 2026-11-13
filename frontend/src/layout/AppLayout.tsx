@@ -15,7 +15,7 @@ export function AppLayout() {
     <div>
       <TopNav session={data} />
       <LeftMenu session={data} />
-      <div className="main without-footer">
+      <div className="main without-footer without-menu without-secondary-menu">
         <div className="main-box">
           <ErrorBoundary>
             <Outlet />
