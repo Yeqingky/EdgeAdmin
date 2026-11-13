@@ -2,6 +2,11 @@
   min-height: 100vh;
 }
 
+.main-box {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .spin {
   animation: spin 1s linear infinite;
 }
