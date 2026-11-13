@@ -42,7 +42,7 @@ export function TopNav({ session }: { session: SessionData }) {
   async function switchLang() {
     try {
       await apiPost('/settings/lang/switch')
-      window.location.reload()
+      await queryClient.invalidateQueries({ queryKey: SESSION_KEY })
     } catch {
       // ignore
     }
