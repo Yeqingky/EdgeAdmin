@@ -766,7 +766,7 @@ var.normal {
   margin-top: 1em;
   border-left: 1px solid #ddd;
 }
-.page a {
+.page > a {
   display: inline-block;
   background: #fafafa;
   color: #666;
@@ -776,11 +776,11 @@ var.normal {
   border: 1px solid #ddd;
   border-left: 0;
 }
-.page a.active {
+.page > a.active {
   background: #2185d0 !important;
   color: white;
 }
-.page a:hover {
+.page > a:hover {
   background: #eee;
 }
 .page select {
