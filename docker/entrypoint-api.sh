@@ -85,7 +85,7 @@ EOF
 mv "${SHARED_DIR}/api_admin.yaml.tmp" "${SHARED_DIR}/api_admin.yaml"
 
 # 初始管理员账号
-admin_count=$(MYSQL_PWD="$DB_PASSWORD" mariadb --protocol=tcp -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" --batch --skip-column-names -e "SELECT COUNT(*) FROM edgeAdmins WHERE username='${ADMIN_USERNAME}'" "$DB_NAME")
+admin_count=$(MYSQL_PWD="$DB_PASSWORD" mariadb --protocol=tcp -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" --batch --skip-column-names -e "SELECT COUNT(*) FROM edgeAdmins" "$DB_NAME")
 if [ "$admin_count" = "0" ]; then
     escaped_password=$(printf '%s' "$ADMIN_PASSWORD" | sed -e 's/\\/\\\\/g' -e "s/'/''/g")
     MYSQL_PWD="$DB_PASSWORD" mariadb --protocol=tcp -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" -e "INSERT INTO edgeAdmins (isOn, username, password, fullname, isSuper, modules, canLogin, state, createdAt, updatedAt) VALUES (1, '${ADMIN_USERNAME}', MD5('${escaped_password}'), '${ADMIN_USERNAME}', 1, '[]', 1, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())" "$DB_NAME"
