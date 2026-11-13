@@ -136,7 +136,7 @@ export function WafGroupsPage({ firewallPolicyId, type }: { firewallPolicyId: nu
                 onDrop={() => dropAt(index)}
               >
                 <td style={{ textAlign: 'center' }}>
-                  <GripVertical size={14} className="grey" title="拖动排序" style={{ cursor: 'move' }} />
+                  <span title="拖动排序"><GripVertical size={14} className="grey" style={{ cursor: 'move' }} /></span>
                 </td>
                 <td>
                   <a

@@ -191,7 +191,7 @@ export function CacheListPage() {
                       {policy.type === 'file' ? (
                         <>
                           &nbsp;
-                          <HardDrive size={13} className="blue" title="硬盘" />
+                          <span title="硬盘"><HardDrive size={13} className="blue" /></span>
                         </>
                       ) : null}
                     </a>
