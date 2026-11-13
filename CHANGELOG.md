@@ -18,6 +18,7 @@
 - docker/entrypoint-admin.sh 写入 configs/api_db.yaml, 修复系统设置数据库页面读取配置失败
 - cmd/edge-admin 启动时读取 EDGE_DB_* 环境变量生成 configs/api_db.yaml, entrypoint 不再生成数据库配置文件
 - 移除系统设置数据库页面的修改模板功能, 数据库配置由配置文件和环境变量提供
+- 移除界面设置中的显示底部开源信息开关, 底部开源信息始终隐藏
 - 新增 docker/entrypoint-api.sh 与 docker/entrypoint-admin.sh, 负责生成数据库配置, API 节点配置和管理面板配置
 - docker/build.sh 与 docker/run.sh 改为 docker compose 封装
 - 新增 AGENTS.md, 说明 EdgeAdmin 作为六个仓库主仓库的定位, 开发环境 192.168.5.30 与 192.168.5.31 的分工和容器化部署方式

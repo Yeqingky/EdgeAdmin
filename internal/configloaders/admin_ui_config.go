@@ -113,7 +113,6 @@ func defaultAdminUIConfig() *systemconfigs.AdminUIConfig {
 	var config = &systemconfigs.AdminUIConfig{
 		ProductName:        langs.DefaultMessage(codes.AdminUI_DefaultProductName),
 		AdminSystemName:    langs.DefaultMessage(codes.AdminUI_DefaultSystemName),
-		ShowOpenSourceInfo: true,
 		ShowVersion:        true,
 		ShowFinance:        true,
 		DefaultPageSize:    10,

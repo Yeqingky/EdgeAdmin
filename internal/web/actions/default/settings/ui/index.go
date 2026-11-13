@@ -48,7 +48,6 @@ func (this *IndexAction) RunGet(params struct{}) {
 func (this *IndexAction) RunPost(params struct {
 	ProductName        string
 	AdminSystemName    string
-	ShowOpenSourceInfo bool
 	ShowFinance        bool
 	ShowVersion        bool
 	Version            string
@@ -82,7 +81,6 @@ func (this *IndexAction) RunPost(params struct {
 	}
 	config.ProductName = params.ProductName
 	config.AdminSystemName = params.AdminSystemName
-	config.ShowOpenSourceInfo = params.ShowOpenSourceInfo
 	config.ShowFinance = params.ShowFinance
 	config.ShowVersion = params.ShowVersion
 	config.Version = params.Version

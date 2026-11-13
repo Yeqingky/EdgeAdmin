@@ -301,7 +301,6 @@ func (this *userMustAuth) BeforeAction(actionPtr actions.ActionWrapper, paramNam
 	} else {
 		action.Data["teaVersion"] = uiConfig.Version
 	}
-	action.Data["teaShowOpenSourceInfo"] = uiConfig.ShowOpenSourceInfo
 	action.Data["teaIsSuper"] = false
 	action.Data["teaIsPlus"] = teaconst.IsPlus
 	action.Data["teaDemoEnabled"] = teaconst.IsDemoMode
