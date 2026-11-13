@@ -16,15 +16,6 @@ const STEPS: { key: Step; title: string }[] = [
   { key: 'finish', title: '完成' },
 ]
 
-interface APINodeInfo {
-  protocol: string
-  host: string
-  port: string
-  nodeId?: string
-  nodeSecret?: string
-  hosts: string[]
-}
-
 export function TransferSettingsPage() {
   const toast = useToast()
   const [step, setStep] = useState<Step>('prepare')
