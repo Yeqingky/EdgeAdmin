@@ -6,9 +6,9 @@ SHARED_DIR=/shared
 
 DB_HOST=${DB_HOST:-mysql}
 DB_PORT=${DB_PORT:-3306}
-DB_USER=${DB_USER:-edge}
-DB_PASSWORD=${DB_PASSWORD:-edge}
-DB_NAME=${DB_NAME:-db_edge}
+DB_USER=goedge
+DB_PASSWORD=goedge
+DB_NAME=goedge
 
 API_NODE_HOST=${API_NODE_HOST:-edge-api}
 API_NODE_PORT=${API_NODE_PORT:-8001}
@@ -25,9 +25,6 @@ check_token() {
 }
 
 check_token "DB_HOST" "$DB_HOST"
-check_token "DB_USER" "$DB_USER"
-check_token "DB_PASSWORD" "$DB_PASSWORD"
-check_token "DB_NAME" "$DB_NAME"
 check_token "API_NODE_HOST" "$API_NODE_HOST"
 check_token "ADMIN_USERNAME" "$ADMIN_USERNAME"
 

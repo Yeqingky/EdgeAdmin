@@ -97,29 +97,21 @@ docker compose up -d
 | `data/edge-admin/logs` | `/usr/local/goedge/logs` | 管理面板日志 |
 | `data/shared` | `/shared` | 管理面板与 API 节点共享配置 |
 
-启动前创建目录并设置权限:
+只有数据库目录需要配置权限, 启动前执行:
 
 ```sh
-mkdir -p data/mysql data/edge-api/{configs,data,logs} data/edge-admin/{configs,logs} data/shared
-sudo chown -R 999:999 data/mysql
+sudo mkdir -p data/mysql
+sudo chown -R 999:999 data/mysql && sudo chmod 750 data/mysql
 ```
-
-- `mysql` 进程以 uid `999` gid `999` 运行, 首次启动会自动修正 `data/mysql` 属主, 也可以提前执行上面的 `chown`.
-- `edge-api` 和 `edge-admin` 进程以 uid `0` gid `0` 运行, root 可以写入任意宿主机目录, 不需要修改属主.
-- `data/` 是运行时目录, 已加入 `.gitignore`.
 
 支持的环境变量:
 
 | 变量 | 默认值 | 说明 |
 | --- | --- | --- |
-| `DB_ROOT_PASSWORD` | `root` | 数据库 root 密码 |
-| `DB_USER` | `edge` | 数据库用户名 |
-| `DB_PASSWORD` | `edge` | 数据库密码 |
-| `DB_NAME` | `db_edge` | 数据库名 |
 | `ADMIN_PORT` | `7788` | 管理面板端口 |
 | `API_PORT` | `8001` | API 节点端口 |
 | `API_NODE_HOST` | `edge-api` | API 节点对外地址, 必须能被边缘节点访问 |
 | `ADMIN_USERNAME` | `admin` | 初始管理员用户名 |
 | `ADMIN_PASSWORD` | `123456` | 初始管理员密码 |
 
-边缘节点不使用容器, 由管理面板通过 SSH 安装; `API_NODE_HOST` 需要设置为边缘节点可访问的地址. 节点部署包按 Docker 构建平台的架构生成, 支持 `amd64` 与 `arm64`. 数据库密码只支持字母, 数字, 下划线, 点和连字符.
+边缘节点不使用容器, 由管理面板通过 SSH 安装; `API_NODE_HOST` 需要设置为边缘节点可访问的地址. 节点部署包按 Docker 构建平台的架构生成, 支持 `amd64` 与 `arm64`.
