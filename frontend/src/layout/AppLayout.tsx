@@ -3,6 +3,7 @@ import { useSession } from '../api/session'
 import { TopNav } from './TopNav'
 import { LeftMenu } from './LeftMenu'
 import { LoadingBlock } from '../components/LoadingBlock'
+import { ErrorBoundary } from '../components/ErrorBoundary'
 
 export function AppLayout() {
   const session = useSession()
@@ -16,7 +17,9 @@ export function AppLayout() {
       <LeftMenu session={data} />
       <div className="main without-footer">
         <div className="main-box">
-          <Outlet />
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
           <div className="clear" />
         </div>
       </div>

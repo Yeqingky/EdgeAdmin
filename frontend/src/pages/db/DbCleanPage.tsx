@@ -23,10 +23,16 @@ export function DbCleanPage() {
   const [loading, setLoading] = useState(true)
 
   async function reload() {
+    if (nodeId <= 0) {
+      setLoading(false)
+      return
+    }
     setLoading(true)
     try {
       const data = await apiPost<{ tables: TableItem[] }>('/db/clean', { nodeId })
       setTables(data.tables || [])
+    } catch (error) {
+      toast(error instanceof Error ? error.message : '加载失败', 'error')
     } finally {
       setLoading(false)
     }
@@ -53,6 +59,10 @@ export function DbCleanPage() {
     await apiPost('/db/truncateTable', { nodeId, table: name })
     toast('操作成功')
     await reload()
+  }
+
+  if (nodeId <= 0) {
+    return <div className="ui negative message">缺少nodeId参数。</div>
   }
 
   return (

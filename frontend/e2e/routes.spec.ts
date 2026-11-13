@@ -43,18 +43,31 @@ async function login(page: Page) {
   await expect(page).toHaveURL(/\/spa\/#\/dashboard/)
 }
 
-test('every registered route renders without the migration placeholder', async ({ page }) => {
-  test.setTimeout(15 * 60 * 1000)
+test('every registered route renders without crashes or migration placeholder', async ({ page }) => {
+  test.setTimeout(20 * 60 * 1000)
   await login(page)
   const routes = collectRoutes()
   const failed: string[] = []
+  const pageErrors: string[] = []
+  page.on('pageerror', (error) => {
+    pageErrors.push(error.message.split('\n')[0])
+  })
   for (const route of routes) {
+    pageErrors.length = 0
     await page.goto(`/spa/#${route}`)
-    await page.waitForTimeout(120)
+    await page.waitForTimeout(500)
     const body = await page.locator('body').innerText()
     if (body.includes('正在迁移中')) {
-      failed.push(route)
+      failed.push(`${route}: placeholder`)
+      continue
+    }
+    if (pageErrors.length > 0) {
+      failed.push(`${route}: ${pageErrors[0]}`)
+      continue
+    }
+    if (body.trim().length < 5) {
+      failed.push(`${route}: blank page`)
     }
   }
-  expect(failed, `routes still using placeholder:\n${failed.join('\n')}`).toEqual([])
+  expect(failed, `route failures:\n${failed.join('\n')}`).toEqual([])
 })
