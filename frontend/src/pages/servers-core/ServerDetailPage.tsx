@@ -1,11 +1,17 @@
+import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
 import { apiGet } from '../../api/client'
 import { LoadingBlock } from '../../components/LoadingBlock'
 import { FirstMenu, ServerPageLayout, ServerTopMenu, type LeftMenuItem } from './common'
+import { DataFlowDiagram, type DataFlowOrigin } from './DataFlowDiagram'
 
 interface ServerData {
   server: { id: number; name: string; clusterId: number }
+}
+
+interface ReverseProxyData {
+  primaryOrigins: DataFlowOrigin[]
 }
 
 const settingsTabs: Array<{ name: string; path: string; family: 'all' | 'http' | 'tcp' | 'udp' }> = [
@@ -52,6 +58,17 @@ export function ServerDetailPage() {
     queryFn: () => apiGet<ServerData>('/servers/server/delete', { serverId }),
   })
 
+  // 数据流图使用的源站列表
+  const reverseProxyQuery = useQuery({
+    queryKey: ['servers-core', 'server-origins', serverId],
+    enabled: serverId > 0,
+    queryFn: () => apiGet<ReverseProxyData>('/servers/server/settings/reverseProxy', { serverId }),
+  })
+  const origins = useMemo(
+    () => (reverseProxyQuery.data?.primaryOrigins || []).filter((origin) => origin.isOn !== false),
+    [reverseProxyQuery.data],
+  )
+
   if (serverId <= 0) {
     return <div className="ui negative message">请先在网站列表中选择要查看的网站.</div>
   }
@@ -75,6 +92,7 @@ export function ServerDetailPage() {
       <ServerTopMenu serverId={server.id} serverName={server.name} current="settings" />
       <ServerPageLayout withMenu menu={menu}>
         <h3>网站概览</h3>
+        <DataFlowDiagram origins={origins} />
         <table className="ui table definition selectable">
           <tbody>
             <tr>
