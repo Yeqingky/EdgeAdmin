@@ -165,6 +165,10 @@ func (this *RPCClient) ServerGroupRPC() pb.ServerGroupServiceClient {
 	return pb.NewServerGroupServiceClient(this.pickConn())
 }
 
+func (this *RPCClient) TunnelNodeRPC() pb.TunnelNodeServiceClient {
+	return pb.NewTunnelNodeServiceClient(this.pickConn())
+}
+
 func (this *RPCClient) APINodeRPC() pb.APINodeServiceClient {
 	return pb.NewAPINodeServiceClient(this.pickConn())
 }

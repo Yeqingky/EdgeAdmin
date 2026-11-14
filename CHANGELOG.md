@@ -5,6 +5,10 @@
 - 集群设置新增 FRP 页面, 配置 FRPS 启用状态, 监听地址, 端口和 Token
 - edge-node 部署包内置 frps 二进制
 
+- 新增 /tunnels/nodes 隧道节点列表和创建页面, 支持集群/用户绑定和安装命令
+- 新增 /tunnels/logs 隧道运行日志页面
+- 安装脚本支持 Linux systemd 和 Windows Service, 参数 install/uninstall/update
+
 ## v1.4.2-rc.1 (2026-11-13)
 
 - 新增 Gitea 工作流 mirror-to-github: 全部分支和标签强制镜像到 github.com/Yeqingky/EdgeAdmin, 推送前过滤 AGENTS.md, .gitea 和 TODO.md, 并删除 GitHub 端多余的分支和标签

@@ -59,6 +59,12 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     cp -R EdgeNode/build/www EdgeNode/build/pages EdgeNode/dist/edge-node/; \
     CGO_ENABLED=0 GOARCH="${TARGETARCH}" go build -C EdgeTunnel -ldflags "-s -w" -o "/out/frps-linux-${TARGETARCH}" ./cmd/frps; \
     cp "/out/frps-linux-${TARGETARCH}" EdgeNode/dist/edge-node/bin/frps; \
+    mkdir -p /out/tunnel; \
+    for arch in amd64 arm64; do \
+        CGO_ENABLED=0 GOOS=linux GOARCH="${arch}" go build -C EdgeTunnel -ldflags "-s -w" -o "/out/tunnel/frpc-linux-${arch}" ./cmd/frpc; \
+    done; \
+    CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -C EdgeTunnel -ldflags "-s -w" -o "/out/tunnel/frpc-windows-amd64.exe" ./cmd/frpc; \
+    CGO_ENABLED=0 GOOS=windows GOARCH=arm64 go build -C EdgeTunnel -ldflags "-s -w" -o "/out/tunnel/frpc-windows-arm64.exe" ./cmd/frpc; \
     CGO_ENABLED=1 GOARCH="${TARGETARCH}" go build -C EdgeNode -tags community -ldflags "-s -w -linkmode external -extldflags -static" -o dist/edge-node/bin/edge-node ./cmd/edge-node; \
     cd EdgeNode/dist; \
     zip -qr "/out/edge-node-linux-${TARGETARCH}-v${version}.zip" edge-node
@@ -71,9 +77,11 @@ RUN mkdir -p /out/admin/bin /out/admin/configs /out/admin/logs /out/admin/web/tm
  && rm -rf /out/admin/web/public/js/components /out/admin/web/public/js/components.src.js \
  && cp EdgeAdmin/build/configs/server.template.yaml /out/admin/configs/ \
  && cp /out/edge-node-linux-*.zip /out/admin/edge-api/deploy/ \
+ && cp /out/tunnel/* /out/admin/edge-api/deploy/ \
  && cp /out/installers/* /out/admin/edge-api/installers/ \
  && mkdir -p /out/api/bin /out/api/configs /out/api/deploy /out/api/installers /out/api/data /out/api/logs \
  && cp /out/edge-api /out/api/bin/ \
+ && cp /out/tunnel/* /out/api/deploy/ \
  && cp EdgeAPI/build/configs/db.template.yaml /out/api/configs/ \
  && cp /out/edge-node-linux-*.zip /out/api/deploy/ \
  && cp /out/installers/* /out/api/installers/

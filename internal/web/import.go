@@ -21,6 +21,7 @@ import (
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/logs"
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/regions"
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/tasks"
+	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/tunnels"
 
 	// 通用
 	_ "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/csrf"

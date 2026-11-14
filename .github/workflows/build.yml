@@ -1,0 +1,63 @@
+name: build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout EdgeAdmin
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: EdgeAdmin
+          token: ${{ secrets.GH_PAT }}
+      - name: Checkout EdgeCommon
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Yeqingky/EdgeCommon
+          path: EdgeCommon
+          token: ${{ secrets.GH_PAT }}
+      - name: Checkout EdgeAPI
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Yeqingky/EdgeAPI
+          path: EdgeAPI
+          token: ${{ secrets.GH_PAT }}
+      - name: Checkout EdgeNode
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Yeqingky/EdgeNode
+          path: EdgeNode
+          token: ${{ secrets.GH_PAT }}
+      - name: Checkout EdgeTunnel
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Yeqingky/EdgeTunnel
+          path: EdgeTunnel
+          token: ${{ secrets.GH_PAT }}
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: EdgeAdmin/go.mod
+      - name: Build Go components
+        run: |
+          go build -C EdgeCommon ./...
+          go build -C EdgeAPI ./...
+          go build -C EdgeNode ./...
+          go build -C EdgeTunnel ./...
+          go build -C EdgeAdmin ./...
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Build frontend
+        run: |
+          corepack enable
+          pnpm --dir EdgeAdmin/frontend install --frozen-lockfile
+          pnpm --dir EdgeAdmin/frontend build
