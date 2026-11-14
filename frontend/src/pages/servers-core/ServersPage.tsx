@@ -546,7 +546,9 @@ export function ServersPage() {
                         void removeServer(server)
                       }}
                     >
-                      <Trash2 size={13} /> 删除
+                      <span className="red">
+                        <Trash2 size={13} /> 删除
+                      </span>
                     </a>
                   </td>
                 </tr>

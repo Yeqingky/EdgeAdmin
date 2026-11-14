@@ -1,11 +1,10 @@
 import { useState, type FormEvent } from 'react'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
-import { ExternalLink, Pin, Settings } from 'lucide-react'
-import { apiGet, apiPost } from '../../api/client'
+import { ExternalLink, Settings } from 'lucide-react'
+import { apiGet } from '../../api/client'
 import { LoadingBlock } from '../../components/LoadingBlock'
 import { LegacyPagination } from '../../components/LegacyPagination'
-import { useToast } from '../../components/Toast'
 import { ClustersTopMenu } from './shared'
 
 interface LatestCluster {
@@ -25,7 +24,6 @@ interface ClusterRow {
   dnsDomainName: string
   countServers: number
   timeZone: string
-  isPinned: boolean
 }
 
 interface ClustersData {
@@ -60,8 +58,6 @@ function Highlight({ word, children }: { word: string; children: string }) {
 
 export function ClustersPage() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const queryClient = useQueryClient()
-  const toast = useToast()
   const keyword = searchParams.get('keyword') || ''
   const searchType = searchParams.get('searchType') || ''
   const [keywordInput, setKeywordInput] = useState(keyword)
@@ -70,14 +66,6 @@ export function ClustersPage() {
   const query = useQuery({
     queryKey: ['clusters', keyword, searchType],
     queryFn: () => apiGet<ClustersData>('/clusters', { keyword, searchType }),
-  })
-
-  const pinMutation = useMutation({
-    mutationFn: (params: { clusterId: number; isPinned: boolean }) => apiPost('/clusters/pin', params),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['clusters'] })
-    },
-    onError: (error: Error) => toast(error.message, 'error'),
   })
 
   if (query.isLoading) {
@@ -198,29 +186,6 @@ export function ClustersPage() {
                           <span className="ui label tiny basic grey">时区:{cluster.timeZone}</span>
                         </div>
                       ) : null}
-                      {cluster.isPinned ? (
-                        <a
-                          href=""
-                          title="取消置顶"
-                          onClick={(event) => {
-                            event.preventDefault()
-                            pinMutation.mutate({ clusterId: cluster.id, isPinned: false })
-                          }}
-                        >
-                          <Pin size={13} /> 已置顶
-                        </a>
-                      ) : (
-                        <a
-                          href=""
-                          title="置顶"
-                          onClick={(event) => {
-                            event.preventDefault()
-                            pinMutation.mutate({ clusterId: cluster.id, isPinned: true })
-                          }}
-                        >
-                          <Pin size={13} /> 置顶
-                        </a>
-                      )}
                     </td>
                     <td className="center">
                       {cluster.countAllNodes > 0 ? (
