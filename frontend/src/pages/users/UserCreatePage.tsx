@@ -15,8 +15,6 @@ export function UserCreatePage() {
   const [pass2, setPass2] = useState('')
   const [fullname, setFullname] = useState('')
   const [clusterId, setClusterId] = useState(0)
-  const [mobile, setMobile] = useState('')
-  const [tel, setTel] = useState('')
   const [email, setEmail] = useState('')
   const [remark, setRemark] = useState('')
   const [otpOn, setOtpOn] = useState(false)
@@ -37,8 +35,6 @@ export function UserCreatePage() {
         clusterId,
         featuresType,
         otpOn: otpOn ? 1 : '',
-        mobile,
-        tel,
         email,
         remark,
       })
@@ -92,12 +88,6 @@ export function UserCreatePage() {
           </tr>
           {more ? (
             <>
-              <FormRow title="手机号">
-                <TextInput value={mobile} maxLength={11} onChange={(event) => setMobile(event.target.value)} />
-              </FormRow>
-              <FormRow title="联系电话">
-                <TextInput value={tel} maxLength={100} onChange={(event) => setTel(event.target.value)} />
-              </FormRow>
               <FormRow title="电子邮箱">
                 <TextInput value={email} maxLength={100} onChange={(event) => setEmail(event.target.value)} />
               </FormRow>

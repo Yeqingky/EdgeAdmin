@@ -47,6 +47,21 @@ func (this *CreateAction) RunGet(params struct{}) {
 	}
 	this.Data["hasUsers"] = countUsersResp.Count > 0
 
+	// 默认选中当前管理员的关联用户
+	linkedUserId := int64(0)
+	adminId := this.AdminId()
+	if adminId > 0 {
+		adminResp, err := this.RPC().AdminRPC().FindEnabledAdmin(this.AdminContext(), &pb.FindEnabledAdminRequest{AdminId: adminId})
+		if err != nil {
+			this.ErrorPage(err)
+			return
+		}
+		if adminResp.Admin != nil {
+			linkedUserId = adminResp.Admin.UserId
+		}
+	}
+	this.Data["currentUserId"] = linkedUserId
+
 	this.Show()
 }
 

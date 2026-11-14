@@ -90,6 +90,12 @@ if [ "$admin_count" = "0" ]; then
     escaped_password=$(printf '%s' "$ADMIN_PASSWORD" | sed -e 's/\\/\\\\/g' -e "s/'/''/g")
     MYSQL_PWD="$DB_PASSWORD" mariadb --protocol=tcp -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" -e "INSERT INTO edgeAdmins (isOn, username, password, fullname, isSuper, modules, canLogin, state, createdAt, updatedAt) VALUES (1, '${ADMIN_USERNAME}', MD5('${escaped_password}'), '${ADMIN_USERNAME}', 1, '[]', 1, 1, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())" "$DB_NAME"
     echo "created admin '${ADMIN_USERNAME}'"
+
+    # 为新管理员创建关联的普通用户 (用户名与管理员同步)
+    MYSQL_PWD="$DB_PASSWORD" mariadb --protocol=tcp -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" --batch --skip-column-names -e "SELECT COUNT(*) FROM edgeAdmins WHERE userId=0" "$DB_NAME" | grep -q '^0$' || {
+        MYSQL_PWD="$DB_PASSWORD" mariadb --protocol=tcp -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" -e "INSERT INTO edgeUsers (isOn, username, password, fullname, source, clusterId, features, isVerified, state, createdAt, day, updatedAt) SELECT 1, a.username, a.password, a.fullname, 'admin', (SELECT id FROM edgeNodeClusters WHERE state=1 ORDER BY id ASC LIMIT 1), '[]', 1, 1, UNIX_TIMESTAMP(), DATE_FORMAT(NOW(), '%Y%m%d'), UNIX_TIMESTAMP() FROM edgeAdmins a WHERE a.userId=0 AND a.state=1 AND NOT EXISTS (SELECT 1 FROM edgeUsers u WHERE u.username = a.username)" "$DB_NAME"
+        MYSQL_PWD="$DB_PASSWORD" mariadb --protocol=tcp -h "$DB_HOST" -P "$DB_PORT" -u "$DB_USER" -e "UPDATE edgeAdmins a SET userId=(SELECT id FROM edgeUsers u WHERE u.username=a.username ORDER BY u.id ASC LIMIT 1) WHERE a.userId=0 AND a.state=1" "$DB_NAME"
+    }
 fi
 
 exec bin/edge-api

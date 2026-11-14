@@ -242,7 +242,7 @@ func AllModuleMaps(langCode string) []maps.Map {
 		},
 		{
 			"name": langs.Message(langCode, codes.AdminMenu_Admins),
-			"code": AdminModuleCodeAdmin,
+			"code": AdminModuleCodeUser,
 			"url":  "/admins",
 		},
 		{

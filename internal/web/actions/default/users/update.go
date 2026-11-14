@@ -64,9 +64,7 @@ func (this *UpdateAction) RunGet(params struct {
 		"username":        user.Username,
 		"fullname":        user.Fullname,
 		"email":           user.Email,
-		"tel":             user.Tel,
 		"remark":          user.Remark,
-		"mobile":          user.Mobile,
 		"isOn":            user.IsOn,
 		"countAccessKeys": countAccessKeys,
 		"bandwidthAlgo":   user.BandwidthAlgo,
@@ -94,8 +92,6 @@ func (this *UpdateAction) RunPost(params struct {
 	Pass1         string
 	Pass2         string
 	Fullname      string
-	Mobile        string
-	Tel           string
 	Email         string
 	Remark        string
 	IsOn          bool
@@ -140,11 +136,6 @@ func (this *UpdateAction) RunPost(params struct {
 		Field("fullname", params.Fullname).
 		Require("请输入全名")
 
-	if len(params.Mobile) > 0 {
-		params.Must.
-			Field("mobile", params.Mobile).
-			Mobile("请输入正确的手机号")
-	}
 	if len(params.Email) > 0 {
 		params.Must.
 			Field("email", params.Email).
@@ -156,8 +147,6 @@ func (this *UpdateAction) RunPost(params struct {
 		Username:      params.Username,
 		Password:      params.Pass1,
 		Fullname:      params.Fullname,
-		Mobile:        params.Mobile,
-		Tel:           params.Tel,
 		Email:         params.Email,
 		Remark:        params.Remark,
 		IsOn:          params.IsOn,

@@ -17,6 +17,7 @@ interface AdminDetail {
     canLogin: boolean
     hasWeakPassword: boolean
     countAccessKeys: number
+    linkedUser?: { id: number; username: string; fullname: string } | null
   }
   modules: { code: string; name: string }[]
   otp?: { isOn: boolean; params: { secret: string } }
@@ -48,6 +49,15 @@ export function AdminDetailPage() {
         </FormRow>
         <FormRow title="超级管理员">
           {admin.isSuper ? <span className="green">Y</span> : <span className="disabled">N</span>}
+        </FormRow>
+        <FormRow title="关联用户">
+          {admin.linkedUser ? (
+            <span>
+              {admin.linkedUser.username} <a href={`/users/user?userId=${admin.linkedUser.id}`}>查看</a>
+            </span>
+          ) : (
+            <span className="disabled">没有关联.</span>
+          )}
         </FormRow>
         {!admin.isSuper ? (
           <FormRow title="权限">

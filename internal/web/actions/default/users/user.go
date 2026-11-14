@@ -96,9 +96,7 @@ func (this *UserAction) RunGet(params struct {
 		"fullname":         user.Fullname,
 		"email":            user.Email,
 		"verifiedEmail":    user.VerifiedEmail,
-		"tel":              user.Tel,
 		"remark":           user.Remark,
-		"mobile":           user.Mobile,
 		"isOn":             user.IsOn,
 		"cluster":          clusterMap,
 		"countAccessKeys":  countAccessKeys,
@@ -107,6 +105,7 @@ func (this *UserAction) RunGet(params struct {
 		"isVerified":       user.IsVerified,
 		"registeredIP":     user.RegisteredIP,
 		"registeredRegion": registeredRegion,
+		"adminId":          user.AdminId,
 		"bandwidthAlgo":    user.BandwidthAlgo,
 
 		// 实名认证

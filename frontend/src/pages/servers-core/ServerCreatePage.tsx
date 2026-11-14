@@ -28,6 +28,7 @@ interface CreateData {
   countAuditing: number
   serverTypes: ServerTypeDef[]
   hasUsers: boolean
+  currentUserId: number
 }
 
 interface GroupItem {
@@ -60,7 +61,7 @@ export function ServerCreatePage() {
   const [serverType, setServerType] = useState('httpProxy')
   const [name, setName] = useState('')
   const [clusterId, setClusterId] = useState(0)
-  const [userId, setUserId] = useState(0)
+  const [userId, setUserId] = useState(query.data?.currentUserId || 0)
   const [userPlanId, setUserPlanId] = useState(0)
   const [groupIds, setGroupIds] = useState<number[]>([])
   const [serverNames, setServerNames] = useState<ServerNameConfig[]>([])

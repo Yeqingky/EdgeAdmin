@@ -39,6 +39,23 @@ func (this *AdminAction) RunGet(params struct {
 	}
 	countAccessKeys := countAccessKeyResp.Count
 
+	// 关联的普通用户
+	var linkedUserMap maps.Map = nil
+	if admin.UserId > 0 {
+		userResp, err := this.RPC().UserRPC().FindEnabledUser(this.AdminContext(), &pb.FindEnabledUserRequest{UserId: admin.UserId})
+		if err != nil {
+			this.ErrorPage(err)
+			return
+		}
+		if userResp.User != nil {
+			linkedUserMap = maps.Map{
+				"id":       userResp.User.Id,
+				"username": userResp.User.Username,
+				"fullname": userResp.User.Fullname,
+			}
+		}
+	}
+
 	this.Data["admin"] = maps.Map{
 		"id":              admin.Id,
 		"fullname":        admin.Fullname,
@@ -48,6 +65,7 @@ func (this *AdminAction) RunGet(params struct {
 		"canLogin":        admin.CanLogin,
 		"hasWeakPassword": admin.HasWeakPassword,
 		"countAccessKeys": countAccessKeys,
+		"linkedUser":      linkedUserMap,
 	}
 
 	// 权限

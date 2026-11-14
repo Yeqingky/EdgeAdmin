@@ -13,12 +13,11 @@ interface User {
   username: string
   fullname: string
   email: string
-  tel: string
   remark: string
-  mobile: string
   isOn: boolean
   bandwidthAlgo: string
   otpLoginIsOn: boolean
+  adminId: number
 }
 
 interface UpdateData {
@@ -44,7 +43,7 @@ export function UserUpdatePage() {
     if (query.data) {
       setUser(query.data.user)
       setClusterId(query.data.clusterId)
-      setMore(Boolean(query.data.user.mobile || query.data.user.tel || query.data.user.email || query.data.user.remark))
+      setMore(Boolean(query.data.user.email || query.data.user.remark))
     }
   }, [query.data])
 
@@ -76,8 +75,6 @@ export function UserUpdatePage() {
         pass1,
         pass2,
         fullname: user.fullname,
-        mobile: user.mobile,
-        tel: user.tel,
         email: user.email,
         remark: user.remark,
         isOn: user.isOn ? 1 : '',
@@ -100,29 +97,55 @@ export function UserUpdatePage() {
       <form className="ui form" onSubmit={submit}>
         <FormTable>
           <FormRow title="用户名 *">
-            <TextInput value={user.username} maxLength={100} onChange={(event) => update('username', event.target.value)} />
-            <p className="comment">用户名只能是英文,数字,下划线的组合.</p>
+            {user.adminId > 0 ? (
+              <p>
+                {user.username}
+                <span className="comment"> 与关联管理员同步, 不能在此修改.</span>
+              </p>
+            ) : (
+              <>
+                <TextInput value={user.username} maxLength={100} onChange={(event) => update('username', event.target.value)} />
+                <p className="comment">用户名只能是英文,数字,下划线的组合.</p>
+              </>
+            )}
           </FormRow>
-          <FormRow title="密码">
-            <a href="" onClick={(event) => { event.preventDefault(); setPasswordEditing((value) => !value) }}>修改密码</a>
-            {passwordEditing ? (
-              <div style={{ marginTop: '0.6em' }}>
-                <input type="password" value={pass1} maxLength={100} onChange={(event) => setPass1(event.target.value)} />
-                <p className="comment">留空表示不修改.</p>
-              </div>
-            ) : null}
-          </FormRow>
-          {passwordEditing ? (
-            <FormRow title="确认密码">
-              <input type="password" value={pass2} maxLength={100} onChange={(event) => setPass2(event.target.value)} />
+          {user.adminId > 0 ? (
+            <FormRow title="密码">
+              <p className="comment">与关联管理员同步, 请在管理员页面修改.</p>
             </FormRow>
-          ) : null}
+          ) : (
+            <>
+              <FormRow title="密码">
+                <a href="" onClick={(event) => { event.preventDefault(); setPasswordEditing((value) => !value) }}>修改密码</a>
+                {passwordEditing ? (
+                  <div style={{ marginTop: '0.6em' }}>
+                    <input type="password" value={pass1} maxLength={100} onChange={(event) => setPass1(event.target.value)} />
+                    <p className="comment">留空表示不修改.</p>
+                  </div>
+                ) : null}
+              </FormRow>
+              {passwordEditing ? (
+                <FormRow title="确认密码">
+                  <input type="password" value={pass2} maxLength={100} onChange={(event) => setPass2(event.target.value)} />
+                </FormRow>
+              ) : null}
+            </>
+          )}
           <FormRow title="全名 *">
-            <TextInput value={user.fullname} maxLength={100} onChange={(event) => update('fullname', event.target.value)} />
+            {user.adminId > 0 ? (
+              <p>{user.fullname}</p>
+            ) : (
+              <TextInput value={user.fullname} maxLength={100} onChange={(event) => update('fullname', event.target.value)} />
+            )}
           </FormRow>
           <FormRow title="关联集群 *">
             <ClusterSelect value={clusterId} onChange={setClusterId} />
           </FormRow>
+          {user.adminId > 0 ? (
+            <FormRow title="关联管理员">
+              <a href={`/admins/admin?adminId=${user.adminId}`}>查看管理员</a>
+            </FormRow>
+          ) : null}
           <tr>
             <td colSpan={2}>
               <a href="" onClick={(event) => { event.preventDefault(); setMore((value) => !value) }}>更多选项</a>
@@ -130,12 +153,6 @@ export function UserUpdatePage() {
           </tr>
           {more ? (
             <>
-              <FormRow title="手机号">
-                <TextInput value={user.mobile} maxLength={11} onChange={(event) => update('mobile', event.target.value)} />
-              </FormRow>
-              <FormRow title="联系电话">
-                <TextInput value={user.tel} maxLength={100} onChange={(event) => update('tel', event.target.value)} />
-              </FormRow>
               <FormRow title="电子邮箱">
                 <TextInput value={user.email} maxLength={100} onChange={(event) => update('email', event.target.value)} />
               </FormRow>

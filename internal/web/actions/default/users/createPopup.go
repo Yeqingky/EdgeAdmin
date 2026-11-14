@@ -32,8 +32,6 @@ func (this *CreatePopupAction) RunPost(params struct {
 	Pass1        string
 	Pass2        string
 	Fullname     string
-	Mobile       string
-	Tel          string
 	Email        string
 	Remark       string
 	ClusterId    int64
@@ -83,11 +81,6 @@ func (this *CreatePopupAction) RunPost(params struct {
 		this.Fail("请选择关联集群")
 	}
 
-	if len(params.Mobile) > 0 {
-		params.Must.
-			Field("mobile", params.Mobile).
-			Mobile("请输入正确的手机号")
-	}
 	if len(params.Email) > 0 {
 		params.Must.
 			Field("email", params.Email).
@@ -98,8 +91,6 @@ func (this *CreatePopupAction) RunPost(params struct {
 		Username:      params.Username,
 		Password:      params.Pass1,
 		Fullname:      params.Fullname,
-		Mobile:        params.Mobile,
-		Tel:           params.Tel,
 		Email:         params.Email,
 		Remark:        params.Remark,
 		Source:        "admin:" + numberutils.FormatInt64(this.AdminId()),

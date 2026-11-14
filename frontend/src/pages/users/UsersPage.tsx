@@ -17,15 +17,13 @@ interface UserItem {
   isOn: boolean
   fullname: string
   email: string
-  mobile: string
-  tel: string
   createdTime: string
   cluster?: { id: number; name: string }
   registeredIP: string
   isVerified: boolean
   isRejected: boolean
   identityIsSubmitted: boolean
-  verifiedMobile: string
+  adminId: number
 }
 
 interface UsersData {
@@ -33,7 +31,6 @@ interface UsersData {
   page: string
   keyword: string
   isVerifying: boolean
-  mobileIsVerified: number
   countVerifyingUsers: number
 }
 
@@ -113,7 +110,7 @@ export function UsersPage() {
           <div className="ui field">
             <input
               type="text"
-              placeholder="用户名,全名,手机号..."
+              placeholder="用户名,全名,邮箱..."
               value={keyword}
               onChange={(event) => setKeyword(event.target.value)}
             />
@@ -148,8 +145,7 @@ export function UsersPage() {
               <th>用户名</th>
               <th>全名</th>
               <th>关联集群</th>
-              <th>绑定手机号</th>
-              <th>联系手机号</th>
+              <th>关联管理员</th>
               <th>注册时间</th>
               <th className="center" style={{ width: '6em' }}>状态</th>
               <th className="two op">操作</th>
@@ -192,10 +188,11 @@ export function UsersPage() {
                   )}
                 </td>
                 <td className={user.isOn ? undefined : 'disabled'}>
-                  {user.verifiedMobile ? user.verifiedMobile : <span className="disabled">-</span>}
-                </td>
-                <td className={user.isOn ? undefined : 'disabled'}>
-                  {user.mobile ? user.mobile : <span className="disabled">-</span>}
+                  {user.adminId > 0 ? (
+                    <a href={`/admins/admin?adminId=${user.adminId}`}>查看</a>
+                  ) : (
+                    <span className="disabled">-</span>
+                  )}
                 </td>
                 <td className={user.isOn ? undefined : 'disabled'}>{user.createdTime}</td>
                 <td className="center">

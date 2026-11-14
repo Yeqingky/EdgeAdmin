@@ -16,9 +16,7 @@ interface UserDetail {
     fullname: string
     email: string
     verifiedEmail: string
-    tel: string
     remark: string
-    mobile: string
     isOn: boolean
     cluster?: { id: number; name: string }
     countAccessKeys: number
@@ -28,6 +26,7 @@ interface UserDetail {
     registeredIP: string
     registeredRegion: string
     bandwidthAlgo: string
+    adminId: number
   }
   otp?: { isOn: boolean; params: { secret: string } }
 }
@@ -105,8 +104,13 @@ export function UserDetailPage() {
             <span className="disabled">没有设置.</span>
           )}
         </FormRow>
-        <FormRow title="手机号">{user.mobile || <span className="disabled">没有设置.</span>}</FormRow>
-        <FormRow title="联系电话">{user.tel || <span className="disabled">没有设置.</span>}</FormRow>
+        <FormRow title="关联管理员">
+          {user.adminId > 0 ? (
+            <a href={`/admins/admin?adminId=${user.adminId}`}>查看管理员</a>
+          ) : (
+            <span className="disabled">没有关联.</span>
+          )}
+        </FormRow>
         <FormRow title="常用电子邮箱">{user.email || <span className="disabled">没有设置.</span>}</FormRow>
         <FormRow title="已绑定电子邮箱">{user.verifiedEmail || <span className="disabled">没有设置.</span>}</FormRow>
         <FormRow title="备注">{user.remark || <span className="disabled">没有设置.</span>}</FormRow>
