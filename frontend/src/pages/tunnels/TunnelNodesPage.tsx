@@ -83,8 +83,9 @@ export function TunnelNodesPage() {
   return (
     <div>
       <div className="ui menu text blue second-menu">
-        <a className="item active" href="/tunnels/nodes">隧道节点</a>
-        <a className="item" href="/tunnels/logs">运行日志</a>
+        <a className="item active" href="/tunnels/nodes">节点</a>
+        <span className="disabled item">|</span>
+        <Link className="item" to="/tunnels/nodes/create">[创建节点]</Link>
       </div>
 
       <div className="ui form">
@@ -99,9 +100,6 @@ export function TunnelNodesPage() {
                 setPage(1)
               }}
             />
-          </div>
-          <div className="field">
-            <Link className="ui button primary" to="/tunnels/nodes/create">创建隧道节点</Link>
           </div>
         </div>
       </div>

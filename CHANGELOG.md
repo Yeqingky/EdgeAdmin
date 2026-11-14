@@ -5,6 +5,7 @@
 - 集群设置新增 FRP 页面, 配置 FRPS 启用状态, 监听地址, 端口和 Token
 - edge-node 部署包内置 frps 二进制
 - 节点详情运行状态新增 FRPS 进程状态, PID 和监听配置
+- Tunnel 节点列表导航调整为“节点 | [创建节点]”
 
 - 新增 /tunnels/nodes 隧道节点列表和创建页面, 支持集群/用户绑定和安装命令
 - 新增 /tunnels/logs 隧道运行日志页面
