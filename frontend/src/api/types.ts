@@ -8,7 +8,6 @@ export interface MenuSubItem {
   name: string
   url?: string
   code: string
-  icon?: string
   badge?: number
   isOn?: boolean
   subItems?: MenuSubItem[]

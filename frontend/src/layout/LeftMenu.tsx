@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
 import type { MenuSubItem, SessionData } from '../api/types'
-import { menuIcon, subItemIcon } from './icons'
+import { menuIcon } from './icons'
 
 // 展开嵌套的子菜单, 只保留可点击的叶子项
 function flattenSubItems(items?: MenuSubItem[]): MenuSubItem[] {
@@ -117,10 +117,8 @@ export function LeftMenu({ session }: { session: SessionData }) {
                 </div>
               )
             }
-            const ItemIcon = subItemIcon(item.icon)
             return (
               <Link key={key} className={`item${activeSubItem === item ? ' active' : ''}`} to={item.url || '#'}>
-                {ItemIcon ? <ItemIcon size={13} className="icon" /> : null}
                 <span>{item.name}</span>
                 {item.badge && item.badge > 0 ? (
                   <span className="ui label tiny red">{item.badge < 100 ? item.badge : '99+'}</span>

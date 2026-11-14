@@ -7,9 +7,7 @@ import {
   Folder,
   Gauge,
   Globe,
-  Key,
   LayoutDashboard,
-  MapPin,
   Network,
   ScrollText,
   Server,
@@ -40,19 +38,4 @@ const iconsByCode: Record<string, LucideIcon> = {
 
 export function menuIcon(code: string): LucideIcon {
   return iconsByCode[code] || Boxes
-}
-
-const subItemIcons: Record<string, LucideIcon> = {
-  boxes: Boxes,
-  'file-text': FileText,
-  key: Key,
-  'map-pin': MapPin,
-  server: Server,
-}
-
-export function subItemIcon(name?: string): LucideIcon | null {
-  if (!name) {
-    return null
-  }
-  return subItemIcons[name] || null
 }
