@@ -11,7 +11,7 @@ export interface DataFlowOrigin {
 
 const EDGE_NODE_COUNT = 3
 
-// 数据流示意图: 用户 -> Edge 节点 (固定3个) -> 源站 (数量随网站)
+// 数据流示意图: 用户 -> 边缘节点 (固定3个) -> 源站 (数量随网站)
 export function DataFlowDiagram({ origins }: { origins: DataFlowOrigin[] }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const userRef = useRef<HTMLDivElement>(null)
@@ -39,7 +39,7 @@ export function DataFlowDiagram({ origins }: { origins: DataFlowOrigin[] }) {
         </div>
 
         <div className="flex flex-col items-center gap-3">
-          <div className="text-xs text-neutral-500">Edge 节点</div>
+          <div className="text-xs text-neutral-500">边缘节点</div>
           {nodeRefs.map((ref, index) => (
             <div
               key={index}
@@ -47,7 +47,7 @@ export function DataFlowDiagram({ origins }: { origins: DataFlowOrigin[] }) {
               className="flex h-12 w-32 items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white text-sm text-neutral-700 shadow-sm"
             >
               <Server className="h-4 w-4 text-blue-500" />
-              Edge 节点 {index + 1}
+              边缘节点 {index + 1}
             </div>
           ))}
         </div>
