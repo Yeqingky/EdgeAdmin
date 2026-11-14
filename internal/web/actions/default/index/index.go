@@ -188,7 +188,8 @@ func (this *IndexAction) RunPost(params struct {
 
 	rpcClient, err := rpc.SharedRPC()
 	if err != nil {
-		this.Fail("服务器出了点小问题:" + err.Error())
+		utils.PrintError(err)
+		this.Fail("服务器暂时不可用,请稍后重试")
 		return
 	}
 	resp, err := rpcClient.AdminRPC().LoginAdmin(rpcClient.Context(0), &pb.LoginAdminRequest{
@@ -202,7 +203,8 @@ func (this *IndexAction) RunPost(params struct {
 			utils.PrintError(err)
 		}
 
-		actionutils.Fail(this, err)
+		utils.PrintError(err)
+		this.Fail("服务器暂时不可用,请稍后重试")
 		return
 	}
 

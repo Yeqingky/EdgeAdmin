@@ -399,14 +399,15 @@
 
 .main-menu .ui.menu .sub-items .sub-group-title,
 .main-menu .ui.menu .sub-items .sub-group-title:hover {
-  padding-left: 2.8em !important;
-  padding-top: 0.4em;
+  padding-left: 1.1em !important;
+  padding-top: 0.5em;
+  padding-bottom: 0.3em;
   background: transparent;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8em;
   cursor: default;
 }
 
 .main-menu .ui.menu .sub-items .sub-group .item:not(.sub-group-title) {
-  padding-left: 3.9em !important;
+  padding-left: 2.8em !important;
 }
