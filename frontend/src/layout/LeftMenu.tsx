@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
 import type { SessionData } from '../api/types'
@@ -32,14 +32,37 @@ export function LeftMenu({ session }: { session: SessionData }) {
   const activeModule = session.teaModules.find(
     (module) => module.code.length > 0 && (current === `/${module.code}` || current.startsWith(`/${module.code}/`)),
   )
-  const [openCodes, setOpenCodes] = useState<Record<string, boolean>>(() =>
-    activeModule?.code ? { [activeModule.code]: true } : {},
-  )
-  useEffect(() => {
-    if (activeModule?.code) {
-      setOpenCodes((codes) => (codes[activeModule.code] ? codes : { ...codes, [activeModule.code]: true }))
+
+  // 当前路径所属的分组 (按子菜单 URL 最长匹配)
+  const currentGroupCode = useMemo(() => {
+    let bestCode = ''
+    let bestScore = -1
+    for (const module of session.teaModules) {
+      if (!module.code || module.isOn === false || !module.subItems || module.subItems.length === 0) {
+        continue
+      }
+      for (const item of module.subItems) {
+        if (item.name === '-' || item.isOn === false) {
+          continue
+        }
+        const score = activeScore(item.url)
+        if (score > bestScore) {
+          bestScore = score
+          bestCode = module.code
+        }
+      }
     }
-  }, [activeModule?.code])
+    return bestScore >= 0 ? bestCode : ''
+  }, [current, session.teaModules])
+
+  // 当前分组可手动收起, 刷新或切换页面后自动展开
+  const [currentCollapsed, setCurrentCollapsed] = useState(false)
+  // 手动展开的另一个分组, 同时最多一个; 与当前分组合计最多两个
+  const [openedCode, setOpenedCode] = useState('')
+  useEffect(() => {
+    setCurrentCollapsed(false)
+    setOpenedCode((code) => (code === currentGroupCode ? '' : code))
+  }, [currentGroupCode])
 
   return (
     <div className={`main-menu ${theme}`}>
@@ -56,7 +79,7 @@ export function LeftMenu({ session }: { session: SessionData }) {
           const isActive = activeModule?.code === module.code
           const firstUrl = module.subItems?.[0]?.url || `/${module.code}`
           const hasSubItems = !!module.subItems && module.subItems.length > 0
-          const isOpen = !!openCodes[module.code]
+          const isOpen = module.code === currentGroupCode ? !currentCollapsed : openedCode === module.code
           let activeSubItem: NonNullable<typeof module.subItems>[number] | null = null
           let activeSubItemScore = -1
           if (module.subItems) {
@@ -74,7 +97,11 @@ export function LeftMenu({ session }: { session: SessionData }) {
           function toggleOpen(event: React.MouseEvent | React.KeyboardEvent) {
             event.preventDefault()
             event.stopPropagation()
-            setOpenCodes((codes) => ({ ...codes, [module.code]: !codes[module.code] }))
+            if (module.code === currentGroupCode) {
+              setCurrentCollapsed((collapsed) => !collapsed)
+              return
+            }
+            setOpenedCode((code) => (code === module.code ? '' : module.code))
           }
           const content = (
             <>
