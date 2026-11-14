@@ -82,3 +82,4 @@
 - docker/build.sh 与 docker/run.sh 改为 docker compose 封装
 - 新增 AGENTS.md, 说明 EdgeAdmin 作为六个仓库主仓库的定位, 开发环境 192.168.5.30 与 192.168.5.31 的分工和容器化部署方式
 - README 增加开发环境与 Docker Compose 部署说明
+- AGENTS.md 增加 dev 环境 192.168.5.30 的镜像构建与 save/load 部署流程
