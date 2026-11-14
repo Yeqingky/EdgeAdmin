@@ -536,8 +536,6 @@ export function ServerCreatePage() {
       {showOriginModal ? (
         <OriginModal
           serverType={serverType}
-          clusterId={clusterId}
-          userId={userId}
           onClose={() => setShowOriginModal(false)}
           onCreated={(origin) => setOrigins((current) => [...current, origin])}
         />

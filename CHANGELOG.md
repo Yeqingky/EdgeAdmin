@@ -4,12 +4,12 @@
 
 - 集群设置新增 FRP 页面, 配置 FRPS 启用状态, 监听地址, 端口和 Token
 - edge-node 部署包内置 frps 二进制
+- 节点详情运行状态新增 FRPS 进程状态, PID 和监听配置
 
 - 新增 /tunnels/nodes 隧道节点列表和创建页面, 支持集群/用户绑定和安装命令
 - 新增 /tunnels/logs 隧道运行日志页面
 - 安装脚本支持 Linux systemd 和 Windows Service, 参数 install/uninstall/update
-- 网站源站支持选择所属用户和集群的隧道节点
-- 新增网站创建与隧道选择的 Gitea 端到端工作流
+- 新增网站创建与源站配置的 Gitea 端到端工作流
 
 ## v1.4.2-rc.1 (2026-11-13)
 

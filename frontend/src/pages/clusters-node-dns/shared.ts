@@ -63,6 +63,14 @@ export interface NodeLoginRef {
   grant?: NodeGrantRef | null
 }
 
+export interface FRPSStatus {
+  isEnabled: boolean
+  isRunning: boolean
+  bindAddr: string
+  bindPort: number
+  pid: number
+}
+
 export interface NodeStatus {
   isActive: boolean
   updatedAt: number
@@ -87,6 +95,7 @@ export interface NodeStatus {
   apiSuccessPercent?: number
   apiAvgCostSeconds?: number
   diskWritingSpeedMB?: number
+  frps?: FRPSStatus | null
 }
 
 export interface NodeListItem {

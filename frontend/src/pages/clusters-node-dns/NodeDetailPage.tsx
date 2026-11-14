@@ -79,6 +79,7 @@ export function NodeDetailPage() {
   const data = query.data
   const node = data.node
   const status = node.status
+  const frpsStatus = status?.frps
   const isPlus = session.data?.teaIsPlus ?? false
   const isActive = status?.isActive ?? false
 
@@ -539,6 +540,40 @@ export function NodeDetailPage() {
         </tbody>
       </table>
       {isActive ? <p className="comment">每隔30秒钟更新一次运行状态.</p> : null}
+
+      <h3>FRPS</h3>
+      <table className="ui table definition selectable">
+        <tbody>
+          <tr>
+            <td>进程状态</td>
+            <td>
+              {!frpsStatus ? (
+                <span className="disabled">尚未上报</span>
+              ) : !isActive ? (
+                <span className="disabled">节点离线</span>
+              ) : !frpsStatus.isEnabled ? (
+                <span className="disabled">未启用</span>
+              ) : frpsStatus.isRunning ? (
+                <span className="green">运行中</span>
+              ) : (
+                <span className="red">已停止</span>
+              )}
+            </td>
+          </tr>
+          <tr>
+            <td>绑定地址</td>
+            <td>{isActive && frpsStatus?.bindAddr ? frpsStatus.bindAddr : '-'}</td>
+          </tr>
+          <tr>
+            <td>绑定端口</td>
+            <td>{isActive && frpsStatus && frpsStatus.bindPort > 0 ? frpsStatus.bindPort : '-'}</td>
+          </tr>
+          <tr>
+            <td>PID</td>
+            <td>{isActive && frpsStatus?.isRunning && frpsStatus.pid > 0 ? frpsStatus.pid : '-'}</td>
+          </tr>
+        </tbody>
+      </table>
 
       <div className="ui divider" />
       <h3>安装信息</h3>

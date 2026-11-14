@@ -4,7 +4,6 @@ import { apiGet, apiPost } from '../../api/client'
 import { LoadingBlock } from '../../components/LoadingBlock'
 import { useConfirm } from '../../components/Confirm'
 import { useToast } from '../../components/Toast'
-import { TunnelSelect } from '../../components/TunnelSelect'
 import { Checkbox, FormRow, FormTable, SubmitButton } from '../../components/form'
 import { LocationShell } from './LocationShell'
 import { MissingLocation, useLocationData } from './helpers'
@@ -241,11 +240,6 @@ function OriginForm({
                 ))}
               </select>
             </FormRow>
-            {isHTTP ? (
-              <FormRow title="Tunnel">
-                <TunnelSelect value={state.tunnelNodeId} onChange={(id) => update({ tunnelNodeId: id })} serverId={serverId} />
-              </FormRow>
-            ) : null}
             <FormRow title="源站地址 *">
               <div className="ui input left labeled">
                 <span className="ui label">{state.protocol}://</span>

@@ -391,6 +391,7 @@ func (this *DetailAction) RunGet(params struct {
 			"apiSuccessPercent":    status.APISuccessPercent,
 			"apiAvgCostSeconds":    status.APIAvgCostSeconds,
 			"diskWritingSpeedMB":   status.DiskWritingSpeedMB,
+			"frps":                 status.FRPS,
 		},
 
 		"group":  groupMap,

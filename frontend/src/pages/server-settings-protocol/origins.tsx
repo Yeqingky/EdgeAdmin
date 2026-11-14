@@ -4,7 +4,6 @@ import { useQuery } from '@tanstack/react-query'
 import { apiGet, apiPost } from '../../api/client'
 import { useToast } from '../../components/Toast'
 import { LoadingBlock } from '../../components/LoadingBlock'
-import { TunnelSelect } from '../../components/TunnelSelect'
 import { FormRow, FormTable, Select, SubmitButton, TextInput } from '../../components/form'
 import {
   CodeLabel,
@@ -246,11 +245,6 @@ function OriginForm({
                 ))}
               </Select>
             </FormRow>
-            {isHTTP ? (
-              <FormRow title="Tunnel">
-                <TunnelSelect value={form.tunnelNodeId} onChange={(id) => update('tunnelNodeId', id)} serverId={serverId} />
-              </FormRow>
-            ) : null}
             {!isOSS ? (
               <>
                 <FormRow title="源站地址 *">
