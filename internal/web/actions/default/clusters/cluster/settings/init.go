@@ -6,6 +6,7 @@ import (
 	ddosProtection "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/ddos-protection"
 	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/dns"
 	firewallActions "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/firewall-actions"
+	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/frp"
 	globalServerConfig "git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/global-server-config"
 	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/health"
 	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/default/clusters/cluster/settings/metrics"
@@ -25,6 +26,9 @@ func init() {
 			Prefix("/clusters/cluster/settings").
 			Data("teaSubMenu", "cluster").
 			GetPost("", new(IndexAction)).
+
+			// FRP
+			GetPost("/frp", new(frp.IndexAction)).
 
 			// 健康检查
 			GetPost("/health", new(health.IndexAction)).

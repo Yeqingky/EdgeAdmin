@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.4.3-rc.1 (2026-11-15)
+
+- 集群设置新增 FRP 页面, 配置 FRPS 启用状态, 监听地址, 端口和 Token
+- edge-node 部署包内置 frps 二进制
+
 ## v1.4.2-rc.1 (2026-11-13)
 
 - 新增 Gitea 工作流 mirror-to-github: 全部分支和标签强制镜像到 github.com/Yeqingky/EdgeAdmin, 推送前过滤 AGENTS.md, .gitea 和 TODO.md, 并删除 GitHub 端多余的分支和标签

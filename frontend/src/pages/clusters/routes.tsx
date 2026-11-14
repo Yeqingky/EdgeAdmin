@@ -39,6 +39,7 @@ import {
 import { ClusterTasksPage } from './TasksPopupPage'
 import { ClusterSettingsBasicPage } from './settings/SettingsBasicPage'
 import { ClusterSettingsDnsPage, ClusterSettingsDnsRecordsPage } from './settings/SettingsDnsPage'
+import { ClusterSettingsFrpPage } from './settings/SettingsFrpPage'
 import { ClusterSettingsHealthPage, ClusterSettingsHealthRunPopupPage } from './settings/SettingsHealthPage'
 import {
   ClusterSettingsCachePage,
@@ -80,6 +81,7 @@ export const routes: AppRoute[] = [
   { path: '/clusters/cluster/settings', element: <ClusterSettingsBasicPage /> },
   { path: '/clusters/cluster/settings/dns', element: <ClusterSettingsDnsPage /> },
   { path: '/clusters/cluster/settings/dns/records', element: <ClusterSettingsDnsRecordsPage /> },
+  { path: '/clusters/cluster/settings/frp', element: <ClusterSettingsFrpPage /> },
   { path: '/clusters/cluster/settings/health', element: <ClusterSettingsHealthPage /> },
   { path: '/clusters/cluster/settings/health/runPopup', element: <ClusterSettingsHealthRunPopupPage /> },
   { path: '/clusters/cluster/settings/cache', element: <ClusterSettingsCachePage /> },

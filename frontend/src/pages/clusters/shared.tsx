@@ -183,6 +183,7 @@ export interface SettingsMenuItem {
 export const clusterSettingsItems = (clusterId: number): SettingsMenuItem[] => [
   { name: '基本信息', href: `/clusters/cluster/settings?clusterId=${clusterId}` },
   { name: 'DNS', href: `/clusters/cluster/settings/dns?clusterId=${clusterId}` },
+  { name: 'FRP', href: `/clusters/cluster/settings/frp?clusterId=${clusterId}` },
   { name: '健康检查', href: `/clusters/cluster/settings/health?clusterId=${clusterId}` },
   { name: '-', href: '', separator: true },
   { name: '全局服务配置', href: `/clusters/cluster/settings/global-server-config?clusterId=${clusterId}` },
