@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import * as echarts from 'echarts'
-import { ChevronDown, ChevronUp, HelpCircle, Loader2, X } from 'lucide-react'
+import { ChevronDown, ChevronUp, Loader2, X } from 'lucide-react'
+import { Tip } from '../../components/Tip'
 import { ApiError, UnauthorizedError, apiGet, apiPost } from '../../api/client'
 import { LoadingBlock } from '../../components/LoadingBlock'
 import { ServerTabs } from '../../components/ServerTabs'
@@ -327,14 +328,6 @@ export function MoreAngle({ open, onClick, children }: { open: boolean; onClick:
       {children}
       {open ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
     </a>
-  )
-}
-
-export function Tip({ content }: { content: string }) {
-  return (
-    <span title={content} style={{ cursor: 'help', marginLeft: '0.3em' }}>
-      <HelpCircle size={13} />
-    </span>
   )
 }
 

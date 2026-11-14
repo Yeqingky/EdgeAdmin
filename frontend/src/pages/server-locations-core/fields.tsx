@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { useState } from 'react'
 import { ChevronDown, ChevronUp, Pencil, Plus, X } from 'lucide-react'
 import type { SizeCapacity, URLPattern } from './types'
 
@@ -464,14 +464,5 @@ export function UrlPatternsField({ patterns, onChange }: {
         </button>
       </div>
     </div>
-  )
-}
-
-// 提示图标(对应 legacy tip-icon)
-export function Tip({ content, children }: { content: string; children?: ReactNode }) {
-  return (
-    <span className="ui label small" title={content} style={{ cursor: 'help' }}>
-      {children || '?'}
-    </span>
   )
 }

@@ -13,12 +13,12 @@ import {
   Keyword,
   Modal,
   MoreAngle,
-  Tip,
   apiPostMulti,
   formatBits,
   useClusterOptions,
   useUserOptions,
 } from './common'
+import { Tip } from '../../components/Tip'
 
 interface ServerPort {
   protocol: string

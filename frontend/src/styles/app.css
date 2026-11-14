@@ -365,3 +365,34 @@
   border: 1px solid rgba(34, 36, 38, 0.15);
   border-bottom-color: #fff;
 }
+
+.tip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.3em;
+  cursor: help;
+}
+
+.tip-bubble {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.4em;
+  padding: 0.55em 0.75em;
+  width: max-content;
+  max-width: 22em;
+  background: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  border-radius: 0.28571429rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.5;
+  white-space: normal;
+  text-align: left;
+  cursor: default;
+  z-index: 50;
+}
