@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { apiGet, apiPost } from '../../api/client'
 import { useToast } from '../../components/Toast'
 import { LoadingBlock } from '../../components/LoadingBlock'
+import { TunnelSelect } from '../../components/TunnelSelect'
 import { FormRow, FormTable, Select, SubmitButton, TextInput } from '../../components/form'
 import {
   CodeLabel,
@@ -19,6 +20,7 @@ interface OriginData {
   id?: number
   protocol: string
   addr: string
+  tunnelNodeId?: number
   weight: number
   name: string
   description: string
@@ -51,6 +53,7 @@ interface UpdatePopupData extends AddPopupData {
 interface OriginFormState {
   protocol: string
   addr: string
+  tunnelNodeId: number
   host: string
   weight: number
   name: string
@@ -133,6 +136,7 @@ function OriginForm({
   const [form, setForm] = useState<OriginFormState>({
     protocol: initial?.protocol || defaultProtocol(data.serverType),
     addr: initial?.addr || '',
+    tunnelNodeId: initial?.tunnelNodeId || 0,
     host: initial?.host || '',
     weight: initial?.weight ?? 10,
     name: initial?.name || '',
@@ -186,11 +190,13 @@ function OriginForm({
     setError('')
     try {
       const payload: Record<string, unknown> = {
+        serverId,
         reverseProxyId: data.reverseProxyId,
         originType: data.originType,
         weight: form.weight,
         protocol: form.protocol,
         addr: form.addr,
+        tunnelNodeId: form.tunnelNodeId,
         name: form.name,
         connTimeout: form.connTimeout,
         readTimeout: form.readTimeout,
@@ -240,6 +246,11 @@ function OriginForm({
                 ))}
               </Select>
             </FormRow>
+            {isHTTP ? (
+              <FormRow title="Tunnel">
+                <TunnelSelect value={form.tunnelNodeId} onChange={(id) => update('tunnelNodeId', id)} serverId={serverId} />
+              </FormRow>
+            ) : null}
             {!isOSS ? (
               <>
                 <FormRow title="源站地址 *">

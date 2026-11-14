@@ -7,6 +7,8 @@ import (
 
 	"git.ovh.im/yeqing/EdgeAdmin/internal/web/actions/actionutils"
 	"git.ovh.im/yeqing/EdgeCommon/pkg/rpc/pb"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type ConfigAction struct {
@@ -26,7 +28,11 @@ func (this *ConfigAction) RunGet(params struct {
 		BaseURL: this.baseURL(),
 	})
 	if err != nil {
-		http.Error(this.ResponseWriter, err.Error(), http.StatusUnauthorized)
+		code := http.StatusServiceUnavailable
+		if status.Code(err) == codes.Unauthenticated || status.Code(err) == codes.FailedPrecondition {
+			code = http.StatusUnauthorized
+		}
+		http.Error(this.ResponseWriter, err.Error(), code)
 		return
 	}
 	this.ResponseWriter.Header().Set("Content-Type", "application/json; charset=utf-8")

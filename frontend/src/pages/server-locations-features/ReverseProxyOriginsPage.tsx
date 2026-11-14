@@ -4,6 +4,7 @@ import { apiGet, apiPost } from '../../api/client'
 import { LoadingBlock } from '../../components/LoadingBlock'
 import { useConfirm } from '../../components/Confirm'
 import { useToast } from '../../components/Toast'
+import { TunnelSelect } from '../../components/TunnelSelect'
 import { Checkbox, FormRow, FormTable, SubmitButton } from '../../components/form'
 import { LocationShell } from './LocationShell'
 import { MissingLocation, useLocationData } from './helpers'
@@ -23,6 +24,7 @@ interface OriginDetail {
   id: number
   protocol: string
   addr: string
+  tunnelNodeId?: number
   weight: number
   name: string
   description: string
@@ -50,6 +52,7 @@ interface OriginPopupData {
 interface OriginFormState {
   protocol: string
   addr: string
+  tunnelNodeId: number
   host: string
   weight: number
   name: string
@@ -125,6 +128,7 @@ function OriginForm({
   const [state, setState] = useState<OriginFormState>({
     protocol: defaultProtocol(serverType),
     addr: '',
+    tunnelNodeId: 0,
     host: '',
     weight: 10,
     name: '',
@@ -148,6 +152,7 @@ function OriginForm({
       setState({
         protocol: origin.protocol || defaultProtocol(serverType),
         addr: origin.addr || '',
+        tunnelNodeId: origin.tunnelNodeId || 0,
         host: origin.host || '',
         weight: origin.weight || 10,
         name: origin.name || '',
@@ -187,10 +192,12 @@ function OriginForm({
     setSubmitting(true)
     try {
       const params: Record<string, unknown> = {
+        serverId,
         reverseProxyId,
         originType,
         protocol: state.protocol,
         addr: state.addr,
+        tunnelNodeId: state.tunnelNodeId,
         weight: state.weight,
         name: state.name,
         connTimeout: state.connTimeout,
@@ -234,6 +241,11 @@ function OriginForm({
                 ))}
               </select>
             </FormRow>
+            {isHTTP ? (
+              <FormRow title="Tunnel">
+                <TunnelSelect value={state.tunnelNodeId} onChange={(id) => update({ tunnelNodeId: id })} serverId={serverId} />
+              </FormRow>
+            ) : null}
             <FormRow title="源站地址 *">
               <div className="ui input left labeled">
                 <span className="ui label">{state.protocol}://</span>

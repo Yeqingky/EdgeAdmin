@@ -323,6 +323,27 @@ func (this *CreateAction) RunPost(params struct {
 		var originRefs = []*serverconfigs.OriginRef{}
 		for _, originConfig := range originConfigs {
 			if originConfig.Id > 0 {
+				originResp, err := this.RPC().OriginRPC().FindEnabledOrigin(this.AdminContext(), &pb.FindEnabledOriginRequest{OriginId: originConfig.Id})
+				if err != nil {
+					this.ErrorPage(err)
+					return
+				}
+				if originResp.Origin == nil || originResp.Origin.Addr == nil {
+					this.Fail("源站不存在")
+					return
+				}
+				if originResp.Origin.Addr.TunnelNodeId > 0 {
+					tunnelResp, err := this.RPC().TunnelNodeRPC().FindTunnelNode(this.AdminContext(), &pb.FindTunnelNodeRequest{TunnelNodeId: originResp.Origin.Addr.TunnelNodeId})
+					if err != nil {
+						this.ErrorPage(err)
+						return
+					}
+					tunnel := tunnelResp.TunnelNode
+					if tunnel == nil || !tunnel.IsOn || tunnel.ClusterId != clusterId || (userId > 0 && tunnel.UserId != userId) {
+						this.Fail("隧道与网站的集群或所属用户不匹配")
+						return
+					}
+				}
 				originRefs = append(originRefs, &serverconfigs.OriginRef{
 					IsOn:     true,
 					OriginId: originConfig.Id,

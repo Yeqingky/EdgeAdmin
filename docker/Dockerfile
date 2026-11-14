@@ -63,6 +63,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     for arch in amd64 arm64; do \
         CGO_ENABLED=0 GOOS=linux GOARCH="${arch}" go build -C EdgeTunnel -ldflags "-s -w" -o "/out/tunnel/frpc-linux-${arch}" ./cmd/frpc; \
     done; \
+    cp "/out/tunnel/frpc-linux-${TARGETARCH}" EdgeNode/dist/edge-node/bin/frpc; \
     CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -C EdgeTunnel -ldflags "-s -w" -o "/out/tunnel/frpc-windows-amd64.exe" ./cmd/frpc; \
     CGO_ENABLED=0 GOOS=windows GOARCH=arm64 go build -C EdgeTunnel -ldflags "-s -w" -o "/out/tunnel/frpc-windows-arm64.exe" ./cmd/frpc; \
     CGO_ENABLED=1 GOARCH="${TARGETARCH}" go build -C EdgeNode -tags community -ldflags "-s -w -linkmode external -extldflags -static" -o dist/edge-node/bin/edge-node ./cmd/edge-node; \

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { apiGet, apiPost } from '../../api/client'
 import { useToast } from '../../components/Toast'
+import { TunnelSelect } from '../../components/TunnelSelect'
 import { Modal } from './common'
 
 export interface OriginAddress {
@@ -10,6 +11,7 @@ export interface OriginAddress {
   portRange: string
   minPort?: number
   maxPort?: number
+  tunnelNodeId?: number
 }
 
 export interface OriginItem {
@@ -32,15 +34,18 @@ export interface CertRef {
 
 interface OriginModalProps {
   serverType: string
+  clusterId: number
+  userId: number
   onClose: () => void
   onCreated: (origin: OriginItem) => void
 }
 
-export function OriginModal({ serverType, onClose, onCreated }: OriginModalProps) {
+export function OriginModal({ serverType, clusterId, userId, onClose, onCreated }: OriginModalProps) {
   const toast = useToast()
   const isHTTP = serverType === 'httpProxy' || serverType === 'httpWeb'
   const [protocol, setProtocol] = useState(serverType === 'tcpProxy' ? 'tcp' : serverType === 'udpProxy' ? 'udp' : 'http')
   const [addr, setAddr] = useState('')
+  const [tunnelNodeId, setTunnelNodeId] = useState(0)
   const [host, setHost] = useState('')
   const [followPort, setFollowPort] = useState(false)
   const [http2Enabled, setHttp2Enabled] = useState(false)
@@ -65,6 +70,7 @@ export function OriginModal({ serverType, onClose, onCreated }: OriginModalProps
         protocol,
         addr,
         host,
+        tunnelNodeId,
         followPort: followPort ? 1 : '',
         http2Enabled: http2Enabled ? 1 : '',
       })
@@ -122,6 +128,12 @@ export function OriginModal({ serverType, onClose, onCreated }: OriginModalProps
               ) : null}
             </td>
           </tr>
+          {isHTTP ? (
+            <tr>
+              <td className="title">Tunnel</td>
+              <td><TunnelSelect value={tunnelNodeId} onChange={setTunnelNodeId} clusterId={clusterId} userId={userId} /></td>
+            </tr>
+          ) : null}
           <tr>
             <td className="title">源站地址 *</td>
             <td>

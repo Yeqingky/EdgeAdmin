@@ -55,22 +55,18 @@ func (this *CreateAction) RunGet(params struct{}) {
 }
 
 func (this *CreateAction) RunPost(params struct {
-	Name       string
-	ClusterId  int64
-	UserId     int64
-	ServerAddr string
-	ServerPort int32
-	OS         string
-	Arch       string
+	Name      string
+	ClusterId int64
+	UserId    int64
+	Os        string
+	Arch      string
 }) {
 	resp, err := this.RPC().TunnelNodeRPC().CreateTunnelNode(this.AdminContext(), &pb.CreateTunnelNodeRequest{
-		Name:       params.Name,
-		ClusterId:  params.ClusterId,
-		UserId:     params.UserId,
-		ServerAddr: params.ServerAddr,
-		ServerPort: params.ServerPort,
-		Os:         params.OS,
-		Arch:       params.Arch,
+		Name:      params.Name,
+		ClusterId: params.ClusterId,
+		UserId:    params.UserId,
+		Os:        params.Os,
+		Arch:      params.Arch,
 	})
 	if err != nil {
 		this.Fail(err.Error())

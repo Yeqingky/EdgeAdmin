@@ -1,8 +1,8 @@
 #!/bin/sh
 set -eu
 
-ROOT_DIR=/usr/local/goedge
-SHARED_DIR=/shared
+ROOT_DIR=${EDGE_ROOT_DIR:-/usr/local/goedge}
+SHARED_DIR=${EDGE_SHARED_DIR:-/shared}
 
 cd "$ROOT_DIR"
 

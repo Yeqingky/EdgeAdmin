@@ -41,8 +41,6 @@ export function CreateTunnelNodePage() {
   const [name, setName] = useState('')
   const [clusterId, setClusterId] = useState(0)
   const [userId, setUserId] = useState(0)
-  const [serverAddr, setServerAddr] = useState('')
-  const [serverPort, setServerPort] = useState('7000')
   const [osName, setOsName] = useState('linux')
   const [arch, setArch] = useState('amd64')
   const [submitting, setSubmitting] = useState(false)
@@ -72,18 +70,12 @@ export function CreateTunnelNodePage() {
       toast('请选择集群', 'error')
       return
     }
-    if (!serverAddr.trim()) {
-      toast('请输入 FRPS 地址', 'error')
-      return
-    }
     setSubmitting(true)
     try {
       const result = await apiPost<CreatedTunnel>('/tunnels/nodes/create', {
         name: name.trim(),
         clusterId,
         userId,
-        serverAddr: serverAddr.trim(),
-        serverPort: Number(serverPort) || 0,
         os: osName,
         arch,
       })
@@ -134,12 +126,6 @@ export function CreateTunnelNodePage() {
                   <option key={user.id} value={user.id}>{user.fullname ? `${user.username} (${user.fullname})` : user.username}</option>
                 ))}
               </Select>
-            </FormRow>
-            <FormRow title="FRPS 地址 *">
-              <TextInput type="text" value={serverAddr} onChange={(event) => setServerAddr(event.target.value)} placeholder="例如 192.168.1.10" />
-            </FormRow>
-            <FormRow title="FRPS 端口 *">
-              <TextInput type="number" value={serverPort} onChange={(event) => setServerPort(event.target.value)} />
             </FormRow>
             <FormRow title="操作系统">
               <Select value={osName} onChange={(event) => setOsName(event.target.value)}>

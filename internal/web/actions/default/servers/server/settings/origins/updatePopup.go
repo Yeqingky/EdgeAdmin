@@ -103,6 +103,7 @@ func (this *UpdatePopupAction) RunGet(params struct {
 		"id":           config.Id,
 		"protocol":     config.Addr.Protocol,
 		"addr":         addr,
+		"tunnelNodeId": config.Addr.TunnelNodeId,
 		"weight":       config.Weight,
 		"name":         config.Name,
 		"description":  config.Description,
@@ -128,11 +129,13 @@ func (this *UpdatePopupAction) RunGet(params struct {
 
 func (this *UpdatePopupAction) RunPost(params struct {
 	OriginType string
+	ServerId   int64
 	OriginId   int64
 
 	ReverseProxyId int64
 	Protocol       string
 	Addr           string
+	TunnelNodeId   int64
 	Weight         int32
 	Name           string
 
@@ -154,6 +157,10 @@ func (this *UpdatePopupAction) RunPost(params struct {
 
 	Must *actions.Must
 }) {
+	if err := validateTunnelForServer(&this.ParentAction, params.ServerId, params.TunnelNodeId); err != nil {
+		this.Fail(err.Error())
+		return
+	}
 	ossConfig, goNext, err := this.postOSSHook(params.Protocol)
 	if err != nil {
 		this.ErrorPage(err)
@@ -236,9 +243,10 @@ func (this *UpdatePopupAction) RunPost(params struct {
 		}
 
 		pbAddr = &pb.NetworkAddress{
-			Protocol:  params.Protocol,
-			Host:      host,
-			PortRange: port,
+			Protocol:     params.Protocol,
+			Host:         host,
+			PortRange:    port,
+			TunnelNodeId: params.TunnelNodeId,
 		}
 
 		connTimeoutJSON, err = (&shared.TimeDuration{

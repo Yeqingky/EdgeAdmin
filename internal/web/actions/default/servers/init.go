@@ -25,6 +25,7 @@ func init() {
 			GetPost("/addPortPopup", new(AddPortPopupAction)).
 			GetPost("/addServerNamePopup", new(AddServerNamePopupAction)).
 			GetPost("/addOriginPopup", new(AddOriginPopupAction)).
+			Get("/tunnelOptions", new(TunnelOptionsAction)).
 			Get("/serverNamesPopup", new(ServerNamesPopupAction)).
 
 			// user

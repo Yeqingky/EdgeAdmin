@@ -8,6 +8,8 @@
 - 新增 /tunnels/nodes 隧道节点列表和创建页面, 支持集群/用户绑定和安装命令
 - 新增 /tunnels/logs 隧道运行日志页面
 - 安装脚本支持 Linux systemd 和 Windows Service, 参数 install/uninstall/update
+- 网站源站支持选择所属用户和集群的隧道节点
+- 新增网站创建与隧道选择的 Gitea 端到端工作流
 
 ## v1.4.2-rc.1 (2026-11-13)
 

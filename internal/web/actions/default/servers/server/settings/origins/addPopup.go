@@ -56,11 +56,13 @@ func (this *AddPopupAction) RunGet(params struct {
 
 func (this *AddPopupAction) RunPost(params struct {
 	OriginType string
+	ServerId   int64
 
 	ReverseProxyId int64
 	Weight         int32
 	Protocol       string
 	Addr           string
+	TunnelNodeId   int64
 	Name           string
 
 	ConnTimeout  int
@@ -81,6 +83,10 @@ func (this *AddPopupAction) RunPost(params struct {
 
 	Must *actions.Must
 }) {
+	if err := validateTunnelForServer(&this.ParentAction, params.ServerId, params.TunnelNodeId); err != nil {
+		this.Fail(err.Error())
+		return
+	}
 	ossConfig, goNext, err := this.postOSSHook(params.Protocol)
 	if err != nil {
 		this.ErrorPage(err)
@@ -213,9 +219,10 @@ func (this *AddPopupAction) RunPost(params struct {
 		}
 
 		pbAddr = &pb.NetworkAddress{
-			Protocol:  params.Protocol,
-			Host:      host,
-			PortRange: port,
+			Protocol:     params.Protocol,
+			Host:         host,
+			PortRange:    port,
+			TunnelNodeId: params.TunnelNodeId,
 		}
 	}
 

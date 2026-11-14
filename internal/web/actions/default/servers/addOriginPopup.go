@@ -35,8 +35,9 @@ func (this *AddOriginPopupAction) RunGet(params struct {
 }
 
 func (this *AddOriginPopupAction) RunPost(params struct {
-	Protocol string
-	Addr     string
+	Protocol     string
+	Addr         string
+	TunnelNodeId int64
 
 	DomainsJSON  []byte
 	Host         string
@@ -123,15 +124,17 @@ func (this *AddOriginPopupAction) RunPost(params struct {
 		}
 
 		pbAddr = &pb.NetworkAddress{
-			Protocol:  params.Protocol,
-			Host:      host,
-			PortRange: port,
+			Protocol:     params.Protocol,
+			Host:         host,
+			PortRange:    port,
+			TunnelNodeId: params.TunnelNodeId,
 		}
 
 		addrConfig = &serverconfigs.NetworkAddressConfig{
-			Protocol:  serverconfigs.Protocol(params.Protocol),
-			Host:      host,
-			PortRange: port,
+			Protocol:     serverconfigs.Protocol(params.Protocol),
+			Host:         host,
+			PortRange:    port,
+			TunnelNodeId: params.TunnelNodeId,
 		}
 	}
 
