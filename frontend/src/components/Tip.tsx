@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { HelpCircle } from 'lucide-react'
 
-// 提示图标/文字, 点击后显示提示内容
+// 提示图标/文字, 悬浮或点击后显示提示内容
 export function Tip({ content, children }: { content: string; children?: ReactNode }) {
+  const [hovered, setHovered] = useState(false)
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLSpanElement | null>(null)
+  const visible = hovered || open
 
   useEffect(() => {
     if (!open) {
@@ -18,6 +20,7 @@ export function Tip({ content, children }: { content: string; children?: ReactNo
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         setOpen(false)
+        setHovered(false)
       }
     }
     document.addEventListener('pointerdown', onPointerDown, true)
@@ -34,9 +37,10 @@ export function Tip({ content, children }: { content: string; children?: ReactNo
       className="tip"
       role="button"
       tabIndex={0}
-      title={content}
       aria-label={content}
-      aria-expanded={open}
+      aria-expanded={visible}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       onClick={(event) => {
         event.preventDefault()
         event.stopPropagation()
@@ -50,7 +54,7 @@ export function Tip({ content, children }: { content: string; children?: ReactNo
       }}
     >
       {children || <HelpCircle size={13} />}
-      {open ? (
+      {visible ? (
         <span
           className="tip-bubble"
           role="tooltip"
