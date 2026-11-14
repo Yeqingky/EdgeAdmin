@@ -1,8 +1,27 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
-import type { SessionData } from '../api/types'
+import type { MenuSubItem, SessionData } from '../api/types'
 import { menuIcon } from './icons'
+
+// 展开嵌套的子菜单, 只保留可点击的叶子项
+function flattenSubItems(items?: MenuSubItem[]): MenuSubItem[] {
+  if (!items) {
+    return []
+  }
+  const result: MenuSubItem[] = []
+  for (const item of items) {
+    if (item.name === '-' || item.isOn === false) {
+      continue
+    }
+    if (item.subItems && item.subItems.length > 0) {
+      result.push(...flattenSubItems(item.subItems))
+    } else if (item.url) {
+      result.push(item)
+    }
+  }
+  return result
+}
 
 export function LeftMenu({ session }: { session: SessionData }) {
   const location = useLocation()
@@ -38,14 +57,8 @@ export function LeftMenu({ session }: { session: SessionData }) {
     let bestCode = ''
     let bestScore = -1
     for (const module of session.teaModules) {
-      if (!module.code || module.isOn === false || !module.subItems || module.subItems.length === 0) {
-        continue
-      }
-      for (const item of module.subItems) {
-        if (item.name === '-' || item.isOn === false) {
-          continue
-        }
-        const score = activeScore(item.url)
+      for (const item of flattenSubItems(module.subItems)) {
+        const score = activeScore(item.url || '')
         if (score > bestScore) {
           bestScore = score
           bestCode = module.code
@@ -80,20 +93,40 @@ export function LeftMenu({ session }: { session: SessionData }) {
           const firstUrl = module.subItems?.[0]?.url || `/${module.code}`
           const hasSubItems = !!module.subItems && module.subItems.length > 0
           const isOpen = module.code === currentGroupCode ? !currentCollapsed : openedCode === module.code
-          let activeSubItem: NonNullable<typeof module.subItems>[number] | null = null
+          let activeSubItem: MenuSubItem | null = null
           let activeSubItemScore = -1
-          if (module.subItems) {
-            for (const item of module.subItems) {
-              if (item.name === '-' || item.isOn === false) {
-                continue
-              }
-              const score = activeScore(item.url)
-              if (score > activeSubItemScore) {
-                activeSubItem = item
-                activeSubItemScore = score
-              }
+          for (const item of flattenSubItems(module.subItems)) {
+            const score = activeScore(item.url || '')
+            if (score > activeSubItemScore) {
+              activeSubItem = item
+              activeSubItemScore = score
             }
           }
+          function renderSubItem(item: MenuSubItem, key: string): React.ReactNode {
+            if (item.name === '-') {
+              return <div key={key} className="item separator" />
+            }
+            if (item.isOn === false) {
+              return null
+            }
+            if (item.subItems && item.subItems.length > 0) {
+              return (
+                <div key={key} className="sub-group">
+                  <div className="item sub-group-title">{item.name}</div>
+                  {item.subItems.map((child, childIndex) => renderSubItem(child, `${key}-${childIndex}`))}
+                </div>
+              )
+            }
+            return (
+              <Link key={key} className={`item${activeSubItem === item ? ' active' : ''}`} to={item.url || '#'}>
+                <span>{item.name}</span>
+                {item.badge && item.badge > 0 ? (
+                  <span className="ui label tiny red">{item.badge < 100 ? item.badge : '99+'}</span>
+                ) : null}
+              </Link>
+            )
+          }
+
           function toggleOpen(event: React.MouseEvent | React.KeyboardEvent) {
             event.preventDefault()
             event.stopPropagation()
@@ -139,22 +172,7 @@ export function LeftMenu({ session }: { session: SessionData }) {
               )}
               {isOpen && hasSubItems ? (
                 <div className="sub-items">
-                  {module.subItems!.map((item, index) =>
-                    item.name === '-' ? (
-                      <div key={`${module.code}-separator-${index}`} className="item separator" />
-                    ) : item.isOn === false ? null : (
-                      <Link
-                        key={`${module.code}-${item.code}-${item.url}`}
-                        className={`item${activeSubItem === item ? ' active' : ''}`}
-                        to={item.url}
-                      >
-                        <span>{item.name}</span>
-                        {item.badge && item.badge > 0 ? (
-                          <span className="ui label tiny red">{item.badge < 100 ? item.badge : '99+'}</span>
-                        ) : null}
-                      </Link>
-                    ),
-                  )}
+                  {module.subItems!.map((item, index) => renderSubItem(item, `${module.code}-${index}`))}
                 </div>
               ) : null}
             </div>

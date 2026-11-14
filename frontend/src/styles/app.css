@@ -396,3 +396,17 @@
   cursor: default;
   z-index: 50;
 }
+
+.main-menu .ui.menu .sub-items .sub-group-title,
+.main-menu .ui.menu .sub-items .sub-group-title:hover {
+  padding-left: 2.8em !important;
+  padding-top: 0.4em;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.85em;
+  cursor: default;
+}
+
+.main-menu .ui.menu .sub-items .sub-group .item:not(.sub-group-title) {
+  padding-left: 3.9em !important;
+}

@@ -6,10 +6,11 @@ export interface ApiResponse<T> {
 
 export interface MenuSubItem {
   name: string
-  url: string
+  url?: string
   code: string
   badge?: number
   isOn?: boolean
+  subItems?: MenuSubItem[]
 }
 
 export interface MenuModule {

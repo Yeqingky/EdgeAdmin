@@ -90,30 +90,52 @@ func FindAllMenuMaps(langCode string, nodeLogsType string, countUnreadNodeLogs i
 		{
 			"code":     "clusters",
 			"module":   configloaders.AdminModuleCodeNode,
-			"name":     langs.Message(langCode, codes.AdminMenu_Nodes),
+			"name":     langs.Message(langCode, codes.AdminMenu_NodeManagement),
 			"subtitle": "",
 			"icon":     "cloud",
 			"subItems": []maps.Map{
 				{
-					"name": langs.Message(langCode, codes.AdminMenu_NodeClusters),
-					"url":  "/clusters",
-					"code": "cluster",
+					"code": "edgeNodes",
+					"name": langs.Message(langCode, codes.AdminMenu_Nodes),
+					"subItems": []maps.Map{
+						{
+							"name": langs.Message(langCode, codes.AdminMenu_NodeClusters),
+							"url":  "/clusters",
+							"code": "cluster",
+						},
+						{
+							"name":  langs.Message(langCode, codes.AdminMenu_NodeLogs),
+							"url":   "/clusters/logs?type=" + nodeLogsType,
+							"code":  "log",
+							"badge": countUnreadNodeLogs,
+						},
+						{
+							"name": langs.Message(langCode, codes.AdminMenu_NodeRegions),
+							"url":  "/clusters/regions",
+							"code": "region",
+						},
+						{
+							"name": langs.Message(langCode, codes.AdminMenu_NodeSSHGrants),
+							"url":  "/clusters/grants",
+							"code": "grant",
+						},
+					},
 				},
 				{
-					"name":  langs.Message(langCode, codes.AdminMenu_NodeLogs),
-					"url":   "/clusters/logs?type=" + nodeLogsType,
-					"code":  "log",
-					"badge": countUnreadNodeLogs,
-				},
-				{
-					"name": langs.Message(langCode, codes.AdminMenu_NodeRegions),
-					"url":  "/clusters/regions",
-					"code": "region",
-				},
-				{
-					"name": langs.Message(langCode, codes.AdminMenu_NodeSSHGrants),
-					"url":  "/clusters/grants",
-					"code": "grant",
+					"code": "tunnels",
+					"name": langs.Message(langCode, codes.AdminMenu_Tunnels),
+					"subItems": []maps.Map{
+						{
+							"name": langs.Message(langCode, codes.AdminMenu_TunnelNodes),
+							"url":  "/tunnels/nodes",
+							"code": "tunnelNode",
+						},
+						{
+							"name": langs.Message(langCode, codes.AdminMenu_TunnelLogs),
+							"url":  "/tunnels/logs",
+							"code": "tunnelLog",
+						},
+					},
 				},
 			},
 		},
