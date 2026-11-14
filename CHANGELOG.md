@@ -2,7 +2,7 @@
 
 ## v1.4.2-rc.1 (2026-11-13)
 
-- 新增 Gitea 工作流 mirror-to-github: 全部分支和标签强制镜像到 github.com/Yeqingky/EdgeAdmin, 同步删除 GitHub 端多余的分支和标签
+- 新增 Gitea 工作流 mirror-to-github: 全部分支和标签强制镜像到 github.com/Yeqingky/EdgeAdmin, 推送前过滤 AGENTS.md, .gitea 和 TODO.md, 并删除 GitHub 端多余的分支和标签
 - 全局标点符号统一为英文半角
 - 修复分页样式影响普通链接颜色的问题
 - 移除DNS修改弹窗中重复的标题
