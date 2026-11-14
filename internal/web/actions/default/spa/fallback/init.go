@@ -14,6 +14,7 @@ func init() {
 			"/log",
 			"/messages",
 			"/nodes",
+			"/origins",
 			"/recover",
 			"/servers",
 			"/settings",

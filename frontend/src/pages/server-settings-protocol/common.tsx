@@ -70,7 +70,8 @@ export function buildSettingsURL(path: string, params: Record<string, string | n
       search.set(key, String(value))
     }
   })
-  const suffix = path.startsWith('/') ? path : `${SETTINGS_BASE}/${path}`
+  const isGlobalPath = /^\/(servers|clusters|dns|users|admins|settings|dashboard|log|ui)(\/|$)/.test(path)
+  const suffix = path.startsWith(SETTINGS_BASE) || isGlobalPath ? path : `${SETTINGS_BASE}/${path.replace(/^\/+/, '')}`
   const query = search.toString()
   return query.length > 0 ? `${suffix}?${query}` : suffix
 }

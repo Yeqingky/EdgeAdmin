@@ -60,6 +60,8 @@ const redirects: Record<string, string> = {
   '/servers/server/log/viewPopup': '/servers/server/log',
   '/servers/server/settings/access/createPopup': '/servers/server/settings/access',
   '/servers/server/settings/access/updatePopup': '/servers/server/settings/access',
+  '/origins/updatePopup': '/servers/server/settings/origins/updatePopup',
+  '/origins/addPopup': '/servers/server/settings/origins/addPopup',
   '/servers/server/settings/cache/createPopup': '/servers/server/settings/cache',
   '/servers/server/settings/compression/gzip': '/servers/server/settings/compression',
   '/servers/server/settings/conds/addCondPopup': '/servers/server/settings/cache',
