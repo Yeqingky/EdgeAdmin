@@ -10,7 +10,7 @@
 - 新增 /tunnels/nodes 隧道节点列表和创建页面, 支持集群/用户绑定和安装命令
 - 新增 /tunnels/logs 隧道运行日志页面
 - 安装脚本支持 Linux systemd 和 Windows Service, 参数 install/uninstall/update
-- 新增网站创建与源站配置的 Gitea 端到端工作流
+- Gitea 总 E2E 遍历管理端全部路由, 验证 Admin/API/Common 网站源站流程, 并覆盖 EdgeNode、EdgeTunnel、firewall-server 和 TOA
 
 ## v1.4.2-rc.1 (2026-11-13)
 

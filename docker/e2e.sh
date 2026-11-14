@@ -59,4 +59,7 @@ if [ "$ready" != true ]; then
     cat "$E2E_DIR/api.log" "$E2E_DIR/admin.log" >&2
     exit 1
 fi
+if [ "${E2E_ALL_ROUTES:-false}" = true ]; then
+    pnpm exec playwright test e2e/routes.spec.ts --workers=1
+fi
 pnpm exec playwright test e2e/tunnel.spec.ts --workers=1
