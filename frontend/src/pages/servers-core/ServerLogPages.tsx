@@ -274,7 +274,7 @@ export function ServerLogRealtimePage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="log" />
-      <ServerPageLayout menu={logMenuItems(data.server.id, 'index')}>
+      <ServerPageLayout withMenu menu={logMenuItems(data.server.id, 'index')}>
         <LogWarnings data={data} />
 
         <AccessLogSearchForm
@@ -371,7 +371,7 @@ export function ServerLogTodayPage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="log" />
-      <ServerPageLayout menu={logMenuItems(data.server.id, 'today')}>
+      <ServerPageLayout withMenu menu={logMenuItems(data.server.id, 'today')}>
         <LogWarnings data={data} />
 
         <LogTabs hasError={hasError} hasWAF={hasWAF} onChange={updateParams} />
@@ -495,7 +495,7 @@ export function ServerLogHistoryPage() {
   return (
     <div>
       <ServerTopMenu serverId={data.server.id} serverName={data.server.name} current="log" />
-      <ServerPageLayout menu={logMenuItems(data.server.id, 'history')}>
+      <ServerPageLayout withMenu menu={logMenuItems(data.server.id, 'history')}>
         <LogWarnings data={data} />
 
         <LogTabs hasError={hasError} hasWAF={hasWAF} onChange={updateParams} />

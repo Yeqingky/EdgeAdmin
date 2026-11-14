@@ -80,8 +80,8 @@ function requestsChartOption(stats: RequestStat[], labels: string[], tooltip: (i
       axisLabel: { formatter: (value: number) => `${value}${unitSuffix}` },
     },
     tooltip: { show: true, trigger: 'item', formatter: requestTooltip(tooltip) },
-    grid: { left: 50, top: 40, right: 20, bottom: 20 },
-    legend: { data: ['请求数', '缓存请求数'] },
+    grid: { left: 50, top: 40, right: 20, bottom: 40 },
+    legend: { data: ['请求数', '缓存请求数'], bottom: 0 },
     animation: true,
     series: [
       {
@@ -113,8 +113,8 @@ function trafficChartOption(stats: RequestStat[], labels: string[], tooltip: (in
       axisLabel: { formatter: (value: number) => `${value}${axis.unit}` },
     },
     tooltip: { show: true, trigger: 'item', formatter: requestTooltip(tooltip) },
-    grid: { left: 50, top: 40, right: 20, bottom: 20 },
-    legend: { data: ['流量', '缓存流量'] },
+    grid: { left: 50, top: 40, right: 20, bottom: 40 },
+    legend: { data: ['流量', '缓存流量'], bottom: 0 },
     animation: true,
     series: [
       {

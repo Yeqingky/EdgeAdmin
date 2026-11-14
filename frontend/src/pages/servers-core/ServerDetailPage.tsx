@@ -73,7 +73,7 @@ export function ServerDetailPage() {
   return (
     <div>
       <ServerTopMenu serverId={server.id} serverName={server.name} current="settings" />
-      <ServerPageLayout menu={menu}>
+      <ServerPageLayout withMenu menu={menu}>
         <h3>网站概览</h3>
         <table className="ui table definition selectable">
           <tbody>

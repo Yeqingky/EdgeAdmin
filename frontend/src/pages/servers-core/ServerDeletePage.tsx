@@ -55,7 +55,7 @@ export function ServerDeletePage() {
   return (
     <div>
       <ServerTopMenu serverId={server.id} serverName={server.name} current="delete" />
-      <ServerPageLayout menu={menu}>
+      <ServerPageLayout withMenu menu={menu}>
         <div style={{ maxWidth: '40em' }}>
           <div className="ui message warning">
             请慎重操作,删除后无法恢复!当前网站:{server.name}
